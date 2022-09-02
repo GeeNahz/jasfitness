@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center text-center p-5 w-60 max-h-max md:w-72 bg-zinc-800"
+    class="flex flex-col items-center text-center p-5 w-60 max-h-max md:w-72 bg-zinc-800 rounded"
   >
     <p class="uppercase text-white text-lg font-bold">{{ title }}</p>
     <div class="w-32 h-32 my-3 fill-white">

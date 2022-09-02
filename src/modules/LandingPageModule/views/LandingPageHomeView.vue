@@ -152,7 +152,7 @@
     </section>
 
     <!-- about us section -->
-    <section class="flex justify-around space-x-5">
+    <!-- <section class="flex justify-around space-x-5">
       <div class="flex flex-col justify-center text-start py-5 md:w-[50%] px-4">
         <p class="text-xs uppercase">about us</p>
         <p class="text-5xl capitalize font-bold">Who We Are</p>
@@ -180,22 +180,24 @@
       <div class="hidden md:w-96 h-3/4 min-h-max lg:block">
         <img :src="require('../assets/pose3.png')" alt="display1" />
       </div>
-    </section>
+    </section> -->
+    <LandingPageAboutUs />
 
     <!-- our services section -->
     <section
-      class="flex flex-col text-white items-center text-center bg-zinc-900 py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
+      class="flex flex-col items-center text-center bg-zinc-300 py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
     >
-      <p class="capitalize text-white font-bold text-5xl mx-auto">
+      <h4
+        class="capitalize text-start border-b-2 border-[#fe902d] pb-2 mb-4 font-bold text-5xl mx-auto w-full"
+      >
         What we offer
-      </p>
-      <div class="border-2 border-[#fe902d] mb-3 mx-auto w-32" />
-      <p class="text-white font-light text-sm max-w-xl mb-5 mx-auto">
+      </h4>
+      <h4 class="text-sm text-start w-full mb-5 mx-auto">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa quas
         repellat eos, explicabo atque consectetur.
-      </p>
+      </h4>
       <div
-        class="flex flex-col gap-10 items-start justify-between md:px-10 md:flex-wrap md:flex-row"
+        class="flex flex-col gap-20 items-start md:px-5 md:flex-wrap md:flex-row mb-4"
       >
         <div v-for="offer in offers" :key="offer.title" class="add animations">
           <LandingPageOfferCard
@@ -218,49 +220,62 @@
 
     <!-- BMI calculator section -->
     <section
-      class="flex flex-col md:flex-row justify-center items-center md:items-start md:text-left py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
+      class="lg:flex-row justify-center items-center space-y-4 md:items-start md:text-left py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
     >
-      <div class="w-72 md:w-96">
-        <p class="text-5xl mb-3 font-bold">Know Your BMI</p>
+      <div class="space-y-4">
+        <h4 class="text-5xl font-bold border-b-2 border-[#fe902d] pb-2">
+          Know Your BMI
+        </h4>
         <p class="hidden md:block">
           Are you in the healthy range? Use this tool to calculate your
           <span class="font-semibold">Body Mass Index (BMI)</span> now to know
           your risk for obesity related diseases.
         </p>
       </div>
-      <div class="flex justify-center items-center w-72 md:w-96">
+      <div class="flex justify-center items-center">
         <LandingPageBmiCalculator />
       </div>
     </section>
 
     <!-- Reviews section -->
     <section
-      class="flex flex-row-reverse items-start justify-center md:text-left w-full h-max pb-10 px-4 sm:pb-12 sm:px-6 md:pb-16 lg:pb-20 lg:px-8 xl:pb-28"
+      class="flex items-start justify-center md:text-left w-full h-max py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28 bg-zinc-300"
     >
       <div
-        class="flex flex-col justify-center items-center md:items-start w-96 h-max md:ml-10"
+        class="flex flex-row-reverse items-start justify-center md:text-left w-full h-max"
       >
-        <p class="uppercase text-gray-600 text-sm font-bold">testimonial</p>
-        <p class="capitalize font-bold text-5xl">
-          what our customers say about us
-        </p>
-        <div class="border-2 border-[#fe902d] w-32" />
-        <div class="flex flex-col py-3 bg-bottom relative">
-          <ReviewCardComponent :review="reviews[0]" />
+        <div
+          class="flex flex-col justify-center items-center md:items-start w-96 h-max md:ml-10"
+        >
+          <p class="uppercase text-gray-600 text-sm font-bold">testimonial</p>
+          <p class="capitalize font-bold text-5xl">
+            what our customers say about us
+          </p>
+          <div class="border-2 border-[#fe902d] w-32" />
+          <div class="flex flex-col py-3 bg-bottom relative">
+            <ReviewCardComponent :review="reviews[0]" />
+          </div>
         </div>
+        <div
+          class="hidden w-96 h-96 md:grid grid-cols-2 grid-rows-2 items-center gap-2 grid-flow-row-dense pt-5 bg-blue-600"
+        ></div>
       </div>
-      <div
-        class="hidden w-96 h-96 md:grid grid-cols-2 grid-rows-2 items-center gap-2 grid-flow-row-dense pt-5 bg-blue-600"
-      ></div>
+      <div class="hidden lg:inline scheduler h-max p-2 bg-white rounded">
+        <AppTimeTable />
+      </div>
     </section>
 
     <!-- Subscription plans section -->
     <section
-      class="text-center pb-10 px-4 sm:pb-12 sm:px-6 md:pb-16 lg:pb-20 lg:px-8 xl:pb-28"
+      class="text-center py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
       id="plans"
     >
-      <div class="pb-5 text-[#2c3e50] capitalize">
-        <p class="text-5xl font-semibold">Choose your plan</p>
+      <div class="pb-5 text-[#2c3e50] capitalize text-start">
+        <h4
+          class="text-5xl font-semibold border-b-2 border-[#fe902d] pb-2 mb-2"
+        >
+          Choose your plan
+        </h4>
         <p class="text-sm">No long term contract, cancel at any time</p>
       </div>
       <div class="flex flex-wrap gap-4 justify-center text-white items-center">
@@ -407,9 +422,12 @@ import LandingPageOfferCard from '../components/LandingPageOfferCard.vue'
 import LandingPageBmiCalculator from '../components/LandingPageBmiCalculator.vue'
 import ReviewCardComponent from '../components/ReviewCardComponent.vue'
 import SubsciptionCard from '../components/SubsciptionCard.vue'
+import AppTimeTable from '../components/AppTimeTable.vue'
+import LandingPageAboutUs from '../components/LandingPageAboutUs.vue'
 
 export default {
   components: {
+    AppTimeTable,
     ButtonComponent,
     TheNavbar,
     TheFooter,
@@ -417,7 +435,8 @@ export default {
     LandingPageOfferCard,
     LandingPageBmiCalculator,
     ReviewCardComponent,
-    SubsciptionCard
+    SubsciptionCard,
+    LandingPageAboutUs
   },
   data() {
     return {
