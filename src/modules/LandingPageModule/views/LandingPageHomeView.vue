@@ -152,40 +152,11 @@
     </section>
 
     <!-- about us section -->
-    <!-- <section class="flex justify-around space-x-5">
-      <div class="flex flex-col justify-center text-start py-5 md:w-[50%] px-4">
-        <p class="text-xs uppercase">about us</p>
-        <p class="text-5xl capitalize font-bold">Who We Are</p>
-        <div class="w-44 border-2 border-[#fe902d] rounded-full mb-4"></div>
-        <p class="text-sm font-light mb-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
-          dolorum incidunt! Quam doloremque sint vel, fugit alias sequi
-          voluptate facere ullam et, corporis consectetur. Tempora.
-        </p>
-        <div class="little-outline flex space-x-2 mb-2 items-center">
-          <div class="icon-box w-5 h-5 bg-gray-300"></div>
-          <p class="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
-            quia!
-          </p>
-        </div>
-        <div class="little-outline flex space-x-2 items-center">
-          <div class="icon-box w-5 h-5 bg-gray-300"></div>
-          <p class="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
-            quia!
-          </p>
-        </div>
-      </div>
-      <div class="hidden md:w-96 h-3/4 min-h-max lg:block">
-        <img :src="require('../assets/pose3.png')" alt="display1" />
-      </div>
-    </section> -->
     <LandingPageAboutUs />
 
     <!-- our services section -->
     <section
-      class="flex flex-col items-center text-center bg-zinc-300 py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
+      class="flex flex-col items-center text-center bg-zinc-100 py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
       id="services"
     >
       <h4
@@ -240,10 +211,10 @@
 
     <!-- Reviews section -->
     <section
-      class="flex items-start justify-center md:text-left w-full h-max py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28 bg-zinc-300"
+      class="flex justify-around md:text-left w-full h-max py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28 bg-zinc-100"
     >
       <div
-        class="flex flex-row-reverse items-start justify-center md:text-left w-full h-max"
+        class="flex flex-row-reverse items-start justify-end md:text-left w-max h-max"
       >
         <div
           class="flex flex-col justify-center items-center md:items-start w-96 h-max md:ml-10"
@@ -258,7 +229,7 @@
           </div>
         </div>
         <div
-          class="hidden w-96 h-96 md:grid grid-cols-2 grid-rows-2 items-center gap-2 grid-flow-row-dense pt-5 bg-blue-600"
+          class="hidden w-96 h-80 md:grid grid-cols-2 grid-rows-2 items-center gap-2 grid-flow-row-dense pt-5 bg-blue-600"
         ></div>
       </div>
       <div class="hidden lg:inline scheduler h-max p-2 bg-white rounded">
