@@ -4,7 +4,7 @@
   >
     Who Are we
   </h2>
-  <div class="text-start row g-4 py-5 row-cols-1 row-cols-lg-3">
+  <div id="about" class="text-start row g-4 py-5 row-cols-1 row-cols-lg-3">
     <div class="feature col space-y-3">
       <div
         class="feature-icon bg-[#fe902d] bg-gradient w-[4em] h-[4em] rounded-xl flex items-center justify-center"

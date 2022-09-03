@@ -186,6 +186,7 @@
     <!-- our services section -->
     <section
       class="flex flex-col items-center text-center bg-zinc-300 py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
+      id="services"
     >
       <h4
         class="capitalize text-start border-b-2 border-[#fe902d] pb-2 mb-4 font-bold text-5xl mx-auto w-full"
@@ -382,6 +383,7 @@
 
     <!-- contact us section -->
     <section
+      id="subscribe"
       class="flex flex-col justify-between items-center bg-[#2c3e50] text-white text-center gap-3 drop-shadow-2xl sm:mx-4 md:text-left md:rounded-2xl py-10 mb-10 px-12 sm:py-12 sm:mb-12 sm:px-6 md:py-16 md:mb-16 lg:py-20 lg:mb-20 lg:px-8 xl:py-28 xl:mb-28 md:mx-0"
     >
       <div class="text md:text-center mb-4">

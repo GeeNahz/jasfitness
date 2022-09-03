@@ -2,7 +2,7 @@
   <div class="flex gap-4 w-full rounded h-max bg-white p-1">
     <table class="w-full flex-1 table-auto">
       <tbody>
-        <tr class="bg-yellow-600">
+        <tr class="bg-[#fe902d]">
           <td class="text-4xl text-white py-2 px-3 rounded-t">
             BMI Calculator
           </td>
@@ -11,20 +11,20 @@
           <td v-if="displayBmiModal" class="py-5 px-3">
             <button
               @click="goBack"
-              class="mb-3 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white font-semibold rounded px-3 py-1"
+              class="mb-3 bg-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] text-white font-semibold rounded px-3 py-1"
             >
               Go Back
             </button>
             <p class="items">Your BMI is {{ bmi }}</p>
             <p class="items">Your diagnosis says: {{ fitnessAdvice }}</p>
           </td>
-          <td v-else class="py-5 px-3">
-            <div class="items space-y-4">
+          <td v-else class="text-start py-5 px-3">
+            <div class="space-y-4">
               <div class="height-items space-x-4">
                 <label
                   >Height:
                   <input
-                    class="w-24 lg:w-44 px-2 py-1 rounded"
+                    class="w-20 md:w-24 lg:w-44 px-2 py-1 rounded"
                     placeholder="Height"
                     type="number"
                     v-model="height"
@@ -41,7 +41,7 @@
                 <label
                   >Weight:
                   <input
-                    class="w-24 lg:w-44 px-2 py-1 rounded"
+                    class="w-20 md:w-24 lg:w-44 px-2 py-1 rounded"
                     placeholder="Weight"
                     type="number"
                     v-model="weight"
@@ -97,35 +97,35 @@
                   class="absolute top-16"
                 />
               </div>
+              <div class="md:float-right space-x-3 md:space-y-3 checks">
+                <div class="inline check-gender">
+                  <select
+                    v-model="gender"
+                    class="bg-white px-2 py-1 text-sm font-semibold rounded"
+                  >
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
+                  </select>
+                </div>
+                <label>
+                  <input type="checkbox" v-model="isChild" />
+                  Are you a child?
+                </label>
+              </div>
             </div>
             <div class="buttons space-x-5 mt-4">
               <button
                 @click="calculateBMI"
-                class="bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                class="bg-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] text-white font-bold py-2 px-4 rounded"
               >
                 Calculate
               </button>
               <button
                 @click="clearValues"
-                class="hover:bg-yellow-500 active:bg-yellow-700 text-yellow-600 font-semibold hover:text-white py-2 px-4 border-2 border-yellow-500 hover:border-transparent rounded"
+                class="text-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] font-semibold hover:text-white py-2 px-4 border-t border-r border-l border-b border-[#fe902d] hover:border-transparent rounded"
               >
                 Reset
               </button>
-            </div>
-            <div class="float-right space-x-3 md:space-y-3 checks">
-              <div class="inline check-gender">
-                <select
-                  v-model="gender"
-                  class="bg-white px-2 py-1 text-sm font-semibold rounded"
-                >
-                  <option value="m">Male</option>
-                  <option value="f">Female</option>
-                </select>
-              </div>
-              <label>
-                <input type="checkbox" v-model="isChild" />
-                Are you a child?
-              </label>
             </div>
           </td>
         </tr>

@@ -4,44 +4,41 @@
       <!-- Useful links -->
       <div class="links flex gap-16 lg:gap-60 mb-5">
         <div class="flex flex-col items-start space-y-4">
-          <p class="font-bold uppercase text-gray-500">Category</p>
+          <p class="font-bold uppercase text-gray-500">Links</p>
           <ul class="space-y-2 text-start mb-8 md:mb-0 text-white">
             <li class="text-xs lg:text-sm font-light capitalize">
-              <a href="https://" class="hover:text-[#fe902d]"> First Link </a>
+              <a href="#" class="hover:text-[#fe902d]"> Home </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]">
-                Second Long Link
+              <a href="#about" class="hover:text-[#fe902d]"> About Us </a>
+            </li>
+            <li class="text-xs lg:text-sm font-light capitalize text-white">
+              <a href="#services" class="hover:text-[#fe902d]">
+                Our Services
               </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]"> Third Link </a>
+              <a href="#plans" class="hover:text-[#fe902d]"> Our Plans </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]">
-                Fourth Long Link
-              </a>
+              <a href="#subscribe" class="hover:text-[#fe902d]"> Subscribe </a>
             </li>
           </ul>
         </div>
         <div class="flex flex-col items-start space-y-4">
-          <p class="font-bold uppercase text-gray-500">Category</p>
+          <p class="font-bold uppercase text-gray-500">Company</p>
           <ul class="space-y-2 text-start mb-8 md:mb-0 text-white">
             <li class="text-xs lg:text-sm font-light capitalize">
-              <a href="https://" class="hover:text-[#fe902d]"> First Link </a>
+              <a href="https://" class="hover:text-[#fe902d]"> Classes </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]">
-                Second Long Link
-              </a>
+              <a href="https://" class="hover:text-[#fe902d]"> Events </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]"> Third Link </a>
+              <a href="https://" class="hover:text-[#fe902d]"> Contact us </a>
             </li>
             <li class="text-xs lg:text-sm font-light capitalize text-white">
-              <a href="https://" class="hover:text-[#fe902d]">
-                Fourth Long Link
-              </a>
+              <a href="https://" class="hover:text-[#fe902d]"> Support </a>
             </li>
           </ul>
         </div>
@@ -51,19 +48,19 @@
         <div class="flex justify-center items-center space-x-9 my-0">
           <a
             href="https://"
-            class="w-14 h-14 rounded-full bg-zinc-800 text-white hover:bg-[#fe902d] flex justify-center items-center"
+            class="w-14 h-14 rounded-full bg-zinc-800 text-white hover:bg-[#fe902d] flex justify-center items-center transition duration-150 ease-out"
           >
             <i class="fa-brands fa-linkedin-in"></i>
           </a>
           <a
             href="https://"
-            class="w-14 h-14 rounded-full bg-zinc-800 text-white hover:bg-[#fe902d] flex justify-center items-center"
+            class="w-14 h-14 rounded-full bg-zinc-800 text-white hover:bg-[#fe902d] flex justify-center items-center transition duration-150 ease-out"
           >
             <i class="fa-brands fa-twitter fa-lg"></i>
           </a>
           <a
             href="https://"
-            class="flex items-center justify-center w-14 h-14 rounded-full text-white bg-zinc-800 hover:bg-[#fe902d]"
+            class="flex items-center justify-center w-14 h-14 rounded-full text-white bg-zinc-800 hover:bg-[#fe902d] transition duration-150 ease-out"
           >
             <i class="fa-brands fa-facebook-f"></i>
           </a>
@@ -84,10 +81,17 @@
     </div>
 
     <!-- Bottom section -->
-    <p class="float-end text-gray-300 text-sm"><a href="#">Back to top</a></p>
+    <p class="float-end text-gray-300 text-sm">
+      <a
+        class="hover:text-[#fe902d] transition duration-100 ease-linear"
+        href="#"
+        ><i class="fa-solid fa-arrow-up"></i> Back to Top</a
+      >
+    </p>
     <p class="text-gray-300 text-sm">
       &copy; 2022 Company, Inc. &middot;
-      <a href="#">Privacy</a> &middot; <a href="#">Terms</a>
+      <a href="#" class="hover:text-[#fe902d]">Privacy</a> &middot;
+      <a href="#" class="hover:text-[#fe902d]">Terms</a>
     </p>
   </footer>
 </template>
