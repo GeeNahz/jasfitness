@@ -7,7 +7,7 @@
     </div>
     <p class="text-gray-800 text-sm">{{ review.review }}</p>
     <i
-      class="fa fa-quote-right absolute top-2 -right-5 fa-8x opacity-10 -z-10"
+      class="fa fa-quote-right absolute top-16 -right-5 fa fa-8x opacity-5"
       aria-hidden="true"
     ></i>
   </div>

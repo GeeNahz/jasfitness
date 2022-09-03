@@ -1,9 +1,10 @@
 <template>
   <TheNavbar />
+
   <header
     class="py-10 sm:py-12 sm:px-6 md:px-52 md:py-16 lg:py-20 lg:px-52 xl:py-28 bg-gray-100"
   >
-    <div class="sm:text-center lg:text-left">
+    <div class="sm:text-center px-4 md:px-0 lg:text-left">
       <h1
         class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl sm:tracking-tight md:text-6xl md:tracking-tight"
       >
@@ -195,7 +196,9 @@
       class="lg:flex-row justify-center items-center space-y-4 md:items-start md:text-left py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28"
     >
       <div class="space-y-4">
-        <h4 class="text-5xl font-bold border-b-2 border-[#fe902d] pb-2">
+        <h4
+          class="text-5xl text-start font-bold border-b-2 border-[#fe902d] pb-2"
+        >
           Know Your BMI
         </h4>
         <p class="hidden md:block">
@@ -214,16 +217,17 @@
       class="flex justify-around md:text-left w-full h-max py-10 px-4 sm:py-12 sm:px-6 md:py-16 lg:py-20 lg:px-8 xl:py-28 bg-zinc-100"
     >
       <div
-        class="flex flex-row-reverse items-start justify-end md:text-left w-max h-max"
+        class="flex flex-row-reverse items-start justify-end md:text-left w-full lg:w-max h-max"
       >
         <div
-          class="flex flex-col justify-center items-center md:items-start w-96 h-max md:ml-10"
+          class="flex flex-col justify-center items-center md:items-start w-96 h-max md:ml-10 px-4 md:px-0"
         >
           <p class="uppercase text-gray-600 text-sm font-bold">testimonial</p>
-          <p class="capitalize font-bold text-5xl">
+          <h4
+            class="capitalize font-bold text-5xl border-b-2 border-[#fe902d] pb-2"
+          >
             what our customers say about us
-          </p>
-          <div class="border-2 border-[#fe902d] w-32" />
+          </h4>
           <div class="flex flex-col py-3 bg-bottom relative">
             <ReviewCardComponent :review="reviews[0]" />
           </div>
@@ -320,15 +324,15 @@
 
     <!-- video clip section -->
     <section
-      class="flex flex-col lg:flex-row items-center justify-center pb-10 px-4 sm:pb-12 sm:px-6 md:pb-16 lg:pb-20 lg:px-8 xl:pb-28 text-[#2c3e50]"
+      class="flex flex-col lg:flex-row items-center lg:items-start justify-center pb-10 px-4 sm:pb-12 sm:px-6 md:pb-16 lg:pb-20 lg:px-8 xl:pb-28 text-[#2c3e50]"
     >
       <div class="flex flex-col lg:w-[40%] md:pr-10 space-y-3">
-        <p
-          class="text-4xl font-bold mb-4 sm:text-center lg:text-start capitalize"
+        <h4
+          class="text-4xl font-bold text-left capitalize border-b-2 border-[#fe902d] pb-2"
         >
           Have a look at what goes on in
           <span class="text-[#fe902d]">jas fitness</span>
-        </p>
+        </h4>
         <p class="hidden lg:block text-sm text-start">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
           assumenda libero veritatis quia asperiores minima! <br /><br />
@@ -367,7 +371,7 @@
         </p>
       </div>
       <form
-        class="form flex flex-col space-y-3 md:space-y-0 md:flex-row items-center space-x-3"
+        class="form flex flex-col space-y-3 md:space-y-0 md:flex-row items-center md:space-x-3"
         @click.prevent="handleEmailSubmit"
       >
         <input
