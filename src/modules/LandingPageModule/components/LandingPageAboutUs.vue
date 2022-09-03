@@ -11,7 +11,7 @@
       >
         <i class="fa-solid fa-person-walking fa-2x text-white"></i>
       </div>
-      <h2 class="text-2xl font-medium">Featured title</h2>
+      <h2 class="text-2xl font-medium">We Believe In Health</h2>
       <p class="">
         Paragraph of text beneath the heading to explain the heading. We'll add
         onto it with another sentence and probably just keep going until we run
@@ -30,7 +30,7 @@
       >
         <i class="fa-sharp fa-solid fa-dumbbell fa-2x text-white"></i>
       </div>
-      <h2 class="text-2xl font-medium">Featured title</h2>
+      <h2 class="text-2xl font-medium">We Believe in Strength</h2>
       <p class="">
         Paragraph of text beneath the heading to explain the heading. We'll add
         onto it with another sentence and probably just keep going until we run
@@ -49,7 +49,7 @@
       >
         <i class="fa-solid fa-hand-fist fa-2x text-white"></i>
       </div>
-      <h2 class="text-2xl font-medium">Featured title</h2>
+      <h2 class="text-2xl font-medium">We Believe In You</h2>
       <p>
         Paragraph of text beneath the heading to explain the heading. We'll add
         onto it with another sentence and probably just keep going until we run

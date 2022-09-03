@@ -28,22 +28,30 @@
             >
           </li>
           <li>
-            <a href="#" class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
-              >Features</a
+            <a
+              href="#services"
+              class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
+              >Services</a
             >
           </li>
           <li>
-            <a href="#" class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
-              >Pricing</a
+            <a
+              href="#plans"
+              class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
+              >Our Plans</a
             >
           </li>
           <li>
-            <a href="#" class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
-              >FAQs</a
+            <a
+              href="https://"
+              class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
+              >Blog</a
             >
           </li>
           <li>
-            <a href="#" class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
+            <a
+              href="#about"
+              class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
               >About</a
             >
           </li>

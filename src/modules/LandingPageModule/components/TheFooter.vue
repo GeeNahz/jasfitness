@@ -90,8 +90,8 @@
     </p>
     <p class="text-gray-300 text-sm">
       &copy; 2022 Company, Inc. &middot;
-      <a href="#" class="hover:text-[#fe902d]">Privacy</a> &middot;
-      <a href="#" class="hover:text-[#fe902d]">Terms</a>
+      <a href="https://" class="hover:text-[#fe902d]">Privacy</a> &middot;
+      <a href="https://" class="hover:text-[#fe902d]">Terms</a>
     </p>
   </footer>
 </template>
