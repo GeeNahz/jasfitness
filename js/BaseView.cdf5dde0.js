@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkjasfitness_landing_page"]=self["webpackChunkjasfitness_landing_page"]||[]).push([[855],{5049:function(n,e,t){t.r(e),t.d(e,{default:function(){return o}});var s=t(3396);const a=(0,s._)("h4",{class:"text-5xl text-center"},"Welcome to Your dashboard",-1),r=[a];function u(n,e){return(0,s.wg)(),(0,s.iD)("div",null,r)}var c=t(89);const i={},l=(0,c.Z)(i,[["render",u]]);var o=l}}]);
+//# sourceMappingURL=BaseView.cdf5dde0.js.map
