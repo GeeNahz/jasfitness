@@ -146,7 +146,7 @@
 </template>
 
 <script>
-import AlertComponent from '@/components/AlertComponent.vue'
+import AlertComponent from '@/components/AppAlertComponent.vue'
 export default {
   name: 'BmiCalculatorComponent',
   components: { AlertComponent },

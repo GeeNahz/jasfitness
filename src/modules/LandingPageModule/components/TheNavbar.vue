@@ -42,10 +42,10 @@
             >
           </li>
           <li>
-            <a
-              href="https://"
+            <router-link
+              :to="{ name: 'BaseView' }"
               class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
-              >Blog</a
+              >Dashboard</router-link
             >
           </li>
           <li>

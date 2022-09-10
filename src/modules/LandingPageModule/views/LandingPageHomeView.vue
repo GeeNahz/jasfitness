@@ -391,7 +391,7 @@
 </template>
 
 <script>
-import ButtonComponent from '@/components/ButtonComponent.vue'
+import ButtonComponent from '@/components/AppButtonComponent.vue'
 import TheNavbar from '../components/TheNavbar.vue'
 import TheFooter from '../components/TheFooter.vue'
 import LandingPageBelowHeroSection from '../components/LandingPageBelowHeroSection.vue'
