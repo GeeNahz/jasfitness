@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkjasfitness_landing_page"]=self["webpackChunkjasfitness_landing_page"]||[]).push([[36],{5162:function(n,e,a){a.r(e),a.d(e,{default:function(){return c}});var t=a(3396);function r(n,e,a,r,u,s){const i=(0,t.up)("router-view");return(0,t.wg)(),(0,t.j4)(i,{key:n.$route.path})}var u={name:"LandingPageModule"},s=a(89);const i=(0,s.Z)(u,[["render",r]]);var c=i}}]);
-//# sourceMappingURL=landingpageModule.e947f830.js.map
