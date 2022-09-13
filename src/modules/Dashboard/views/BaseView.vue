@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h4 class="text-5xl text-center">Welcome to Your dashboard</h4>
+    <LayoutView />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import LayoutView from '../components/LayoutView.vue'
+</script>
 
 <style scoped></style>

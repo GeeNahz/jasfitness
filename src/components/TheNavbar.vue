@@ -1,65 +1,75 @@
 <template>
-  <div class="relative">
-    <nav class="flex justify-between items-center px-4 md:px-20 py-3 shadow">
-      <router-link
-        to="/dashboard"
-        class="logo h-9 w-9 bg-yellow-600 rounded text-white flex justify-center items-center"
+  <div class="fixed w-full bg-white z-40">
+    <div class="relative">
+      <nav
+        class="flex justify-between items-center px-4 md:px-20 py-3 h-20 shadow"
       >
-        JF
-      </router-link>
-      <button
-        @click="toggleMenu"
-        class="menu-btn p-0 lg:hidden float-right z-10 hover:scale-105 transition duration-100 ease-linear"
-      >
-        <i class="fa-solid fa-bars fa-2xl"></i>
-      </button>
-      <div class="hidden buttons lg:flex items-center space-x-6 uppercase">
-        <ul class="flex items-center space-x-6 text-sm">
-          <li
-            class="flex items-center hover:-translate-y-1 h-10 transition duration-75 ease-out"
+        <router-link
+          to="/dashboard"
+          class="logo h-9 w-9 bg-yellow-600 rounded text-white flex justify-center items-center"
+        >
+          JF
+        </router-link>
+        <button
+          @click="toggleMenu"
+          class="menu-btn p-0 lg:hidden float-right z-10 hover:scale-105 transition duration-100 ease-linear"
+        >
+          <i class="fa-solid fa-bars fa-2xl"></i>
+        </button>
+        <div class="hidden buttons lg:flex items-center space-x-6 uppercase">
+          <ul class="flex items-center space-x-6 text-sm">
+            <li
+              class="flex items-center hover:-translate-y-1 h-10 transition duration-75 ease-out"
+            >
+              <router-link
+                :to="{ name: 'LandingPageHome' }"
+                class="h-full hover:text-yellow-500 flex items-center"
+                >the community</router-link
+              >
+            </li>
+            <li
+              class="hover:-translate-y-1 h-10 transition duration-75 ease-out"
+            >
+              <router-link
+                :to="{ name: 'BaseView' }"
+                class="h-full hover:text-yellow-500 flex items-center"
+                >dashboard</router-link
+              >
+            </li>
+            <li
+              class="hover:-translate-y-1 h-10 transition duration-75 ease-out"
+            >
+              <router-link
+                :to="{ path: '/BaseView' }"
+                class="h-full hover:text-yellow-500 flex items-center"
+                >Fitness plans</router-link
+              >
+            </li>
+            <li
+              class="hover:-translate-y-1 h-10 transition duration-75 ease-out"
+            >
+              <router-link
+                :to="{ path: '/BaseView' }"
+                class="h-full hover:text-yellow-500 flex items-center"
+                >classes</router-link
+              >
+            </li>
+          </ul>
+          <router-link
+            :to="{ name: 'LoginPage' }"
+            class="font-medium text-sm h-9 text-yellow-600 hover:text-yellow-500 border-t border-r border-b border-l border-yellow-600 hover:border-yellow-500 hover:-translate-y-1 transition duration-150 ease-out rounded px-4 py-2"
           >
-            <router-link
-              :to="{ name: 'LandingPageHome' }"
-              class="h-full hover:text-yellow-500 flex items-center"
-              >the community</router-link
-            >
-          </li>
-          <li class="hover:-translate-y-1 h-10 transition duration-75 ease-out">
-            <router-link
-              :to="{ name: 'BaseView' }"
-              class="h-full hover:text-yellow-500 flex items-center"
-              >dashboard</router-link
-            >
-          </li>
-          <li class="hover:-translate-y-1 h-10 transition duration-75 ease-out">
-            <router-link
-              :to="{ path: '/BaseView' }"
-              class="h-full hover:text-yellow-500 flex items-center"
-              >Fitness plans</router-link
-            >
-          </li>
-          <li class="hover:-translate-y-1 h-10 transition duration-75 ease-out">
-            <router-link
-              :to="{ path: '/BaseView' }"
-              class="h-full hover:text-yellow-500 flex items-center"
-              >classes</router-link
-            >
-          </li>
-        </ul>
-        <router-link
-          :to="{ name: 'LoginPage' }"
-          class="font-medium text-sm h-9 text-yellow-600 hover:text-yellow-500 border-t border-r border-b border-l border-yellow-600 hover:border-yellow-500 hover:-translate-y-1 transition duration-150 ease-out rounded px-4 py-2"
-        >
-          Login
-        </router-link>
-        <router-link
-          :to="{ name: 'SignupPage' }"
-          class="font-medium text-sm h-9 text-white bg-yellow-600 hover:bg-yellow-500 hover:-translate-y-1 transition duration-150 ease-out rounded px-4 py-2"
-        >
-          Join Today
-        </router-link>
-      </div>
-    </nav>
+            Login
+          </router-link>
+          <router-link
+            :to="{ name: 'SignupPage' }"
+            class="font-medium text-sm h-9 text-white bg-yellow-600 hover:bg-yellow-500 hover:-translate-y-1 transition duration-150 ease-out rounded px-4 py-2"
+          >
+            Join Today
+          </router-link>
+        </div>
+      </nav>
+    </div>
     <!-- sm menu -->
     <div
       v-if="showMenu"

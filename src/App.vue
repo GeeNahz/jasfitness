@@ -3,6 +3,11 @@
 </template>
 
 <style>
+html,
+body {
+  height: 100%;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   /* font-family: 'Fenway', 'BoxTube Labs', Arial, sans-serif; */
@@ -10,6 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
+  height: 100%;
 }
 
 nav {

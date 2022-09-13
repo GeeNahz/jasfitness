@@ -1,14 +1,11 @@
 <template>
-  <TheNavbar class="" />
-
-  <router-view class="-z-10" :key="$route.path" />
+  <div class="h-full">
+    <router-view :key="$route.path" class="h-full" />
+  </div>
 </template>
 
 <script>
-import TheNavbar from '@/components/TheNavbar.vue'
-
 export default {
-  name: 'DashboardView',
-  components: { TheNavbar }
+  name: 'DashboardView'
 }
 </script>
