@@ -43,7 +43,7 @@
           </li>
           <li>
             <router-link
-              :to="{ name: 'BaseView' }"
+              :to="{ name: 'DashboardHome' }"
               class="text-gray-300 nav-link px-2 hover:text-[#fe902d]"
               >Dashboard</router-link
             >

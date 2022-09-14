@@ -31,7 +31,7 @@
               class="hover:-translate-y-1 h-10 transition duration-75 ease-out"
             >
               <router-link
-                :to="{ name: 'BaseView' }"
+                :to="{ name: 'DashboardHome' }"
                 class="h-full hover:text-yellow-500 flex items-center"
                 >dashboard</router-link
               >
