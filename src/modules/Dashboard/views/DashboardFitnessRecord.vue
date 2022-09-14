@@ -33,76 +33,109 @@
             muscles.
           </p>
         </div>
-        <!-- fitness record -->
+        <!-- fitness report & activities -->
         <div class="mx-10">
           <!-- divider -->
           <DashboardDivider name="Fitness Report" />
           <div class="chart-container">
-            <div class="chart bg-gray-50 p-2 mt-4 rounded">
-              <DashboardChart />
-            </div>
+            <div class="chart bg-gray-50 p-2 mt-4 rounded"></div>
           </div>
           <DashboardDivider name="Fitness Activities" />
+          <!-- fitness activities -->
+          <table class="table table-striped table-auto">
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Date</th>
+                <th>Time IN</th>
+                <th>Time OUT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>24</td>
+                <td>20 August 2022</td>
+                <td>7:15:23</td>
+                <td>8:45:34</td>
+              </tr>
+              <tr>
+                <td>23</td>
+                <td>20 August 2022</td>
+                <td>7:15:23</td>
+                <td>8:45:34</td>
+              </tr>
+              <tr>
+                <td>22</td>
+                <td>20 August 2022</td>
+                <td>7:15:23</td>
+                <td>8:45:34</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>20 August 2022</td>
+                <td>7:15:23</td>
+                <td>8:45:34</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </template>
       <template #inner-side-bar>
-        <div>
-          <ul class="space-y-10 mt-4 pl-10">
-            <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-square-check fa-2xl"></i>
-                </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Sub Status</p>
-                  <p class="text-sm font-light py-0">3 Months 3 Days left</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-calendar-minus fa-2xl"></i>
-                </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Sub Plan</p>
-                  <p class="text-sm font-light py-0">Odogwu (1 Year)</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-clock fa-2xl"></i>
-                </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Freeze Your Sub</p>
-                  <p class="text-sm font-light py-0">4 Days Left</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-paper-plane fa-2xl"></i>
-                </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Share Your Plan</p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-message fa-2xl"></i>
-                </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Feedback</p>
-                </div>
-              </div>
-            </li>
-          </ul>
+        <button
+          class="flex gap-4 justify-center items-center bg-transparent px-4 py-2 mb-8 w-full border border-gray-600 text-yellow-600 font-semibold rounded-xl"
+        >
+          <p>Resubscribe</p>
+          <i class="fa-solid fa-arrows-rotate"></i>
+        </button>
+        <div class="mb-4">
+          <DashboardSubscriptionCard :addIcon="false">
+            <template #title>
+              <h4 class="font-semibold text-lg text-center pb-4 block w-full">
+                My Record
+              </h4>
+            </template>
+            <template #description>
+              <ul class="space-y-4 w-full">
+                <li class="w-full">
+                  <router-link :to="{ name: 'DashboardHome' }" class="w-full"
+                    >Profile</router-link
+                  >
+                </li>
+                <li>
+                  <router-link :to="{ name: 'DashboardHome' }"
+                    >Fitness & Health Record</router-link
+                  >
+                </li>
+                <li>
+                  <router-link :to="{ name: 'DashboardHome' }"
+                    >Assessment Record</router-link
+                  >
+                </li>
+              </ul>
+            </template>
+          </DashboardSubscriptionCard>
         </div>
+        <div class="mb-4">
+          <DashboardSubscriptionCard :addIcon="false">
+            <template #title>
+              <h4 class="font-semibold text-lg text-center block w-full">
+                Weekly Performance
+              </h4>
+            </template>
+            <template #description>
+              <p class="text-xs font-light">
+                Based on your goal, you should go to the gym at least 4 times
+                weekly
+              </p>
+            </template>
+            <template #button>
+              <div class="bg-gray-500 h-36 w-full"></div>
+            </template>
+          </DashboardSubscriptionCard>
+        </div>
+        <button class="bg-green-500 font-semibold w-full px-4 py-2 rounded-xl">
+          Download Record
+        </button>
       </template>
     </LayoutView>
   </div>
@@ -111,6 +144,7 @@
 <script setup>
 import DashboardDivider from '../components/DashboardDivider.vue'
 import LayoutView from '../components/LayoutView.vue'
+import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 </script>
 
 <style scoped></style>
