@@ -4,7 +4,12 @@ const formKitTailwind = require('@formkit/themes/tailwindcss')
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        quicksand: ['Quicksand', 'sans-serif']
+      }
+    }
   },
   plugins: [formKitTailwind]
 }
