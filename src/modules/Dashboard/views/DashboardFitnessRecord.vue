@@ -10,17 +10,6 @@
             <p class="text-2xl font-semibold">Fitness Record...</p>
             <p class="text-sm">Consistency over motivation!!!</p>
           </div>
-          <div class="rounded">
-            <FormKit
-              @click.self="resubscribeHandler"
-              type="button"
-              label="Resubscribe"
-              class="w-full flex"
-            >
-              <p class="inline mr-3">Resubscribe</p>
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </FormKit>
-          </div>
         </div>
         <br />
         <!-- goals -->
@@ -38,7 +27,9 @@
           <!-- divider -->
           <DashboardDivider name="Fitness Report" />
           <div class="chart-container">
-            <div class="chart bg-gray-50 p-2 mt-4 rounded"></div>
+            <div class="chart bg-gray-50 p-2 mt-4 rounded-xl">
+              <DashboardChartBar />
+            </div>
           </div>
           <DashboardDivider name="Fitness Activities" />
           <!-- fitness activities -->
@@ -145,6 +136,7 @@
 import DashboardDivider from '../components/DashboardDivider.vue'
 import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
+import DashboardChartBar from '../components/DashboardChartBar.vue'
 </script>
 
 <style scoped></style>

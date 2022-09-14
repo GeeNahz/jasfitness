@@ -133,7 +133,7 @@
 
 <script setup>
 import LayoutView from '../components/LayoutView.vue'
-import DashboardChart from '../components/DashboardChart.vue'
+import DashboardChart from '../components/DashboardChartLine.vue'
 
 const resubscribeHandler = () => {
   try {
