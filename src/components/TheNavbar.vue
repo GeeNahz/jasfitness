@@ -95,7 +95,7 @@
             class="flex md:justify-center w-full hover:text-yellow-500 h-12 transition duration-100 ease-linear"
           >
             <router-link
-              :to="{ name: 'BaseView' }"
+              :to="{ name: 'DashboardHome' }"
               @click.self="toggleMenu"
               class="h-full hover:text-yellow-500 flex items-center"
               ><i class="fa-solid fa-gauge"></i>&nbsp;&nbsp;
