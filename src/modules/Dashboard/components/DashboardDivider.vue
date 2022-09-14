@@ -1,8 +1,8 @@
 <template>
-  <div class="relative border my-4 mx-auto w-11/12">
+  <div class="relative border my-4 mx-auto w-11/12" :class="[lineColor]">
     <p
       class="absolute -top-3 left-[50%] -translate-x-[50%] rounded-full px-3"
-      :class="[textColor, backColor]"
+      :class="[textColor, textBackColor]"
     >
       {{ name }}
     </p>
@@ -10,11 +10,6 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue'
-
-// const colorOfText = ref('')
-// const colorOfBackground = ref('')
-
 defineProps({
   name: {
     type: String,
@@ -22,11 +17,15 @@ defineProps({
   },
   textColor: {
     type: String,
-    default: ''
+    default: 'text-black'
   },
-  backColor: {
+  textBackColor: {
     type: String,
     default: 'bg-white'
+  },
+  lineColor: {
+    type: String,
+    default: 'border-black'
   }
 })
 </script>

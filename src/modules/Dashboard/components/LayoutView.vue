@@ -5,11 +5,27 @@
     </div>
     <!-- inner side bar -->
     <div class="bg-zinc-900 w-1/5 rounded relative py-16 px-3 text-white">
+      <DashboardDivider
+        class="text-xl font-semibold"
+        :name="title"
+        textBackColor="bg-zinc-900"
+        textColor="text-white"
+      />
       <slot name="inner-side-bar"></slot>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+// import DashboardRightSidebar from '../components/DashboardRightSidebar.vue'
+import DashboardDivider from '../components/DashboardDivider.vue'
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Heading'
+  }
+})
+</script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="flex items-center w-full h-full">
-    <DashboardSidebar />
+  <div class="flex items-center w-full h-full font-quicksand">
+    <TheSidebar />
     <div class="h-full w-full">
       <router-view :key="$route.path" class="h-full" />
     </div>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import DashboardSidebar from './components/DashboardSidebar.vue'
+import TheSidebar from './components/TheSidebar.vue'
 export default {
   name: 'DashboardView',
   components: {
-    DashboardSidebar
+    TheSidebar
   }
 }
 </script>
