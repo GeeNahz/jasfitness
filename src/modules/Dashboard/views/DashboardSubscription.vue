@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-    <LayoutView>
+    <LayoutView title="Summary">
       <template #welcome-section>
         <!-- welcome text -->
         <div
@@ -27,7 +27,7 @@
         <br />
         <!-- attendance summary -->
         <div
-          class="relative attendance-summary-container border border-gray-300 rounded mx-10 p-6"
+          class="relative attendance-summary-container border border-gray-300 rounded-xl mx-10 p-6"
         >
           <p class="absolute -top-4 left-4 bg-white px-2 py-1">Summary</p>
           <div
@@ -95,105 +95,128 @@
           <div
             class="features-container flex flex-wrap gap-4 justify-center mb-4"
           >
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <h4 class="mt-0 capitalize text-xl font-semibold">
-                  Freeze your sub
-                </h4>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">Busy-Bee</p>
+                  <p class="text-gray-500">Monthly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  You can freeze your sub for as long as <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>No Price discount</li>
+                  <li>3 Days per week access</li>
+                  <li>No Guest pass per Month</li>
+                  <li>No Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <p class="capitalize text-xl font-semibold">Share your sub</p>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">Passer-By</p>
+                  <p class="text-gray-500">Monthly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>No Price discount</li>
+                  <li>Access once daily</li>
+                  <li>No Guest pass per Month</li>
+                  <li>No Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <p class="capitalize text-xl font-semibold">Share your sub</p>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">Too-Sure</p>
+                  <p class="text-gray-500">Quarterly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>15% Price discount</li>
+                  <li>All day access</li>
+                  <li>1 Guest pass per Month</li>
+                  <li>4 days Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <p class="capitalize text-xl font-semibold">Share your sub</p>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">Real-Deal</p>
+                  <p class="text-gray-500">Bi-Yearly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>20% Price discount</li>
+                  <li>All day access</li>
+                  <li>2 Guest pass per Month</li>
+                  <li>8 Days Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <p class="capitalize text-xl font-semibold">Share your sub</p>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">Odogwu</p>
+                  <p class="text-gray-500">Yearly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>30% Price discount</li>
+                  <li>All day access</li>
+                  <li>3 Guest pass per Month</li>
+                  <li>14 Days Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard>
+            <DashboardSubscriptionCard :addMinWidth="true">
               <template #icon
                 ><i class="fa-regular fa-calendar-minus fa-2xl"></i
               ></template>
               <template #title>
-                <p class="capitalize text-xl font-semibold">Share your sub</p>
+                <div class="flex items-center space-x-2">
+                  <p class="mt-0 capitalize text-xl font-semibold">V-I-P</p>
+                  <p class="text-gray-500">Monthly plan</p>
+                </div>
               </template>
               <template #description>
-                <p class="text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
-                </p>
+                <ul class="list-disc pl-3">
+                  <li>20% Price discount</li>
+                  <li>All day access</li>
+                  <li>5 persons per session</li>
+                  <li>Personal Trainer</li>
+                  <li>2 Guest pass per Month</li>
+                  <li>5 Days Subscription Freeze</li>
+                </ul>
               </template>
             </DashboardSubscriptionCard>
           </div>
         </div>
       </template>
       <template #inner-side-bar>
-        <!-- top -->
         <div>
-          <div class="relative border mt-4 mb-16 mx-auto w-11/12">
-            <p
-              class="absolute -top-3 left-[50%] -translate-x-[50%] bg-zinc-900 rounded-full px-3 text-xl font-semibold"
-            >
-              Summary
-            </p>
-          </div>
-          <DashboardSubscriptionCard>
+          <DashboardSubscriptionCard :addIcon="false">
             <template #title>
               <p class="capitalize text-lg text-center">Subscription wheel</p>
             </template>
@@ -219,21 +242,6 @@
               </div>
             </li>
           </ul>
-        </div>
-        <!-- footer -->
-        <div
-          class="flex flex-col items-center md:absolute md:bottom-8 md:left-[50%] md:-translate-x-[50%] text-zinc-200 text-opacity-80 font-thin text-xs"
-        >
-          <div class="flex items-center gap-3 mb-3 imgs">
-            <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
-            <img
-              src="@/assets/joint-dumbells.svg"
-              alt="dumbbell"
-              class="w-16"
-            />
-            <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
-          </div>
-          <span>Powered by JAS FITNESS</span>
         </div>
       </template>
     </LayoutView>

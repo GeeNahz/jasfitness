@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-    <LayoutView></LayoutView>
+    <LayoutView :showTitle="false"></LayoutView>
   </div>
 </template>
 
