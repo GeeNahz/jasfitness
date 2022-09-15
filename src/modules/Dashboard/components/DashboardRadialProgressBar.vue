@@ -1,11 +1,12 @@
 <template>
-  <div>
+  <div class="w-full">
     <RadialProgressBar
-      :diameter="200"
+      :diameter="diameter"
       :completed-steps="completedSteps"
       :total-steps="totalSteps"
-      :strokeWidth="20"
-      :innerStrokeWidth="20"
+      :strokeWidth="strokeWidth"
+      :innerStrokeWidth="strokeWidth"
+      innerStrokeColor="white"
       :startColor="strokeColor"
       :stopColor="strokeColor"
       :animateSpeed="0"
@@ -14,15 +15,15 @@
       <div
         class="uppercase flex flex-col items-center justify-center font-semibold"
       >
-        <p class="text-5xl">{{ completedSteps }}%</p>
-        <p class="text-sm">Completed</p>
+        <p class="text-3xl md:text-5xl">{{ completedSteps }}%</p>
+        <p class="text-xs md:text-sm font-light md:font-semibold">Completed</p>
       </div>
     </RadialProgressBar>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import RadialProgressBar from 'vue3-radial-progress'
 
 const props = defineProps({
@@ -34,6 +35,25 @@ const props = defineProps({
 
 const strokeColor = ref('')
 const totalSteps = ref(100)
+const strokeWidth = ref(20)
+const diameter = ref(200)
+
+const onSmallScreen = computed(() => window.innerWidth < 400)
+
+const changeScreenSize = (smallScreen) => {
+  if (smallScreen) {
+    strokeWidth.value = 10
+    diameter.value = 120
+  } else {
+    strokeWidth.value = 20
+    diameter.value = 200
+  }
+}
+
+watchEffect(() => {
+  window.addEventListener('resize', changeScreenSize(onSmallScreen.value))
+  // return changeScreenSize(onSmallScreen.value)
+})
 
 onMounted(() => {
   if (props.completedSteps < 20) {

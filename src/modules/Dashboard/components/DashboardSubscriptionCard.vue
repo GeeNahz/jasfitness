@@ -1,7 +1,7 @@
 <template>
   <div
-    class="flex items-start justify-start max-w-sm border border-gray-500 p-4 rounded-xl hover:scale-105 transition-transform"
     :class="[addMinWidth && minWidth, addIcon && 'gap-4']"
+    class="flex flex-col md:flex-row items-center md:items-start justify-start max-w-sm border border-gray-500 p-3 rounded-xl hover:scale-105 transition-transform"
   >
     <div v-if="addIcon" id="icon" class="mt-2">
       <slot name="icon"></slot>

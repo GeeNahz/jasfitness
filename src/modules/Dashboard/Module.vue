@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex flex-col md:flex-row items-center w-full h-full font-quicksand"
+    class="flex flex-col md:flex-row md:items-center w-full h-full font-quicksand"
   >
-    <TheSidebar class="hidden md:block" />
-    <div class="h-full w-full">
+    <TheSidebar />
+    <div class="mt-12 md:mt-0 h-full w-full">
       <router-view :key="$route.path" class="h-full" />
     </div>
   </div>

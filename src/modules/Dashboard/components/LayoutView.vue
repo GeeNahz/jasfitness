@@ -4,16 +4,19 @@
       <slot name="welcome-section"></slot>
     </div>
     <!-- inner side bar -->
-    <div class="bg-zinc-900 md:w-1/5 rounded-xl relative py-16 px-3 text-white">
-      <div v-if="showTitle" class="mb-16">
+    <div
+      class="bg-zinc-900 md:w-1/5 rounded-xl relative py-8 md:py-16 px-3 text-white"
+    >
+      <div v-if="showTitle" class="mb-8 md:mb-16">
         <DashboardDivider
-          class="text-xl font-semibold"
+          class="text-base md:text-xl font-semibold"
           :name="title"
           textBackColor="bg-zinc-900"
           textColor="text-white"
         />
       </div>
       <slot name="inner-side-bar"></slot>
+      <slot name="default"></slot>
       <!-- footer -->
       <div
         class="hidden md:flex flex-col items-center md:absolute md:bottom-8 md:left-[50%] md:-translate-x-[50%] text-zinc-200 text-opacity-80 font-thin text-xs"

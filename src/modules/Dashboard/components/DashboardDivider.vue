@@ -1,5 +1,5 @@
 <template>
-  <div class="relative border my-4 w-full" :class="[lineColor]">
+  <div class="relative border my-2 md:my-4 w-full" :class="[lineColor]">
     <p
       class="absolute -top-3 left-[50%] -translate-x-[50%] rounded-full px-3"
       :class="[textColor, textBackColor]"
