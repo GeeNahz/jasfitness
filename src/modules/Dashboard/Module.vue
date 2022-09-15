@@ -1,6 +1,8 @@
 <template>
-  <div class="flex items-center w-full h-full font-quicksand">
-    <TheSidebar />
+  <div
+    class="flex flex-col md:flex-row items-center w-full h-full font-quicksand"
+  >
+    <TheSidebar class="hidden md:block" />
     <div class="h-full w-full">
       <router-view :key="$route.path" class="h-full" />
     </div>
