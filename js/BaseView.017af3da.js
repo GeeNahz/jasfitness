@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkjasfitness_landing_page"]=self["webpackChunkjasfitness_landing_page"]||[]).push([[855,316],{1365:function(e,n,a){a.r(n),a.d(n,{default:function(){return f}});var s=a(3396),t=a(6694),u={__name:"BaseView",setup(e){return(e,n)=>((0,s.wg)(),(0,s.iD)("div",null,[(0,s.Wm)(t["default"])]))}};const i=u;var f=i}}]);
-//# sourceMappingURL=BaseView.017af3da.js.map
