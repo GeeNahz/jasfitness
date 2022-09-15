@@ -120,7 +120,9 @@
               </p>
             </template>
             <template #button>
-              <div class="bg-gray-500 h-36 w-full"></div>
+              <div class="flex items-center justify-center w-full text-center">
+                <DashboardRadialProgressBar :completedSteps="87.5" />
+              </div>
             </template>
           </DashboardSubscriptionCard>
         </div>
@@ -133,10 +135,25 @@
 </template>
 
 <script setup>
-import DashboardDivider from '../components/DashboardDivider.vue'
 import LayoutView from '../components/LayoutView.vue'
+import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardChartBar from '../components/DashboardChartBar.vue'
+import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
 </script>
+
+<style scoped>
+a {
+  transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
+}
+a:hover {
+  color: #ca9b42;
+}
+
+a.router-link-exact-active {
+  color: #ca9b42;
+  border-left: solid #ca9b42;
+}
+</style>
 
 <style scoped></style>

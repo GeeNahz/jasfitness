@@ -232,14 +232,16 @@
           </DashboardSubscriptionCard>
           <ul class="space-y-10 mt-4 pl-10">
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-message fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardHome' }" class="links">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-message fa-2xl"></i>
+                  </div>
+                  <div>
+                    <p class="text-lg font-semibold py-0 w-full">Feedback</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Feedback</p>
-                </div>
-              </div>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -262,3 +264,17 @@ const resubscribeHandler = () => {
   }
 }
 </script>
+
+<style scoped>
+a.links {
+  transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
+}
+a.links:hover {
+  color: #ca9b42;
+}
+
+a.links.router-link-exact-active {
+  color: #ca9b42;
+  border-left: solid #ca9b42;
+}
+</style>

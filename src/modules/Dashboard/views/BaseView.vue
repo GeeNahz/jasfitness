@@ -72,57 +72,67 @@
         <div>
           <ul class="space-y-10 mt-4 pl-10">
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-square-check fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-square-check fa-2xl"></i>
+                  </div>
+                  <div class="">
+                    <p class="text-lg font-semibold py-0">Sub Status</p>
+                    <p class="text-sm font-light py-0">3 Months 3 Days left</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Sub Status</p>
-                  <p class="text-sm font-light py-0">3 Months 3 Days left</p>
-                </div>
-              </div>
+              </router-link>
             </li>
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-calendar-minus fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-calendar-minus fa-2xl"></i>
+                  </div>
+                  <div class="">
+                    <p class="text-lg font-semibold py-0">Sub Plan</p>
+                    <p class="text-sm font-light py-0">Odogwu (1 Year)</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Sub Plan</p>
-                  <p class="text-sm font-light py-0">Odogwu (1 Year)</p>
-                </div>
-              </div>
+              </router-link>
             </li>
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-clock fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-clock fa-2xl"></i>
+                  </div>
+                  <div class="">
+                    <p class="text-lg font-semibold py-0">Freeze Your Sub</p>
+                    <p class="text-sm font-light py-0">4 Days Left</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Freeze Your Sub</p>
-                  <p class="text-sm font-light py-0">4 Days Left</p>
-                </div>
-              </div>
+              </router-link>
             </li>
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-paper-plane fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-paper-plane fa-2xl"></i>
+                  </div>
+                  <div class="">
+                    <p class="text-lg font-semibold py-0">Share Your Plan</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Share Your Plan</p>
-                </div>
-              </div>
+              </router-link>
             </li>
             <li>
-              <div class="flex items-center gap-4">
-                <div class="icon">
-                  <i class="fa-regular fa-message fa-2xl"></i>
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center gap-4">
+                  <div class="icon">
+                    <i class="fa-regular fa-message fa-2xl"></i>
+                  </div>
+                  <div class="">
+                    <p class="text-lg font-semibold py-0">Feedback</p>
+                  </div>
                 </div>
-                <div class="">
-                  <p class="text-lg font-semibold py-0">Feedback</p>
-                </div>
-              </div>
+              </router-link>
             </li>
           </ul>
         </div>
@@ -144,4 +154,16 @@ const resubscribeHandler = () => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+a {
+  transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
+}
+a:hover {
+  color: #ca9b42;
+}
+
+a.router-link-exact-active {
+  color: #ca9b42;
+  border-left: solid #ca9b42;
+}
+</style>
