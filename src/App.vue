@@ -8,12 +8,10 @@ body {
   height: 100%;
 }
 
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  /* font-family: 'Fenway', 'BoxTube Labs', Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #2c3e50;
   height: 100%;
 }
@@ -28,8 +26,6 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  /* color: #42b983; */
-  --tw-text-opacity: 1;
-  color: rgb(234 179 8 / var(--tw-text-opacity));
-}
+  color: #42b983;
+} */
 </style>

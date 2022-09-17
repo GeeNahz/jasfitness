@@ -14,6 +14,8 @@ const PasswordResetPasswordView = () =>
     /* webpackChunkName: "PasswordPasswordView" */ '../views/PasswordReset/PasswordResetPasswordView.vue'
   )
 
+const TestView = () => import('../components/AuthLayout.vue')
+
 const routes = [
   {
     path: '/auth',
@@ -43,6 +45,11 @@ const routes = [
             component: PasswordResetPasswordView
           }
         ]
+      },
+      {
+        path: 'test',
+        name: 'TestPage',
+        component: TestView
       }
     ]
   }

@@ -1,50 +1,67 @@
 <template>
-  <AuthTemplate>
+  <AuthLayout>
     <template #motivation-section>
-      You'll only get what you
-      <span class="text-yellow-600 font-bold">work</span> for
+      <p>You'll only get</p>
+      <p>what you <span class="text-yellow-600 font-bold">work</span> for</p>
     </template>
     <template #header-section>Reset your password...</template>
     <template #form-section>
-      <formKit
-        type="form"
-        :submit-attrs="{ inputId: 'new-password-reset-form' }"
-        submit-label="Change Password"
-        @submit="handleSubmit"
-        v-model="newPassword"
-      >
+      <div class="w-full text-center">
         <formKit
-          type="password"
-          name="password"
-          label="*New Password"
-          suffix-icon="eyeClosed"
-          @suffix-icon-click="handleIconClick"
-          placeholder="Enter your new password"
-          validation="required|length:6|matches:/[^a-zA-Z]/"
-          :validation-messages="{
-            matches: 'Please include at least one symbol'
-          }"
-        />
-        <formKit
-          type="password"
-          name="password_confirm"
-          label="*Confirm Password"
-          suffix-icon="eyeClosed"
-          @suffix-icon-click="handleIconClick"
-          placeholder="Enter password again"
-          validation="password|confirm"
-        />
-        <p class="text-xs mb-6">
-          Remembered your Password?
-          <router-link
-            :to="{ name: 'LoginPage' }"
-            class="ml-1 underline hover:text-yellow-500"
-            >Login</router-link
-          >
-        </p>
-      </formKit>
+          type="form"
+          :submit-attrs="{ inputId: 'new-password-reset-form' }"
+          submit-label="Change Password"
+          :actions="false"
+          @submit="handleSubmit"
+          v-model="newPassword"
+        >
+          <formKit
+            type="password"
+            name="password"
+            label="*New Password"
+            suffix-icon="eyeClosed"
+            @suffix-icon-click="handleIconClick"
+            placeholder="Enter your new password"
+            validation="required|length:6|matches:/[^a-zA-Z]/"
+            :validation-messages="{
+              matches: 'Please include at least one symbol'
+            }"
+          />
+          <formKit
+            type="password"
+            name="password_confirm"
+            label="*Confirm Password"
+            suffix-icon="eyeClosed"
+            @suffix-icon-click="handleIconClick"
+            placeholder="Enter password again"
+            validation="password|confirm"
+          />
+          <div class="w-[70%] mx-auto">
+            <FormKit
+              type="submit"
+              label="Change Password"
+              :classes="{
+                label: 'block mb-1 font-bold text-sm',
+                inner:
+                  'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
+                input:
+                  'h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+                help: 'text-xs text-gray-500'
+              }"
+            />
+          </div>
+          <p class="text-xs mb-6">
+            Remembered your Password?
+            <router-link
+              :to="{ name: 'LoginPage' }"
+              class="ml-1 underline hover:text-yellow-500 transition-colors duration-150"
+              >Login</router-link
+            >
+          </p>
+        </formKit>
+      </div>
     </template>
-  </AuthTemplate>
+  </AuthLayout>
 </template>
 
 <script setup>
@@ -52,7 +69,7 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 // import AppGoBack from '@/components/AppGoBack.vue'
-import AuthTemplate from '../../components/AuthTemplate.vue'
+import AuthLayout from '../../components/AuthLayout.vue'
 
 const newPassword = ref({})
 

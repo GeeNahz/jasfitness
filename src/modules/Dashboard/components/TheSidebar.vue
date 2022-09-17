@@ -1,6 +1,6 @@
 <template>
   <div
-    class="hidden md:block relative w-full h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
+    class="hidden md:block relative w-72 h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
   >
     <!-- logo -->
     <div

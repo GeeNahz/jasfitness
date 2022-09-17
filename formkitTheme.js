@@ -2,8 +2,9 @@
 // many input types are identical in how
 // we want to style them.
 const textClassification = {
+  wrapper: 'relative my-4',
   label:
-    'block mb-1 md:mb-2 mx-2 md:mx-3 font-bold font-inter text-xs md:text-sm formkit-invalid:text-red-500',
+    'absolute bg-white -top-3 px-1 block mb-1 md:mb-2 mx-2 md:mx-3 font-inter text-xs text-gray-500 md:text-sm formkit-invalid:text-red-500',
   inner: `
     flex
     items-center
@@ -11,13 +12,13 @@ const textClassification = {
     border
     border-gray-400
     formkit-invalid:border-red-500
-    rounded-lg
+    rounded-xl
     mb-1
     overflow-hidden
     focus-within:border-blue-500
   `,
   input:
-    'w-full h-9 md:h-10 px-3 border-none text-sm md:text-base font-inter text-gray-700 placeholder-gray-400',
+    'w-full h-10 md:h-10 px-3 py-11 border-none text-sm md:text-base font-inter text-gray-700 placeholder-gray-400',
   suffixIcon: 'w-5 md:w-6 mx-2 md:mx-3 text-gray-400'
 }
 const boxClassification = {
@@ -26,13 +27,13 @@ const boxClassification = {
   wrapper: 'flex items-center mb-1 cursor-pointer',
   help: 'mb-2',
   input:
-    'form-check-input appearance-none h-5 w-5 mr-2 border border-gray-500 rounded-sm font-inter bg-white checked:bg-blue-500 focus:outline-none focus:ring-0 transition duration-200',
+    'form-check-input appearance-none h-10 mr-2 border border-gray-500 rounded-sm font-inter bg-white checked:bg-blue-500 focus:outline-none focus:ring-0 transition duration-200',
   label: 'text-sm text-gray-700 font-inter mt-1'
 }
 const buttonClassification = {
   wrapper: 'mb-1',
   input:
-    'w-full h-9 md:h-10 px-3 md:px-4 py-1 md:py-2 border-none font-semibold font-quicksand text-sm md:text-base text-white disabled:opacity-75 bg-yellow-600 enabled:hover:bg-yellow-500 transition duration-75 ease-out shadow-xl enabled:hover:shadow-yellow-100 rounded'
+    'w-full h-12 md:h-10 px-3 md:px-4 py-1 md:py-2 border-none font-semibold font-quicksand text-lg md:text-base text-white disabled:opacity-75 bg-yellow-600 enabled:hover:bg-yellow-500 transition duration-75 ease-out shadow-xl enabled:hover:shadow-yellow-100 rounded'
 }
 
 // export our definitions using our above
@@ -41,7 +42,7 @@ const buttonClassification = {
 export default {
   // the global key will apply to all inputs
   global: {
-    outer: 'mb-3 md:mb-6 formkit-disabled:opacity-50 font-inter',
+    outer: 'my-3 md:my-6 formkit-disabled:opacity-50 font-inter',
     help: 'text-xs text-gray-500 font-inter',
     messages: 'list-none p-0 mt-1 mb-0',
     message: 'text-red-500 mb-1 text-xs font-inter'

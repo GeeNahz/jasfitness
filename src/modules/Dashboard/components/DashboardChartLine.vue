@@ -70,7 +70,7 @@ defineProps({
 })
 
 const chartData = ref({
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['09/06', '16/06', '23/06', '30/06', '06/07', '13/07', '20/07'],
   datasets: [
     {
       label: 'Duration',

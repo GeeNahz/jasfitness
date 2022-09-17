@@ -36,11 +36,7 @@
   >
     <div class="flex items-center gap-3 mb-3 imgs">
       <div class="border border-[#d4d4d4] w-28 rounded-full" />
-      <img
-        src="@/assets/joint-dumbells-black.svg"
-        alt="dumbbell"
-        class="w-16"
-      />
+      <img src="@/assets/footer-logo-black.svg" alt="dumbbell" class="w-16" />
       <div class="border border-[#d4d4d4] w-28 rounded-full" />
     </div>
     <span>Powered by JAS FITNESS</span>
@@ -63,4 +59,9 @@ defineProps({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.nothing {
+  color: #212933;
+  /* color: #009789; */
+}
+</style>

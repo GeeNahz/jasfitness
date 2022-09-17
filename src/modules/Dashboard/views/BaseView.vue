@@ -63,6 +63,8 @@
             class="chart-container hover:scale-105 transition-transform duration-150 overflow-clip"
           >
             <div class="hidden md:block chart bg-gray-50 p-2 mt-4 rounded">
+              <p class="float-right">{{ viewType }}</p>
+              <!-- Insert toggle button here -->
               <DashboardChart />
             </div>
             <div class="md:hidden chart bg-gray-50 p-2 mt-4 rounded">
@@ -163,9 +165,12 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import LayoutView from '../components/LayoutView.vue'
 import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
+
+const viewType = ref('')
 
 const resubscribeHandler = () => {
   try {

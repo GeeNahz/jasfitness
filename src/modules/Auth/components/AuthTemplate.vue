@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-20 h-full">
+  <div class="pt-20 h-full font-quicksand">
     <div
       class="relative md:mt-20 flex md:justify-between items-center h-full w-full md:h-fit md:w-max mx-auto md:rounded-lg overflow-hidden shadow-md bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-center bg-no-repeat md:bg-none md:bg-zinc-100"
     >
@@ -17,7 +17,7 @@
       </div>
       <!-- left side -->
       <div
-        class="absolute bottom-16 md:bottom-0 md:px-0 md:relative flex flex-col md:flex-row side-image text-center"
+        class="absolute bottom-16 md:bottom-0 md:px-0 md:relative flex flex-col md:flex-row side-image text-center bg-[url('/src/modules/Auth/assets/auth-gym.jpg')]"
       >
         <!-- bg gradient for left side -->
         <div class="md:absolute h-full w-full left-0 top-0">
@@ -46,18 +46,18 @@
           </div>
           <span>Powered by JAS FITNESS</span>
         </div>
-        <img
+        <!-- <img
           src="../assets/auth-gym.jpg"
           alt="side image"
           class="hidden md:block w-[420px] lg:w-[23vw] bg-gradient-to-r from-neutral-700 to-neutral-900"
-        />
+        /> -->
       </div>
       <!-- right side -->
       <div
         id="form"
         class="absolute left-[50%] md:left-0 -translate-x-[50%] md:-translate-x-0 top-[40%] -translate-y-[50%] md:-translate-y-0 md:top-0 md:relative md:block w-64 md:w-96 md:mx-12 lg:mx-20 p-4 md:p-10 z-10 bg-white rounded shadow-md md:shadow-[#e7e7e7]"
       >
-        <span class="mb-3 md:mb-8 block font-semibold text-md md:text-2xl"
+        <span class="mb-3 md:mb-8 block font-semibold text-md md:text-xl"
           ><slot name="header-section"></slot
         ></span>
         <slot name="form-section"></slot>
