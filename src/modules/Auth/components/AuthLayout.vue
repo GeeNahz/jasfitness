@@ -20,7 +20,7 @@
           class="absolute top-40 left-[50%] -translate-x-[50%] flex flex-col items-center justify-center"
         >
           <div
-            class="text-white font-quicksand w-full text-center text-2xl md:text-4xl mb-32"
+            class="text-white font-bold font-quicksand w-full text-center text-2xl md:text-4xl mb-32"
           >
             <slot name="motivation-section">
               <p>When you</p>
@@ -45,7 +45,7 @@
       <div class="flex-1 md:bg-none md:bg-gray-200 z-10 md:z-0 rounded-r-xl">
         <div
           id="form-container"
-          class="flex flex-col px-14 justify-center items-center w-[430px] h-[397px] my-[74px] mx-auto md:mx-[35px] bg-white rounded-xl"
+          class="flex flex-col px-7 md:px-14 justify-center items-center md:w-[430px] h-[397px] my-[74px] mx-4 md:mx-[35px] bg-white rounded-xl"
         >
           <span
             class="mb-3 md:mb-8 block text-start w-full font-semibold font-quicksand text-md md:text-xl"
@@ -63,7 +63,7 @@
     <!-- footer on sm screen only -->
     <div>
       <div
-        class="absolute md:hidden bottom-36 text-white w-full text-center font-quicksand text-2xl md:text-4xl"
+        class="absolute md:hidden bottom-32 text-white w-full text-center font-quicksand text-xl px-4 md:text-4xl"
       >
         <slot name="motivation-section">
           <p>When you</p>
@@ -75,12 +75,12 @@
         </slot>
       </div>
       <div
-        class="absolute md:hidden text-white left-[50%] -translate-x-[50%] bottom-6 text-sm text-center text-opacity-50"
+        class="absolute md:hidden w-full px-8 text-white left-[50%] -translate-x-[50%] bottom-6 text-sm text-center text-opacity-50"
       >
         <div class="flex items-center gap-3 mb-3 imgs">
-          <div class="border border-[#d4d4d4] w-48 md:w-44 rounded-full" />
+          <div class="border border-[#d4d4d4] w-full md:w-44 rounded-full" />
           <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-20" />
-          <div class="border border-[#d4d4d4] w-48 md:w-44 rounded-full" />
+          <div class="border border-[#d4d4d4] w-full md:w-44 rounded-full" />
         </div>
         <p>Powered By JAS FITNESS</p>
       </div>

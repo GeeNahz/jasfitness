@@ -38,7 +38,7 @@ const totalSteps = ref(100)
 const strokeWidth = ref(20)
 const diameter = ref(200)
 
-const onSmallScreen = computed(() => window.innerWidth < 400)
+const onSmallScreen = computed(() => window.innerWidth < 1000)
 
 const changeScreenSize = (smallScreen) => {
   if (smallScreen) {
@@ -52,7 +52,6 @@ const changeScreenSize = (smallScreen) => {
 
 watchEffect(() => {
   window.addEventListener('resize', changeScreenSize(onSmallScreen.value))
-  // return changeScreenSize(onSmallScreen.value)
 })
 
 onMounted(() => {

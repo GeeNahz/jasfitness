@@ -6,17 +6,21 @@
         <div
           class="welcome-container container py-3 flex justify-between items-center"
         >
-          <div class="welcome">
-            <p class="text-2xl font-semibold">Hello <span>Bemshima</span>,</p>
-            <p class="text-sm">Welcome back!</p>
+          <div class="welcome md:mt-10">
+            <p class="text-xl md:text-2xl font-semibold">
+              Hello <span>Bemshima</span>,
+            </p>
+            <p class="w-52 md:w-fit text-xs md:text-sm text-gray-400">
+              Welcome back!
+            </p>
           </div>
           <div>
             <button
               @click="resubscribeHandler"
-              class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold md:w-full flex flex-col-reverse md:flex-row items-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
+              class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
             >
               <p class="hidden md:block">Resubscribe</p>
-              <p class="block md:hidden text-xs">Re-Sub</p>
+              <p class="block md:hidden text-[10px]">Re-Sub</p>
               <i class="fa-solid fa-arrows-rotate"></i>
             </button>
           </div>
@@ -24,7 +28,7 @@
         <br />
         <!-- attendance summary -->
         <div
-          class="relative attendance-summary-container border border-gray-300 rounded-xl md:mx-10 p-2 md:p-6"
+          class="relative attendance-summary-container border border-gray-300 rounded-xl md:p-6"
         >
           <p
             class="absolute -top-4 left-4 text-sm md:text-base bg-white px-2 py-1"
@@ -32,7 +36,7 @@
             Attendance Summary
           </p>
           <div
-            class="flex w-full justify-between capitalize text-center md:px-10 py-4"
+            class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
           >
             <div class="item">
               <p class="text-xs md:text-base">total in 2022</p>
@@ -51,12 +55,11 @@
             </div>
           </div>
         </div>
-        <br />
         <!-- fitness record -->
-        <div class="md:mx-10">
+        <div>
           <!-- divider -->
           <DashboardDivider
-            class="text-sm md:text-base"
+            class="text-sm md:text-base my-5 md:my-4"
             name="My Fitness Record"
           />
           <div
@@ -74,9 +77,9 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div>
+        <div class="flex flex-col md:flex-row items-center justify-between">
           <ul
-            class="grid grid-cols-2 gap-x-4 md:gap-x-0 gap-y-10 md:gap-y-4 md:flex md:flex-col items-center md:items-start space-y-0 md:space-y-10 mt-2 md:mt-4 pl-0 md:pl-10"
+            class="grid grid-cols-2 gap-x-16 md:gap-x-0 gap-y-10 md:gap-y-4 md:flex md:flex-col items-center md:items-start space-y-0 md:space-y-10 mt-2 md:mt-4 pl-0 md:pl-10"
           >
             <li>
               <router-link :to="{ name: 'DashboardSubscription' }">

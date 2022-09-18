@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[addMinWidth && minWidth, addIcon && 'gap-4']"
-    class="flex flex-col md:flex-row items-center md:items-start justify-start max-w-sm border border-gray-500 p-3 rounded-xl hover:scale-105 transition-transform"
+    class="sub-card flex flex-col md:flex-row items-center md:items-start justify-start max-w-sm border border-gray-500 p-3 rounded-xl"
   >
     <div v-if="addIcon" id="icon" class="mt-2">
       <slot name="icon"></slot>
@@ -28,4 +28,11 @@ defineProps({
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+div.sub-card {
+  transition: transform 0.2s ease-out;
+}
+div.sub-card:hover {
+  transform: translateY(-0.16rem);
+}
+</style>

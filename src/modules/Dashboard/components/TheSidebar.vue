@@ -1,6 +1,6 @@
 <template>
   <div
-    class="hidden md:block relative w-72 h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
+    class="hidden md:block relative w-[290px] h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
   >
     <!-- logo -->
     <div
@@ -49,7 +49,7 @@
     <!-- logout button -->
     <router-link
       :to="{ name: 'LoginPage' }"
-      class="md:absolute bottom-10 flex items-center ml-4 md:ml-0 py-8 md:py-0 space-x-4"
+      class="md:absolute bottom-48 flex items-center ml-4 md:ml-0 py-8 md:py-0 space-x-4 font-bold"
       ><div class="icon">
         <i class="fa-solid fa-arrow-right-from-bracket"></i>
       </div>
@@ -57,7 +57,9 @@
     >
   </div>
   <!-- nav bar on small screen -->
-  <div class="z-30 flex justify-between md:hidden w-full p-4 bg-white fixed">
+  <div
+    class="z-30 flex justify-between md:hidden w-full p-4 bg-white fixed shadow"
+  >
     <div class="logo flex items-center space-x-4 font-semibold">
       <div
         class="h-10 w-10 p-2 rounded bg-yellow-500 flex items-center justify-center"
@@ -77,17 +79,25 @@
   <div
     @click.self="toggleSideBar"
     v-if="showSideBarNav"
-    class="md:hidden absolute md:fixed z-10 top-0 left-0 h-full w-full bg-gray-500 bg-opacity-50"
+    class="md:hidden fixed md:fixed top-0 left-0 h-full w-full bg-gray-500 bg-opacity-50 z-50"
   >
     <div
-      class="relative w-1/2 h-max md:px-4 py-5 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
+      class="relative w-3/5 h-max md:px-4 pt-4 pb-24 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
     >
-      <div
+      <!-- <div
         class="logo flex items-center space-x-4 px-3 mt-8 md:mt-10 mb-10 md:mb-20 font-semibold"
-      ></div>
+      ></div> -->
+      <div class="logo flex items-center space-x-4 px-4 mb-20 font-semibold">
+        <div
+          class="h-10 w-10 p-2 rounded bg-yellow-500 flex items-center justify-center"
+        >
+          JF
+        </div>
+        <p class="text-inherit">Jas Fitness</p>
+      </div>
       <!-- outer side bar -->
       <div class="burger-menu">
-        <ul class="space-y-4 md:space-y-10 text-sm md:text-lg">
+        <ul class="space-y-4 md:space-y-10 text-lg">
           <li>
             <router-link :to="{ name: 'DashboardHome' }" class="p-3 flex gap-3">
               <div class="icon"><i class="fa-solid fa-house fa-xl"></i></div>
@@ -121,7 +131,7 @@
       <!-- logout button -->
       <router-link
         :to="{ name: 'LoginPage' }"
-        class="md:absolute bottom-10 flex items-center ml-4 md:ml-0 py-8 md:py-0 space-x-4"
+        class="md:absolute bottom-10 flex items-center text-lg font-semibold ml-4 md:ml-0 py-8 md:py-0 space-x-4"
         ><div class="icon">
           <i class="fa-solid fa-arrow-right-from-bracket"></i>
         </div>
@@ -144,6 +154,7 @@ const showSideBarNav = ref(false)
 
 const toggleSideBar = () => {
   showSideBarNav.value = !showSideBarNav.value
+  document.querySelector('#app').classList.toggle('overflow-y-hidden')
 }
 </script>
 

@@ -2,7 +2,7 @@
 // many input types are identical in how
 // we want to style them.
 const textClassification = {
-  wrapper: 'relative my-4',
+  wrapper: 'relative',
   label:
     'absolute bg-white -top-3 px-1 block mb-1 md:mb-2 mx-2 md:mx-3 font-inter text-xs text-gray-500 md:text-sm formkit-invalid:text-red-500',
   inner: `
@@ -13,12 +13,11 @@ const textClassification = {
     border-gray-400
     formkit-invalid:border-red-500
     rounded-xl
-    mb-1
     overflow-hidden
     focus-within:border-blue-500
   `,
   input:
-    'w-full h-10 md:h-10 px-3 py-11 border-none text-sm md:text-base font-inter text-gray-700 placeholder-gray-400',
+    'w-full h-10 px-3 py-11 border-none text-sm md:text-base font-inter text-gray-700 placeholder-gray-400',
   suffixIcon: 'w-5 md:w-6 mx-2 md:mx-3 text-gray-400'
 }
 const boxClassification = {
@@ -42,10 +41,10 @@ const buttonClassification = {
 export default {
   // the global key will apply to all inputs
   global: {
-    outer: 'my-3 md:my-6 formkit-disabled:opacity-50 font-inter',
+    outer: 'my-4 md:my-6 formkit-disabled:opacity-50 font-inter',
     help: 'text-xs text-gray-500 font-inter',
     messages: 'list-none p-0 mt-1 mb-0',
-    message: 'text-red-500 mb-1 text-xs font-inter'
+    message: 'block text-start text-red-500 mb-1 text-xs font-inter'
   },
   button: buttonClassification,
   color: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col md:flex-row md:items-center w-full h-full font-quicksand"
+    class="flex flex-col md:flex-row md:items-center w-full h-full font-quicksand disable-scroll"
   >
     <TheSidebar />
     <div class="mt-12 md:mt-0 h-full w-full">
