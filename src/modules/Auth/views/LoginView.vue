@@ -1,9 +1,19 @@
 <template>
   <AuthLayout>
     <template #motivation-section>
-      <p>When you</p>
-      <p>see results it</p>
-      <p>becomes an <span class="text-yellow-600 font-bold">Addiction</span></p>
+      <div class="hidden md:block">
+        <p>When you</p>
+        <p>see results it</p>
+        <p>
+          becomes an <span class="text-yellow-600 font-bold">Addiction</span>
+        </p>
+      </div>
+      <div class="md:hidden">
+        <p>When you see results it</p>
+        <p>
+          becomes an <span class="text-yellow-600 font-bold">Addiction</span>
+        </p>
+      </div>
       <!-- <AuthInputField v-model="firstName" label="First Name" /> -->
     </template>
     <template #header-section>Hello JasFitFam 😁</template>
@@ -21,15 +31,21 @@
         >
           <formKit
             type="text"
-            label="*Username"
+            label="Username"
             name="username"
             placeholder="Enter your username"
             validation="required|length:3"
+            :validation-messages="{
+              length: 'Username must be at least 3 characters'
+            }"
             :suffix-icon="userIcon"
+            :classes="{
+              message: 'pl-2'
+            }"
           />
           <formKit
             type="password"
-            label="*Password"
+            label="Password"
             name="password"
             placeholder="Enter your password"
             validation="required|length:6|matches:/[^a-zA-Z]/"
@@ -38,6 +54,9 @@
             }"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
+            :classes="{
+              message: 'pl-2'
+            }"
           />
           <div class="w-[70%] mx-auto">
             <FormKit

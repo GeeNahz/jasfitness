@@ -1,22 +1,24 @@
 import { createRouter, createWebHistory } from 'vue-router'
 const Module = () =>
   import(/* webpackChunkName: "landingpageModule" */ '../Module.vue')
-const LandingPageHomeView = () =>
-  import(
-    /* webpackChunkName: "landingpageHome" */ '../views/LandingPageHomeView.vue'
-  )
+// const LandingPageHomeView = () =>
+//   import(
+//     /* webpackChunkName: "landingpageHome" */ '../views/LandingPageHomeView.vue'
+//   )
+const HomeView = () =>
+  import(/* webpackChunkName: "Home" */ '../views/HomeView.vue')
 const LandingPageAbout = () =>
   import(/* webpackChunkName: "landingpageAbout" */ '../views/AboutView.vue')
 
 const routes = [
   {
-    path: '/landingpage',
+    path: '/',
     component: Module,
     children: [
       {
         path: '',
         name: 'LandingPageHome',
-        component: LandingPageHomeView
+        component: HomeView
       },
       {
         path: 'about',

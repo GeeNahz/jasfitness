@@ -1,20 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
     redirect: () => {
-      return { path: '/landingpage' }
+      return { name: 'LandingPageHome' }
     }
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/:pathMatch(.*)',
+    name: '404',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+      import(/* webpackChunkName: "404" */ '../views/404View.vue')
   }
 ]
 

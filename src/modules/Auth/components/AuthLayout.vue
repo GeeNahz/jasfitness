@@ -2,12 +2,15 @@
   <div
     class="relative bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-origin-border md:bg-none md:flex h-full pt-36 pb-[276px] md:py-48 items-center"
   >
-    <!-- back button on sm and lg screen -->
-    <div class="absolute left-10 top-32 md:left-[500px] md:top-56 z-10">
-      <AppGoBack />
-    </div>
     <!-- main section -->
-    <div id="div-container" class="md:w-[1000px] md:mx-auto flex rounded-xl">
+    <div
+      id="div-container"
+      class="relative md:w-[1000px] md:mx-auto flex rounded-xl"
+    >
+      <!-- back button on sm and lg screen -->
+      <div class="absolute left-6 md:left-4 md:top-4 z-10">
+        <AppGoBack />
+      </div>
       <!-- main section 1 on lg screen only -->
       <div
         class="hidden md:block relative flex-1 bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-center md:rounded-l-xl overflow-hidden"
@@ -42,7 +45,7 @@
         </div>
       </div>
       <!-- main section 2 on sm and lg screen -->
-      <div class="flex-1 md:bg-none md:bg-gray-200 z-10 md:z-0 rounded-r-xl">
+      <div class="flex-1 md:bg-none md:bg-gray-100 z-10 md:z-0 rounded-r-xl">
         <div
           id="form-container"
           class="flex flex-col px-7 md:px-14 justify-center items-center md:w-[430px] h-[397px] my-[74px] mx-4 md:mx-[35px] bg-white rounded-xl"
@@ -63,7 +66,7 @@
     <!-- footer on sm screen only -->
     <div>
       <div
-        class="absolute md:hidden bottom-32 text-white w-full text-center font-quicksand text-xl px-4 md:text-4xl"
+        class="absolute md:hidden bottom-32 text-white w-full text-center font-quicksand text-lg font-light px-4 md:text-4xl"
       >
         <slot name="motivation-section">
           <p>When you</p>
@@ -93,9 +96,11 @@ import AppGoBack from '@/components/AppGoBack.vue'
 </script>
 
 <style scoped>
-#form-container,
+#form-container {
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 0.25);
+}
 #div-container {
-  box-shadow: 0 4px 4px 0 #979797;
+  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 0.1);
 }
 
 @media screen and (max-width: 600px) {
