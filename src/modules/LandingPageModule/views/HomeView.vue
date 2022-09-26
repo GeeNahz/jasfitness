@@ -308,7 +308,7 @@
         </div>
         <div class="modules">
           <div class="h-full">
-            <h4>Main content</h4>
+            <HomeCarousel :items="eventsAndNews" />
           </div>
         </div>
       </section>
@@ -321,6 +321,29 @@
 import HeroSection from '../components/HeroSection.vue'
 import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import HomeCarousel from '../components/HomeCarousel.vue'
+import { ref } from 'vue'
+
+const eventsAndNews = ref([
+  {
+    imageName: 'paintball.png',
+    title: 'Promo! Promo!! Promo!!!',
+    description:
+      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+  },
+  {
+    imageName: 'roadwalk.png',
+    title: 'Promo! Promo!! Promo!!!',
+    description:
+      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+  },
+  {
+    imageName: 'promo.png',
+    title: 'Promo! Promo!! Promo!!!',
+    description:
+      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+  }
+])
 </script>
 
 <style scoped>
