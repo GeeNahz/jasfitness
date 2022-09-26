@@ -5,7 +5,7 @@
     </div>
     <main>
       <section
-        class="py-12 flex flex-col md:flex-row justify-center items-center gap-11"
+        class="py-12 flex flex-col lg:flex-row justify-center items-center gap-11"
       >
         <div class="relative flex flex-col w-[366px] h-[421px]">
           <h4
