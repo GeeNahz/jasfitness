@@ -40,7 +40,7 @@
         <p class="text-xl text-center font-semibold mb-8">
           No one else got your chest, shoulder, back, abs, and leg like we do
         </p>
-        <div class="btns flex space-x-7">
+        <div class="btns flex space-x-7 justify-center">
           <router-link
             class="text-sm font-bold text-zinc-900 bg-white hover:text-zinc-900 px-4 py-2 whitespace-nowrap btn-default"
             :to="{ name: 'LandingPageHome' }"
