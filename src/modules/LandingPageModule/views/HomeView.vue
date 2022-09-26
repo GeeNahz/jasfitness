@@ -123,7 +123,7 @@
       </section>
       <!-- reviews -->
       <section
-        class="relative flex flex-col lg:flex-row items-center md:gap-16 lg:gap-8 justify-center w-full border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-6 md:px-8 lg:px-16"
+        class="relative flex flex-col lg:flex-row items-center md:gap-16 lg:gap-8 justify-center w-full border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-3 md:px-8 lg:px-16"
       >
         <!-- partial black design -->
         <div
@@ -137,7 +137,7 @@
             <h4>Here's what our</h4>
             <h4>members think...</h4>
           </div>
-          <div class="block lg:hidden w-full text-center mb-10">
+          <div class="block lg:hidden w-full md:text-center mb-10">
             <h4>
               <span class="white-text">Here</span>
               <span class="md:text-white">'s what</span> our members think...
