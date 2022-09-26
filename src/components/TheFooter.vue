@@ -43,7 +43,7 @@
         <ul
           class="lg:space-y-[14px] flex flex-col justify-center gap-4 lg:block"
         >
-          <li class="flex gap-4 lg:gap-5 items-center">
+          <li class="flex gap-[24px] lg:gap-12 items-center">
             <p>Monday - Saturday</p>
             <p>6.00AM - 9.00PM</p>
           </li>
