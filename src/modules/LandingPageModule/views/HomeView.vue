@@ -227,14 +227,14 @@
         </div>
       </section>
       <section
-        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-32 py-8 lg:py-14"
+        class="bg-gray-100 w-full h-max lg:h-[735px] sm:px-4 md:p-8 lg:px-32 py-8 md:py-14"
       >
         <h4
           class="capitalize mb-7 lg:mb-14 font-medium font-inter text-2xl lg:text-6xl text-[#171717]"
         >
           Latest Events & News
         </h4>
-        <div class="modules hidden lg:flex justify-between items-center">
+        <div class="modules hidden md:flex justify-between items-center">
           <div class="single-module w-[412px] h-[431px] bg-white">
             <div
               class="module relative h-full bg-[url('/src/assets/paintball.png')] bg-cover bg-center"
@@ -308,7 +308,7 @@
             </div>
           </div>
         </div>
-        <div class="modules lg:hidden">
+        <div class="modules md:hidden">
           <div class="h-full">
             <HomeCarousel :items="eventsAndNews" />
           </div>
