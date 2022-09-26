@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-origin-border md:bg-none md:flex h-full pt-36 pb-[276px] md:py-48 items-center"
+    class="relative bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-origin-border md:bg-none md:flex h-full pt-24 lg:pt-36 pb-[276px] md:py-48 items-center"
   >
     <!-- main section -->
     <div
@@ -8,7 +8,7 @@
       class="relative md:w-[1000px] md:mx-auto flex rounded-xl"
     >
       <!-- back button on sm and lg screen -->
-      <div class="absolute left-6 md:left-4 md:top-4 z-10">
+      <div class="absolute left-6 top-6 md:left-4 md:top-4 z-10">
         <AppGoBack />
       </div>
       <!-- main section 1 on lg screen only -->
