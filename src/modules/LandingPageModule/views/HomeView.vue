@@ -240,7 +240,7 @@
         >
           Latest Events & News
         </h4>
-        <div class="modules hidden md:flex justify-between items-center">
+        <div class="modules hidden md:flex gap-3 justify-between items-center">
           <div class="single-module w-[412px] h-[431px] bg-white">
             <div
               class="module relative h-full bg-[url('/src/assets/paintball.png')] bg-cover bg-center"
