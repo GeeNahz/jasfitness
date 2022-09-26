@@ -1,7 +1,7 @@
 <template>
   <div class="lg:pt-20 px-4 w-full h-[858px] lg:h-[551px] bg-[#171717]">
     <div
-      class="w-full h-[95%] lg:h-[90%] flex flex-col md:flex-row justify-evenly items-center lg:items-start text-white lg:text-2xl font-inter capitalize"
+      class="w-full h-[95%] lg:h-[90%] flex flex-col lg:flex-row justify-evenly items-center lg:items-start text-white lg:text-2xl font-inter capitalize"
     >
       <div class="flex flex-col items-center lg:block">
         <div class="font-inter font-semibold text-2xl lg:text-4xl mb-4">
