@@ -123,7 +123,7 @@
       </section>
       <!-- reviews -->
       <section
-        class="relative flex flex-col md:flex-row items-center md:gap-16 lg:gap-8 justify-center w-full border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-6 md:px-8 lg:px-16"
+        class="relative flex flex-col lg:flex-row items-center md:gap-16 lg:gap-8 justify-center w-full border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-6 md:px-8 lg:px-16"
       >
         <!-- partial black design -->
         <div
@@ -131,27 +131,26 @@
         ></div>
         <!-- section title -->
         <div
-          class="capitalize flex flex-col items-center justify-center w-full text-xl md:text-5xl text-[#1f1f1f] lg:text-white font-medium pr-0 md:pr-16 lg:pr-72"
+          class="capitalize flex flex-col items-center justify-center w-full text-xl md:text-3xl lg:text-5xl text-[#1f1f1f] lg:text-white font-medium pr-0 lg:pr-72"
         >
           <div class="hidden lg:block">
             <h4>Here's what our</h4>
             <h4>members think...</h4>
           </div>
-          <div class="block lg:hidden w-full mb-10">
+          <div class="block lg:hidden w-full text-center mb-10">
             <h4>
-              <span class="white-text">Here</span>'s what our members think...
+              <span class="white-text">Here</span>
+              <span class="md:text-white">'s what</span> our members think...
             </h4>
           </div>
         </div>
         <!-- section cards -->
         <div class="reviews gap-6 md:gap-14 flex flex-col">
-          <div
-            class="single-review translate-x-8 md:-translate-x-20 lg:-translate-x-20"
-          >
+          <div class="single-review translate-x-8 lg:-translate-x-20">
             <div
-              class="shadow img bg-[#2b2b2b] w-[80px] lg:w-[104px] h-[80px] lg:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
+              class="shadow img bg-[#2b2b2b] w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
             >
-              <p class="z-20 text-white text-5xl lg:text-7xl font-medium">A</p>
+              <p class="z-20 text-white text-5xl md:text-7xl font-medium">A</p>
             </div>
             <CardItem class="item">
               <template #top>
@@ -174,7 +173,7 @@
             </CardItem>
           </div>
           <div
-            class="single-review translate-x-4 md:-translate-x-44 lg:-translate-x-48"
+            class="single-review translate-x-4 md:-translate-x-16 lg:-translate-x-48"
           >
             <div
               class="shadow img bg-[#ff7d00] w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
@@ -201,9 +200,7 @@
               </template>
             </CardItem>
           </div>
-          <div
-            class="single-review translate-x-8 md:-translate-x-20 lg:-translate-x-20"
-          >
+          <div class="single-review translate-x-8 lg:-translate-x-20">
             <div
               class="shadow img w-[80px] h-[80px] md:w-[104px] md:h-[104px] rounded-full overflow-hidden"
             >
@@ -414,6 +411,9 @@ const eventsAndNews = ref([
 }
 
 @media screen and (max-width: 815px) {
+  .white-text {
+    color: white;
+  }
   .single-review {
     width: 470px;
     height: max-content;
