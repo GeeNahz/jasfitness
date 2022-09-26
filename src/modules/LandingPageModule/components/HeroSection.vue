@@ -1,8 +1,8 @@
 <template>
   <div
-    class="flex justify-start items-center space-x-28 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-full w-full pl-40"
+    class="flex justify-start items-center lg:space-x-28 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-full w-full lg:pl-40"
   >
-    <div class="bg-none text-white pr-10">
+    <div class="hidden lg:block bg-none text-white pr-10">
       <p class="w-[715px] text-4xl font-semibold mb-8">
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
@@ -19,7 +19,9 @@
         >
       </div>
     </div>
-    <div class="relative overflow-hidden rounded-bl-xl h-full w-full mb-10">
+    <div
+      class="relative overflow-hidden rounded-b-xl h-[90%] lg:h-full w-full mb-10"
+    >
       <div
         class="absolute h-full w-full bg-gradient-to-b from-transparent to-black bg-opacity-80"
       ></div>

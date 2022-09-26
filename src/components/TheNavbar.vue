@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="w-full h-24 py-7 px-16 fixed z-50 transition-all duration-300"
+    class="w-[100vw] h-20 md:h-24 py-7 px-6 lg:px-16 fixed z-50 transition-all duration-300"
     :class="{ 'bg-white shadow-md': showWhiteBackground }"
   >
     <div class="flex justify-between h-full items-center capitalize">
@@ -66,19 +66,92 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <svg
+            class="h-full"
+            width="37"
+            height="40"
+            viewBox="0 0 37 53"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 32L32 32"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <ellipse
+              cx="5"
+              cy="31.6667"
+              rx="4"
+              ry="4"
+              transform="rotate(90 5 31.6667)"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M2 42L23 42"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <ellipse
+              cx="27.6667"
+              cy="42.3334"
+              rx="4"
+              ry="4"
+              transform="rotate(90 27.6667 42.3334)"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M9 11L32 11"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <ellipse
+              cx="5"
+              cy="10.6667"
+              rx="4"
+              ry="4"
+              transform="rotate(90 5 10.6667)"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M2 21L23 21"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <ellipse
+              cx="27.6667"
+              cy="21.3334"
+              rx="4"
+              ry="4"
+              transform="rotate(90 27.6667 21.3334)"
+              stroke="#969696"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
         </button>
       </div>
     </div>
   </nav>
 
   <!-- dropdown menu -->
-  <div class="collapse fixed mt-24" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+  <div
+    class="collapse fixed z-50 mt-20 w-[60%] rounded-br-xl shadow overflow-hidden"
+    id="navbarToggleExternalContent"
+  >
+    <div class="bg-white p-4">
       <!-- links -->
-      <div class="my-4" :class="{ 'text-white': !showWhiteBackground }">
+      <div class="my-4">
         <ul
           class="flex flex-col items-center justify-center gap-2 font-semibold text-xl"
         >
@@ -129,7 +202,10 @@ const route = useRoute()
 const showWhiteBackground = ref(false)
 
 onMounted(() => {
-  if (route.path.includes('auth')) {
+  if (
+    route.path.includes('auth') ||
+    document.body.getBoundingClientRect().top < -150
+  ) {
     showWhiteBackground.value = true
   } else {
     showWhiteBackground.value = false

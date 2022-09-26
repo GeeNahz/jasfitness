@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full font-quicksand">
+  <div class="h-full font-quicksand" :key="$route.path">
     <TheNavbar />
     <div class="h-full">
       <router-view :key="$route.path" />

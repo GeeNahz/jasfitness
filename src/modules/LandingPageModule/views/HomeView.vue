@@ -4,24 +4,30 @@
       <HeroSection />
     </div>
     <main>
-      <section class="py-12 flex justify-center items-center gap-11">
+      <section
+        class="py-12 flex flex-col md:flex-row justify-center items-center gap-11"
+      >
         <div class="relative flex flex-col w-[366px] h-[421px]">
           <h4
-            class="absolute -top-28 left-[50%] -translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto"
+            class="lg:absolute -top-28 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
           >
             Why jas fitness?
           </h4>
-          <CardItem class="h-full py-16 px-3 card-item">
+          <CardItem
+            class="w-[320px] mx-auto lg:w-[370px] h-[400px] lg:h-full py-16 px-3 card-item"
+          >
             <template #top>
-              <h4 class="pb-7 text-4xl font-semibold">You're not Alone</h4>
+              <h4 class="pb-7 text-3xl lg:text-4xl font-semibold">
+                You're not Alone
+              </h4>
             </template>
             <div class="relative mb-7">
-              <p class="text-xl">
+              <p class="text-lg lg:text-xl">
                 Consistency Over Motivation. You don’t have to face your fitness
                 goals alone. Let us do it TOGETHER.
               </p>
               <p
-                class="absolute right-8 top-28 -z-10 text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
+                class="absolute right-16 top-32 lg:right-8 lg:top-28 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
               >
                 01
               </p>
@@ -29,7 +35,7 @@
             <template #bottom>
               <div>
                 <button
-                  class="btn-default bg-[#1f1f1f] w-[193px] h-[54px] text-white"
+                  class="btn-default bg-[#1f1f1f] w-[130px] h-[45px] lg:w-[193px] lg:h-[54px] text-sm lg:text-base text-white"
                 >
                   Join Community
                 </button>
@@ -54,11 +60,13 @@
             Feel the Love
           </h4>
         </div>
-        <div class="flex flex-col gap-9 w-[419px]">
+        <div class="flex flex-col gap-9 w-[320px] lg:w-[419px]">
           <CardItem class="h-64 card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-3xl font-semibold mb-1">Get Inspired</h4>
+                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
+                  Get Inspired
+                </h4>
                 <p
                   class="absolute -top-6 -left-9 text-6xl -z-10 text-[#FEDF9A] text-opacity-50 font-semibold font-inter"
                 >
@@ -66,7 +74,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-lg font-normal">
+            <p class="card-item-body text-sm lg:text-lg font-normal">
               Consistencty over motiveation. Meet like minded FitFam, who are
               committed to a life of healthy living and more.
             </p>
@@ -76,14 +84,18 @@
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
                 />
-                <p class="font-inter text-[15px] mb-2 ml-1">Get Started</p>
+                <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
+                  Get Started
+                </p>
               </div>
             </template>
           </CardItem>
           <CardItem class="h-64 card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-3xl font-semibold mb-1">Result Oriented</h4>
+                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
+                  Result Oriented
+                </h4>
                 <p
                   class="absolute -top-6 -left-9 text-6xl -z-10 text-[#FEDF9A] text-opacity-50 font-semibold font-inter"
                 >
@@ -91,7 +103,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-lg">
+            <p class="card-item-body text-sm lg:text-lg">
               Regardless of your fitness level, we’ve got the equipment and
               professionals to get you the results you desire.
             </p>
@@ -101,7 +113,9 @@
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
                 />
-                <p class="font-inter text-[15px] mb-2 ml-1">Get Started</p>
+                <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
+                  Get Started
+                </p>
               </div>
             </template>
           </CardItem>
@@ -109,37 +123,46 @@
       </section>
       <!-- reviews -->
       <section
-        class="relative flex items-center md:gap-16 lg:gap-8 justify-center w-full h-[] border-t border-gray-400 overflow-hidden mb-6 py-20 px-16"
+        class="relative flex flex-col md:flex-row items-center md:gap-16 lg:gap-8 justify-center w-full h-[] border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-6 lg:px-16"
       >
         <!-- partial black design -->
         <div
-          class="absolute md:-left-[799px] lg:-left-[589px] -top-[127px] bg-[#1f1f1f] rounded-[150px] -rotate-[21.45deg] w-[1230px] h-[963px] -z-10"
+          class="absolute -left-[1090px] md:-left-[799px] lg:-left-[589px] -top-[127px] bg-[#1f1f1f] rounded-[150px] -rotate-[21.45deg] w-[1230px] h-[963px] -z-10"
         ></div>
         <!-- section title -->
         <div
-          class="capitalize flex flex-col items-center justify-center text-5xl text-white font-medium pr-0 lg:pr-96"
+          class="capitalize flex flex-col items-center justify-center w-full text-xl lg:text-5xl text-[#1f1f1f] lg:text-white font-medium pr-0 lg:pr-96"
         >
-          <h4>Here's what our</h4>
-          <h4>members think...</h4>
+          <div class="hidden lg:block">
+            <h4>Here's what our</h4>
+            <h4>members think...</h4>
+          </div>
+          <div class="block lg:hidden w-full mb-10">
+            <h4>
+              <span class="white-text">Here</span>'s what our members think...
+            </h4>
+          </div>
         </div>
         <!-- section cards -->
-        <div class="reviews gap-14 flex flex-col">
-          <div class="single-review ml-28">
+        <div class="reviews gap-6 lg:gap-14 flex flex-col">
+          <div class="single-review ml-12 lg:ml-28">
             <div
-              class="shadow img bg-[#2b2b2b] w-[104px] h-[104px] flex items-center justify-center rounded-full overflow-hidden"
+              class="shadow img bg-[#2b2b2b] w-[80px] lg:w-[104px] h-[80px] lg:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
             >
-              <p class="z-20 text-white text-7xl font-medium">A</p>
+              <p class="z-20 text-white text-5xl lg:text-7xl font-medium">A</p>
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-xl font-medium">
+                <p class="text-sm lg:text-xl font-medium">
                   “Once you stop by Jas Gym. You shall get hooked. Excellent
                   Customer Service.”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-2 mt-3">
-                  <p class="font-inter font-bold text-2xl">Anna Orefi</p>
+                <div class="flex gap-1 lg:gap-2 mt-1 lg:mt-3">
+                  <p class="font-inter font-bold text-sm lg:text-2xl">
+                    Anna Orefi
+                  </p>
                   <img
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
@@ -148,22 +171,24 @@
               </template>
             </CardItem>
           </div>
-          <div class="single-review mr-28">
+          <div class="single-review mr-12 lg:mr-28">
             <div
-              class="shadow img bg-[#ff7d00] w-[104px] h-[104px] flex items-center justify-center rounded-full overflow-hidden"
+              class="shadow img bg-[#ff7d00] w-[80px] lg:w-[104px] h-[80px] lg:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
             >
-              <p class="z-20 text-white text-7xl font-medium">A</p>
+              <p class="z-20 text-white text-5xl lg:text-7xl font-medium">A</p>
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-xl font-medium">
+                <p class="text-sm lg:text-xl font-medium">
                   “Friendly environment and instructors. Most importantly, I
                   really appreciate the checking up on clients.”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-2 mt-3">
-                  <p class="font-inter font-bold text-2xl">Afolalu Oluyemisi</p>
+                <div class="flex gap-1 lg:gap-2 mt-1 lg:mt-3">
+                  <p class="font-inter font-bold text-sm lg:text-2xl">
+                    Afolalu Oluyemisi
+                  </p>
                   <img
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
@@ -172,23 +197,25 @@
               </template>
             </CardItem>
           </div>
-          <div class="single-review ml-28">
+          <div class="single-review ml-12 lg:ml-28">
             <div
-              class="shadow img w-[104px] h-[104px] rounded-full overflow-hidden"
+              class="shadow img w-[80px] h-[80px] lg:w-[104px] lg:h-[104px] rounded-full overflow-hidden"
             >
               <img src="@/assets/IjeomaJennifer.png" alt="ppic" />
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-xl font-medium">
+                <p class="text-sm lg:text-xl font-medium">
                   “Spending my post partum moment @jasfitness is one of the best
                   decision I have made in life. I love what I’m getting
                   💯💯💯💯”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-2 mt-3">
-                  <p class="font-inter font-bold text-2xl">Ijeoma Jennifer</p>
+                <div class="flex gap-1 lg:gap-2 mt-1 lg:mt-3">
+                  <p class="font-inter font-bold text-sm lg:text-2xl">
+                    Ijeoma Jennifer
+                  </p>
                   <img
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
@@ -199,13 +226,13 @@
           </div>
         </div>
       </section>
-      <section class="bg-gray-300 w-full h-[735px] px-32 py-14">
+      <section class="bg-gray-100 w-full h-[735px] px-8 lg:px-32 py-8 lg:py-14">
         <h4
-          class="capitalize mb-14 font-medium font-inter text-6xl text-[#171717]"
+          class="capitalize mb-7 lg:mb-14 font-medium font-inter text-2xl lg:text-6xl text-[#171717]"
         >
           Latest Events & News
         </h4>
-        <div class="modules flex justify-between items-center">
+        <div class="modules hidden lg:flex justify-between items-center">
           <div class="single-module w-[412px] h-[431px] bg-white">
             <div
               class="module relative h-full bg-[url('/src/assets/paintball.png')] bg-cover bg-center"
@@ -279,6 +306,11 @@
             </div>
           </div>
         </div>
+        <div class="modules">
+          <div class="h-full">
+            <h4>Main content</h4>
+          </div>
+        </div>
       </section>
     </main>
     <TheFooter />
@@ -300,6 +332,7 @@ import TheFooter from '@/components/TheFooter.vue'
 }
 
 .card-item {
+  border-radius: 10px;
   background: rgba(224, 224, 224, 0.24);
 }
 .card-item.card-set {
@@ -343,10 +376,43 @@ import TheFooter from '@/components/TheFooter.vue'
   padding: 20px 55px;
 }
 .img {
-  /* absolute top-[50%] -translate-y-[50%] -left-10 */
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
   left: -60px;
+}
+
+@media screen and (max-width: 640px) {
+  .center-img {
+    width: 340px;
+    height: 495px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .card-item .card-item-btns {
+    padding-top: 15px;
+  }
+  .white-text {
+    color: white;
+  }
+  .single-review {
+    width: 270px;
+    height: max-content;
+    position: relative;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+  }
+  .item {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 35px;
+  }
+  .img {
+    top: 30%;
+    transform: translateY(-50%);
+    left: -50px;
+  }
 }
 </style>

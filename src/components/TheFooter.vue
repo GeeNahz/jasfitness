@@ -1,7 +1,7 @@
 <template>
   <div class="pt-20 w-full h-[551px] bg-[#171717]">
     <div
-      class="w-full h-[90%] flex justify-evenly items-start text-white text-2xl font-inter capitalize"
+      class="w-full h-[90%] flex flex-col md:flex-row justify-evenly items-start text-white text-2xl font-inter capitalize"
     >
       <div>
         <ul class="space-y-[14px]">

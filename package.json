@@ -16,6 +16,7 @@
     "vue": "^3.2.13",
     "vue-chartjs": "^4.1.1",
     "vue-router": "^4.0.3",
+    "vue3-carousel": "^0.1.46",
     "vue3-radial-progress": "^1.1.1",
     "vuex": "^4.0.0"
   },
