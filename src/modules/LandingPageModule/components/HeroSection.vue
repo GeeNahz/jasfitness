@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-start items-center lg:space-x-28 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-full w-full lg:pl-40"
+    class="flex justify-start items-center lg:space-x-28 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-[95%] lg:h-full w-full lg:pl-40"
   >
     <div class="hidden lg:block bg-none text-white pr-10">
       <p class="w-[715px] text-4xl font-semibold mb-8">
@@ -34,7 +34,25 @@
         height="778"
         src="https://assets.mixkit.co/videos/preview/mixkit-muscular-man-doing-crossfit-exercises-23353-large.mp4"
       ></video>
-      <!-- src="https://www.w3schools.com/html/mov_bbb.mp4" -->
+      <div
+        class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 text-white"
+      >
+        <p class="text-xl text-center font-semibold mb-8">
+          No one else got your chest, shoulder, back, abs, and leg like we do
+        </p>
+        <div class="btns flex space-x-7">
+          <router-link
+            class="text-sm font-bold text-zinc-900 bg-white hover:text-zinc-900 px-4 py-2 whitespace-nowrap btn-default"
+            :to="{ name: 'LandingPageHome' }"
+            >Get Started</router-link
+          >
+          <router-link
+            class="text-sm text-center font-bold text-white bg-[#FFB628] px-4 py-2 whitespace-nowrap btn-default"
+            :to="{ name: 'LandingPageHome' }"
+            >What's Your BMI?</router-link
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>
