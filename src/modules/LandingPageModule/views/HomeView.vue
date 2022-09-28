@@ -6,29 +6,29 @@
     <main>
       <!-- why jas fitness section -->
       <section
-        class="py-12 mx-16 flex flex-col lg:flex-row justify-center items-center gap-11"
+        class="py-12 mx-3 lg:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-11 lg:gap-y-0"
       >
-        <div class="relative flex flex-col w-[366px] h-[421px]">
+        <div class="relative w-[366px] lg:h-[400px]">
           <h4
             class="lg:absolute -top-28 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
           >
             Why jas fitness?
           </h4>
           <CardItem
-            class="w-[320px] mx-auto lg:w-[370px] h-[400px] lg:h-full py-16 px-3 card-item"
+            class="mx-auto w-[310px] lg:w-full h-[280px] lg:h-full py-8 lg:py-12 px-3 card-item"
           >
             <template #top>
-              <h4 class="pb-7 text-3xl lg:text-4xl font-semibold">
+              <h4 class="pb-3 lg:pb-7 text-xl lg:text-3xl font-semibold">
                 You're not Alone
               </h4>
             </template>
             <div class="relative mb-7">
-              <p class="text-lg lg:text-xl">
+              <p class="text-sm lg:text-base">
                 Consistency Over Motivation. You don’t have to face your fitness
                 goals alone. Let us do it TOGETHER.
               </p>
               <p
-                class="absolute right-16 top-32 lg:right-8 lg:top-28 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
+                class="absolute right-16 top-16 lg:right-6 lg:top-28 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
               >
                 01
               </p>
@@ -44,7 +44,7 @@
             </template>
           </CardItem>
         </div>
-        <div class="relative center-img bg-gray-200 w-[489px] h-[647px]">
+        <div class="relative center-img bg-gray-200 lg:w-[489px] h-[647px]">
           <p
             class="absolute h-full w-full bg-gradient-to-b from-transparent to-[#1f1f1f] bg-opacity-90"
           />
@@ -433,8 +433,8 @@ const eventsAndNews = ref([
 
 @media screen and (max-width: 640px) {
   .center-img {
-    width: 340px;
-    height: 495px;
+    width: 320px;
+    height: 455px;
     margin-top: 25px;
     margin-left: auto;
     margin-right: auto;
