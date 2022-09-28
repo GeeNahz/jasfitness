@@ -149,10 +149,10 @@
           <div class="h-32 flex items-center justify-center">
             <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
               <img
-                src="@/assets/icons/company-logo-medium.png"
+                src="@/assets/icons/JasFitnessCenter.png"
                 alt="logo"
-                width="81"
-                height="79"
+                width="146"
+                height="144"
               />
             </router-link>
           </div>
