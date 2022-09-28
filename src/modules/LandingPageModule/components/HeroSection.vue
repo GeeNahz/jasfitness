@@ -20,20 +20,14 @@
       </div>
     </div>
     <div
-      class="relative overflow-hidden font-inter rounded-b-xl h-[90%] lg:h-full w-full mb-10"
+      class="relative overflow-hidden font-inter rounded-b-xl h-full w-full mb-10"
     >
       <div
         class="absolute h-full w-full bg-gradient-to-b from-transparent to-black bg-opacity-80"
       ></div>
-      <video
-        autoplay
-        muted
-        loop
-        class="h-full w-full"
-        width="1920"
-        height="778"
-        src="https://assets.mixkit.co/videos/preview/mixkit-muscular-man-doing-crossfit-exercises-23353-large.mp4"
-      ></video>
+      <video autoplay muted loop class="h-full w-full">
+        <source src="@/assets/Display-video.mp4" />
+      </video>
       <div
         class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 text-white"
       >
