@@ -163,7 +163,10 @@
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 md:gap-2 mt-3">
+                <a
+                  class="flex gap-1 md:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
+                  href="https://"
+                >
                   <p class="font-inter font-bold text-sm md:text-xl">
                     Anna Orefi
                   </p>
@@ -171,7 +174,7 @@
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
                   />
-                </div>
+                </a>
               </template>
             </CardItem>
           </div>
@@ -191,7 +194,9 @@
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 lg:gap-2 mt-3">
+                <a
+                  class="flex gap-1 lg:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
+                >
                   <p class="font-inter font-bold text-sm md:text-xl">
                     Afolalu Oluyemisi
                   </p>
@@ -199,7 +204,7 @@
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
                   />
-                </div>
+                </a>
               </template>
             </CardItem>
           </div>
@@ -218,7 +223,9 @@
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 md:gap-2 mt-3">
+                <a
+                  class="flex gap-1 md:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
+                >
                   <p class="font-inter font-bold text-sm md:text-xl">
                     Ijeoma Jennifer
                   </p>
@@ -226,7 +233,7 @@
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="google review"
                   />
-                </div>
+                </a>
               </template>
             </CardItem>
           </div>
