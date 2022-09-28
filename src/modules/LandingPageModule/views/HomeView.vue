@@ -157,14 +157,14 @@
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-sm md:text-xl font-medium">
+                <p class="text-xs md:text-lg font-medium">
                   “Once you stop by Jas Gym. You shall get hooked. Excellent
                   Customer Service.”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 md:gap-2 mt-1 md:mt-3">
-                  <p class="font-inter font-bold text-sm md:text-2xl">
+                <div class="flex gap-1 md:gap-2 mt-3">
+                  <p class="font-inter font-bold text-sm md:text-xl">
                     Anna Orefi
                   </p>
                   <img
@@ -185,14 +185,14 @@
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-sm md:text-xl font-medium">
+                <p class="text-xs md:text-lg font-medium">
                   “Friendly environment and instructors. Most importantly, I
                   really appreciate the checking up on clients.”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 lg:gap-2 mt-1 md:mt-3">
-                  <p class="font-inter font-bold text-sm md:text-2xl">
+                <div class="flex gap-1 lg:gap-2 mt-3">
+                  <p class="font-inter font-bold text-sm md:text-xl">
                     Afolalu Oluyemisi
                   </p>
                   <img
@@ -211,15 +211,15 @@
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-sm md:text-xl font-medium">
+                <p class="text-xs md:text-lg font-medium">
                   “Spending my post partum moment @jasfitness is one of the best
                   decision I have made in life. I love what I’m getting
                   💯💯💯💯”
                 </p>
               </template>
               <template #default>
-                <div class="flex gap-1 md:gap-2 mt-1 md:mt-3">
-                  <p class="font-inter font-bold text-sm md:text-2xl">
+                <div class="flex gap-1 md:gap-2 mt-3">
+                  <p class="font-inter font-bold text-sm md:text-xl">
                     Ijeoma Jennifer
                   </p>
                   <img
@@ -448,6 +448,9 @@ const eventsAndNews = ref([
   .single-review {
     width: 270px;
     height: max-content;
+  }
+  .item {
+    padding: 20px 40px;
   }
   .img {
     top: 30%;
