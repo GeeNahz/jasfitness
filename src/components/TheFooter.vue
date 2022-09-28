@@ -43,15 +43,15 @@
         <ul
           class="lg:space-y-[14px] flex flex-col justify-center gap-4 lg:block"
         >
-          <li class="flex gap-[24px] lg:gap-12 items-center">
+          <li class="flex gap-[22px] lg:gap-12 items-center">
             <p>Monday - Saturday</p>
             <p>6.00AM - 9.00PM</p>
           </li>
-          <li class="flex gap-14 lg:gap-24 items-center">
+          <li class="flex gap-12 lg:gap-20 items-center">
             <p>Public Holidays</p>
             <p>6.00AM - 8.00PM</p>
           </li>
-          <li class="flex gap-[106px] lg:gap-[170px] items-center">
+          <li class="flex gap-[92px] lg:gap-[137px] items-center">
             <p>Cleaning</p>
             <p>1.00PM - 4.00PM</p>
           </li>
