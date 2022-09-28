@@ -8,14 +8,14 @@
       <section
         class="py-12 mx-3 lg:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-11 lg:gap-y-0"
       >
-        <div class="relative w-[366px] lg:h-[400px]">
+        <div class="relative w-[366px] h-max lg:h-[400px]">
           <h4
             class="lg:absolute -top-28 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
           >
             Why jas fitness?
           </h4>
           <CardItem
-            class="mx-auto w-[310px] lg:w-full h-[280px] lg:h-full py-8 lg:py-12 px-3 card-item"
+            class="mx-auto w-[310px] lg:w-full h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
           >
             <template #top>
               <h4 class="pb-3 lg:pb-7 text-xl lg:text-3xl font-semibold">
@@ -23,12 +23,12 @@
               </h4>
             </template>
             <div class="relative mb-7">
-              <p class="text-sm lg:text-base">
+              <p class="text-xs lg:text-base">
                 Consistency Over Motivation. You don’t have to face your fitness
                 goals alone. Let us do it TOGETHER.
               </p>
               <p
-                class="absolute right-16 top-16 lg:right-6 lg:top-28 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
+                class="absolute -right-4 top-16 lg:-right-10 lg:top-32 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
               >
                 01
               </p>
@@ -65,7 +65,7 @@
           <CardItem class="h-64 card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
+                <h4 class="text-xl lg:text-3xl font-semibold mb-1">
                   Get Inspired
                 </h4>
                 <p
@@ -75,7 +75,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-sm lg:text-lg font-normal">
+            <p class="card-item-body text-xs lg:text-lg font-normal">
               Consistencty over motiveation. Meet like minded FitFam, who are
               committed to a life of healthy living and more.
             </p>
@@ -368,6 +368,9 @@ const eventsAndNews = ref([
   background: rgba(224, 224, 224, 0.24);
 }
 .card-item.card-set {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 30px 50px;
 }
 .card-item .card-item-btns {
