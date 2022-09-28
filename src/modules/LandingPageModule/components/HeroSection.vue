@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-start items-center lg:space-x-48 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
+    class="flex justify-between items-center lg:space-x-48 bg-none lg:bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
   >
     <div class="hidden lg:block bg-none font-inter text-white">
       <p class="text-3xl font-semibold mb-8">
@@ -20,16 +20,25 @@
       </div>
     </div>
     <div
-      class="relative overflow-hidden font-inter rounded-b-xl h-full w-full mb-10"
+      class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl lg:h-full w-max lg:mb-10"
     >
       <div
         class="absolute h-full w-full bg-gradient-to-b from-transparent to-black bg-opacity-80"
       ></div>
-      <video autoplay muted loop class="w-full">
-        <source src="@/assets/Display-video.mp4" />
+      <video
+        autoplay
+        muted
+        loop
+        width="1920"
+        height="1080"
+        src="@/assets/Display-video.mp4"
+        class="w-full h-full"
+      >
+        Sorry, your bowser doesn't support HTML5 <code>video</code>
+        <!-- <source  /> -->
       </video>
       <div
-        class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 text-white"
+        class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
       >
         <p class="text-xl text-center font-semibold mb-8">
           No one else got your chest, shoulder, back, abs, and leg like we do

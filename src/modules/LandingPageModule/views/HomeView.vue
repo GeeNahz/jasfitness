@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-    <div class="h-full overflow-hidden">
+    <div class="lg:h-full overflow-hidden">
       <HeroSection />
     </div>
     <main>
