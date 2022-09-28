@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-start items-center lg:space-x-48 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-[95%] lg:h-full w-full lg:pl-32"
+    class="flex justify-start items-center lg:space-x-48 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
   >
     <div class="hidden lg:block bg-none font-inter text-white">
       <p class="text-3xl font-semibold mb-8">
