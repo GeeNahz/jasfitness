@@ -159,7 +159,7 @@
           <!-- links -->
           <div class="my-10">
             <ul
-              class="flex flex-col gap-10 items-center justify-center font-semibold text-xl"
+              class="flex flex-col gap-10 items-center justify-center capitalize font-semibold text-xl"
             >
               <li class="nav-item">
                 <router-link class="nav-link" :to="{ name: 'LandingPageHome' }"
