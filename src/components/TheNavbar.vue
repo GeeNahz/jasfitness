@@ -144,7 +144,7 @@
         @click.self="toggleNavbar"
         class="fixed top-0 left-0 z-50 h-full w-full bg-[#1f1f1f] bg-opacity-50 rounded-br-xl shadow overflow-hidden"
       >
-        <div class="inner bg-white h-full w-[60%] px-10 py-4">
+        <div class="inner bg-white h-full w-[75%] px-10 py-4">
           <!-- logo -->
           <div class="h-32 flex items-center justify-center">
             <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
