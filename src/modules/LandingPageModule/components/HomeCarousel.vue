@@ -3,7 +3,7 @@
     <Carousel :autoplay="5000" :wrap-around="true">
       <Slide v-for="(slide, i) in items" :key="i">
         <div
-          class="carousel__item relative h-full bg-cover bg-center"
+          class="carousel__item relative bg-cover bg-no-repeat bg-center"
           :style="`background-image: url(${getImageUrl(slide.imageName)})`"
         >
           <div
@@ -61,8 +61,7 @@ const getImageUrl = (image) => {
 <style scoped>
 .carousel__item {
   min-height: 200px;
-  height: 300px;
-  width: 100%;
+  width: 200px;
   background-color: blueviolet;
   color: #e2e2e2;
   font-size: 20px;
