@@ -1,9 +1,9 @@
 <template>
   <div
-    class="flex justify-start items-center lg:space-x-28 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-[95%] lg:h-full w-full lg:pl-40"
+    class="flex justify-start items-center lg:space-x-48 bg-[url(/src/modules/LandingPageModule/assets/hero.png)] h-[95%] lg:h-full w-full md:pl-32"
   >
-    <div class="hidden lg:block bg-none font-inter text-white pr-10">
-      <p class="w-[715px] text-4xl font-semibold mb-8">
+    <div class="hidden lg:block bg-none font-inter text-white">
+      <p class="text-3xl font-semibold mb-8">
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
       <div class="btns flex space-x-7">
