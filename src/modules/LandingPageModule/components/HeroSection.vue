@@ -25,7 +25,7 @@
       <div
         class="absolute h-full w-full bg-gradient-to-b from-transparent to-black bg-opacity-80"
       ></div>
-      <video autoplay muted loop class="h-full w-full">
+      <video autoplay muted loop class="w-full">
         <source src="@/assets/Display-video.mp4" />
       </video>
       <div
