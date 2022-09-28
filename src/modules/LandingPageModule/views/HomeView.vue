@@ -35,11 +35,12 @@
             </div>
             <template #bottom>
               <div>
-                <button
-                  class="btn-default bg-[#1f1f1f] w-[130px] h-[45px] lg:w-[193px] lg:h-[54px] text-sm lg:text-base text-white"
+                <router-link
+                  to="/about"
+                  class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] lg:w-[193px] lg:h-[54px] text-sm lg:text-base transition-all"
                 >
                   Join Community
-                </button>
+                </router-link>
               </div>
             </template>
           </CardItem>
@@ -80,7 +81,7 @@
               committed to a life of healthy living and more.
             </p>
             <template #bottom>
-              <div class="card-item-btns">
+              <router-link to="/about" class="card-item-btns">
                 <img
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
@@ -88,7 +89,7 @@
                 <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
                   Get Started
                 </p>
-              </div>
+              </router-link>
             </template>
           </CardItem>
           <CardItem class="h-64 card-item card-set">
@@ -367,7 +368,11 @@ const eventsAndNews = ref([
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #f9f9f9;
   border-radius: 10px;
+}
+.btn-default:hover {
+  color: #1f1f1f;
 }
 
 .card-item {
@@ -383,7 +388,10 @@ const eventsAndNews = ref([
 .card-item .card-item-btns {
   display: flex;
   align-items: center;
-  padding-top: 10px;
+}
+.card-item .card-item-btns:hover {
+  color: goldenrod;
+  cursor: pointer;
 }
 .center-img {
   border-radius: 10px;
