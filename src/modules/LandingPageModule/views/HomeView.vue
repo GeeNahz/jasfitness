@@ -351,7 +351,7 @@ const eventsAndNews = ref([
 const reviews = ref([
   {
     name: 'Anna Orefi',
-    reviewUrl: 'https://',
+    reviewUrl: 'https://g.co/kgs/HGNLV5',
     imageUrl: '',
     imageAlt: 'A',
     review:
@@ -360,7 +360,7 @@ const reviews = ref([
   },
   {
     name: 'Afolalu Oluyemisi',
-    reviewUrl: 'https://',
+    reviewUrl: 'https://g.co/kgs/kFqo4m',
     imageUrl: '',
     imageAlt: 'A',
     review:
@@ -369,7 +369,7 @@ const reviews = ref([
   },
   {
     name: 'Ijeoma Jennifer',
-    reviewUrl: 'https://',
+    reviewUrl: 'https://g.co/kgs/DK1KnL',
     imageUrl: 'IjeomaJennifer.png',
     imageAlt: 'I',
     review:
