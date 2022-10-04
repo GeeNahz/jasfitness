@@ -11,9 +11,9 @@
       <div class="relative">
         <div
           @click="toggleBmi"
-          class="absolute right-0 -top-10 border-2 border-[#282a36] h-8 w-8 rounded-full text-xl flex justify-center items-center text-[#282a36] hover:cursor-pointer"
+          class="absolute right-0 -top-10 border-2 border-white h-8 w-8 rounded-full text-base flex justify-center text-white hover:cursor-pointer"
         >
-          x
+          <p>x</p>
         </div>
         <LandingPageBmiCalculator />
       </div>
