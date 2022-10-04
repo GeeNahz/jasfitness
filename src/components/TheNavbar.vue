@@ -199,7 +199,7 @@
 
           <div
             @click="toggleNavbar"
-            class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-[#1f1f1f] mx-auto my-16 font-bold"
+            class="w-8 h-8 rounded-full flex items-center justify-center border-2 border-[#1f1f1f] mx-auto my-16 font-bold hover:cursor-pointer"
           >
             X
           </div>
