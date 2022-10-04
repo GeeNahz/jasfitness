@@ -12,6 +12,7 @@
           <!-- <keep-alive>
             <component is=""></component>
           </keep-alive> -->
+
           <BmiCalculatorHeight
             v-if="currentComponent === 0"
             @update="setBmiData"
@@ -96,7 +97,6 @@ export default {
       }, 3000)
     },
     calculateBMI() {
-      console.log(this.weight)
       let newWeight = this.data.weight
       let newHeight = this.data.height
 
@@ -112,9 +112,6 @@ export default {
         if (this.data.weightUnit === 'lb') {
           newWeight = this.data.weight * 0.453592
         }
-
-        console.log(newWeight)
-        console.log(newHeight)
 
         this.data.bmi = newWeight / (newHeight * newHeight)
         this.data.bmi = Math.round((this.data.bmi + Number.EPSILON) * 100) / 100
