@@ -3,6 +3,7 @@
     <div class="lg:h-full overflow-hidden relative">
       <HeroSection @showBmiCalculator="toggleBmi" />
     </div>
+    <!-- bmi calculator -->
     <div
       v-if="showBmi"
       class="z-50 bg-gray-200 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
