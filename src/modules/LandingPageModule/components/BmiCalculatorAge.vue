@@ -6,18 +6,31 @@
       </p>
       <label><input type="checkbox" v-model="isChild" /> Are you a child</label>
     </div>
-    <form @input="submit" @change="submit" class="flex flex-col gap-2">
-      <label v-if="isChild">
+    <form @change="submit" class="flex flex-col gap-2">
+      <label v-if="isChild" class="space-x-2">
         Age range:
-        <input type="radio" v-model="userAgeRange" value="<5" /> &lt;5
-        <input type="radio" v-model="userAgeRange" value="5-10" /> 5-10
-        <input type="radio" v-model="userAgeRange" value="11-19" /> 11-19
+        <label v-for="age in ageRangeChild" :key="age.value" :for="age.value">
+          <input
+            type="radio"
+            :id="age.value"
+            v-model="userAgeRange"
+            :value="age.value"
+          />
+          {{ age.text }}
+        </label>
       </label>
-      <label v-else>
+
+      <label v-else class="space-x-2">
         Age range:
-        <input type="radio" v-model="userAgeRange" value="20-44" /> 20-44
-        <input type="radio" v-model="userAgeRange" value="45-64" /> 45-64
-        <input type="radio" v-model="userAgeRange" value=">64" /> &gt;64
+        <label v-for="age in ageRangeAdult" :key="age.value" :for="age.value">
+          <input
+            type="radio"
+            :id="age.value"
+            v-model="userAgeRange"
+            :value="age.value"
+          />
+          {{ age.text }}
+        </label>
       </label>
     </form>
   </div>
@@ -25,6 +38,17 @@
 
 <script setup>
 import { ref, defineComponent } from 'vue'
+
+const ageRangeChild = ref([
+  { value: '<5', text: '< 5' },
+  { value: '5-10', text: '5 - 10' },
+  { value: '11-19', text: '11 - 19' }
+])
+const ageRangeAdult = ref([
+  { value: '20-44', text: '20 - 44' },
+  { value: '45-64', text: '45 - 64' },
+  { value: '>60', text: '> 60' }
+])
 
 defineComponent({
   name: 'BmiCalculatorAge'
@@ -51,11 +75,12 @@ const checkValidFields = () => {
 }
 
 const submit = () => {
+  console.log(userAgeRange.value)
   checkValidFields()
   emit('update', {
     data: {
-      ageRange: parseInt(userAgeRange.value)
-      // weightUnit: userWeightUnit.value
+      ageRange: userAgeRange.value,
+      isChild: isChild.value
     },
     isValid: validFields.value
   })
