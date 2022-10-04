@@ -21,7 +21,7 @@
       </div>
     </div>
     <div
-      class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl lg:h-full w-full lg:w-auto lg:mb-10"
+      class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl h-[100vh] lg:h-full w-full lg:w-auto lg:mb-10"
     >
       <div
         class="absolute h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
