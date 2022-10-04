@@ -1,7 +1,21 @@
 <template>
-  <div class="h-full">
-    <div class="lg:h-full overflow-hidden">
-      <HeroSection />
+  <div class="h-full relative">
+    <div class="lg:h-full overflow-hidden relative">
+      <HeroSection @showBmiCalculator="toggleBmi" />
+    </div>
+    <div
+      v-if="showBmi"
+      class="z-50 bg-gray-200 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
+    >
+      <div class="relative">
+        <div
+          @click="toggleBmi"
+          class="absolute right-0 -top-10 border-2 border-[#282a36] h-8 w-8 rounded-full text-xl flex justify-center items-center text-[#282a36] hover:cursor-pointer"
+        >
+          x
+        </div>
+        <LandingPageBmiCalculator />
+      </div>
     </div>
     <main>
       <!-- why jas fitness section -->
@@ -302,6 +316,7 @@ import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import HomeCarousel from '../components/HomeCarousel.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
+import LandingPageBmiCalculator from '../components/LandingPageBmiCalculator.vue'
 
 import { ref } from 'vue'
 
@@ -356,10 +371,77 @@ const reviews = ref([
   }
 ])
 
+// const plans = ref([
+//   {
+//     slug: 'BUSY-BEE',
+//     price: 'N15,000',
+//     billing: 'BILLED QUARTERLY',
+//     offers: [
+//       '15% Price Discount',
+//       'ALL Day Access',
+//       'FREE Group Classes',
+//       '1 Guest Pass Per Month'
+//     ]
+//   },
+//   {
+//     slug: 'PASSER-BY',
+//     price: 'N20,000',
+//     billing: 'BILLED MONTHLY',
+//     offers: [
+//       'NO Price Discount',
+//       'ACCESS Once Daily',
+//       'PERSONAL Dashboard For Tracking Fitness Records',
+//       'FREE Group Classes',
+//       'NO Guest Passes',
+//       'NO Freeze Subscription Request'
+//     ]
+//   },
+//   {
+//     slug: 'TOO-SURE',
+//     price: 'N51,000',
+//     billing: 'BILLED QUARTERLY',
+//     offers: [
+//       '15% Price Discount',
+//       'ALL Day Access',
+//       'PERSONAL Dashboard For Tracking Fitness Records',
+//       'FREE Group Classes',
+//       '1 Guest Pass per Month',
+//       '4 Days per Subscription Freeze Request'
+//     ]
+//   },
+//   {
+//     slug: 'REAL-DEAL',
+//     price: 'N96,000',
+//     billing: 'BILLED BI-YEARLY',
+//     offers: [
+//       '20% Price Discount',
+//       'ALL Day Access',
+//       'PERSONAL Dashboard For Tracking Fitness Records',
+//       'FREE Group Classes',
+//       '2 Guest Pass per Month',
+//       '8 Days per Subscription Freeze Request'
+//     ]
+//   },
+//   {
+//     slug: 'ODOGWU',
+//     price: 'N168,000',
+//     billing: 'BILLED YEARLY',
+//     offers: [
+//       '30% Price Discount',
+//       'ALL Day Access',
+//       'PERSONAL Dashboard For Tracking Fitness Records',
+//       'FREE Group Classes',
+//       '3 Guest Pass per Month',
+//       '14 Days per Subscription Freeze Request'
+//     ]
+//   }
+// ])
+
 const reviewPosition = (index) => index % 2 === 0
-const getImageUrl = (imageName) => {
-  return require(`@/assets/${imageName}`)
-}
+const getImageUrl = (imageName) => require(`@/assets/${imageName}`)
+
+const showBmi = ref(true)
+const toggleBmi = () => (showBmi.value = !showBmi.value)
 </script>
 
 <style scoped>
