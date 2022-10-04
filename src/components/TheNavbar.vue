@@ -8,10 +8,10 @@
         <!-- logo -->
         <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
           <img
-            src="@/assets/icons/company-logo-medium.png"
+            src="@/assets/icons/JasFitnessCenter.png"
             alt="logo"
-            width="60"
-            height="59"
+            width="146"
+            height="144"
           />
         </router-link>
         <!-- links -->
