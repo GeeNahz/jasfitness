@@ -3,8 +3,6 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import ImageKit from 'imagekitio-vue'
-
 import { plugin, defaultConfig } from '@formkit/vue'
 import { generateClasses } from '@formkit/themes'
 import formkitTheme from '../formkitTheme'
@@ -33,9 +31,4 @@ createApp(App)
       }
     })
   )
-  .use(ImageKit, {
-    urlEndpoint: '',
-    publicKey: '',
-    authenticationEndpoint: ''
-  })
   .mount('#app')
