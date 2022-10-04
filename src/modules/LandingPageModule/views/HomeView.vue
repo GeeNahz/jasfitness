@@ -25,7 +25,7 @@
       >
         <div class="relative w-[366px] h-max lg:h-[400px]">
           <h4
-            class="lg:absolute -top-28 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
+            class="lg:absolute -top-20 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
           >
             Why jas fitness?
           </h4>
