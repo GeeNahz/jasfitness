@@ -38,7 +38,7 @@
         Sorry, your bowser doesn't support HTML5 <code>video</code>
       </video>
       <div
-        class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
+        class="lg:hidden absolute bottom-20 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
       >
         <p class="text-xl text-center font-semibold mb-8">
           No one else got your chest, shoulder, back, abs, and leg like we do
