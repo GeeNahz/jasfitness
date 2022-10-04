@@ -12,11 +12,12 @@
           :to="{ name: 'LandingPageHome' }"
           >Get Started</router-link
         >
-        <router-link
+        <button
+          @click="openBmiCalculator"
           class="text-xl font-bold text-white bg-[#FFB628] w-52 h-14 btn-default"
-          :to="{ name: 'LandingPageHome' }"
-          >What's Your BMI?</router-link
         >
+          What's Your BMI?
+        </button>
       </div>
     </div>
     <div
@@ -58,7 +59,12 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const emit = defineEmits(['showBmiCalculator'])
+const openBmiCalculator = () => {
+  emit('showBmiCalculator')
+}
+</script>
 
 <style scoped>
 .btn-default {
