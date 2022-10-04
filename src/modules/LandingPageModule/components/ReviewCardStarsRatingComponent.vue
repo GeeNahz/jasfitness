@@ -74,7 +74,7 @@ export default {
     display: block;
   }
   .star {
-    width: 1.5rem;
+    width: 1rem;
   }
 }
 </style>
