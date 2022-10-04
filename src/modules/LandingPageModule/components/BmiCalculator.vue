@@ -9,11 +9,15 @@
         <div
           class="main-contents h-[75%] mb-1 flex justify-center items-center"
         >
-          <!-- <keep-alive>
-            <component is=""></component>
-          </keep-alive> -->
+          <keep-alive>
+            <component
+              :is="currentStep"
+              @update="setBmiData"
+              :wizard="data"
+            ></component>
+          </keep-alive>
 
-          <BmiCalculatorHeight
+          <!-- <BmiCalculatorHeight
             v-if="currentComponent === 0"
             @update="setBmiData"
             :wizard="data"
@@ -27,7 +31,7 @@
             v-if="currentComponent === 2"
             @update="setBmiData"
             :wizard="data"
-          />
+          /> -->
         </div>
         <div class="nav-btns">
           <button v-if="!firstForm" @click="back" class="btns float-left">
@@ -209,7 +213,13 @@ export default {
       return this.currentComponent === 0
     },
     lastForm() {
-      return this.currentComponent === this.forms.length - 1
+      return this.currentComponent === this.length - 1
+    },
+    currentStep() {
+      return this.forms[this.currentComponent]
+    },
+    lenth() {
+      return this.forms.length
     }
   }
 }
