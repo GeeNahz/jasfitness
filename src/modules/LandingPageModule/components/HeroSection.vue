@@ -26,15 +26,16 @@
       <div
         class="absolute h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
       ></div>
-      <video
-        autoplay
-        muted
-        loop
-        src="@/assets/Display-video.mp4"
-        class="w-full h-full object-fill"
-      >
+      <video autoplay muted loop class="w-full h-full object-fill">
+        <source
+          src="https://ik.imagekit.io/m0adxj6it/Landing-page-video_Ztbe-tue0.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664916192001"
+          type="video/mp4"
+        />
+        <source
+          src="https://ik.imagekit.io/m0adxj6it/Landing-page-video_Ztbe-tue0.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664916192001"
+          type="video/webm"
+        />
         Sorry, your bowser doesn't support HTML5 <code>video</code>
-        <!-- <source  /> -->
       </video>
       <div
         class="lg:hidden absolute bottom-0 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
