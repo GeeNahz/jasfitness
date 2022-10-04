@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="w-[100vw] h-20 md:h-24 py-7 px-6 lg:px-16 fixed z-50 transition-all duration-300"
+      class="w-[100vw] h-20 md:h-24 py-7 pr-6 lg:px-16 fixed z-50 transition-all duration-300"
       :class="{ 'bg-white shadow-md': showWhiteBackground }"
     >
       <div class="flex justify-between h-full items-center capitalize">
@@ -10,7 +10,7 @@
           <img
             src="@/assets/icons/JasFitnessCenter.png"
             alt="logo"
-            width="146"
+            width="116"
             height="144"
           />
         </router-link>
