@@ -75,7 +75,6 @@ const checkValidFields = () => {
 }
 
 const submit = () => {
-  console.log(userAgeRange.value)
   checkValidFields()
   emit('update', {
     data: {
