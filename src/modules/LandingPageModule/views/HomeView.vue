@@ -199,10 +199,10 @@
                 </div>
               </template>
               <a
-                class="flex gap-1 md:gap-2 mt-3 mb-0 hover:cursor-pointer hover:text-yellow-600"
+                class="flex gap-1 items-center md:gap-2 mt-2 mb-0 hover:cursor-pointer hover:text-yellow-500"
                 :href="review.reviewUrl"
               >
-                <p class="font-inter font-bold text-sm md:text-xl">
+                <p class="font-inter font-bold text-sm md:text-xl mb-2">
                   {{ review.name }}
                 </p>
                 <img
