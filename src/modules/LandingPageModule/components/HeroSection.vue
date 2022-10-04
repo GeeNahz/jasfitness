@@ -3,7 +3,7 @@
     class="flex justify-between items-center gap-x-64 bg-none lg:bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
   >
     <div class="hidden lg:block bg-none font-inter text-white md:w-[40%]">
-      <p class="text-3xl font-semibold mb-8">
+      <p class="text-3xl font-normal mb-8">
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
       <div class="btns flex space-x-7">
