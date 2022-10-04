@@ -33,12 +33,12 @@
             class="mx-auto w-[310px] lg:w-[310px] h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
           >
             <template #top>
-              <h4 class="pb-3 lg:pb-7 text-xl lg:text-3xl font-semibold">
+              <h4 class="pb-3 lg:pb-7 text-2xl lg:text-3xl font-semibold">
                 You're not Alone
               </h4>
             </template>
             <div class="relative mb-7">
-              <p class="text-xs lg:text-base">
+              <p class="text-sm lg:text-base">
                 Consistency Over Motivation. You don’t have to face your fitness
                 goals alone. Let us do it TOGETHER.
               </p>
@@ -81,7 +81,7 @@
           <CardItem class="h-64 card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-xl lg:text-3xl font-semibold mb-1">
+                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
                   Get Inspired
                 </h4>
                 <p
@@ -91,7 +91,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-xs lg:text-base font-normal">
+            <p class="card-item-body text-sm lg:text-base font-normal">
               Consistencty over motiveation. Meet like minded FitFam, who are
               committed to a life of healthy living and more.
             </p>
