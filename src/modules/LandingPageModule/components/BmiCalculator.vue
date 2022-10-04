@@ -41,23 +41,10 @@
         <pre>{{ data }}</pre>
       </div>
     </div>
-    <!-- <AppAlertComponent /> -->
-    <!-- <div class="hidden lg:inline bmi-image">
-      <img
-        :src="
-          isChild
-            ? 'https://www.bcm.edu/bodycomplab/BMIapp/BMIexpl.png'
-            : 'https://surgicaltechie.com/wp-content/uploads/2019/03/bmi-300x225.jpg'
-        "
-        alt="bmi image"
-        class="w-full h-full"
-      />
-    </div> -->
   </div>
 </template>
 
 <script>
-// import AppAlertComponent from '@/components/AppAlertComponent.vue'
 import BmiCalculatorHeight from '../components/BmiCalculatorHeight.vue'
 import BmiCalculatorWeight from '../components/BmiCalculatorWeight.vue'
 import BmiCalculatorAge from '../components/BmiCalculatorAge.vue'
