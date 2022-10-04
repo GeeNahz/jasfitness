@@ -9,6 +9,9 @@
         <div
           class="main-contents h-[75%] mb-1 flex justify-center items-center"
         >
+          <!-- <keep-alive>
+            <component is=""></component>
+          </keep-alive> -->
           <BmiCalculatorHeight
             v-if="currentComponent === 0"
             @update="setBmiData"
@@ -59,6 +62,8 @@ export default {
     return {
       forms: ['BmiCalculatorHeight', 'BmiCalculatorWeight', 'BmiCalculatorAge'],
       currentComponent: 0,
+      displayBmiModal: false,
+      emptyField: false,
       data: {
         height: '',
         weight: '',
@@ -66,8 +71,6 @@ export default {
         weightUnit: 'kg',
         bmi: '',
         fitnessAdvice: '',
-        displayBmiModal: false,
-        emptyField: false,
         ageRange: '',
         isChild: false,
         gender: 'm'
@@ -93,89 +96,97 @@ export default {
       }, 3000)
     },
     calculateBMI() {
-      let newWeight = this.weight
-      let newHeight = this.height
+      console.log(this.weight)
+      let newWeight = this.data.weight
+      let newHeight = this.data.height
 
       if (newWeight === '' || newHeight === '') {
         this.showWarning()
       } else {
-        if (this.heightUnit === 'cm') {
-          newHeight = this.height * 0.01
+        if (this.data.heightUnit === 'cm') {
+          newHeight = this.data.height * 0.01
         }
-        if (this.heightUnit === 'in') {
-          newHeight = this.height * 0.0254
+        if (this.data.heightUnit === 'in') {
+          newHeight = this.data.height * 0.0254
         }
-        if (this.weightUnit === 'lb') {
-          newWeight = this.weight * 0.453592
+        if (this.data.weightUnit === 'lb') {
+          newWeight = this.data.weight * 0.453592
         }
 
-        this.bmi = newWeight / (newHeight * newHeight)
-        this.bmi = Math.round((this.bmi + Number.EPSILON) * 100) / 100
+        console.log(newWeight)
+        console.log(newHeight)
+
+        this.data.bmi = newWeight / (newHeight * newHeight)
+        this.data.bmi = Math.round((this.data.bmi + Number.EPSILON) * 100) / 100
 
         // check if isChild is true
-        if (this.isChild) {
-          if (this.ageRange === '<5') {
-            if (this.bmi > 18) {
-              this.fitnessAdvice = 'You are obesed'
-            } else if (this.bmi > 17) {
-              this.fitnessAdvice = 'You are overweighed and risk being obesed'
-            } else if (this.bmi >= 14 && this.bmi < 17) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi < 14) {
-              this.fitnessAdvice = 'You are underweighed'
+        if (this.data.isChild) {
+          if (this.data.ageRange === '<5') {
+            if (this.data.bmi > 18) {
+              this.data.fitnessAdvice = 'You are obesed'
+            } else if (this.data.bmi > 17) {
+              this.data.fitnessAdvice =
+                'You are overweighed and risk being obesed'
+            } else if (this.data.bmi >= 14 && this.data.bmi < 17) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi < 14) {
+              this.data.fitnessAdvice = 'You are underweighed'
             }
-          } else if (this.ageRange === '5-10') {
-            if (this.bmi > 18) {
-              this.fitnessAdvice = 'You are obesed'
-            } else if (this.bmi > 19 && this.bmi < 22) {
-              this.fitnessAdvice = 'You are overweighed'
-            } else if ((this.bmi > 13 && this.bmi < 18) || this.bmi > 32) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi < 13) {
-              this.fitnessAdvice = 'You are underweighed'
+          } else if (this.data.ageRange === '5-10') {
+            if (this.data.bmi > 18) {
+              this.data.fitnessAdvice = 'You are obesed'
+            } else if (this.data.bmi > 19 && this.data.bmi < 22) {
+              this.data.fitnessAdvice = 'You are overweighed'
+            } else if (
+              (this.data.bmi > 13 && this.data.bmi < 18) ||
+              this.data.bmi > 32
+            ) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi < 13) {
+              this.data.fitnessAdvice = 'You are underweighed'
             }
-          } else if (this.ageRange === '11-19') {
-            if (this.bmi > 31) {
-              this.fitnessAdvice = 'You are obesed'
-            } else if (this.bmi >= 23 && this.bmi <= 31) {
-              this.fitnessAdvice = 'You are overweighed'
-            } else if (this.bmi >= 14 && this.bmi < 23) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi < 14) {
-              this.fitnessAdvice = 'You are underweighed'
+          } else if (this.data.ageRange === '11-19') {
+            if (this.data.bmi > 31) {
+              this.data.fitnessAdvice = 'You are obesed'
+            } else if (this.data.bmi >= 23 && this.data.bmi <= 31) {
+              this.data.fitnessAdvice = 'You are overweighed'
+            } else if (this.data.bmi >= 14 && this.data.bmi < 23) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi < 14) {
+              this.data.fitnessAdvice = 'You are underweighed'
             }
           }
         } else {
           // make advice for adult
-          if (this.ageRange === '20-44') {
-            if (this.bmi > 17.29 && this.bmi <= 22.59) {
-              this.fitnessAdvice = 'You are underweighed'
-            } else if (this.bmi > 22.59 && this.bmi <= 26.19) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi > 26.19 && this.bmi <= 29.84) {
-              this.fitnessAdvice = 'You are overweighed'
-            } else if (this.bmi > 29.84) {
-              this.fitnessAdvice = 'You are obesed'
+          if (this.data.ageRange === '20-44') {
+            if (this.data.bmi > 17.29 && this.data.bmi <= 22.59) {
+              this.data.fitnessAdvice = 'You are underweighed'
+            } else if (this.data.bmi > 22.59 && this.data.bmi <= 26.19) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi > 26.19 && this.data.bmi <= 29.84) {
+              this.data.fitnessAdvice = 'You are overweighed'
+            } else if (this.data.bmi > 29.84) {
+              this.data.fitnessAdvice = 'You are obesed'
             }
-          } else if (this.ageRange === '45-64') {
-            if (this.bmi < 18.5) {
-              this.fitnessAdvice = 'You are underweighed'
-            } else if (this.bmi >= 18.5 && this.bmi <= 24.9) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi > 24.9 && this.bmi <= 30) {
-              this.fitnessAdvice = 'You are overweighed'
-            } else if (this.bmi > 30) {
-              this.fitnessAdvice = 'You are obesed'
+          } else if (this.data.ageRange === '45-64') {
+            if (this.data.bmi < 18.5) {
+              this.data.fitnessAdvice = 'You are underweighed'
+            } else if (this.data.bmi >= 18.5 && this.data.bmi <= 24.9) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi > 24.9 && this.data.bmi <= 30) {
+              this.data.fitnessAdvice = 'You are overweighed'
+            } else if (this.data.bmi > 30) {
+              this.data.fitnessAdvice = 'You are obesed'
             }
-          } else if (this.ageRange === '>64') {
-            if (this.bmi < 20) {
-              this.fitnessAdvice = 'You are underweighed'
-            } else if (this.bmi >= 20 && this.bmi < 25) {
-              this.fitnessAdvice = 'You are at a healthy range'
-            } else if (this.bmi >= 25 && this.bmi <= 30) {
-              this.fitnessAdvice = 'You are overweighed'
-            } else if (this.bmi > 30) {
-              this.fitnessAdvice = 'You are obesed'
+          } else if (this.data.ageRange === '>64') {
+            if (this.data.bmi < 20) {
+              this.data.fitnessAdvice = 'You are underweighed'
+            } else if (this.data.bmi >= 20 && this.data.bmi < 25) {
+              this.data.fitnessAdvice = 'You are at a healthy range'
+            } else if (this.data.bmi >= 25 && this.data.bmi <= 30) {
+              this.data.fitnessAdvice = 'You are overweighed'
+            } else if (this.data.bmi > 30) {
+              this.data.fitnessAdvice = 'You are obesed'
             }
           }
         }
@@ -188,9 +199,9 @@ export default {
       this.toggleResult()
     },
     clearValues() {
-      this.height = ''
-      this.weight = ''
-      this.fitnessAdvice = ''
+      this.data.height = ''
+      this.data.weight = ''
+      this.data.fitnessAdvice = ''
     },
     toggleResult() {
       this.displayBmiModal = !this.displayBmiModal
