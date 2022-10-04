@@ -15,7 +15,7 @@
         >
           <p>x</p>
         </div>
-        <LandingPageBmiCalculator />
+        <BmiCalculator />
       </div>
     </div>
     <main>
@@ -317,7 +317,7 @@ import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import HomeCarousel from '../components/HomeCarousel.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
-import LandingPageBmiCalculator from '../components/LandingPageBmiCalculator.vue'
+import BmiCalculator from '../components/BmiCalculator.vue'
 
 import { ref } from 'vue'
 
