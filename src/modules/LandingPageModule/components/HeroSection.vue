@@ -48,11 +48,12 @@
             :to="{ name: 'LandingPageHome' }"
             >Get Started</router-link
           >
-          <router-link
+          <button
+            @click="openBmiCalculator"
             class="text-sm text-center font-bold text-white bg-[#FFB628] px-4 py-2 whitespace-nowrap btn-default"
-            :to="{ name: 'LandingPageHome' }"
-            >What's Your BMI?</router-link
           >
+            What's Your BMI?
+          </button>
         </div>
       </div>
     </div>
