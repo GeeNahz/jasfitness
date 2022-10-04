@@ -1,137 +1,48 @@
 <template>
-  <div class="flex gap-4 w-full rounded h-max bg-white p-1">
-    <table class="w-full flex-1 table-auto">
-      <tbody>
-        <tr class="bg-[#fe902d]">
-          <td class="text-4xl text-white py-2 px-3 rounded-t">
-            BMI Calculator
-          </td>
-        </tr>
-        <tr class="bg-gray-200 rounded-b">
-          <td v-if="displayBmiModal" class="py-5 px-3">
-            <button
-              @click="goBack"
-              class="mb-3 bg-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] text-white font-semibold rounded px-3 py-1"
-            >
-              Go Back
-            </button>
-            <p class="items">Your BMI is {{ bmi }}</p>
-            <p class="items">Your diagnosis says: {{ fitnessAdvice }}</p>
-          </td>
-          <td v-else class="text-start py-5 px-3">
-            <div class="space-y-4">
-              <div class="height-items space-x-4">
-                <label
-                  >Height:
-                  <input
-                    class="w-20 md:w-24 lg:w-44 px-2 py-1 rounded"
-                    placeholder="Height"
-                    type="number"
-                    v-model="height"
-                /></label>
-                <select
-                  class="bg-white px-2 py-1 text-sm font-semibold rounded"
-                  v-model="heightUnit"
-                >
-                  <option value="cm">Centimeter</option>
-                  <option value="in">Inches</option>
-                </select>
-              </div>
-              <div class="weight-items space-x-4">
-                <label
-                  >Weight:
-                  <input
-                    class="w-20 md:w-24 lg:w-44 px-2 py-1 rounded"
-                    placeholder="Weight"
-                    type="number"
-                    v-model="weight"
-                /></label>
-                <select
-                  class="bg-white px-2 py-1 text-sm font-semibold rounded"
-                  v-model="weightUnit"
-                >
-                  <option value="kg">Kilogram</option>
-                  <option value="lb">Pounds</option>
-                </select>
-              </div>
-              <div class="age-items space-x-4">
-                <div v-if="isChild" class="child">
-                  <label class="space-x-3"
-                    >Age:
-                    <label>
-                      <input type="radio" value="<5" v-model="ageRange" />
-                      &lt; 5
-                    </label>
-                    <label>
-                      <input type="radio" value="5-10" v-model="ageRange" />
-                      5 - 10
-                    </label>
-                    <label>
-                      <input type="radio" value="11-19" v-model="ageRange" />
-                      11 - 19
-                    </label>
-                  </label>
-                </div>
-                <div v-else class="adult">
-                  <label class="space-x-3"
-                    >Age:
-                    <label>
-                      <input type="radio" value="20-44" v-model="ageRange" />
-                      20 - 44
-                    </label>
-                    <label>
-                      <input type="radio" value="45-64" v-model="ageRange" />
-                      45 - 64
-                    </label>
-                    <label>
-                      <input type="radio" value=">64" v-model="ageRange" />
-                      &gt; 64
-                    </label>
-                  </label>
-                </div>
-              </div>
-              <div v-if="emptyField" class="relative">
-                <AlertComponent
-                  message="Fill up all fields to calculate your BMI"
-                  alertType="warning"
-                  class="absolute top-16"
-                />
-              </div>
-              <div class="md:float-right space-x-3 md:space-y-3 checks">
-                <div class="inline check-gender">
-                  <select
-                    v-model="gender"
-                    class="bg-white px-2 py-1 text-sm font-semibold rounded"
-                  >
-                    <option value="m">Male</option>
-                    <option value="f">Female</option>
-                  </select>
-                </div>
-                <label>
-                  <input type="checkbox" v-model="isChild" />
-                  Are you a child?
-                </label>
-              </div>
-            </div>
-            <div class="buttons space-x-5 mt-4">
-              <button
-                @click="calculateBMI"
-                class="bg-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] text-white font-bold py-2 px-4 rounded"
-              >
-                Calculate
-              </button>
-              <button
-                @click="clearValues"
-                class="text-[#fe902d] hover:bg-[#ffa14f] active:bg-[#e99348] font-semibold hover:text-white py-2 px-4 border-t border-r border-l border-b border-[#fe902d] hover:border-transparent rounded"
-              >
-                Reset
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="hidden lg:inline bmi-image">
+  <div class="flex md:w-96 h-96 rounded bg-white p-1">
+    <!-- calc -->
+    <div class="w-full h-full">
+      <div class="bg-[#fe902d] h-[15%] text-center w-full">
+        <p class="text-4xl text-white py-2 px-3 rounded-t">BMI Calculator</p>
+      </div>
+      <div class="rounded-b h-[85%]">
+        <div
+          class="main-contents h-[75%] mb-1 flex justify-center items-center"
+        >
+          <BmiCalculatorHeight
+            v-if="currentComponent === 0"
+            @update="setBmiData"
+            :wizard="data"
+          />
+          <BmiCalculatorWeight
+            v-if="currentComponent === 1"
+            @update="setBmiData"
+            :wizard="data"
+          />
+          <BmiCalculatorAge
+            v-if="currentComponent === 2"
+            @update="setBmiData"
+            :wizard="data"
+          />
+        </div>
+        <div class="nav-btns">
+          <button v-if="!firstForm" @click="back" class="btns float-left">
+            Back
+          </button>
+          <button
+            v-if="lastForm"
+            @click="calculateBMI"
+            class="btns float-right"
+          >
+            Calculate
+          </button>
+          <button v-else @click="next" class="btns float-right">Next</button>
+        </div>
+        <pre>{{ data }}</pre>
+      </div>
+    </div>
+    <!-- <AppAlertComponent /> -->
+    <!-- <div class="hidden lg:inline bmi-image">
       <img
         :src="
           isChild
@@ -141,31 +52,53 @@
         alt="bmi image"
         class="w-full h-full"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import AlertComponent from '@/components/AppAlertComponent.vue'
+// import AppAlertComponent from '@/components/AppAlertComponent.vue'
+import BmiCalculatorHeight from '../components/BmiCalculatorHeight.vue'
+import BmiCalculatorWeight from '../components/BmiCalculatorWeight.vue'
+import BmiCalculatorAge from '../components/BmiCalculatorAge.vue'
 export default {
   name: 'BmiCalculatorComponent',
-  components: { AlertComponent },
+  components: {
+    BmiCalculatorHeight,
+    BmiCalculatorWeight,
+    BmiCalculatorAge
+  },
   data() {
     return {
-      height: '',
-      weight: '',
-      heightUnit: 'cm',
-      weightUnit: 'kg',
-      bmi: '',
-      fitnessAdvice: '',
-      displayBmiModal: false,
-      emptyField: false,
-      ageRange: '',
-      isChild: false,
-      gender: 'm'
+      forms: ['BmiCalculatorHeight', 'BmiCalculatorWeight', 'BmiCalculatorAge'],
+      currentComponent: 0,
+      data: {
+        height: '',
+        weight: '',
+        heightUnit: 'cm',
+        weightUnit: 'kg',
+        bmi: '',
+        fitnessAdvice: '',
+        displayBmiModal: false,
+        emptyField: false,
+        ageRange: '',
+        isChild: false,
+        gender: 'm'
+      }
     }
   },
   methods: {
+    back() {
+      this.currentComponent -= 1
+    },
+    next() {
+      this.currentComponent += 1
+    },
+    setBmiData(bmiData) {
+      if (bmiData.isValid) {
+        Object.assign(this.data, bmiData.data)
+      }
+    },
     showWarning() {
       this.emptyField = true
       setTimeout(() => {
@@ -275,6 +208,29 @@ export default {
     toggleResult() {
       this.displayBmiModal = !this.displayBmiModal
     }
+  },
+  computed: {
+    firstForm() {
+      return this.currentComponent === 0
+    },
+    lastForm() {
+      return this.currentComponent === this.forms.length - 1
+    }
   }
 }
 </script>
+
+<style scoped>
+.nav-btns {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.btns {
+  background-color: #fe902d;
+  color: #fff;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+</style>

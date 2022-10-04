@@ -2,7 +2,7 @@
   <div
     class="flex justify-between items-center gap-x-64 bg-none lg:bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
   >
-    <div class="hidden lg:block bg-none font-inter text-white md:w-[50%]">
+    <div class="hidden lg:block bg-none font-inter text-white md:w-[40%]">
       <p class="text-3xl font-semibold mb-8">
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
@@ -21,10 +21,10 @@
       </div>
     </div>
     <div
-      class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl lg:h-full w-full lg:w-[50%] lg:mb-10"
+      class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl lg:h-full w-full lg:w-auto lg:mb-10"
     >
       <div
-        class="absolute h-full w-full bg-gradient-to-b from-transparent to-black bg-opacity-80"
+        class="absolute h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
       ></div>
       <video
         autoplay

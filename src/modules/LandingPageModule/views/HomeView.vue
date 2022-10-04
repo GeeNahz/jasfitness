@@ -21,7 +21,7 @@
     <main>
       <!-- why jas fitness section -->
       <section
-        class="py-12 mx-3 lg:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-11 lg:gap-y-0"
+        class="py-12 mx-8 md:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-8 lg:gap-y-0"
       >
         <div class="relative w-[366px] h-max lg:h-[400px]">
           <h4
@@ -30,7 +30,7 @@
             Why jas fitness?
           </h4>
           <CardItem
-            class="mx-auto w-[310px] lg:w-full h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
+            class="mx-auto w-[310px] lg:w-[310px] h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
           >
             <template #top>
               <h4 class="pb-3 lg:pb-7 text-xl lg:text-3xl font-semibold">
@@ -60,7 +60,7 @@
             </template>
           </CardItem>
         </div>
-        <div class="relative center-img bg-gray-200 lg:w-[489px] h-[647px]">
+        <div class="relative center-img bg-gray-200 lg:w-[369px] h-[527px]">
           <p
             class="absolute h-full w-full bg-gradient-to-b from-transparent to-[#1f1f1f] bg-opacity-90"
           />
@@ -77,7 +77,7 @@
             Feel the Love
           </h4>
         </div>
-        <div class="flex flex-col gap-9 w-[320px] lg:w-[419px]">
+        <div class="flex flex-col gap-9 w-[320px] lg:w-[349px]">
           <CardItem class="h-64 card-item card-set">
             <template #top>
               <div class="relative">
@@ -91,7 +91,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-xs lg:text-lg font-normal">
+            <p class="card-item-body text-xs lg:text-base font-normal">
               Consistencty over motiveation. Meet like minded FitFam, who are
               committed to a life of healthy living and more.
             </p>
@@ -120,7 +120,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-sm lg:text-lg">
+            <p class="card-item-body text-sm lg:text-base">
               Regardless of your fitness level, we’ve got the equipment and
               professionals to get you the results you desire.
             </p>
@@ -226,7 +226,9 @@
         >
           Latest Events & News
         </h4>
-        <div class="modules hidden md:flex gap-3 justify-between items-center">
+        <div
+          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-between items-center"
+        >
           <div class="single-module w-[412px] h-[431px] bg-white">
             <div
               class="module relative h-full bg-[url('/src/assets/paintball.png')] bg-cover bg-center"
@@ -251,7 +253,9 @@
               </div>
             </div>
           </div>
-          <div class="single-module w-[412px] h-[431px] bg-white">
+          <div
+            class="single-module w-[412px] h-[431px] hidden lg:block bg-white"
+          >
             <div
               class="module relative h-full bg-[url('/src/assets/roadwalk.png')] bg-cover bg-center"
             >
@@ -275,7 +279,9 @@
               </div>
             </div>
           </div>
-          <div class="single-module w-[412px] h-[431px] bg-white">
+          <div
+            class="single-module w-[412px] hidden lg:block h-[431px] bg-white"
+          >
             <div
               class="module relative h-full bg-[url('/src/assets/promo.png')] bg-cover bg-center"
             >
@@ -441,7 +447,7 @@ const reviews = ref([
 const reviewPosition = (index) => index % 2 === 0
 const getImageUrl = (imageName) => require(`@/assets/${imageName}`)
 
-const showBmi = ref(true)
+const showBmi = ref(false)
 const toggleBmi = () => (showBmi.value = !showBmi.value)
 </script>
 

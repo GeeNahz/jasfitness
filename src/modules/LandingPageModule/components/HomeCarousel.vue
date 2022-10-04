@@ -61,7 +61,8 @@ const getImageUrl = (image) => {
 <style scoped>
 .carousel__item {
   min-height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   background-color: blueviolet;
   color: #e2e2e2;
   font-size: 20px;
