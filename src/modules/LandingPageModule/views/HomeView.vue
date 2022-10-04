@@ -140,7 +140,7 @@
       </section>
       <!-- reviews -->
       <section
-        class="relative flex flex-col lg:flex-row items-center md:gap-8 lg:gap-16 justify-center w-full border-t border-gray-400 overflow-hidden lg:mb-6 py-10 lg:py-20 px-3 md:px-8 lg:px-16"
+        class="relative flex flex-col lg:flex-row items-center md:gap-8 lg:gap-16 justify-center w-full overflow-hidden lg:mb-6 py-10 lg:py-20 px-3 md:px-8 lg:px-16"
       >
         <!-- partial black design -->
         <div
