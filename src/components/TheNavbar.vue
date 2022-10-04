@@ -250,9 +250,20 @@ document.addEventListener('scroll', () => {
 </script>
 
 <style scoped>
-nav a.router-link-exact-active .underline {
+nav ul a {
+  position: relative;
+}
+nav a .underline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   width: 50%;
   margin: 0.16rem auto;
+}
+nav a.router-link-exact-active .underline {
+  border-bottom: 2px solid #daa520;
+}
+nav a:hover .underline {
   border-bottom: 2px solid #daa520;
 }
 
