@@ -149,93 +149,55 @@
         <!-- section cards -->
         <div class="reviews gap-6 md:gap-14 flex flex-col">
           <div
-            class="single-review translate-x-8 lg:translate-x-10 flex items-center justify-center"
+            v-for="(review, index) in reviews"
+            :key="review.name"
+            class="single-review flex items-center justify-center"
+            :class="{
+              'translate-x-8 lg:translate-x-10': reviewPosition(index),
+              'md:-translate-x-16 lg:-translate-x-10': !reviewPosition(index)
+            }"
           >
             <div
-              class="shadow img bg-[#2b2b2b] w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
-            >
-              <p class="z-20 text-white text-5xl md:text-7xl font-medium">A</p>
-            </div>
-            <CardItem class="item">
-              <template #top>
-                <p class="text-xs md:text-lg font-medium">
-                  “Once you stop by Jas Gym. You shall get hooked. Excellent
-                  Customer Service.”
-                </p>
-              </template>
-              <template #default>
-                <a
-                  class="flex gap-1 md:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
-                  href="https://"
-                >
-                  <p class="font-inter font-bold text-sm md:text-xl">
-                    Anna Orefi
-                  </p>
-                  <img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="google review"
-                  />
-                </a>
-              </template>
-            </CardItem>
-          </div>
-          <div
-            class="single-review translate-x-4 md:-translate-x-16 lg:-translate-x-10"
-          >
-            <div
-              class="shadow img bg-[#ff7d00] w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
-            >
-              <p class="z-20 text-white text-5xl md:text-7xl font-medium">A</p>
-            </div>
-            <CardItem class="item">
-              <template #top>
-                <p class="text-xs md:text-lg font-medium">
-                  “Friendly environment and instructors. Most importantly, I
-                  really appreciate the checking up on clients.”
-                </p>
-              </template>
-              <template #default>
-                <a
-                  class="flex gap-1 lg:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
-                >
-                  <p class="font-inter font-bold text-sm md:text-xl">
-                    Afolalu Oluyemisi
-                  </p>
-                  <img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="google review"
-                  />
-                </a>
-              </template>
-            </CardItem>
-          </div>
-          <div class="single-review translate-x-8 lg:translate-x-10">
-            <div
+              v-if="review.imageUrl"
               class="shadow img w-[80px] h-[80px] md:w-[104px] md:h-[104px] rounded-full overflow-hidden"
             >
-              <img src="@/assets/IjeomaJennifer.png" alt="ppic" />
+              <img :src="getImageUrl(review.imageUrl)" :alt="review.name" />
+            </div>
+            <div
+              v-else
+              class="shadow img w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
+              :class="{
+                'bg-[#2b2b2b]': reviewPosition(index),
+                'bg-[#ff7d00]': !reviewPosition(index)
+              }"
+            >
+              <p class="z-20 text-white text-5xl md:text-7xl font-medium">
+                {{ review.imageAlt }}
+              </p>
             </div>
             <CardItem class="item">
               <template #top>
-                <p class="text-xs md:text-lg font-medium">
-                  “Spending my post partum moment @jasfitness is one of the best
-                  decision I have made in life. I love what I’m getting
-                  💯💯💯💯”
-                </p>
-              </template>
-              <template #default>
-                <a
-                  class="flex gap-1 md:gap-2 mt-3 hover:cursor-pointer hover:text-yellow-600"
-                >
-                  <p class="font-inter font-bold text-sm md:text-xl">
-                    Ijeoma Jennifer
+                <div>
+                  <p class="text-xs md:text-lg font-medium">
+                    “{{ review.review }}”
                   </p>
-                  <img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="google review"
-                  />
-                </a>
+                </div>
               </template>
+              <a
+                class="flex gap-1 md:gap-2 mt-3 mb-0 hover:cursor-pointer hover:text-yellow-600"
+                :href="review.reviewUrl"
+              >
+                <p class="font-inter font-bold text-sm md:text-xl">
+                  {{ review.name }}
+                </p>
+                <img
+                  src="@/assets/icons/GooglereviewlinkIcon.svg"
+                  alt="google review"
+                />
+              </a>
+              <div class="space-x-1 mb-1">
+                <ReviewCardStarsRatingComponent :stars="review.stars" />
+              </div>
             </CardItem>
           </div>
         </div>
@@ -339,6 +301,8 @@ import HeroSection from '../components/HeroSection.vue'
 import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
 import HomeCarousel from '../components/HomeCarousel.vue'
+import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
+
 import { ref } from 'vue'
 
 const eventsAndNews = ref([
@@ -361,6 +325,41 @@ const eventsAndNews = ref([
       'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
   }
 ])
+
+const reviews = ref([
+  {
+    name: 'Anna Orefi',
+    reviewUrl: 'https://',
+    imageUrl: '',
+    imageAlt: 'A',
+    review:
+      'Once you stop by Jas Gym. You shall get hooked Excellent Customer Service.',
+    stars: 5
+  },
+  {
+    name: 'Afolalu Oluyemisi',
+    reviewUrl: 'https://',
+    imageUrl: '',
+    imageAlt: 'A',
+    review:
+      'Friendly environment and instructors. Most importantly, I really appreciate the checking up on clients.',
+    stars: 5
+  },
+  {
+    name: 'Ijeoma Jennifer',
+    reviewUrl: 'https://',
+    imageUrl: 'IjeomaJennifer.png',
+    imageAlt: 'I',
+    review:
+      'Spending my post partum moment @jasfitness is one of the best decision I have made in life. I love what getting 💯💯💯💯',
+    stars: 5
+  }
+])
+
+const reviewPosition = (index) => index % 2 === 0
+const getImageUrl = (imageName) => {
+  return require(`@/assets/${imageName}`)
+}
 </script>
 
 <style scoped>
