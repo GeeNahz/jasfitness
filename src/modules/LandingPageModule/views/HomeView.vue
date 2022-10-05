@@ -221,6 +221,7 @@
       <section
         class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-8 md:py-14"
       >
+        <!-- latest events title -->
         <h4
           class="capitalize mb-7 lg:mb-14 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
         >
