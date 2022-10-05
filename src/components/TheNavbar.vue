@@ -8,7 +8,7 @@
         <!-- logo -->
         <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
           <img
-            src="@/assets/icons/JasFitnessCenter.png"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
             alt="logo"
             width="116"
             height="144"
@@ -149,7 +149,7 @@
           <div class="h-32 flex items-center justify-center">
             <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
               <img
-                src="@/assets/icons/JasFitnessCenter.png"
+                src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
                 alt="logo"
                 width="146"
                 height="144"
