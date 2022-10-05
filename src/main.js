@@ -6,6 +6,7 @@ import store from './store'
 import { plugin, defaultConfig } from '@formkit/vue'
 import { generateClasses } from '@formkit/themes'
 import formkitTheme from '../formkitTheme'
+// import ImageKit from 'imagekitio-vue'
 
 import LandingPageModule from './modules/LandingPageModule'
 import Dashboard from './modules/Dashboard'
@@ -31,4 +32,9 @@ createApp(App)
       }
     })
   )
+  // .use(ImageKit, {
+  //   urlEndpoint: 'your_url_endpoint',
+  //   publicKey: 'your_public_api_key'
+  //   // authenticationEndpoint: "https://www.your-server.com/auth"
+  // })
   .mount('#app')
