@@ -4,7 +4,7 @@
       <Slide v-for="(slide, i) in items" :key="i">
         <div
           class="carousel__item relative bg-cover bg-no-repeat bg-center"
-          :style="`background-image: url(${getImageUrl(slide.imageName)})`"
+          :style="`background-image: url(${slide.imageName})`"
         >
           <div
             class="carousel-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-3 h-[50%]"
@@ -53,9 +53,7 @@ defineComponent({
   }
 })
 
-const getImageUrl = (image) => {
-  return require(`@/assets/${image}`)
-}
+// const getImageUrl = (image) => require(`@/assets/${image}`)
 </script>
 
 <style scoped>
