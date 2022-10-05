@@ -28,11 +28,11 @@
       ></div>
       <video autoplay muted loop class="w-full h-full object-fill">
         <source
-          src="https://ik.imagekit.io/m0adxj6it/Landing-page-video_Ztbe-tue0.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664916192001"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenterMain_VVwGnmuC8.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664997283633"
           type="video/mp4"
         />
         <source
-          src="https://ik.imagekit.io/m0adxj6it/Landing-page-video_Ztbe-tue0.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664916192001"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenterMain_VVwGnmuC8.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664997283633"
           type="video/webm"
         />
         Sorry, your bowser doesn't support HTML5 <code>video</code>
