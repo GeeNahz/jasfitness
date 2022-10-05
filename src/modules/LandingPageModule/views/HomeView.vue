@@ -68,7 +68,7 @@
             class="h-full w-full"
             height="300"
             width="300"
-            src="@/assets/feellove.png"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920"
             alt="in love"
           />
           <h4
