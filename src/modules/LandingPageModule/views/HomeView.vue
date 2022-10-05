@@ -227,6 +227,7 @@
         >
           Latest Events & News
         </h4>
+        <!-- latest events cards destop -->
         <div
           class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-between items-center"
         >
@@ -307,6 +308,7 @@
             </div>
           </div>
         </div>
+        <!-- latest events cards mobile -->
         <div class="modules md:hidden">
           <div class="h-full">
             <HomeCarousel :items="eventsAndNews" />
