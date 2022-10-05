@@ -329,19 +329,22 @@ import { ref } from 'vue'
 
 const eventsAndNews = ref([
   {
-    imageName: 'paintball.png',
-    title: 'Promo! Promo!! Promo!!!',
+    imageName:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/paintball_IRcYqdHks.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852844',
+    title: 'Paint-Ball!!!',
     description:
       'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
   },
   {
-    imageName: 'roadwalk.png',
-    title: 'Promo! Promo!! Promo!!!',
+    imageName:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/roadwalk_4PSK72Uwa.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852621',
+    title: 'Road Walk!!!',
     description:
       'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
   },
   {
-    imageName: 'promo.png',
+    imageName:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/promo_h_38XOR_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984888971',
     title: 'Promo! Promo!! Promo!!!',
     description:
       'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
