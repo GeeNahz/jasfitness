@@ -231,7 +231,7 @@
         >
           <div class="single-module w-[412px] h-[431px] bg-white">
             <div
-              class="module relative h-full bg-[url('/src/assets/paintball.png')] bg-cover bg-center"
+              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/paintball_IRcYqdHks.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852844')] bg-cover bg-center"
             >
               <div
                 class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
@@ -257,7 +257,7 @@
             class="single-module w-[412px] h-[431px] hidden lg:block bg-white"
           >
             <div
-              class="module relative h-full bg-[url('/src/assets/roadwalk.png')] bg-cover bg-center"
+              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/roadwalk_4PSK72Uwa.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852621')] bg-cover bg-center"
             >
               <div
                 class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
@@ -283,7 +283,7 @@
             class="single-module w-[412px] hidden lg:block h-[431px] bg-white"
           >
             <div
-              class="module relative h-full bg-[url('/src/assets/promo.png')] bg-cover bg-center"
+              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/promo_h_38XOR_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984888971')] bg-cover bg-center"
             >
               <div
                 class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
