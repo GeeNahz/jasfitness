@@ -454,8 +454,8 @@ const reviews = ref([
 const reviewPosition = (index) => index % 2 === 0
 // const getImageUrl = (imageName) => require(`${imageName}`)
 
-const showBmi = ref(false)
-const toggleBmi = () => (showBmi.value = !showBmi.value)
+// const showBmi = ref(false)
+// const toggleBmi = () => (showBmi.value = !showBmi.value)
 </script>
 
 <style scoped>
