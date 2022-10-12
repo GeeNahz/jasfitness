@@ -309,7 +309,7 @@
                     >
                       Weekly Performance
                     </h4>
-                    <p class="md:text-center text-xs font-light">
+                    <p class="md:text-center text-xs my-3 font-light">
                       Based on your goal, you should go to the gym at least 4
                       times weekly
                     </p>
