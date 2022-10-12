@@ -325,12 +325,6 @@
         </div>
         <p>Logout</p></router-link
       >
-      <button
-        @click="toggleSideBar"
-        class="flex justify-center items-center mx-auto h-7 w-7 border-2 border-zinc-900 rounded-full font-bold hover:scale-105 hover:bg-slate-100 hover:cursor-pointer"
-      >
-        X
-      </button>
     </div>
   </div>
 </template>
