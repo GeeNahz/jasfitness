@@ -8,10 +8,10 @@
     >
       <div class="navbar-brand">
         <img
-          src="@/assets/icons/company-logo-medium.png"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
           alt="logo"
-          width="94"
-          height="92"
+          width="166"
+          height=""
         />
       </div>
     </div>
@@ -117,14 +117,14 @@
     class="z-30 flex justify-between items-center md:hidden w-full p-4 bg-white fixed shadow"
   >
     <div class="logo flex items-center space-x-4 font-semibold">
-      <div class="navbar-brand" href="#">
+      <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
         <img
-          src="@/assets/icons/company-logo-small.png"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
           alt="logo"
-          width="53"
-          height="52"
+          width="98"
+          height=""
         />
-      </div>
+      </router-link>
     </div>
     <svg
       @click="toggleSideBar"
@@ -215,10 +215,10 @@
       >
         <div class="navbar-brand">
           <img
-            src="@/assets/icons/company-logo-small.png"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
             alt="logo"
-            width="81"
-            height="79"
+            width="150"
+            height=""
           />
         </div>
       </div>
