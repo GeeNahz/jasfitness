@@ -8,7 +8,9 @@
       class="relative md:w-[1000px] md:mx-auto flex rounded-xl"
     >
       <!-- back button on sm and lg screen -->
-      <div class="absolute left-6 top-6 md:left-4 md:top-4 z-10">
+      <div
+        class="absolute left-6 top-6 md:left-4 md:top-4 z-50 hover:cursor-pointer"
+      >
         <AppGoBack />
       </div>
       <!-- main section 1 on lg screen only -->
