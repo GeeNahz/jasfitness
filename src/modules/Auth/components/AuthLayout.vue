@@ -68,7 +68,7 @@
     <!-- footer on sm screen only -->
     <div>
       <div
-        class="absolute md:hidden bottom-32 text-white w-full text-center font-quicksand text-lg font-light px-4 md:text-4xl"
+        class="absolute md:hidden bottom-20 text-white w-full text-center font-quicksand text-lg font-light px-4 md:text-4xl"
       >
         <slot name="motivation-section">
           <p>When you</p>
@@ -80,14 +80,14 @@
         </slot>
       </div>
       <div
-        class="absolute md:hidden w-full px-8 text-white left-[50%] -translate-x-[50%] bottom-6 text-sm text-center text-opacity-50"
+        class="absolute md:hidden w-full px-8 text-white left-[50%] -translate-x-[50%] bottom-3 text-sm text-center text-opacity-50"
       >
-        <div class="flex items-center gap-3 mb-3 imgs">
+        <div class="flex items-center gap-3 mb-2 imgs">
           <div class="border border-[#d4d4d4] w-full md:w-44 rounded-full" />
-          <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-20" />
+          <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-14" />
           <div class="border border-[#d4d4d4] w-full md:w-44 rounded-full" />
         </div>
-        <p>Powered By JAS FITNESS</p>
+        <p class="text-xs">Powered By JAS FITNESS</p>
       </div>
     </div>
   </div>
