@@ -9,7 +9,7 @@
     >
       <!-- back button on sm and lg screen -->
       <div
-        class="absolute left-6 top-6 md:left-4 md:top-4 z-30 hover:cursor-pointer"
+        class="absolute left-6 top-1 md:left-4 md:top-4 z-30 hover:cursor-pointer"
       >
         <AppGoBack />
       </div>
