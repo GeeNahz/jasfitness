@@ -218,7 +218,7 @@ const toggleNavbar = () => {
   showNavbar.value = !showNavbar.value
   document.querySelector('body').classList.toggle('overflow-y-hidden')
 }
-watch(showNavbar.value, () => {
+watch(showNavbar, () => {
   if (showNavbar.value) {
     document.querySelector('body').classList.toggle('overflow-y-hidden')
   }
