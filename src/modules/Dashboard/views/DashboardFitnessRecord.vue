@@ -131,7 +131,7 @@
             <DashboardSubscriptionCard :addIcon="false">
               <template #title>
                 <h4
-                  class="font-semibold text-sm md:text-lg text-center py-4 block w-full"
+                  class="font-semibold text-sm md:text-lg text-center py-1 md:py-3 block w-full"
                 >
                   My Record
                 </h4>
