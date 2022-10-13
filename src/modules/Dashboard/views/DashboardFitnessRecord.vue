@@ -321,7 +321,7 @@
               </template>
             </DashboardSubscriptionCard>
             <button
-              class="bg-green-500 font-semibold w-full mt-4 px-4 py-2 rounded-xl"
+              class="bg-[#70e000] font-semibold w-full mt-4 px-4 py-2 rounded-xl"
             >
               Download Record
             </button>
