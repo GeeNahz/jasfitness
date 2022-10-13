@@ -60,7 +60,7 @@ onMounted(() => {
   } else if (props.completedSteps < 50) {
     strokeColor.value = 'orange'
   } else {
-    strokeColor.value = 'lime'
+    strokeColor.value = '#70e000'
   }
 })
 </script>
