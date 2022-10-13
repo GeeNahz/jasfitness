@@ -23,36 +23,44 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watchEffect } from 'vue'
+import { onMounted, ref } from 'vue'
 import RadialProgressBar from 'vue3-radial-progress'
 
 const props = defineProps({
   completedSteps: {
     type: Number,
     default: 100
+  },
+  strokeWidth: {
+    type: Number,
+    default: 20
+  },
+  diameter: {
+    type: Number,
+    default: 200
   }
 })
 
 const strokeColor = ref('')
 const totalSteps = ref(100)
-const strokeWidth = ref(20)
-const diameter = ref(200)
+// const strokeWidth = ref(20)
+// const diameter = ref(200)
 
-const onSmallScreen = computed(() => window.innerWidth < 1000)
+// const onSmallScreen = computed(() => window.innerWidth < 1000)
 
-const changeScreenSize = (smallScreen) => {
-  if (smallScreen) {
-    strokeWidth.value = 10
-    diameter.value = 120
-  } else {
-    strokeWidth.value = 20
-    diameter.value = 200
-  }
-}
+// const changeScreenSize = (smallScreen) => {
+//   if (smallScreen) {
+//     strokeWidth.value = 10
+//     diameter.value = 120
+//   } else {
+//     strokeWidth.value = 20
+//     diameter.value = 200
+//   }
+// }
 
-watchEffect(() => {
-  window.addEventListener('resize', changeScreenSize(onSmallScreen.value))
-})
+// watch(onSmallScreen, () => {
+//   window.addEventListener('resize', changeScreenSize(onSmallScreen.value))
+// })
 
 onMounted(() => {
   if (props.completedSteps < 20) {

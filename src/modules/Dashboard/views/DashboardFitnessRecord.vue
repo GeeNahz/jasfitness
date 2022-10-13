@@ -315,7 +315,16 @@
                     </p>
                   </div>
                   <div class="grid justify-center w-full">
-                    <DashboardRadialProgressBar :completedSteps="87.5" />
+                    <DashboardRadialProgressBar
+                      :completedSteps="87.5"
+                      class="hidden md:block"
+                    />
+                    <DashboardRadialProgressBar
+                      :strokeWidth="10"
+                      :diameter="120"
+                      :completedSteps="87.5"
+                      class="md:hidden"
+                    />
                   </div>
                 </div>
               </template>
