@@ -50,7 +50,7 @@
             placeholder="Enter your password"
             validation="required|length:6|matches:/[^a-zA-Z]/"
             :validation-messages="{
-              matches: 'Please include at least one symbol'
+              matches: 'Please include at least one number'
             }"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
@@ -88,6 +88,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 // import AuthTemplate from '../components/AuthTemplate.vue'
@@ -106,10 +107,25 @@ const notify = {
   message: 'You have been logged in successfully',
   alertType: 'Success'
 }
+const errorMsg = {
+  message: 'Incorrect login details',
+  alertType: 'Warning'
+}
+
+const router = useRouter()
 const handleSubmit = (credentials) => {
   // perform authentication async-ly
   try {
-    store.commit('auth/setNotification', notify)
+    if (
+      credentials.username === 'testAdmin' &&
+      credentials.password === 'secret1'
+    ) {
+      store.commit('auth/setNotification', notify)
+      router.push({ name: 'DashboardHome' })
+    } else {
+      store.commit('auth/setNotification', errorMsg)
+      console.log('Username or password is incorrect')
+    }
     console.log('Login creds:', credentials)
   } catch (error) {
     console.log(error)
