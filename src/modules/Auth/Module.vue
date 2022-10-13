@@ -2,6 +2,7 @@
   <div class="h-full" :key="$route.path">
     <TheNavbar />
     <AppNotificationPanel
+      class="mt-24"
       v-if="!isNotificationEmpty"
       :notifyObject="toggleShowNotification"
     />
