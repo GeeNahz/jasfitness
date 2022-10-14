@@ -55,12 +55,14 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
 
 const formData = ref('')
 
+const router = useRouter()
 const store = useStore()
 
 const handleSubmit = (credentials) => {
@@ -69,8 +71,10 @@ const handleSubmit = (credentials) => {
     console.log(credentials)
     store.commit('auth/setNotification', {
       message: 'A password reset mail has been sent to your email',
-      alertType: 'Success'
+      route: 'PasswordResetEmailPage'
     })
+    // on successful request route to success page
+    router.push({ name: 'Success' })
   } catch (err) {
     console.log(err)
     store.commit('auth/setNotification', {
