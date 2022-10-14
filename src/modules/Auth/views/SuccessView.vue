@@ -55,8 +55,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$mobile-width: 1920px;
+$tablet-width: 1280px;
+$desktop-width: 414px;
 $all-colors: (
-  'primary': #ffc453,
+  'primary': #fcfcfc,
   'secondary': #42c12d,
   'text': #969696
 );
@@ -92,6 +95,11 @@ $font-sizes: (
   justify-content: center;
   align-items: center;
 }
+@mixin medium-down {
+  @media screen and (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
 
 .success {
   @include flexCenter();
@@ -100,9 +108,14 @@ $font-sizes: (
 }
 .success__box {
   @include flexCenter(column);
+  background-color: color(primary);
   padding: 60px 90px;
   border-radius: 10px;
   box-shadow: 0 4px 4px;
+
+  @include medium-down {
+    padding: 60px 40px;
+  }
 
   #{&}__title {
     font-size: font-size(x-large);
