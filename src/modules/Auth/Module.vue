@@ -1,22 +1,22 @@
 <template>
   <div class="h-full" :key="$route.path">
     <TheNavbar />
-    <AppNotificationPanel
+    <!-- <AppNotificationPanel
       class="mt-24"
       v-if="!isNotificationEmpty"
       :notifyObject="toggleShowNotification"
-    />
+    /> -->
     <router-view :key="$route.path" />
   </div>
 </template>
 
 <script>
 import TheNavbar from '@/components/TheNavbar.vue'
-import AppNotificationPanel from '@/components/AppNotificationPanel.vue'
+// import AppNotificationPanel from '@/components/AppNotificationPanel.vue'
 
 export default {
   name: 'AuthView',
-  components: { TheNavbar, AppNotificationPanel },
+  components: { TheNavbar },
   data() {
     return {
       showNotification: ''
