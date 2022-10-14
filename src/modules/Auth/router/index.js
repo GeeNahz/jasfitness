@@ -14,6 +14,9 @@ const PasswordResetPasswordView = () =>
     /* webpackChunkName: "PasswordPasswordView" */ '../views/PasswordReset/PasswordResetPasswordView.vue'
   )
 
+const SuccessView = () =>
+  import(/* webpackChunkName: "SuccessView" */ '../views/SuccessView.vue')
+
 const TestView = () => import('../components/AuthLayout.vue')
 
 const routes = [
@@ -45,6 +48,11 @@ const routes = [
             component: PasswordResetPasswordView
           }
         ]
+      },
+      {
+        path: 'success',
+        name: 'Success',
+        component: SuccessView
       },
       {
         path: 'test',
