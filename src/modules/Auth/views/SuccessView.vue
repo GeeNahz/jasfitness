@@ -55,9 +55,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$mobile-width: 1920px;
+$desktop-width: 1920px;
 $tablet-width: 1280px;
-$desktop-width: 414px;
+$mobile-width: 414px;
 $all-colors: (
   'primary': #fcfcfc,
   'secondary': #42c12d,
