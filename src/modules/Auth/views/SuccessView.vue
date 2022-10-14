@@ -37,7 +37,6 @@ export default {
   data() {
     return {}
   },
-  methods: {},
   computed: {
     toggleShowNotification() {
       return this.$store.state.auth.notification
@@ -45,6 +44,12 @@ export default {
     isNotificationEmpty() {
       return this.toggleShowNotification.length === 0
     }
+  },
+  methods: {},
+  mounted() {
+    setTimeout(() => {
+      this.$router.push(this.toggleShowNotification[0].route)
+    }, 4000)
   }
 }
 </script>
