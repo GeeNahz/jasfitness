@@ -48,7 +48,7 @@ export default {
   methods: {},
   mounted() {
     setTimeout(() => {
-      this.$router.push(this.toggleShowNotification[0].route)
+      this.$router.push({ name: this.toggleShowNotification[0].route })
     }, 4000)
   }
 }
