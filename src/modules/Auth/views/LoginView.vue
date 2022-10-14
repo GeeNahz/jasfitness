@@ -80,6 +80,9 @@
               >Reset</router-link
             >
           </p>
+          <p v-if="error" class="text-xs text-red-500">
+            Username of password is incorrect
+          </p>
         </formKit>
       </div>
     </template>
@@ -102,15 +105,17 @@ const userIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xm
 </svg>`
 const user = ref({})
 
+const error = ref(false)
+
 const store = useStore()
 const notify = {
   message: 'You have been logged in successfully',
   alertType: 'Success'
 }
-const errorMsg = {
-  message: 'Incorrect login details',
-  alertType: 'Warning'
-}
+// const errorMsg = {
+//   message: 'Incorrect login details',
+//   alertType: 'Warning'
+// }
 
 const router = useRouter()
 const handleSubmit = (credentials) => {
@@ -123,12 +128,14 @@ const handleSubmit = (credentials) => {
       store.commit('auth/setNotification', notify)
       router.push({ name: 'DashboardHome' })
     } else {
-      store.commit('auth/setNotification', errorMsg)
-      console.log('Username or password is incorrect')
+      throw error
     }
-    console.log('Login creds:', credentials)
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    error.value = true
+    setTimeout(() => {
+      error.value = false
+    }, 3000)
+    console.log(err)
     store.commit('auth/setNotification', notify)
   } finally {
     // clear values
