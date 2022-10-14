@@ -108,10 +108,9 @@ const user = ref({})
 const error = ref(false)
 
 const store = useStore()
-const notify = {
-  message: 'You have been logged in successfully',
-  alertType: 'Success'
-}
+// const notify = {
+//   message: 'You have been logged in successfully'
+// }
 // const errorMsg = {
 //   message: 'Incorrect login details',
 //   alertType: 'Warning'
@@ -125,7 +124,9 @@ const handleSubmit = (credentials) => {
       credentials.username === 'testAdmin' &&
       credentials.password === 'secret1'
     ) {
-      store.commit('auth/setNotification', notify)
+      store.commit('auth/setNotification', {
+        message: 'Login details are correct'
+      })
       router.push({ name: 'DashboardHome' })
     } else {
       throw error
@@ -136,7 +137,9 @@ const handleSubmit = (credentials) => {
       error.value = false
     }, 3000)
     console.log(err)
-    store.commit('auth/setNotification', notify)
+    store.commit('auth/setNotification', {
+      message: 'Login details are incorrect'
+    })
   } finally {
     // clear values
     reset('login-form')
