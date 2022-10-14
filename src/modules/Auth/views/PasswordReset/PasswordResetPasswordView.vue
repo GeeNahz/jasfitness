@@ -72,7 +72,6 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
-// import AppGoBack from '@/components/AppGoBack.vue'
 import AuthLayout from '../../components/AuthLayout.vue'
 
 const newPassword = ref({})

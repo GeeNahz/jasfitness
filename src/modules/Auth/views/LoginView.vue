@@ -94,11 +94,8 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
-// import AuthTemplate from '../components/AuthTemplate.vue'
 import AuthLayout from '../components/AuthLayout.vue'
-// import AuthInputField from '../components/AuthInputField.vue'
 
-// const firstName = ref('')
 const userIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19.7274 20.4471C19.2716 19.1713 18.2672 18.0439 16.8701 17.2399C15.4729 16.4358 13.7611 16 12 16C10.2389 16 8.52706 16.4358 7.12991 17.2399C5.73276 18.0439 4.72839 19.1713 4.27259 20.4471" stroke="#969696" stroke-width="2" stroke-linecap="round"/>
 <circle cx="12" cy="8" r="4" stroke="#969696" stroke-width="2" stroke-linecap="round"/>
@@ -108,13 +105,6 @@ const user = ref({})
 const error = ref(false)
 
 const store = useStore()
-// const notify = {
-//   message: 'You have been logged in successfully'
-// }
-// const errorMsg = {
-//   message: 'Incorrect login details',
-//   alertType: 'Warning'
-// }
 
 const router = useRouter()
 const handleSubmit = (credentials) => {
