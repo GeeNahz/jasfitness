@@ -125,7 +125,8 @@ const handleSubmit = (credentials) => {
       credentials.password === 'secret1'
     ) {
       store.commit('auth/setNotification', {
-        message: 'Login details are correct'
+        message: 'Your login details are correct',
+        route: '/auth/dashboard'
       })
       router.push({ name: 'Success' })
     } else {
