@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>Successful</h2>
+  <div class="success">
+    <h2 class="pt-32">Successful</h2>
     <p>{{ toggleShowNotification }}</p>
   </div>
 </template>
@@ -23,4 +23,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
