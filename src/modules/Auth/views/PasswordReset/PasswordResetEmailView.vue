@@ -47,6 +47,9 @@
               >Login</router-link
             >
           </p>
+          <p v-if="error" class="text-xs text-red-500">
+            An error occured. Please try again.
+          </p>
         </formKit>
       </div>
     </template>
@@ -61,6 +64,8 @@ import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
 
 const formData = ref('')
+
+const error = ref(false)
 
 const router = useRouter()
 const store = useStore()
@@ -77,10 +82,10 @@ const handleSubmit = (credentials) => {
     router.push({ name: 'Success' })
   } catch (err) {
     console.log(err)
-    store.commit('auth/setNotification', {
-      message: 'An error occured while perfoming this action. Please try again',
-      alertType: 'Warning'
-    })
+    error.value = true
+    setTimeout(() => {
+      error.value = false
+    }, 3000)
   } finally {
     // clear input values
     reset('password-reset-form')
