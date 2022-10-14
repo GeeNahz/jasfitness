@@ -127,7 +127,7 @@ const handleSubmit = (credentials) => {
       store.commit('auth/setNotification', {
         message: 'Login details are correct'
       })
-      router.push({ name: 'DashboardHome' })
+      router.push({ name: 'Success' })
     } else {
       throw error
     }
