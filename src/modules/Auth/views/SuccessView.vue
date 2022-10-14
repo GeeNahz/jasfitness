@@ -1,7 +1,7 @@
 <template>
-  <div class="success">
+  <div class="success font-quicksand">
     <div class="success__box">
-      <h2 class="">Successful</h2>
+      <h2 class="success__box__title">Successful!!!</h2>
       <div>
         <svg
           width="117"
@@ -24,7 +24,9 @@
           />
         </svg>
       </div>
-      <p>{{ toggleShowNotification }}</p>
+      <div class="success__box__body">
+        <p>{{ toggleShowNotification[0].message }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -48,26 +50,65 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$primary-color: #ffc453;
-$secondary-color: #42c12d;
-$text-color: #1f1f1f;
+$all-colors: (
+  'primary': #ffc453,
+  'secondary': #42c12d,
+  'text': #969696
+);
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700
+);
+$font-sizes: (
+  'xx-small': 9px,
+  'x-small': 10px,
+  'small': 13px,
+  'medium': 16px,
+  'large': 18px,
+  'x-large': 24px,
+  'xx-large': 32px
+);
 
-@mixin flexCenter {
+@function color($color) {
+  @return map-get($all-colors, $color);
+}
+@function font-weight($weight) {
+  @return map-get($font-weights, $weight);
+}
+@function font-size($size) {
+  @return map-get($font-sizes, $size);
+}
+
+@mixin flexCenter($direction: row) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $direction;
   justify-content: center;
   align-items: center;
 }
 
 .success {
   @include flexCenter();
-  color: $text-color;
+  color: color(text);
   height: 100%;
 }
 .success__box {
-  @include flexCenter();
+  @include flexCenter(column);
   padding: 60px 90px;
   border-radius: 10px;
   box-shadow: 0 4px 4px;
+
+  #{&}__title {
+    font-size: font-size(x-large);
+    font-weight: font-weight(semibold);
+  }
+
+  #{&}__body {
+    width: 243px;
+    text-align: center;
+    font-size: font-size(medium);
+    font-weight: font-weight(semibold);
+  }
 }
 </style>
