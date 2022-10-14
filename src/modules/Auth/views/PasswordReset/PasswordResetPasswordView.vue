@@ -58,6 +58,9 @@
               >Login</router-link
             >
           </p>
+          <p v-if="error" class="text-xs text-red-500">
+            An error occured. Please try again.
+          </p>
         </formKit>
       </div>
     </template>
@@ -66,6 +69,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 // import AppGoBack from '@/components/AppGoBack.vue'
@@ -73,6 +77,9 @@ import AuthLayout from '../../components/AuthLayout.vue'
 
 const newPassword = ref({})
 
+const error = ref(false)
+
+const router = useRouter()
 const store = useStore()
 
 const handleSubmit = (credentials) => {
@@ -80,14 +87,16 @@ const handleSubmit = (credentials) => {
     console.log(credentials)
     store.commit('auth/setNotification', {
       message: 'Your password has been successfully updated',
-      alertType: 'Success'
+      route: 'LoginPage'
     })
+    // on successful request route to success page
+    router.push({ name: 'Success' })
   } catch (err) {
     confirm.log(err)
-    store.commit('auth/setNotification', {
-      message: 'An error occured while creating new password. Please try again',
-      alertType: 'Warning'
-    })
+    error.value = true
+    setTimeout(() => {
+      error.value = false
+    }, 3000)
   } finally {
     reset('new-password-reset-form')
     setTimeout(() => {
