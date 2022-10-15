@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-origin-border md:bg-none md:flex h-full pt-24 lg:pt-36 pb-[276px] md:py-48 items-center"
+    class="relative bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')] bg-cover bg-origin-border md:bg-none md:flex h-full pt-24 lg:pt-36 pb-[276px] md:py-48 items-center"
   >
     <!-- main section -->
     <div
@@ -15,7 +15,7 @@
       </div>
       <!-- main section 1 on lg screen only -->
       <div
-        class="hidden md:block relative flex-1 bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-center md:rounded-l-xl overflow-hidden"
+        class="hidden md:block relative flex-1 bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')] bg-cover bg-center md:rounded-l-xl overflow-hidden"
       >
         <p
           class="absolute bg-gradient-to-b from-zinc-800 to-black opacity-70 h-full w-full"

@@ -1,7 +1,7 @@
 <template>
   <div class="pt-20 h-full font-quicksand">
     <div
-      class="relative md:mt-20 flex md:justify-between items-center h-full w-full md:h-fit md:w-max mx-auto md:rounded-lg overflow-hidden shadow-md bg-[url('/src/modules/Auth/assets/auth-gym.jpg')] bg-cover bg-center bg-no-repeat md:bg-none md:bg-zinc-100"
+      class="relative md:mt-20 flex md:justify-between items-center h-full w-full md:h-fit md:w-max mx-auto md:rounded-lg overflow-hidden shadow-md bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')] bg-cover bg-center bg-no-repeat md:bg-none md:bg-zinc-100"
     >
       <!-- bg gradient for sm -->
       <div
@@ -17,7 +17,7 @@
       </div>
       <!-- left side -->
       <div
-        class="absolute bottom-16 md:bottom-0 md:px-0 md:relative flex flex-col md:flex-row side-image text-center bg-[url('/src/modules/Auth/assets/auth-gym.jpg')]"
+        class="absolute bottom-16 md:bottom-0 md:px-0 md:relative flex flex-col md:flex-row side-image text-center bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')]"
       >
         <!-- bg gradient for left side -->
         <div class="md:absolute h-full w-full left-0 top-0">

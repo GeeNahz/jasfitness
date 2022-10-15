@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-between items-center gap-x-64 bg-none lg:bg-[url(/src/modules/LandingPageModule/assets/hero.png)] lg:h-full w-full lg:pl-32"
+    class="flex justify-between items-center gap-x-64 bg-none lg:bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hero_YUAGwWov_.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665864648815')] lg:h-full w-full lg:pl-32"
   >
     <div class="hidden lg:block bg-none font-inter text-white md:w-[40%]">
       <p class="text-3xl font-normal mb-8">
