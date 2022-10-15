@@ -25,7 +25,6 @@
     >
       <figure>
         <video
-          preload
           autoplay
           loop
           muted
