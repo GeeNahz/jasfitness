@@ -73,7 +73,7 @@ const store = useStore()
 const handleSubmit = (credentials) => {
   // make async request
   try {
-    console.log(credentials)
+    formData.value = credentials
     store.commit('auth/setNotification', {
       message: 'A password reset mail has been sent to your email',
       route: 'PasswordResetEmailPage'
@@ -81,7 +81,6 @@ const handleSubmit = (credentials) => {
     // on successful request route to success page
     router.push({ name: 'Success' })
   } catch (err) {
-    console.log(err)
     error.value = true
     setTimeout(() => {
       error.value = false

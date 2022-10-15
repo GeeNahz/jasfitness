@@ -112,13 +112,12 @@ const store = useStore()
 
 const handleSubmit = (credentials) => {
   try {
-    console.log(credentials)
+    userCredentials.value = credentials
     store.commit('auth/setNotification', {
       message: 'You have been registered successfully',
       alertType: 'Success'
     })
   } catch (err) {
-    console.log(err)
     store.commit('auth/setNotification', {
       message: 'An error occured while registering. Please try again',
       alertType: 'Warning'

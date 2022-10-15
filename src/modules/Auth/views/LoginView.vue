@@ -120,7 +120,6 @@ const handleSubmit = (credentials) => {
     setTimeout(() => {
       error.value = false
     }, 3000)
-    console.log(err)
   } finally {
     // clear values
     reset('login-form')

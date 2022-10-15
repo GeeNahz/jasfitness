@@ -83,7 +83,7 @@ const store = useStore()
 
 const handleSubmit = (credentials) => {
   try {
-    console.log(credentials)
+    newPassword.value = credentials
     store.commit('auth/setNotification', {
       message: 'Your password has been successfully updated',
       route: 'LoginPage'
