@@ -68,7 +68,7 @@
     <!-- footer on sm screen only -->
     <div>
       <div
-        class="absolute md:hidden bottom-24 text-white w-full text-center font-quicksand text-lg font-light px-4 md:text-4xl"
+        class="absolute md:hidden bottom-32 text-white w-full text-center font-quicksand text-lg font-light px-4 md:text-4xl"
       >
         <slot name="motivation-section">
           <p>When you</p>
