@@ -25,10 +25,9 @@
     >
       <figure>
         <video
-          autoplay
-          loop
-          muted
-          playsinline
+          autoplay=""
+          controls=""
+          loop=""
           class="w-full h-full video mac iphone object-fill"
         >
           <source
