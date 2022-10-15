@@ -28,6 +28,19 @@
         <p>{{ toggleShowNotification[0].message }}</p>
       </div>
     </div>
+    <div
+      class="md:hidden flex flex-col items-center my-4 absolute bottom-0 left-[50%] -translate-x-[50%] text-opacity-80 font-thin"
+    >
+      <div class="imgs">
+        <div class="border border-[#d4d4d4] w-full rounded-full" />
+        <img
+          src="@/assets/footer-logo-black.svg"
+          alt="dumbbell"
+          class="w-16 absolute p-2 bg-white -top-[100%] -translate-y-[50%] left-[50%] -translate-x-[50%]"
+        />
+      </div>
+      <span class="footer__text">Powered by JAS FITNESS</span>
+    </div>
   </div>
 </template>
 
@@ -102,9 +115,11 @@ $font-sizes: (
 }
 
 .success {
-  @include flexCenter();
+  @include flexCenter(column);
   color: color(text);
   height: 100%;
+  padding: 0 2rem;
+  position: relative;
 }
 .success__box {
   @include flexCenter(column);
@@ -128,5 +143,14 @@ $font-sizes: (
     font-size: font-size(medium);
     font-weight: font-weight(semibold);
   }
+}
+.imgs {
+  position: relative;
+  margin-bottom: 1rem;
+  width: 300px;
+}
+.footer__text {
+  font-size: font-size(xx-small);
+  color: color(text);
 }
 </style>
