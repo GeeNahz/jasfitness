@@ -50,7 +50,7 @@
       <div class="flex-1 md:bg-none md:bg-gray-100 z-10 md:z-0 rounded-r-xl">
         <div
           id="form-container"
-          class="flex flex-col px-7 md:px-14 justify-center items-center md:w-[430px] h-[377px] md:h-[397px] my-[44px] md:my-[74px] mx-4 md:mx-[35px] bg-white rounded-xl"
+          class="flex flex-col px-7 md:px-14 justify-center items-center md:w-[430px] h-[377px] md:h-[397px] my-[84px] md:my-[74px] mx-4 md:mx-[35px] bg-white rounded-xl"
         >
           <span
             class="mb-3 md:mb-8 block text-start w-full font-semibold font-quicksand text-md md:text-xl"
