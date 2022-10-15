@@ -92,7 +92,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+// import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../components/AuthLayout.vue'
 
@@ -104,7 +104,7 @@ const user = ref({})
 
 const error = ref(false)
 
-const store = useStore()
+// const store = useStore()
 
 const router = useRouter()
 const handleSubmit = (credentials) => {
@@ -114,11 +114,11 @@ const handleSubmit = (credentials) => {
       credentials.username === 'testAdmin' &&
       credentials.password === 'secret1'
     ) {
-      store.commit('auth/setNotification', {
-        message: 'Your login details are correct',
-        route: 'DashboardHome'
-      })
-      router.push({ name: 'Success' })
+      // store.commit('auth/setNotification', {
+      //   message: 'Your login details are correct',
+      //   route: 'DashboardHome'
+      // })
+      router.push({ name: 'DashboardHome' })
     } else {
       throw error
     }
@@ -128,15 +128,15 @@ const handleSubmit = (credentials) => {
       error.value = false
     }, 3000)
     console.log(err)
-    store.commit('auth/setNotification', {
-      message: 'Login details are incorrect'
-    })
+    // store.commit('auth/setNotification', {
+    //   message: 'Login details are incorrect'
+    // })
   } finally {
     // clear values
     reset('login-form')
-    setTimeout(() => {
-      store.commit('auth/clearNotification')
-    }, 5000)
+    // setTimeout(() => {
+    //   store.commit('auth/clearNotification')
+    // }, 5000)
   }
 }
 
