@@ -155,10 +155,7 @@
             <h4>members think...</h4>
           </div>
           <div class="block lg:hidden w-full md:text-center mb-10">
-            <h4>
-              <span class="white-text">Here</span>
-              <span class="md:text-white">'s what</span> our members think...
-            </h4>
+            <h4 class="reviews__title">Here's what our members think...</h4>
           </div>
         </div>
         <!-- section cards -->
@@ -528,6 +525,10 @@ const reviewPosition = (index) => index % 2 === 0
   top: 40%;
   transform: translateY(-50%);
   left: -60px;
+}
+.reviews__title {
+  color: #fff;
+  mix-blend-mode: difference;
 }
 
 @media screen and (max-width: 815px) {
