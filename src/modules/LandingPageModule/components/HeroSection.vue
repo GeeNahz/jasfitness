@@ -27,9 +27,11 @@
         class="absolute mac iphone h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
       ></div>
       <video
+        preload
         autoplay
-        muted
         loop
+        muted
+        playsinline
         class="w-full h-full video mac iphone object-fill"
       >
         <source
