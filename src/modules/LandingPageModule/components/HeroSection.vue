@@ -24,9 +24,14 @@
       class="relative lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl h-[100vh] lg:h-full w-full lg:w-auto lg:mb-10"
     >
       <div
-        class="absolute h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
+        class="absolute mac iphone h-full w-full bg-gradient-to-b lg:bg-none from-transparent to-black bg-opacity-80"
       ></div>
-      <video autoplay muted loop class="w-full h-full object-fill">
+      <video
+        autoplay
+        muted
+        loop
+        class="w-full h-full video mac iphone object-fill"
+      >
         <source
           src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenterMain_VVwGnmuC8.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664997283633"
           type="video/mp4"
@@ -38,7 +43,7 @@
         Sorry, your bowser doesn't support HTML5 <code>video</code>
       </video>
       <div
-        class="lg:hidden absolute bottom-20 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
+        class="mac iphone lg:hidden absolute bottom-20 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
       >
         <p class="text-xl text-center font-semibold mb-8">
           No one else got your chest, shoulder, back, abs, and leg like we do
@@ -74,5 +79,15 @@ const openBmiCalculator = () => {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+}
+.to-black.mac,
+.to-black.iphone,
+.video.mac,
+.video.iphone {
+  background-image: linear-gradient(to bottom, rgba(0 0 0 0), rgba(0 0 0 1));
+}
+.text-white.mac,
+.text-white.iphone {
+  z-index: 20;
 }
 </style>
