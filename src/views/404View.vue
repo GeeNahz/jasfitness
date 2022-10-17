@@ -84,19 +84,33 @@ body {
   height: 100vh;
   width: 100%;
   line-height: 2rem;
+
   @include flexCenter(column);
+  @include mobile-device() {
+    line-height: 1.5rem;
+  }
 
   #{&}__title {
     font-size: 200px;
     color: color(primary);
     font-weight: font-weight(bold);
     margin-bottom: 1rem;
+
+    @include mobile-device {
+      font-size: 100px;
+      font-weight: font-weight(semibold);
+    }
   }
 
   #{&}__header {
     text-transform: uppercase;
     font-size: font-size(x-large);
     font-weight: font-weight(semibold);
+
+    @include mobile-device {
+      font-size: font-size(large);
+      font-weight: font-weight(medium);
+    }
   }
 
   #{&}__description {
@@ -105,6 +119,12 @@ body {
     font-size: font-size(small);
     width: 25rem;
     margin: 1rem auto;
+
+    @include mobile-device {
+      line-height: 0.8rem;
+      font-size: font-size(x-small);
+      width: 15rem;
+    }
   }
 
   & a {
