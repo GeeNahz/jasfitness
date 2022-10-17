@@ -3,8 +3,8 @@
     <h1 class="not-found__title">Oops!!</h1>
     <p class="not-found__header">404 - Page can not be found.</p>
     <p class="not-found__description">
-      The page you're looking for might have been removed, had its name
-      changed or is temporarily unavailable
+      The page you're looking for might have been removed, had its name changed
+      or is temporarily unavailable
     </p>
     <router-link :to="{ name: 'LandingPageHome' }">
       go to homepage
