@@ -214,13 +214,17 @@ import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const showNavbar = ref(false)
+
+const hideOverflow = () => {
+  document.querySelector('body').classList.toggle('overflow-y-hidden')
+}
 const toggleNavbar = () => {
   showNavbar.value = !showNavbar.value
-  document.querySelector('body').classList.toggle('overflow-y-hidden')
+  hideOverflow()
 }
 watch(showNavbar, () => {
   if (showNavbar.value) {
-    document.querySelector('body').classList.toggle('overflow-y-hidden')
+    hideOverflow()
   }
 })
 
@@ -228,10 +232,8 @@ const route = useRoute()
 const showWhiteBackground = ref(false)
 onMounted(() => {
   showNavbar.value = false
-  if (
-    route.path.includes('auth') ||
-    document.body.getBoundingClientRect().top < -150
-  ) {
+  console.log(route.path)
+  if (route.path !== '/' || document.body.getBoundingClientRect().top < -150) {
     showWhiteBackground.value = true
   } else {
     showWhiteBackground.value = false
