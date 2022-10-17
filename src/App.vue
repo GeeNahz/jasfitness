@@ -1,11 +1,16 @@
 <template>
-  <router-view />
+  <div class="h-full">
+    <router-view />
+  </div>
 </template>
 
 <style>
 html,
 body {
   height: 100%;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 /* #app {
