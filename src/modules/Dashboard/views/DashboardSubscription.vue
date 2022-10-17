@@ -563,12 +563,14 @@
                   <div class="grid justify-center w-full">
                     <DashboardRadialProgressBar
                       :completedSteps="87.5"
+                      :full-circle="false"
                       class="hidden md:block mt-4 -rotate-90"
                     />
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
                       :diameter="100"
                       :completedSteps="87.5"
+                      :full-circle="false"
                       class="md:hidden mt-3 -rotate-90"
                     />
                   </div>
