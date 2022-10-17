@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full">
+  <div v-if="completedStep" class="w-full">
     <RadialProgressBar
       :diameter="diameter"
-      :completed-steps="completedSteps"
+      :completed-steps="completedStep"
       :total-steps="totalSteps"
       :strokeWidth="strokeWidth"
       :innerStrokeWidth="strokeWidth"
