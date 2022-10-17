@@ -12,12 +12,16 @@
       :animateSpeed="0"
     >
       <!-- Your inner content here -->
-      <div
-        class="uppercase flex flex-col items-center justify-center font-semibold"
-      >
-        <p class="text-3xl md:text-5xl">{{ completedSteps }}%</p>
-        <p class="text-xs md:text-sm font-light md:font-semibold">Completed</p>
-      </div>
+      <slot>
+        <div
+          class="uppercase flex flex-col items-center justify-center font-semibold"
+        >
+          <p class="text-3xl md:text-5xl">{{ completedSteps }}%</p>
+          <p class="text-xs md:text-sm font-light md:font-semibold">
+            Completed
+          </p>
+        </div>
+      </slot>
     </RadialProgressBar>
   </div>
 </template>
