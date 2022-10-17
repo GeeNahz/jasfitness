@@ -232,7 +232,6 @@ const route = useRoute()
 const showWhiteBackground = ref(false)
 onMounted(() => {
   showNavbar.value = false
-  console.log(route.path)
   if (route.path !== '/' || document.body.getBoundingClientRect().top < -150) {
     showWhiteBackground.value = true
   } else {
