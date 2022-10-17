@@ -552,6 +552,7 @@
                   <p class="capitalize text-base md:text-lg">
                     Subscription wheel
                   </p>
+                  <!--  -->
                   <p class="text-xs text-gray-300 mt-1 md:mt-3 font-light">
                     Your health account and your bank account are the same
                     thing. The more you put in, the more you can take out.
