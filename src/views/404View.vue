@@ -1,5 +1,5 @@
 <template>
-  <navbar />
+  <Navbar />
   <div class="not-found font-sans">
     <h1 class="not-found__title">Oops!</h1>
     <p class="not-found__header">404 - Page can not be found</p>
