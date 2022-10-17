@@ -42,11 +42,17 @@ const props = defineProps({
   diameter: {
     type: Number,
     default: 200
+  },
+  fullCircle: {
+    type: Boolean,
+    default: true
   }
 })
 
 const strokeColor = ref('')
 const totalSteps = ref(100)
+
+const completedStep = ref(null)
 // const strokeWidth = ref(20)
 // const diameter = ref(200)
 
@@ -67,12 +73,26 @@ const totalSteps = ref(100)
 // })
 
 onMounted(() => {
-  if (props.completedSteps < 20) {
-    strokeColor.value = 'red'
-  } else if (props.completedSteps < 50) {
-    strokeColor.value = 'orange'
+  completedStep.value = props.completedSteps
+
+  if (props.fullCircle) {
+    if (completedStep.value <= 20) {
+      strokeColor.value = 'red'
+    } else if (completedStep.value < 50) {
+      strokeColor.value = 'orange'
+    } else {
+      strokeColor.value = '#70e000'
+    }
   } else {
-    strokeColor.value = '#70e000'
+    completedStep.value = completedStep.value / 2
+
+    if (completedStep.value <= 10) {
+      strokeColor.value = 'red'
+    } else if (completedStep.value <= 25) {
+      strokeColor.value = 'orange'
+    } else {
+      strokeColor.value = '#70e000'
+    }
   }
 })
 </script>
