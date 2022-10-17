@@ -1,4 +1,5 @@
 <template>
+  <navbar />
   <div class="not-found font-sans">
     <h1 class="not-found__title">Oops!</h1>
     <p class="not-found__header">404 - Page can not be found</p>
@@ -11,6 +12,10 @@
     </router-link>
   </div>
 </template>
+
+<script setup>
+import Navbar from '@/components/TheNavbar.vue'
+</script>
 
 <style lang="scss" scoped>
 $desktop-width: 1920px;
