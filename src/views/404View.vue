@@ -107,7 +107,7 @@ body {
     text-transform: uppercase;
     color: color(secondary);
     font-weight: font-weight(semibold);
-    background-color: color(accent);
+    background-color: color(accent) / 0.9;
     border-radius: 999px;
     box-shadow: 0 0.1rem 4px rgba(color(accent), 0.5),
       0 0.3rem 10px rgba(color(accent), 0.2);
@@ -115,7 +115,7 @@ body {
     @include transition-ease;
 
     &:hover {
-      background-color: color(accent) / 0.9;
+      background-color: color(accent);
     }
   }
 }
