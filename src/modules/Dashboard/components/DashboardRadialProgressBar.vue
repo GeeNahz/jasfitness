@@ -53,24 +53,6 @@ const strokeColor = ref('')
 const totalSteps = ref(100)
 
 const completedStep = ref(null)
-// const strokeWidth = ref(20)
-// const diameter = ref(200)
-
-// const onSmallScreen = computed(() => window.innerWidth < 1000)
-
-// const changeScreenSize = (smallScreen) => {
-//   if (smallScreen) {
-//     strokeWidth.value = 10
-//     diameter.value = 120
-//   } else {
-//     strokeWidth.value = 20
-//     diameter.value = 200
-//   }
-// }
-
-// watch(onSmallScreen, () => {
-//   window.addEventListener('resize', changeScreenSize(onSmallScreen.value))
-// })
 
 onMounted(() => {
   completedStep.value = props.completedSteps
