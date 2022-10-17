@@ -558,21 +558,35 @@
                   </p>
                 </div>
                 <div
-                  class="mt-2 md:mt-0 h-16 md:h-32 w-96 md:w-full overflow-hidden"
+                  class="mt-2 md:mt-0 h-16 md:h-32 w-[30rem] md:w-full overflow-hidden"
                 >
                   <div class="grid justify-center w-full">
                     <DashboardRadialProgressBar
                       :completedSteps="87.5"
                       :full-circle="false"
-                      class="hidden md:block mt-4 -rotate-90"
-                    />
+                      class="hidden md:block relative mt-3 -rotate-90"
+                    >
+                      <div
+                        class="rotate-90 absolute right-3 uppercase flex flex-col items-center justify-center font-semibold"
+                      >
+                        <p class="text-4xl">87.5%</p>
+                        <p class="text-sm font-normal">Completed</p>
+                      </div>
+                    </DashboardRadialProgressBar>
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
-                      :diameter="100"
+                      :diameter="110"
                       :completedSteps="87.5"
                       :full-circle="false"
-                      class="md:hidden mt-3 -rotate-90"
-                    />
+                      class="md:hidden relative mt-1 -rotate-90"
+                    >
+                      <div
+                        class="rotate-90 absolute -right-0 uppercase flex flex-col items-center justify-center font-semibold"
+                      >
+                        <p class="text-xl leading-none">87.5%</p>
+                        <p class="text-xs font-light leading-none">Completed</p>
+                      </div>
+                    </DashboardRadialProgressBar>
                   </div>
                 </div>
               </div>
