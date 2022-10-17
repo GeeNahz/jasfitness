@@ -1,7 +1,7 @@
 <template>
-  <div class="not-found">
-    <h1 class="not-found__title">Oops!!</h1>
-    <p class="not-found__header">404 - Page can not be found.</p>
+  <div class="not-found font-sans">
+    <h1 class="not-found__title">Oops!</h1>
+    <p class="not-found__header">404 - Page can not be found</p>
     <p class="not-found__description">
       The page you're looking for might have been removed, had its name changed
       or is temporarily unavailable
@@ -18,8 +18,9 @@ $tablet-width: 1280px;
 $mobile-width: 414px;
 
 $colors: (
-  'primary': #42c12d,
+  'primary': #70ae6e,
   'secondary': #fcfcfc,
+  'accent': #d4a20d,
   'text': #303030
 );
 $font-weights: (
@@ -54,6 +55,9 @@ $font-sizes: (
   justify-content: center;
   align-items: center;
 }
+@mixin transition-ease {
+  transition: all 0.2s ease-in-out;
+}
 @mixin mobile-device {
   @media screen and (max-width: #{$mobile-width}) {
     @content;
@@ -65,7 +69,54 @@ $font-sizes: (
   }
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
 .not-found {
+  height: 100vh;
+  width: 100%;
+  line-height: 2rem;
   @include flexCenter(column);
+
+  #{&}__title {
+    font-size: 200px;
+    color: color(primary);
+    font-weight: font-weight(bold);
+    margin-bottom: 1rem;
+  }
+
+  #{&}__header {
+    text-transform: uppercase;
+    font-size: font-size(x-large);
+    font-weight: font-weight(semibold);
+  }
+
+  #{&}__description {
+    line-height: 1rem;
+    text-align: center;
+    font-size: font-size(small);
+    width: 25rem;
+    margin: 1rem auto;
+  }
+
+  & a {
+    padding: 0.4rem 1rem;
+    text-transform: uppercase;
+    color: color(secondary);
+    font-weight: font-weight(semibold);
+    background-color: color(accent);
+    border-radius: 999px;
+    box-shadow: 0 0.1rem 4px rgba(color(accent), 0.5),
+      0 0.3rem 10px rgba(color(accent), 0.2);
+
+    @include transition-ease;
+
+    &:hover {
+      background-color: color(accent) / 0.9;
+    }
+  }
 }
 </style>
