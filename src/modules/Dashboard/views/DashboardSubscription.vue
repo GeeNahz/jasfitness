@@ -557,7 +557,20 @@
                     thing. The more you put in, the more you can take out.
                   </p>
                 </div>
-                <div class="bg-gray-500 md:h-32 w-full"></div>
+                <div class="md:h-32 w-full overflow-scroll">
+                  <div class="grid justify-center w-full">
+                    <DashboardRadialProgressBar
+                      :completedSteps="43.7"
+                      class="hidden md:block mt-4 -rotate-90"
+                    />
+                    <DashboardRadialProgressBar
+                      :strokeWidth="10"
+                      :diameter="120"
+                      :completedSteps="87.5"
+                      class="md:hidden"
+                    />
+                  </div>
+                </div>
               </div>
             </template>
           </DashboardSubscriptionCard>
@@ -599,6 +612,7 @@ import { computed } from 'vue'
 import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
+import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
 
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
