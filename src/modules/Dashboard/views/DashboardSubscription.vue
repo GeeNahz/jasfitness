@@ -557,17 +557,19 @@
                     thing. The more you put in, the more you can take out.
                   </p>
                 </div>
-                <div class="md:h-32 w-full overflow-scroll">
+                <div
+                  class="mt-2 md:mt-0 h-16 md:h-32 w-96 md:w-full overflow-hidden"
+                >
                   <div class="grid justify-center w-full">
                     <DashboardRadialProgressBar
-                      :completedSteps="43.7"
+                      :completedSteps="87.5"
                       class="hidden md:block mt-4 -rotate-90"
                     />
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
-                      :diameter="120"
+                      :diameter="100"
                       :completedSteps="87.5"
-                      class="md:hidden"
+                      class="md:hidden mt-3 -rotate-90"
                     />
                   </div>
                 </div>
