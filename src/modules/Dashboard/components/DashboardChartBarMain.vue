@@ -14,7 +14,7 @@ import {
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default defineComponent({
-  name: 'ReactiveChart',
+  name: 'BarChart',
   components: {
     Bar
   },
