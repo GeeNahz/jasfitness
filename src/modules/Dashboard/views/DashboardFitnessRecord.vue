@@ -370,8 +370,8 @@ const chartData = ref({
   ],
   datasets: [
     {
-      label: 'Data One',
-      backgroundColor: '#f87979',
+      label: 'Activity',
+      backgroundColor: '#ca9b42',
       data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
     }
   ]
