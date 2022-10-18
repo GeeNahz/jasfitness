@@ -75,7 +75,7 @@
           </div>
           <div class="chart-container">
             <div class="chart bg-gray-50 p-2 mt-4 rounded-xl">
-              <DashboardChartBar />
+              <DashboardChartBar :chartData="chartData" />
             </div>
           </div>
           <div
@@ -345,11 +345,37 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
-import DashboardChartBar from '../components/DashboardChartBar.vue'
+import DashboardChartBar from '../components/DashboardChartBarMain.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
+
+const chartData = ref({
+  labels: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
+  datasets: [
+    {
+      label: 'Data One',
+      backgroundColor: '#f87979',
+      data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+    }
+  ]
+})
 </script>
 
 <style scoped>
