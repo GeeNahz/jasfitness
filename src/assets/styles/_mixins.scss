@@ -1,0 +1,78 @@
+@mixin flexCenter($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin responsive($screen-width) {
+    @media screen and (max-width: #{screen-size($screen-width)}) {
+        @content;
+    }
+}
+
+@mixin hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@mixin unstyled-list() {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin transition-ease($time: 0.3s, $ease: ease-out) {
+    transition: all $time $ease;
+}
+
+@mixin hover-state {
+    &:hover {
+        @content;
+    }
+}
+
+@mixin active-state {
+    &:active {
+        @content;
+    }
+}
+
+@mixin focus-state {
+    &:focus {
+        @content;
+    }
+}
+
+@mixin fade-in-out($name) {
+    .#{$name}-enter-from,
+    .#{$name}-leave-to {
+        opacity: 0;
+    }
+
+    .#{$name}-enter-active,
+    .#{$name}-leave-active {
+        @include transition-ease(0.2s, cubic-bezier(1, 0.5, 0.8, 1));
+    }
+}
+
+@mixin slide-in-out($name) {
+    .#{$name}-enter-from,
+    .#{$name}-leave-to {
+        transform: translateY(-20px);
+    }
+
+    .#{$name}-enter-active,
+    .#{$name}-leave-active {
+        @include transition-ease($time: 0.4s);
+    }
+}
+
+@mixin slide-fade($name) {
+    @include fade-in-out($name);
+    @include slide-in-out($name);
+}

@@ -1,0 +1,35 @@
+$desktop-width: 1920px;
+$tablet-width: 1280px;
+$mobile-width: 414px;
+$all-colors: (
+    'primary': #fcfcfc,
+    'secondary': #42c12d,
+    'text': #969696
+);
+$font-weights: (
+    'light': 200,
+    'semilight': 300,
+    'regular': 400,
+    'medium': 500,
+    'semibold': 600,
+    'bold': 700
+);
+$font-sizes: (
+    'xx-small': 9px,
+    'x-small': 10px,
+    'small': 13px,
+    'medium': 16px,
+    'large': 18px,
+    'x-large': 24px,
+    'xx-large': 32px
+);
+
+@function color($color) {
+  @return map-get($all-colors, $color);
+}
+@function font-weight($weight) {
+  @return map-get($font-weights, $weight);
+}
+@function font-size($size) {
+  @return map-get($font-sizes, $size);
+}
