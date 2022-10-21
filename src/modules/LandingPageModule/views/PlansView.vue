@@ -1,5 +1,5 @@
 <template>
-  <div>Plans page</div>
+  <div class="container">Plans page</div>
   <pre>{{ plans }}</pre>
 </template>
 
@@ -75,4 +75,11 @@ const plans = ref([
 
 <style lang="scss" scoped>
 @use '../../../assets/styles/base';
+
+.container {
+  @include container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
 </style>
