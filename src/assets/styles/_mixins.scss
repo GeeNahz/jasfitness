@@ -1,3 +1,9 @@
+@mixin responsive($screen-width) {
+    @media screen and (max-width: #{screen-size($screen-width)}) {
+        @content;
+    }
+}
+
 @mixin container {
     /**20px: 1.25rem, 80px: 5rem, 96px: 6rem */
     display: block;
@@ -24,12 +30,6 @@
     flex-direction: $direction;
     justify-content: center;
     align-items: center;
-}
-
-@mixin responsive($screen-width) {
-    @media screen and (max-width: #{screen-size($screen-width)}) {
-        @content;
-    }
 }
 
 @mixin hide-scrollbar {
