@@ -12,12 +12,12 @@
     padding: 0 1.25rem;
     margin: 0 auto;
   
-    @include responsive($mobile-width) {
+    @include responsive(mobile-width) {
         width: 100%;
         max-width: 100%;
     }
   
-    @include responsive($tablet-width) {
+    @include responsive(tablet-width) {
         width: 940px;
         max-width: 940px;
     }
