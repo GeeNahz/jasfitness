@@ -74,7 +74,7 @@ const plans = ref([
 </script>
 
 <style lang="scss" scoped>
-@use '../../../assets/styles/base';
+@import '../../../assets/styles/base';
 
 .container {
   @include container {
