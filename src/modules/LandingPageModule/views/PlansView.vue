@@ -1,5 +1,7 @@
 <template>
-  <div class="container">Plans page</div>
+  <section class="section">
+    <div class="container">Plans page</div>
+  </section>
   <pre>{{ plans }}</pre>
 </template>
 
@@ -76,10 +78,14 @@ const plans = ref([
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
 
-.container {
-  @include container {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+.section {
+  width: 100%;
+
+  & .container {
+    @include container {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
   }
 }
 </style>
