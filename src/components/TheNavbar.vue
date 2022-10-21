@@ -242,10 +242,12 @@ onMounted(() => {
 document.addEventListener('scroll', () => {
   let pageScrollPosition = document.body.getBoundingClientRect().top
 
-  if (pageScrollPosition < -150) {
-    showWhiteBackground.value = true
-  } else {
-    showWhiteBackground.value = false
+  if (route.path === '/') {
+    if (pageScrollPosition < -150) {
+      showWhiteBackground.value = true
+    } else {
+      showWhiteBackground.value = false
+    }
   }
 })
 </script>
