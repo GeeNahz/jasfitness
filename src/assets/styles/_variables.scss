@@ -1,8 +1,9 @@
-$desktop-width: 1920px;
-$tablet-width: 1280px;
-$mobile-width: 414px;
-$mobile-landscape-width: 767px;
-
+$screen-sizes: (
+    'desktop-width': 1920px,
+    'tablet-width': 1280px,
+    'mobile-width': 414px,
+    'mobile-landscape-width': 767px
+);
 $all-colors: (
     'primary': #fcfcfc,
     'secondary': #42c12d,
@@ -34,4 +35,7 @@ $font-sizes: (
 }
 @function font-size($size) {
   @return map-get($font-sizes, $size);
+}
+@function screen-size($size) {
+    @return map-get($screen-sizes, $size);
 }
