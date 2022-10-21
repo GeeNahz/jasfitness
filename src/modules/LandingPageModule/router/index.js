@@ -10,6 +10,9 @@ const HomeView = () =>
 const LandingPageAbout = () =>
   import(/* webpackChunkName: "landingpageAbout" */ '../views/AboutView.vue')
 
+const PlansView = () =>
+  import(/* webpackChunkName: "plansView" */ '../views/PlansView.vue')
+
 const routes = [
   {
     path: '/',
@@ -24,6 +27,11 @@ const routes = [
         path: 'about',
         name: 'AboutLand',
         component: LandingPageAbout
+      },
+      {
+        path: 'plans',
+        name: 'PlansPage',
+        component: PlansView
       }
     ]
   }
