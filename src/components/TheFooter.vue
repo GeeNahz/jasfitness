@@ -1,5 +1,7 @@
 <template>
-  <div class="lg:pt-20 px-4 w-full h-[858px] lg:h-[551px] bg-[#171717]">
+  <div
+    class="footer-container lg:pt-20 px-4 w-full h-[858px] lg:h-[551px] bg-[#171717]"
+  >
     <div
       class="w-full h-[95%] lg:h-[90%] flex flex-col lg:flex-row justify-evenly items-center lg:items-start text-white text-sm lg:text-lg font-inter capitalize"
     >
@@ -100,4 +102,8 @@
 
 <script setup></script>
 
-<style scoped></style>
+<style scoped>
+.footer-container {
+  padding-top: 8rem;
+}
+</style>
