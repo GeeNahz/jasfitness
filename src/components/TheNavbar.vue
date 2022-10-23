@@ -27,7 +27,7 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/plans"
+              <router-link class="nav-link" :to="{ name: 'PlansPage' }"
                 >plans
                 <div class="underline"></div>
               </router-link>
@@ -168,7 +168,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'LandingPageHome' }"
+                <router-link class="nav-link" :to="{ name: 'PlansPage' }"
                   >plans
                   <div class="underline"></div>
                 </router-link>
