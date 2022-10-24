@@ -21,7 +21,7 @@
         >
           <ul class="flex space-x-8 font-semibold text-xl">
             <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'PlansPage' }"
+              <router-link class="nav-link" to="{ name: 'AboutLand' }"
                 >About us
                 <div class="underline"></div>
               </router-link>
