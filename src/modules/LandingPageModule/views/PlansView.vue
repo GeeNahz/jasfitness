@@ -2,6 +2,14 @@
   <section class="section">
     <div class="container">
       <div class="plans">
+        <!-- <transition-group
+          @before-enter="onBeforeEnter"
+          @enter="onEnter"
+          @leave="onLeave"
+          appear
+          name="slide"
+        >
+      </transition-group> -->
         <SubscriptionCard
           v-for="plan in plans"
           :key="plan.slug"
@@ -83,7 +91,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import gsap from 'gsap'
 
 import SubscriptionCard from '../components/SubsciptionCard.vue'
 import TheFooter from '@/components/TheFooter.vue'
@@ -137,10 +146,50 @@ const plans = ref([
 ])
 
 const evenNumber = (number) => number % 2 === 0
+
+/**For stagger effect */
+onMounted(() => {
+  gsap.fromTo(
+    '.plan',
+    {
+      opacity: 0,
+      y: -50
+    },
+    {
+      duration: 1.5,
+      opacity: 1,
+      y: 0,
+      delay: 0.5,
+      ease: 'power3.inOut',
+      stagger: 0.3
+    }
+  )
+})
+// function onEnter(el, done) {
+//   gsap.to(el, {
+//     opacity: 1,
+//     height: '1.6em',
+//     delay: el.dataset.index * 0.15,
+//     onComplete: done
+//   })
+// }
 </script>
 
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
+
+.slide-move,
+.slide-enter-active,
+.slide-leave-active {
+  transition-delay: 0.2s;
+  transition: all 0.5s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 
 .section {
   width: 100%;
@@ -153,7 +202,7 @@ const evenNumber = (number) => number % 2 === 0
 
     & .plans {
       display: flex;
-      gap: 1rem;
+      gap: 2.5rem;
       width: max-content;
 
       @include responsive(tablet-width) {
@@ -172,13 +221,11 @@ const evenNumber = (number) => number % 2 === 0
       & .plan {
         min-width: 10rem;
         width: 20rem;
-        height: max-content;
+        height: 35rem;
 
         @include responsive(mobile-width) {
           min-width: 100%;
-        }
-        @include responsive(tablet-width) {
-          height: auto;
+          height: max-content;
         }
 
         & .card-title {
@@ -186,6 +233,7 @@ const evenNumber = (number) => number % 2 === 0
         }
 
         & .default-content {
+          position: relative;
           & .card-body-wrapper {
             position: relative;
             background-color: #fff;
@@ -230,10 +278,22 @@ const evenNumber = (number) => number % 2 === 0
         }
 
         & .button-wrapper {
+          position: absolute;
+          bottom: 1rem;
+          left: 50%;
+          transform: translateX(-50%);
           width: 100%;
-          height: 100%;
+          height: max-content;
           display: flex;
           justify-content: center;
+
+          @include responsive(mobile-width) {
+            position: relative;
+            bottom: 0;
+            left: 0;
+            transform: translateX(0);
+          }
+
           & a.card-btn {
             box-shadow: 0 4px 15px 2px rgba(0, 0, 0, 0.1);
             width: max-content;
