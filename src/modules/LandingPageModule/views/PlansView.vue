@@ -2,14 +2,6 @@
   <section class="section">
     <div class="container">
       <div class="plans">
-        <!-- <transition-group
-          @before-enter="onBeforeEnter"
-          @enter="onEnter"
-          @leave="onLeave"
-          appear
-          name="slide"
-        >
-      </transition-group> -->
         <SubscriptionCard
           v-for="plan in plans"
           :key="plan.slug"
@@ -165,31 +157,10 @@ onMounted(() => {
     }
   )
 })
-// function onEnter(el, done) {
-//   gsap.to(el, {
-//     opacity: 1,
-//     height: '1.6em',
-//     delay: el.dataset.index * 0.15,
-//     onComplete: done
-//   })
-// }
 </script>
 
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
-
-.slide-move,
-.slide-enter-active,
-.slide-leave-active {
-  transition-delay: 0.2s;
-  transition: all 0.5s ease;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
-}
 
 .section {
   width: 100%;
