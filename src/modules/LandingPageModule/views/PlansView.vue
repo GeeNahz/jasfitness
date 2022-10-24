@@ -175,7 +175,7 @@ const evenNumber = (number) => number % 2 === 0
         height: max-content;
 
         @include responsive(mobile-width) {
-          min-width: max-content;
+          min-width: 100%;
         }
         @include responsive(tablet-width) {
           height: auto;
