@@ -9,7 +9,7 @@
       <div class="btns flex space-x-7">
         <router-link
           class="text-xl font-bold text-zinc-900 bg-white hover:text-zinc-900 w-52 h-14 btn-default"
-          :to="{ name: 'LandingPageHome' }"
+          :to="{ name: 'PlansPage' }"
           >Get Started</router-link
         >
         <button
@@ -49,7 +49,7 @@
           <div class="btns flex space-x-7 justify-center">
             <router-link
               class="text-sm font-bold text-zinc-900 bg-white hover:text-zinc-900 px-4 py-2 whitespace-nowrap btn-default"
-              :to="{ name: 'LandingPageHome' }"
+              :to="{ name: 'PlansPage' }"
               >Get Started</router-link
             >
             <button
@@ -77,14 +77,17 @@ figure {
   position: relative;
   height: 100%;
 }
-figure::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: '';
-  background-image: linear-gradient(to bottom, #1f1f1f00, #1f1f1f);
+
+@media screen and (max-width: 414px) {
+  figure::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-image: linear-gradient(to bottom, #1f1f1f00, #1f1f1f);
+  }
 }
 .btn-default {
   display: flex;
