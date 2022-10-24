@@ -8,13 +8,13 @@
       </p>
       <div class="btns flex space-x-7">
         <router-link
-          class="text-xl font-bold text-zinc-900 bg-white hover:text-zinc-900 w-52 h-14 btn-default"
+          class="text-xl font-bold text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 transition w-52 h-14 btn-default"
           :to="{ name: 'PlansPage' }"
           >Get Started</router-link
         >
         <button
           @click="openBmiCalculator"
-          class="text-xl font-bold text-white bg-[#FFB628] w-52 h-14 btn-default"
+          class="text-xl font-bold text-white bg-[#FFB628] hover:bg-[#fca800] transition w-52 h-14 btn-default"
         >
           What's Your BMI?
         </button>
@@ -76,6 +76,7 @@ const openBmiCalculator = () => {
 figure {
   position: relative;
   height: 100%;
+  /* color: #fca800; */
 }
 
 @media screen and (max-width: 414px) {
