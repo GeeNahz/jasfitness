@@ -21,7 +21,7 @@
         >
           <ul class="flex space-x-8 font-semibold text-xl">
             <li class="nav-item">
-              <router-link class="nav-link" to="/about"
+              <router-link class="nav-link" :to="{ name: 'PlansPage' }"
                 >About us
                 <div class="underline"></div>
               </router-link>
@@ -48,8 +48,10 @@
             class="capitalize"
             :to="{ name: 'LoginPage' }"
             :class="{ 'text-white': !showWhiteBackground }"
-            >login</router-link
           >
+            login
+            <div class="underline"></div>
+          </router-link>
           <router-link
             class="capitalize bg-zinc-900 text-white rounded-xl px-4 py-2"
             :to="{ name: 'SignupPage' }"
@@ -253,7 +255,7 @@ document.addEventListener('scroll', () => {
 </script>
 
 <style scoped>
-nav ul a {
+nav a {
   position: relative;
 }
 nav a .underline {
