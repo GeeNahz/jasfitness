@@ -51,7 +51,7 @@
             <template #bottom>
               <div>
                 <router-link
-                  to="/about"
+                  :to="{ name: 'PlansPage' }"
                   class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] lg:w-[193px] lg:h-[54px] text-sm lg:text-base transition-all"
                 >
                   Join Community
@@ -96,7 +96,7 @@
               committed to a life of healthy living and more.
             </p>
             <template #bottom>
-              <router-link to="/about" class="card-item-btns">
+              <router-link :to="{ name: 'PlansPage' }" class="card-item-btns">
                 <img
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
@@ -125,7 +125,7 @@
               professionals to get you the results you desire.
             </p>
             <template #bottom>
-              <div class="card-item-btns">
+              <router-link :to="{ name: 'PlansPage' }" class="card-item-btns">
                 <img
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
@@ -133,7 +133,7 @@
                 <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
                   Get Started
                 </p>
-              </div>
+              </router-link>
             </template>
           </CardItem>
         </div>
