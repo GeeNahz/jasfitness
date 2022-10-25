@@ -102,8 +102,13 @@
 
 <script setup></script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles/base';
+
 .footer-container {
   padding-top: 8rem;
+  @include responsive(tablet-width) {
+    padding-top: 0;
+  }
 }
 </style>
