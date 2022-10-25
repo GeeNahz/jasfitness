@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="w-[100vw] h-20 md:h-24 py-7 pr-6 lg:px-16 fixed z-50 transition-all duration-300"
+      class="w-[100vw] h-20 md:h-24 py-7 pr-6 lg:px-16 fixed z-50 transition-all duration-300 font-quicksand"
       :class="{ 'bg-white shadow-md': showWhiteBackground }"
     >
       <div class="flex justify-between h-full items-center capitalize">
@@ -144,7 +144,7 @@
       <div
         v-if="showNavbar"
         @click.self="toggleNavbar"
-        class="fixed top-0 left-0 z-50 h-full w-full bg-[#1f1f1f] bg-opacity-50 rounded-br-xl shadow overflow-hidden"
+        class="fixed top-0 left-0 z-50 h-full w-full bg-[#1f1f1f] bg-opacity-50 rounded-br-xl shadow overflow-hidden font-quicksand"
       >
         <div class="inner bg-white h-full w-[75%] px-10 py-4">
           <!-- logo -->
