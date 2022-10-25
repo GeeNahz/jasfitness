@@ -113,6 +113,7 @@ useMeta({
       @include container {
         text-align: justify;
         color: color(text);
+        padding-bottom: 2rem;
       }
       & h3 {
         text-align: center;
