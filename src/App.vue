@@ -1,8 +1,26 @@
 <template>
+  <metainfo>
+    <template v-slot:title="{ content }">{{
+      content ? `${content} | Jas-Fitness` : `Jas-Fitness`
+    }}</template>
+  </metainfo>
   <div class="h-full">
     <router-view />
   </div>
 </template>
+
+<script>
+import { useMeta } from 'vue-meta'
+
+export default {
+  setup() {
+    useMeta({
+      title: '',
+      htmlAttrs: { lang: 'en', amp: true }
+    })
+  }
+}
+</script>
 
 <style>
 html,
