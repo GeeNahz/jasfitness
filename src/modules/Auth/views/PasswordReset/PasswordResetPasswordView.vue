@@ -73,6 +73,9 @@ import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
+import { useMeta } from 'vue-meta'
+
+useMeta({ title: 'Reset Password' })
 
 const newPassword = ref({})
 
