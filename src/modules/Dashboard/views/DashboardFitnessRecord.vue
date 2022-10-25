@@ -352,6 +352,9 @@ import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardChartBar from '../components/DashboardChartBarMain.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
+import { useMeta } from 'vue-meta'
+
+useMeta({ title: 'Fitness Record' })
 
 const chartData = ref({
   labels: [
