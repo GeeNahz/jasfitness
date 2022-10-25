@@ -326,6 +326,11 @@ import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingC
 import BmiCalculator from '../components/BmiCalculator.vue'
 
 import { ref } from 'vue'
+import { useMeta } from 'vue-meta'
+
+useMeta({
+  title: 'Health is Wealth'
+})
 
 const eventsAndNews = ref([
   {
