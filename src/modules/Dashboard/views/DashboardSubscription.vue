@@ -21,8 +21,8 @@
             >
               <p class="hidden md:block">Resubscribe</p>
               <p class="block md:hidden text-[10px]">Re-Sub</p>
-              <i
-                ><svg
+              <i>
+                <svg
                   width="25"
                   height="25"
                   viewBox="0 0 25 25"
@@ -48,8 +48,9 @@
                     stroke="white"
                     stroke-width="2"
                     stroke-linecap="round"
-                  /></svg
-              ></i>
+                  />
+                </svg>
+              </i>
             </button>
           </div>
         </div>
@@ -97,9 +98,9 @@
               class="flex-1"
               :addIcon="addIconSection"
             >
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="46"
                     height="46"
                     viewBox="0 0 46 46"
@@ -131,8 +132,9 @@
                       stroke-width="3.5"
                       stroke-linecap="round"
                     />
-                  </svg> </i
-              ></template>
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -164,9 +166,9 @@
               class="flex-1"
               :addIcon="addIconSection"
             >
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="30"
                     height="30"
                     viewBox="0 0 30 30"
@@ -179,8 +181,9 @@
                       d="M13.1894 15.3965L4.19218 12.3975C1.83896 11.6131 0.662354 11.2209 0.662354 10.5001C0.662354 9.77934 1.83896 9.38713 4.19218 8.60273L26.2053 1.26501C27.8611 0.713077 28.689 0.437112 29.126 0.874128C29.5631 1.31114 29.2871 2.13904 28.7352 3.79483L21.3974 25.808C20.613 28.1612 20.2208 29.3378 19.5001 29.3378C18.7793 29.3378 18.3871 28.1612 17.6027 25.808L14.6036 16.8108L21.9572 9.4572C22.3477 9.06668 22.3477 8.43351 21.9572 8.04299C21.5667 7.65247 20.9335 7.65247 20.543 8.04299L13.1894 15.3965Z"
                       fill="black"
                     />
-                  </svg> </i
-              ></template>
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -216,9 +219,9 @@
             class="features-container grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -246,8 +249,9 @@
                       stroke-width="3"
                       stroke-linecap="round"
                     />
-                  </svg> </i
-              ></template>
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -270,9 +274,9 @@
               </template>
             </DashboardSubscriptionCard>
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -299,8 +303,10 @@
                       stroke="black"
                       stroke-width="3"
                       stroke-linecap="round"
-                    /></svg></i
-              ></template>
+                    />
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -323,9 +329,9 @@
               </template>
             </DashboardSubscriptionCard>
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -352,8 +358,10 @@
                       stroke="black"
                       stroke-width="3"
                       stroke-linecap="round"
-                    /></svg></i
-              ></template>
+                    />
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -378,9 +386,9 @@
               </template>
             </DashboardSubscriptionCard>
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -407,8 +415,10 @@
                       stroke="black"
                       stroke-width="3"
                       stroke-linecap="round"
-                    /></svg></i
-              ></template>
+                    />
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -433,9 +443,9 @@
               </template>
             </DashboardSubscriptionCard>
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -462,8 +472,10 @@
                       stroke="black"
                       stroke-width="3"
                       stroke-linecap="round"
-                    /></svg></i
-              ></template>
+                    />
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -486,9 +498,9 @@
               </template>
             </DashboardSubscriptionCard>
             <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon
-                ><i
-                  ><svg
+              <template #icon>
+                <i>
+                  <svg
                     width="40"
                     height="40"
                     viewBox="0 0 40 40"
@@ -515,8 +527,10 @@
                       stroke="black"
                       stroke-width="3"
                       stroke-linecap="round"
-                    /></svg></i
-              ></template>
+                    />
+                  </svg>
+                </i>
+              </template>
               <template #title>
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
@@ -598,8 +612,8 @@
               <router-link :to="{ name: 'DashboardHome' }" class="links">
                 <div class="flex items-center gap-4">
                   <div class="icon">
-                    <i
-                      ><svg
+                    <i>
+                      <svg
                         width="28"
                         height="28"
                         viewBox="0 0 28 28"
@@ -610,8 +624,9 @@
                           id="path"
                           d="M7 7C6.72311 7 6.45243 7.08211 6.2222 7.23594C5.99197 7.38978 5.81253 7.60843 5.70657 7.86424C5.60061 8.12006 5.57288 8.40155 5.6269 8.67313C5.68092 8.9447 5.81426 9.19416 6.01005 9.38995C6.20584 9.58574 6.4553 9.71908 6.72687 9.7731C6.99845 9.82712 7.27994 9.79939 7.53576 9.69343C7.79157 9.58747 8.01022 9.40803 8.16406 9.1778C8.31789 8.94757 8.4 8.67689 8.4 8.4C8.4 8.0287 8.2525 7.6726 7.98995 7.41005C7.7274 7.1475 7.3713 7 7 7ZM7 12.6C6.72311 12.6 6.45243 12.6821 6.2222 12.8359C5.99197 12.9898 5.81253 13.2084 5.70657 13.4642C5.60061 13.7201 5.57288 14.0016 5.6269 14.2731C5.68092 14.5447 5.81426 14.7942 6.01005 14.9899C6.20584 15.1857 6.4553 15.3191 6.72687 15.3731C6.99845 15.4271 7.27994 15.3994 7.53576 15.2934C7.79157 15.1875 8.01022 15.008 8.16406 14.7778C8.31789 14.5476 8.4 14.2769 8.4 14C8.4 13.6287 8.2525 13.2726 7.98995 13.0101C7.7274 12.7475 7.3713 12.6 7 12.6ZM21 12.6H12.6C12.2287 12.6 11.8726 12.7475 11.6101 13.0101C11.3475 13.2726 11.2 13.6287 11.2 14C11.2 14.3713 11.3475 14.7274 11.6101 14.9899C11.8726 15.2525 12.2287 15.4 12.6 15.4H21C21.3713 15.4 21.7274 15.2525 21.99 14.9899C22.2525 14.7274 22.4 14.3713 22.4 14C22.4 13.6287 22.2525 13.2726 21.99 13.0101C21.7274 12.7475 21.3713 12.6 21 12.6ZM21 7H12.6C12.2287 7 11.8726 7.1475 11.6101 7.41005C11.3475 7.6726 11.2 8.0287 11.2 8.4C11.2 8.7713 11.3475 9.1274 11.6101 9.38995C11.8726 9.6525 12.2287 9.8 12.6 9.8H21C21.3713 9.8 21.7274 9.6525 21.99 9.38995C22.2525 9.1274 22.4 8.7713 22.4 8.4C22.4 8.0287 22.2525 7.6726 21.99 7.41005C21.7274 7.1475 21.3713 7 21 7ZM23.8 0H4.2C3.08609 0 2.0178 0.442499 1.23015 1.23015C0.442499 2.0178 0 3.08609 0 4.2V18.2C0 19.3139 0.442499 20.3822 1.23015 21.1698C2.0178 21.9575 3.08609 22.4 4.2 22.4H20.426L25.606 27.594C25.7368 27.7238 25.892 27.8264 26.0625 27.8961C26.2331 27.9657 26.4158 28.0011 26.6 28C26.7836 28.0047 26.9658 27.9664 27.132 27.888C27.3877 27.783 27.6065 27.6046 27.761 27.3754C27.9155 27.1462 27.9986 26.8764 28 26.6V4.2C28 3.08609 27.5575 2.0178 26.7698 1.23015C25.9822 0.442499 24.9139 0 23.8 0ZM25.2 23.226L21.994 20.006C21.8632 19.8762 21.708 19.7736 21.5375 19.7039C21.3669 19.6342 21.1842 19.5989 21 19.6H4.2C3.8287 19.6 3.4726 19.4525 3.21005 19.1899C2.9475 18.9274 2.8 18.5713 2.8 18.2V4.2C2.8 3.8287 2.9475 3.4726 3.21005 3.21005C3.4726 2.9475 3.8287 2.8 4.2 2.8H23.8C24.1713 2.8 24.5274 2.9475 24.7899 3.21005C25.0525 3.4726 25.2 3.8287 25.2 4.2V23.226Z"
                           fill="white"
-                        /></svg
-                    ></i>
+                        />
+                      </svg>
+                    </i>
                   </div>
                   <div>
                     <p class="text-lg font-semibold py-0 w-full">Feedback</p>
@@ -632,6 +647,9 @@ import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
+import { useMeta } from 'vue-meta'
+
+useMeta({ title: 'Subscription' })
 
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
