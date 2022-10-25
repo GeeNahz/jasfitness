@@ -45,6 +45,8 @@
 </template>
 
 <script>
+import { useMeta } from 'vue-meta'
+
 export default {
   name: 'SuccessView',
   data() {
@@ -63,6 +65,12 @@ export default {
     setTimeout(() => {
       this.$router.push({ name: this.toggleShowNotification[0].route })
     }, 4000)
+  },
+
+  setup() {
+    useMeta({
+      title: 'Success'
+    })
   }
 }
 </script>
