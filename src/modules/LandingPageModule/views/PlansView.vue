@@ -85,9 +85,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
+import { useMeta } from 'vue-meta'
 
 import SubscriptionCard from '../components/SubsciptionCard.vue'
 import TheFooter from '@/components/TheFooter.vue'
+
+useMeta({
+  title: 'Plans'
+})
 
 const plans = ref([
   {
