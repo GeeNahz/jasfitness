@@ -218,7 +218,11 @@
           <div
             class="features-container grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
-            <DashboardSubscriptionCard :addMinWidth="true">
+            <DashboardSubscriptionCard
+              v-for="plan in plans"
+              :key="plan.id"
+              :addMinWidth="true"
+            >
               <template #icon>
                 <i>
                   <svg
@@ -257,299 +261,19 @@
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
                   <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    Busy-Bee
-                  </p>
-                  <p class="text-gray-500 text-xs md:text-base">Monthly plan</p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>No Price discount</li>
-                    <li>3 Days per week access</li>
-                    <li>No Guest pass per Month</li>
-                    <li>No Subscription Freeze</li>
-                  </ul>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    Passer-By
-                  </p>
-                  <p class="text-gray-500 text-xs md:text-base">Monthly plan</p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>No Price discount</li>
-                    <li>Access once daily</li>
-                    <li>No Guest pass per Month</li>
-                    <li>No Subscription Freeze</li>
-                  </ul>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    Too-Sure
+                    {{ plan.slug }}
                   </p>
                   <p class="text-gray-500 text-xs md:text-base">
-                    Quarterly plan
+                    {{ plan.billing }}
                   </p>
                 </div>
               </template>
               <template #description>
                 <div class="plans-des">
                   <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>15% Price discount</li>
-                    <li>All day access</li>
-                    <li>1 Guest pass per Month</li>
-                    <li>4 days Subscription Freeze</li>
-                  </ul>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    Real-Deal
-                  </p>
-                  <p class="text-gray-500 text-xs md:text-base">
-                    Bi-Yearly plan
-                  </p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>20% Price discount</li>
-                    <li>All day access</li>
-                    <li>2 Guest pass per Month</li>
-                    <li>8 Days Subscription Freeze</li>
-                  </ul>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    Odogwu
-                  </p>
-                  <p class="text-gray-500 text-xs md:text-base">Yearly plan</p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>30% Price discount</li>
-                    <li>All day access</li>
-                    <li>3 Guest pass per Month</li>
-                    <li>14 Days Subscription Freeze</li>
-                  </ul>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-            <DashboardSubscriptionCard :addMinWidth="true">
-              <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
-                    V-I-P
-                  </p>
-                  <p class="text-gray-500 text-xs md:text-base">Monthly plan</p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
-                    <li>20% Price discount</li>
-                    <li>All day access</li>
-                    <li>5 persons per session</li>
-                    <li>Personal Trainer</li>
-                    <li>2 Guest pass per Month</li>
-                    <li>5 Days Subscription Freeze</li>
+                    <li v-for="(offer, index) in plan.offers" :key="index">
+                      {{ offer }}
+                    </li>
                   </ul>
                 </div>
               </template>
@@ -652,6 +376,54 @@ import { useMeta } from 'vue-meta'
 useMeta({ title: 'Subscription' })
 
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
+
+const plans = [
+  {
+    id: 0,
+    slug: 'regular',
+    price: 'N10,000',
+    setup: 'N2,000',
+    billing: 'Billed Monthly',
+    offers: [
+      'ACCESS once daily',
+      'Personal Dashboard for tracking Fitness Records',
+      'NO fitness Instructor',
+      'NO Guest Pass Per Month',
+      'NO Subscription Pause Request'
+    ]
+  },
+  {
+    id: 1,
+    slug: 'PREMIUM',
+    price: 'N20,000',
+    setup: 'N2,000',
+    billing: 'Billed Monthly',
+    offers: [
+      'NO Price Discount',
+      'ACCESS Once Daily',
+      'PERSONAL Dashboard For Tracking Fitness Records',
+      'Fitness Instructor Available',
+      '1 Guest Pass Per Month',
+      '4 days Subscription Pause Request'
+    ]
+  },
+  {
+    id: 2,
+    slug: 'V-I-P',
+    price: 'N40,000',
+    setup: 'N2,000',
+    billing: 'Billed Monthly',
+    offers: [
+      'NO Price Discount',
+      'ALL Day Access',
+      'PERSONAL Dashboard For Tracking Fitness Records',
+      'PERSNOAL fitness instructor available',
+      '2 Guest Pass Per Month',
+      '7 Days Subscription Pause Request',
+      'Access to all special Classes'
+    ]
+  }
+]
 
 const resubscribeHandler = () => {
   try {
