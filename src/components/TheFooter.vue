@@ -14,7 +14,7 @@
         </div>
         <ul class="lg:space-y-[14px] grid grid-cols-2 gap-4 lg:block">
           <li>
-            <router-link :to="{ name: 'LandingPageHome' }" class="w-full"
+            <router-link :to="{ name: 'AboutLand' }" class="w-full"
               >About us</router-link
             >
           </li>
