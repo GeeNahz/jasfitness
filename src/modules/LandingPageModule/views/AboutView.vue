@@ -1,7 +1,7 @@
 <template>
   <div class="about__container">
     <section class="about__container__heading font-inter">
-      <h1>About Us</h1>
+      <h1>About Jas Fitness</h1>
     </section>
     <section class="about__container__body">
       <div class="about">
