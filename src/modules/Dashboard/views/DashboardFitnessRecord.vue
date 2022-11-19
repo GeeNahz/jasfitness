@@ -345,7 +345,9 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+import DashboardService from '@/services/DashboardService.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -355,6 +357,16 @@ import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar
 import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Fitness Record' })
+
+onMounted(() => {
+  DashboardService.get_members_assessments()
+    .then((response) => {
+      console.log(response.data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 const chartData = ref({
   labels: [
