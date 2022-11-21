@@ -23,6 +23,7 @@
       <section
         class="py-12 mx-8 md:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-8 lg:gap-y-0"
       >
+        <!-- left card -->
         <div class="relative w-[366px] h-max lg:h-[400px]">
           <h4
             class="lg:absolute -top-20 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
@@ -39,8 +40,8 @@
             </template>
             <div class="relative mb-7">
               <p class="text-sm lg:text-base">
-                Consistency Over Motivation. You don’t have to face your fitness
-                goals alone. Let us do it TOGETHER.
+                Consistency over motivation. You don’t have to face your fitness
+                goals alone. Let's do it TOGETHER.
               </p>
               <p
                 class="absolute -right-4 top-16 lg:-right-10 lg:top-32 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter"
@@ -60,6 +61,7 @@
             </template>
           </CardItem>
         </div>
+        <!-- center image -->
         <div class="relative center-img bg-gray-200 lg:w-[369px] h-[527px]">
           <p
             class="absolute h-full w-full bg-gradient-to-b from-transparent to-[#1f1f1f] bg-opacity-90"
@@ -77,6 +79,7 @@
             Feel the Love
           </h4>
         </div>
+        <!-- right cards -->
         <div class="flex flex-col gap-9 w-[320px] lg:w-[349px]">
           <CardItem class="h-64 card-item card-set">
             <template #top>
@@ -92,8 +95,8 @@
               </div>
             </template>
             <p class="card-item-body text-sm lg:text-base font-normal">
-              Consistencty over motiveation. Meet like minded FitFam, who are
-              committed to a life of healthy living and more.
+              Network and grow with like mind. Meet FitFam with similar goals
+              who are committed to a life of healthy living and more.
             </p>
             <template #bottom>
               <router-link :to="{ name: 'PlansPage' }" class="card-item-btns">
@@ -121,7 +124,7 @@
               </div>
             </template>
             <p class="card-item-body text-sm lg:text-base">
-              Regardless of your fitness level, we’ve got the equipment and
+              Regardless of your fitness level, we've got the equipment and
               professionals to get you the results you desire.
             </p>
             <template #bottom>
