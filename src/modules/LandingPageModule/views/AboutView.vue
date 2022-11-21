@@ -66,17 +66,6 @@
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
-
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>
-                Some representative placeholder content for the second slide of
-                the carousel.
-              </p>
-              <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-            </div>
-          </div>
         </div>
         <!-- <div class="carousel-item">
           <svg
@@ -104,6 +93,16 @@
             </div>
           </div>
         </div> -->
+      </div>
+      <!-- carousel captions -->
+      <div class="container">
+        <div class="carousel-caption font-inter capitalize">
+          <h1>about jas fitness</h1>
+          <p class="font-light">
+            Some representative placeholder content for the carousel.
+          </p>
+          <!-- <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p> -->
+        </div>
       </div>
       <button
         class="carousel-control-prev"
@@ -212,7 +211,9 @@ const carouselData = ref([
 </script>
 
 <style lang="scss">
-/* GLOBAL STYLES
+@import '../../../assets/styles/base';
+
+/* bootstrap STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
@@ -227,17 +228,35 @@ const carouselData = ref([
 
 /* Carousel base class */
 .carousel {
+  position: relative;
   margin-bottom: 4rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  bottom: 3rem;
+  top: 35%;
   z-index: 10;
+
+  & h1 {
+    font-weight: font-weight(bold);
+    font-size: 98px;
+  }
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 50rem;
+  position: relative;
+  color: color(primary);
+}
+
+.carousel-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 /* MARKETING CONTENT
@@ -292,7 +311,7 @@ const carouselData = ref([
   }
 }
 
-@import '../../../assets/styles/base';
+/* ------- custom styles ---------*/
 
 .about__container {
   width: 100%;
