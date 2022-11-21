@@ -70,17 +70,18 @@
           <li class="uppercase">Message us</li>
           <li class="flex gap-2">
             <div>
-              <a href="www.facebook.com"
+              <a
+                href="https://web.facebook.com/people/Jas-Fitness-Center/100069109021018/"
                 ><img src="@/assets/icons/facebook.svg" alt="f-social"
               /></a>
             </div>
             <div>
-              <a href="www.instagram.com"
+              <a href="https://www.instagram.com/jasfitnesscenter/"
                 ><img src="@/assets/icons/instagram.svg" alt="i-social"
               /></a>
             </div>
             <div>
-              <a href="www.youtube.com"
+              <a href="https://www.youtube.com/channel/UC8de7Jb9KDag_JYCW-fsDaA"
                 ><img src="@/assets/icons/youtube.svg" alt="f-social"
               /></a>
             </div>
