@@ -231,31 +231,35 @@
         <div
           class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-between items-center"
         >
-          <div class="single-module w-[412px] h-[431px] bg-white">
+          <div
+            v-for="(event, i) in eventsAndNews"
+            :key="i"
+            class="single-module w-[412px] h-[431px] bg-white"
+          >
             <div
-              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/paintball_IRcYqdHks.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852844')] bg-cover bg-center"
+              class="module relative h-full bg-cover bg-center"
+              :style="`background-image: url(${event.imageName})`"
             >
               <div
                 class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
               >
-                <h1 class="font-medium text-3xl">Promo! Promo!! Promo!!!</h1>
+                <h1 class="font-medium text-3xl">{{ event.title }}</h1>
                 <p class="text-base font-light">
-                  Subscibe to any of our fitness plans at 50% discount!!! Offer
-                  lasts for a month
+                  {{ event.description }}
                 </p>
-                <router-link
-                  :to="{ name: 'LoginPage' }"
+                <a
+                  :href="event.linkUrl"
                   class="flex gap-2 py-6 text-2xl font-quicksand font-semibold"
                   ><img
                     src="@/assets/icons/GooglereviewlinkIcon.svg"
                     alt="get start"
                   />
-                  <p>Get Started</p></router-link
+                  <p>{{ event.linkText }}</p></a
                 >
               </div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="single-module w-[412px] h-[431px] hidden lg:block bg-white"
           >
             <div
@@ -306,7 +310,7 @@
                 >
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- latest events cards mobile -->
         <div class="modules md:hidden">
@@ -338,24 +342,30 @@ useMeta({
 const eventsAndNews = ref([
   {
     imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/paintball_IRcYqdHks.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852844',
-    title: 'Paint-Ball!!!',
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
+    title: 'Jas Auto Wash',
     description:
-      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+      'Get your car washed while at the gym achieve 2 goals at once.',
+    linkText: 'Book Wash',
+    linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
   },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/roadwalk_4PSK72Uwa.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852621',
     title: 'Road Walk!!!',
     description:
-      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month',
+    linkText: 'Get Started',
+    linkUrl: 'https://'
   },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/promo_h_38XOR_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984888971',
     title: 'Promo! Promo!! Promo!!!',
     description:
-      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month'
+      'Subscribe to any of our fitness plans at 50% discount !!! offer last for a month.',
+    linkText: 'Get Started',
+    linkUrl: 'https://'
   }
 ])
 
