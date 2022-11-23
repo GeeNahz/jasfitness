@@ -14,14 +14,14 @@
               Subscibe to any of our fitness plans at 50% discount!!! Offer
               lasts for a month
             </p>
-            <router-link
-              :to="{ name: 'LoginPage' }"
+            <a
+              :href="slide.linkUrl"
               class="flex items-center gap-1 ml-3 mt-2 py-2 text-sm font-quicksand font-semibold"
               ><img
                 src="@/assets/icons/GooglereviewlinkIcon.svg"
                 alt="get start"
               />
-              <p class="mb-2">Get Started</p></router-link
+              <p class="mb-2">{{ slide.linkText }}</p></a
             >
           </div>
         </div>
