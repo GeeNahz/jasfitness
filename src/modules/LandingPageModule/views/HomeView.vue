@@ -6,17 +6,9 @@
     <!-- bmi calculator -->
     <div
       v-if="showBmi"
-      class="z-50 bg-gray-200 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
+      class="z-50 bg-black/75 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
     >
-      <div class="relative">
-        <div
-          @click="toggleBmi"
-          class="absolute right-0 -top-10 border-2 border-white h-8 w-8 rounded-full text-base flex justify-center text-white hover:cursor-pointer"
-        >
-          <p>x</p>
-        </div>
-        <BmiCalculator />
-      </div>
+      <BmiCalculator @closeBmi="toggleBmi" />
     </div>
     <main>
       <!-- why jas fitness section -->
@@ -259,58 +251,6 @@
               </div>
             </div>
           </div>
-          <!-- <div
-            class="single-module w-[412px] h-[431px] hidden lg:block bg-white"
-          >
-            <div
-              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/roadwalk_4PSK72Uwa.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852621')] bg-cover bg-center"
-            >
-              <div
-                class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
-              >
-                <h1 class="font-medium text-3xl">Promo! Promo!! Promo!!!</h1>
-                <p class="text-base font-light">
-                  Subscibe to any of our fitness plans at 50% discount!!! Offer
-                  lasts for a month
-                </p>
-                <router-link
-                  :to="{ name: 'LoginPage' }"
-                  class="flex gap-2 py-6 text-2xl font-quicksand font-semibold"
-                  ><img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="get start"
-                  />
-                  <p>Get Started</p></router-link
-                >
-              </div>
-            </div>
-          </div>
-          <div
-            class="single-module w-[412px] hidden lg:block h-[431px] bg-white"
-          >
-            <div
-              class="module relative h-full bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/promo_h_38XOR_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984888971')] bg-cover bg-center"
-            >
-              <div
-                class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
-              >
-                <h1 class="font-medium text-3xl">Promo! Promo!! Promo!!!</h1>
-                <p class="text-base font-light">
-                  Subscibe to any of our fitness plans at 50% discount!!! Offer
-                  lasts for a month
-                </p>
-                <router-link
-                  :to="{ name: 'LoginPage' }"
-                  class="flex gap-2 py-6 text-2xl font-quicksand font-semibold"
-                  ><img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="get start"
-                  />
-                  <p>Get Started</p></router-link
-                >
-              </div>
-            </div>
-          </div> -->
         </div>
         <!-- latest events cards mobile -->
         <div class="modules md:hidden">
@@ -403,8 +343,8 @@ const reviews = ref([
 const reviewPosition = (index) => index % 2 === 0
 // const getImageUrl = (imageName) => require(`${imageName}`)
 
-// const showBmi = ref(false)
-// const toggleBmi = () => (showBmi.value = !showBmi.value)
+const showBmi = ref(false)
+const toggleBmi = () => (showBmi.value = !showBmi.value)
 </script>
 
 <style scoped>
