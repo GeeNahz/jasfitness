@@ -226,29 +226,28 @@
           <div
             v-for="(event, i) in eventsAndNews"
             :key="i"
-            class="single-module w-[412px] h-[431px] bg-white"
+            class="single-module relative w-[412px] h-[431px] bg-white"
           >
             <div
-              class="module relative h-full bg-cover bg-center"
+              class="module h-full bg-cover bg-center"
               :style="`background-image: url(${event.imageName})`"
+            ></div>
+            <div
+              class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-4 h-[50%]"
             >
-              <div
-                class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-8 h-[50%]"
+              <h1 class="font-medium text-3xl mb-2">{{ event.title }}</h1>
+              <p class="text-sm leading-1 font-light">
+                {{ event.description }}
+              </p>
+              <a
+                :href="event.linkUrl"
+                class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
+                ><img
+                  src="@/assets/icons/GooglereviewlinkIcon.svg"
+                  alt="get start"
+                />
+                <p>{{ event.linkText }}</p></a
               >
-                <h1 class="font-medium text-3xl">{{ event.title }}</h1>
-                <p class="text-base font-light">
-                  {{ event.description }}
-                </p>
-                <a
-                  :href="event.linkUrl"
-                  class="flex gap-2 py-6 text-2xl font-quicksand font-semibold"
-                  ><img
-                    src="@/assets/icons/GooglereviewlinkIcon.svg"
-                    alt="get start"
-                  />
-                  <p>{{ event.linkText }}</p></a
-                >
-              </div>
             </div>
           </div>
         </div>
@@ -291,21 +290,20 @@ const eventsAndNews = ref([
   },
   {
     imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/roadwalk_4PSK72Uwa.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852621',
-    title: 'Road Walk!!!',
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Sarah_bon_s_class_1_-4PD3HRir.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195662',
+    title: 'Special Classes',
     description:
-      'Subscibe to any of our fitness plans at 50% discount!!! Offer lasts for a month',
-    linkText: 'Get Started',
-    linkUrl: 'https://'
+      'Special classes at Jas Fitness get you to your goal as our skilled instructor is directly responsible for your goals. Join Sarah Bon today.',
+    linkText: 'Call 07034644002',
+    linkUrl: '#'
   },
   {
     imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/promo_h_38XOR_K.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984888971',
-    title: 'Promo! Promo!! Promo!!!',
-    description:
-      'Subscribe to any of our fitness plans at 50% discount !!! offer last for a month.',
-    linkText: 'Get Started',
-    linkUrl: 'https://'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/legit_class_1_YCYruYiSD.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195547',
+    title: 'Special Classes',
+    description: `Shred and trim your body with coach Legit. It's Fun and Amazing.`,
+    linkText: 'Call 07034644002',
+    linkUrl: '#'
   }
 ])
 
@@ -384,18 +382,26 @@ const toggleBmi = () => (showBmi.value = !showBmi.value)
 }
 
 .single-module {
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+.single-module:hover .module-pop-up {
+  bottom: 0px;
+}
+.single-module:hover .module {
+  filter: brightness(0.5) blur(2px);
+}
+
+.module {
+  transition: all 0.5s ease-out;
 }
 .module-pop-up {
   position: absolute;
   bottom: -50%;
-  transition: all 0.5s ease-out 0.2s;
+  transition: all 0.5s ease-out 0.1s;
 }
-.module:hover .module-pop-up {
-  bottom: 0px;
-}
+
 .single-review {
   width: 583px;
   height: 204px;
