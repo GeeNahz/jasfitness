@@ -53,7 +53,7 @@
             <div class="underline"></div>
           </router-link> -->
           <router-link
-            class="capitalize bg-zinc-900 text-white rounded-xl px-4 py-2 hover:bg-[#FFB628] transition"
+            class="capitalize bg-[#ffb628] text-white rounded-xl px-4 py-2 hover:bg-[#fcad0f] transition"
             :to="{ name: 'SignupPage' }"
           >
             sign up
@@ -192,7 +192,7 @@
               >login</router-link
             > -->
             <router-link
-              class="capitalize bg-zinc-900 flex items-center justify-center text-white rounded-xl w-full px-4 py-2"
+              class="capitalize bg-[#ffb628] flex items-center justify-center text-white rounded-xl w-full px-4 py-2"
               :to="{ name: 'SignupPage' }"
             >
               sign up
