@@ -242,6 +242,7 @@
               <a
                 :href="event.linkUrl"
                 class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
+                target="_blank"
                 ><img
                   src="@/assets/icons/GooglereviewlinkIcon.svg"
                   alt="get start"
