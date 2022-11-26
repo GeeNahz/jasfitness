@@ -19,7 +19,7 @@
             >
           </li>
           <li>
-            <router-link :to="{ name: 'LandingPageHome' }" class="w-full"
+            <router-link :to="{ name: 'CommunityPage' }" class="w-full"
               >Community</router-link
             >
           </li>
@@ -29,7 +29,7 @@
             >
           </li> -->
           <li>
-            <router-link :to="{ name: 'SignupPage' }" class="w-full"
+            <router-link :to="{ name: 'PlansPage' }" class="w-full"
               >sign up</router-link
             >
           </li>
@@ -108,8 +108,8 @@
 
 .footer-container {
   padding-top: 8rem;
-  @include responsive(tablet-width) {
-    padding-top: 0;
+  @include responsive('tablet-width') {
+    // padding-top: 0;
   }
 }
 </style>
