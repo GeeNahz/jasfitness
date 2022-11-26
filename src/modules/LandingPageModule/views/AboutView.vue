@@ -1,183 +1,130 @@
 <template>
   <div class="about__container">
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="0"
-          class=""
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-          class="active"
-          aria-current="true"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#myCarousel"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-          class=""
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <!-- <div class="carousel-item">
-          <svg
-            class="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777"></rect>
-          </svg>
-
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Example headline.</h1>
-              <p>
-                Some representative placeholder content for the first slide of
-                the carousel.
-              </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">Sign up today</a>
+    <div class="header font-inter">
+      <h1>About Jas Fitness</h1>
+    </div>
+    <div class="main">
+      <div class="about__us">
+        <div class="section__title">
+          <div class="highlight"></div>
+          <h4 class="title left font-inter">who we are</h4>
+        </div>
+        <div class="content">
+          <div class="image">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154?tr=w-400,h-280,q-30,bl-10"
+              alt="about us"
+            />
+          </div>
+          <div class="description">
+            <div class="sub__content">
+              <h5 class="head">JAS FITNESS CENTER</h5>
+              <p class="body">
+                Jas Fitness Pent-House Center is seating on a 200sqm with indoor
+                and outdoor facilities fully equipped to meet the needs of our
+                growing community of over 150 members.
               </p>
             </div>
+            <div class="sub__content">
+              <h5 class="head">Our mission</h5>
+              <p class="body">
+                Our mission is to provide an affordable fitness service to
+                everyone through our chains of fully equipped gym centers.
+              </p>
+            </div>
+            <div class="sub__content">
+              <h5 class="head">Our core values</h5>
+              <ul class="body">
+                <li>Accountable and reliable support system.</li>
+                <li>We listen, we care and we are always there.</li>
+                <li>
+                  Own your fitness schedule: We are flexible and work with your
+                  time.
+                </li>
+              </ul>
+            </div>
           </div>
-        </div> -->
-        <div
-          v-for="data in carouselData"
-          :key="data.id"
-          class="carousel-item"
-          :class="[data.id === 2 && 'active']"
-        >
-          <img
-            :src="data.imageUrl"
-            alt="image"
-            class="bd-placeholder-img h-full w-full"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
+        </div>
+      </div>
+      <div class="contact__us">
+        <div class="section__title">
+          <div class="highlight"></div>
+          <h4 class="title right font-inter">We'd Love to hear from you</h4>
+        </div>
+        <div class="content">
+          <div class="card-wrapper">
+            <div class="card-title">Contact Us</div>
+            <div class="card-form">
+              <form>
+                <input type="text" placeholder="Full Name" />
+                <input type="text" placeholder="Email Address" />
+                <textarea placeholder="Tell us more..."></textarea>
+                <button
+                  class="btn btn-warning text-white text-xl font-semibold font-inter py-2 px-4 w-full"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="card-aside">
+            <div class="card-aside__overlay"></div>
+            <div class="card-aside__content space-y-12">
+              <div class="item">
+                <h3>PARTNERSHIP</h3>
+                <p>
+                  Jas fitness is ready to partner with you in providing a safe
+                  and and hygienic place for your clients. We look forward to
+                  working with you.
+                </p>
+              </div>
+              <hr class="divider" />
+              <div class="item">
+                <h3>PARTNER WITH US</h3>
+                <p>jasfitness.media@gmail.com</p>
+                <p>07034644002</p>
+              </div>
+              <hr class="divider" />
+              <div class="item">
+                <h3>FOLLOW US</h3>
+                <div class="flex gap-3">
+                  <div>
+                    <a
+                      href="https://web.facebook.com/people/Jas-Fitness-Center/100069109021018/"
+                      ><img src="@/assets/icons/facebook.svg" alt="f-social"
+                    /></a>
+                  </div>
+                  <div>
+                    <a href="https://www.instagram.com/jasfitnesscenter/"
+                      ><img src="@/assets/icons/instagram.svg" alt="i-social"
+                    /></a>
+                  </div>
+                  <div>
+                    <a
+                      href="https://www.youtube.com/channel/UC8de7Jb9KDag_JYCW-fsDaA"
+                      ><img src="@/assets/icons/youtube.svg" alt="f-social"
+                    /></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="section__title">
+          <div class="highlight"></div>
+          <h4 class="title center font-inter">Our Customers say it best</h4>
+        </div>
+        <div class="content">
+          <ReviewAboutPage
+            v-for="(review, i) in reviews"
+            :key="i"
+            :review="review"
           />
         </div>
-        <!-- <div class="carousel-item">
-          <svg
-            class="bd-placeholder-img"
-            width="100%"
-            height="100%"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
-            <rect width="100%" height="100%" fill="#777"></rect>
-          </svg>
-
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>
-                Some representative placeholder content for the third slide of
-                this carousel.
-              </p>
-              <p>
-                <a class="btn btn-lg btn-primary" href="#">Browse gallery</a>
-              </p>
-            </div>
-          </div>
-        </div> -->
       </div>
-      <!-- carousel captions -->
-      <div class="container">
-        <div class="carousel-caption font-inter capitalize">
-          <h1>about jas fitness</h1>
-          <p class="font-light">
-            Some representative placeholder content for the carousel.
-          </p>
-          <!-- <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p> -->
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="prev"
-      >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#myCarousel"
-        data-bs-slide="next"
-      >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
-    <!-- <section class="about__container__heading font-inter">
-      <h1>About Jas Fitness</h1>
-    </section> -->
-    <section class="about__container__body">
-      <div class="about">
-        <h3 class="font-inter">Jas Fitness</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-          dolore obcaecati dolorum id ullam unde corrupti eligendi, quae sequi
-          ad exercitationem officia quisquam quos fugiat repellat sint iure
-          veritatis voluptas eum voluptate nisi a. Dolores eum id eius,
-          voluptate atque minima et libero eligendi quam quaerat mollitia natus
-          architecto unde?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          cumque cupiditate iste velit quas tempore ratione blanditiis quisquam,
-          culpa debitis.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-          itaque sunt? Culpa adipisci voluptatibus repudiandae voluptate
-          corporis quibusdam ipsa provident consectetur nulla vero iste ex
-          facere reiciendis asperiores, obcaecati est fuga sapiente esse labore
-          deserunt cumque natus eaque amet! Quas vel aspernatur iste vero magnam
-          inventore earum repellendus velit, eos eligendi qui iusto ex unde
-          deleniti! Quia dolor deleniti possimus.
-        </p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt
-          beatae fugiat magni qui nisi quidem saepe voluptatum aspernatur
-          dolorem porro iusto, exercitationem illo labore. Distinctio eaque eius
-          delectus ex maiores facilis id eveniet natus inventore illum cum,
-          officia architecto iure! Architecto, nemo. Quaerat rem fuga,
-          perferendis dolorum itaque placeat, esse accusantium laborum, libero
-          pariatur laudantium nostrum ut adipisci optio aliquam velit! Fugiat
-          sed non placeat accusamus voluptatum, reiciendis, cum soluta,
-          asperiores tempore distinctio facilis animi eaque? Ad consequatur
-          error quae similique eaque voluptatum nulla qui. Dolorem voluptas eos
-          soluta debitis, praesentium dignissimos quibusdam amet, voluptate
-          tempore optio saepe perferendis facilis quaerat sed. Incidunt quae,
-          ipsum earum aliquid quibusdam, ad possimus ab esse repudiandae quas
-          doloribus maxime aspernatur soluta aliquam ut consectetur in porro,
-          quasi praesentium culpa dolores rem vero voluptates quia. Libero,
-          esse. Nostrum error labore facilis itaque, eos saepe minus, obcaecati
-          consequatur laborum delectus odio voluptatum accusamus officia ut
-          magni inventore? Odit, cupiditate ducimus labore eligendi eum
-          praesentium ab possimus, atque reiciendis accusantium maxime dolore
-          quaerat aliquid consequuntur qui earum quas nostrum repudiandae magni
-          dicta iusto vel molestiae voluptates? Sint, quo iure. Repellendus
-          cumque numquam, illum ducimus temporibus sed. Esse, odio. Rerum
-          maiores, molestiae quas est itaque temporibus quo!
-        </p>
-      </div>
-    </section>
     <TheFooter />
   </div>
 </template>
@@ -185,187 +132,246 @@
 <script setup>
 import { ref } from 'vue'
 import TheFooter from '@/components/TheFooter.vue'
+import ReviewAboutPage from '../components/ReviewAboutPage.vue'
 import { useMeta } from 'vue-meta'
 
 useMeta({
   title: 'About Us'
 })
 
-const carouselData = ref([
+const reviews = ref([
   {
-    id: 1,
-    imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Advertisement_Pictures/About_us_image_3_jkJr_-x50?ik-sdk-version=javascript-1.4.3&updatedAt=1668851486621'
+    name: 'Anna Orefi',
+    reviewUrl: 'https://g.co/kgs/HGNLV5',
+    imageUrl: '',
+    imageAlt: 'A',
+    review:
+      'Once you stop by Jas Gym. You shall get hooked Excellent Customer Service.',
+    stars: 5
   },
   {
-    id: 2,
-    imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Advertisement_Pictures/About_us_image_1_IxX2rOG-Y?ik-sdk-version=javascript-1.4.3&updatedAt=1668851565209'
+    name: 'Afolalu Oluyemisi',
+    reviewUrl: 'https://g.co/kgs/kFqo4m',
+    imageUrl: '',
+    imageAlt: 'A',
+    review:
+      'Friendly environment and instructors. Most importantly, I really appreciate the checking up on clients.',
+    stars: 5
   },
   {
-    id: 3,
+    name: 'Ijeoma Jennifer',
+    reviewUrl: 'https://g.co/kgs/DK1KnL',
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Advertisement_Pictures/About_us_image_2_J9fVn9zH3?ik-sdk-version=javascript-1.4.3&updatedAt=1668851425109'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/IjeomaJennifer_2tYEBbcHS.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852584',
+    imageAlt: 'I',
+    review:
+      'Spending my post partum moment @jasfitness is one of the best decision I have made in life. I love what getting 💯💯💯💯',
+    stars: 5
   }
 ])
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../../assets/styles/base';
-
-/* bootstrap STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
-
-/* body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: #5a5a5a;
-} */
-
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
-.carousel {
-  position: relative;
-  margin-bottom: 4rem;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  top: 35%;
-  z-index: 10;
-
-  & h1 {
-    font-weight: font-weight(bold);
-    font-size: 98px;
-  }
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-item {
-  height: 50rem;
-  position: relative;
-  color: color(primary);
-}
-
-.carousel-item::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
-}
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-/* rtl:begin:ignore */
-.marketing .col-lg-4 p {
-  margin-right: 0.75rem;
-  margin-left: 0.75rem;
-}
-/* rtl:end:ignore */
-
-/* Featurettes
-------------------------- */
-
-.featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-/* rtl:begin:remove */
-.featurette-heading {
-  letter-spacing: -0.05rem;
-}
-
-/* rtl:end:remove */
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
-@media (min-width: 40em) {
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
-
-  .featurette-heading {
-    font-size: 50px;
-  }
-}
-
-@media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
-}
-
-/* ------- custom styles ---------*/
 
 .about__container {
   width: 100%;
   height: 100%;
   padding-top: 6rem;
 
-  #{&}__heading {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  .content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 480px));
+    gap: 1rem;
     justify-content: center;
-    align-items: center;
-    background: #909090;
-    background: center/cover no-repeat
-      url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80');
-    color: color(primary);
-    font-size: 98px;
-    font-weight: font-weight(bold);
-    width: 100%;
-    height: 50rem;
+  }
 
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(
-        rgba(color(primary), 0.3),
-        rgba(color(accent), 0.2)
-      );
-    }
+  & .header {
+    width: 100%;
+    height: 40vh;
+    position: relative;
+    background: center / cover no-repeat #00000090
+      url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351');
+    background-blend-mode: overlay;
 
     & h1 {
-      z-index: 1;
+      margin: auto;
+      transform: translateY(110%);
+      width: max-content;
+      height: max-content;
+      font-size: 64px;
+      font-weight: font-weight('semibold');
+      color: #fff;
     }
   }
 
-  #{&}__body {
-    & .about {
-      @include container {
-        text-align: justify;
-        color: color(text);
-        padding-bottom: 2rem;
-      }
-      & h3 {
-        text-align: center;
-        margin: 2rem 0;
-        color: #1f1f1f;
-        font-size: font-size(x-large);
-        font-weight: font-weight(bold);
+  & .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, minmax(100px, max-content));
+    justify-content: center;
+    max-width: 100%;
+    width: 984px;
+    margin: 0 auto;
+
+    @include responsive('tablet-width') {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
+    & .about__us {
+      // background-color: #f9f9f9;
+      padding: 60px 0;
+      height: max-content;
+
+      & .content {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 440px));
+        & .image {
+          // height: 250px;
+          & img {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        & .description {
+          width: 100%;
+          & .sub__content {
+            margin-bottom: 0.5rem;
+
+            & .head {
+              font-weight: font-weight('semibold');
+            }
+            & .body {
+              font-weight: font-weight('light');
+              font-size: font-size('small');
+              color: color('text-secondary');
+              line-height: 1.5;
+            }
+            & ul {
+              list-style-type: disc;
+              padding-left: 1rem;
+            }
+          }
+        }
       }
     }
+
+    & .contact__us {
+      padding: 60px 0;
+
+      & .content {
+        gap: 0;
+        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+        overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        padding: 0;
+
+        @include responsive('tablet-width') {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 452px));
+        }
+
+        & .card-wrapper,
+        & .card-aside {
+          padding: 64px 65px;
+        }
+        & .card-wrapper {
+          & .card-title {
+            font-size: font-size('x-large');
+            font-weight: font-weight('semibold');
+            text-align: center;
+            padding-bottom: 2rem;
+          }
+          & .card-form form {
+            // background-color: #eea;
+            & input,
+            & textarea {
+              width: 100%;
+              padding: 1rem;
+              margin-bottom: 1rem;
+              border-radius: 10px;
+              font-size: font-size('small');
+              background-color: rgba(223, 222, 222, 0.3);
+              color: #363636;
+              &::placeholder {
+                // font-size: font-size('small');
+                color: #999;
+              }
+            }
+            & textarea {
+              height: 150px;
+            }
+          }
+        }
+        & .card-aside {
+          position: relative;
+          background: center / cover no-repeat #00000090
+            url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675');
+          background-blend-mode: overlay;
+          & .card-aside__content {
+            width: 100%;
+            color: #fff;
+            & h3 {
+              font-size: font-size('large');
+              font-weight: font-weight('semibold');
+              margin-bottom: 0.5rem;
+            }
+            & p {
+              font-size: font-size('small');
+            }
+          }
+        }
+      }
+    }
+
+    & .testimonial {
+      padding: 60px 0;
+      height: max-content;
+
+      & .content {
+        @include responsive('tablet-width') {
+          grid-template-columns: repeat(auto-fit, minmax(100px, 440px));
+        }
+      }
+    }
+  }
+
+  .section__title {
+    width: max-content;
+    padding: 1rem 2.5rem;
+    padding-left: 0;
+    position: relative;
+
+    & .title {
+      font-size: font-size('xx-large');
+      font-weight: font-weight('semibold');
+    }
+
+    & .highlight {
+      width: 70%;
+      height: 70%;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      position: absolute;
+      border-radius: 0.5rem;
+      background-color: #d9d9d980;
+    }
+  }
+
+  .title {
+    text-transform: capitalize;
+  }
+  .title.left {
+    text-align: start;
+  }
+  .title.center {
+    text-align: center;
+  }
+  .title.right {
+    text-align: end;
   }
 }
 </style>
