@@ -1,13 +1,15 @@
 <template>
   <div class="about__container">
     <div class="header font-inter">
-      <h1>About Jas Fitness</h1>
+      <h1>About <br class="md:hidden" />Jas Fitness</h1>
     </div>
     <div class="main">
       <div class="about__us">
-        <div class="section__title">
-          <div class="highlight"></div>
-          <h4 class="title left font-inter">who we are</h4>
+        <div class="section__title__container">
+          <div class="section__title">
+            <div class="highlight"></div>
+            <h4 class="title font-inter">who we are</h4>
+          </div>
         </div>
         <div class="content">
           <div class="image">
@@ -47,9 +49,11 @@
         </div>
       </div>
       <div class="contact__us">
-        <div class="section__title">
-          <div class="highlight"></div>
-          <h4 class="title right font-inter">We'd Love to hear from you</h4>
+        <div class="section__title__container">
+          <div class="section__title">
+            <div class="highlight"></div>
+            <h4 class="title font-inter">We'd Love to hear from you</h4>
+          </div>
         </div>
         <div class="content">
           <div class="card-wrapper">
@@ -69,7 +73,7 @@
           </div>
           <div class="card-aside">
             <div class="card-aside__overlay"></div>
-            <div class="card-aside__content space-y-12">
+            <div class="card-aside__content space-y-6 md:space-y-12">
               <div class="item">
                 <h3>PARTNERSHIP</h3>
                 <p>
@@ -112,9 +116,11 @@
         </div>
       </div>
       <div class="testimonial">
-        <div class="section__title">
-          <div class="highlight"></div>
-          <h4 class="title center font-inter">Our Customers say it best</h4>
+        <div class="section__title__container">
+          <div class="section__title">
+            <div class="highlight"></div>
+            <h4 class="title font-inter">Our Customers say it best</h4>
+          </div>
         </div>
         <div class="content">
           <ReviewAboutPage
@@ -179,6 +185,10 @@ const reviews = ref([
   height: 100%;
   padding-top: 6rem;
 
+  @include responsive('mobile-landscape-width') {
+    padding-top: 5rem;
+  }
+
   .content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 480px));
@@ -203,6 +213,16 @@ const reviews = ref([
       font-weight: font-weight('semibold');
       color: #fff;
     }
+
+    @include responsive('mobile-landscape-width') {
+      & h1 {
+        transform: translateY(70%);
+        text-align: center;
+        width: 100%;
+        font-size: 45px;
+        white-space: pre-line;
+      }
+    }
   }
 
   & .main {
@@ -215,14 +235,18 @@ const reviews = ref([
     margin: 0 auto;
 
     @include responsive('tablet-width') {
-      padding-left: 40px;
-      padding-right: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     & .about__us {
       // background-color: #f9f9f9;
       padding: 60px 0;
       height: max-content;
+
+      @include responsive('mobile-landscape-width') {
+        padding: 20px 0;
+      }
 
       & .content {
         grid-template-columns: repeat(auto-fit, minmax(100px, 440px));
@@ -241,6 +265,7 @@ const reviews = ref([
 
             & .head {
               font-weight: font-weight('semibold');
+              font-size: font-size('medium');
             }
             & .body {
               font-weight: font-weight('light');
@@ -252,13 +277,29 @@ const reviews = ref([
               list-style-type: disc;
               padding-left: 1rem;
             }
+
+            @include responsive('mobile-width') {
+              & .head {
+                font-size: font-size('small');
+              }
+              & .body {
+                font-size: font-size('x-small');
+              }
+              & ul {
+                padding-left: 0.5rem;
+              }
+            }
           }
         }
       }
     }
 
     & .contact__us {
-      padding: 60px 0;
+      padding-bottom: 60px;
+
+      @include responsive('mobile-landscape-width') {
+        padding-bottom: 20px;
+      }
 
       & .content {
         gap: 0;
@@ -276,6 +317,10 @@ const reviews = ref([
         & .card-wrapper,
         & .card-aside {
           padding: 64px 65px;
+
+          @include responsive('mobile-landscape-width') {
+            padding: 35px 15px;
+          }
         }
         & .card-wrapper {
           & .card-title {
@@ -302,6 +347,25 @@ const reviews = ref([
             }
             & textarea {
               height: 150px;
+              padding-bottom: 1rem;
+            }
+          }
+
+          @include responsive('mobile-landscape-width') {
+            & .card-title {
+              font-size: font-size('large');
+            }
+            & .card-form form {
+              & input,
+              & textarea {
+                width: 100%;
+                padding: 0.6rem;
+                font-size: font-size('x-small');
+                margin-bottom: 0.5rem;
+              }
+              & textarea {
+                height: 120px;
+              }
             }
           }
         }
@@ -322,13 +386,28 @@ const reviews = ref([
               font-size: font-size('small');
             }
           }
+
+          @include responsive('mobile-landscape-width') {
+            & .card-aside__content {
+              & h3 {
+                font-size: font-size('medium');
+              }
+              & p {
+                font-size: font-size('x-small');
+              }
+            }
+          }
         }
       }
     }
 
     & .testimonial {
-      padding: 60px 0;
+      padding-bottom: 60px;
       height: max-content;
+
+      @include responsive('mobile-landscape-width') {
+        padding-bottom: 20px;
+      }
 
       & .content {
         @include responsive('tablet-width') {
@@ -338,11 +417,26 @@ const reviews = ref([
     }
   }
 
+  .section__title__container {
+    display: flex;
+    justify-content: center;
+
+    // & .title.left {
+    //   text-align: start;
+    // }
+    // & .title.center {
+    //   text-align: center;
+    // }
+    // & .title.right {
+    //   text-align: end;
+    // }
+  }
   .section__title {
     width: max-content;
     padding: 1rem 2.5rem;
     padding-left: 0;
     position: relative;
+    margin-bottom: 2rem;
 
     & .title {
       font-size: font-size('xx-large');
@@ -359,19 +453,19 @@ const reviews = ref([
       border-radius: 0.5rem;
       background-color: #d9d9d980;
     }
+
+    @include responsive('mobile-width') {
+      padding: 0.5rem 1.25rem;
+      margin-bottom: 0.8rem;
+
+      & .title {
+        font-size: font-size('large');
+      }
+    }
   }
 
   .title {
     text-transform: capitalize;
-  }
-  .title.left {
-    text-align: start;
-  }
-  .title.center {
-    text-align: center;
-  }
-  .title.right {
-    text-align: end;
   }
 }
 </style>
