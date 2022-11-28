@@ -1,13 +1,13 @@
 <template>
   <!-- container -->
   <div
-    class="main-container w-[539px] h-min rounded bg-white p-12 md:p-24 font-inter"
+    class="main-container w-max md:w-[539px] h-min rounded bg-white p-8 md:p-24 m-5 md:m-0 font-inter"
   >
     <!-- top buttons -->
     <div class="relative top-btns">
       <!-- close btn -->
       <div
-        class="close-btn absolute -top-16 -right-16 hover:cursor-pointer p-3"
+        class="close-btn -right-8 md:-right-16 hover:cursor-pointer p-3"
         @click="closeBmi"
       >
         <div class="stroke right"></div>
@@ -16,7 +16,7 @@
       <!-- prev btn -->
       <div
         v-if="!firstForm"
-        class="close-btn absolute -top-16 -left-16 hover:cursor-pointer p-3"
+        class="close-btn -left-8 md:-left-16 hover:cursor-pointer p-3"
         @click="back"
       >
         <div class="stroke top"></div>
@@ -41,6 +41,12 @@
           />
         </div>
       </form>
+      <!-- validation message -->
+      <div class="text-center w-full h-8">
+        <span v-if="invalidEmail" class="text-sm font-light text-red-400">
+          Please provide a valid email address.
+        </span>
+      </div>
       <!-- buttons -->
       <div class="btns flex items-center justify-center gap-3">
         <!-- submit button -->
@@ -90,10 +96,6 @@
           Every field requires a number.
         </span>
       </div>
-      <!-- <details>
-        <pre>{{ data }}</pre>
-      </details> -->
-      <!-- submit button -->
       <button
         v-if="currentStep !== forms[2]"
         class="btn btn-warning w-full h-14 font-semibold text-2xl text-white rounded-[10px]"
@@ -123,6 +125,8 @@ export default {
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 
+import EmailService from '@/services/EmailService.js'
+
 const emit = defineEmits(['closeBmi'])
 const closeBmi = () => {
   clearValues()
@@ -132,7 +136,7 @@ const closeBmi = () => {
 const impericalForm = ref(
   JSON.parse(localStorage.getItem('jasfitness-bmi-cal-unit')) || false
 )
-console.log(impericalForm.value)
+
 // save to local storage for better user experience
 const saveUnitToLocalStorage = () => {
   localStorage.setItem(
@@ -146,16 +150,30 @@ watch(impericalForm, () => saveUnitToLocalStorage())
 const sendEmail = ref(false)
 
 const emailAddress = ref('')
+const invalidEmail = ref(false)
 const handleEmailSend = () => {
-  console.log(emailAddress.value)
-  data.value.sentEmail = true
-  handleShowResult()
+  if (emailAddress.value === '') {
+    invalidEmail.value = true
+    setTimeout(() => {
+      invalidEmail.value = false
+    }, 1500)
+  } else {
+    let postData = {
+      bmi: data.value.bmi,
+      email: emailAddress.value
+    }
+    EmailService.post_bmi_result(postData)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+
+    data.value.sentEmail = true
+    handleShowResult()
+  }
 }
 
 const handleShowResult = () => {
   currentComponent.value = 2
   sendEmail.value = false
-  console.log(data.value.bmi)
 }
 
 const data = ref({
@@ -170,7 +188,6 @@ const handleSubmit = () => {
   let bmiInfo = getBmiInfo()
   if (bmiInfo) {
     data.value.bmi = bmiInfo
-    console.log('My BMI:', data.value.bmi)
     currentComponent.value = 3
     sendEmail.value = true
   }
@@ -226,7 +243,6 @@ const displayWarning = () => {
 // calculate BMI
 const calculateBMI = (values) => {
   let BMI = ''
-  console.log(values.weight)
   if (impericalForm.value) {
     BMI = (703 * (values.weight / Math.pow(values.height, 2))).toFixed(2)
   } else {
@@ -287,30 +303,11 @@ function clearValues() {
 function setBmiData(bmiData) {
   Object.assign(data.value, bmiData)
 }
-
-// // const displayBmiModal = ref(false)
-// // const emptyField = ref(false)
-
-// function next() {
-//   currentComponent.value += 1
-// }
-
-// // function toggleResult() {
-// //   displayBmiModal.value = !displayBmiModal.value
-// // }
-
-// const lastForm = computed(function () {
-//   return currentComponent.value === length.value - 1
-// })
-
-// const length = computed(function () {
-//   return forms.value.length
-// })
 </script>
 
 <style lang="scss" scoped>
 .title-text {
-  font-weight: font-weight(semibold);
+  font-weight: 600;
   font-size: 1.953rem;
   margin: 0 auto;
   margin-bottom: 4rem;
@@ -319,6 +316,8 @@ function setBmiData(bmiData) {
 .main-container {
   & .top-btns {
     & .close-btn {
+      position: absolute;
+      top: -4rem;
       .stroke {
         width: 2rem;
         height: 0.5rem;
@@ -328,24 +327,25 @@ function setBmiData(bmiData) {
 
         &.right {
           transform: translateY(100%) rotate(45deg);
-          // transform: ;
         }
         &.left {
           transform: rotate(-45deg);
         }
-        &.top {
+
+        &.top,
+        &.middle,
+        &.bottom {
           height: 0.2rem;
           width: 1.5rem;
+        }
+        &.top {
           transform: rotate(-45deg) translate(2px, -4px);
         }
         &.middle {
-          height: 0.2rem;
           width: 2rem;
           transform: translate(5px, 0px);
         }
         &.bottom {
-          height: 0.2rem;
-          width: 1.5rem;
           transform: rotate(45deg) translate(2px, 4px);
         }
       }
@@ -438,6 +438,55 @@ function setBmiData(bmiData) {
 
   &::placeholder {
     color: #999999;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .title-text {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+  .bmi-wrapper {
+    & .switch-toggle {
+      & .switch {
+        & input {
+          &:checked + .slider::before {
+            -webkit-transform: translateX(30px);
+            -ms-transform: translateX(30px);
+            transform: translateX(30px);
+          }
+        }
+      }
+    }
+  }
+  .main-container {
+    & .top-btns {
+      top: 2rem;
+      & .close-btn {
+        .stroke {
+          width: 1.5rem;
+          height: 0.4rem;
+          background-color: rgba(244, 199, 119, 0.7);
+
+          &.top,
+          &.middle,
+          &.bottom {
+            height: 0.2rem;
+            width: 1rem;
+          }
+          &.top {
+            transform: rotate(-45deg) translate(2px, 0px);
+          }
+          &.middle {
+            width: 1.5rem;
+            transform: translate(5px, 0.4px);
+          }
+          &.bottom {
+            transform: rotate(45deg) translate(2px, 1px);
+          }
+        }
+      }
+    }
   }
 }
 </style>
