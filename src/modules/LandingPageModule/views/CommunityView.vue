@@ -1,89 +1,116 @@
 <template>
-  <div class="container">
+  <div class="">
     <div class="community__container">
-      <div class="section__title">
-        <div class="highlight"></div>
-        <h4 class="title left font-inter">Meet Our Community</h4>
+      <div class="section__title__container">
+        <div class="section__title">
+          <div class="highlight"></div>
+          <h4 class="title left font-inter">Meet Our Community</h4>
+        </div>
       </div>
       <div class="main">
         <div class="gallery">
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=13XwJrpyzTDG-kzMCpshXlz6vv1EIFScB&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1hPlIRL4eMIyR1oNfcuycOynxOItKBs5w&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1deRnMN-686If-619yisFj1DLgx1qN3WW&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1k9lCcA8DOwB3cHgofaoW4HXCfoolUKLJ&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1O_pyz5VCaGUtozSaM3LTJBMVdv2dhPGC&export=download"
-            />
-          </div>
-          <!-- <div class="img">
-                  <img class="gallery__image" src="https://drive.google.com/uc?id=1BQc9sv_M_l28xMUvNabqsDaXD5KGBeWL&export=download">
-              </div> -->
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1uIpL43dxZBOptwNt8vUxLb1-Ykq1QJAQ&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1lTGIT8uEHI6jJKO628BOhUOmG5YAL4Ru&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1YnlwY2jOydPn5ZO0HSfQ_nYwpFo8ccVM&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1OkYc94czk4fZAYS0MDEOjf4LX_ldfaQ5&export=download"
-            />
-          </div>
-          <div class="img">
-            <img
-              class="gallery__image"
-              src="https://drive.google.com/uc?id=1PmVgqVH79qGy0KISuTwycMlQddu35WFW&export=download"
-            />
+          <div v-for="image in communityImages" :key="image.id" class="img">
+            <img class="gallery__image" :src="image.imageUrl" />
           </div>
         </div>
       </div>
+      <AppCarousel class="hidden" :images="communityImages" />
     </div>
     <TheFooter />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import TheFooter from '@/components/TheFooter.vue'
+import AppCarousel from '@/components/AppCarousel.vue'
+
+const communityImages = ref([
+  {
+    id: 1,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  },
+  {
+    id: 2,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+  },
+  {
+    id: 3,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+  },
+  {
+    id: 4,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+  },
+  {
+    id: 5,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  },
+  {
+    id: 6,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  },
+  {
+    id: 7,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+  },
+  {
+    id: 8,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+  },
+  {
+    id: 9,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+  },
+  {
+    id: 10,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  },
+  {
+    id: 11,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  },
+  {
+    id: 12,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+  },
+  {
+    id: 13,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+  },
+  {
+    id: 14,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+  },
+  {
+    id: 15,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+  }
+])
 </script>
 
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
 
+.section__title__container {
+  display: flex;
+  justify-content: center;
+}
 .section__title {
   width: max-content;
   padding: 1rem 2.5rem;
@@ -106,19 +133,15 @@ import TheFooter from '@/components/TheFooter.vue'
     border-radius: 0.5rem;
     background-color: #d9d9d980;
   }
-}
 
-.title {
-  text-transform: capitalize;
-}
-.title.left {
-  text-align: start;
-}
-.title.center {
-  text-align: center;
-}
-.title.right {
-  text-align: end;
+  @include responsive('mobile-width') {
+    padding: 0.5rem 1.25rem;
+    margin-top: 0.8rem;
+
+    & .title {
+      font-size: font-size('large');
+    }
+  }
 }
 
 /** beginning of container styles */
@@ -127,36 +150,54 @@ import TheFooter from '@/components/TheFooter.vue'
   padding-top: 6rem;
   height: 100%;
   width: 100%;
+
+  @include responsive('mobile-width') {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }
+
 .main {
   position: relative;
   height: 100vh;
   width: 100%;
-  margin: 0 auto;
-}
 
+  @include responsive('mobile-width') {
+    height: 100%;
+  }
+}
 .main .gallery {
   position: relative;
   height: 100%;
-  width: 70%;
+  width: 90%;
   margin: auto;
   padding: 45px 0;
   display: grid;
   grid-template-columns: repeat(4, auto);
-  gap: 0.2rem;
+  gap: 0.3rem;
   grid-auto-flow: dense;
 
-  @include responsive('tablet-width') {
-    width: 100%;
+  @include responsive('mobile-landscape-width') {
+    grid-template-columns: repeat(3, auto);
+  }
+  @include responsive('mobile-width') {
+    display: block;
+    padding: 20px 0;
   }
 }
 
 .main .gallery .img {
   position: relative;
   height: 100%;
-  width: 100%;
-  border-radius: 0.2rem;
   overflow: hidden;
+  border-radius: 0.2rem;
+
+  @include responsive('mobile-width') {
+    display: block;
+    width: 100%;
+    height: max-content;
+    margin: 0.2rem 0;
+  }
 }
 
 .main .gallery .img img {
@@ -166,6 +207,10 @@ import TheFooter from '@/components/TheFooter.vue'
   transform: scale(1.01);
   filter: brightness(0.5) grayscale(100);
   transition: 0.4s ease-in-out;
+
+  @include responsive('mobile-width') {
+    filter: brightness(1) grayscale(0);
+  }
 }
 
 .main .gallery .img:hover img {
@@ -178,7 +223,7 @@ import TheFooter from '@/components/TheFooter.vue'
   grid-row-start: span 2;
 }
 .main .gallery .img:nth-child(2n + 3) {
-  grid-row-start: span 1;
+  grid-row-start: span 2;
 }
 .main .gallery .img:nth-child(4n + 5) {
   grid-column-start: span 2;
