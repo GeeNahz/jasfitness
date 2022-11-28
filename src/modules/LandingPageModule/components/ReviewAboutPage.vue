@@ -52,6 +52,13 @@ defineProps({
   align-items: start;
   padding: 1rem;
 
+  @include responsive('mobile-width') {
+    width: 100%;
+    height: max-content;
+    row-gap: 0.5rem;
+    grid-template-rows: repeat(3, minmax(0.8rem, min-content));
+  }
+
   & .display__image {
     height: 100px;
     width: 100px;
@@ -64,12 +71,24 @@ defineProps({
       width: 100%;
       object-fit: cover;
     }
+
+    @include responsive('mobile-width') {
+      height: 60px;
+      width: 60px;
+    }
   }
   & .review__contents {
+    line-height: 1;
     & .contents {
       font-size: font-size('small');
       font-weight: font-weight('light');
       color: rgb(94, 94, 94);
+    }
+
+    @include responsive('mobile-width') {
+      & .contents {
+        font-size: font-size('x-small');
+      }
     }
   }
   & .review__name {
@@ -77,6 +96,12 @@ defineProps({
     & .name {
       font-size: font-size('large');
       font-weight: font-weight('semibold');
+    }
+
+    @include responsive('mobile-width') {
+      & .name {
+        font-size: font-size('medium');
+      }
     }
   }
   & .review__stars {
