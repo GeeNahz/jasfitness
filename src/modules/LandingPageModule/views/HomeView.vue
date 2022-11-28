@@ -4,12 +4,14 @@
       <HeroSection @showBmiCalculator="toggleBmi" />
     </div>
     <!-- bmi calculator -->
-    <div
-      v-if="showBmi"
-      class="z-50 bg-black/75 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
-    >
-      <BmiCalculator @closeBmi="toggleBmi" />
-    </div>
+    <Transition>
+      <div
+        v-if="showBmi"
+        class="z-50 bg-black/75 fixed top-0 left-0 h-full w-full bg-opacity-40 flex justify-center items-center"
+      >
+        <BmiCalculator class="bmi-calc" @closeBmi="toggleBmi" />
+      </div>
+    </Transition>
     <main>
       <!-- why jas fitness section -->
       <section
@@ -240,6 +242,7 @@
                 {{ event.description }}
               </p>
               <a
+                v-if="event.linkUrl"
                 :href="event.linkUrl"
                 class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
                 target="_blank"
@@ -248,6 +251,17 @@
                   alt="get start"
                 />
                 <p>{{ event.linkText }}</p></a
+              >
+              <a
+                v-else
+                @click.prevent="copyToClipboard(event.linkText)"
+                href="https://"
+                class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
+                ><img
+                  src="@/assets/icons/GooglereviewlinkIcon.svg"
+                  alt="get start"
+                />
+                <p>Call {{ event.linkText }}</p></a
               >
             </div>
           </div>
@@ -276,7 +290,7 @@ import { ref } from 'vue'
 import { useMeta } from 'vue-meta'
 
 useMeta({
-  title: 'Health is Wealth'
+  title: 'Jas Fitness Center - Building a Community of Fitness Minded People'
 })
 
 const eventsAndNews = ref([
@@ -295,16 +309,16 @@ const eventsAndNews = ref([
     title: 'Special Classes',
     description:
       'Special classes at Jas Fitness get you to your goal as our skilled instructor is directly responsible for your goals. Join Sarah Bon today.',
-    linkText: 'Call 07034644002',
-    linkUrl: '#'
+    linkText: '07034644002',
+    linkUrl: ''
   },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/legit_class_1_YCYruYiSD.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195547',
     title: 'Special Classes',
     description: `Shred and trim your body with coach Legit. It's Fun and Amazing.`,
-    linkText: 'Call 07034644002',
-    linkUrl: '#'
+    linkText: '07034644002',
+    linkUrl: ''
   }
 ])
 
@@ -344,6 +358,16 @@ const reviewPosition = (index) => index % 2 === 0
 
 const showBmi = ref(false)
 const toggleBmi = () => (showBmi.value = !showBmi.value)
+
+const copyToClipboard = async (value) => {
+  // await navigator.clipboard.writeText(value)
+  try {
+    await navigator.clipboard.writeText(value)
+    alert('Copied ' + value)
+  } catch {
+    alert('Cannot copy number')
+  }
+}
 </script>
 
 <style scoped>
