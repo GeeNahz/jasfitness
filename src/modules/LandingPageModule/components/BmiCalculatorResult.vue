@@ -124,10 +124,20 @@ if (props.wizard.bmi < 18.5) {
   width: max-content;
   margin: 1rem auto 0 auto;
 
+  @include responsive('mobile-width') {
+    width: 280px;
+    gap: 0.3rem;
+  }
+
   & .color-guage {
     position: relative;
     height: 2.5rem;
     width: 3rem;
+
+    @include responsive('mobile-width') {
+      height: 2rem;
+      width: 2.5rem;
+    }
 
     &::before,
     &::after {
@@ -153,6 +163,10 @@ if (props.wizard.bmi < 18.5) {
   grid-template-rows: 1fr 1fr;
   column-gap: 4rem;
   row-gap: 2rem;
+
+  @include responsive('mobile-width') {
+    column-gap: 1.1rem;
+  }
   & .color-code {
     display: flex;
     flex-direction: column;
