@@ -164,7 +164,7 @@
               class="flex flex-col gap-10 items-center justify-center capitalize font-semibold text-xl"
             >
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'LandingPageHome' }"
+                <router-link class="nav-link" :to="{ name: 'AboutLand' }"
                   >About us
                   <div class="underline"></div>
                 </router-link>
@@ -176,7 +176,7 @@
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'LandingPageHome' }">
+                <router-link class="nav-link" :to="{ name: 'CommunityPage' }">
                   our community
                   <div class="underline"></div>
                 </router-link>
