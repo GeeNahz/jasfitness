@@ -5,8 +5,9 @@ import store from './store'
 
 import { plugin, defaultConfig } from '@formkit/vue'
 import { generateClasses } from '@formkit/themes'
-import formkitTheme from '../formkitTheme'
 import { createMetaManager } from 'vue-meta'
+import { VueClipboard } from '@soerenmartius/vue3-clipboard'
+import formkitTheme from '../formkitTheme'
 import 'nprogress/nprogress.css'
 // import ImageKit from 'imagekitio-vue'
 
@@ -35,9 +36,5 @@ createApp(App)
       }
     })
   )
-  // .use(ImageKit, {
-  //   urlEndpoint: 'your_url_endpoint',
-  //   publicKey: 'your_public_api_key'
-  //   // authenticationEndpoint: "https://www.your-server.com/auth"
-  // })
+  .use(VueClipboard)
   .mount('#app')
