@@ -59,11 +59,33 @@
           <div class="card-wrapper">
             <div class="card-title">Contact Us</div>
             <div class="card-form">
-              <form>
-                <input type="text" placeholder="Full Name" />
-                <input type="text" placeholder="Email Address" />
-                <textarea placeholder="Tell us more..."></textarea>
+              <form @submit.prevent="handleContactusSubmit">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  v-model="contactUsDetails.name"
+                />
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  v-model="contactUsDetails.email"
+                />
+                <textarea
+                  placeholder="Tell us more..."
+                  v-model="contactUsDetails.description"
+                ></textarea>
+                <!-- validation message -->
+                <div class="text-center w-full h-8 mb-6 leading-1">
+                  <span
+                    v-if="invalidField"
+                    class="text-sm font-light"
+                    :class="[isSuccess ? 'text-teal-400' : 'text-red-400']"
+                  >
+                    {{ invalidFieldWarning }}
+                  </span>
+                </div>
                 <button
+                  @click.prevent="handleContactusSubmit"
                   class="btn btn-warning text-white text-xl font-semibold font-inter py-2 px-4 w-full"
                 >
                   Submit
@@ -137,9 +159,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useMeta } from 'vue-meta'
+
+import EmailService from '@/services/EmailService.js'
+
 import TheFooter from '@/components/TheFooter.vue'
 import ReviewAboutPage from '../components/ReviewAboutPage.vue'
-import { useMeta } from 'vue-meta'
 
 useMeta({
   title: 'About Us'
@@ -175,6 +200,58 @@ const reviews = ref([
     stars: 5
   }
 ])
+
+const contactUsDetails = ref({
+  name: '',
+  email: '',
+  description: ''
+})
+
+const validateInputs = (values) => {
+  let isValid = true
+  for (let key in values) {
+    if (values[key] === '') {
+      isValid = false
+    }
+  }
+  return isValid
+}
+const clearContactusDetails = () => {
+  for (let key in contactUsDetails.value) {
+    contactUsDetails.value[key] = ''
+  }
+}
+
+const isSuccess = ref(false)
+const invalidField = ref(false)
+const invalidFieldWarning = ref('')
+const displayWarning = (message) => {
+  invalidField.value = true
+  invalidFieldWarning.value = message
+  setTimeout(() => {
+    invalidField.value = false
+    invalidFieldWarning.value = ''
+  }, 5000)
+}
+
+const handleContactusSubmit = () => {
+  let isValid = validateInputs(contactUsDetails.value)
+
+  if (isValid) {
+    EmailService.post_contact_us_form(contactUsDetails.value)
+      .then(() => {
+        clearContactusDetails()
+        isSuccess.value = true
+        displayWarning('Thank you for contacting us.')
+      })
+      .catch((err) => {
+        isSuccess.value = false
+        displayWarning(`A ${err.message} occured. Please try again.`)
+      })
+  } else {
+    displayWarning('Please fill every field.')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
