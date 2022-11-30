@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <AppCarousel class="hidden" :images="communityImages" />
+      <!-- <AppCarousel class="hidden" :images="communityImages" /> -->
     </div>
     <TheFooter />
   </div>
@@ -23,7 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import TheFooter from '@/components/TheFooter.vue'
-import AppCarousel from '@/components/AppCarousel.vue'
+// import AppCarousel from '@/components/AppCarousel.vue'
 
 const communityImages = ref([
   {
