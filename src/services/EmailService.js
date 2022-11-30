@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://www.jasfitnessng.com/api/v1/enquiry/',
+  baseURL: 'https://www.jasfitnessng.com',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,7 +11,10 @@ const apiClient = axios.create({
 })
 
 export default {
-  post_bmi_result(email) {
-    return apiClient.post('', email)
+  post_bmi_result(data) {
+    return apiClient.post('/enquiry/', data)
+  },
+  post_contact_us_form(data) {
+    return apiClient.post('/api/contact-us/', data)
   }
 }
