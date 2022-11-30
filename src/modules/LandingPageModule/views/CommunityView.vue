@@ -29,77 +29,102 @@ const communityImages = ref([
   {
     id: 1,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3903_2ICUBbG027.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833580505'
   },
   {
     id: 2,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540'
   },
   {
     id: 3,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3844_PA6iZS8eA.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833578466'
   },
   {
     id: 4,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3795_ALwh18GQZ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833574418'
   },
   {
     id: 5,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3860_1bxclV8lo.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572784'
   },
   {
     id: 6,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3765_A34kaEi6u.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572526'
   },
   {
     id: 7,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3783_5ANPJiVwF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833565786'
   },
   {
     id: 8,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3754_Bo3-383Gy.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561865'
   },
   {
     id: 9,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3647_kJf7R6QQq.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561159'
   },
   {
     id: 10,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3744_HmkvIJWk7.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833548022'
   },
   {
     id: 11,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3714_0K2fgne7B.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833541831'
   },
   {
     id: 12,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/who-we-are_1_jar6EnJJp.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410666154'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966'
   },
   {
     id: 13,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/contact-us_uZo-WP5Ac.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410665675'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238'
   },
   {
     id: 14,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3690_WpW-V1KOF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531021'
   },
   {
     id: 15,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/about_us/community-hero_1_-BpZ1f4gA.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669410667351'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3669_E2o8wl0Ig.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524904'
+  },
+  {
+    id: 16,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3708_A8aet1Lf6.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524221'
+  },
+  {
+    id: 17,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118'
+  },
+  {
+    id: 18,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3688__F82GC0ah.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833517481'
+  },
+  {
+    id: 19,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3697_HeT31w918.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833512200'
+  },
+  {
+    id: 20,
+    imageUrl:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3711_9mek81lM4.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833533515'
   }
 ])
 </script>
@@ -159,7 +184,7 @@ const communityImages = ref([
 
 .main {
   position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 
   @include responsive('mobile-width') {
