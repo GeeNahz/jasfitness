@@ -29,7 +29,7 @@
       <h2 class="title-text">Your Result Is Ready</h2>
       <!-- main content -->
       <form class="form-group">
-        <div class="mb-14">
+        <div class="mb-4">
           <label for="email" class="visually-hidden form-label">Email</label>
           <input
             id="email"
@@ -42,9 +42,9 @@
         </div>
       </form>
       <!-- validation message -->
-      <div class="text-center w-full h-8">
+      <div class="text-center w-full h-8 mb-6 leading-1">
         <span v-if="invalidEmail" class="text-sm font-light text-red-400">
-          Please provide a valid email address.
+          {{ invalidEmailMessage }}
         </span>
       </div>
       <!-- buttons -->
@@ -83,12 +83,16 @@
         v-if="currentStep !== forms[2]"
         class="switch-toggle mb-2 flex items-center justify-center space-x-3"
       >
-        <p class="toggle-labels">Metric Units</p>
+        <p class="toggle-labels" :class="{ 'active-unit': !impericalForm }">
+          Metric Units
+        </p>
         <label for="switch" class="switch form-label">
           <input id="switch" type="checkbox" v-model="impericalForm" />
           <span class="slider round"></span>
         </label>
-        <p class="toggle-labels">Imperial Units</p>
+        <p class="toggle-labels" :class="{ 'active-unit': impericalForm }">
+          Imperial Units
+        </p>
       </div>
       <!-- validation message -->
       <div v-if="currentStep !== forms[2]" class="text-center my-1 w-full h-8">
@@ -151,23 +155,39 @@ const sendEmail = ref(false)
 
 const emailAddress = ref('')
 const invalidEmail = ref(false)
+const invalidEmailMessage = ref('')
+
+const displayInvalidEmailWarning = (message) => {
+  invalidEmailMessage.value = message
+  invalidEmail.value = true
+  setTimeout(() => {
+    invalidEmail.value = false
+    invalidEmailMessage.value = ''
+  }, 5000)
+}
+
 const handleEmailSend = () => {
   if (emailAddress.value === '') {
-    invalidEmail.value = true
-    setTimeout(() => {
-      invalidEmail.value = false
-    }, 1500)
+    displayInvalidEmailWarning('Please provide a valid email address.')
   } else {
     let postData = {
       bmi: data.value.bmi,
       email: emailAddress.value
     }
     EmailService.post_bmi_result(postData)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-
-    data.value.sentEmail = true
-    handleShowResult()
+      .then((res) => {
+        data.value.sentEmail = true
+        handleShowResult()
+      })
+      .catch((err) => {
+        if (err.message === 'Network Error') {
+          displayInvalidEmailWarning(
+            'A network error occured. Please check your network and try again.'
+          )
+        } else {
+          displayInvalidEmailWarning('A problem occured. Please try again.')
+        }
+      })
   }
 }
 
@@ -357,6 +377,11 @@ function setBmiData(bmiData) {
     & .toggle-labels {
       color: rgba(0, 0, 0, 0.17);
       margin-bottom: 0.25rem;
+      transition: color 0.4s ease-in-out;
+
+      &.active-unit {
+        color: rgba(0, 0, 0, 0.5);
+      }
     }
     & .switch {
       position: relative;
@@ -369,17 +394,11 @@ function setBmiData(bmiData) {
         width: 0;
         height: 0;
 
-        // &:checked + .slider {
-        //   background-color: #2196f3;
-        // }
         &:checked + .slider::before {
           -webkit-transform: translateX(60px);
           -ms-transform: translateX(60px);
           transform: translateX(60px);
         }
-        // &:focus + .slider {
-        //   box-shadow: 0, 0, 1px, #2196f3;
-        // }
       }
       & .slider {
         position: absolute;
