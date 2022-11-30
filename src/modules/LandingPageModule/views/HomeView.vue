@@ -261,8 +261,8 @@
                   src="@/assets/icons/GooglereviewlinkIcon.svg"
                   alt="get start"
                 />
-                <p>Call {{ event.linkText }}</p></a
-              >
+                <p>Call {{ event.linkText }}</p>
+              </a>
             </div>
           </div>
         </div>
@@ -288,6 +288,7 @@ import BmiCalculator from '../components/BmiCalculator.vue'
 
 import { ref } from 'vue'
 import { useMeta } from 'vue-meta'
+import { toClipboard } from '@soerenmartius/vue3-clipboard'
 
 useMeta({
   title: 'Jas Fitness Center - Building a Community of Fitness Minded People'
@@ -360,13 +361,14 @@ const showBmi = ref(false)
 const toggleBmi = () => (showBmi.value = !showBmi.value)
 
 const copyToClipboard = async (value) => {
-  // await navigator.clipboard.writeText(value)
-  try {
-    await navigator.clipboard.writeText(value)
-    alert('Copied ' + value)
-  } catch {
-    alert('Cannot copy number')
-  }
+  // toClipboard(value)
+  //   .then((res) => {
+  //     console.log('then: ', res)
+  //   })
+  //   .catch((err) => {
+  //     console.log('err: ', err)
+  //   })
+  toClipboard(value)
 }
 </script>
 
