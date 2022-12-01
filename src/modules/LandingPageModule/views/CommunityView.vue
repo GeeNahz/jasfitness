@@ -49,7 +49,7 @@ const communityImages = ref([
   {
     id: 5,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3860_1bxclV8lo.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572784'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3884_o-wdg8b1x.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669938307502'
   },
   {
     id: 6,
