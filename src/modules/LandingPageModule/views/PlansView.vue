@@ -15,7 +15,7 @@
               <h3 class="text-3xl uppercase font-bold">
                 {{ plan.slug }}
               </h3>
-              <p class="text-sm font-light">
+              <p class="text-sm font-medium">
                 Membership Setup Fee - {{ plan.setup }}
               </p>
             </div>
@@ -102,11 +102,12 @@ const plans = ref([
     setup: 'N2,000',
     billing: 'BILLED MONTHLY',
     offers: [
-      'ACCESS once daily',
-      'Personal Dashboard for tracking Fitness Records',
-      'NO fitness Instructor',
-      'NO Guest Pass Per Month',
-      'NO Subscription Pause Request'
+      'No Price Discount',
+      'Access Once Daily',
+      'Personal Dashboard for Tracking Fitness Records',
+      'No Fitness Instructor',
+      'No Guest Pass Per Month',
+      'No Subscription Pause Request'
     ]
   },
   {
@@ -116,9 +117,9 @@ const plans = ref([
     setup: 'N2,000',
     billing: 'BILLED MONTHLY',
     offers: [
-      'NO Price Discount',
+      'No Price Discount',
       'ACCESS Once Daily',
-      'PERSONAL Dashboard For Tracking Fitness Records',
+      'Personal Dashboard For Tracking Fitness Records',
       'Fitness Instructor Available',
       '1 Guest Pass Per Month',
       '4 days Subscription Pause Request'
@@ -131,13 +132,13 @@ const plans = ref([
     setup: 'N2,000',
     billing: 'BILLED MONTHLY',
     offers: [
-      'NO Price Discount',
-      'ALL Day Access',
-      'PERSONAL Dashboard For Tracking Fitness Records',
-      'PERSNOAL fitness instructor available',
+      'No Price Discount',
+      'All Day Access',
+      'Personal Dashboard For Tracking Fitness Records',
+      'Personal Fitness Instructor Available',
       '2 Guest Pass Per Month',
       '7 Days Subscription Pause Request',
-      'Access to all special Classes'
+      '1 Free Car Wash Weekly (4 Monthly)'
     ]
   }
 ])
