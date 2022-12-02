@@ -66,13 +66,14 @@
           </div>
           <template #bottom>
             <div class="button-wrapper">
-              <router-link
-                :to="`/plan/${plan.slug}`"
+              <a
+                href="https://www.jasfitnessng.com/members/payments/"
+                target="_blank"
                 class="card-btn font-semibold uppercase"
                 :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
               >
                 Get started
-              </router-link>
+              </a>
             </div>
           </template>
         </SubscriptionCard>
