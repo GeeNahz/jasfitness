@@ -43,7 +43,10 @@
       </form>
       <!-- validation message -->
       <div class="text-center w-full h-8 mb-6 leading-1">
-        <span v-if="invalidEmail" class="text-sm font-light text-red-400">
+        <span
+          v-if="invalidEmail"
+          class="text-xs md:text-smfont-light text-red-400"
+        >
           {{ invalidEmailMessage }}
         </span>
       </div>
@@ -51,13 +54,13 @@
       <div class="btns flex items-center justify-center gap-3">
         <!-- submit button -->
         <button
-          class="btn btn-outline-warning w-full h-14 font-semibold text-xl rounded-[10px] hover:text-white"
+          class="btn btn-outline-warning w-full h-8 md:h-14 font-semibold text-sm md:text-xl rounded-[10px] hover:text-white"
           @click="handleEmailSend"
         >
           Send
         </button>
         <button
-          class="btn btn-warning w-full h-14 font-semibold text-white rounded-[10px]"
+          class="btn btn-warning w-full h-8 md:h-14 font-semibold text-xs md:text-base text-white rounded-[10px] whitespace-nowrap"
           @click="handleShowResult"
         >
           View in browser
@@ -96,13 +99,16 @@
       </div>
       <!-- validation message -->
       <div v-if="currentStep !== forms[2]" class="text-center my-1 w-full h-8">
-        <span v-if="invalidFields" class="text-sm font-light text-red-400">
+        <span
+          v-if="invalidFields"
+          class="text-xs md:text-sm font-light text-red-400"
+        >
           Every field requires a number.
         </span>
       </div>
       <button
         v-if="currentStep !== forms[2]"
-        class="btn btn-warning w-full h-14 font-semibold text-2xl text-white rounded-[10px]"
+        class="btn btn-warning w-full h-10 md:h-14 font-semibold md:text-2xl text-white rounded-[10px]"
         @click="handleSubmit"
       >
         Calculate
@@ -464,10 +470,13 @@ function setBmiData(bmiData) {
 @media screen and (max-width: 414px) {
   .title-text {
     margin-bottom: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .bmi-wrapper {
     & .switch-toggle {
+      & .toggle-labels {
+        font-size: x-small;
+      }
       & .switch {
         & input {
           &:checked + .slider::before {
@@ -507,6 +516,10 @@ function setBmiData(bmiData) {
         }
       }
     }
+  }
+  .form-control {
+    padding: 10px 10px;
+    font-size: small;
   }
 }
 </style>
