@@ -378,6 +378,7 @@ function setBmiData(bmiData) {
       color: rgba(0, 0, 0, 0.17);
       margin-bottom: 0.25rem;
       transition: color 0.4s ease-in-out;
+      width: max-content;
 
       &.active-unit {
         color: rgba(0, 0, 0, 0.5);
@@ -386,8 +387,8 @@ function setBmiData(bmiData) {
     & .switch {
       position: relative;
       display: inline-block;
-      width: 100px;
-      height: 40px;
+      width: 60px;
+      height: 34px;
 
       & input {
         opacity: 0;
@@ -395,9 +396,9 @@ function setBmiData(bmiData) {
         height: 0;
 
         &:checked + .slider::before {
-          -webkit-transform: translateX(60px);
-          -ms-transform: translateX(60px);
-          transform: translateX(60px);
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
         }
       }
       & .slider {
@@ -415,8 +416,8 @@ function setBmiData(bmiData) {
         &::before {
           position: absolute;
           content: '';
-          height: 32px;
-          width: 32px;
+          height: 26px;
+          width: 26px;
           left: 4px;
           bottom: 4px;
           background: linear-gradient(
@@ -470,9 +471,9 @@ function setBmiData(bmiData) {
       & .switch {
         & input {
           &:checked + .slider::before {
-            -webkit-transform: translateX(30px);
-            -ms-transform: translateX(30px);
-            transform: translateX(30px);
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
           }
         }
       }
