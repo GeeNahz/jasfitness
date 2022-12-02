@@ -22,8 +22,8 @@
             <div class="sub__content">
               <h5 class="head">JAS FITNESS CENTER</h5>
               <p class="body">
-                Jas Fitness Pent-House Center is seating on a 200sqm with indoor
-                and outdoor facilities fully equipped to meet the needs of our
+                Jas Fitness Pent-House Center is seating on a 2000sqm with
+                outdoor facilities fully equipped to meet the needs of our
                 growing community of over 150 members.
               </p>
             </div>
@@ -107,7 +107,7 @@
               <hr class="divider" />
               <div class="item">
                 <h3>PARTNER WITH US</h3>
-                <p>jasfitness.media@gmail.com</p>
+                <p>jasfitnessgym@gmail.com</p>
                 <p>07034644002</p>
               </div>
               <hr class="divider" />
