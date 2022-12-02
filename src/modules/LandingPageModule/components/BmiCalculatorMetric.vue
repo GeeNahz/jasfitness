@@ -73,5 +73,10 @@ watch(creds, () => emit('update', creds.value), {
   &::placeholder {
     color: #999999;
   }
+
+  @include responsive('mobile-landscape-width') {
+    padding: 10px 10px;
+    font-size: font-size('small');
+  }
 }
 </style>
