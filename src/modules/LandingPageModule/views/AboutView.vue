@@ -356,14 +356,14 @@ const handleContactusSubmit = () => {
             }
 
             @include responsive('mobile-width') {
-              & .head {
-                font-size: font-size('small');
-              }
-              & .body {
-                font-size: font-size('x-small');
-              }
+              // & .head {
+              //   // font-size: font-size('small');
+              // }
+              // & .body {
+              //   // font-size: font-size('x-small');
+              // }
               & ul {
-                padding-left: 0.5rem;
+                padding-left: 0.8rem;
               }
             }
           }
@@ -414,11 +414,11 @@ const handleContactusSubmit = () => {
               padding: 1rem;
               margin-bottom: 1rem;
               border-radius: 10px;
-              font-size: font-size('small');
+              // font-size: font-size('small');
               background-color: rgba(223, 222, 222, 0.3);
               color: #363636;
               &::placeholder {
-                // font-size: font-size('small');
+                font-size: font-size('small');
                 color: #999;
               }
             }
@@ -437,7 +437,7 @@ const handleContactusSubmit = () => {
               & textarea {
                 width: 100%;
                 padding: 0.6rem;
-                font-size: font-size('x-small');
+                // font-size: font-size('x-small');
                 margin-bottom: 0.5rem;
               }
               & textarea {
@@ -459,9 +459,9 @@ const handleContactusSubmit = () => {
               font-weight: font-weight('semibold');
               margin-bottom: 0.5rem;
             }
-            & p {
-              font-size: font-size('small');
-            }
+            // & p {
+            //   // font-size: font-size('small');
+            // }
           }
 
           @include responsive('mobile-landscape-width') {
@@ -469,9 +469,9 @@ const handleContactusSubmit = () => {
               & h3 {
                 font-size: font-size('medium');
               }
-              & p {
-                font-size: font-size('x-small');
-              }
+              // & p {
+              //   // font-size: font-size('x-small');
+              // }
             }
           }
         }
