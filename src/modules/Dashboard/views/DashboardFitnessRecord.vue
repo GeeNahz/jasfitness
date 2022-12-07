@@ -347,7 +347,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-import DashboardService from '@/services/DashboardService.js'
+import DashboardService from '@/services/DashboardServices/DashboardService.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
