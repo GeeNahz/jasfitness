@@ -361,13 +361,6 @@ const showBmi = ref(false)
 const toggleBmi = () => (showBmi.value = !showBmi.value)
 
 const copyToClipboard = async (value) => {
-  // toClipboard(value)
-  //   .then((res) => {
-  //     console.log('then: ', res)
-  //   })
-  //   .catch((err) => {
-  //     console.log('err: ', err)
-  //   })
   toClipboard(value)
 }
 </script>

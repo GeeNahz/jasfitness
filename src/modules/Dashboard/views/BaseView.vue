@@ -317,7 +317,13 @@ import LayoutView from '../components/LayoutView.vue'
 import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import { useMeta } from 'vue-meta'
+/*
+* use this to make api requests in dashboard store
 
+import { useAxios } from '@/composables/UseDashboardAxios'
+const { axiosInstance: axiosconf } = useAxios()
+console.log(axiosconf.get('/users').then((res) => console.log(res.data)))
+*/
 useMeta({ title: 'Dashboard' })
 
 const viewType = ref('')

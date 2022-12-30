@@ -10,25 +10,11 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
 import TheSidebar from './components/TheSidebar.vue'
 export default {
-  setup() {
-    const store = useStore()
-    const loggedIn = computed(() => store.state.auth.isLoggedIn)
-    return { loggedIn }
-  },
   name: 'DashboardView',
   components: {
     TheSidebar
-  },
-  beforeRouteEnter(to, from, next) {
-    next((comp) => {
-      if (to.fullPath.includes('/dashboard') && !comp.loggedIn) {
-        comp.$router.push({ name: 'LoginPage' })
-      }
-    })
   }
 }
 </script>

@@ -58,10 +58,11 @@
               message: 'pl-2'
             }"
           />
-          <div class="w-[70%] mx-auto">
+          <div class="w-[70%] mx-auto" :class="{ 'opacity-50': isLoading }">
             <FormKit
               type="submit"
               label="Login"
+              :disabled="isLoading"
               :classes="{
                 label: 'block mb-1 font-bold text-sm',
                 inner:
@@ -70,7 +71,8 @@
                   'h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
                 help: 'text-xs text-gray-500'
               }"
-            />
+            >
+            </FormKit>
           </div>
           <p class="text-xs mb-6">
             Forgot your Password?
@@ -81,7 +83,8 @@
             >
           </p>
           <p v-if="error" class="text-xs text-red-500">
-            Username of password is incorrect
+            <!-- Username of password is incorrect -->
+            {{ errorMessage }}
           </p>
         </formKit>
       </div>
@@ -90,11 +93,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { reset } from '@formkit/core'
-import AuthLayout from '../components/AuthLayout.vue'
 import { useMeta } from 'vue-meta'
+import { useStore } from 'vuex'
+
+import { useState } from '@/composables/useState.js'
+import AuthLayout from '../components/AuthLayout.vue'
 
 useMeta({ title: 'Login' })
 
@@ -104,29 +110,49 @@ const userIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xm
 </svg>`
 const user = ref({})
 
-const error = ref(false)
+const store = useStore()
+const error = computed(() => store.state.auth.status.error)
+const isLoading = computed(() => store.state.auth.status.isLoading)
+// const success = computed(() => store.state.auth.status.success)
+// const isLoggedIn = computed(() => store.state.auth.status.isLoggedIn)
 
 const router = useRouter()
+const { AuthToken } = useState()
+
+onMounted(() => {
+  if (AuthToken.value) {
+    router.push({ name: 'DashboardHome' })
+  }
+})
+
+const err = ref(null)
+const errorMessage = computed(() => {
+  if (!err.value) return
+  if (err.value.includes('401')) {
+    return 'Username or password is incorrect'
+  } else {
+    return 'Something went wrong. Please try again later'
+  }
+})
 const handleSubmit = (credentials) => {
   // perform authentication async-ly
-  try {
-    if (
-      credentials.username === 'testAdmin' &&
-      credentials.password === 'secret1'
-    ) {
-      router.push({ name: 'DashboardHome' })
-    } else {
-      throw error
-    }
-  } catch (err) {
-    error.value = true
-    setTimeout(() => {
-      error.value = false
-    }, 3000)
-  } finally {
-    // clear values
-    reset('login-form')
-  }
+  store
+    .dispatch('auth/login', credentials)
+    .then(
+      () => {
+        router.push({ name: 'DashboardHome' })
+      },
+      (error) => {
+        err.value = error
+        // console.log(error)
+      }
+    )
+    .finally(() => {
+      // clear values
+      reset('login-form')
+    })
+  // store.commit('auth/LOGIN', credentials)
+  // router.push({ name: 'DashboardHome' })
 }
 
 const handleIconClick = (node) => {

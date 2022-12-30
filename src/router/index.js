@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import NProgress from 'nprogress'
+
+import { useState } from '@/composables/useState.js'
+import { validateToken } from '@/services/helpers/ValidateTokenHelper'
 
 const routes = [
   {
@@ -30,8 +32,23 @@ const router = createRouter({
   }
 })
 
-router.beforeEach(() => {
+router.beforeEach((to, from, next) => {
   NProgress.start()
+  const { AuthToken } = useState()
+  if (to.meta.requireAuth) {
+    if (!AuthToken.value) {
+      next({ name: 'LoginPage' })
+      // set notifications panel here to show that the user
+      // is not logged in
+    } else if (!validateToken(AuthToken.value)) {
+      next({ name: 'LoginPage' })
+      // set notifications panel here to show that the session has expired
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 router.afterEach(() => {

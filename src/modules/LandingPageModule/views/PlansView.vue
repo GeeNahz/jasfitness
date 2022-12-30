@@ -99,8 +99,8 @@ const plans = ref([
   {
     id: 0,
     slug: 'regular',
-    price: 'N10,000',
-    setup: 'N2,000',
+    price: 'N12,000',
+    setup: 'N3,000',
     billing: 'BILLED MONTHLY',
     offers: [
       'No Price Discount',
@@ -115,11 +115,11 @@ const plans = ref([
     id: 1,
     slug: 'PREMIUM',
     price: 'N20,000',
-    setup: 'N2,000',
+    setup: 'N3,000',
     billing: 'BILLED MONTHLY',
     offers: [
       'No Price Discount',
-      'ACCESS Once Daily',
+      'Access Once Daily',
       'Personal Dashboard For Tracking Fitness Records',
       'Fitness Instructor Available',
       '1 Guest Pass Per Month',
@@ -130,7 +130,7 @@ const plans = ref([
     id: 2,
     slug: 'V-I-P',
     price: 'N40,000',
-    setup: 'N2,000',
+    setup: 'N3,000',
     billing: 'BILLED MONTHLY',
     offers: [
       'No Price Discount',

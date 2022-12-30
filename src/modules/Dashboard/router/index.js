@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 const Module = () =>
   import(/* webpackChunkName: "landingpageModule" */ '../Module')
 
@@ -21,17 +22,26 @@ const routes = [
       {
         path: '',
         name: 'DashboardHome',
-        component: BaseView
+        component: BaseView,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: 'fitness-record',
         name: 'DashboardFitnessRecord',
-        component: DashboardFitnessRecord
+        component: DashboardFitnessRecord,
+        meta: {
+          requireAuth: true
+        }
       },
       {
         path: 'sub',
         name: 'DashboardSubscription',
-        component: DashboardSubscription
+        component: DashboardSubscription,
+        meta: {
+          requireAuth: true
+        }
       }
     ]
   }
