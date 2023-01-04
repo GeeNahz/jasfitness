@@ -64,6 +64,7 @@ export default {
               avatar: response.data.avatar
             }
             User.value = { ...user_details }
+            console.log(User.value)
             AuthToken.value = response.data.token
             commit('LOGIN_SUCCESS', user_details)
 
