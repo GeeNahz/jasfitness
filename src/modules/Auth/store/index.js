@@ -10,7 +10,7 @@ const varifyUser = (user) => {
   return false
 }
 const defaultState = varifyUser(User.value)
-  ? { user: User.value, isLoggedIn: true }
+  ? { user: JSON.parse(User.value), isLoggedIn: true }
   : { user: null, isLoggedIn: false }
 
 export default {
@@ -64,8 +64,7 @@ export default {
               username: response.data.username,
               avatar: response.data.avatar
             }
-            User.value = { ...user_details }
-            console.log(User.value)
+            User.value = JSON.stringify({ ...user_details })
             AuthToken.value = response.data.token
             axiosInstance.defaults.headers = {
               Authorization: `Bearer ${response.data.token}`
