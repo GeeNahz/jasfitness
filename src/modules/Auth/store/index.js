@@ -68,7 +68,7 @@ export default {
             console.log(User.value)
             AuthToken.value = response.data.token
             axiosInstance.defaults.headers = {
-              Authorization: `${response.data.token}`
+              Authorization: `Bearer ${response.data.token}`
             }
             commit('LOGIN_SUCCESS', user_details)
 
