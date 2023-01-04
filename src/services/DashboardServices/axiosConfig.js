@@ -20,9 +20,15 @@ const axiosInstance = axios.create({
 
 // only set the header if it exists in the localStorage
 axiosInstance.interceptors.request.use(async (req) => {
-  req.headers.Authorization = `Bearer ${AuthToken?.value}`
+  if (!req.headers.Authorization) {
+    req.headers.Authorization = `Bearer ${AuthToken?.value}`
+  }
 
-  if (validateToken(AuthToken.value)) return req
+  if (
+    validateToken(req.headers.Authorization.slice(7)) ||
+    (AuthToken.value && validateToken(AuthToken.value))
+  )
+    return req
 
   // if there's a refresh token, use it here to
   // refresh the token and save the new access token
