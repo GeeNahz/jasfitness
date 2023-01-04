@@ -62,9 +62,11 @@
           >
             Goals
           </p>
-          <p class="text-gray-500 font-light text-base md:text-xl">
-            My Goal is simple, I want to loose weight and turn this Fat into
-            muscles.
+          <p
+            v-if="fitness_target"
+            class="text-gray-500 font-light text-base md:text-xl"
+          >
+            {{ fitness_target.goal }}
           </p>
         </div>
         <!-- fitness report & activities -->
@@ -317,15 +319,15 @@
                       times weekly
                     </p>
                   </div>
-                  <div class="grid justify-center w-full">
+                  <div v-if="fitness_target" class="grid justify-center w-full">
                     <DashboardRadialProgressBar
-                      :completedSteps="87.5"
+                      :completedSteps="fitness_target.average"
                       class="hidden md:block"
                     />
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
                       :diameter="120"
-                      :completedSteps="87.5"
+                      :completedSteps="fitness_target.average"
                       class="md:hidden"
                     />
                   </div>
@@ -345,9 +347,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
-import DashboardService from '@/services/DashboardServices/DashboardService.js'
+import { ref, onMounted, computed } from 'vue'
+import { useStore } from 'vuex'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -358,14 +359,21 @@ import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Fitness Record' })
 
+const store = useStore()
+
+const fitness_target = computed(() =>
+  store.state.dashboard.dashboardFitness
+    ? store.state.dashboard.dashboardFitness
+    : {}
+)
+
 onMounted(() => {
-  DashboardService.get_members_assessments()
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  store.dispatch('dashboard/dashboard_fitness').then(
+    () => {},
+    (error) => {
+      console.log(error)
+    }
+  )
 })
 
 const chartData = ref({
