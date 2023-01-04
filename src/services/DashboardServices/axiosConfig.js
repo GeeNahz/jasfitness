@@ -10,7 +10,7 @@ const router = useRouter()
 const { AuthToken } = useState()
 
 const axiosInstance = axios.create({
-  baseURL: 'https://jas-fitness-api-service.onrender.com',
+  baseURL: 'https://api.staging.jasfitnessng.com/',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -36,5 +36,12 @@ axiosInstance.interceptors.request.use(async (req) => {
   // refresh token is expired too
   router.push({ name: 'LoginPage' })
 })
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 export default axiosInstance
