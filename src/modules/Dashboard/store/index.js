@@ -13,7 +13,8 @@ export default {
   state: {
     status: { isLoading: false, error: false },
     profile: null,
-    dashboardBase: {}
+    dashboardBase: null,
+    dashboardFitness: null
   },
   getters: {},
   mutations: {
@@ -26,6 +27,9 @@ export default {
     },
     SET_DASHBOARD_BASE_STATE(state, payload) {
       state.dashboardBase = payload
+    },
+    SET_DASHBOARD_FITNESS_STATE(state, payload) {
+      state.dashboardFitness = payload
     }
   },
   actions: {
@@ -45,6 +49,19 @@ export default {
         .finally(() => {
           commit('STATUS_RESET')
         })
+    },
+    dashboard_fitness({ commit }) {
+      commit('STATUS_LOADING')
+      return DashboardService.dashboard_fitness_record().then(
+        (response) => {
+          commit('SET_DASHBOARD_FITNESS_STATE', response.data)
+          return Promise.resolve(response.data)
+        },
+        (error) => {
+          commit('SET_DASHBOARD_FITNESS_STATE', {})
+          return Promise.reject(error.message)
+        }
+      )
     }
   },
   modules: {}
