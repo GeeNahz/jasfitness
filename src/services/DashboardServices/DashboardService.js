@@ -8,5 +8,3 @@ export default {
     return axiosInstance.get('dashboard/fitness_record/')
   }
 }
-
-// https://api.staging.jasfitnessng.com/
