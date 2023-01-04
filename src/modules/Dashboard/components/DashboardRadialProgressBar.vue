@@ -27,7 +27,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import RadialProgressBar from 'vue3-radial-progress'
 
 const props = defineProps({
@@ -52,11 +52,12 @@ const props = defineProps({
 const strokeColor = ref('')
 const totalSteps = ref(100)
 
-const completedStep = ref(null)
+const completedStep = computed(() => {
+  if (props.completedSteps === 0) return props.completedSteps.toString()
+  return props.completedSteps
+})
 
 onMounted(() => {
-  completedStep.value = props.completedSteps
-
   if (props.fullCircle) {
     if (completedStep.value <= 20) {
       strokeColor.value = 'red'
@@ -68,6 +69,10 @@ onMounted(() => {
   } else {
     completedStep.value = completedStep.value / 2
 
+    if (isNaN(completedStep.value)) {
+      console.log('Not a number')
+    }
+    console.log(completedStep.value)
     if (completedStep.value <= 10) {
       strokeColor.value = 'red'
     } else if (completedStep.value <= 25) {
