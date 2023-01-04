@@ -57,6 +57,7 @@
         <br />
         <!-- subscription summary -->
         <div
+          v-if="dashboardHome"
           class="relative subscription-summary-container border border-gray-300 rounded-xl w-full md:p-6"
         >
           <p
@@ -69,12 +70,15 @@
           >
             <div class="item">
               <p class="text-xs md:text-base">Subscription type</p>
-              <p class="text-xl md:text-3xl font-semibold">Odogwu</p>
+              <p class="text-xl md:text-3xl font-semibold">
+                {{ dashboardHome.sub_plan }}
+              </p>
             </div>
             <div class="item">
               <p class="text-xs md:text-base">Subscription status</p>
               <p class="text-xl md:text-3xl font-semibold">
-                46<span class="text-xs md:text-base text-gray-500"> days</span>
+                {{ dashboardHome.sub_status }}
+                <!-- <span class="text-xs md:text-base text-gray-500"> days</span> -->
               </p>
             </div>
             <div class="item">
@@ -366,23 +370,68 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useMeta } from 'vue-meta'
+import { useStore } from 'vuex'
+
 import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
-import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Subscription' })
 
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
+const store = useStore()
+
+const dashboardHome = computed(() =>
+  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+)
+
+// function getTimeFromDate(date) {
+//   const months = {
+//     January: 1,
+//     February: 2,
+//     March: 3,
+//     April: 4,
+//     May: 5,
+//     June: 6,
+//     July: 7,
+//     August: 8,
+//     September: 9,
+//     October: 10,
+//     November: 11,
+//     December: 12
+//   }
+//   const [month1, day1, year] = date.split(' ')
+//   const month = months[month1]
+//   const day = day1.slice(0, -1)
+//   const newDate = new Date(+year, month - 1, +day)
+//   const timestamp = newDate.getTime()
+//   const now = Math.round(new Date().getTime() / 1000)
+//   const timestampLeft = timestamp - now
+//   const timing = new Date(timestampLeft)
+//   console.log(timing.getDay())
+//   return timestamp
+// }
+// getTimeFromDate('April 27, 2023')
+
+onMounted(() => {
+  store.dispatch('dashboard/dashboard_home').then(
+    () => {},
+    (error) => {
+      console.log(error.message)
+    }
+  )
+})
+
 const plans = [
   {
     id: 0,
     slug: 'regular',
-    price: 'N10,000',
-    setup: 'N2,000',
+    price: 'N12,000',
+    setup: 'N3,000',
     billing: 'Billed Monthly',
     offers: [
       'ACCESS once daily',
@@ -396,7 +445,7 @@ const plans = [
     id: 1,
     slug: 'PREMIUM',
     price: 'N20,000',
-    setup: 'N2,000',
+    setup: 'N3,000',
     billing: 'Billed Monthly',
     offers: [
       'NO Price Discount',
@@ -411,7 +460,7 @@ const plans = [
     id: 2,
     slug: 'V-I-P',
     price: 'N40,000',
-    setup: 'N2,000',
+    setup: 'N3,000',
     billing: 'Billed Monthly',
     offers: [
       'NO Price Discount',
