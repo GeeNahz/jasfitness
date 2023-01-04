@@ -9,6 +9,7 @@
     <div
       class="bg-zinc-900 md:w-1/5 rounded-xl relative py-8 md:py-16 px-3 text-white"
     >
+      <slot name="display-image"></slot>
       <div v-if="showTitle" class="mb-8 md:mb-16">
         <DashboardDivider
           class="text-base md:text-xl font-semibold"
