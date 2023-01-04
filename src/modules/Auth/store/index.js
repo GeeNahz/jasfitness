@@ -1,3 +1,4 @@
+import axiosInstance from '@/services/DashboardServices/axiosConfig'
 import AuthService from '@/services/AuthServices/AuthService.js'
 import { validateToken } from '@/services/helpers/ValidateTokenHelper.js'
 import { useState } from '@/composables/useState.js'
@@ -66,6 +67,9 @@ export default {
             User.value = { ...user_details }
             console.log(User.value)
             AuthToken.value = response.data.token
+            axiosInstance.defaults.headers = {
+              Authorization: `${response.data.token}`
+            }
             commit('LOGIN_SUCCESS', user_details)
 
             return Promise.resolve(response.data)
@@ -73,7 +77,7 @@ export default {
           (error) => {
             User.value = null
             AuthToken.value = null
-
+            delete axiosInstance.defaults.headers.Authorization
             commit('LOGIN_FAILURE')
             return Promise.reject(error.message)
           }
