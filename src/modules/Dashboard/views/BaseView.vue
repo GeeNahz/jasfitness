@@ -8,7 +8,9 @@
         >
           <div class="welcome md:mt-10">
             <p class="text-xl md:text-2xl font-semibold">
-              Hello <span>Bemshima</span>,
+              Hello
+              <span v-if="user" class="capitalize">{{ user.username }}</span
+              >,
             </p>
             <p class="w-52 md:w-fit text-xs md:text-sm text-gray-400">
               Welcome back!
@@ -65,21 +67,28 @@
             Attendance Summary
           </p>
           <div
+            v-if="creds"
             class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
           >
             <div class="item">
-              <p class="text-xs md:text-base">total in 2022</p>
-              <p class="text-xl md:text-3xl font-semibold">195</p>
+              <p class="text-xs md:text-base">total in {{ currentYear }}</p>
+              <p class="text-xl md:text-3xl font-semibold">
+                {{ creds.year_total }}
+              </p>
               <p class="text-xs md:text-base">days at the gym</p>
             </div>
             <div class="item">
-              <p class="text-xs md:text-base">total in september</p>
-              <p class="text-xl md:text-3xl font-semibold">13</p>
+              <p class="text-xs md:text-base">total in {{ currentMonth }}</p>
+              <p class="text-xl md:text-3xl font-semibold">
+                {{ creds.month_total }}
+              </p>
               <p class="text-xs md:text-base">days at the gym</p>
             </div>
             <div class="item">
               <p class="text-xs md:text-base">average</p>
-              <p class="text-xl md:text-3xl font-semibold">95%</p>
+              <p class="text-xl md:text-3xl font-semibold">
+                {{ averageInGym(creds.average) }}%
+              </p>
               <p class="text-xs md:text-base">attendance</p>
             </div>
           </div>
@@ -105,10 +114,27 @@
           </div>
         </div>
       </template>
+      <template #display-image>
+        <div class="image hidden md:block h-16 w-16 mx-auto mb-10">
+          <img
+            v-if="user.avatar"
+            :src="user.avatar"
+            :alt="'avatar-' + user.username"
+            class="rounded-full h-full w-full object-center"
+          />
+          <img
+            v-else
+            src="https://ams3.digitaloceanspaces.com/jasfitness-object-storage/media/avatar/default.png?AWSAccessKeyId=DO003ZB6CQJQTT4JTU63&Signature=qZcbkq4x%2BfTEyN0W0jybn%2BkW4S4%3D&Expires=1672852097"
+            alt="avatar-defualt"
+            class="rounded-full h-full w-full object-center"
+          />
+        </div>
+      </template>
       <template #inner-side-bar>
         <div class="flex flex-col md:flex-row items-center justify-between">
           <ul
             class="grid grid-cols-2 gap-x-16 md:gap-x-0 gap-y-10 md:gap-y-4 md:flex md:flex-col items-center md:items-start md:justify-start space-y-0 md:space-y-10 mt-2 md:mt-4 pl-0 md:pl-10"
+            v-if="creds"
           >
             <li>
               <router-link :to="{ name: 'DashboardSubscription' }">
@@ -135,7 +161,7 @@
                       Sub Status
                     </p>
                     <p class="text-xs md:text-sm font-light py-0">
-                      3 Months 3 Days left
+                      {{ creds.sub_status }}
                     </p>
                   </div>
                 </div>
@@ -185,14 +211,19 @@
                       Sub Plan
                     </p>
                     <p class="text-xs md:text-sm font-light py-0">
-                      Odogwu (1 Year)
+                      {{ creds.sub_plan }}
                     </p>
                   </div>
                 </div>
               </router-link>
             </li>
-            <li>
-              <router-link :to="{ name: 'DashboardSubscription' }">
+            <li v-if="creds.freeze">
+              <router-link
+                :to="{ name: 'DashboardSubscription' }"
+                :class="{
+                  'disabled ': !creds.freeze.is_active
+                }"
+              >
                 <div class="flex items-center gap-2 md:gap-4">
                   <div class="icon">
                     <i>
@@ -240,7 +271,7 @@
                       Freeze Your Sub
                     </p>
                     <p class="text-xs md:text-sm font-light py-0">
-                      4 Days Left
+                      {{ creds.freeze.value }}
                     </p>
                   </div>
                 </div>
@@ -312,7 +343,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 import LayoutView from '../components/LayoutView.vue'
 import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -327,6 +359,44 @@ console.log(axiosconf.get('/users').then((res) => console.log(res.data)))
 useMeta({ title: 'Dashboard' })
 
 const viewType = ref('')
+
+const currentYear = computed(() => new Date().getFullYear())
+const currentMonth = computed(() => {
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
+  return months[new Date().getMonth()]
+})
+const averageInGym = (averageValue) => {
+  return averageValue * 10
+}
+
+const creds = computed(() =>
+  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+)
+const store = useStore()
+const user = computed(() =>
+  store.state.auth.user ? store.state.auth.user : {}
+)
+onMounted(() => {
+  store.dispatch('dashboard/dashboard_home').then(
+    () => {},
+    (error) => {
+      console.log(error.message)
+    }
+  )
+})
 
 const resubscribeHandler = () => {
   try {
@@ -357,5 +427,15 @@ a:hover #path {
 a.router-link-exact-active {
   color: #ca9b42;
   border-left: solid #ca9b42;
+}
+a.disabled {
+  color: gray;
+  cursor: no-drop;
+}
+a.disabled #stroke {
+  stroke: gray;
+}
+a.disabled #path {
+  fill: gray;
 }
 </style>
