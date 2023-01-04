@@ -4,10 +4,9 @@ export default {
   dashboard_home() {
     return axiosInstance.get('dashboard/home')
   },
-  get_users() {
-    return axiosInstance.get('/user')
-  },
-  get_members_assessments() {
-    return axiosInstance.get('/gym_member_assessments/')
+  dashboard_fitness_record() {
+    return axiosInstance.get('dashboard/fitness_record/')
   }
 }
+
+// https://api.staging.jasfitnessng.com/
