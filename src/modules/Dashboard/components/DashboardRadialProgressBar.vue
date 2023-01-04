@@ -69,10 +69,6 @@ onMounted(() => {
   } else {
     completedStep.value = completedStep.value / 2
 
-    if (isNaN(completedStep.value)) {
-      console.log('Not a number')
-    }
-    console.log(completedStep.value)
     if (completedStep.value <= 10) {
       strokeColor.value = 'red'
     } else if (completedStep.value <= 25) {
