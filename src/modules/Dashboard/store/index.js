@@ -43,7 +43,7 @@ export default {
           },
           (error) => {
             commit('SET_DASHBOARD_BASE_STATE', {})
-            return Promise.reject(error)
+            return Promise.reject(error.message)
           }
         )
         .finally(() => {
