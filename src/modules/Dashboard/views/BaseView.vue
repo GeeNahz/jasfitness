@@ -393,7 +393,7 @@ onMounted(() => {
   store.dispatch('dashboard/dashboard_home').then(
     () => {},
     (error) => {
-      console.log(error.message)
+      console.log(error)
     }
   )
 })
