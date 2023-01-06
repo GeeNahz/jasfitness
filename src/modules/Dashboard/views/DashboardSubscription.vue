@@ -301,32 +301,35 @@
                   </p>
                 </div>
                 <div
+                  v-if="dashboardFitness"
                   class="mt-2 md:mt-0 h-16 md:h-32 w-[30rem] md:w-full overflow-hidden"
                 >
                   <div class="grid justify-center w-full">
                     <DashboardRadialProgressBar
-                      :completedSteps="87.5"
+                      :completedSteps="dashboardFitness.average"
                       :full-circle="false"
                       class="hidden md:block relative mt-3 -rotate-90"
                     >
                       <div
                         class="rotate-90 absolute right-3 uppercase flex flex-col items-center justify-center font-semibold"
                       >
-                        <p class="text-4xl">87.5%</p>
+                        <p class="text-4xl">{{ dashboardFitness.average }}%</p>
                         <p class="text-sm font-normal">Completed</p>
                       </div>
                     </DashboardRadialProgressBar>
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
                       :diameter="110"
-                      :completedSteps="87.5"
+                      :completedSteps="dashboardFitness.average"
                       :full-circle="false"
                       class="md:hidden relative mt-1 -rotate-90"
                     >
                       <div
                         class="rotate-90 absolute -right-0 uppercase flex flex-col items-center justify-center font-semibold"
                       >
-                        <p class="text-xl leading-none">87.5%</p>
+                        <p class="text-xl leading-none">
+                          {{ dashboardFitness.average }}%
+                        </p>
                         <p class="text-xs font-light leading-none">Completed</p>
                       </div>
                     </DashboardRadialProgressBar>
@@ -388,6 +391,11 @@ const store = useStore()
 const dashboardHome = computed(() =>
   store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
 )
+const dashboardFitness = computed(() =>
+  store.state.dashboard.dashboardFitness
+    ? store.state.dashboard.dashboardFitness
+    : {}
+)
 
 // function getTimeFromDate(date) {
 //   const months = {
@@ -421,7 +429,13 @@ onMounted(() => {
   store.dispatch('dashboard/dashboard_home').then(
     () => {},
     (error) => {
-      console.log(error.message)
+      console.log(error)
+    }
+  )
+  store.dispatch('dashboard/dashboard_fitness').then(
+    () => {},
+    (error) => {
+      console.log(error)
     }
   )
 })
