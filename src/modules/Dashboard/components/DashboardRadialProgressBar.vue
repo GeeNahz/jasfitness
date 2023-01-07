@@ -33,7 +33,7 @@ import RadialProgressBar from 'vue3-radial-progress'
 const props = defineProps({
   completedSteps: {
     type: Number,
-    default: 100
+    default: 0
   },
   strokeWidth: {
     type: Number,
