@@ -2,7 +2,7 @@
   <div v-if="completedStep" class="w-full">
     <RadialProgressBar
       :diameter="diameter"
-      :completed-steps="completedStep"
+      :completed-steps="Number(completedStep)"
       :total-steps="totalSteps"
       :strokeWidth="strokeWidth"
       :innerStrokeWidth="strokeWidth"
