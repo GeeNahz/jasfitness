@@ -346,6 +346,9 @@ const store = useStore()
 const user = computed(() =>
   store.state.auth.user ? store.state.auth.user : {}
 )
+const creds = computed(() =>
+  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+)
 
 const resubscribeHandler = () => {
   try {
