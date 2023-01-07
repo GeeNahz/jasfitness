@@ -87,7 +87,7 @@
             <div class="item">
               <p class="text-xs md:text-base">average</p>
               <p class="text-xl md:text-3xl font-semibold">
-                {{ averageInGym(creds.average) }}%
+                {{ creds.average }}%
               </p>
               <p class="text-xs md:text-base">attendance</p>
             </div>
@@ -378,9 +378,6 @@ const currentMonth = computed(() => {
   ]
   return months[new Date().getMonth()]
 })
-const averageInGym = (averageValue) => {
-  return averageValue * 10
-}
 
 const creds = computed(() =>
   store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
