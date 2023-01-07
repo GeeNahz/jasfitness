@@ -142,10 +142,16 @@
               </template>
               <template #button>
                 <div
+                  v-if="dashboardHome.freeze"
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
                   <button
-                    class="px-2 py-1 md:px-4 md:py-2 bg-yellow-600 active:bg-yellow-700 hover:bg-yellow-500 rounded text-white text-sm md:text-base font-semibold"
+                    class="px-4 py-1 md:px-4 md:py-2 rounded text-yellow-600 text-sm md:text-base font-semibold"
+                    :class="[
+                      dashboardHome.freeze.is_active
+                        ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
+                        : 'bg-gray-500 disabled cursor-not-allowed '
+                    ]"
                   >
                     Freeze
                   </button>
@@ -193,7 +199,7 @@
               <template #button>
                 <div class="flex flex-col md:flex-row items-center">
                   <button
-                    class="px-2 py-1 md:px-4 md:py-2 bg-yellow-600 active:bg-yellow-700 hover:bg-yellow-500 rounded text-white text-sm md:text-base font-semibold"
+                    class="px-4 py-1 md:px-4 md:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-600 text-sm md:text-base font-semibold"
                   >
                     Share
                   </button>
@@ -381,6 +387,10 @@ const dashboardFitness = computed(() =>
   store.state.dashboard.dashboardFitness
     ? store.state.dashboard.dashboardFitness
     : {}
+)
+
+const dashboardHome = computed(() =>
+  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
 )
 
 // function getTimeFromDate(date) {
