@@ -66,32 +66,12 @@
           >
             Attendance Summary
           </p>
-          <div
-            v-if="creds"
-            class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
-          >
-            <div class="item">
-              <p class="text-xs md:text-base">total in {{ currentYear }}</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                {{ creds.year_total }}
-              </p>
-              <p class="text-xs md:text-base">days at the gym</p>
-            </div>
-            <div class="item">
-              <p class="text-xs md:text-base">total in {{ currentMonth }}</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                {{ creds.month_total }}
-              </p>
-              <p class="text-xs md:text-base">days at the gym</p>
-            </div>
-            <div class="item">
-              <p class="text-xs md:text-base">average</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                {{ creds.average }}%
-              </p>
-              <p class="text-xs md:text-base">attendance</p>
-            </div>
-          </div>
+          <Suspense>
+            <DashboardBaseViewSummary />
+            <template #fallback>
+              <DashboardSummarySkeletonLoader />
+            </template>
+          </Suspense>
         </div>
         <!-- fitness record -->
         <div>
@@ -343,12 +323,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import LayoutView from '../components/LayoutView.vue'
 import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import { useMeta } from 'vue-meta'
+import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkeletonLoader.vue'
+import DashboardBaseViewSummary from '../components/DashboardBaseViewSummary.vue'
 /*
 * use this to make api requests in dashboard store
 
@@ -360,40 +342,10 @@ useMeta({ title: 'Dashboard' })
 
 const viewType = ref('')
 
-const currentYear = computed(() => new Date().getFullYear())
-const currentMonth = computed(() => {
-  const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ]
-  return months[new Date().getMonth()]
-})
-
-const creds = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
-)
 const store = useStore()
 const user = computed(() =>
   store.state.auth.user ? store.state.auth.user : {}
 )
-onMounted(() => {
-  store.dispatch('dashboard/dashboard_home').then(
-    () => {},
-    (error) => {
-      console.log(error)
-    }
-  )
-})
 
 const resubscribeHandler = () => {
   try {
