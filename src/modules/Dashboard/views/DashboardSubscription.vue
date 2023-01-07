@@ -57,7 +57,6 @@
         <br />
         <!-- subscription summary -->
         <div
-          v-if="dashboardHome"
           class="relative subscription-summary-container border border-gray-300 rounded-xl w-full md:p-6"
         >
           <p
@@ -65,29 +64,17 @@
           >
             Summary
           </p>
-          <div
-            class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
-          >
-            <div class="item">
-              <p class="text-xs md:text-base">Subscription type</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                {{ dashboardHome.sub_plan }}
-              </p>
+
+          <Suspense>
+            <div
+              class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
+            >
+              <DashboardSubscriptionSummaryItems />
             </div>
-            <div class="item">
-              <p class="text-xs md:text-base">Subscription status</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                {{ dashboardHome.sub_status }}
-                <!-- <span class="text-xs md:text-base text-gray-500"> days</span> -->
-              </p>
-            </div>
-            <div class="item">
-              <p class="text-xs md:text-base">start date</p>
-              <p class="text-xl md:text-3xl font-semibold">
-                15<span class="text-xs text-gray-500 md:text-base"> sept</span>
-              </p>
-            </div>
-          </div>
+            <template #fallback>
+              <DashboardSummarySkeletonLoader />
+            </template>
+          </Suspense>
         </div>
         <!-- members features -->
         <div>
@@ -381,6 +368,8 @@ import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
+import DashboardSubscriptionSummaryItems from '../components/DashboardSubscriptionSummaryItems.vue'
+import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkeletonLoader.vue'
 
 useMeta({ title: 'Subscription' })
 
@@ -388,9 +377,6 @@ const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
 const store = useStore()
 
-const dashboardHome = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
-)
 const dashboardFitness = computed(() =>
   store.state.dashboard.dashboardFitness
     ? store.state.dashboard.dashboardFitness
@@ -426,12 +412,6 @@ const dashboardFitness = computed(() =>
 // getTimeFromDate('April 27, 2023')
 
 onMounted(() => {
-  store.dispatch('dashboard/dashboard_home').then(
-    () => {},
-    (error) => {
-      console.log(error)
-    }
-  )
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
     (error) => {
