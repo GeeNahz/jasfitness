@@ -334,11 +334,11 @@
                 </div>
               </template>
             </DashboardSubscriptionCard>
-            <button
+            <!-- <button
               class="bg-[#70e000] font-semibold w-full mt-4 px-4 py-2 rounded-xl"
             >
               Download Record
-            </button>
+            </button> -->
           </div>
         </div>
       </template>
