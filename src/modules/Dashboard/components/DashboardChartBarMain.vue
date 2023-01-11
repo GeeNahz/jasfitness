@@ -51,7 +51,17 @@ export default defineComponent({
   setup(props) {
     const chartOptions = {
       responsive: true,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          suggestedMax: 120,
+          ticks: {
+            callback: (value) => {
+              return value + ' mins'
+            }
+          }
+        }
+      }
     }
 
     return () =>
