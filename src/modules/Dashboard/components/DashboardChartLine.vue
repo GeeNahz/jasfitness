@@ -39,9 +39,13 @@ ChartJS.register(
 )
 
 defineProps({
+  chartData: {
+    type: Object,
+    default: () => {}
+  },
   chartId: {
     type: String,
-    default: 'bar-chart'
+    default: 'line-chart'
   },
   datasetIdKey: {
     type: String,
@@ -69,20 +73,26 @@ defineProps({
   }
 })
 
-const chartData = ref({
-  labels: ['09/06', '16/06', '23/06', '30/06', '06/07', '13/07', '20/07'],
-  datasets: [
-    {
-      label: 'Duration',
-      backgroundColor: '#ffbb00',
-      data: [40, 39, 10, 40, 39, 80, 40]
-    }
-  ]
-})
-
 const chartOptions = ref({
   responsive: true,
-  maintainAspectRatio: false
+  maintainAspectRatio: false,
+  scales: {
+    // x: {
+    //   title: {
+    //     display: true,
+    //     text: 'Days at the gym'
+    //   }
+    // },
+    y: {
+      suggestedMin: 30,
+      suggestedMax: 120,
+      ticks: {
+        callback: (value) => {
+          return value + ' mins'
+        }
+      }
+    }
+  }
 })
 </script>
 
