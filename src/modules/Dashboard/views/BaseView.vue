@@ -74,23 +74,27 @@
           </Suspense>
         </div>
         <!-- fitness record -->
-        <div>
+        <div class="md:h-96">
           <!-- divider -->
           <DashboardDivider
             class="text-sm md:text-base my-5 md:my-4"
             name="My Fitness Record"
           />
           <div
-            class="chart-container hover:scale-105 transition-transform duration-150 overflow-clip"
+            v-if="!preparingChartData"
+            class="chart-container md:hover:scale-100 md:scale-95 transition-transform duration-300 overflow-clip"
           >
             <div class="hidden md:block chart bg-gray-50 p-2 mt-4 rounded">
               <p class="float-right">{{ viewType }}</p>
               <!-- Insert toggle button here -->
-              <DashboardChart />
+              <DashboardChart :chartData="chartData" />
             </div>
             <div class="md:hidden chart bg-gray-50 p-2 mt-4 rounded">
-              <DashboardChart :height="200" />
+              <DashboardChart :height="200" :chartData="chartData" />
             </div>
+          </div>
+          <div v-if="preparingChartData" class="loader h-full">
+            <AppLoader />
           </div>
         </div>
       </template>
@@ -323,21 +327,19 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { useStore } from 'vuex'
+import { useMeta } from 'vue-meta'
+
+import AppLoader from '@/components/AppLoader.vue'
+import { useTimeConverter } from '@/composables/useConverter.js'
+
 import LayoutView from '../components/LayoutView.vue'
 import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
-import { useMeta } from 'vue-meta'
 import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkeletonLoader.vue'
 import DashboardBaseViewSummary from '../components/DashboardBaseViewSummary.vue'
-/*
-* use this to make api requests in dashboard store
 
-import { useAxios } from '@/composables/UseDashboardAxios'
-const { axiosInstance: axiosconf } = useAxios()
-console.log(axiosconf.get('/users').then((res) => console.log(res.data)))
-*/
 useMeta({ title: 'Dashboard' })
 
 const viewType = ref('')
@@ -349,6 +351,63 @@ const user = computed(() =>
 const creds = computed(() =>
   store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
 )
+
+onMounted(() => {
+  store.dispatch('dashboard/dashboard_gym_attendance', user.value.id).then(
+    () => {},
+    (error) => {
+      console.log(error)
+    }
+  )
+})
+
+const {
+  timestampToDate,
+  timestampToFullDate,
+  timestampToTime,
+  timestampToMinutes
+} = useTimeConverter()
+const gym_attendance = computed(() =>
+  store.state.dashboard.dashboardGymnAttendance
+    ? store.state.dashboard.dashboardGymnAttendance
+    : {}
+)
+const preparedChartData = ref({
+  timeIn: [],
+  timeOut: [],
+  date: [],
+  data: [],
+  labels: []
+})
+const prepareChartData = (values) => {
+  for (let item of values) {
+    preparedChartData.value.timeIn.push(timestampToTime(item.time_in))
+    preparedChartData.value.timeOut.push(timestampToTime(item.time_out))
+    preparedChartData.value.date.push(timestampToFullDate(item.time_in))
+    preparedChartData.value.data.push(timestampToMinutes(item.duration))
+    preparedChartData.value.labels.push(timestampToDate(item.time_in))
+  }
+}
+const preparingChartData = ref(true)
+const chartData = ref({
+  labels: [],
+  datasets: [
+    {
+      label: 'Time spent (minutes)',
+      backgroundColor: '#ffbb00',
+      data: []
+    }
+  ]
+})
+watch(gym_attendance, () => {
+  if (gym_attendance.value !== null) {
+    preparingChartData.value = true
+    prepareChartData(gym_attendance.value.results)
+    chartData.value.labels = preparedChartData.value.labels
+    chartData.value.datasets[0].data = preparedChartData.value.data
+  }
+  preparingChartData.value = false
+})
 
 const resubscribeHandler = () => {
   try {
