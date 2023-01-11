@@ -75,9 +75,15 @@
           <div class="text-sm md:text-base my-5 md:my-4 font-semibold">
             <h4>Fitness Report</h4>
           </div>
-          <div class="chart-container">
-            <div class="chart bg-gray-50 p-2 mt-4 rounded-xl">
+          <div class="chart-container h-96 w-full">
+            <div
+              v-if="!preparingChartData"
+              class="chart bg-gray-50 p-2 mt-4 rounded-xl"
+            >
               <DashboardChartBar :chartData="chartData" />
+            </div>
+            <div v-if="preparingChartData" class="h-full w-full">
+              <AppLoader />
             </div>
           </div>
           <div
@@ -99,30 +105,15 @@
                 <th>Time OUT</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>24</td>
-                <td>20 August 2022</td>
-                <td>7:15:23</td>
-                <td>8:45:34</td>
-              </tr>
-              <tr>
-                <td>23</td>
-                <td>20 August 2022</td>
-                <td>7:15:23</td>
-                <td>8:45:34</td>
-              </tr>
-              <tr>
-                <td>22</td>
-                <td>20 August 2022</td>
-                <td>7:15:23</td>
-                <td>8:45:34</td>
-              </tr>
-              <tr>
-                <td>21</td>
-                <td>20 August 2022</td>
-                <td>7:15:23</td>
-                <td>8:45:34</td>
+            <tbody v-if="gym_attendance.results">
+              <tr
+                v-for="(date, index) in preparedChartData.date"
+                :key="date + '-data'"
+              >
+                <td>{{ index + 1 }}</td>
+                <td>{{ date }}</td>
+                <td>{{ preparedChartData.timeIn[index] }}</td>
+                <td>{{ preparedChartData.timeOut[index] }}</td>
               </tr>
             </tbody>
           </table>
@@ -347,15 +338,18 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useStore } from 'vuex'
+import { useMeta } from 'vue-meta'
+
+import AppLoader from '@/components/AppLoader.vue'
+import { useTimeConverter } from '@/composables/useConverter.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardChartBar from '../components/DashboardChartBarMain.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
-import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Fitness Record' })
 
@@ -367,6 +361,13 @@ const fitness_target = computed(() =>
     : {}
 )
 
+const userId = computed(() => store.state.auth.user.id)
+const gym_attendance = computed(() =>
+  store.state.dashboard.dashboardGymnAttendance
+    ? store.state.dashboard.dashboardGymnAttendance
+    : {}
+)
+
 onMounted(() => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -374,30 +375,57 @@ onMounted(() => {
       console.log(error)
     }
   )
+  store.dispatch('dashboard/dashboard_gym_attendance', userId.value).then(
+    () => {},
+    (error) => {
+      console.log(error)
+    }
+  )
 })
 
+const {
+  timestampToDate,
+  timestampToFullDate,
+  timestampToTime,
+  timestampToMinutes
+} = useTimeConverter()
+
+const preparedChartData = ref({
+  timeIn: [],
+  timeOut: [],
+  date: [],
+  data: [],
+  labels: []
+})
+const prepareChartData = (values) => {
+  for (let item of values) {
+    preparedChartData.value.timeIn.push(timestampToTime(item.time_in))
+    preparedChartData.value.timeOut.push(timestampToTime(item.time_out))
+    preparedChartData.value.date.push(timestampToFullDate(item.time_in))
+    preparedChartData.value.data.push(timestampToMinutes(item.duration))
+    preparedChartData.value.labels.push(timestampToDate(item.time_in))
+  }
+}
+
+const preparingChartData = ref(true)
 const chartData = ref({
-  labels: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  labels: [],
   datasets: [
     {
-      label: 'Activity',
+      label: 'Time spent (minutes)',
       backgroundColor: '#ca9b42',
-      data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+      data: []
     }
   ]
+})
+watch(gym_attendance, () => {
+  if (gym_attendance.value !== null) {
+    preparingChartData.value = true
+    prepareChartData(gym_attendance.value.results)
+    chartData.value.labels = preparedChartData.value.labels
+    chartData.value.datasets[0].data = preparedChartData.value.data
+  }
+  preparingChartData.value = false
 })
 </script>
 
