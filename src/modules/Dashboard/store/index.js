@@ -14,7 +14,8 @@ export default {
     status: { isLoading: false, error: false },
     profile: null,
     dashboardBase: null,
-    dashboardFitness: null
+    dashboardFitness: null,
+    dashboardGymnAttendance: null
   },
   getters: {},
   mutations: {
@@ -30,6 +31,9 @@ export default {
     },
     SET_DASHBOARD_FITNESS_STATE(state, payload) {
       state.dashboardFitness = payload
+    },
+    SET_DASHBOARD_GYMN_ATTENDANCE_STATE(state, payload) {
+      state.dashboardGymnAttendance = payload
     }
   },
   actions: {
@@ -52,16 +56,37 @@ export default {
     },
     dashboard_fitness({ commit }) {
       commit('STATUS_LOADING')
-      return DashboardService.dashboard_fitness_record().then(
-        (response) => {
-          commit('SET_DASHBOARD_FITNESS_STATE', response.data)
-          return Promise.resolve(response.data)
-        },
-        (error) => {
-          commit('SET_DASHBOARD_FITNESS_STATE', {})
-          return Promise.reject(error.message)
-        }
-      )
+      return DashboardService.dashboard_fitness_record()
+        .then(
+          (response) => {
+            commit('SET_DASHBOARD_FITNESS_STATE', response.data)
+            return Promise.resolve(response.data)
+          },
+          (error) => {
+            commit('SET_DASHBOARD_FITNESS_STATE', {})
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
+    },
+    dashboard_gym_attendance({ commit }, user_id) {
+      commit('STATUS_LOADING')
+      return DashboardService.dashboard_gym_attendance(user_id)
+        .then(
+          (response) => {
+            commit('SET_DASHBOARD_GYMN_ATTENDANCE_STATE', response.data)
+            return Promise.resolve(response.data)
+          },
+          (error) => {
+            commit('SET_DASHBOARD_GYMN_ATTENDANCE_STATE', {})
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
     }
   },
   modules: {}
