@@ -64,7 +64,7 @@
           <p
             class="absolute -top-4 left-4 text-sm md:text-base bg-white px-2 py-1"
           >
-            Attendance Summary
+            Attendance Summary <span class="md:hidden">Total</span>
           </p>
           <Suspense>
             <DashboardBaseViewSummary />
