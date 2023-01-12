@@ -3,30 +3,38 @@
     class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
   >
     <div class="item">
-      <p class="text-xs md:text-base">total in {{ currentYear }}</p>
-      <p class="text-xl md:text-3xl font-semibold">
-        {{ dashboardHome.year_total }}
+      <p class="text-xs md:text-base">
+        <span class="hidden md:inline">total</span> in {{ currentYear }}
       </p>
-      <p class="text-xs md:text-base">days at the gym</p>
+      <p class="text-base md:text-3xl font-semibold">
+        {{ dashboardHome.year_total }}
+        <span class="text-xs md:text-base text-gray-400"> days </span>
+      </p>
+      <!-- <p class="text-xs md:text-base">days at the gym</p> -->
     </div>
     <div class="item">
-      <p class="text-xs md:text-base">total in {{ currentMonth }}</p>
-      <p class="text-xl md:text-3xl font-semibold">
-        {{ dashboardHome.month_total }}
+      <p class="text-xs md:text-base">
+        <span class="hidden md:inline">total</span> in {{ currentMonth }}
       </p>
-      <p class="text-xs md:text-base">days at the gym</p>
+      <p class="text-base md:text-3xl font-semibold">
+        {{ dashboardHome.month_total }}
+        <span class="text-xs md:text-base text-gray-400"> days </span>
+      </p>
+      <!-- <p class="text-xs md:text-base">days at the gym</p> -->
     </div>
     <div class="item">
       <p class="text-xs md:text-base flex justify-center items-center gap-2">
-        average engagement time
+        average <span class="hidden md:inline">engagement</span> time
         <AppIconInfo
-          class="hover:cursor-pointer hover:bg-gray-300 duration-300 ease-in-out rounded-full"
+          class="hidden md:inline hover:cursor-pointer hover:bg-gray-300 duration-300 ease-in-out rounded-full"
         />
       </p>
-      <p class="text-xl md:text-3xl font-semibold">
-        {{ dashboardHome.average }}%
+      <p class="text-base md:text-3xl font-semibold">
+        {{ dashboardHome.average }}
+        <span class="lowercase text-sm md:text-lg">hr(s)</span>
+        <span class="text-xs md:text-base text-gray-400"> attendance </span>
       </p>
-      <p class="text-xs md:text-base">attendance</p>
+      <!-- <p class="text-xs md:text-base">attendance</p> -->
     </div>
   </div>
 </template>
