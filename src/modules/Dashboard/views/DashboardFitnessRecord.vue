@@ -135,9 +135,9 @@
                   class="grid grid-cols-2 gap-3 md:gap-0 md:flex flex-col items-start md:space-y-1 w-full text-xs md:text-base"
                 >
                   <li class="w-full pl-1">
-                    <router-link
-                      :to="{ name: 'DashboardHome' }"
-                      class="w-full flex items-center gap-3"
+                    <p
+                      @click="openModal('profile')"
+                      class="link w-full flex items-center gap-3"
                     >
                       <i
                         ><svg
@@ -174,12 +174,12 @@
                         </svg>
                       </i>
                       Profile
-                    </router-link>
+                    </p>
                   </li>
                   <li class="w-full">
-                    <router-link
-                      :to="{ name: 'DashboardHome' }"
-                      class="w-full flex justify-start items-center gap-3"
+                    <p
+                      @click="openModal('healthRecord')"
+                      class="link w-full flex justify-start items-center gap-3"
                     >
                       <i
                         ><svg
@@ -199,13 +199,13 @@
                           />
                         </svg>
                       </i>
-                      Fitness & Health Record</router-link
-                    >
+                      Fitness & Health Record
+                    </p>
                   </li>
                   <li class="w-full pl-1">
-                    <router-link
-                      :to="{ name: 'DashboardHome' }"
-                      class="w-full flex items-center gap-3"
+                    <p
+                      @click="openModal('accessmentRecord')"
+                      class="link w-full flex items-center gap-3"
                     >
                       <i
                         ><svg
@@ -266,12 +266,12 @@
                         </svg>
                       </i>
                       Assessment Record
-                    </router-link>
+                    </p>
                   </li>
                   <li class="w-full pl-1">
-                    <router-link
-                      :to="{ name: 'DashboardHome' }"
-                      class="w-full flex items-center gap-3"
+                    <p
+                      @click="openModal('feedback')"
+                      class="link w-full flex items-center gap-3"
                     >
                       <i
                         ><svg
@@ -289,7 +289,7 @@
                         </svg>
                       </i>
                       Feedback
-                    </router-link>
+                    </p>
                   </li>
                 </ul>
               </template>
@@ -313,12 +313,14 @@
                   <div v-if="fitness_target" class="grid justify-center w-full">
                     <DashboardRadialProgressBar
                       :completedSteps="fitness_target.average"
+                      :stroke-color="statusColorCode(fitness_target.average)"
                       class="hidden md:block"
                     />
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
                       :diameter="120"
                       :completedSteps="fitness_target.average"
+                      :stroke-color="statusColorCode(fitness_target.average)"
                       class="md:hidden"
                     />
                   </div>
@@ -344,6 +346,7 @@ import { useMeta } from 'vue-meta'
 
 import AppLoader from '@/components/AppLoader.vue'
 import { useTimeConverter } from '@/composables/useConverter.js'
+import { useRadialBar } from '@/composables/useRadialbarColor.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -354,6 +357,11 @@ import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar
 useMeta({ title: 'Fitness Record' })
 
 const store = useStore()
+const { statusColorCode } = useRadialBar()
+
+const openModal = (modalId) => {
+  store.dispatch('dashboard/toggle_modal', modalId)
+}
 
 const fitness_target = computed(() =>
   store.state.dashboard.dashboardFitness
@@ -430,21 +438,31 @@ watch(gym_attendance, () => {
 </script>
 
 <style scoped>
-a {
+a,
+p.link {
+  cursor: pointer;
   transition: color 0.15s ease-in-out, border 0.15s ease-in-out;
 }
 a #stroke,
-a #path {
+a #path,
+p.link :where(#stroke, #path) {
   transition: all 0.2s ease-in-out;
 }
-a:hover {
+a:hover,
+p.link:hover {
   color: #ca9b42;
 }
-a:hover #stroke {
+a:hover :where(#stroke, #path),
+p.link:hover :where(#stroke, #path) {
   stroke: #ca9b42;
 }
-a:hover #path {
+a:hover #path,
+p.link:hover #path {
   fill: #ca9b42;
+}
+a:focus,
+p.link:focus {
+  border: none;
 }
 a.router-link-exact-active {
   color: #ca9b42;
