@@ -96,21 +96,21 @@ useMeta({
 })
 
 const plans = ref([
-  {
-    id: 0,
-    slug: 'regular',
-    price: 'N12,000',
-    setup: 'N3,000',
-    billing: 'BILLED MONTHLY',
-    offers: [
-      'No Price Discount',
-      'Access Once Daily',
-      'Personal Dashboard for Tracking Fitness Records',
-      'No Fitness Instructor',
-      'No Guest Pass Per Month',
-      'No Subscription Pause Request'
-    ]
-  },
+  // {
+  //   id: 0,
+  //   slug: 'regular',
+  //   price: 'N12,000',
+  //   setup: 'N3,000',
+  //   billing: 'BILLED MONTHLY',
+  //   offers: [
+  //     'No Price Discount',
+  //     'Access Once Daily',
+  //     'Personal Dashboard for Tracking Fitness Records',
+  //     'No Fitness Instructor',
+  //     'No Guest Pass Per Month',
+  //     'No Subscription Pause Request'
+  //   ]
+  // },
   {
     id: 1,
     slug: 'PREMIUM',
@@ -123,7 +123,7 @@ const plans = ref([
       'Personal Dashboard For Tracking Fitness Records',
       'Fitness Instructor Available',
       '1 Guest Pass Per Month',
-      '4 days Subscription Pause Request'
+      'No Subscription Pause Request'
     ]
   },
   {
