@@ -1,21 +1,26 @@
 <template>
   <div class="item">
-    <p class="text-xs md:text-base">Subscription type</p>
-    <p class="text-xl md:text-3xl font-semibold">
-      {{ dashboardHome.sub_plan }}
+    <p class="text-xs md:text-base">
+      <span class="hidden md:inline">Subscription</span> type
+    </p>
+    <p class="text-base md:text-3xl font-semibold">
+      {{ dashboardSub.sub_plan }}
     </p>
   </div>
   <div class="item">
-    <p class="text-xs md:text-base">Subscription status</p>
-    <p class="text-xl md:text-3xl font-semibold">
-      {{ dashboardHome.sub_status }}
-      <!-- <span class="text-xs md:text-base text-gray-500"> days</span> -->
+    <p class="text-xs md:text-base">
+      <span class="hidden md:inline">Subscription</span> duration
+    </p>
+    <p class="text-base md:text-3xl font-semibold">
+      {{ dashboardSub.sub_status }}
+      <span class="text-xs md:text-base text-gray-400"> months </span>
     </p>
   </div>
   <div class="item">
     <p class="text-xs md:text-base">start date</p>
-    <p class="text-xl md:text-3xl font-semibold">
-      15<span class="text-xs text-gray-500 md:text-base">sept</span>
+    <p class="text-base md:text-3xl font-semibold">
+      {{ startDateConverter(dashboardSub.start_date) }}
+      <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
     </p>
   </div>
 </template>
@@ -24,13 +29,22 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
+import { useTimeConverter } from '@/composables/useConverter.js'
+
+const { timestampToFullDate } = useTimeConverter()
+const startDateConverter = (timestamp) => {
+  return timestampToFullDate(timestamp)
+}
+
 const store = useStore()
-const dashboardHome = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+const dashboardSub = computed(() =>
+  store.state.dashboard.dashboardSubscription
+    ? store.state.dashboard.dashboardSubscription
+    : {}
 )
 
 try {
-  await store.dispatch('dashboard/dashboard_home')
+  await store.dispatch('dashboard/dashboard_subscription')
 } catch (error) {
   console.log(error)
 }
