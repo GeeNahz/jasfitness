@@ -142,13 +142,13 @@
               </template>
               <template #button>
                 <div
-                  v-if="dashboardHome.freeze"
+                  v-if="dashboardSub"
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
                   <button
                     class="px-4 py-1 md:px-4 md:py-2 rounded text-yellow-600 text-sm md:text-base font-semibold"
                     :class="[
-                      dashboardHome.freeze.is_active
+                      dashboardSub.freezeable
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
                         : 'bg-gray-500 disabled cursor-not-allowed '
                     ]"
@@ -294,34 +294,40 @@
                   </p>
                 </div>
                 <div
-                  v-if="dashboardFitness"
+                  v-if="dashboardSub"
                   class="mt-2 md:mt-0 h-16 md:h-32 w-[30rem] md:w-full overflow-hidden"
                 >
                   <div class="grid justify-center w-full">
                     <DashboardRadialProgressBar
-                      :completedSteps="dashboardFitness.average"
+                      :completedSteps="dashboardSub.sub_wheel"
                       :full-circle="false"
+                      :stroke-color="
+                        statusColorCodeHalf(dashboardSub.sub_wheel)
+                      "
                       class="hidden md:block relative mt-3 -rotate-90"
                     >
                       <div
                         class="rotate-90 absolute right-3 uppercase flex flex-col items-center justify-center font-semibold"
                       >
-                        <p class="text-4xl">{{ dashboardFitness.average }}%</p>
+                        <p class="text-4xl">{{ dashboardSub.sub_wheel }}%</p>
                         <p class="text-sm font-normal">Completed</p>
                       </div>
                     </DashboardRadialProgressBar>
                     <DashboardRadialProgressBar
                       :strokeWidth="10"
                       :diameter="110"
-                      :completedSteps="dashboardFitness.average"
+                      :completedSteps="dashboardSub.sub_wheel"
                       :full-circle="false"
+                      :stroke-color="
+                        statusColorCodeHalf(dashboardSub.sub_wheel)
+                      "
                       class="md:hidden relative mt-1 -rotate-90"
                     >
                       <div
                         class="rotate-90 absolute -right-0 uppercase flex flex-col items-center justify-center font-semibold"
                       >
                         <p class="text-xl leading-none">
-                          {{ dashboardFitness.average }}%
+                          {{ dashboardSub.sub_wheel }}%
                         </p>
                         <p class="text-xs font-light leading-none">Completed</p>
                       </div>
@@ -370,6 +376,8 @@ import { computed, onMounted } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
+import { useRadialBar } from '@/composables/useRadialbarColor'
+
 import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -379,18 +387,15 @@ import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkelet
 
 useMeta({ title: 'Subscription' })
 
+const { statusColorCodeHalf } = useRadialBar()
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
 const store = useStore()
 
-const dashboardFitness = computed(() =>
-  store.state.dashboard.dashboardFitness
-    ? store.state.dashboard.dashboardFitness
+const dashboardSub = computed(() =>
+  store.state.dashboard.dashboardSubscription
+    ? store.state.dashboard.dashboardSubscription
     : {}
-)
-
-const dashboardHome = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
 )
 
 // function getTimeFromDate(date) {
@@ -421,13 +426,18 @@ const dashboardHome = computed(() =>
 // }
 // getTimeFromDate('April 27, 2023')
 
-onMounted(() => {
+onMounted(async () => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
     (error) => {
       console.log(error)
     }
   )
+  try {
+    await store.dispatch('dashboard/dashboard_subscription')
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 const plans = [
