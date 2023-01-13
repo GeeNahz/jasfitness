@@ -9,5 +9,17 @@ export default {
   },
   dashboard_fitness_record() {
     return axiosInstance.get('dashboard/fitness_record/')
+  },
+  dashboard_subscription() {
+    return axiosInstance.get('dashboard/subscription/')
+  },
+  dashboard_profile(id) {
+    return axiosInstance.get(`profile/${id}`)
+  },
+  dashboard_freese_subscription(duration) {
+    return axiosInstance.post('dashboard/freeze_subscription/', duration)
+  },
+  dashboard_share_subscription(data) {
+    return axiosInstance.post('dashboard/share_subscription/', data)
   }
 }
