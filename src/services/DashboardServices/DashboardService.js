@@ -16,7 +16,7 @@ export default {
   dashboard_profile(id) {
     return axiosInstance.get(`profile/${id}`)
   },
-  dashboard_freese_subscription(duration) {
+  dashboard_freeze_subscription(duration) {
     return axiosInstance.post('dashboard/freeze_subscription/', duration)
   },
   dashboard_share_subscription(data) {
