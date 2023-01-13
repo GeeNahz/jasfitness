@@ -53,9 +53,19 @@ export default defineComponent({
       responsive: true,
       maintainAspectRatio: false,
       scales: {
+        x: {
+          ticks: {
+            font: {
+              size: 8
+            }
+          }
+        },
         y: {
           suggestedMax: 120,
           ticks: {
+            font: {
+              size: 8
+            },
             callback: (value) => {
               return value + ' mins'
             }
