@@ -14,7 +14,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { useWindowSize } from '@vueuse/core'
 import { Line } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -77,12 +78,12 @@ const chartOptions = ref({
   responsive: true,
   maintainAspectRatio: false,
   scales: {
-    // x: {
-    //   title: {
-    //     display: true,
-    //     text: 'Days at the gym'
-    //   }
-    // },
+    x: {
+      // title: {
+      //   display: true,
+      //   text: 'Days at the gym'
+      // }
+    },
     y: {
       suggestedMin: 30,
       suggestedMax: 120,
@@ -93,6 +94,22 @@ const chartOptions = ref({
       }
     }
   }
+})
+
+const { width } = useWindowSize()
+function changeChartFontSize() {
+  if (width.value < 740) {
+    ChartJS.defaults.font.size = 8
+  } else {
+    ChartJS.defaults.font.size = 10
+  }
+}
+watch(width, () => {
+  changeChartFontSize()
+})
+
+onMounted(() => {
+  changeChartFontSize()
 })
 </script>
 
