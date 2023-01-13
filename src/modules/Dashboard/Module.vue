@@ -3,7 +3,13 @@
     class="flex flex-col md:flex-row md:items-center w-full h-full font-quicksand disable-scroll"
   >
     <div
-      v-if="profileModal || healthRecordModal || accessmentRecordModal"
+      v-if="
+        profileModal ||
+        healthRecordModal ||
+        accessmentRecordModal ||
+        freezeSubscriptionModal ||
+        shareSubscriptionModal
+      "
       class="fixed z-50 h-full w-full"
     >
       <DashboardHandleModalsDisplay />
@@ -36,6 +42,12 @@ const healthRecordModal = computed(
 )
 const accessmentRecordModal = computed(
   () => store.state.dashboard.modals.accessmentRecord.open
+)
+const freezeSubscriptionModal = computed(
+  () => store.state.dashboard.modals.freezeSub.open
+)
+const shareSubscriptionModal = computed(
+  () => store.state.dashboard.modals.shareSub.open
 )
 </script>
 
