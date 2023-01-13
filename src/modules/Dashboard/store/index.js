@@ -21,6 +21,8 @@ export default {
       profile: { id: 'profile', open: false },
       healthRecord: { id: 'healthRecord', open: false },
       accessmentRecord: { id: 'accessmentRecord', open: false },
+      freezeSub: { id: 'freezeSub', open: false },
+      shareSub: { id: 'shareSub', open: false },
       feedback: { id: 'feedback', open: false }
     }
   },
