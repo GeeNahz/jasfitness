@@ -2,14 +2,21 @@
   <div class="backdrop">
     <div class="wrapper h-full w-full flex flex-col justify-center">
       <div
-        class="z-10 mx-auto max-w-lg min-w-[300px] bg-white border-t-4 border-yellow-500 rounded shadow-sm overflow-hidden"
+        class="z-10 mx-auto max-w-lg min-w-[250px] md:min-w-[450px] bg-white rounded shadow-sm overflow-hidden"
       >
-        <div
-          class="header container flex justify-between items-center border-b py-3"
-        >
-          <h2 class="font-semibold font-inter text-2xl tracking-wide uppercase">
-            <slot name="header">Modal Header</slot>
-          </h2>
+        <div class="header container flex justify-between items-start py-3">
+          <div>
+            <h2
+              class="font-semibold font-inter text-base md:text-lg tracking-wide capitalize"
+            >
+              <slot name="header">Modal Header</slot>
+            </h2>
+            <p
+              class="font-medium text-xs md:text-sm tracking-tight text-gray-400"
+            >
+              <slot name="header-description"></slot>
+            </p>
+          </div>
           <div
             @click="close(uid)"
             class="close-btn border-[1px] border-slate-600 w-max rounded-full hover:bg-slate-200 duration-200 ease-out hover:cursor-pointer"
@@ -17,13 +24,13 @@
             <AppIconClose />
           </div>
         </div>
-        <div class="body container py-3">
+        <div class="body container py-3 border-b">
           <slot name="content">
             <p>Modal Content</p>
           </slot>
         </div>
-        <div class="default-content">
-          <slot></slot>
+        <div class="actions container py-3">
+          <slot name="actions"></slot>
         </div>
       </div>
     </div>
