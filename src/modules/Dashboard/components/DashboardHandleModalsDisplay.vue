@@ -78,6 +78,7 @@
           </div>
         </template>
       </DashboardModalLayout>
+      <!-- fitness and health -->
       <DashboardModalLayout
         :uid="healthRecordModal.id"
         v-if="healthRecordModal.open"
@@ -85,6 +86,7 @@
       >
         <template #header> fitness & health record </template>
       </DashboardModalLayout>
+      <!-- accessment record -->
       <DashboardModalLayout
         :uid="accessmentRecordModal.id"
         v-if="accessmentRecordModal.open"
@@ -92,18 +94,123 @@
       >
         <template #header> accessment record </template>
       </DashboardModalLayout>
+      <!-- freeze subscription -->
+      <DashboardModalLayout
+        :uid="freezeSubscriptionModal.id"
+        v-if="freezeSubscriptionModal.open"
+        @close="closeModal"
+      >
+        <template #header> Freeze your subscription </template>
+        <template #header-description>
+          You can freeze your subscription for as long as 4 days
+        </template>
+        <template #content>
+          <form @submit.prevent="freezeYourSub">
+            <label for="freeze-sub" class="font-semibold text-sm"
+              >Freeze duration:</label
+            >
+            <input
+              id="freeze-sub"
+              class="form-control"
+              type="number"
+              max="4"
+              min="1"
+              v-model="freezeDuration"
+            />
+          </form>
+        </template>
+        <template #actions>
+          <div class="w-full flex gap-2 justify-end btns">
+            <button
+              @click="closeModal(freezeSubscriptionModal.id)"
+              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-2 px-4"
+            >
+              Close
+            </button>
+            <button
+              @click="freezeYourSub"
+              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-2 px-4"
+            >
+              Send
+            </button>
+          </div>
+        </template>
+      </DashboardModalLayout>
+      <!-- share subscription -->
+      <DashboardModalLayout
+        :uid="shareSubscriptionModal.id"
+        v-if="shareSubscriptionModal.open"
+        @close="closeModal"
+      >
+        <template #header> Freeze your subscription </template>
+        <template #header-description>
+          Share your current subscription with another member of the gym
+        </template>
+        <template #content>
+          <form @submit.prevent="shareYourSub">
+            <label for="freeze-sub" class="font-semibold text-sm"
+              >Member username:</label
+            >
+            <input
+              id="freeze-sub"
+              class="form-control mb-3"
+              type="text"
+              v-model="shareSubUsername"
+              required
+            />
+            <label for="freeze-sub" class="font-semibold text-sm"
+              >Duration (months):
+            </label>
+            <input
+              id="freeze-sub"
+              class="form-control"
+              type="number"
+              max="12"
+              min="1"
+              v-model="shareSubDuration"
+            />
+          </form>
+        </template>
+        <template #actions>
+          <div class="w-full flex gap-2 justify-end btns">
+            <button
+              @click="closeModal(shareSubscriptionModal.id)"
+              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-2 px-4"
+            >
+              Close
+            </button>
+            <button
+              @click="shareYourSub"
+              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-2 px-4"
+            >
+              Send
+            </button>
+          </div>
+        </template>
+      </DashboardModalLayout>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 
 import DashboardModalLayout from '../components/DashboardModalLayout.vue'
 
 const closeModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
+}
+
+const freezeDuration = ref('')
+const freezeYourSub = () => {
+  console.log(Number(freezeDuration.value))
+}
+
+const shareSubUsername = ref('')
+const shareSubDuration = ref('')
+const shareYourSub = () => {
+  console.log(shareSubUsername.value, Number(shareSubDuration.value))
 }
 
 const store = useStore()
@@ -116,6 +223,12 @@ const healthRecordModal = computed(
 )
 const accessmentRecordModal = computed(
   () => store.state.dashboard.modals.accessmentRecord
+)
+const freezeSubscriptionModal = computed(
+  () => store.state.dashboard.modals.freezeSub
+)
+const shareSubscriptionModal = computed(
+  () => store.state.dashboard.modals.shareSub
 )
 
 onMounted(() => {
