@@ -1,6 +1,6 @@
 <template>
   <div
-    class="hidden md:flex flex-col items-center relative w-[290px] h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
+    class="hidden md:flex flex-col items-center relative w-[320px] h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
   >
     <!-- logo -->
     <div
@@ -16,14 +16,17 @@
       </div>
     </div>
     <!-- outer side bar -->
-    <div class="burger-menu">
-      <ul class="space-y-4 md:space-y-10 text-base md:text-lg">
+    <div class="burger-menu w-max">
+      <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
         <li>
-          <router-link :to="{ name: 'DashboardHome' }" class="p-3 flex gap-3">
+          <router-link
+            :to="{ name: 'DashboardHome' }"
+            class="p-2 flex items-center gap-3"
+          >
             <div class="icon">
               <svg
                 width="27"
-                height="30"
+                height="25"
                 viewBox="0 0 27 30"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +44,7 @@
         <li>
           <router-link
             :to="{ name: 'DashboardFitnessRecord' }"
-            class="p-3 flex items-center gap-3"
+            class="p-2 flex items-center gap-3"
           >
             <div class="icon">
               <svg
@@ -69,7 +72,7 @@
         <li>
           <router-link
             :to="{ name: 'DashboardSubscription' }"
-            class="p-3 flex items-center gap-3"
+            class="p-2 flex items-center gap-3"
           >
             <div class="icon">
               <svg
@@ -89,13 +92,34 @@
           </router-link>
         </li>
       </ul>
+
+      <hr class="my-4" />
+
+      <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
+        <li>
+          <router-link to="/classes" class="p-2 flex items-center gap-3">
+            <div class="icon">
+              <AppIconClasses fillColor="gray" />
+            </div>
+            <p>Classes</p>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/settings" class="p-2 flex items-center gap-3">
+            <div class="icon">
+              <AppIconSetting fillColor="gray" />
+            </div>
+            <p>Settings</p>
+          </router-link>
+        </li>
+      </ul>
     </div>
     <!-- logout button -->
-    <a
-      href="https://"
+    <div
       @click="logout"
-      class="md:absolute bottom-48 left-8 flex items-center ml-4 md:ml-0 py-8 md:py-0 space-x-4 text-xl font-bold"
-      ><div class="icon">
+      class="link md:absolute bottom-48 left-8 flex items-center ml-4 md:ml-0 py-8 md:py-0 space-x-4 text-xl font-bold"
+    >
+      <div class="icon">
         <svg
           width="21"
           height="28"
@@ -110,7 +134,7 @@
         </svg>
       </div>
       <p>Logout</p>
-    </a>
+    </div>
   </div>
 
   <!-- nav bar on small screen -->
@@ -225,17 +249,17 @@
       </div>
       <!-- outer side bar -->
       <div class="burger-menu">
-        <ul class="space-y-4 pl-2 md:space-y-10 text-lg">
+        <ul class="space-y-1 pl-2 pr-2 md:space-y-3 text-sm">
           <li>
             <router-link
               :to="{ name: 'DashboardHome' }"
-              class="p-3 flex items-center gap-3"
+              class="p-2 flex items-center gap-2"
             >
               <div class="icon">
                 <i>
                   <svg
                     width="27"
-                    height="30"
+                    height="20"
                     viewBox="0 0 27 30"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -254,13 +278,13 @@
           <li>
             <router-link
               :to="{ name: 'DashboardFitnessRecord' }"
-              class="p-3 flex items-center gap-3"
+              class="p-2 flex items-center gap-2"
             >
               <div class="icon">
                 <i>
                   <svg
                     width="27"
-                    height="24"
+                    height="18"
                     viewBox="0 0 27 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -284,12 +308,12 @@
           <li>
             <router-link
               :to="{ name: 'DashboardSubscription' }"
-              class="p-3 flex items-center gap-3"
+              class="p-2 flex items-center gap-2"
             >
               <div class="icon">
                 <svg
-                  width="28"
-                  height="21"
+                  width="25"
+                  height="18"
                   viewBox="0 0 28 21"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -305,13 +329,34 @@
             </router-link>
           </li>
         </ul>
+
+        <hr class="my-4" />
+
+        <ul class="space-y-1 pl-2 pr-2 md:space-y-3 text-sm">
+          <li>
+            <router-link to="/classes" class="p-2 flex items-center gap-3">
+              <div class="icon">
+                <AppIconClasses fillColor="gray" />
+              </div>
+              <p>Classes</p>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/settings" class="p-2 flex items-center gap-3">
+              <div class="icon">
+                <AppIconSetting fillColor="gray" />
+              </div>
+              <p>Settings</p>
+            </router-link>
+          </li>
+        </ul>
       </div>
       <!-- logout button -->
-      <a
-        href="https://"
+      <div
         @click="logout"
         class="md:absolute bottom-10 flex items-center text-lg font-semibold ml-4 md:ml-0 py-8 md:py-0 space-x-4"
-        ><div class="icon">
+      >
+        <div class="icon">
           <svg
             width="28"
             height="35"
@@ -327,7 +372,7 @@
           </svg>
         </div>
         <p>Logout</p>
-      </a>
+      </div>
     </div>
   </div>
 </template>
@@ -336,6 +381,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+
+import AppIconSetting from '@/components/AppIconSetting.vue'
+import AppIconClasses from '@/components/AppIconClasses.vue'
 
 const router = useRouter()
 const store = useStore()
@@ -355,24 +403,45 @@ const toggleSideBar = () => {
 </script>
 
 <style scoped>
-a {
+div.link {
+  padding: 0.5rem 1rem;
+}
+a,
+div.link {
+  /* font-weight: 500; */
   color: #2c3e50;
-  transition: color 0.2s ease-in-out, border 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out, border 0.1s ease-in-out;
 }
-a:hover {
-  color: #ca9b42;
+a:hover,
+div.link:hover {
+  cursor: pointer;
+  font-weight: 500;
   border-left: #ca9b42;
+
+  background: #ca9b4225;
+  border-radius: 8px;
 }
-a #path {
-  fill: #2c3e50;
+div.link:hover {
+  font-weight: 700;
+}
+a #path,
+div.link #path {
+  fill: #cccccc;
   transition: fill 0.2s ease-in-out;
 }
-a:hover #path {
+/* a:hover #path,
+div.link:hover #path {
   fill: #ca9b42;
-}
+} */
 
 a.router-link-exact-active {
-  /* color: #ca9b42; */
-  border-left: solid;
+  color: #ca9b42;
+  background: #ca9b4225;
+  border-radius: 8px;
+  font-weight: 600;
+  /* border-left: solid; */
+}
+a.router-link-exact-active #path {
+  fill: #ca9b42;
 }
 </style>
