@@ -152,7 +152,11 @@
               </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'DashboardSubscription' }">
+              <div
+                @click="openModal('freezeSub')"
+                :to="{ name: 'DashboardSubscription' }"
+                class="link"
+              >
                 <div class="flex items-center justify-start gap-2 md:gap-4">
                   <div class="icon">
                     <i>
@@ -199,11 +203,12 @@
                     </p>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </li>
             <li v-if="creds.freeze">
-              <router-link
+              <div
                 :to="{ name: 'DashboardSubscription' }"
+                class="link"
                 :class="{
                   'disabled ': !creds.freeze.is_active
                 }"
@@ -259,10 +264,13 @@
                     </p>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </li>
             <li>
-              <router-link :to="{ name: 'DashboardSubscription' }">
+              <router-link
+                @click="openModal('shareSub')"
+                :to="{ name: 'DashboardSubscription' }"
+              >
                 <div class="flex md:pl-1 items-center gap-3 md:gap-4">
                   <div class="icon">
                     <i>
@@ -416,26 +424,35 @@ const resubscribeHandler = () => {
     console.log('error:', err)
   }
 }
+
+const openModal = (modalId) => {
+  store.dispatch('dashboard/toggle_modal', modalId)
+}
 </script>
 
 <style scoped>
-a {
+a,
+div.link {
   transition: all 0.15s ease-in-out;
 }
-a:hover {
+a:hover,
+div.link:hover {
   color: #ca9b42;
 }
-a #stroke,
-a #path {
+a :where(#stroke, #path),
+div.link :where(#stroke, #path) {
   transition: all 0.2s ease-in-out;
 }
-a:hover #stroke {
+a:hover :where(#stroke),
+div.link:hover :where(#stroke) {
   stroke: #ca9b42;
 }
-a:hover #path {
+a:hover :where(#path),
+div.link :where(#path) {
   fill: #ca9b42;
 }
-a.router-link-exact-active {
+a.router-link-exact-active,
+div.link.router-exact-active {
   color: #ca9b42;
   border-left: solid #ca9b42;
 }

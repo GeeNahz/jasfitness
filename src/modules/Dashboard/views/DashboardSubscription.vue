@@ -146,6 +146,7 @@
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
                   <button
+                    @click="openModal('freezeSub')"
                     class="px-4 py-1 md:px-4 md:py-2 rounded text-yellow-600 text-sm md:text-base font-semibold"
                     :class="[
                       dashboardSub.freezeable
@@ -199,6 +200,7 @@
               <template #button>
                 <div class="flex flex-col md:flex-row items-center">
                   <button
+                    @click="openModal('shareSub')"
                     class="px-4 py-1 md:px-4 md:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-600 text-sm md:text-base font-semibold"
                   >
                     Share
@@ -452,6 +454,9 @@ const resubscribeHandler = () => {
   } catch (err) {
     console.log('error:', err)
   }
+}
+const openModal = (modalId) => {
+  store.dispatch('dashboard/toggle_modal', modalId)
 }
 </script>
 
