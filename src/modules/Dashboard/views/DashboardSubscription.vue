@@ -398,34 +398,6 @@ const dashboardSub = computed(() =>
     : {}
 )
 
-// function getTimeFromDate(date) {
-//   const months = {
-//     January: 1,
-//     February: 2,
-//     March: 3,
-//     April: 4,
-//     May: 5,
-//     June: 6,
-//     July: 7,
-//     August: 8,
-//     September: 9,
-//     October: 10,
-//     November: 11,
-//     December: 12
-//   }
-//   const [month1, day1, year] = date.split(' ')
-//   const month = months[month1]
-//   const day = day1.slice(0, -1)
-//   const newDate = new Date(+year, month - 1, +day)
-//   const timestamp = newDate.getTime()
-//   const now = Math.round(new Date().getTime() / 1000)
-//   const timestampLeft = timestamp - now
-//   const timing = new Date(timestampLeft)
-//   console.log(timing.getDay())
-//   return timestamp
-// }
-// getTimeFromDate('April 27, 2023')
-
 onMounted(async () => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -443,47 +415,33 @@ onMounted(async () => {
 const plans = [
   {
     id: 0,
-    slug: 'regular',
-    price: 'N12,000',
-    setup: 'N3,000',
-    billing: 'Billed Monthly',
-    offers: [
-      'ACCESS once daily',
-      'Personal Dashboard for tracking Fitness Records',
-      'NO fitness Instructor',
-      'NO Guest Pass Per Month',
-      'NO Subscription Pause Request'
-    ]
-  },
-  {
-    id: 1,
     slug: 'PREMIUM',
     price: 'N20,000',
     setup: 'N3,000',
     billing: 'Billed Monthly',
     offers: [
-      'NO Price Discount',
-      'ACCESS Once Daily',
-      'PERSONAL Dashboard For Tracking Fitness Records',
+      'No Price Discount',
+      'Access Once Daily',
+      'Personal Dashboard For Tracking Fitness Records',
       'Fitness Instructor Available',
       '1 Guest Pass Per Month',
-      '4 days Subscription Pause Request'
+      'No Subscription Pause Request'
     ]
   },
   {
-    id: 2,
+    id: 1,
     slug: 'V-I-P',
     price: 'N40,000',
     setup: 'N3,000',
     billing: 'Billed Monthly',
     offers: [
-      'NO Price Discount',
-      'ALL Day Access',
-      'PERSONAL Dashboard For Tracking Fitness Records',
-      'PERSNOAL fitness instructor available',
+      'No Price Discount',
+      'All Day Access',
+      'Personal Dashboard For Tracking Fitness Records',
+      'Personal Fitness Instructor Available',
       '2 Guest Pass Per Month',
       '7 Days Subscription Pause Request',
-      'Access to all special Classes'
+      '1 Free Car Wash Weekly (4 Monthly)'
     ]
   }
 ]
