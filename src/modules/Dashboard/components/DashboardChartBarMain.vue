@@ -1,5 +1,6 @@
 <script>
-import { defineComponent, h } from 'vue'
+import { defineComponent, h, onMounted, watch } from 'vue'
+import { useWindowSize } from '@vueuse/core'
 import { Bar } from 'vue-chartjs'
 import {
   Chart as ChartJS,
@@ -53,19 +54,9 @@ export default defineComponent({
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        x: {
-          ticks: {
-            font: {
-              size: 8
-            }
-          }
-        },
         y: {
           suggestedMax: 120,
           ticks: {
-            font: {
-              size: 8
-            },
             callback: (value) => {
               return value + ' mins'
             }
@@ -73,6 +64,22 @@ export default defineComponent({
         }
       }
     }
+
+    const { width } = useWindowSize()
+    function changeChartFontSize() {
+      if (width.value < 740) {
+        ChartJS.defaults.font.size = 8
+      } else {
+        ChartJS.defaults.font.size = 10
+      }
+    }
+    watch(width, () => {
+      changeChartFontSize()
+    })
+
+    onMounted(() => {
+      changeChartFontSize()
+    })
 
     return () =>
       h(Bar, {
