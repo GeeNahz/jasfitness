@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="h-full w-full">
     <LayoutView title="Members">
       <template #welcome-section>
         <!-- welcome text -->
@@ -59,12 +59,12 @@
         <br />
         <!-- attendance summary -->
         <div
-          class="relative attendance-summary-container border border-gray-300 rounded-xl md:p-6"
+          class="relative attendance-summary-container border border-gray-300 rounded-xl w-full md:p-6"
         >
           <p
-            class="absolute -top-4 left-4 text-sm md:text-base bg-white px-2 py-1"
+            class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
           >
-            Attendance Summary <span class="md:hidden">Total</span>
+            Attendance Summary <span class="xl:hidden">Total</span>
           </p>
           <Suspense>
             <DashboardBaseViewSummary />
@@ -77,7 +77,7 @@
         <div class="md:h-96">
           <!-- divider -->
           <DashboardDivider
-            class="text-sm md:text-base my-5 md:my-4"
+            class="text-sm xl:text-base my-5 xl:my-4"
             name="My Fitness Record"
           />
           <div
@@ -99,7 +99,7 @@
         </div>
       </template>
       <template #display-image>
-        <div class="image hidden md:block h-16 w-16 mx-auto mb-10">
+        <div class="image hidden lg:block h-16 w-16 mx-auto mb-10">
           <img
             v-if="user.avatar"
             :src="user.avatar"
@@ -115,14 +115,14 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
           <ul
-            class="grid grid-cols-2 gap-x-16 md:gap-x-0 gap-y-10 md:gap-y-4 md:flex md:flex-col items-center md:items-start md:justify-start space-y-0 md:space-y-10 mt-2 md:mt-4 pl-0 md:pl-10"
+            class="grid grid-cols-2 gap-x-16 lg:gap-x-0 gap-y-10 lg:gap-y-4 lg:flex lg:flex-col items-center lg:items-start lg:justify-start space-y-0 lg:space-y-10 mt-2 lg:mt-4 pl-0 lg:pl-10"
             v-if="creds"
           >
             <li>
               <router-link :to="{ name: 'DashboardSubscription' }">
-                <div class="flex md:pl-2 items-center gap-3 md:gap-4">
+                <div class="flex lg:pl-2 items-center gap-3 lg:gap-4">
                   <div class="icon">
                     <i
                       ><svg
@@ -141,10 +141,12 @@
                     </i>
                   </div>
                   <div class="">
-                    <p class="text-xs md:text-lg font-semibold py-0">
+                    <p
+                      class="text-xs sm:text-sm md:text-base font-semibold py-0"
+                    >
                       Sub Status
                     </p>
-                    <p class="text-xs md:text-sm font-light py-0">
+                    <p class="text-xs sm:text-sm font-light py-0">
                       {{ creds.sub_status }}
                     </p>
                   </div>
@@ -152,12 +154,8 @@
               </router-link>
             </li>
             <li>
-              <div
-                @click="openModal('freezeSub')"
-                :to="{ name: 'DashboardSubscription' }"
-                class="link"
-              >
-                <div class="flex items-center justify-start gap-2 md:gap-4">
+              <router-link :to="{ name: 'DashboardSubscription' }">
+                <div class="flex items-center justify-start gap-2 lg:gap-4">
                   <div class="icon">
                     <i>
                       <svg
@@ -195,25 +193,27 @@
                     </i>
                   </div>
                   <div class="">
-                    <p class="text-xs md:text-lg font-semibold py-0">
+                    <p
+                      class="text-xs sm:text-sm md:text-base font-semibold py-0"
+                    >
                       Sub Plan
                     </p>
-                    <p class="text-xs md:text-sm font-light py-0">
+                    <p class="text-xs sm:text-sm font-light py-0">
                       {{ creds.sub_plan }}
                     </p>
                   </div>
                 </div>
-              </div>
+              </router-link>
             </li>
             <li v-if="creds.freeze">
               <div
-                :to="{ name: 'DashboardSubscription' }"
+                @click="openModal('freezeSub')"
                 class="link"
                 :class="{
                   'disabled ': !creds.freeze.is_active
                 }"
               >
-                <div class="flex items-center gap-2 md:gap-4">
+                <div class="flex items-center gap-2 lg:gap-4">
                   <div class="icon">
                     <i>
                       <svg
@@ -256,10 +256,12 @@
                     </i>
                   </div>
                   <div class="">
-                    <p class="text-xs md:text-lg font-semibold py-0">
+                    <p
+                      class="text-xs sm:text-sm md:text-base font-semibold py-0"
+                    >
                       Freeze Your Sub
                     </p>
-                    <p class="text-xs md:text-sm font-light py-0">
+                    <p class="text-xs sm:text-sm font-light py-0">
                       {{ creds.freeze.value }}
                     </p>
                   </div>
@@ -267,11 +269,8 @@
               </div>
             </li>
             <li>
-              <router-link
-                @click="openModal('shareSub')"
-                :to="{ name: 'DashboardSubscription' }"
-              >
-                <div class="flex md:pl-1 items-center gap-3 md:gap-4">
+              <div @click="openModal('shareSub')" class="link">
+                <div class="flex md:pl-1 items-center gap-3 lg:gap-4">
                   <div class="icon">
                     <i>
                       <svg
@@ -292,15 +291,17 @@
                     </i>
                   </div>
                   <div class="">
-                    <p class="text-xs md:text-lg font-semibold py-0">
+                    <p
+                      class="text-xs sm:text-sm md:text-base font-semibold py-0"
+                    >
                       Share Your Plan
                     </p>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </li>
             <li>
-              <router-link :to="{ name: 'DashboardSubscription' }">
+              <div class="link">
                 <div class="flex md:pl-2 items-center gap-3 md:gap-4">
                   <div class="icon">
                     <i>
@@ -320,12 +321,14 @@
                     </i>
                   </div>
                   <div class="">
-                    <p class="text-xs md:text-lg font-semibold py-0">
+                    <p
+                      class="text-xs sm:text-sm md:text-base font-semibold py-0"
+                    >
                       Feedback
                     </p>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </li>
           </ul>
         </div>
@@ -437,6 +440,7 @@ div.link {
 }
 a:hover,
 div.link:hover {
+  cursor: pointer;
   color: #ca9b42;
 }
 a :where(#stroke, #path),
@@ -448,7 +452,7 @@ div.link:hover :where(#stroke) {
   stroke: #ca9b42;
 }
 a:hover :where(#path),
-div.link :where(#path) {
+div.link:hover :where(#path) {
   fill: #ca9b42;
 }
 a.router-link-exact-active,

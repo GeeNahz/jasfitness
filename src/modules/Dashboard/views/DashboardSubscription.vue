@@ -60,14 +60,14 @@
           class="relative subscription-summary-container border border-gray-300 rounded-xl w-full md:p-6"
         >
           <p
-            class="absolute -top-4 left-4 text-sm md:text-base bg-white px-2 py-1"
+            class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
           >
             Summary
           </p>
 
           <Suspense>
             <div
-              class="flex w-full justify-between capitalize text-center px-4 py-3 md:px-10 md:py-4"
+              class="flex gap-2 xl:gap-0 w-full justify-between capitalize text-center px-2 py-2 xl:px-10 md:py-4"
             >
               <DashboardSubscriptionSummaryItems />
             </div>
@@ -80,10 +80,12 @@
         <div>
           <!-- divider -->
           <DashboardDivider
-            class="text-sm md:text-base my-5 md:my-4"
+            class="text-sm xl:text-base my-5 xl:my-4"
             name="Members Features"
           />
-          <div class="features-container flex gap-4 justify-center">
+          <div
+            class="features-container grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
+          >
             <DashboardSubscriptionCard
               :addMinWidth="true"
               class="flex-1"
@@ -130,28 +132,28 @@
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
+                  <p class="mt-0 capitalize text-base xl:text-xl font-semibold">
                     Freeze your sub
                   </p>
                 </div>
               </template>
               <template #description>
-                <p class="plans-des text-xs md:text-sm font-light">
+                <p class="plans-des text-xs xl:text-sm font-light">
                   You can freeze your sub for as long as <span>4</span> days
                 </p>
               </template>
               <template #button>
                 <div
                   v-if="dashboardSub"
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
+                  class="flex flex-col md:flex-row items-center xl:space-x-2"
                 >
                   <button
                     @click="openModal('freezeSub')"
-                    class="px-4 py-1 md:px-4 md:py-2 rounded text-yellow-600 text-sm md:text-base font-semibold"
+                    class="px-4 py-1 xl:px-4 xl:py-2 rounded text-yellow-600 text-sm xl:text-base font-semibold"
                     :class="[
                       dashboardSub.freezeable
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
-                        : 'bg-gray-500 disabled cursor-not-allowed '
+                        : 'bg-gray-500 disabled'
                     ]"
                   >
                     Freeze
@@ -184,15 +186,15 @@
               </template>
               <template #title>
                 <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
+                  class="flex flex-col md:flex-row items-center xl:space-x-2"
                 >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
+                  <p class="mt-0 capitalize text-base xl:text-xl font-semibold">
                     Share your sub
                   </p>
                 </div>
               </template>
               <template #description>
-                <p class="plans-des text-xs md:text-sm font-light">
+                <p class="plans-des text-xs xl:text-sm font-light">
                   Share your subscription with a family member, friend or gym
                   buddy <span>4</span> days
                 </p>
@@ -201,7 +203,7 @@
                 <div class="flex flex-col md:flex-row items-center">
                   <button
                     @click="openModal('shareSub')"
-                    class="px-4 py-1 md:px-4 md:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-600 text-sm md:text-base font-semibold"
+                    class="px-4 py-1 xl:px-4 xl:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-600 text-sm xl:text-base font-semibold"
                   >
                     Share
                   </button>
@@ -211,7 +213,7 @@
           </div>
           <!-- divider -->
           <DashboardDivider
-            class="text-sm text-center md:text-base my-5 md:my-4"
+            class="text-sm text-center xlmd:text-base my-5 xl:my-4"
             name="Explore plans suited for you"
           />
           <div
@@ -259,17 +261,17 @@
                 <div
                   class="flex flex-col md:flex-row items-center md:space-x-2"
                 >
-                  <p class="mt-0 capitalize text-base md:text-xl font-semibold">
+                  <p class="mt-0 capitalize text-base xl:text-xl font-semibold">
                     {{ plan.slug }}
                   </p>
-                  <p class="text-gray-500 text-xs md:text-base">
+                  <p class="text-gray-500 text-xs xl:text-base">
                     {{ plan.billing }}
                   </p>
                 </div>
               </template>
               <template #description>
                 <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs md:text-base">
+                  <ul class="list-disc pl-3 text-xs xl:text-base">
                     <li v-for="(offer, index) in plan.offers" :key="index">
                       {{ offer }}
                     </li>
@@ -378,7 +380,7 @@ import { computed, onMounted } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
-import { useRadialBar } from '@/composables/useRadialbarColor'
+import { useRadialBar } from '@/composables/useRadialbarSettings.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
@@ -477,8 +479,12 @@ a.links.router-link-exact-active {
   color: #ca9b42;
   border-left: solid #ca9b42;
 }
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed !important;
+}
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 767px) {
   .plans-des {
     text-align: center;
   }

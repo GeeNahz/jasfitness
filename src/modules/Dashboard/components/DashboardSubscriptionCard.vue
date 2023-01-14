@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-let minWidth = 'lg:min-w-[27rem]'
+let minWidth = 'lg:min-w-[25rem]'
 defineProps({
   addMinWidth: {
     type: Boolean,

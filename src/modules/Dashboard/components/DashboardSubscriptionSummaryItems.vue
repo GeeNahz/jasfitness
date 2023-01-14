@@ -1,24 +1,26 @@
 <template>
   <div class="item">
     <p class="text-xs md:text-base">
-      <span class="hidden md:inline">Subscription</span> type
+      <span class="hidden xl:inline">Subscription</span> type
     </p>
-    <p class="text-base md:text-3xl font-semibold">
+    <p class="text-base md:text-lg xl:text-3xl font-semibold">
       {{ dashboardSub.sub_plan }}
     </p>
   </div>
   <div class="item">
     <p class="text-xs md:text-base">
-      <span class="hidden md:inline">Subscription</span> duration
+      <span class="hidden xl:inline">Subscription</span> duration
     </p>
-    <p class="text-base md:text-3xl font-semibold">
+    <p class="text-base md:text-lg xl:text-3xl font-semibold">
       {{ dashboardSub.sub_status }}
-      <span class="text-xs md:text-base text-gray-400"> months </span>
+      <span class="text-xs xl:text-base text-gray-400 lowercase">
+        month(s)
+      </span>
     </p>
   </div>
   <div class="item">
     <p class="text-xs md:text-base">start date</p>
-    <p class="text-base md:text-3xl font-semibold">
+    <p class="text-base md:text-lg xl:text-3xl font-semibold">
       {{ startDateConverter(dashboardSub.start_date) }}
       <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
     </p>

@@ -58,13 +58,13 @@
           class="relative goals-container border border-gray-300 rounded-xl md:w-96 p-6"
         >
           <p
-            class="absolute -top-4 left-4 text-sm md:text-base bg-white px-2 py-1"
+            class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
           >
             Goals
           </p>
           <p
             v-if="fitness_target"
-            class="text-gray-500 font-light text-base md:text-xl"
+            class="text-gray-500 font-light text-base xl:text-xl"
           >
             {{ fitness_target.goal }}
           </p>
@@ -72,7 +72,7 @@
         <!-- fitness report & activities -->
         <div class="">
           <!-- divider -->
-          <div class="text-sm md:text-base my-5 md:my-4 font-semibold">
+          <div class="text-sm xl:text-base my-5 xl:my-4 font-semibold">
             <h4>Fitness Report</h4>
           </div>
           <div class="chart-container h-96 w-full">
@@ -87,16 +87,16 @@
             </div>
           </div>
           <div
-            class="hidden md:block text-sm md:text-base my-5 md:my-4 font-semibold"
+            class="hidden xl:block text-sm xl:text-base my-5 xl:my-4 font-semibold"
           >
             <h4>Fitness Activites</h4>
           </div>
           <DashboardDivider
-            class="block md:hidden text-sm md:text-base my-5 md:my-4"
+            class="block xl:hidden text-sm xl:text-base my-5 xl:my-4"
             name="Fitness Activities"
           />
           <!-- fitness activities -->
-          <table class="table table-striped table-auto text-sm md:text-base">
+          <table class="table table-striped table-auto text-sm xl:text-base">
             <thead>
               <tr>
                 <th>S/N</th>
@@ -121,18 +121,18 @@
       </template>
       <template #inner-side-bar>
         <div class="w-full">
-          <div class="flex flex-col items-center md:block mb-4 w-full">
-            <DashboardSubscriptionCard :addIcon="false">
+          <div class="flex flex-col items-center lg:block mb-4 w-full">
+            <DashboardSubscriptionCard class="w-full" :addIcon="false">
               <template #title>
                 <h4
-                  class="font-semibold text-sm md:text-lg text-center py-1 md:py-3 block w-full"
+                  class="font-semibold text-sm lg:text-lg text-center py-1 lg:py-3 block w-full"
                 >
                   My Record
                 </h4>
               </template>
               <template #description>
                 <ul
-                  class="grid grid-cols-2 gap-3 md:gap-0 md:flex flex-col items-start md:space-y-1 w-full text-xs md:text-base"
+                  class="grid grid-cols-2 gap-3 lg:gap-0 md:flex flex-col items-start lg:space-y-1 w-full text-xs sm:text-sm lg:text-base"
                 >
                   <li class="w-full pl-1">
                     <p
@@ -176,10 +176,9 @@
                       Profile
                     </p>
                   </li>
-                  <li class="w-full">
+                  <li class="w-full opacity-30">
                     <p
-                      @click="openModal('healthRecord')"
-                      class="link w-full flex justify-start items-center gap-3"
+                      class="link w-full flex justify-start items-center gap-3 disabled"
                     >
                       <i
                         ><svg
@@ -202,11 +201,8 @@
                       Fitness & Health Record
                     </p>
                   </li>
-                  <li class="w-full pl-1">
-                    <p
-                      @click="openModal('accessmentRecord')"
-                      class="link w-full flex items-center gap-3"
-                    >
+                  <li class="w-full pl-1 opacity-30">
+                    <p class="link w-full flex items-center gap-3 disabled">
                       <i
                         ><svg
                           width="22"
@@ -346,7 +342,7 @@ import { useMeta } from 'vue-meta'
 
 import AppLoader from '@/components/AppLoader.vue'
 import { useTimeConverter } from '@/composables/useConverter.js'
-import { useRadialBar } from '@/composables/useRadialbarColor.js'
+import { useRadialBar } from '@/composables/useRadialbarSettings.js'
 
 import LayoutView from '../components/LayoutView.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
@@ -467,5 +463,8 @@ p.link:focus {
 a.router-link-exact-active {
   color: #ca9b42;
   border-left: solid #ca9b42;
+}
+.disabled {
+  cursor: not-allowed !important;
 }
 </style>

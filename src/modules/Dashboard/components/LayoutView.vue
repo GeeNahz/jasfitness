@@ -1,48 +1,54 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-4 md:h-full md:w-full p-4">
-    <div
-      class="main-body bg-white md:h-full md:w-4/5 overflow-y-scroll pb-4 md:pb-0 md:pt-3 md:pr-20"
-    >
-      <slot name="welcome-section"></slot>
-    </div>
-    <!-- inner side bar -->
-    <div
-      class="bg-zinc-900 md:w-1/5 rounded-xl relative py-8 md:py-16 px-3 text-white"
-    >
-      <slot name="display-image"></slot>
-      <div v-if="showTitle" class="mb-8 md:mb-16">
-        <DashboardDivider
-          class="text-base md:text-xl font-semibold"
-          :name="title"
-          textBackColor="bg-zinc-900"
-          textColor="text-white"
-        />
-      </div>
-      <slot name="inner-side-bar"></slot>
-      <slot name="default"></slot>
-      <!-- footer -->
+  <div class="h-max flex flex-col md:block md:h-full">
+    <div class="main h-full w-full p-3">
+      <!-- main-body -->
       <div
-        class="hidden md:flex flex-col items-center md:absolute md:bottom-8 md:left-[50%] md:-translate-x-[50%] text-zinc-200 text-opacity-80 font-thin text-xs"
+        class="main-body xl:max-h-screen xl:w-full xl:overflow-y-scroll pb-4 lg:pb-0 lg:pt-3 lg:pr-20"
       >
-        <div class="flex items-center gap-3 mb-3 imgs">
-          <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
-          <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-16" />
-          <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
+        <slot name="welcome-section"></slot>
+      </div>
+      <!-- inner side bar -->
+      <!-- main-sidebar -->
+      <div
+        class="main-sidebar bg-zinc-900 md:w-full rounded-xl py-10 lg:py-16 px-3 text-white"
+      >
+        <div>
+          <slot name="display-image"></slot>
+          <div v-if="showTitle" class="mb-8 md:mb-16 py-2 pb-5 md:py-0">
+            <DashboardDivider
+              class="text-base md:text-xl font-semibold"
+              :name="title"
+              textBackColor="bg-zinc-900"
+              textColor="text-white"
+            />
+          </div>
+          <slot name="inner-side-bar"></slot>
+          <slot name="default"></slot>
         </div>
-        <span>Powered by JAS FITNESS</span>
+        <!-- footer -->
+        <div
+          class="hidden md:flex flex-col items-center text-zinc-200 text-opacity-80 font-thin text-xs"
+        >
+          <div class="flex items-center gap-3 mb-3 imgs">
+            <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
+            <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-16" />
+            <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
+          </div>
+          <span>Powered by JAS FITNESS</span>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- footer for sm screen only -->
-  <div
-    class="md:hidden flex flex-col items-center my-8 md:absolute md:bottom-8 md:left-[50%] md:-translate-x-[50%] text-opacity-80 font-thin text-xs"
-  >
-    <div class="flex items-center gap-3 mb-3 imgs">
-      <div class="border border-[#d4d4d4] w-44 rounded-full" />
-      <img src="@/assets/footer-logo-black.svg" alt="dumbbell" class="w-16" />
-      <div class="border border-[#d4d4d4] w-44 rounded-full" />
+    <!-- footer for sm screen only -->
+    <div
+      class="md:hidden h-full flex flex-col items-center my-8 text-opacity-80 font-thin text-xs"
+    >
+      <div class="flex items-center gap-3 mb-3 imgs">
+        <div class="border border-[#d4d4d4] w-44 rounded-full" />
+        <img src="@/assets/footer-logo-black.svg" alt="dumbbell" class="w-16" />
+        <div class="border border-[#d4d4d4] w-44 rounded-full" />
+      </div>
+      <span>Powered by JAS FITNESS</span>
     </div>
-    <span>Powered by JAS FITNESS</span>
   </div>
 </template>
 
@@ -62,16 +68,48 @@ defineProps({
 })
 </script>
 
-<style scoped>
-.nothing {
-  color: #212933;
-  /* color: #009789; */
+<style lang="scss" scoped>
+@import '../../../assets/styles/base';
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) minmax(200px, 300px);
+  grid-template-areas: 'main side';
+  gap: 1rem;
+
+  @include responsive('tablet-width') {
+    grid-template-columns: minmax(256px, 1fr);
+    grid-template-areas: initial;
+    height: 100%;
+  }
 }
 
 div.main-body {
+  grid-area: 'main';
+
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
   overflow-y: scroll;
+
+  @include responsive('tablet-width') {
+    height: max-content;
+    grid-area: initial !important;
+  }
+}
+
+.main-sidebar {
+  grid-area: 'side';
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  @include responsive('tablet-width') {
+    grid-area: initial !important;
+
+    padding: 10px 0;
+  }
 }
 
 div.main-body::-webkit-scrollbar {
