@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col md:flex-row md:items-center w-full h-full font-quicksand disable-scroll"
+    class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
   >
     <div
       v-if="
@@ -14,9 +14,9 @@
     >
       <DashboardHandleModalsDisplay />
     </div>
-    <TheSidebar />
-    <div class="mt-12 md:mt-0 h-full w-full">
-      <router-view :key="$route.path" class="h-full" />
+    <TheSidebar class="sidebar" />
+    <div class="main-container w-full">
+      <router-view :key="$route.path" class="h-full w-full" />
     </div>
   </div>
 </template>
@@ -51,4 +51,43 @@ const shareSubscriptionModal = computed(
 )
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import '../../assets/styles/base';
+
+.dashboard-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(100px, 280px) 1fr;
+  grid-template-areas: 'side main';
+
+  @include responsive('tablet-width') {
+    height: max-content;
+    grid-template-columns: minmax(256px, 1fr);
+    grid-template-areas: initial;
+  }
+}
+
+.sidebar {
+  grid-area: 'side';
+
+  @include responsive('tablet-width') {
+    grid-area: initial;
+  }
+}
+.main-container {
+  grid-area: 'main';
+
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  @include responsive('tablet-width') {
+    padding: 85px 0;
+    grid-area: initial;
+  }
+  @include responsive('mobile-landscape-width') {
+    padding: 70px 0;
+    grid-area: initial;
+  }
+}
+</style>
