@@ -2,7 +2,7 @@
   <div class="w-full">
     <RadialProgressBar
       :diameter="diameter"
-      :completed-steps="Number(completedSteps)"
+      :completed-steps="percentageBoundary(Number(completedSteps))"
       :total-steps="totalSteps"
       :strokeWidth="strokeWidth"
       :innerStrokeWidth="strokeWidth"
@@ -13,13 +13,13 @@
     >
       <!-- Your inner content here -->
       <slot>
-        <div
-          class="uppercase flex flex-col items-center justify-center font-semibold"
-        >
-          <p class="text-2xl md:text-4xl">{{ completedSteps }}%</p>
-          <p class="text-xs md:text-sm font-light md:font-semibold">
+        <div class="uppercase text-center">
+          <div class="text-lg sm:text-xl lg:text-2xl font-semibold">
+            {{ percentageBoundary(Number(completedSteps)) }}%
+          </div>
+          <div class="text-xs lg:text-sm font-light md:font-normal">
             Completed
-          </p>
+          </div>
         </div>
       </slot>
     </RadialProgressBar>
@@ -29,6 +29,7 @@
 <script setup>
 import { ref } from 'vue'
 import RadialProgressBar from 'vue3-radial-progress'
+import { useRadialBar } from '@/composables/useRadialbarSettings'
 
 defineProps({
   completedSteps: {
@@ -53,6 +54,8 @@ defineProps({
   }
 })
 const totalSteps = ref(100)
+
+const { percentageBoundary } = useRadialBar()
 </script>
 
 <style scoped></style>
