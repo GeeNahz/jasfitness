@@ -23,11 +23,11 @@
               >Community</router-link
             >
           </li>
-          <!-- <li>
+          <li>
             <router-link :to="{ name: 'LoginPage' }" class="w-full"
               >Log in</router-link
             >
-          </li> -->
+          </li>
           <li>
             <router-link :to="{ name: 'PlansPage' }" class="w-full"
               >sign up</router-link
