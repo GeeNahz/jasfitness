@@ -47,7 +47,9 @@ const dashboardSub = computed(() =>
 
 try {
   await store.dispatch('dashboard/dashboard_subscription')
-} catch (error) {
-  console.log(error)
+} catch {
+  const message =
+    'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+  store.dispatch('error', { message, timeout: 3000 })
 }
 </script>

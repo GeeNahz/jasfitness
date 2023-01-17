@@ -375,14 +375,18 @@ const gym_attendance = computed(() =>
 onMounted(() => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
-    (error) => {
-      console.log(error)
+    () => {
+      const message =
+        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+      store.dispatch('error', { message, timeout: 3000 })
     }
   )
   store.dispatch('dashboard/dashboard_gym_attendance', userId.value).then(
     () => {},
-    (error) => {
-      console.log(error)
+    () => {
+      const message =
+        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+      store.dispatch('error', { message, timeout: 3000 })
     }
   )
 })

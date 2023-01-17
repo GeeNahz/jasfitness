@@ -366,8 +366,10 @@ const creds = computed(() =>
 onMounted(() => {
   store.dispatch('dashboard/dashboard_gym_attendance', user.value.id).then(
     () => {},
-    (error) => {
-      console.log(error)
+    () => {
+      const message =
+        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+      store.dispatch('error', { message, timeout: 3000 })
     }
   )
 })
