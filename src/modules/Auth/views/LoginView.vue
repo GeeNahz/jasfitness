@@ -113,8 +113,6 @@ const user = ref({})
 const store = useStore()
 const error = computed(() => store.state.auth.status.error)
 const isLoading = computed(() => store.state.auth.status.isLoading)
-// const success = computed(() => store.state.auth.status.success)
-// const isLoggedIn = computed(() => store.state.auth.status.isLoggedIn)
 
 const router = useRouter()
 const { AuthToken } = useState()
