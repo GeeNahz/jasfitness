@@ -74,7 +74,7 @@ try {
   await store.dispatch('dashboard/dashboard_home')
 } catch {
   const message =
-    'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+    'Something went wrong while fetching your records. Refresh the browser to try fix it.'
   store.dispatch('error', { message, timeout: 3000 })
 }
 </script>
