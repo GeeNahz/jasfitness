@@ -245,13 +245,15 @@ const handleContactusSubmit = () => {
       .then(() => {
         clearContactusDetails()
         isSuccess.value = true
-        displayWarning('Thank you for contacting us.')
+        const message = 'Thank you for contacting us.'
+        displayWarning(message)
+        store.dispatch('landingpage/success', { message, timeout: 3000 })
       })
       .catch((err) => {
         isSuccess.value = false
         const message = `A ${err.message} occured. Please try again.`
         displayWarning(message)
-        store.dispatch('error', { message, timeout: 3000 })
+        store.dispatch('landingpage/error', { message, timeout: 3000 })
       })
   } else {
     displayWarning('Please fill every field.')
