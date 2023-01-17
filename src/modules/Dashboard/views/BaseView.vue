@@ -368,7 +368,7 @@ onMounted(() => {
     () => {},
     () => {
       const message =
-        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+        'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
       store.dispatch('error', { message, timeout: 3000 })
     }
   )
