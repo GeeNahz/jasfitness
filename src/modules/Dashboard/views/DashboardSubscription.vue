@@ -283,7 +283,7 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div>
+        <div class="flex flex-col items-center lg:block mb-4 w-full">
           <DashboardSubscriptionCard :addIcon="false">
             <template #title>
               <div class="flex md:flex-col gap-2">
@@ -341,7 +341,7 @@
               </div>
             </template>
           </DashboardSubscriptionCard>
-          <ul class="space-y-10 mt-4 pl-10">
+          <ul class="-translate-x-5 lg:translate-x-5 space-y-10 mt-4 pl-10">
             <li>
               <router-link :to="{ name: 'DashboardHome' }" class="links">
                 <div class="flex items-center gap-4">
