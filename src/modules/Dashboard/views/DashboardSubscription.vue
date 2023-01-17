@@ -408,7 +408,7 @@ onMounted(async () => {
     () => {
       const message =
         'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
-      store.dispatch('error', { message, timeout: 3000 })
+      store.dispatch('landingpage/error', { message, timeout: 3000 })
     }
   )
   try {
@@ -416,7 +416,7 @@ onMounted(async () => {
   } catch {
     const message =
       'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
-    store.dispatch('error', { message, timeout: 3000 })
+    store.dispatch('landingpage/error', { message, timeout: 3000 })
   }
 })
 
