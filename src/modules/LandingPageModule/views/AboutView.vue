@@ -160,11 +160,14 @@
 <script setup>
 import { ref } from 'vue'
 import { useMeta } from 'vue-meta'
+import { useStore } from 'vuex'
 
 import EmailService from '@/services/EmailServices/EmailService.js'
 
 import TheFooter from '@/components/TheFooter.vue'
 import ReviewAboutPage from '../components/ReviewAboutPage.vue'
+
+const store = useStore()
 
 useMeta({
   title: 'About Us'
@@ -246,7 +249,9 @@ const handleContactusSubmit = () => {
       })
       .catch((err) => {
         isSuccess.value = false
-        displayWarning(`A ${err.message} occured. Please try again.`)
+        const message = `A ${err.message} occured. Please try again.`
+        displayWarning(message)
+        store.dispatch('error', { message, timeout: 3000 })
       })
   } else {
     displayWarning('Please fill every field.')
