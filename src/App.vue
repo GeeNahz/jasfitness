@@ -6,11 +6,13 @@
   </metainfo>
   <div class="h-full">
     <router-view />
+    <TheAlerts />
   </div>
 </template>
 
 <script>
 import { useMeta } from 'vue-meta'
+import TheAlerts from './components/TheAlerts.vue'
 
 export default {
   setup() {
@@ -18,7 +20,8 @@ export default {
       title: '',
       htmlAttrs: { lang: 'en', amp: true }
     })
-  }
+  },
+  components: { TheAlerts }
 }
 </script>
 
