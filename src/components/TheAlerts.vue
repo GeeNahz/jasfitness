@@ -38,8 +38,6 @@ const alerts = computed(() =>
 function closeAlert(id) {
   store.dispatch('landingpage/remove', id)
 }
-console.log(alerts.value)
-// const alerts = useAlertsStore();
 </script>
 
 <style scoped>
