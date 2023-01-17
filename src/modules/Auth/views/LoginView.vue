@@ -142,7 +142,8 @@ const handleSubmit = (credentials) => {
       },
       (error) => {
         err.value = error
-        // console.log(error)
+        const message = errorMessage.value
+        store.dispatch('landingpage/error', { message, timeout: 3000 })
       }
     )
     .finally(() => {
