@@ -59,7 +59,7 @@
               :addIcon="addIconSection"
             >
               <template #icon>
-                <AppIconTimer />
+                <AppIconTimer class="text-4xl" />
               </template>
               <template #title>
                 <div
@@ -82,14 +82,14 @@
                 >
                   <button
                     @click="openModal('freezeSub')"
-                    class="px-2 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold flex gap-2 items-center"
+                    class="px-3 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold"
                     :class="[
                       dashboardSub.freezeable
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
                         : 'bg-gray-500 disabled'
                     ]"
                   >
-                    Freeze <AppIconTimer />
+                    Freeze
                   </button>
                 </div>
               </template>
@@ -100,7 +100,7 @@
               :addIcon="addIconSection"
             >
               <template #icon>
-                <AppIconSend />
+                <AppIconSend class="text-4xl" />
               </template>
               <template #title>
                 <div
@@ -121,9 +121,9 @@
                 <div class="flex flex-col md:flex-row items-center">
                   <button
                     @click="openModal('shareSub')"
-                    class="px-2 py-1 xl:px-4 xl:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-400 text-sm xl:text-base font-semibold flex gap-3 items-center"
+                    class="px-3 py-1 xl:px-4 xl:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-400 text-sm xl:text-base font-semibold"
                   >
-                    Share <AppIconSend />
+                    Share
                   </button>
                 </div>
               </template>
@@ -143,37 +143,7 @@
               :addMinWidth="true"
             >
               <template #icon>
-                <i>
-                  <svg
-                    width="40"
-                    height="40"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="6.66675"
-                      y="8.33325"
-                      width="26.6667"
-                      height="26.6667"
-                      rx="2"
-                      stroke="black"
-                      stroke-width="3"
-                    />
-                    <path
-                      d="M26.6667 3.33325L26.6667 11.3332C26.6667 12.2761 26.6667 12.7475 26.3739 13.0404C26.081 13.3332 25.6096 13.3332 24.6667 13.3332L15.3334 13.3333C14.3906 13.3333 13.9192 13.3333 13.6263 13.0404C13.3334 12.7475 13.3334 12.2761 13.3334 11.3333L13.3334 3.33326"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M15 23.3333L25 23.3333"
-                      stroke="black"
-                      stroke-width="3"
-                      stroke-linecap="round"
-                    />
-                  </svg>
-                </i>
+                <AppIconPlan class="text-4xl" />
               </template>
               <template #title>
                 <div
@@ -289,6 +259,7 @@ import { useStore } from 'vuex'
 import AppIconRenew from '@/components/AppIconRenew.vue'
 import AppIconTimer from '@/components/AppIconTimer.vue'
 import AppIconSend from '@/components/AppIconSend.vue'
+import AppIconPlan from '@/components/AppIconPlan.vue'
 import AppIconMessage from '@/components/AppIconMessage.vue'
 import { useRadialBar } from '@/composables/useRadialbarSettings.js'
 
