@@ -29,7 +29,7 @@
         <div
           class="hidden md:flex flex-col items-center text-zinc-200 text-opacity-80 font-thin text-xs"
         >
-          <div class="flex items-center gap-3 mb-3 imgs">
+          <div class="flex items-center gap-3 mb-3 imgs opacity-20">
             <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
             <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-16" />
             <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
@@ -40,12 +40,17 @@
     </div>
     <!-- footer for sm screen only -->
     <div
-      class="md:hidden h-full flex flex-col items-center my-8 text-opacity-80 font-thin text-xs"
+      class="md:hidden h-max flex flex-col items-center my-8 text-opacity-80 font-thin text-xs"
     >
       <div class="flex items-center gap-3 mb-3 imgs">
-        <div class="border border-[#d4d4d4] w-44 rounded-full" />
-        <img src="@/assets/footer-logo-black.svg" alt="dumbbell" class="w-16" />
-        <div class="border border-[#d4d4d4] w-44 rounded-full" />
+        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70" />
+        <!-- <AppIconFooterIcon /> -->
+        <img
+          src="@/assets/footer-logo-black.svg"
+          alt="dumbbell"
+          class="w-16 opacity-20"
+        />
+        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70" />
       </div>
       <span>Powered by JAS FITNESS</span>
     </div>
@@ -54,6 +59,7 @@
 
 <script setup>
 // import DashboardRightSidebar from '../components/DashboardRightSidebar.vue'
+// import AppIconFooterIcon from '@/components/AppIconFooterIcon.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 
 defineProps({
