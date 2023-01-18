@@ -13,10 +13,11 @@
             </p>
           </div>
           <div>
-            <button
-              @click="resubscribeHandler"
+            <a
+              href="https://www.jasfitnessng.com/members/payments/"
               class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
             >
+              <!-- @click="resubscribeHandler" -->
               <p class="hidden md:block">Resubscribe</p>
               <p class="block md:hidden text-[10px]">Re-Sub</p>
               <i
@@ -49,7 +50,7 @@
                   />
                 </svg>
               </i>
-            </button>
+            </a>
           </div>
         </div>
         <br />
