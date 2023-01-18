@@ -14,7 +14,7 @@
       >
         <div>
           <slot name="display-image"></slot>
-          <div v-if="showTitle" class="mb-8 md:mb-16 py-2 pb-5 md:py-0">
+          <div v-if="showTitle" class="mb-8 md:mb-16 py-2 pb-3 md:py-0">
             <DashboardDivider
               class="text-base md:text-xl font-semibold"
               :name="title"
