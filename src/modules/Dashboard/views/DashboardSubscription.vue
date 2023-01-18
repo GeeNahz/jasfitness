@@ -280,12 +280,12 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div class="flex flex-col items-center lg:block mb-4 w-full">
-          <DashboardSubscriptionCard :addIcon="false">
+        <div class="flex flex-col items-center lg:block mb-4 px-1 w-full">
+          <DashboardSubscriptionCard :addIcon="false" class="w-full">
             <template #title>
               <div class="flex md:flex-col gap-2">
                 <div class="md:text-center">
-                  <p class="capitalize text-base md:text-lg">
+                  <p class="capitalize text-sm md:text-lg">
                     Subscription wheel
                   </p>
                   <!--  -->
