@@ -81,7 +81,7 @@
             name="Members Features"
           />
           <div
-            class="features-container grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
+            class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
               :addMinWidth="true"
@@ -214,7 +214,7 @@
             name="Explore plans suited for you"
           />
           <div
-            class="features-container grid grid-cols-2 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
+            class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
               v-for="plan in plans"
