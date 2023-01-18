@@ -57,7 +57,7 @@
         <br />
         <!-- subscription summary -->
         <div
-          class="relative subscription-summary-container border border-gray-300 rounded-xl w-full md:p-6"
+          class="relative subscription-summary-container border border-gray-300 rounded-xl w-full pt-[1px] md:p-6"
         >
           <p
             class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
@@ -66,11 +66,7 @@
           </p>
 
           <Suspense>
-            <div
-              class="flex gap-2 xl:gap-0 w-full justify-between capitalize text-center px-2 py-2 xl:px-10 md:py-4"
-            >
-              <DashboardSubscriptionSummaryItems />
-            </div>
+            <DashboardSubscriptionSummaryItems />
             <template #fallback>
               <DashboardSummarySkeletonLoader />
             </template>

@@ -1,29 +1,33 @@
 <template>
-  <div class="item">
-    <p class="text-xs md:text-base">
-      <span class="hidden xl:inline">Subscription</span> type
-    </p>
-    <p class="text-base md:text-lg xl:text-3xl font-semibold">
-      {{ dashboardSub.sub_plan }}
-    </p>
-  </div>
-  <div class="item">
-    <p class="text-xs md:text-base">
-      <span class="hidden xl:inline">Subscription</span> duration
-    </p>
-    <p class="text-base md:text-lg xl:text-3xl font-semibold">
-      {{ dashboardSub.sub_status }}
-      <span class="text-xs xl:text-base text-gray-400 lowercase">
-        month(s)
-      </span>
-    </p>
-  </div>
-  <div class="item">
-    <p class="text-xs md:text-base">start date</p>
-    <p class="text-base md:text-lg xl:text-3xl font-semibold">
-      {{ startDateConverter(dashboardSub.start_date) }}
-      <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
-    </p>
+  <div
+    class="flex gap-1 xl:gap-0 w-full justify-between capitalize text-center px-3 py-2 xl:px-10 md:py-4"
+  >
+    <div class="item">
+      <p class="text-xs md:text-base">
+        <span class="hidden xl:inline">Subscription</span> type
+      </p>
+      <p class="text-base md:text-lg xl:text-3xl font-semibold">
+        {{ dashboardSub.sub_plan }}
+      </p>
+    </div>
+    <div class="item">
+      <p class="text-xs md:text-base">
+        <span class="hidden xl:inline">Subscription</span> duration
+      </p>
+      <p class="text-base md:text-lg xl:text-3xl font-semibold">
+        {{ dashboardSub.sub_status }}
+        <span class="text-xs xl:text-base text-gray-400 lowercase">
+          month(s)
+        </span>
+      </p>
+    </div>
+    <div class="item">
+      <p class="text-xs md:text-base">start date</p>
+      <p class="text-base md:text-lg xl:text-3xl font-semibold">
+        {{ startDateConverter(dashboardSub.start_date) }}
+        <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
+      </p>
+    </div>
   </div>
 </template>
 

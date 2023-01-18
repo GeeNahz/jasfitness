@@ -59,7 +59,7 @@
         <br />
         <!-- attendance summary -->
         <div
-          class="relative attendance-summary-container border border-gray-300 rounded-xl w-full md:p-6"
+          class="relative attendance-summary-container border border-gray-300 rounded-xl w-full pt-[2px] md:p-6"
         >
           <p
             class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
