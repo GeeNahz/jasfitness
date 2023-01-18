@@ -32,7 +32,9 @@
       <p class="text-base md:text-lg xl:text-3xl font-semibold">
         {{ dashboardHome.average }}
         <span class="lowercase text-sm xl:text-lg">hr(s)</span>
-        <span class="text-xs xl:text-base text-gray-400"> attendance </span>
+        <span class="hidden xl:inline xl:text-base text-gray-400">
+          attendance
+        </span>
       </p>
       <!-- <p class="text-xs md:text-base">attendance</p> -->
     </div>
