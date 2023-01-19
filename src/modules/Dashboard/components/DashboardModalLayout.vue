@@ -4,7 +4,10 @@
       <div
         class="z-10 mx-auto max-w-lg w-[300px] lg:w-[400px] bg-white rounded shadow-sm overflow-hidden"
       >
-        <div class="header container flex justify-between items-start py-3">
+        <!-- modal header -->
+        <div
+          class="header container flex justify-between items-start pt-3 pb-2 lg:pb-3"
+        >
           <div>
             <h2
               class="font-semibold font-inter text-sm md:text-base xl:text-lg tracking-wide capitalize"
@@ -24,12 +27,14 @@
             <AppIconClose />
           </div>
         </div>
-        <div class="body container py-3 border-b">
+        <!-- modal content -->
+        <div class="body container pb-2 lg:pb-3 border-b">
           <slot name="content">
             <p>Modal Content</p>
           </slot>
         </div>
-        <div class="actions container py-3">
+        <!-- modal actions -->
+        <div class="actions container pb-2 lg:pb-3">
           <slot name="actions"></slot>
         </div>
       </div>

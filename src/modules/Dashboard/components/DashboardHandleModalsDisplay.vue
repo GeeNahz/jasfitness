@@ -120,16 +120,16 @@
           </form>
         </template>
         <template #actions>
-          <div class="w-full flex gap-2 justify-end btns">
+          <div class="w-full flex gap-2 mt-1 lg:mt-3 justify-end btns">
             <button
               @click="closeModal(freezeSubscriptionModal.id)"
-              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-2 px-4"
+              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-1 px-2 lg:py-2 lg:px-4"
             >
               Close
             </button>
             <button
               @click="freezeYourSub"
-              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-2 px-4"
+              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-1 px-2 lg:py-2 lg:px-4"
             >
               Send
             </button>
@@ -142,23 +142,23 @@
         v-if="shareSubscriptionModal.open"
         @close="closeModal"
       >
-        <template #header> Freeze your subscription </template>
+        <template #header> Share your subscription </template>
         <template #header-description>
           Share your current subscription with another member of the gym
         </template>
         <template #content>
           <form @submit.prevent="shareYourSub">
-            <label for="freeze-sub" class="font-semibold text-sm"
+            <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
               >Member username:</label
             >
             <input
               id="freeze-sub"
-              class="form-control mb-3"
+              class="form-control mb-2 lg:mb-3"
               type="text"
               v-model="shareSubUsername"
               required
             />
-            <label for="freeze-sub" class="font-semibold text-sm"
+            <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
               >Duration (months):
             </label>
             <input
@@ -172,16 +172,16 @@
           </form>
         </template>
         <template #actions>
-          <div class="w-full flex gap-2 justify-end btns">
+          <div class="w-full flex gap-2 pt-2 lg:pt-3 justify-end btns">
             <button
               @click="closeModal(shareSubscriptionModal.id)"
-              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-2 px-4"
+              class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-sm lg:text-base text-gray-700 py-1 px-3 lg:py-2 lg:px-4"
             >
               Close
             </button>
             <button
               @click="shareYourSub"
-              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-2 px-4"
+              class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-sm lg:text-base text-gray-50 py-1 px-3 lg:py-2 lg:px-4"
             >
               Send
             </button>
@@ -246,14 +246,20 @@ const profileState = computed(() =>
 </script>
 
 <style lang="scss" scoped>
+@import '../../../assets/styles/base';
+
 .items {
   & .item {
-    // background-color: pink;
     display: grid;
     grid-template-columns: 1fr 2fr;
     place-items: center;
     gap: 0.5rem;
     border-bottom: 1px rgba(215, 215, 215, 0.5) solid;
+    font-size: font-size('small');
+
+    @include responsive('mobile-landscape-width') {
+      font-size: font-size('x-small');
+    }
 
     &:last-child {
       border-bottom: none;
@@ -261,11 +267,13 @@ const profileState = computed(() =>
 
     & .item__title {
       width: 100%;
-      font-weight: 600;
+      font-size: inherit;
+      font-weight: font-weight('semibold');
       text-align: start;
     }
     & .item__content {
       width: 100%;
+      font-size: inherit;
       padding: 1rem 0;
       text-align: start;
       text-transform: capitalize;
