@@ -180,8 +180,10 @@ onMounted(() => {
 
     & .plans {
       display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 2.5rem;
-      width: max-content;
+      width: 100%;
 
       @include responsive(tablet-width) {
         display: flex;
