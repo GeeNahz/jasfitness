@@ -6,19 +6,19 @@
         :key="alert.id"
         class="fade show"
         role="alert"
-        :class="`alert alert-${alert.style} min-w-[200px] max-w-[400px]`"
+        :class="`grid grid-cols-12 justify-start alert alert-${alert.style} min-w-[300px]`"
       >
-        <p class="inline alert-dismissible">
+        <p class="inline alert-dismissible col-span-11">
           {{ alert.message }}
         </p>
         <button
           @click="closeAlert(alert.id)"
           type="button"
-          class="close"
+          class="close col-spal-1 place-self-center"
           data-dismiss="alert"
           aria-label="Close"
         >
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true"><AppIconCloseAlert /></span>
         </button>
       </div>
     </TransitionGroup>
@@ -28,6 +28,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+
+import AppIconCloseAlert from './AppIconCloseAlert.vue'
 
 const store = useStore()
 
