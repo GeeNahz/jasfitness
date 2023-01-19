@@ -2,17 +2,17 @@
   <div class="backdrop">
     <div class="wrapper h-full w-full flex flex-col justify-center">
       <div
-        class="z-10 mx-auto max-w-lg min-w-[250px] md:min-w-[450px] bg-white rounded shadow-sm overflow-hidden"
+        class="z-10 mx-auto max-w-lg w-[300px] lg:w-[400px] bg-white rounded shadow-sm overflow-hidden"
       >
         <div class="header container flex justify-between items-start py-3">
           <div>
             <h2
-              class="font-semibold font-inter text-base md:text-lg tracking-wide capitalize"
+              class="font-semibold font-inter text-sm md:text-base xl:text-lg tracking-wide capitalize"
             >
               <slot name="header">Modal Header</slot>
             </h2>
             <p
-              class="font-medium text-xs md:text-sm tracking-tight text-gray-400"
+              class="font-medium text-xs xl:text-sm tracking-tight text-gray-400"
             >
               <slot name="header-description"></slot>
             </p>
