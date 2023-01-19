@@ -8,7 +8,7 @@ const textClassification = {
   inner: `
     flex
     items-center
-    max-w-md
+    max-w-full
     border
     border-gray-400
     formkit-invalid:border-red-500
