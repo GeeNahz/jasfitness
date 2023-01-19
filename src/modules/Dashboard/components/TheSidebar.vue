@@ -54,9 +54,12 @@
 
         <hr class="my-4" />
 
-        <ul class="space-y-1 md:space-y-3 text-md md:text-base w-full disabled">
+        <ul class="space-y-1 md:space-y-3 text-md md:text-base w-full">
           <li>
-            <router-link to="/classes" class="p-2 flex items-center gap-3">
+            <router-link
+              to="/classes"
+              class="p-2 flex items-center gap-3 disabled"
+            >
               <div class="icon">
                 <AppIconClasses fillColor="gray" />
               </div>
@@ -64,7 +67,10 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/settings" class="p-2 flex items-center gap-3">
+            <router-link
+              to="/settings"
+              class="p-2 flex items-center gap-3 disabled"
+            >
               <div class="icon">
                 <AppIconSetting fillColor="gray" />
               </div>
@@ -238,7 +244,10 @@
 
         <ul class="space-y-1 pl-2 pr-2 text-sm">
           <li>
-            <router-link to="/classes" class="p-2 flex items-center gap-2">
+            <router-link
+              to="/classes"
+              class="p-2 flex items-center gap-2 disabled"
+            >
               <div class="icon">
                 <AppIconClasses />
               </div>
@@ -246,7 +255,10 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/settings" class="p-2 flex items-center gap-2">
+            <router-link
+              to="/settings"
+              class="p-2 flex items-center gap-2 disabled"
+            >
               <div class="icon">
                 <AppIconSetting />
               </div>
@@ -334,5 +346,10 @@ a.router-link-exact-active {
 }
 a.router-link-exact-active .icon {
   color: #ca9b42;
+}
+
+.disabled {
+  color: #b4b4b495;
+  pointer-events: none;
 }
 </style>
