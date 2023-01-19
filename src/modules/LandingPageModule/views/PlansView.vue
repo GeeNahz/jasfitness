@@ -67,7 +67,7 @@
           <template #bottom>
             <div class="button-wrapper">
               <a
-                href="https://www.jasfitnessng.com/members/payments/"
+                href="https://app.jasfitnessng.com/new-members/subscription/"
                 target="_blank"
                 class="card-btn font-semibold uppercase"
                 :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
