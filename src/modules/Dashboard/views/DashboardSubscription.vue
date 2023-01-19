@@ -16,7 +16,7 @@
           </div>
           <div>
             <a
-              href="https://www.jasfitnessng.com/members/payments/"
+              href="https://app.jasfitnessng.com/new-members/re-subscription/"
               class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
             >
               <!-- @click="resubscribeHandler" -->
