@@ -36,7 +36,7 @@
               <div class="icon">
                 <AppIconRecord />
               </div>
-              <p>Fiteness Record</p>
+              <p>Fitness Record</p>
             </router-link>
           </li>
           <li>
@@ -224,7 +224,7 @@
               <div class="icon">
                 <AppIconRecord />
               </div>
-              <p>Fiteness Record</p>
+              <p>Fitness Record</p>
             </router-link>
           </li>
           <li>
