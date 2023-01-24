@@ -268,8 +268,8 @@ watch(gym_attendance, () => {
   if (gym_attendance.value !== null) {
     preparingChartData.value = true
     prepareChartData(gym_attendance.value.results)
-    chartData.value.labels = preparedChartData.value.labels
-    chartData.value.datasets[0].data = preparedChartData.value.data
+    chartData.value.labels = preparedChartData.value.labels.reverse()
+    chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
   }
   preparingChartData.value = false
 })
