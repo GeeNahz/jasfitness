@@ -43,7 +43,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import AppIconClose from '@/components/AppIconClose.vue'
 
 const emit = defineEmits(['close'])

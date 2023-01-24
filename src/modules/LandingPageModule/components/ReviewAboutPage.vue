@@ -25,8 +25,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
 
 defineProps({
