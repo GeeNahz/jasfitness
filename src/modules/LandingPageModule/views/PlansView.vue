@@ -190,7 +190,7 @@ onMounted(() => {
         flex-wrap: wrap;
         width: 100%;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
       }
       @include responsive(mobile-width) {
         flex-direction: column;

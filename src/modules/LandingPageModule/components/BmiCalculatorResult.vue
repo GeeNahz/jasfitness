@@ -170,7 +170,7 @@ if (props.wizard.bmi < 18.5) {
   & .color-code {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     & .color {
       height: 0.8rem;
