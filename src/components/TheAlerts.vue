@@ -1,5 +1,8 @@
 <template>
-  <div v-if="alerts.length" class="fixed bottom-10 right-10">
+  <div
+    v-if="alerts.length"
+    class="fixed bottom-1 right-1 sm:bottom-10 sm:right-10"
+  >
     <TransitionGroup name="alerts">
       <div
         v-for="alert in alerts"
@@ -8,7 +11,7 @@
         role="alert"
         :class="`grid grid-cols-12 justify-start alert alert-${alert.style} min-w-[300px]`"
       >
-        <p class="inline alert-dismissible col-span-11">
+        <p class="inline alert-dismissible col-span-11 text-xs sm:text-base">
           {{ alert.message }}
         </p>
         <button
