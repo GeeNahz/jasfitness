@@ -17,6 +17,7 @@ export default {
     dashboardFitness: null,
     dashboardGymnAttendance: null,
     dashboardSubscription: null,
+    dashboardFitnessAssessment: null,
     modals: {
       profile: { id: 'profile', open: false },
       healthRecord: { id: 'healthRecord', open: false },
@@ -58,6 +59,9 @@ export default {
     },
     SET_DASHBOARD_SUBSCRIPTION_STATE(state, payload) {
       state.dashboardSubscription = payload
+    },
+    SET_DASHBOARD_FITNESS_ASSESSMENT_STATE(state, payload) {
+      state.dashboardFitnessAssessment = payload
     }
   },
   actions: {
@@ -173,6 +177,23 @@ export default {
             return Promise.resolve(response.data)
           },
           (error) => {
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
+    },
+    dashboard_fitness_assessment({ commit }, user_id) {
+      commit('STATUS_LOADING')
+      return DashboardService.dashboard_assessments(user_id)
+        .then(
+          (response) => {
+            commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', response.data)
+            return Promise.resolve(response.data)
+          },
+          (error) => {
+            commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', {})
             return Promise.reject(error.message)
           }
         )
