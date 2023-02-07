@@ -1,7 +1,7 @@
 <template>
   <div class="h-full relative">
     <div class="lg:h-full overflow-hidden relative">
-      <HeroSection @showBmiCalculator="toggleBmi" />
+      <HeroSection @scrollTo="goToSection" @showBmiCalculator="toggleBmi" />
     </div>
     <!-- bmi calculator -->
     <Transition>
@@ -15,6 +15,7 @@
     <main>
       <!-- why jas fitness section -->
       <section
+        id="why-jasfitness"
         class="py-12 mx-8 md:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-8 lg:gap-y-0"
       >
         <!-- left card -->
@@ -370,6 +371,14 @@ const copyToClipboard = async (value) => {
     timeout: false
   }
   store.dispatch('landingpage/success', alertData)
+}
+
+function goToSection(selector) {
+  const yOffset = -10
+  const element = document.querySelector(selector)
+  const y = element.getBoundingClientRect().top + window.scrollY + yOffset
+
+  window.scrollTo({ top: y, left: 0, behavior: 'smooth' })
 }
 </script>
 
