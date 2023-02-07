@@ -15,7 +15,7 @@ import { v4 as uuid } from 'uuid'
  */
 
 const defaultOptions = {
-  timeout: 3000,
+  timeout: 5000,
   style: 'info'
 }
 
