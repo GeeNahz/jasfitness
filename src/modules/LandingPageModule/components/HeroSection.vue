@@ -7,11 +7,12 @@
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
       <div class="btns flex space-x-7">
-        <router-link
-          class="text-xl font-bold text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 transition w-52 h-14 btn-default"
-          :to="{ name: 'PlansPage' }"
-          >Get Started</router-link
+        <a
+          @click.prevent="scrollTo('#why-jasfitness')"
+          class="text-xl font-bold text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 hover:cursor-pointer transition w-52 h-14 btn-default"
         >
+          Get Started
+        </a>
         <button
           @click="openBmiCalculator"
           class="text-xl font-bold text-white bg-[#FFB628] hover:bg-[#fca800] transition w-52 h-14 btn-default"
@@ -66,9 +67,13 @@
 </template>
 
 <script setup>
-const emit = defineEmits(['showBmiCalculator'])
+const emit = defineEmits(['showBmiCalculator', 'scrollTo'])
 const openBmiCalculator = () => {
   emit('showBmiCalculator')
+}
+
+function scrollTo(selector) {
+  emit('scrollTo', selector)
 }
 </script>
 
