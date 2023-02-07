@@ -274,10 +274,6 @@
           </div>
         </div>
       </section>
-      <!-- newsletter -->
-      <section>
-        <NewsLetter />
-      </section>
     </main>
     <TheFooter />
   </div>
@@ -290,7 +286,6 @@ import TheFooter from '@/components/TheFooter.vue'
 import HomeCarousel from '../components/HomeCarousel.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
 import BmiCalculator from '../components/BmiCalculator.vue'
-import NewsLetter from '../components/NewsLetter.vue'
 
 import { ref } from 'vue'
 import { useStore } from 'vuex'
