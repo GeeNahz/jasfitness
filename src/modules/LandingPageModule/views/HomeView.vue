@@ -214,7 +214,7 @@
       </section>
       <!-- events and news section -->
       <section
-        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-8 md:py-14"
+        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-16 md:py-14"
       >
         <!-- latest events title -->
         <h4
@@ -275,8 +275,10 @@
         </div>
       </section>
       <!-- newsletter -->
-      <section>
-        <NewsLetter />
+      <section class="w-full lg:px-5">
+        <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto">
+          <NewsLetter />
+        </div>
       </section>
     </main>
     <TheFooter />
@@ -387,7 +389,7 @@ function goToSection(selector) {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .btn-default {
   display: flex;
   justify-content: center;
@@ -482,7 +484,43 @@ function goToSection(selector) {
   mix-blend-mode: difference;
 }
 
-@media screen and (max-width: 815px) {
+.newsletter-cover {
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.125);
+  background-color: white;
+  position: relative;
+  z-index: 1;
+  border: 1px solid transparent;
+  max-width: 967px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  &::before {
+    top: -10em;
+    left: -4em;
+    border-bottom: 5em solid white;
+    border-left: 55em solid transparent;
+    border-right: 10em solid transparent;
+    border-top: 5em solid transparent;
+  }
+  &::after {
+    bottom: -10em;
+    left: -4em;
+    border-bottom: 5em solid transparent;
+    border-left: 20em solid transparent;
+    border-right: 50em solid transparent;
+    border-top: 5em solid white;
+  }
+}
+
+@media screen and (max-width: 767px) {
   .white-text {
     color: white;
   }
@@ -496,9 +534,30 @@ function goToSection(selector) {
     width: 100%;
     height: 100%;
   }
+
+  .newsletter-cover {
+    max-width: 640px;
+
+    &::before {
+      top: -8em;
+      left: -8em;
+      border-top: 4em solid transparent;
+      border-right: 15em solid transparent;
+      border-left: 40em solid transparent;
+      border-bottom: 4em solid white;
+    }
+    &::after {
+      bottom: -8em;
+      left: -2em;
+      border-bottom: 5em solid transparent;
+      border-left: 15em solid transparent;
+      border-right: 30em solid transparent;
+      border-top: 3em solid white;
+    }
+  }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 639px) {
   .center-img {
     width: 320px;
     height: 455px;
@@ -528,6 +587,29 @@ function goToSection(selector) {
     top: 30%;
     transform: translateY(-50%);
     left: -50px;
+  }
+
+  .newsletter-cover {
+    width: 100%;
+
+    &::before {
+      top: -8em;
+      left: -4em;
+      height: 0;
+      border-top: 5em solid transparent;
+      border-right: 6em solid transparent;
+      border-left: 22em solid transparent;
+      border-bottom: 3em solid white;
+    }
+    &::after {
+      bottom: -8em;
+      left: -2em;
+      height: 0;
+      border-bottom: 5em solid transparent;
+      border-left: 6em solid transparent;
+      border-right: 22em solid transparent;
+      border-top: 3em solid white;
+    }
   }
 }
 </style>
