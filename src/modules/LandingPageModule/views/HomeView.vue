@@ -16,26 +16,26 @@
       <!-- why jas fitness section -->
       <section
         id="why-jasfitness"
-        class="py-12 mx-8 md:mx-16 flex flex-col lg:flex-row justify-center items-center gap-x-0 gap-y-8 lg:gap-x-8 lg:gap-y-0"
+        class="py-12 mx-8 md:mx-16 flex flex-col lg:flex-row justify-center items-center lg:items-start gap-x-0 lg:gap-x-8 gap-y-8 lg:gap-y-0"
       >
         <!-- left card -->
         <div class="relative w-[366px] h-max lg:h-[400px]">
           <h4
-            class="lg:absolute -top-20 left-[50%] lg:-translate-x-[50%] text-3xl text-gray-400 font-medium font-inter capitalize w-max mx-auto mb-8"
+            class="text-center lg:text-start text-3xl text-gray-400 font-medium font-inter capitalize mx-auto mb-8"
           >
             Why jas fitness?
           </h4>
           <CardItem
-            class="mx-auto w-[310px] lg:w-[310px] h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
+            class="mx-auto w-[310px] h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8"
           >
             <template #top>
-              <h4 class="pb-3 lg:pb-7 text-2xl lg:text-3xl font-semibold">
+              <h4 class="pb-3 xl:pb-7 text-2xl xl:text-3xl font-semibold">
                 You're not Alone
               </h4>
             </template>
             <div class="relative mb-7">
-              <p class="text-sm lg:text-base">
-                Consistency over motivation. You don’t have to face your fitness
+              <p class="text-sm xl:text-base">
+                Consistency over motivation. You don't have to face your fitness
                 goals alone. Let's do it TOGETHER.
               </p>
               <p
@@ -48,7 +48,7 @@
               <div>
                 <router-link
                   :to="{ name: 'PlansPage' }"
-                  class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] lg:w-[193px] lg:h-[54px] text-sm lg:text-base transition-all"
+                  class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] md:w-[193px] md:h-[54px] text-sm md:text-base transition-all"
                 >
                   Join Community
                 </router-link>
@@ -57,29 +57,29 @@
           </CardItem>
         </div>
         <!-- center image -->
-        <div class="relative center-img bg-gray-200 lg:w-[369px] h-[527px]">
+        <div
+          class="relative center-img bg-gray-200 w-full lg:w-[369px] h-[527px]"
+        >
           <p
             class="absolute h-full w-full bg-gradient-to-b from-transparent to-[#1f1f1f] bg-opacity-90"
           />
           <img
             class="h-full w-full"
-            height="300"
-            width="300"
             src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/feellove_5EIs7sCWK.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984853920"
-            alt="in love"
+            alt="feel the love"
           />
           <h4
-            class="absolute bottom-32 left-0 text-4xl text-white z-10 font-bold w-full text-center"
+            class="absolute bottom-32 left-0 text-3xl xl:text-4xl text-white z-10 font-bold w-full text-center"
           >
             Feel the Love
           </h4>
         </div>
         <!-- right cards -->
         <div class="flex flex-col gap-9 w-[320px] lg:w-[349px]">
-          <CardItem class="h-64 card-item card-set">
+          <CardItem class="min-h-max card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
+                <h4 class="text-2xl xl:text-3xl font-semibold mb-1">
                   Get Inspired
                 </h4>
                 <p
@@ -89,7 +89,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-sm lg:text-base font-normal">
+            <p class="card-item-body mb-3 text-sm xl:text-base font-normal">
               Network and grow with like mind. Meet FitFam with similar goals
               who are committed to a life of healthy living and more.
             </p>
@@ -99,16 +99,16 @@
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
                 />
-                <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
+                <p class="font-inter text-[14px] xl:text-[16px] mb-2 ml-1">
                   Get Started
                 </p>
               </router-link>
             </template>
           </CardItem>
-          <CardItem class="h-64 card-item card-set">
+          <CardItem class="min-h-max card-item card-set">
             <template #top>
               <div class="relative">
-                <h4 class="text-2xl lg:text-3xl font-semibold mb-1">
+                <h4 class="text-2xl xl:text-3xl font-semibold mb-1">
                   Result Oriented
                 </h4>
                 <p
@@ -118,7 +118,7 @@
                 </p>
               </div>
             </template>
-            <p class="card-item-body text-sm lg:text-base">
+            <p class="card-item-body mb-3 text-sm xl:text-base">
               Regardless of your fitness level, we've got the equipment and
               professionals to get you the results you desire.
             </p>
@@ -128,7 +128,7 @@
                   src="@/assets/icons/GetstartedblackIcon.svg"
                   alt="get started"
                 />
-                <p class="font-inter text-[13px] lg:text-[15px] mb-2 ml-1">
+                <p class="font-inter text-[14px] xl:text-[16px] mb-2 ml-1">
                   Get Started
                 </p>
               </router-link>
@@ -274,6 +274,10 @@
           </div>
         </div>
       </section>
+      <!-- newsletter -->
+      <section>
+        <NewsLetter />
+      </section>
     </main>
     <TheFooter />
   </div>
@@ -286,6 +290,7 @@ import TheFooter from '@/components/TheFooter.vue'
 import HomeCarousel from '../components/HomeCarousel.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
 import BmiCalculator from '../components/BmiCalculator.vue'
+import NewsLetter from '../components/NewsLetter.vue'
 
 import { ref } from 'vue'
 import { useStore } from 'vuex'
