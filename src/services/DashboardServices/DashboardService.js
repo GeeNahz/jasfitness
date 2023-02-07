@@ -21,5 +21,8 @@ export default {
   },
   dashboard_share_subscription(data) {
     return axiosInstance.post('dashboard/share_subscription/', data)
+  },
+  dashboard_assessments(id) {
+    return axiosInstance.get(`fitness_assessments/${id}/`)
   }
 }
