@@ -3,7 +3,13 @@ $screen-sizes: (
     'tablet-landscape-width': 1280px,
     'tablet-width': 1023px,
     'mobile-width': 414px,
-    'mobile-landscape-width': 767px
+    'mobile-landscape-width': 767px,
+
+    'sm': 640px,
+    'md': 768px,
+    'lg': 1024px,
+    'xl': 1280px,
+    '2xl': 1536px
 );
 $all-colors: (
     'primary': #fcfcfc,
