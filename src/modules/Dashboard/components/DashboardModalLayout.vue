@@ -28,7 +28,9 @@
           </div>
         </div>
         <!-- modal content -->
-        <div class="body container pb-2 lg:pb-3 border-b">
+        <div
+          class="body container pb-2 lg:pb-3 border-b max-h-[796px] sm:max-h-max overflow-y-auto overscroll-auto"
+        >
           <slot name="content">
             <p>Modal Content</p>
           </slot>
