@@ -339,13 +339,13 @@ div.link:hover {
 }
 
 a.router-link-exact-active {
-  color: #ca9b42;
+  color: #fba500;
   background: #ca9b4225;
   border-radius: 8px;
   font-weight: 600;
 }
 a.router-link-exact-active .icon {
-  color: #ca9b42;
+  color: #fba500;
 }
 
 .disabled {
