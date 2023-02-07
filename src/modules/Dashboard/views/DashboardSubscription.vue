@@ -22,6 +22,7 @@
             >
               <!-- @click="resubscribeHandler" -->
               <p class="hidden md:block">Resubscribe</p>
+              <p class="text-[10px] md:hidden">Re-sub</p>
               <AppIconRenew />
             </a>
           </div>
