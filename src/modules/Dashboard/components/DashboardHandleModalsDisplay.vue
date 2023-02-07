@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="modals fixed w-full h-full z-50">
+      <!-- profile -->
       <DashboardModalLayout
         :uid="profileModal.id"
         v-if="profileModal.open"
@@ -93,6 +94,76 @@
         @close="closeModal"
       >
         <template #header> accessment record </template>
+        <template #content>
+          <div class="items font-inter">
+            <div class="item">
+              <h4 class="item__title">Height:</h4>
+              <p class="item__content">{{ assessmentState }}</p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Weight:</h4>
+              <p class="item__content">{{ assessmentState }}</p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Arm size:</h4>
+              <p class="item__content">{{ assessmentState }}</p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Thigh size:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Waist size:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Strength:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Endurance:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Flexibility:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Comment:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">images:</h4>
+              <p class="item__content">
+                {{ assessmentState || 'NA' }}
+              </p>
+            </div>
+            <!-- <div class="item">
+              <h4 class="item__title">Referal:</h4>
+              <p class="item__content">
+                {{ profileState.referal || 'NA' }}
+              </p>
+            </div>
+            <div class="item">
+              <h4 class="item__title">Occupation:</h4>
+              <p class="item__content">
+                {{ profileState.occupation || 'NA' }}
+              </p>
+            </div> -->
+          </div>
+        </template>
       </DashboardModalLayout>
       <!-- freeze subscription -->
       <DashboardModalLayout
@@ -196,6 +267,8 @@
 import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 
+import { useObjectValidator } from '@/composables/useObjectCheck'
+
 import DashboardModalLayout from '../components/DashboardModalLayout.vue'
 
 const closeModal = (modalId) => {
@@ -231,18 +304,42 @@ const shareSubscriptionModal = computed(
   () => store.state.dashboard.modals.shareSub
 )
 
-onMounted(() => {
-  store.dispatch('dashboard/dashboard_profile', userId.value).then(
-    () => {},
-    (error) => {
-      console.log(error)
-    }
-  )
-})
-
 const profileState = computed(() =>
   store.state.dashboard.profile ? store.state.dashboard.profile : {}
 )
+const assessmentState = computed(() =>
+  store.state.dashboard.dashboardFitnessAssessment
+    ? store.state.dashboard.dashboardFitnessAssessment
+    : {}
+)
+
+onMounted(() => {
+  const { isEmpty: profileCheck } = useObjectValidator(profileState.value)
+  if (!profileState.value || profileCheck.value) {
+    store.dispatch('dashboard/dashboard_profile', userId.value).then(
+      () => {},
+      (error) => {
+        store.dispatch('landingpage/error', {
+          message: `${error}. Unable to retrieve your profile.`,
+          style: 'error'
+        })
+      }
+    )
+  }
+
+  const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
+  if (!assessmentState.value || assessmentCheck) {
+    store.dispatch('dashboard/dashboard_fitness_assessment', userId.value).then(
+      () => {},
+      (error) => {
+        store.dispatch('landingpage/error', {
+          message: `${error}. Unable to retrieve your assessment records.`,
+          style: 'error'
+        })
+      }
+    )
+  }
+})
 </script>
 
 <style lang="scss" scoped>
