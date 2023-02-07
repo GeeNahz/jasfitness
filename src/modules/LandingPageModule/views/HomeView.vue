@@ -235,28 +235,28 @@
               :style="`background-image: url(${event.imageName})`"
             ></div>
             <div
-              class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-4 h-[50%]"
+              class="module-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-4 h-[60%]"
             >
-              <h1 class="font-medium text-3xl mb-2">{{ event.title }}</h1>
+              <h1 class="font-medium text-xl mb-2">{{ event.title }}</h1>
               <p class="text-sm leading-1 font-light">
                 {{ event.description }}
               </p>
               <a
                 v-if="event.linkUrl"
                 :href="event.linkUrl"
-                class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
+                class="flex gap-2 py-4 text-lg font-quicksand font-semibold"
                 target="_blank"
                 ><img
                   src="@/assets/icons/GooglereviewlinkIcon.svg"
                   alt="get start"
                 />
-                <p>{{ event.linkText }}</p></a
-              >
+                <p>{{ event.linkText }}</p>
+              </a>
               <a
                 v-else
                 @click.prevent="copyToClipboard(event.linkText)"
                 href="https://"
-                class="flex gap-2 py-4 text-2xl font-quicksand font-semibold"
+                class="flex flex-nowrap gap-2 py-4 text-lg font-quicksand font-semibold"
                 ><img
                   src="@/assets/icons/GooglereviewlinkIcon.svg"
                   alt="get start"
@@ -287,6 +287,7 @@ import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingC
 import BmiCalculator from '../components/BmiCalculator.vue'
 
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 import { useMeta } from 'vue-meta'
 import { toClipboard } from '@soerenmartius/vue3-clipboard'
 
@@ -295,6 +296,14 @@ useMeta({
 })
 
 const eventsAndNews = ref([
+  {
+    imageName:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/c2dcec0f-51bb-4c86-af09-0c2761d20af3_mGujDYX0p.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675755171041',
+    title: 'Jas Multipitch Center',
+    description: `Gym center - Football - Volleyball - Badminton - & more.`,
+    linkText: '07034644002',
+    linkUrl: ''
+  },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
@@ -310,14 +319,6 @@ const eventsAndNews = ref([
     title: 'Special Classes',
     description:
       'Special classes at Jas Fitness get you to your goal as our skilled instructor is directly responsible for your goals. Join Sarah Bon today.',
-    linkText: '07034644002',
-    linkUrl: ''
-  },
-  {
-    imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/legit_class_1_YCYruYiSD.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195547',
-    title: 'Special Classes',
-    description: `Shred and trim your body with coach Legit. It's Fun and Amazing.`,
     linkText: '07034644002',
     linkUrl: ''
   }
@@ -354,6 +355,8 @@ const reviews = ref([
   }
 ])
 
+const store = useStore()
+
 const reviewPosition = (index) => index % 2 === 0
 // const getImageUrl = (imageName) => require(`${imageName}`)
 
@@ -362,6 +365,11 @@ const toggleBmi = () => (showBmi.value = !showBmi.value)
 
 const copyToClipboard = async (value) => {
   toClipboard(value)
+  let alertData = {
+    message: 'Number successfully copied to clipboard',
+    timeout: false
+  }
+  store.dispatch('landingpage/success', alertData)
 }
 </script>
 
@@ -373,6 +381,7 @@ const copyToClipboard = async (value) => {
   color: #f9f9f9;
   border-radius: 10px;
 }
+
 .btn-default:hover {
   color: #1f1f1f;
 }
@@ -381,20 +390,24 @@ const copyToClipboard = async (value) => {
   border-radius: 10px;
   background: rgba(224, 224, 224, 0.24);
 }
+
 .card-item.card-set {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 30px 50px;
 }
+
 .card-item .card-item-btns {
   display: flex;
   align-items: center;
 }
+
 .card-item .card-item-btns:hover {
   color: goldenrod;
   cursor: pointer;
 }
+
 .center-img {
   border-radius: 10px;
   overflow: hidden;
@@ -406,9 +419,11 @@ const copyToClipboard = async (value) => {
   overflow: hidden;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 }
+
 .single-module:hover .module-pop-up {
   bottom: 0px;
 }
+
 .single-module:hover .module {
   filter: brightness(0.5) blur(2px);
 }
@@ -416,9 +431,10 @@ const copyToClipboard = async (value) => {
 .module {
   transition: all 0.5s ease-out;
 }
+
 .module-pop-up {
   position: absolute;
-  bottom: -50%;
+  bottom: -60%;
   transition: all 0.5s ease-out 0.1s;
 }
 
@@ -429,6 +445,7 @@ const copyToClipboard = async (value) => {
   border-radius: 15px;
   background-color: #f9f9f9;
 }
+
 .item {
   display: flex;
   flex-direction: column;
@@ -438,12 +455,14 @@ const copyToClipboard = async (value) => {
   height: 100%;
   padding: 20px 55px;
 }
+
 .img {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
   left: -60px;
 }
+
 .reviews__title {
   color: #fff;
   mix-blend-mode: difference;
@@ -453,10 +472,12 @@ const copyToClipboard = async (value) => {
   .white-text {
     color: white;
   }
+
   .single-review {
     width: 470px;
     height: max-content;
   }
+
   .item {
     width: 100%;
     height: 100%;
@@ -471,19 +492,24 @@ const copyToClipboard = async (value) => {
     margin-left: auto;
     margin-right: auto;
   }
+
   .card-item .card-item-btns {
     padding-top: 15px;
   }
+
   .white-text {
     color: white;
   }
+
   .single-review {
     width: 270px;
     height: max-content;
   }
+
   .item {
     padding: 20px 40px;
   }
+
   .img {
     top: 30%;
     transform: translateY(-50%);
