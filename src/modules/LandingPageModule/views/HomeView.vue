@@ -418,6 +418,15 @@ function goToSection(selector) {
     border-radius: 50px;
     box-shadow: 0 4px 15px 5px #d9d9d950;
     z-index: 0;
+
+    @media screen and (max-width: 1023px) {
+      & {
+        height: 95%;
+        width: 100%;
+        border-radius: 15px;
+        transform: rotate(4deg);
+      }
+    }
   }
 }
 
