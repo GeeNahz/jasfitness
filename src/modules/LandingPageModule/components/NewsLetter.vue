@@ -118,7 +118,7 @@ function submitHandler(event) {
         outline-offset: 1px;
       }
 
-      @include responsive('sm') {
+      @include responsive('lg') {
         width: 100%;
       }
     }
@@ -130,7 +130,7 @@ function submitHandler(event) {
       color: color('primary');
       width: max-content;
 
-      @include responsive('md') {
+      @include responsive('lg') {
         width: 100%;
       }
     }
