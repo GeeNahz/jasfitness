@@ -34,26 +34,48 @@
 </template>
 
 <script setup>
-// import EmailService from '@/services/EmailServices/EmailService'
+import EmailService from '@/services/EmailServices/EmailService'
 
-const inputFields = [
+import { ref } from 'vue'
+
+const inputFields = ref([
   {
     type: 'text',
     id: 'name',
     name: 'name',
-    placeholder: 'Name'
+    placeholder: 'Name',
+    value: ''
   },
   {
     type: 'text',
     id: 'email',
     name: 'email',
-    placeholder: 'Email'
+    placeholder: 'Email',
+    value: ''
   }
-]
+])
 function submitHandler(event) {
-  for (var input of inputFields) {
-    console.log(event.target.elements[input.name].value)
+  for (var input of inputFields.value) {
+    // console.log(event.target.elements[input.name].value)
+    input.value = event.target.elements[input.name].value
   }
+  console.log(inputFields.value)
+  // TODO: Get feedback from Ment as to how to go about the bmi field and make necessary adjustments
+  let data = {
+    bmi: inputFields.value[0].value,
+    email: inputFields.value[1].value
+  }
+  // NOTE: This won't work. It requires a "bmi" integer field along with a required email field.
+  EmailService.enquiry(data)
+    .then(() => {
+      console.log('Successfully sent!')
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+    .finally(() => {
+      console.log('Completed.')
+    })
 }
 </script>
 
