@@ -214,7 +214,7 @@
       </section>
       <!-- events and news section -->
       <section
-        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-16 md:py-14"
+        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-10 lg:py-16"
       >
         <!-- latest events title -->
         <h4
@@ -275,9 +275,11 @@
         </div>
       </section>
       <!-- newsletter -->
-      <section class="w-full lg:px-5">
-        <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto">
-          <NewsLetter />
+      <section class="w-full bg-gray-100 lg:px-5">
+        <!-- <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto"> -->
+        <div class="newsletter sm:overflow-x-clip mx-auto">
+          <div class="newsletter__rotated-bg"></div>
+          <NewsLetter class="newsletter__main" />
         </div>
       </section>
     </main>
@@ -390,6 +392,35 @@ function goToSection(selector) {
 </script>
 
 <style lang="scss" scoped>
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  place-items: center;
+  padding: 10px 5px;
+
+  #{&}__main,
+  #{&}__rotated-bg {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+  #{&}__main {
+    z-index: 1;
+  }
+  #{&}__rotated-bg {
+    background: #ffffff;
+    margin: 0 auto;
+    height: 90%;
+    width: 85%;
+    top: 60%;
+    left: 50%;
+    transform: rotate(6deg);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px 5px #d9d9d950;
+    z-index: 0;
+  }
+}
+
 .btn-default {
   display: flex;
   justify-content: center;
