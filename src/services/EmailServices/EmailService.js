@@ -1,7 +1,7 @@
 import axiosInstance from './axiosConfig'
 
 export default {
-  post_bmi_result(data) {
+  enquiry(data) {
     return axiosInstance.post('/enquiry/', data)
   },
   post_contact_us_form(data) {
