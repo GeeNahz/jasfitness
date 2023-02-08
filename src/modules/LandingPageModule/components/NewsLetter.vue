@@ -34,6 +34,8 @@
 </template>
 
 <script setup>
+// import EmailService from '@/services/EmailServices/EmailService'
+
 const inputFields = [
   {
     type: 'text',
@@ -76,6 +78,12 @@ function submitHandler(event) {
 
 .wrapper {
   padding: 0 0.5rem;
+  width: max-content;
+  margin: 0 auto;
+
+  @include responsive('sm') {
+    width: 100%;
+  }
 
   #{&}__head__heading {
     font-size: 20px;
@@ -91,7 +99,7 @@ function submitHandler(event) {
 
   #{&}__form {
     & .form-input {
-      width: 100%;
+      width: 300px;
       margin-bottom: 1rem;
       padding: 0.8rem;
       border-radius: 3px;
@@ -109,6 +117,10 @@ function submitHandler(event) {
         outline: 2px #fba500 solid;
         outline-offset: 1px;
       }
+
+      @include responsive('sm') {
+        width: 100%;
+      }
     }
 
     & .form-action {
@@ -118,7 +130,7 @@ function submitHandler(event) {
       color: color('primary');
       width: max-content;
 
-      @include responsive('lg') {
+      @include responsive('md') {
         width: 100%;
       }
     }
@@ -126,6 +138,11 @@ function submitHandler(event) {
 
   #{&}__disclaimer {
     font-size: font-size('x-small');
+    width: 700px;
+
+    @include responsive('sm') {
+      width: 100%;
+    }
   }
 }
 </style>
