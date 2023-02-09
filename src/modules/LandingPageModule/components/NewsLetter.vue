@@ -7,6 +7,7 @@
         events, etc.
       </p>
       <form
+        id="newsletter-form"
         class="wrapper__form lg:flex lg:space-x-5"
         @submit.prevent="submitHandler"
       >
@@ -72,6 +73,10 @@ function submitHandler(event) {
       store.dispatch('landingpage/success', {
         message: 'You have successfully been subscribed to our newsletter.'
       })
+      document.querySelector('#newsletter-form').reset()
+      for (var input of inputFields.value) {
+        input.value = ''
+      }
     })
     .catch(() => {
       store.dispatch('landingpage/error', {
