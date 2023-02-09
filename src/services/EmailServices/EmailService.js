@@ -12,5 +12,3 @@ export default {
     return axiosInstance.post('/api/newsletter/', data)
   }
 }
-
-// data = { name: , email: } -> newsletter data fields
