@@ -61,13 +61,12 @@ function submitHandler(event) {
   for (var input of inputFields.value) {
     input.value = event.target.elements[input.name].value
   }
-  console.log(inputFields.value)
-  // TODO: Get feedback from Ment as to how to go about the bmi field and make necessary adjustments
+
   let data = {
     name: inputFields.value[0].value,
     email: inputFields.value[1].value
   }
-  // NOTE: This won't work. It requires a "bmi" integer field along with a required email field.
+
   EmailService.newsletter(data)
     .then(() => {
       store.dispatch('landingpage/success', {
