@@ -56,7 +56,6 @@ const inputFields = ref([
 ])
 function submitHandler(event) {
   for (var input of inputFields.value) {
-    // console.log(event.target.elements[input.name].value)
     input.value = event.target.elements[input.name].value
   }
   console.log(inputFields.value)
