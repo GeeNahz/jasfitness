@@ -8,7 +8,7 @@
         />
       </div>
       <div class="content__texts">
-        <div class="header">{{ details.name }}</div>
+        <!-- <div class="header">{{ details.name }}</div> -->
       </div>
     </div>
   </div>
@@ -77,14 +77,14 @@ defineProps(['details'])
     margin-bottom: 16px;
 
     & img {
-      filter: blur(4px);
+      // filter: blur(4px);
       width: 100%;
       aspect-ratio: 3/2;
       object-fit: contain;
       mix-blend-mode: color-burn;
 
       @include responsive('lg') {
-        filter: blur(2px);
+        // filter: blur(2px);
         aspect-ratio: 5/3;
       }
     }
