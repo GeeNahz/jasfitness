@@ -136,6 +136,15 @@
           </CardItem>
         </div>
       </section>
+      <!-- hmo partners -->
+      <section class="py-5 lg:py-8 px-4 lg:px-20">
+        <h4
+          class="capitalize mb-3 lg:mb-10 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
+        >
+          Our HMO partners
+        </h4>
+        <HmoCarousel />
+      </section>
       <!-- reviews -->
       <section
         class="relative flex flex-col lg:flex-row items-center md:gap-8 lg:gap-16 justify-center w-full overflow-hidden lg:mb-6 py-10 lg:py-20 px-3 md:px-8 lg:px-16"
@@ -291,10 +300,11 @@
 import HeroSection from '../components/HeroSection.vue'
 import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import HomeCarousel from '../components/HomeCarousel.vue'
+import HomeCarousel from '../components/CarouselHome.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
 import BmiCalculator from '../components/BmiCalculator.vue'
 import NewsLetter from '../components/NewsLetter.vue'
+import HmoCarousel from '../components/CarouselHmo.vue'
 
 import { ref } from 'vue'
 import { useStore } from 'vuex'
