@@ -34,9 +34,12 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+
 import EmailService from '@/services/EmailServices/EmailService'
 
-import { ref } from 'vue'
+const store = useStore()
 
 const inputFields = ref([
   {
@@ -67,13 +70,14 @@ function submitHandler(event) {
   // NOTE: This won't work. It requires a "bmi" integer field along with a required email field.
   EmailService.enquiry(data)
     .then(() => {
-      console.log('Successfully sent!')
+      store.dispatch('dashboard/success', {
+        message: 'You have successfully been subscribed to our newsletter.'
+      })
     })
-    .catch((err) => {
-      console.log(err.message)
-    })
-    .finally(() => {
-      console.log('Completed.')
+    .catch(() => {
+      store.dispatch('dashboard/error', {
+        message: 'There was a problem while subscribing. Please try again.'
+      })
     })
 }
 </script>
