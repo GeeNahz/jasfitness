@@ -64,18 +64,18 @@ function submitHandler(event) {
   console.log(inputFields.value)
   // TODO: Get feedback from Ment as to how to go about the bmi field and make necessary adjustments
   let data = {
-    bmi: inputFields.value[0].value,
+    name: inputFields.value[0].value,
     email: inputFields.value[1].value
   }
   // NOTE: This won't work. It requires a "bmi" integer field along with a required email field.
-  EmailService.enquiry(data)
+  EmailService.newsletter(data)
     .then(() => {
-      store.dispatch('dashboard/success', {
+      store.dispatch('landingpage/success', {
         message: 'You have successfully been subscribed to our newsletter.'
       })
     })
     .catch(() => {
-      store.dispatch('dashboard/error', {
+      store.dispatch('landingpage/error', {
         message: 'There was a problem while subscribing. Please try again.'
       })
     })
