@@ -21,14 +21,14 @@
         />
         <button class="form-action lg:h-11" type="submit">Subscribe</button>
       </form>
-      <p class="wrapper__disclaimer">
+      <!-- <p class="wrapper__disclaimer">
         We ask for your name and email so that you can receive our newsletter
         for exlusive news and updates. You can unsubscribe at any time. By click
         subscribe, you acknowledge that the information you provide will be
         transferred to us for processing. We respect your privacy and will not
         share any information you give us with any one as stated in our Privary
         policy and Terms.
-      </p>
+      </p> -->
     </div>
   </div>
 </template>
