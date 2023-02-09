@@ -286,7 +286,7 @@
       <!-- newsletter -->
       <section class="w-full bg-gray-100 lg:px-5">
         <!-- <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto"> -->
-        <div class="newsletter sm:overflow-x-clip mx-auto">
+        <div class="newsletter-cover sm:overflow-x-clip mx-auto">
           <div class="newsletter__rotated-bg"></div>
           <NewsLetter class="newsletter__main" />
         </div>
@@ -320,7 +320,7 @@ const eventsAndNews = ref([
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/c2dcec0f-51bb-4c86-af09-0c2761d20af3_mGujDYX0p.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675755171041',
     title: 'Jas Multipitch Center',
-    description: `Gym center - Football - Volleyball - Badminton - & more.`,
+    description: `champions need the best pitch and that is what we have.`,
     linkText: '07034644002',
     linkUrl: ''
   },
