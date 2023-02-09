@@ -37,6 +37,11 @@ export default defineComponent({
         id: 2,
         name: 'Leadway',
         imageUrl: 'leadway.png'
+      },
+      {
+        id: 3,
+        name: 'Total Health Trust',
+        imageUrl: 'tht.jpg'
       }
     ]
     // corousel config
