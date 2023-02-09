@@ -6,5 +6,11 @@ export default {
   },
   post_contact_us_form(data) {
     return axiosInstance.post('/api/contact-us/', data)
+  },
+  newsletter(data) {
+    // https://app.jasfitnessng.com/api/newsletter/
+    return axiosInstance.post('/api/newsletter/', data)
   }
 }
+
+// data = { name: , email: } -> newsletter data fields
