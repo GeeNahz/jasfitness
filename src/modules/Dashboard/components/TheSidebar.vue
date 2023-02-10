@@ -207,6 +207,7 @@
         <ul class="space-y-1 pl-2 pr-2 text-sm">
           <li>
             <router-link
+              @click="toggleSideBar"
               :to="{ name: 'DashboardHome' }"
               class="p-2 flex items-center gap-2"
             >
@@ -218,6 +219,7 @@
           </li>
           <li>
             <router-link
+              @click="toggleSideBar"
               :to="{ name: 'DashboardFitnessRecord' }"
               class="p-2 flex items-center gap-2"
             >
@@ -229,6 +231,7 @@
           </li>
           <li>
             <router-link
+              @click="toggleSideBar"
               :to="{ name: 'DashboardSubscription' }"
               class="p-2 flex items-center gap-2"
             >

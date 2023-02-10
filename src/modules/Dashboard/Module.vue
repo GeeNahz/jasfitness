@@ -6,7 +6,7 @@
       v-if="
         profileModal ||
         healthRecordModal ||
-        accessmentRecordModal ||
+        assessmentRecordModal ||
         freezeSubscriptionModal ||
         shareSubscriptionModal
       "
@@ -16,6 +16,9 @@
     </div>
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
+      <div class="">
+        <Onboarding />
+      </div>
       <router-view :key="$route.path" class="h-full w-full" />
     </div>
   </div>
@@ -24,31 +27,45 @@
 <script>
 import { computed } from '@vue/reactivity'
 import { useStore } from 'vuex'
+
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
+import Onboarding from './components/OnBoarding.vue'
+
 export default {
   name: 'DashboardView',
   components: {
     TheSidebar,
-    DashboardHandleModalsDisplay
+    DashboardHandleModalsDisplay,
+    Onboarding
+  },
+  setup() {
+    const store = useStore()
+    const profileModal = computed(
+      () => store.state.dashboard.modals.profile.open
+    )
+    const healthRecordModal = computed(
+      () => store.state.dashboard.modals.healthRecord.open
+    )
+    const assessmentRecordModal = computed(
+      () => store.state.dashboard.modals.accessmentRecord.open
+    )
+    const freezeSubscriptionModal = computed(
+      () => store.state.dashboard.modals.freezeSub.open
+    )
+    const shareSubscriptionModal = computed(
+      () => store.state.dashboard.modals.shareSub.open
+    )
+
+    return {
+      profileModal,
+      healthRecordModal,
+      assessmentRecordModal,
+      freezeSubscriptionModal,
+      shareSubscriptionModal
+    }
   }
 }
-</script>
-<script setup>
-const store = useStore()
-const profileModal = computed(() => store.state.dashboard.modals.profile.open)
-const healthRecordModal = computed(
-  () => store.state.dashboard.modals.healthRecord.open
-)
-const accessmentRecordModal = computed(
-  () => store.state.dashboard.modals.accessmentRecord.open
-)
-const freezeSubscriptionModal = computed(
-  () => store.state.dashboard.modals.freezeSub.open
-)
-const shareSubscriptionModal = computed(
-  () => store.state.dashboard.modals.shareSub.open
-)
 </script>
 
 <style lang="scss" scoped>
@@ -74,6 +91,7 @@ const shareSubscriptionModal = computed(
     grid-area: initial;
   }
 }
+
 .main-container {
   grid-area: 'main';
 
@@ -85,6 +103,7 @@ const shareSubscriptionModal = computed(
     padding: 85px 0;
     grid-area: initial;
   }
+
   @include responsive('mobile-landscape-width') {
     padding: 70px 0;
     grid-area: initial;

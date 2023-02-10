@@ -5,11 +5,11 @@ $screen-sizes: (
     'mobile-width': 414px,
     'mobile-landscape-width': 767px,
 
-    'sm': 640px,
-    'md': 768px,
-    'lg': 1024px,
-    'xl': 1280px,
-    '2xl': 1536px
+    'sm': 639px, // origianlly 640px
+    'md': 767px, // origianlly 768px
+    'lg': 1023px, // origianlly 1024px
+    'xl': 1279px, // origianlly 1280px
+    '2xl': 1535px // origianlly 1536px
 );
 $all-colors: (
     'primary': #fcfcfc,

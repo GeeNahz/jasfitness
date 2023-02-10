@@ -93,7 +93,7 @@
       class="w-full lg:mb-7 text-[#969696] font-extralight text-[10px] lg:text-sm text-center"
     >
       <p>
-        &copy; 2022 Jas Fitness Center &#124;
+        &copy; 2023 Jas Fitness Center &#124;
         <a href="https://">Privacy Policy</a> &#124;
         <a href="https://">Terms & Conditions</a> &#124; Powered by JAS FITNESS
       </p>

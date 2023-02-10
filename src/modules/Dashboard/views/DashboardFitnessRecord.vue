@@ -124,9 +124,9 @@
                       Fitness & Health Record
                     </p>
                   </li>
-                  <li class="w-full opacity-30">
+                  <li class="w-full">
                     <p
-                      class="link w-full flex items-center gap-3 text-sm md:text-base disabled"
+                      class="link w-full flex items-center gap-3 text-sm md:text-base"
                     >
                       <AppIconAccessment />
                       Assessment Record

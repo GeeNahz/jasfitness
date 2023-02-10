@@ -136,6 +136,15 @@
           </CardItem>
         </div>
       </section>
+      <!-- hmo partners -->
+      <section class="py-5 lg:py-8 px-4 lg:px-20">
+        <h4
+          class="capitalize mb-3 lg:mb-10 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
+        >
+          Our HMO partners
+        </h4>
+        <HmoCarousel />
+      </section>
       <!-- reviews -->
       <section
         class="relative flex flex-col lg:flex-row items-center md:gap-8 lg:gap-16 justify-center w-full overflow-hidden lg:mb-6 py-10 lg:py-20 px-3 md:px-8 lg:px-16"
@@ -214,7 +223,7 @@
       </section>
       <!-- events and news section -->
       <section
-        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-16 md:py-14"
+        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-10 lg:py-16"
       >
         <!-- latest events title -->
         <h4
@@ -224,7 +233,7 @@
         </h4>
         <!-- latest events cards destop -->
         <div
-          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-between items-center"
+          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-center items-center"
         >
           <div
             v-for="(event, i) in eventsAndNews"
@@ -275,9 +284,11 @@
         </div>
       </section>
       <!-- newsletter -->
-      <section class="w-full lg:px-5">
-        <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto">
-          <NewsLetter />
+      <section class="w-full bg-gray-100 lg:px-5">
+        <!-- <div class="newsletter-cover sm:overflow-x-clip my-1 mx-auto"> -->
+        <div class="newsletter-cover sm:overflow-x-clip mx-auto">
+          <div class="newsletter__rotated-bg"></div>
+          <NewsLetter class="newsletter__main" />
         </div>
       </section>
     </main>
@@ -289,10 +300,11 @@
 import HeroSection from '../components/HeroSection.vue'
 import CardItem from '../components/CardItem.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import HomeCarousel from '../components/HomeCarousel.vue'
+import HomeCarousel from '../components/CarouselHome.vue'
 import ReviewCardStarsRatingComponent from '../components/ReviewCardStarsRatingComponent.vue'
 import BmiCalculator from '../components/BmiCalculator.vue'
 import NewsLetter from '../components/NewsLetter.vue'
+import HmoCarousel from '../components/CarouselHmo.vue'
 
 import { ref } from 'vue'
 import { useStore } from 'vuex'
@@ -308,19 +320,19 @@ const eventsAndNews = ref([
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/c2dcec0f-51bb-4c86-af09-0c2761d20af3_mGujDYX0p.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675755171041',
     title: 'Jas Multipitch Center',
-    description: `Gym center - Football - Volleyball - Badminton - & more.`,
+    description: `Champions need the best pitch and that is what we have. With our Multi Pitch center you get to play your favourite sports right here at Jas Fitness.`,
     linkText: '07034644002',
     linkUrl: ''
   },
-  {
-    imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
-    title: 'Jas Auto Wash',
-    description:
-      'Get your car washed while at the gym achieve 2 goals at once.',
-    linkText: 'Book Wash',
-    linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
-  },
+  // {
+  //   imageName:
+  //     'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
+  //   title: 'Jas Auto Wash',
+  //   description:
+  //     'Get your car washed while at the gym achieve 2 goals at once.',
+  //   linkText: 'Book Wash',
+  //   linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
+  // },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Sarah_bon_s_class_1_-4PD3HRir.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195662',
@@ -390,6 +402,44 @@ function goToSection(selector) {
 </script>
 
 <style lang="scss" scoped>
+.newsletter {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-content: center;
+  place-items: center;
+  padding: 10px 5px;
+
+  #{&}__main,
+  #{&}__rotated-bg {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+  #{&}__main {
+    z-index: 1;
+  }
+  #{&}__rotated-bg {
+    background: #ffffff;
+    margin: 0 auto;
+    height: 90%;
+    width: 85%;
+    top: 60%;
+    left: 50%;
+    transform: rotate(6deg);
+    border-radius: 50px;
+    box-shadow: 0 4px 15px 5px #d9d9d950;
+    z-index: 0;
+
+    @media screen and (max-width: 1023px) {
+      & {
+        height: 95%;
+        width: 100%;
+        border-radius: 15px;
+        transform: rotate(4deg);
+      }
+    }
+  }
+}
+
 .btn-default {
   display: flex;
   justify-content: center;
