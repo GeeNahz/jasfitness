@@ -79,7 +79,7 @@ defineProps(['details'])
     & img {
       // filter: blur(4px);
       width: 100%;
-      aspect-ratio: 3/2;
+      aspect-ratio: 6/2;
       object-fit: contain;
       mix-blend-mode: color-burn;
 
