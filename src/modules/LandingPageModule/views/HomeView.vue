@@ -233,7 +233,7 @@
         </h4>
         <!-- latest events cards destop -->
         <div
-          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-between items-center"
+          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-center items-center"
         >
           <div
             v-for="(event, i) in eventsAndNews"
@@ -320,19 +320,19 @@ const eventsAndNews = ref([
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/c2dcec0f-51bb-4c86-af09-0c2761d20af3_mGujDYX0p.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675755171041',
     title: 'Jas Multipitch Center',
-    description: `champions need the best pitch and that is what we have.`,
+    description: `Champions need the best pitch and that is what we have. With our Multi Pitch center you get to play your favourite sports right here at Jas Fitness.`,
     linkText: '07034644002',
     linkUrl: ''
   },
-  {
-    imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
-    title: 'Jas Auto Wash',
-    description:
-      'Get your car washed while at the gym achieve 2 goals at once.',
-    linkText: 'Book Wash',
-    linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
-  },
+  // {
+  //   imageName:
+  //     'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
+  //   title: 'Jas Auto Wash',
+  //   description:
+  //     'Get your car washed while at the gym achieve 2 goals at once.',
+  //   linkText: 'Book Wash',
+  //   linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
+  // },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Sarah_bon_s_class_1_-4PD3HRir.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669397195662',
