@@ -1,10 +1,13 @@
 <template>
   <Carousel
     :autoplay="5000"
+    :transition="1200"
+    :pause-autoplay-on-hover="true"
+    :items-to-scroll="1"
     :breakpoints="breakpoints"
     :settings="settings"
-    :items-to-scroll="1"
     :wrap-around="true"
+    dir="ltr"
   >
     <Slide v-for="item in carouselItems" :key="item.id">
       <TheCard :details="item" />
@@ -30,13 +33,13 @@ export default defineComponent({
     const carouselItems = [
       {
         id: 1,
-        name: 'Bastion Health',
-        imageUrl: 'bastion.png'
+        name: 'Leadway',
+        imageUrl: 'leadway.png'
       },
       {
         id: 2,
-        name: 'Leadway',
-        imageUrl: 'leadway.png'
+        name: 'Bastion Health',
+        imageUrl: 'bastion.png'
       },
       {
         id: 3,
@@ -46,13 +49,13 @@ export default defineComponent({
     ]
     // corousel config
     const settings = {
-      itemsToShow: 1.5,
+      itemsToShow: 1,
       wrapAround: true,
       snapAlign: 'center'
     }
     const breakpoints = {
       300: { itemsToShow: 1 },
-      700: { itemsToShow: 1.5 }
+      700: { itemsToShow: 1 }
     }
     return { carouselItems, breakpoints, settings }
   }
