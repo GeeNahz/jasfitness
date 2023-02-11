@@ -7,7 +7,9 @@ This project contains various modules that power the [JasFitness site](https://j
 
 ---
 ### System setup
+
 Before proceeding with the project, you have to have [NodeJs](https://nodejs.org/en/download/) version 16.0 or higher installed.
+
 ---
 
 ### Project setup
