@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { provide, ref } from 'vue'
 import { useMeta } from 'vue-meta'
 import TheAlerts from './components/TheAlerts.vue'
 
@@ -20,6 +21,19 @@ export default {
       title: '',
       htmlAttrs: { lang: 'en', amp: true }
     })
+
+    const isReady = ref(false)
+    function toggleIsReady(newState) {
+      setTimeout(() => {
+        isReady.value = newState
+      }, 0)
+    }
+    provide('isComponentReady', { isReady, toggleIsReady })
+    const isNavbarOpen = ref(false)
+    function toggleIsNavbarOpen(newState) {
+      isNavbarOpen.value = newState
+    }
+    provide('navbar', { isNavbarOpen, toggleIsNavbarOpen })
   },
   components: { TheAlerts }
 }
