@@ -191,7 +191,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, inject } from 'vue'
 import { useStore } from 'vuex'
 import { useMeta } from 'vue-meta'
 
@@ -232,6 +232,7 @@ const gym_attendance = computed(() =>
     : {}
 )
 
+const { toggleIsReady } = inject('isComponentReady')
 onMounted(() => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -249,6 +250,7 @@ onMounted(() => {
       store.dispatch('error', { message, timeout: 3000 })
     }
   )
+  toggleIsReady(true)
 })
 
 const {

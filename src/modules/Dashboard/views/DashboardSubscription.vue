@@ -257,7 +257,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, inject } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
@@ -288,6 +288,7 @@ const dashboardSub = computed(() =>
     : {}
 )
 
+const { toggleIsReady } = inject('isComponentReady')
 onMounted(async () => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -304,6 +305,7 @@ onMounted(async () => {
       'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
     store.dispatch('landingpage/error', { message, timeout: 3000 })
   }
+  toggleIsReady(true)
 })
 
 const plans = [
