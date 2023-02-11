@@ -16,9 +16,9 @@
     </div>
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
-      <!-- <div class="">
+      <div class="">
         <Onboarding />
-      </div> -->
+      </div>
       <router-view :key="$route.path" class="h-full w-full" />
     </div>
   </div>
