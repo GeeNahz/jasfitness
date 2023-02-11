@@ -16,7 +16,7 @@
     </div>
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
-      <div class="">
+      <div class="z-50">
         <Onboarding />
       </div>
       <router-view :key="$route.path" class="h-full w-full" />
@@ -30,14 +30,14 @@ import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
-// import Onboarding from './components/OnBoarding.vue'
+import Onboarding from './components/OnBoarding.vue'
 
 export default {
   name: 'DashboardView',
   components: {
     TheSidebar,
-    DashboardHandleModalsDisplay
-    // Onboarding
+    DashboardHandleModalsDisplay,
+    Onboarding
   },
   setup() {
     const store = useStore()
