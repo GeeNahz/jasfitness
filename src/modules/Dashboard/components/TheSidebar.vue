@@ -97,7 +97,8 @@
 
   <!-- nav bar on small screen -->
   <div
-    class="z-30 flex justify-between items-center lg:hidden w-full p-4 bg-white fixed shadow"
+    id="navbar"
+    class="z-10 flex justify-between items-center lg:hidden w-full p-4 bg-white fixed shadow"
   >
     <div class="logo flex items-center space-x-4 font-semibold">
       <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
@@ -110,6 +111,7 @@
       </router-link>
     </div>
     <svg
+      id="navbar-toggle"
       @click="toggleSideBar"
       class="h-full"
       width="37"
@@ -188,7 +190,7 @@
   <div
     @click.self="toggleSideBar"
     v-if="showSideBarNav"
-    class="lg:hidden fixed lg:fixed top-0 left-0 h-full w-full bg-gray-500 bg-opacity-50 z-50"
+    class="lg:hidden fixed lg:fixed top-0 left-0 h-full w-full bg-gray-500 bg-opacity-50 z-20"
   >
     <div
       class="relative w-3/5 md:w-2/5 h-max md:px-4 pt-4 pb-24 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
@@ -220,7 +222,7 @@
               <p>Home</p>
             </router-link>
           </li>
-          <li id="fitnessrecord-link">
+          <li id="fitnessrecord-link-mobile">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardFitnessRecord' }"
@@ -232,7 +234,7 @@
               <p>Fitness Record</p>
             </router-link>
           </li>
-          <li id="mysubscription-link">
+          <li id="mysubscription-link-mobile">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardSubscription' }"
@@ -289,7 +291,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -311,8 +313,10 @@ function logout() {
 
 const showSideBarNav = ref(false)
 
+const { toggleIsNavbarOpen } = inject('navbar')
 const toggleSideBar = () => {
   showSideBarNav.value = !showSideBarNav.value
+  toggleIsNavbarOpen(showSideBarNav.value)
   document.querySelector('#app').classList.toggle('overflow-y-hidden')
 }
 </script>
