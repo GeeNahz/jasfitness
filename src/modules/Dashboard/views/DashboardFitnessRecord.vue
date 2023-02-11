@@ -28,6 +28,7 @@
         <br />
         <!-- goals -->
         <div
+          id="goals"
           class="relative goals-container border border-gray-300 rounded-xl md:w-96 p-6"
         >
           <p
@@ -93,7 +94,7 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div class="w-full">
+        <div id="fitnessrecord-panel" class="w-full">
           <div class="flex flex-col items-center lg:block mb-4 w-full">
             <DashboardSubscriptionCard class="w-full" :addIcon="false">
               <template #title>

@@ -14,7 +14,10 @@
       </div>
     </div>
     <!-- outer side bar -->
-    <div class="burger-menu w-max flex flex-col pb-20 justify-between h-full">
+    <div
+      id="sidebar"
+      class="burger-menu w-max flex flex-col pb-20 justify-between h-full"
+    >
       <div>
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
           <li>
@@ -28,7 +31,7 @@
               <p>Home</p>
             </router-link>
           </li>
-          <li>
+          <li id="fitnessrecord-link">
             <router-link
               :to="{ name: 'DashboardFitnessRecord' }"
               class="p-2 flex items-center gap-3"
@@ -39,7 +42,7 @@
               <p>Fitness Record</p>
             </router-link>
           </li>
-          <li>
+          <li id="mysubscription-link">
             <router-link
               :to="{ name: 'DashboardSubscription' }"
               class="p-2 flex items-center gap-3"
@@ -217,7 +220,7 @@
               <p>Home</p>
             </router-link>
           </li>
-          <li>
+          <li id="fitnessrecord-link">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardFitnessRecord' }"
@@ -229,7 +232,7 @@
               <p>Fitness Record</p>
             </router-link>
           </li>
-          <li>
+          <li id="mysubscription-link">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardSubscription' }"

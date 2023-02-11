@@ -6,7 +6,7 @@
         <div
           class="welcome-container container py-3 flex justify-between items-center"
         >
-          <div class="welcome md:mt-10">
+          <div id="user-welcome" class="welcome md:mt-10">
             <p class="text-xl md:text-2xl font-semibold">
               Hello
               <span v-if="user" class="capitalize">{{ user.username }}</span
@@ -16,7 +16,7 @@
               Welcome back!
             </p>
           </div>
-          <div>
+          <div id="resubscription-btn">
             <a
               href="https://app.jasfitnessng.com/new-members/re-subscription/"
               target="_blank"
@@ -32,6 +32,7 @@
         <br />
         <!-- attendance summary -->
         <div
+          id="home-summary"
           class="relative attendance-summary-container border border-gray-300 rounded-xl w-full pt-[2px] md:p-6"
         >
           <p
@@ -88,7 +89,10 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div class="flex items-center justify-center pb-3 lg:pt-6 lg:pb-0">
+        <div
+          id="home-panel"
+          class="flex items-center justify-center pb-3 lg:pt-6 lg:pb-0 w-full"
+        >
           <div>
             <ul
               class="grid grid-cols-2 gap-x-16 lg:gap-x-0 gap-y-10 lg:gap-y-3 lg:flex lg:flex-col items-center lg:items-start lg:justify-start space-y-0 lg:space-y-5 mt-2 lg:mt-4"

@@ -30,6 +30,7 @@
         <br />
         <!-- subscription summary -->
         <div
+          id="subscription-summary"
           class="relative subscription-summary-container border border-gray-300 rounded-xl w-full pt-[1px] md:p-6"
         >
           <p
@@ -53,6 +54,7 @@
             name="Members Features"
           />
           <div
+            id="members-features"
             class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
@@ -137,6 +139,7 @@
             name="Explore plans suited for you"
           />
           <div
+            id="our-plans"
             class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
