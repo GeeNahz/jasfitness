@@ -127,6 +127,7 @@
                   </li>
                   <li class="w-full">
                     <p
+                      @click="openModal('accessmentRecord')"
                       class="link w-full flex items-center gap-3 text-sm md:text-base"
                     >
                       <AppIconAccessment />
