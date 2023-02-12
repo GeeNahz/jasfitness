@@ -264,6 +264,7 @@
           </li>
           <li>
             <router-link
+              @click="toggleSideBar"
               :to="{ name: 'DashboardSettings' }"
               class="p-2 flex items-center gap-2"
             >
