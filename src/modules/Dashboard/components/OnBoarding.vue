@@ -543,6 +543,8 @@ export default defineComponent({
 <style>
 :root {
   --v-onboarding-step-arrow-background: #fba500;
+  --v-onboarding-overlay-z: 30;
+  --v-onboarding-step-z: 40;
 }
 .v-onboarding-item__actions button {
   /*size of the buttons*/
