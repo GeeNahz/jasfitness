@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseURL = 'https://api.staging.jasfitnessng.com/'
+const baseURL = 'https://api.staging.jasfitnessng.com/api/auth/'
 
 const apiClient = axios.create({
   baseURL,
