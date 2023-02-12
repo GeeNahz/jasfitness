@@ -313,12 +313,17 @@ const assessmentState = computed(() =>
     : {}
 )
 
+const fitnessProfileIsAvailable = ref(false)
+
 onMounted(() => {
   const { isEmpty: profileCheck } = useObjectValidator(profileState.value)
   if (!profileState.value || profileCheck.value) {
     store.dispatch('dashboard/dashboard_profile', userId.value).then(
-      () => {},
+      () => {
+        fitnessProfileIsAvailable.value = true
+      },
       (error) => {
+        fitnessProfileIsAvailable.value = false
         store.dispatch('landingpage/error', {
           message: `${error}. Unable to retrieve your profile.`,
           style: 'error'
