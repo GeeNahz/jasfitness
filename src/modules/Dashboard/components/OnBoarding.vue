@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-unused-vars -->
 <template>
-  <div v-if="isOriented" class="z-50">
+  <div v-if="!isOriented" class="z-50">
     <VOnboardingWrapper
       ref="wrapper"
       :options="options"
@@ -71,29 +71,19 @@ export default defineComponent({
     VOnboardingWrapper
   },
   setup() {
-    /**TODO:
-     * - Make a runOnboarding reactive state and a toggleRunOnboarding() function.
-     * - runOnboarding will store a boolean value
-     * - toggleRunOnboarding() will be used to toggle the state of runOnboarding
-     * - provide these to the dashboard component tree. try doing this from the Module.vue file for dashboard module.
-     * - in the settings dashboard page, inject the toggleRunOnboarding() function and make it toggle runOnboarding to true
-     * - in the onBoarding component, inject the runOnboarding reactive state and the toggleRunOnboarding() functino
-     * - watch the runOnboarding state and run the onboardingStartManually() function whenever the value of the runOnboarding is true
-     * - after toggling the onboardingStartManually() function, the runOnboarding state should be toggle back to false using the toggleRunOnboarding() function.
-     */
-
     const wrapper = ref(null)
     const { start, goToStep, finish } = useVOnboarding(wrapper)
     const store = useStore()
 
     function orientationStart() {
       if (!isOriented.value) {
+        console.log('I ran eventually')
         start()
       }
     }
     function orientationStartManually() {
-      store.dispatch('auth/toggle_is_oriented')
-      orientationStart()
+      store.dispatch('auth/toggle_is_oriented', false)
+      setTimeout(() => orientationStart(), 0)
     }
     function orientationCompleted() {
       store.dispatch('auth/completed_orientation').then(
@@ -110,7 +100,10 @@ export default defineComponent({
         }
       )
     }
-    const isOriented = computed(() => store.state.auth.user.is_oriented)
+    const isOriented = computed(() =>
+      store.state.auth.isLoggedIn ? store.state.auth.user.is_oriented : true
+    )
+    // const username = computed(() => store.state.auth.user.username)
 
     const { isReady, toggleIsReady } = inject('isComponentReady')
     const { toggleIsNavbarOpen, isNavbarOpen } = inject('navbar')
@@ -132,6 +125,16 @@ export default defineComponent({
         goToStep((currentStep) => currentStep + 1)
       }
       toggleIsNavbarOpen(false)
+    })
+
+    const { runOnrientation, toggleRunOrientation } = inject(
+      'runOrientationManually'
+    )
+    watch(runOnrientation, function () {
+      if (runOnrientation.value) {
+        orientationStartManually()
+        toggleRunOrientation(false)
+      }
     })
 
     const options = {
@@ -170,7 +173,7 @@ export default defineComponent({
         {
           attachTo: { element: '#user-welcome' },
           content: {
-            title: `Welcome Bemshima, we're glad you
+            title: `Welcome, we're glad you
             could join us. We'll like to show you around
             your  personal Jas Fitness dashboard. 
             This will only take a moment so sit back 
@@ -301,49 +304,72 @@ export default defineComponent({
               'Freeze and share your subscriptions based on the subscription plan your are on.'
           }
         },
-        // 11 our plans
-        // NOTE: for the last step, after clicking on finish, make it to route to the dashboard Home page
+        // 11 our plans -- NEW
         {
           attachTo: { element: '#our-plans' },
           content: {
             title: 'Our plans',
             description:
               'Have a look at all the plans we offer without having to leave your dashboard.'
+          }
+        },
+        // 12 button classes
+        {
+          attachTo: { element: '#classes-link' },
+          content: {
+            title: 'Classes',
+            description: 'Classes will be coming soon.'
+          },
+          on: {
+            beforeStep: function () {},
+            afterStep: function () {}
+          }
+        },
+        // 13 button settings
+        {
+          attachTo: { element: '#settings-link' },
+          content: {
+            title: 'Settings',
+            description:
+              'Click on the Settings link to see the currently available settings.'
+          },
+          on: {
+            beforeStep: function () {},
+            afterStep: function () {}
+          },
+          options: {
+            hideButtons: {
+              next: true
+            }
+          }
+        },
+        // 14 orientation
+        {
+          attachTo: { element: '#settings' },
+          content: {
+            title: 'Orientation',
+            description:
+              'You can go through this orientation at anytime. Simply click on the re-orientation button to begin.'
           },
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
               store.dispatch('dashboard/toggle_onboarding', false)
             }
+          },
+          options: {
+            hideButtons: {
+              next: false
+            }
           }
         }
-        // TODO: Add steps for classes and settings
-        // 12 classes
-        // {
-        //   attachTo: { element: '#classes' },
-        //   content: {
-        //     title: "Coming soon",
-        //     description:
-        //       'Classes will be coming soon.'
-        //   }
-        // },
-        // TODO: Create a page for settings. It should contain a button that when clicked, it will take the user through the whole onboarding process again.
-        // 13 settings
-        // {
-        //   attachTo: { element: '#settings' },
-        //   content: {
-        //     title: "Settings",
-        //     description:
-        //       'Click on the settings tab to view the available settings.'
-        //   }
-        // }
       ],
       [
         // 0 welcome user
         {
           attachTo: { element: '#user-welcome' },
           content: {
-            title: `Welcome Bemshima, we're glad you
+            title: `Welcome, we're glad you
             could join us. We'll like to show you around
             your  personal Jas Fitness dashboard. 
             This will only take a moment so sit back 
@@ -506,34 +532,89 @@ export default defineComponent({
             title: 'Our plans',
             description:
               'Have a look at all the plans we offer without having to leave your dashboard.'
+          }
+        },
+        // 14 navbar-toggle
+        {
+          attachTo: { element: '#navbar-toggle' },
+          content: {
+            title: 'Navigation button',
+            description: 'Tap on the button to continue.'
+          },
+          on: {
+            beforeStep: function () {},
+            afterStep: function () {}
+          },
+          options: {
+            hideButtons: {
+              next: true
+            }
+          }
+        },
+        // 15 classes
+        {
+          attachTo: { element: '#classes' },
+          content: {
+            title: 'Coming soon',
+            description: 'Classes will be coming soon.'
+          },
+          options: {
+            hideButtons: {
+              next: false
+            }
+          }
+        },
+        // 16 navbar-toggle
+        {
+          attachTo: { element: '#navbar-toggle' },
+          content: {
+            title: 'Navigation button',
+            description: 'Tap on the button to continue.'
+          },
+          on: {
+            beforeStep: function () {},
+            afterStep: function () {}
+          },
+          options: {
+            hideButtons: {
+              next: true
+            }
+          }
+        },
+        // 17 button settings
+        {
+          attachTo: { element: '#settings' },
+          content: {
+            title: 'Settings',
+            description:
+              'Click on the settings tab to view the available settings.'
+          },
+          options: {
+            hideButtons: {
+              next: true
+            }
+          }
+        },
+        // 18 orientation
+        {
+          attachTo: { element: '#settings' },
+          content: {
+            title: 'Orientation',
+            description:
+              'You can go through this orientation at anytime. Simply click on the re-orientation button to begin.'
           },
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
-              orientationCompleted()
+              store.dispatch('dashboard/toggle_onboarding', false)
+            }
+          },
+          options: {
+            hideButtons: {
+              next: false
             }
           }
         }
-        // TODO: Add steps for classes and settings
-        // 12 classes
-        // {
-        //   attachTo: { element: '#classes' },
-        //   content: {
-        //     title: "Coming soon",
-        //     description:
-        //       'Classes will be coming soon.'
-        //   }
-        // },
-        // TODO: Create a page for settings. It should contain a button that when clicked, it will take the user through the whole onboarding process again.
-        // 13 settings
-        // {
-        //   attachTo: { element: '#settings' },
-        //   content: {
-        //     title: "Settings",
-        //     description:
-        //       'Click on the settings tab to view the available settings.'
-        //   }
-        // }
       ]
     ]
 
