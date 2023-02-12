@@ -83,7 +83,7 @@ export default defineComponent({
     }
     function orientationStartManually() {
       store.dispatch('auth/toggle_is_oriented', false)
-      setTimeout(() => orientationStart(), 0)
+      setTimeout(() => orientationStart(), 2000)
     }
     function orientationCompleted() {
       store.dispatch('auth/completed_orientation').then(
