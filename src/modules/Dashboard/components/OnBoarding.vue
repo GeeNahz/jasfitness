@@ -70,26 +70,8 @@ export default defineComponent({
     VOnboardingWrapper
   },
   setup() {
-    /*
-    type Placement =
-  | 'auto'
-  | 'auto-start'
-  | 'auto-end'
-  | 'top'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom'
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'right'
-  | 'right-start'
-  | 'right-end'
-  | 'left'
-  | 'left-start'
-  | 'left-end';
-    */
     const store = useStore()
-    const performOnboarding = computed(() => store.state.dashboard.isOnboarding)
+    const performOnboarding = computed(() => !store.state.auth.user.is_oriented)
 
     const wrapper = ref(null)
     const { start, goToStep, finish } = useVOnboarding(wrapper)
@@ -537,6 +519,24 @@ export default defineComponent({
       smallScreen
     }
   }
+  /*
+    type Placement =
+  | 'auto'
+  | 'auto-start'
+  | 'auto-end'
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+    */
 })
 </script>
 
