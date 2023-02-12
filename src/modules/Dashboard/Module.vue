@@ -42,6 +42,11 @@ export default {
   setup() {
     const store = useStore()
 
+    const runOnrientation = ref(false)
+    function toggleRunOrientation(newState) {
+      runOnrientation.value = newState
+    }
+
     // modals toggle
     const profileModal = computed(
       () => store.state.dashboard.modals.profile.open
