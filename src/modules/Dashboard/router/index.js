@@ -13,6 +13,10 @@ const DashboardSubscription = () =>
   import(
     /* webpackChunkName: "DashboardSubscription" */ '../views/DashboardSubscription.vue'
   )
+const Settings = () =>
+  import(
+    /* webpackChunkName: "DashboardSubscription" */ '../views/SettingsPage.vue'
+  )
 
 const routes = [
   {
@@ -39,6 +43,14 @@ const routes = [
         path: 'sub',
         name: 'DashboardSubscription',
         component: DashboardSubscription,
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
+        path: 'settings',
+        name: 'DashboardSettings',
+        component: Settings,
         meta: {
           requireAuth: true
         }
