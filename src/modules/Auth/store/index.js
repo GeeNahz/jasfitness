@@ -1,5 +1,6 @@
 import axiosInstance from '@/services/DashboardServices/axiosConfig'
 import AuthService from '@/services/AuthServices/AuthService.js'
+import DashboardService from '@/services/DashboardServices/DashboardService'
 import { validateToken } from '@/services/helpers/ValidateTokenHelper.js'
 import { useState } from '@/composables/useState.js'
 
@@ -98,7 +99,7 @@ export default {
     },
     completed_orientation({ commit, dispatch }) {
       commit('LOADING')
-      return AuthService.orientation_complete()
+      return DashboardService.orientation_completed()
         .then(
           (response) => {
             return Promise.resolve(response)
