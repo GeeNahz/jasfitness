@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { computed, provide } from 'vue'
+import { computed, provide, ref } from 'vue'
 import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
