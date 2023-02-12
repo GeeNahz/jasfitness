@@ -1,10 +1,11 @@
 <!-- eslint-disable vue/no-unused-vars -->
 <template>
-  <div v-if="performOnboarding" class="z-50">
+  <div v-if="isOriented" class="z-50">
     <VOnboardingWrapper
       ref="wrapper"
       :options="options"
       :steps="smallScreen ? steps[1] : steps[0]"
+      @exit="orientationCompleted"
     />
   </div>
   <!-- <VOnboardingWrapper ref="wrapper" :steps="steps">
@@ -70,17 +71,52 @@ export default defineComponent({
     VOnboardingWrapper
   },
   setup() {
-    const store = useStore()
-    const performOnboarding = computed(() => !store.state.auth.user.is_oriented)
+    /**TODO:
+     * - Make a runOnboarding reactive state and a toggleRunOnboarding() function.
+     * - runOnboarding will store a boolean value
+     * - toggleRunOnboarding() will be used to toggle the state of runOnboarding
+     * - provide these to the dashboard component tree. try doing this from the Module.vue file for dashboard module.
+     * - in the settings dashboard page, inject the toggleRunOnboarding() function and make it toggle runOnboarding to true
+     * - in the onBoarding component, inject the runOnboarding reactive state and the toggleRunOnboarding() functino
+     * - watch the runOnboarding state and run the onboardingStartManually() function whenever the value of the runOnboarding is true
+     * - after toggling the onboardingStartManually() function, the runOnboarding state should be toggle back to false using the toggleRunOnboarding() function.
+     */
 
     const wrapper = ref(null)
     const { start, goToStep, finish } = useVOnboarding(wrapper)
+    const store = useStore()
+
+    function orientationStart() {
+      if (!isOriented.value) {
+        start()
+      }
+    }
+    function orientationStartManually() {
+      store.dispatch('auth/toggle_is_oriented')
+      orientationStart()
+    }
+    function orientationCompleted() {
+      store.dispatch('auth/completed_orientation').then(
+        () => {
+          store.dispatch('landingpage/success', {
+            message:
+              "Congratulations! You've successfully completed the onboarding. Enjoy using your dashboard."
+          })
+        },
+        (error) => {
+          store.dispatch('landingpage/error', {
+            message: `${error}. Unable to register completion of onboarding`
+          })
+        }
+      )
+    }
+    const isOriented = computed(() => store.state.auth.user.is_oriented)
 
     const { isReady, toggleIsReady } = inject('isComponentReady')
     const { toggleIsNavbarOpen, isNavbarOpen } = inject('navbar')
     const route = useRoute()
     watch(isReady, function () {
-      if (isReady.value && performOnboarding.value) {
+      if (isReady.value && !isOriented.value) {
         if (route.path.includes('fitness-record')) {
           goToStep((currentStep) => currentStep + 1)
         }
@@ -91,9 +127,8 @@ export default defineComponent({
       toggleIsReady(false)
       toggleIsNavbarOpen(false)
     })
-
     watch(isNavbarOpen, function () {
-      if (isNavbarOpen.value && performOnboarding.value) {
+      if (isNavbarOpen.value && !isOriented.value) {
         goToStep((currentStep) => currentStep + 1)
       }
       toggleIsNavbarOpen(false)
@@ -475,7 +510,7 @@ export default defineComponent({
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
-              store.dispatch('dashboard/toggle_onboarding', false)
+              orientationCompleted()
             }
           }
         }
@@ -503,9 +538,7 @@ export default defineComponent({
     ]
 
     onMounted(() => {
-      if (performOnboarding.value) {
-        start()
-      }
+      orientationStart()
     })
 
     return {
@@ -515,8 +548,10 @@ export default defineComponent({
       start,
       goToStep,
       finish,
-      performOnboarding,
-      smallScreen
+      isOriented,
+      smallScreen,
+      orientationCompleted,
+      orientationStartManually
     }
   }
   /*
