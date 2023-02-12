@@ -71,11 +71,11 @@
           </li>
           <li>
             <router-link
-              to="/settings"
-              class="p-2 flex items-center gap-3 disabled"
+              :to="{ name: 'DashboardSettings' }"
+              class="p-2 flex items-center gap-3"
             >
               <div class="icon">
-                <AppIconSetting fillColor="gray" />
+                <AppIconSetting />
               </div>
               <p>Settings</p>
             </router-link>
@@ -264,8 +264,8 @@
           </li>
           <li>
             <router-link
-              to="/settings"
-              class="p-2 flex items-center gap-2 disabled"
+              :to="{ name: 'DashboardSettings' }"
+              class="p-2 flex items-center gap-2"
             >
               <div class="icon">
                 <AppIconSetting />
