@@ -41,6 +41,8 @@ export default {
   },
   setup() {
     const store = useStore()
+
+    // modals toggle
     const profileModal = computed(
       () => store.state.dashboard.modals.profile.open
     )
