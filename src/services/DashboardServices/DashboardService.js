@@ -25,7 +25,7 @@ export default {
   dashboard_assessments(id) {
     return axiosInstance.get(`fitness_assessments/${id}/`)
   },
-  fitness_profile() {
+  dashboard_fitness_profile() {
     return axiosInstance.get('fitness_profile/')
   },
   orientation_completed() {
