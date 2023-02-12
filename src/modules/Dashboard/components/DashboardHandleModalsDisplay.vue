@@ -329,7 +329,7 @@ onMounted(() => {
 
   const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
   if (!assessmentState.value || assessmentCheck) {
-    store.dispatch('dashboard/dashboard_fitness_assessment', userId.value).then(
+    store.dispatch('dashboard/dashboard_fitness_profile').then(
       () => {},
       (error) => {
         store.dispatch('landingpage/error', {
