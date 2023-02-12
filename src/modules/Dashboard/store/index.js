@@ -18,7 +18,6 @@ export default {
     dashboardGymnAttendance: null,
     dashboardSubscription: null,
     dashboardFitnessAssessment: null,
-    isOnboarding: true,
     modals: {
       profile: { id: 'profile', open: false },
       healthRecord: { id: 'healthRecord', open: false },
@@ -63,9 +62,6 @@ export default {
     },
     SET_DASHBOARD_FITNESS_ASSESSMENT_STATE(state, payload) {
       state.dashboardFitnessAssessment = payload
-    },
-    TOGGLE_ONBOARDING(state, payload) {
-      state.isOnboarding = payload
     }
   },
   actions: {
@@ -204,9 +200,6 @@ export default {
         .finally(() => {
           commit('STATUS_RESET')
         })
-    },
-    toggle_onboarding({ commit }, value = false) {
-      commit('TOGGLE_ONBOARDING', value)
     }
   },
   modules: {}
