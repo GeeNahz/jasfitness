@@ -93,69 +93,69 @@
         v-if="accessmentRecordModal.open"
         @close="closeModal"
       >
-        <template #header> accessment record </template>
+        <template #header> assessment record </template>
         <template #content>
           <div v-if="fitnessProfileIsAvailable">
             <div class="items font-inter">
               <div class="item">
                 <h4 class="item__title">Height:</h4>
-                <p class="item__content">{{ assessmentState }}</p>
+                <p class="item__content">{{ assessmentState.height }}</p>
               </div>
               <div class="item">
                 <h4 class="item__title">Weight:</h4>
-                <p class="item__content">{{ assessmentState }}</p>
+                <p class="item__content">{{ assessmentState.weight }}</p>
               </div>
               <div class="item">
                 <h4 class="item__title">Arm size:</h4>
-                <p class="item__content">{{ assessmentState }}</p>
+                <p class="item__content">{{ assessmentState.arm_size }}</p>
               </div>
               <div class="item">
                 <h4 class="item__title">Thigh size:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.thigh_size || 'NA' }}
                 </p>
               </div>
               <div class="item">
                 <h4 class="item__title">Waist size:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.waist_size || 'NA' }}
                 </p>
               </div>
               <div class="item">
                 <h4 class="item__title">Strength:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.strength || 'NA' }}
                 </p>
               </div>
               <div class="item">
                 <h4 class="item__title">Endurance:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.endurance || 'NA' }}
                 </p>
               </div>
               <div class="item">
                 <h4 class="item__title">Flexibility:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.flexibility || 'NA' }}
                 </p>
               </div>
               <div class="item">
                 <h4 class="item__title">Comment:</h4>
                 <p class="item__content">
-                  {{ assessmentState || 'NA' }}
+                  {{ assessmentState.comment || 'NA' }}
                 </p>
               </div>
-              <div class="item">
+              <!-- <div class="item">
                 <h4 class="item__title">images:</h4>
                 <p class="item__content">
                   {{ assessmentState || 'NA' }}
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
           <div v-else>
-            <h4 class="text-base font-medium text-gray-300">
-              Sorry, your fitness profile isn't available at the moment
+            <h4 class="text-sm font-normal text-gray-400 text-center">
+              Sorry, your assessment records are not available at the moment
             </h4>
           </div>
         </template>
@@ -314,11 +314,8 @@ onMounted(() => {
   const { isEmpty: profileCheck } = useObjectValidator(profileState.value)
   if (!profileState.value || profileCheck.value) {
     store.dispatch('dashboard/dashboard_profile', userId.value).then(
-      () => {
-        fitnessProfileIsAvailable.value = true
-      },
+      () => {},
       (error) => {
-        fitnessProfileIsAvailable.value = false
         store.dispatch('landingpage/error', {
           message: `${error}. Unable to retrieve your profile.`,
           style: 'error'
@@ -330,8 +327,11 @@ onMounted(() => {
   const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
   if (!assessmentState.value || assessmentCheck) {
     store.dispatch('dashboard/dashboard_fitness_profile').then(
-      () => {},
+      () => {
+        fitnessProfileIsAvailable.value = true
+      },
       (error) => {
+        fitnessProfileIsAvailable.value = false
         store.dispatch('landingpage/error', {
           message: `${error}. Unable to retrieve your assessment records.`,
           style: 'error'
