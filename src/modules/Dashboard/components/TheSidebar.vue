@@ -58,7 +58,7 @@
         <hr class="my-4" />
 
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-full">
-          <li id="classes">
+          <li id="classes-link">
             <router-link
               to="/classes"
               class="p-2 flex items-center gap-3 disabled"
@@ -69,7 +69,7 @@
               <p>Classes</p>
             </router-link>
           </li>
-          <li id="settings">
+          <li id="settings-link">
             <router-link
               :to="{ name: 'DashboardSettings' }"
               class="p-2 flex items-center gap-3"
@@ -251,7 +251,7 @@
         <hr class="my-4" />
 
         <ul class="space-y-1 pl-2 pr-2 text-sm">
-          <li id="classes">
+          <li id="classes-link-mobile">
             <router-link
               to="/classes"
               class="p-2 flex items-center gap-2 disabled"
@@ -262,7 +262,7 @@
               <p>Classes</p>
             </router-link>
           </li>
-          <li id="settings">
+          <li id="settings-link-mobile">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardSettings' }"
