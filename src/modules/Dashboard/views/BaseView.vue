@@ -220,7 +220,7 @@ const creds = computed(() =>
 )
 
 onMounted(() => {
-  store.dispatch('dashboard/dashboard_gym_attendance', user.value.id).then(
+  store.dispatch('dashboard/dashboard_gym_attendance', user.value.user_id).then(
     () => {},
     () => {
       const message =

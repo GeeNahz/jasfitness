@@ -288,7 +288,7 @@ const shareYourSub = () => {
 
 const store = useStore()
 
-const userId = computed(() => store.state.auth.user.id)
+const userId = computed(() => store.state.auth.user.user_id)
 
 const profileModal = computed(() => store.state.dashboard.modals.profile)
 const healthRecordModal = computed(

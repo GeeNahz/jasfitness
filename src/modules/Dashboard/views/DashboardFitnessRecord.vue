@@ -225,7 +225,7 @@ const fitness_target = computed(() =>
     : {}
 )
 
-const userId = computed(() => store.state.auth.user.id)
+const userId = computed(() => store.state.auth.user.user_id)
 const gym_attendance = computed(() =>
   store.state.dashboard.dashboardGymnAttendance
     ? store.state.dashboard.dashboardGymnAttendance
