@@ -95,73 +95,68 @@
       >
         <template #header> accessment record </template>
         <template #content>
-          <div class="items font-inter">
-            <div class="item">
-              <h4 class="item__title">Height:</h4>
-              <p class="item__content">{{ assessmentState }}</p>
+          <div v-if="fitnessProfileIsAvailable">
+            <div class="items font-inter">
+              <div class="item">
+                <h4 class="item__title">Height:</h4>
+                <p class="item__content">{{ assessmentState }}</p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Weight:</h4>
+                <p class="item__content">{{ assessmentState }}</p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Arm size:</h4>
+                <p class="item__content">{{ assessmentState }}</p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Thigh size:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Waist size:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Strength:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Endurance:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Flexibility:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">Comment:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
+              <div class="item">
+                <h4 class="item__title">images:</h4>
+                <p class="item__content">
+                  {{ assessmentState || 'NA' }}
+                </p>
+              </div>
             </div>
-            <div class="item">
-              <h4 class="item__title">Weight:</h4>
-              <p class="item__content">{{ assessmentState }}</p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Arm size:</h4>
-              <p class="item__content">{{ assessmentState }}</p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Thigh size:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Waist size:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Strength:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Endurance:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Flexibility:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Comment:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">images:</h4>
-              <p class="item__content">
-                {{ assessmentState || 'NA' }}
-              </p>
-            </div>
-            <!-- <div class="item">
-              <h4 class="item__title">Referal:</h4>
-              <p class="item__content">
-                {{ profileState.referal || 'NA' }}
-              </p>
-            </div>
-            <div class="item">
-              <h4 class="item__title">Occupation:</h4>
-              <p class="item__content">
-                {{ profileState.occupation || 'NA' }}
-              </p>
-            </div> -->
+          </div>
+          <div v-else>
+            <h4 class="text-base font-medium text-gray-300">
+              Sorry, your fitness profile isn't available at the moment
+            </h4>
           </div>
         </template>
       </DashboardModalLayout>
