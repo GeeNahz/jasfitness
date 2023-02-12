@@ -544,4 +544,18 @@ export default defineComponent({
 :root {
   --v-onboarding-step-arrow-background: #fba500;
 }
+.v-onboarding-item__actions button {
+  /*size of the buttons*/
+  padding: 0.25rem 0.635rem; /* 1/2 of original dimentions */
+}
+.v-onboarding-item__actions button.v-onboarding-btn-primary {
+  /*color*/
+  background-color: #c29a33;
+}
+.v-onboarding-item__actions button.v-onboarding-btn-primary:hover {
+  background-color: #c29114;
+}
+/* 
+.v-onboarding-item__actions button.v-onboarding-btn-secondary --> color
+*/
 </style>
