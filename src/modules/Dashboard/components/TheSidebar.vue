@@ -20,7 +20,7 @@
     >
       <div>
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
-          <li>
+          <li id="home">
             <router-link
               :to="{ name: 'DashboardHome' }"
               class="p-2 flex items-center gap-3"
@@ -58,7 +58,7 @@
         <hr class="my-4" />
 
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-full">
-          <li>
+          <li id="classes">
             <router-link
               to="/classes"
               class="p-2 flex items-center gap-3 disabled"
@@ -69,7 +69,7 @@
               <p>Classes</p>
             </router-link>
           </li>
-          <li>
+          <li id="settings">
             <router-link
               :to="{ name: 'DashboardSettings' }"
               class="p-2 flex items-center gap-3"
@@ -210,7 +210,7 @@
       <!-- outer side bar -->
       <div class="burger-menu">
         <ul class="space-y-1 pl-2 pr-2 text-sm">
-          <li>
+          <li id="home">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardHome' }"
@@ -251,7 +251,7 @@
         <hr class="my-4" />
 
         <ul class="space-y-1 pl-2 pr-2 text-sm">
-          <li>
+          <li id="classes">
             <router-link
               to="/classes"
               class="p-2 flex items-center gap-2 disabled"
@@ -262,7 +262,7 @@
               <p>Classes</p>
             </router-link>
           </li>
-          <li>
+          <li id="settings">
             <router-link
               @click="toggleSideBar"
               :to="{ name: 'DashboardSettings' }"
