@@ -24,5 +24,8 @@ export default {
   },
   dashboard_assessments(id) {
     return axiosInstance.get(`fitness_assessments/${id}/`)
+  },
+  orientation_completed() {
+    return axiosInstance.get('api/auth/orientation/')
   }
 }
