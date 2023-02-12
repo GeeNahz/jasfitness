@@ -46,6 +46,7 @@ export default {
     function toggleRunOrientation(newState) {
       runOnrientation.value = newState
     }
+    provide('runOrientationManually', { runOnrientation, toggleRunOrientation })
 
     // modals toggle
     const profileModal = computed(
