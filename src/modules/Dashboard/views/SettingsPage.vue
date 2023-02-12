@@ -11,6 +11,7 @@
           v-for="(item, index) in items"
           :key="'item' + index + 1"
           class="item border-y border-gray-200 py-2 lg:flex justify-between align-start"
+          :id="item.ids.length && item.ids"
         >
           <div class="item__text text-start">
             <div
@@ -40,7 +41,7 @@
 </template>
 
 <script setup>
-import { inject } from 'vue'
+import { inject, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const { toggleRunOrientation } = inject('runOrientationManually')
@@ -54,12 +55,18 @@ const items = [
     name: 'Orientation',
     description:
       'You can go through the orientation again to familiarize with the application.',
+    ids: ['orientation-setting'],
     actionBtn: {
       name: 'Re-orientation',
       action: triggerRunOrientation
     }
   }
 ]
+
+const { toggleIsReady } = inject('isComponentReady')
+onMounted(() => {
+  toggleIsReady(true)
+})
 </script>
 
 <style lang="scss" scoped></style>
