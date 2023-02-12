@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
