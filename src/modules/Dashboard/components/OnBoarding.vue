@@ -77,7 +77,6 @@ export default defineComponent({
 
     function orientationStart() {
       if (!isOriented.value) {
-        console.log('I ran eventually')
         start()
       }
     }
@@ -114,6 +113,9 @@ export default defineComponent({
           goToStep((currentStep) => currentStep + 1)
         }
         if (route.path.includes('sub')) {
+          goToStep((currentStep) => currentStep + 1)
+        }
+        if (route.path.includes('settings')) {
           goToStep((currentStep) => currentStep + 1)
         }
       }
@@ -345,7 +347,7 @@ export default defineComponent({
         },
         // 14 orientation
         {
-          attachTo: { element: '#settings' },
+          attachTo: { element: '#orientation-setting' },
           content: {
             title: 'Orientation',
             description:
@@ -354,7 +356,6 @@ export default defineComponent({
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
-              store.dispatch('dashboard/toggle_onboarding', false)
             }
           },
           options: {
@@ -525,7 +526,6 @@ export default defineComponent({
           }
         },
         // 13 our plans
-        // NOTE: for the last step, after clicking on finish, make it to route to the dashboard Home page
         {
           attachTo: { element: '#our-plans' },
           content: {
@@ -551,9 +551,9 @@ export default defineComponent({
             }
           }
         },
-        // 15 classes
+        // 15 button classes
         {
-          attachTo: { element: '#classes' },
+          attachTo: { element: '#classes-link-mobile' },
           content: {
             title: 'Coming soon',
             description: 'Classes will be coming soon.'
@@ -564,26 +564,9 @@ export default defineComponent({
             }
           }
         },
-        // 16 navbar-toggle
+        // 16 button settings
         {
-          attachTo: { element: '#navbar-toggle' },
-          content: {
-            title: 'Navigation button',
-            description: 'Tap on the button to continue.'
-          },
-          on: {
-            beforeStep: function () {},
-            afterStep: function () {}
-          },
-          options: {
-            hideButtons: {
-              next: true
-            }
-          }
-        },
-        // 17 button settings
-        {
-          attachTo: { element: '#settings' },
+          attachTo: { element: '#settings-link-mobile' },
           content: {
             title: 'Settings',
             description:
@@ -595,9 +578,9 @@ export default defineComponent({
             }
           }
         },
-        // 18 orientation
+        // 17 orientation
         {
-          attachTo: { element: '#settings' },
+          attachTo: { element: '#orientation-setting' },
           content: {
             title: 'Orientation',
             description:
@@ -606,7 +589,6 @@ export default defineComponent({
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
-              store.dispatch('dashboard/toggle_onboarding', false)
             }
           },
           options: {
