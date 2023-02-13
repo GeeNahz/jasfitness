@@ -62,11 +62,10 @@ const shareSubUsername = ref('')
 const shareSubDuration = ref('')
 async function shareYourSub() {
   try {
-    const res = await store.dispatch('dashboard/dashboard_share_subscription', {
+    await store.dispatch('dashboard/dashboard_share_subscription', {
       username: shareSubUsername.value,
       duration: shareSubDuration.value
     })
-    console.log(res)
   } catch (error) {
     if (error.includes('400')) {
       store.dispatch('landingpage/error', {
