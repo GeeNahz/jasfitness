@@ -105,7 +105,7 @@
                       <AppIconComplete />
                     </div>
                     <div class="">
-                      <p class="text-xs sm:text-sm font-semibold">Sub Status</p>
+                      <p class="text-xs sm:text-sm font-semibold">Sub End</p>
                       <p class="text-xs sm:text-sm font-light">
                         {{ creds.sub_status }}
                       </p>
