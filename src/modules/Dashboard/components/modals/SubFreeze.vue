@@ -24,13 +24,13 @@
       <div class="w-full flex gap-2 mt-1 lg:mt-3 justify-end btns">
         <button
           @click="closeModal(freezeSubscriptionModal.id)"
-          class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-gray-700 py-1 px-2 lg:py-2 lg:px-4"
+          class="duration-200 rounded-md hover:text-yellow-500 font-medium text-sm lg:text-base text-gray-700 py-1 px-3 lg:py-2 lg:px-4"
         >
           Close
         </button>
         <button
           @click="freezeYourSub"
-          class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-gray-50 py-1 px-2 lg:py-2 lg:px-4"
+          class="duration-200 bg-yellow-500 rounded-sm hover:bg-yellow font-medium text-sm lg:text-base text-gray-50 py-1 px-3 lg:py-2 lg:px-4"
         >
           Send
         </button>
