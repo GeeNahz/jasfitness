@@ -94,8 +94,11 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div id="fitnessrecord-panel" class="w-full">
-          <div class="flex flex-col items-center lg:block mb-4 w-full">
+        <div class="w-full">
+          <div
+            id="fitnessrecord-panel"
+            class="flex flex-col items-center lg:block mb-4 w-full"
+          >
             <DashboardSubscriptionCard class="w-full" :addIcon="false">
               <template #title>
                 <h4
