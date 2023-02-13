@@ -167,7 +167,7 @@
                 </div>
               </li>
               <li>
-                <div class="link">
+                <div class="link disabled">
                   <div class="flex items-center gap-3 md:gap-4">
                     <div class="icon">
                       <AppIconMessage />
