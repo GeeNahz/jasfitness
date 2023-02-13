@@ -121,58 +121,135 @@ export default defineComponent({
 
     const smallScreen = computed(() => window.innerWidth < 1024)
     const router = useRouter()
+
+    const homeWelcomeUser = {
+      title: `Welcome ${username.value}.`,
+      description: `We'll like to show you around your
+            personal dashboard. This will only take a moment.\nClick
+            the button below to proceed.`
+    }
+    function getCurrentDateObject() {
+      return new Date()
+    }
+    function currentYear() {
+      return getCurrentDateObject().getFullYear()
+    }
+    function currentMonth() {
+      const months = [
+        'January',
+        'Feburary',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ]
+      let monthNumber = getCurrentDateObject().getMonth()
+      return months[monthNumber]
+    }
+    const homeSummary = {
+      title: 'Your gym activities',
+      description: `At a glance, you can see your entire fitness activities at the gym. Your total attendance this year (In ${currentYear()}), total attendance this month (In ${currentMonth()}) and the average hour for your last 5 sessions at the gym (Average time).`
+    }
+    const homeResubButton = {
+      title: 'Subscption is due?',
+      description: `Click of this button to resubscribe or change your plan.`
+    }
+    const homePanel = {
+      title: 'Subscription status at a glance',
+      description: `View, freeze and share your subscription all from this panel.`
+    }
+    const navigationPanel = {
+      title: 'Easy Navigation',
+      description: 'Easy switch between sections of the dashboard.'
+    } // destop view
+    const completedSectionOne = {
+      title: 'Great! 🥳',
+      description: `You have completed the first section. Click on the menu button to continue.`
+    } // mobile view
+    const sectionTwoStart = {
+      title: 'Fitness Record',
+      description: 'Click on "Fitness Record" to continue'
+    }
+    const recordGoals = {
+      title: 'Goals 🎯',
+      description: `Goals give us a sense of direction. To meet your fitness gaol you need to always be aware of it. So here's yours.`
+    }
+    const recordYourRecord = {
+      title: 'Your Records',
+      description: `View everything about your profile and assessments here.`
+    }
+    const completedSectionTwo = {
+      title: 'Great! 🥳🥳',
+      description: `You have completed the second section. Click on the menu button to continue.`
+    } // mobile view
+    const sectionThreeStart = {
+      title: 'My Subscription',
+      description: 'Click on "My Subscription" to continue.'
+    }
+    const subSummary = {
+      title: 'Subscription summary',
+      description: `At a glance, you can see your subscription plan (Type), duration (Duration) and when you started (Start Date) here.`
+    }
+    const subMembersFeatures = {
+      title: "Member's features",
+      description:
+        'Freeze and share your subscriptions based on your subscription plan.'
+    }
+    const subOurPlans = {
+      title: 'Our plans',
+      description:
+        'Have a look at all the plans we offer without having to leave your dashboard.'
+    }
+    const completedSectionThree = {
+      title: 'Great! 🥳🥳🥳',
+      description: `You have completed the third section. Click on the menu button to continue.`
+    } // mobile view
+    const classButton = {
+      title: 'Coming soon',
+      description: 'Classes will be coming soon.'
+    }
+    const sectionFourStart = {
+      title: 'Settings',
+      description: 'Click on "Settings" to view the available settings.'
+    }
+    const settingsOrientation = {
+      title: 'Orientation',
+      description:
+        'You can go through this orientation at anytime. Simply click on the re-orientation button to begin.'
+    }
+
     const steps = [
       [
         // 0 welcome user
         {
           attachTo: { element: '#user-welcome' },
-          content: {
-            title: `Welcome! We're glad you
-            could join us. We'll like to show you around
-            your  personal dashboard. 
-            This will only take a moment so sit back 
-            and enjoy.`,
-            description: `Click the button below to proceed.`
-          }
+          content: { ...homeWelcomeUser }
         },
         // 1 summary home
         {
           attachTo: { element: '#home-summary' },
-          content: {
-            title: 'Your gym activities',
-            description:
-              `At a glance you can see your entire Fitness activities at the gym. <br/>` +
-              ' - In 2023: This shows the number of times you have been at the gym \n' +
-              ' - In February: This shows the number of times you have been to the gym this month \n' +
-              ' - Average Time: Average time of your last 3 session at the gym'
-          }
+          content: { ...homeSummary }
         },
         // 2 button resubscribe
         {
           attachTo: { element: '#resubscription-btn' },
-          content: {
-            title: 'Subscption is due!',
-            description:
-              'Not to worry. With a click of this button you can resubscribe or even upgrade your plan.'
-          }
+          content: { ...homeResubButton }
         },
         // 3 panel home
         {
           attachTo: { element: '#home-panel' },
-          content: {
-            title: 'Subscription status at a glance',
-            description:
-              'View your subscription status and plan, freeze and share your subscription all from this panel'
-          }
+          content: { ...homePanel }
         },
         // 4 side bar
         {
           attachTo: { element: '#sidebar' },
-          content: {
-            title: 'Navigate through the dashbaord with ease',
-            description:
-              'The navigation panel is always open and with clear for quick and easy switch between sections in your dashboard.'
-          },
+          content: { ...navigationPanel },
           options: {
             popper: {
               placement: 'auto'
@@ -182,11 +259,7 @@ export default defineComponent({
         // 5 button fitness record
         {
           attachTo: { element: '#fitnessrecord-link' },
-          content: {
-            title: 'Fitness Records',
-            description:
-              'Click on the Fitness Record link to see what you can do there.'
-          },
+          content: { ...sectionTwoStart },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -200,11 +273,7 @@ export default defineComponent({
         // 6 goals
         {
           attachTo: { element: '#goals' },
-          content: {
-            title: 'Goals',
-            description:
-              'Goals give us a sense of direction. See the goal you have set and remain motvated.'
-          },
+          content: { ...recordGoals },
           options: {
             hideButtons: {
               next: false
@@ -214,24 +283,12 @@ export default defineComponent({
         // 7 panel fitness record
         {
           attachTo: { element: '#fitnessrecord-panel' },
-          content: {
-            title: 'Your records',
-            description:
-              'We keep your records up to date. View your profile and assessment records anytime here.'
-          }
+          content: { ...recordYourRecord }
         },
         // 8 button my subscription
         {
           attachTo: { element: '#mysubscription-link' },
-          content: {
-            title: 'My Subscription',
-            description:
-              'Click on the My Subscription link to see its features.'
-          },
-          on: {
-            beforeStep: function () {},
-            afterStep: function () {}
-          },
+          content: { ...sectionThreeStart },
           options: {
             hideButtons: {
               next: true
@@ -241,11 +298,7 @@ export default defineComponent({
         // 9 summary subscription
         {
           attachTo: { element: '#subscription-summary' },
-          content: {
-            title: 'My subscription',
-            description:
-              'Everything you need to know about your current subscription is here'
-          },
+          content: { ...subSummary },
           options: {
             hideButtons: {
               next: false
@@ -255,41 +308,22 @@ export default defineComponent({
         // 10 members features
         {
           attachTo: { element: '#members-features' },
-          content: {
-            title: "Member's features",
-            description:
-              'Freeze and share your subscriptions based on the subscription plan your are on.'
-          }
+          content: { ...subMembersFeatures }
         },
         // 11 our plans -- NEW
         {
           attachTo: { element: '#our-plans' },
-          content: {
-            title: 'Our plans',
-            description:
-              'Have a look at all the plans we offer without having to leave your dashboard.'
-          }
+          content: { ...subOurPlans }
         },
         // 12 button classes
         {
           attachTo: { element: '#classes-link' },
-          content: {
-            title: 'Classes',
-            description: 'Classes will be coming soon.'
-          },
-          on: {
-            beforeStep: function () {},
-            afterStep: function () {}
-          }
+          content: { ...classButton }
         },
         // 13 button settings
         {
           attachTo: { element: '#settings-link' },
-          content: {
-            title: 'Settings',
-            description:
-              'Click on the Settings link to see the currently available settings.'
-          },
+          content: { ...sectionFourStart },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -303,11 +337,7 @@ export default defineComponent({
         // 14 orientation
         {
           attachTo: { element: '#orientation-setting' },
-          content: {
-            title: 'Orientation',
-            description:
-              'You can go through this orientation at anytime. Simply click on the re-orientation button to begin.'
-          },
+          content: { ...settingsOrientation },
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
@@ -324,43 +354,22 @@ export default defineComponent({
         // 0 welcome user
         {
           attachTo: { element: '#user-welcome' },
-          content: {
-            title: `Welcome ${username.value}.`,
-            description: `We're glad you
-            could join us. We'll like to show you around
-            your  personal Jas Fitness dashboard. 
-            This will only take a moment
-            Click the button below to proceed.`
-          }
+          content: { ...homeWelcomeUser }
         },
         // 1 summary home
         {
           attachTo: { element: '#home-summary' },
-          content: {
-            title: 'Your gym activities',
-            description: `At a glance you can see your entire Fitness activities at the gym.\n
-               - In 2023: This shows the number of times you have been at the gym \n 
-               - In February: This shows the number of times you have been to the gym this month \n 
-               - Average Time: Average time of your last 3 session at the gym`
-          }
+          content: { ...homeSummary }
         },
         // 2 button resubscribe
         {
           attachTo: { element: '#resubscription-btn' },
-          content: {
-            title: 'Subscption is due!',
-            description:
-              'Not to worry. With a click of this button you can resubscribe or even upgrade your plan.'
-          }
+          content: { ...homeResubButton }
         },
         // 3 panel home
         {
           attachTo: { element: '#home-panel' },
-          content: {
-            title: 'Subscription status at a glance',
-            description:
-              'View your subscription status and plan, freeze and share your subscription all from this panel'
-          }
+          content: { ...homePanel }
         },
         // 4 -- navbar
         // {
@@ -374,10 +383,7 @@ export default defineComponent({
         // 5 navbar-toggle
         {
           attachTo: { element: '#navbar-toggle' },
-          content: {
-            title: 'Navigation button',
-            description: 'Tap on the button to continue.'
-          },
+          content: { ...completedSectionOne },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -391,11 +397,7 @@ export default defineComponent({
         // 6 button fitness record
         {
           attachTo: { element: '#fitnessrecord-link-mobile' },
-          content: {
-            title: 'Fitness Records',
-            description:
-              'Click on the Fitness Record link to see what you can do there.'
-          },
+          content: { ...sectionTwoStart },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -409,11 +411,7 @@ export default defineComponent({
         // 7 goals
         {
           attachTo: { element: '#goals' },
-          content: {
-            title: 'Goals',
-            description:
-              'Goals give us a sense of direction. See the goal you have set and remain motvated.'
-          },
+          content: { ...recordGoals },
           options: {
             hideButtons: {
               next: false
@@ -423,19 +421,12 @@ export default defineComponent({
         // 8 panel fitness record
         {
           attachTo: { element: '#fitnessrecord-panel' },
-          content: {
-            title: 'Your records',
-            description:
-              'We keep your records up to date. View your profile and assessment records anytime here.'
-          }
+          content: { ...recordYourRecord }
         },
         // 9 navbar-toggle
         {
           attachTo: { element: '#navbar-toggle' },
-          content: {
-            title: 'Navigation button',
-            description: 'Tap on the button to continue.'
-          },
+          content: { ...completedSectionTwo },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -449,11 +440,7 @@ export default defineComponent({
         // 10 button my subscription
         {
           attachTo: { element: '#mysubscription-link-mobile' },
-          content: {
-            title: 'My Subscription',
-            description:
-              'Click on the My Subscription link to see its features.'
-          },
+          content: { ...sectionThreeStart },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -467,37 +454,22 @@ export default defineComponent({
         // 11 summary subscription
         {
           attachTo: { element: '#subscription-summary' },
-          content: {
-            title: 'My subscription',
-            description:
-              'Everything you need to know about your current subscription is here'
-          }
+          content: { ...subSummary }
         },
         // 12 members features
         {
           attachTo: { element: '#members-features' },
-          content: {
-            title: "Member's features",
-            description:
-              'Freeze and share your subscriptions based on the subscription plan your are on.'
-          }
+          content: { ...subMembersFeatures }
         },
         // 13 our plans
         {
           attachTo: { element: '#our-plans' },
-          content: {
-            title: 'Our plans',
-            description:
-              'Have a look at all the plans we offer without having to leave your dashboard.'
-          }
+          content: { ...subOurPlans }
         },
         // 14 navbar-toggle
         {
           attachTo: { element: '#navbar-toggle' },
-          content: {
-            title: 'Navigation button',
-            description: 'Tap on the button to continue.'
-          },
+          content: { ...completedSectionThree },
           on: {
             beforeStep: function () {},
             afterStep: function () {}
@@ -511,10 +483,7 @@ export default defineComponent({
         // 15 button classes
         {
           attachTo: { element: '#classes-link-mobile' },
-          content: {
-            title: 'Coming soon',
-            description: 'Classes will be coming soon.'
-          },
+          content: { ...classButton },
           options: {
             hideButtons: {
               next: false
@@ -524,11 +493,7 @@ export default defineComponent({
         // 16 button settings
         {
           attachTo: { element: '#settings-link-mobile' },
-          content: {
-            title: 'Settings',
-            description:
-              'Click on the settings tab to view the available settings.'
-          },
+          content: { ...sectionFourStart },
           options: {
             hideButtons: {
               next: true
@@ -538,11 +503,7 @@ export default defineComponent({
         // 17 orientation
         {
           attachTo: { element: '#orientation-setting' },
-          content: {
-            title: 'Orientation',
-            description:
-              'You can go through this orientation at anytime. Simply click on the re-orientation button to begin.'
-          },
+          content: { ...settingsOrientation },
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
