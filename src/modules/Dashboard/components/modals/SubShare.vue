@@ -12,13 +12,13 @@
         >
         <input
           id="freeze-sub"
-          class="form-control mb-2 lg:mb-3"
+          class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-400"
           type="text"
           v-model="shareSubUsername"
           required
         />
         <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
-          >Duration (months):
+          >Duration (days):
         </label>
         <input
           id="freeze-sub"
