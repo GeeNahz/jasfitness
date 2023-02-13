@@ -108,45 +108,47 @@
                 </h4>
               </template>
               <template #description>
-                <ul
-                  class="grid grid-cols-2 gap-3 lg:gap-0 md:flex flex-col items-start lg:space-y-1 w-full text-xs sm:text-sm lg:text-base"
-                >
-                  <li class="w-full">
-                    <p
-                      @click="openModal('profile')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
-                    >
-                      <AppIconProfile />
-                      Profile
-                    </p>
-                  </li>
-                  <!-- <li class="w-full opacity-30">
-                    <p
-                      class="link w-full flex justify-start items-center gap-3 text-sm md:text-base disabled"
-                    >
-                      <AppIconRecord />
-                      Fitness & Health Record
-                    </p>
-                  </li> -->
-                  <li class="w-full">
-                    <p
-                      @click="openModal('accessmentRecord')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base whitespace-nowrap"
-                    >
-                      <AppIconAccessment />
-                      Fitness Record
-                    </p>
-                  </li>
-                  <li class="w-full">
-                    <p
-                      @click="openModal('feedback')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
-                    >
-                      <AppIconMessage />
-                      Feedback
-                    </p>
-                  </li>
-                </ul>
+                <div class="flex justify-center">
+                  <ul
+                    class="grid grid-cols-2 gap-3 lg:gap-0 md:flex flex-col items-start lg:space-y-1 w-max text-xs sm:text-sm"
+                  >
+                    <li class="w-full">
+                      <p
+                        @click="openModal('profile')"
+                        class="link w-full flex items-center gap-3"
+                      >
+                        <AppIconProfile />
+                        Profile
+                      </p>
+                    </li>
+                    <!-- <li class="w-full opacity-30">
+                      <p
+                        class="link w-full flex justify-start items-center gap-3 disabled"
+                      >
+                        <AppIconRecord />
+                        Fitness & Health Record
+                      </p>
+                    </li> -->
+                    <li class="w-full">
+                      <p
+                        @click="openModal('accessmentRecord')"
+                        class="link w-full flex items-center gap-3 whitespace-nowrap"
+                      >
+                        <AppIconAccessment />
+                        Fitness Record
+                      </p>
+                    </li>
+                    <li class="w-full">
+                      <p
+                        @click="openModal('feedback')"
+                        class="link w-full flex items-center gap-3"
+                      >
+                        <AppIconMessage />
+                        Feedback
+                      </p>
+                    </li>
+                  </ul>
+                </div>
               </template>
             </DashboardSubscriptionCard>
           </div>
