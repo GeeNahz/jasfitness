@@ -160,7 +160,7 @@
                     <h4
                       class="font-semibold text-sm md:text-lg md:text-center block w-full"
                     >
-                      Weekly Performance
+                      Fitness Performance
                     </h4>
                     <p class="md:text-center text-xs my-3 font-light">
                       Based on your goal, you should go to the gym at least 4
