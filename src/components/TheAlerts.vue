@@ -57,4 +57,14 @@ function closeAlert(id) {
   opacity: 0;
   transform: translateX(30px);
 }
+
+.alerts-container-enter-active,
+.alerts-container-leave-active {
+  transition: all 0.3s ease;
+}
+.alerts-container-enter-from,
+.alerts-container-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
 </style>
