@@ -133,7 +133,8 @@
                   @click="openModal('freezeSub')"
                   class="link"
                   :class="{
-                    'disabled ': !creds.freeze.is_active
+                    'disabled ':
+                      !creds.freeze.is_active || creds.freeze.value === 4
                   }"
                 >
                   <div class="flex items-start gap-x-3 lg:gap-x-4">
