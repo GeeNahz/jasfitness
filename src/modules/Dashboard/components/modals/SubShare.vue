@@ -7,21 +7,21 @@
     </template>
     <template #content>
       <form id="shareSub" @submit.prevent="shareYourSub">
-        <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
+        <label for="share-sub-username" class="font-semibold text-xs lg:text-sm"
           >Member username:</label
         >
         <input
-          id="freeze-sub"
+          id="share-sub-username"
           class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="text"
           v-model="shareSubUsername"
           required
         />
-        <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
+        <label for="share-sub-duration" class="font-semibold text-xs lg:text-sm"
           >Duration (days):
         </label>
         <input
-          id="freeze-sub"
+          id="share-sub-duration"
           class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="number"
           max="28"
