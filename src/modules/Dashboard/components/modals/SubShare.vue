@@ -78,9 +78,9 @@ async function shareYourSub() {
       })
     }
   } finally {
+    document.querySelector('#shareSub').reset()
+    shareSubUsername.value = ''
     shareSubDuration.value = ''
-    shareSubDuration.value = ''
-    // document.querySelector('#shareSub').reset()
   }
   // console.log(shareSubUsername.value, Number(shareSubDuration.value))
 }
