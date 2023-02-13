@@ -38,7 +38,7 @@
           <p
             class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
           >
-            Attendance Summary <span class="xl:hidden">Total</span>
+            Attendance Summary <span class="hidden lg:inline">Total</span>
           </p>
           <Suspense>
             <DashboardBaseViewSummary />
