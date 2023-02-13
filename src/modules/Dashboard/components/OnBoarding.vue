@@ -52,7 +52,9 @@ export default defineComponent({
     const isOriented = computed(() =>
       store.state.auth.isLoggedIn ? store.state.auth.user.is_oriented : true
     )
-    // const username = computed(() => store.state.auth.user.username)
+    const username = computed(() =>
+      store.state.auth.isLoggedIn ? store.state.auth.user.username : ''
+    )
 
     const { isReady, toggleIsReady } = inject('isComponentReady')
     const { toggleIsNavbarOpen, isNavbarOpen } = inject('navbar')
@@ -125,9 +127,9 @@ export default defineComponent({
         {
           attachTo: { element: '#user-welcome' },
           content: {
-            title: `Welcome, we're glad you
+            title: `Welcome! We're glad you
             could join us. We'll like to show you around
-            your  personal Jas Fitness dashboard. 
+            your  personal dashboard. 
             This will only take a moment so sit back 
             and enjoy.`,
             description: `Click the button below to proceed.`
@@ -139,7 +141,10 @@ export default defineComponent({
           content: {
             title: 'Your gym activities',
             description:
-              'At a glance you can see what you have been up to at the gym.'
+              `At a glance you can see your entire Fitness activities at the gym. <br/>` +
+              ' - In 2023: This shows the number of times you have been at the gym \n' +
+              ' - In February: This shows the number of times you have been to the gym this month \n' +
+              ' - Average Time: Average time of your last 3 session at the gym'
           }
         },
         // 2 button resubscribe
@@ -320,12 +325,12 @@ export default defineComponent({
         {
           attachTo: { element: '#user-welcome' },
           content: {
-            title: `Welcome, we're glad you
+            title: `Welcome ${username.value}.`,
+            description: `We're glad you
             could join us. We'll like to show you around
             your  personal Jas Fitness dashboard. 
-            This will only take a moment so sit back 
-            and enjoy.`,
-            description: `Click the button below to proceed.`
+            This will only take a moment
+            Click the button below to proceed.`
           }
         },
         // 1 summary home
@@ -333,8 +338,10 @@ export default defineComponent({
           attachTo: { element: '#home-summary' },
           content: {
             title: 'Your gym activities',
-            description:
-              'At a glance you can see what you have been up to at the gym.'
+            description: `At a glance you can see your entire Fitness activities at the gym.\n
+               - In 2023: This shows the number of times you have been at the gym \n 
+               - In February: This shows the number of times you have been to the gym this month \n 
+               - Average Time: Average time of your last 3 session at the gym`
           }
         },
         // 2 button resubscribe
