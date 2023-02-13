@@ -71,7 +71,7 @@
           <h4
             class="absolute bottom-32 left-0 text-3xl xl:text-4xl text-white z-10 font-bold w-full text-center"
           >
-            Feel the Love
+            Feel the Love 💛
           </h4>
         </div>
         <!-- right cards -->
