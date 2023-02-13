@@ -6,7 +6,7 @@
       You can freeze your subscription for as long as 4 days
     </template>
     <template #content>
-      <form @submit.prevent="freezeYourSub">
+      <form id="freeze-sub-form" @submit.prevent="freezeYourSub">
         <label for="freeze-sub" class="font-semibold text-sm"
           >Freeze duration:</label
         >
@@ -50,8 +50,8 @@ const closeModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 const freezeDuration = ref('')
-const freezeYourSub = () => {
-  console.log(Number(freezeDuration.value))
+async function freezeYourSub() {
+  console.log()
 }
 
 const freezeSubscriptionModal = computed(
