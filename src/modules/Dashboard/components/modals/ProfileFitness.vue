@@ -102,8 +102,14 @@ onMounted(() => {
       },
       (error) => {
         fitnessProfileIsAvailable.value = false
+        let message = ''
+        if (error.includes('404')) {
+          message = 'No fitness profile was found.'
+        } else {
+          message = 'Unable to retrieve your fitness profile.'
+        }
         store.dispatch('landingpage/error', {
-          message: `${error}. Unable to retrieve your assessment records.`,
+          message: message,
           style: 'error'
         })
       }
