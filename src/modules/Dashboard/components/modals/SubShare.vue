@@ -6,13 +6,13 @@
       Share your current subscription with another member of the gym
     </template>
     <template #content>
-      <form @submit.prevent="shareYourSub">
+      <form id="shareSub" @submit.prevent="shareYourSub">
         <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
           >Member username:</label
         >
         <input
           id="freeze-sub"
-          class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-400"
+          class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="text"
           v-model="shareSubUsername"
           required
@@ -22,9 +22,9 @@
         </label>
         <input
           id="freeze-sub"
-          class="form-control"
+          class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="number"
-          max="12"
+          max="28"
           min="1"
           v-model="shareSubDuration"
         />
@@ -70,14 +70,17 @@ async function shareYourSub() {
   } catch (error) {
     if (error.includes('400')) {
       store.dispatch('landingpage/error', {
-        message: 'Sorry no user with that username exists.'
+        message: 'Sorry, there is no user using this username.'
       })
     } else {
       store.dispatch('landingpage/error', {
         message: 'Could not complete the request. Please try again later.'
       })
     }
-    console.log(error)
+  } finally {
+    shareSubDuration.value = ''
+    shareSubDuration.value = ''
+    // document.querySelector('#shareSub').reset()
   }
   // console.log(shareSubUsername.value, Number(shareSubDuration.value))
 }
