@@ -66,6 +66,10 @@ async function shareYourSub() {
       username: shareSubUsername.value,
       duration: shareSubDuration.value
     })
+    store.dispatch('landingpage/success', {
+      message: `You have successfully shared your subscription with ${shareSubUsername.value}`
+    })
+    closeModal(shareSubscriptionModal.value.id)
   } catch (error) {
     if (error.includes('400')) {
       store.dispatch('landingpage/error', {
