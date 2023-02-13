@@ -1,12 +1,12 @@
 <template>
   <div class="h-full w-full text-[#303030]">
-    <div class="h-fit w-full pt-10 lg:pt-0">
+    <div class="settings-content h-fit w-full pt-10 lg:pt-0">
       <!-- heading section -->
       <div class="border-b border-gray-200 p-3 min-h-fit">
         <h1 class="font-inter font-bold text-2xl text-start">Settings</h1>
       </div>
       <!-- main section -->
-      <div class="min-h-fit w-full border-b border-gray-200 px-2 lg:px-5 py-3">
+      <div class="items min-h-fit w-full border-b border-gray-200">
         <div
           v-for="(item, index) in items"
           :key="'item' + index + 1"
@@ -28,7 +28,7 @@
           </div>
           <div class="item__action">
             <button
-              class="py-1 px-2 lg:px-4 text-xs lg:text-sm border border-black hover:bg-gray-50 transition-color rounded-sm"
+              class="py-1 px-2 lg:px-4 mb-1 lg:mb-0 text-xs lg:text-sm border border-black hover:bg-gray-50 transition-color rounded-sm"
               @click="item.actionBtn.action()"
             >
               {{ item.actionBtn.name }}
@@ -69,4 +69,18 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../../../assets/styles/base';
+
+.settings-content {
+  @include responsive('lg') {
+    padding-top: 2.5rem;
+  }
+}
+.items {
+  padding: 0.75rem 2.5rem;
+  @include responsive('lg') {
+    padding: 0.75rem 1.25rem;
+  }
+}
+</style>
