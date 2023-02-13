@@ -51,7 +51,18 @@ const closeModal = (modalId) => {
 }
 const freezeDuration = ref('')
 async function freezeYourSub() {
-  console.log()
+  try {
+    await store.dispatch('dashboard/dashboard_freeze_subscription', {
+      duration: Number(freezeDuration.value)
+    })
+  } catch (error) {
+    store.dispatch('landingpage/error', {
+      message: 'Unable to process your request. Please try again'
+    })
+  } finally {
+    document.querySelector('#freeze-sub-form').reset()
+    freezeDuration.value = ''
+  }
 }
 
 const freezeSubscriptionModal = computed(
