@@ -3,7 +3,7 @@
   <DashboardModalLayout :uid="accessmentRecordModal.id" @close="closeModal">
     <template #header> Fitness Profile </template>
     <template #content>
-      <div v-if="">
+      <div v-if="!assessmentCheck">
         <div class="items font-inter">
           <div class="item">
             <h4 class="item__title">Height:</h4>
