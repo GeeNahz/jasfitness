@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="alerts.length"
-    class="fixed bottom-1 right-1 sm:bottom-10 sm:right-10"
+    class="fixed bottom-1 right-1 sm:bottom-10 sm:right-10 z-50"
   >
     <TransitionGroup name="alerts">
       <div
