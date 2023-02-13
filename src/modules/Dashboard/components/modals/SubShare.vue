@@ -82,7 +82,6 @@ async function shareYourSub() {
     shareSubUsername.value = ''
     shareSubDuration.value = ''
   }
-  // console.log(shareSubUsername.value, Number(shareSubDuration.value))
 }
 
 const store = useStore()
