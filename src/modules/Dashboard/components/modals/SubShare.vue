@@ -1,0 +1,89 @@
+<template>
+  <!-- share subscription -->
+  <DashboardModalLayout :uid="shareSubscriptionModal.id" @close="closeModal">
+    <template #header> Share your subscription </template>
+    <template #header-description>
+      Share your current subscription with another member of the gym
+    </template>
+    <template #content>
+      <form @submit.prevent="shareYourSub">
+        <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
+          >Member username:</label
+        >
+        <input
+          id="freeze-sub"
+          class="form-control mb-2 lg:mb-3"
+          type="text"
+          v-model="shareSubUsername"
+          required
+        />
+        <label for="freeze-sub" class="font-semibold text-xs lg:text-sm"
+          >Duration (months):
+        </label>
+        <input
+          id="freeze-sub"
+          class="form-control"
+          type="number"
+          max="12"
+          min="1"
+          v-model="shareSubDuration"
+        />
+      </form>
+    </template>
+    <template #actions>
+      <div class="w-full flex gap-2 pt-2 lg:pt-3 justify-end btns">
+        <button
+          @click="closeModal(shareSubscriptionModal.id)"
+          class="duration-200 rounded-md hover:text-yellow-500 font-semibold text-sm lg:text-base text-gray-700 py-1 px-3 lg:py-2 lg:px-4"
+        >
+          Close
+        </button>
+        <button
+          @click="shareYourSub"
+          class="duration-200 bg-yellow-500 rounded-md hover:bg-yellow-600 font-semibold text-sm lg:text-base text-gray-50 py-1 px-3 lg:py-2 lg:px-4"
+        >
+          Send
+        </button>
+      </div>
+    </template>
+  </DashboardModalLayout>
+</template>
+
+<script setup>
+import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
+
+import DashboardModalLayout from '../DashboardModalLayout.vue'
+
+const closeModal = (modalId) => {
+  store.dispatch('dashboard/toggle_modal', modalId)
+}
+const shareSubUsername = ref('')
+const shareSubDuration = ref('')
+async function shareYourSub() {
+  try {
+    const res = await store.dispatch('dashboard/dashboard_share_subscription', {
+      username: shareSubUsername.value,
+      duration: shareSubDuration.value
+    })
+    console.log(res)
+  } catch (error) {
+    if (error.includes('400')) {
+      store.dispatch('landingpage/error', {
+        message: 'Sorry no user with that username exists.'
+      })
+    } else {
+      store.dispatch('landingpage/error', {
+        message: 'Could not complete the request. Please try again later.'
+      })
+    }
+    console.log(error)
+  }
+  // console.log(shareSubUsername.value, Number(shareSubDuration.value))
+}
+
+const store = useStore()
+const shareSubscriptionModal = computed(
+  () => store.state.dashboard.modals.shareSub
+)
+</script>
