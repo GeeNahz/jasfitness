@@ -55,6 +55,11 @@ async function freezeYourSub() {
     await store.dispatch('dashboard/dashboard_freeze_subscription', {
       duration: Number(freezeDuration.value)
     })
+
+    store.dispatch('landingpage/success', {
+      message: `You have successfully frozen your sub for ${freezeDuration.value} days`
+    })
+    closeModal(freezeSubscriptionModal.value.id)
   } catch (error) {
     store.dispatch('landingpage/error', {
       message: 'Unable to process your request. Please try again'
