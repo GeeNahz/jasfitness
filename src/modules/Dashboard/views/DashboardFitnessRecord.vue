@@ -117,21 +117,21 @@
                       Profile
                     </p>
                   </li>
-                  <li class="w-full opacity-30">
+                  <!-- <li class="w-full opacity-30">
                     <p
                       class="link w-full flex justify-start items-center gap-3 text-sm md:text-base disabled"
                     >
                       <AppIconRecord />
                       Fitness & Health Record
                     </p>
-                  </li>
+                  </li> -->
                   <li class="w-full">
                     <p
                       @click="openModal('accessmentRecord')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
+                      class="link w-full flex items-center gap-3 text-sm md:text-base whitespace-nowrap"
                     >
                       <AppIconAccessment />
-                      Assessment Record
+                      Fitness Record
                     </p>
                   </li>
                   <li class="w-full">
@@ -201,7 +201,6 @@ import AppIconRenew from '@/components/AppIconRenew.vue'
 import AppIconMessage from '@/components/AppIconMessage.vue'
 import AppIconProfile from '@/components/AppIconProfile.vue'
 import AppIconAccessment from '@/components/AppIconAccessment.vue'
-import AppIconRecord from '@/components/AppIconRecord.vue'
 import { useTimeConverter } from '@/composables/useConverter.js'
 import { useRadialBar } from '@/composables/useRadialbarSettings.js'
 
