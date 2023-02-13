@@ -56,6 +56,7 @@ async function freezeYourSub() {
       duration: Number(freezeDuration.value)
     })
 
+    store.dispatch('dashboard/dashboard_home')
     store.dispatch('landingpage/success', {
       message: `You have successfully frozen your sub for ${freezeDuration.value} days`
     })
