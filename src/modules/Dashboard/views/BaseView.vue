@@ -145,7 +145,7 @@
                         Freeze Your Sub
                       </p>
                       <p class="text-xs sm:text-sm font-light">
-                        {{ creds.freeze.value }}
+                        {{ creds.freeze.value }} of 4
                       </p>
                     </div>
                   </div>
