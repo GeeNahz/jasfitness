@@ -138,7 +138,7 @@
                         Fitness Record
                       </p>
                     </li>
-                    <li class="w-full">
+                    <li class="w-full disabled">
                       <p
                         @click="openModal('feedback')"
                         class="link w-full flex items-center gap-3"
@@ -336,6 +336,13 @@ a.router-link-exact-active {
   border-left: solid #ca9b42;
 }
 .disabled {
-  cursor: not-allowed !important;
+  color: gray;
+  pointer-events: none;
+}
+.disabled #stroke {
+  stroke: gray;
+}
+.disabled #path {
+  fill: gray;
 }
 </style>
