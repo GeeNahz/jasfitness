@@ -207,11 +207,11 @@ export default {
         .then(
           (response) => {
             commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', response.data)
-            return Promise.resolve(response)
+            return Promise.resolve(response.data)
           },
           (error) => {
             commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', {})
-            return Promise.reject(error)
+            return Promise.reject(error.message)
           }
         )
         .finally(() => {
