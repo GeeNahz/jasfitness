@@ -41,13 +41,13 @@
           </p>
         </div>
         <div class="item">
-          <h4 class="item__title">Next of kin's name:</h4>
+          <h4 class="item__title">Emergency contact name:</h4>
           <p class="item__content">
             {{ profileState.emergency_person || 'NA' }}
           </p>
         </div>
         <div class="item">
-          <h4 class="item__title">Next of kin's phone number:</h4>
+          <h4 class="item__title">Emergency contact number:</h4>
           <p class="item__content">
             {{ profileState.emergency_contact || 'NA' }}
           </p>
@@ -139,7 +139,7 @@ onMounted(() => {
     & .item__content {
       width: 100%;
       font-size: inherit;
-      padding: 1rem 0;
+      padding: 1rem 0.75rem;
       text-align: start;
       text-transform: capitalize;
     }
