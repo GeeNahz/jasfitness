@@ -11,7 +11,7 @@
         role="alert"
         :class="`grid grid-cols-12 justify-start alert alert-${alert.style} min-w-[300px]`"
       >
-        <p class="inline alert-dismissible col-span-11 text-xs sm:text-base">
+        <p class="inline alert-dismissible col-span-11 text-xs sm:text-sm">
           {{ alert.message }}
         </p>
         <button
