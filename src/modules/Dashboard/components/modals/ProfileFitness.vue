@@ -3,30 +3,30 @@
   <DashboardModalLayout :uid="accessmentRecordModal.id" @close="closeModal">
     <template #header> Fitness Profile </template>
     <template #content>
-      <div v-if="fitnessProfileIsAvailable">
+      <div v-if="">
         <div class="items font-inter">
           <div class="item">
             <h4 class="item__title">Height:</h4>
-            <p class="item__content">{{ assessmentState.height }}</p>
+            <p class="item__content">{{ assessmentState.height }} cm</p>
           </div>
           <div class="item">
             <h4 class="item__title">Weight:</h4>
-            <p class="item__content">{{ assessmentState.weight }}</p>
+            <p class="item__content">{{ assessmentState.weight }} cm</p>
           </div>
           <div class="item">
             <h4 class="item__title">Arm size:</h4>
-            <p class="item__content">{{ assessmentState.arm_size }}</p>
+            <p class="item__content">{{ assessmentState.arm_size }} cm</p>
           </div>
           <div class="item">
             <h4 class="item__title">Thigh size:</h4>
             <p class="item__content">
-              {{ assessmentState.thigh_size || 'NA' }}
+              {{ assessmentState.thigh_size || 'NA' }} cm
             </p>
           </div>
           <div class="item">
             <h4 class="item__title">Waist size:</h4>
             <p class="item__content">
-              {{ assessmentState.waist_size || 'NA' }}
+              {{ assessmentState.waist_size || 'NA' }} cm
             </p>
           </div>
           <div class="item">
@@ -47,18 +47,18 @@
               {{ assessmentState.flexibility || 'NA' }}
             </p>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <h4 class="item__title">Comment:</h4>
             <p class="item__content">
               {{ assessmentState.comment || 'NA' }}
             </p>
-          </div>
-          <!-- <div class="item">
-                <h4 class="item__title">images:</h4>
-                <p class="item__content">
-                  {{ assessmentState || 'NA' }}
-                </p>
-              </div> -->
+          </div> 
+          <div class="item">
+            <h4 class="item__title">images:</h4>
+            <p class="item__content">
+              {{ assessmentState || 'NA' }}
+            </p>
+          </div> -->
         </div>
       </div>
       <div v-else>
@@ -71,7 +71,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 
 import { useObjectValidator } from '@/composables/useObjectCheck'
@@ -92,16 +92,12 @@ const assessmentState = computed(() =>
     : {}
 )
 
-const fitnessProfileIsAvailable = ref(false)
+const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
 onMounted(() => {
-  const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
-  if (!assessmentState.value || assessmentCheck) {
+  if (!assessmentState.value || assessmentCheck.value) {
     store.dispatch('dashboard/dashboard_fitness_profile').then(
-      () => {
-        fitnessProfileIsAvailable.value = true
-      },
+      () => {},
       (error) => {
-        fitnessProfileIsAvailable.value = false
         let message = ''
         if (error.includes('404')) {
           message = 'No fitness profile was found.'
@@ -149,7 +145,7 @@ onMounted(() => {
       font-size: inherit;
       padding: 1rem 0;
       text-align: start;
-      text-transform: capitalize;
+      // text-transform: capitalize;
     }
   }
 }
