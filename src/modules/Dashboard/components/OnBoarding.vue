@@ -341,6 +341,7 @@ export default defineComponent({
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
+              orientationCompleted()
             }
           },
           options: {
@@ -507,6 +508,7 @@ export default defineComponent({
           on: {
             afterStep: function () {
               router.push({ name: 'DashboardHome' })
+              orientationCompleted()
             }
           },
           options: {
