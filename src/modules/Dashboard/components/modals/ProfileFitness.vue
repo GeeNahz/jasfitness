@@ -3,7 +3,7 @@
   <DashboardModalLayout :uid="accessmentRecordModal.id" @close="closeModal">
     <template #header> Fitness Profile </template>
     <template #content>
-      <div v-if="!assessmentCheck">
+      <div v-if="assessmentState">
         <div class="items font-inter">
           <div class="item">
             <h4 class="item__title">Height:</h4>
@@ -92,8 +92,8 @@ const assessmentState = computed(() =>
     : {}
 )
 
-const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
 onMounted(() => {
+  const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
   if (!assessmentState.value || assessmentCheck.value) {
     store.dispatch('dashboard/dashboard_fitness_profile').then(
       () => {},
