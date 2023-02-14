@@ -16,31 +16,39 @@
     </div>
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
-      <!-- <div class="">
+      <div class="z-50">
         <Onboarding />
-      </div> -->
+      </div>
       <router-view :key="$route.path" class="h-full w-full" />
     </div>
   </div>
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, provide, ref } from 'vue'
 import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
-// import Onboarding from './components/OnBoarding.vue'
+import Onboarding from './components/OnBoarding.vue'
 
 export default {
   name: 'DashboardView',
   components: {
     TheSidebar,
-    DashboardHandleModalsDisplay
-    // Onboarding
+    DashboardHandleModalsDisplay,
+    Onboarding
   },
   setup() {
     const store = useStore()
+
+    const runOnrientation = ref(false)
+    function toggleRunOrientation(newState) {
+      runOnrientation.value = newState
+    }
+    provide('runOrientationManually', { runOnrientation, toggleRunOrientation })
+
+    // modals toggle
     const profileModal = computed(
       () => store.state.dashboard.modals.profile.open
     )

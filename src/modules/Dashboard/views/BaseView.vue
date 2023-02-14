@@ -6,7 +6,7 @@
         <div
           class="welcome-container container py-3 flex justify-between items-center"
         >
-          <div class="welcome md:mt-10">
+          <div id="user-welcome" class="welcome md:mt-10">
             <p class="text-xl md:text-2xl font-semibold">
               Hello
               <span v-if="user" class="capitalize">{{ user.username }}</span
@@ -16,7 +16,7 @@
               Welcome back!
             </p>
           </div>
-          <div>
+          <div id="resubscription-btn">
             <a
               href="https://app.jasfitnessng.com/new-members/re-subscription/"
               target="_blank"
@@ -32,12 +32,13 @@
         <br />
         <!-- attendance summary -->
         <div
+          id="home-summary"
           class="relative attendance-summary-container border border-gray-300 rounded-xl w-full pt-[2px] md:p-6"
         >
           <p
             class="absolute -top-4 left-4 text-sm xl:text-base bg-white px-2 py-1"
           >
-            Attendance Summary <span class="xl:hidden">Total</span>
+            Attendance Summary <span class="hidden lg:inline">Total</span>
           </p>
           <Suspense>
             <DashboardBaseViewSummary />
@@ -88,7 +89,10 @@
         </div>
       </template>
       <template #inner-side-bar>
-        <div class="flex items-center justify-center pb-3 lg:pt-6 lg:pb-0">
+        <div
+          id="home-panel"
+          class="flex items-center justify-center pb-3 lg:pt-6 lg:pb-0 w-full"
+        >
           <div>
             <ul
               class="grid grid-cols-2 gap-x-16 lg:gap-x-0 gap-y-10 lg:gap-y-3 lg:flex lg:flex-col items-center lg:items-start lg:justify-start space-y-0 lg:space-y-5 mt-2 lg:mt-4"
@@ -101,7 +105,7 @@
                       <AppIconComplete />
                     </div>
                     <div class="">
-                      <p class="text-xs sm:text-sm font-semibold">Sub Status</p>
+                      <p class="text-xs sm:text-sm font-semibold">Sub End</p>
                       <p class="text-xs sm:text-sm font-light">
                         {{ creds.sub_status }}
                       </p>
@@ -129,7 +133,8 @@
                   @click="openModal('freezeSub')"
                   class="link"
                   :class="{
-                    'disabled ': !creds.freeze.is_active
+                    'disabled ':
+                      !creds.freeze.is_active || creds.freeze.value === 4
                   }"
                 >
                   <div class="flex items-start gap-x-3 lg:gap-x-4">
@@ -141,7 +146,7 @@
                         Freeze Your Sub
                       </p>
                       <p class="text-xs sm:text-sm font-light">
-                        {{ creds.freeze.value }}
+                        {{ creds.freeze.value }} of 4
                       </p>
                     </div>
                   </div>
@@ -162,7 +167,7 @@
                 </div>
               </li>
               <li>
-                <div class="link">
+                <div class="link disabled">
                   <div class="flex items-center gap-3 md:gap-4">
                     <div class="icon">
                       <AppIconMessage />
@@ -216,7 +221,7 @@ const creds = computed(() =>
 )
 
 onMounted(() => {
-  store.dispatch('dashboard/dashboard_gym_attendance', user.value.id).then(
+  store.dispatch('dashboard/dashboard_gym_attendance', user.value.user_id).then(
     () => {},
     () => {
       const message =

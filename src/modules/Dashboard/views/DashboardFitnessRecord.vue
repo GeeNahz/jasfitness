@@ -28,6 +28,7 @@
         <br />
         <!-- goals -->
         <div
+          id="goals"
           class="relative goals-container border border-gray-300 rounded-xl md:w-96 p-6"
         >
           <p
@@ -94,7 +95,10 @@
       </template>
       <template #inner-side-bar>
         <div class="w-full">
-          <div class="flex flex-col items-center lg:block mb-4 w-full">
+          <div
+            id="fitnessrecord-panel"
+            class="flex flex-col items-center lg:block mb-4 w-full"
+          >
             <DashboardSubscriptionCard class="w-full" :addIcon="false">
               <template #title>
                 <h4
@@ -104,44 +108,47 @@
                 </h4>
               </template>
               <template #description>
-                <ul
-                  class="grid grid-cols-2 gap-3 lg:gap-0 md:flex flex-col items-start lg:space-y-1 w-full text-xs sm:text-sm lg:text-base"
-                >
-                  <li class="w-full">
-                    <p
-                      @click="openModal('profile')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
-                    >
-                      <AppIconProfile />
-                      Profile
-                    </p>
-                  </li>
-                  <li class="w-full opacity-30">
-                    <p
-                      class="link w-full flex justify-start items-center gap-3 text-sm md:text-base disabled"
-                    >
-                      <AppIconRecord />
-                      Fitness & Health Record
-                    </p>
-                  </li>
-                  <li class="w-full">
-                    <p
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
-                    >
-                      <AppIconAccessment />
-                      Assessment Record
-                    </p>
-                  </li>
-                  <li class="w-full">
-                    <p
-                      @click="openModal('feedback')"
-                      class="link w-full flex items-center gap-3 text-sm md:text-base"
-                    >
-                      <AppIconMessage />
-                      Feedback
-                    </p>
-                  </li>
-                </ul>
+                <div class="flex justify-center">
+                  <ul
+                    class="grid grid-cols-2 gap-3 lg:gap-0 md:flex flex-col items-start lg:space-y-1 w-max text-xs sm:text-sm"
+                  >
+                    <li class="w-full">
+                      <p
+                        @click="openModal('profile')"
+                        class="link w-full flex items-center gap-3"
+                      >
+                        <AppIconProfile />
+                        Profile
+                      </p>
+                    </li>
+                    <!-- <li class="w-full opacity-30">
+                      <p
+                        class="link w-full flex justify-start items-center gap-3 disabled"
+                      >
+                        <AppIconRecord />
+                        Fitness & Health Record
+                      </p>
+                    </li> -->
+                    <li class="w-full">
+                      <p
+                        @click="openModal('accessmentRecord')"
+                        class="link w-full flex items-center gap-3 whitespace-nowrap"
+                      >
+                        <AppIconAccessment />
+                        Fitness Record
+                      </p>
+                    </li>
+                    <li class="w-full disabled">
+                      <p
+                        @click="openModal('feedback')"
+                        class="link w-full flex items-center gap-3"
+                      >
+                        <AppIconMessage />
+                        Feedback
+                      </p>
+                    </li>
+                  </ul>
+                </div>
               </template>
             </DashboardSubscriptionCard>
           </div>
@@ -153,7 +160,7 @@
                     <h4
                       class="font-semibold text-sm md:text-lg md:text-center block w-full"
                     >
-                      Weekly Performance
+                      Fitness Performance
                     </h4>
                     <p class="md:text-center text-xs my-3 font-light">
                       Based on your goal, you should go to the gym at least 4
@@ -190,7 +197,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, inject } from 'vue'
 import { useStore } from 'vuex'
 import { useMeta } from 'vue-meta'
 
@@ -199,7 +206,6 @@ import AppIconRenew from '@/components/AppIconRenew.vue'
 import AppIconMessage from '@/components/AppIconMessage.vue'
 import AppIconProfile from '@/components/AppIconProfile.vue'
 import AppIconAccessment from '@/components/AppIconAccessment.vue'
-import AppIconRecord from '@/components/AppIconRecord.vue'
 import { useTimeConverter } from '@/composables/useConverter.js'
 import { useRadialBar } from '@/composables/useRadialbarSettings.js'
 
@@ -224,13 +230,14 @@ const fitness_target = computed(() =>
     : {}
 )
 
-const userId = computed(() => store.state.auth.user.id)
+const userId = computed(() => store.state.auth.user.user_id)
 const gym_attendance = computed(() =>
   store.state.dashboard.dashboardGymnAttendance
     ? store.state.dashboard.dashboardGymnAttendance
     : {}
 )
 
+const { toggleIsReady } = inject('isComponentReady')
 onMounted(() => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -248,6 +255,7 @@ onMounted(() => {
       store.dispatch('error', { message, timeout: 3000 })
     }
   )
+  toggleIsReady(true)
 })
 
 const {
@@ -328,6 +336,13 @@ a.router-link-exact-active {
   border-left: solid #ca9b42;
 }
 .disabled {
-  cursor: not-allowed !important;
+  color: gray;
+  pointer-events: none;
+}
+.disabled #stroke {
+  stroke: gray;
+}
+.disabled #path {
+  fill: gray;
 }
 </style>

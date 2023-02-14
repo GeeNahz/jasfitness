@@ -1,5 +1,6 @@
 import axiosInstance from '@/services/DashboardServices/axiosConfig'
 import AuthService from '@/services/AuthServices/AuthService.js'
+import DashboardService from '@/services/DashboardServices/DashboardService'
 import { validateToken } from '@/services/helpers/ValidateTokenHelper.js'
 import { useState } from '@/composables/useState.js'
 
@@ -51,6 +52,9 @@ export default {
       state.isLoggedIn = false
       state.status.error = true
       state.status.isLoading = false
+    },
+    TOGGLE_IS_ORIENTED(state, payload) {
+      state.user.is_oriented = payload
     }
   },
   actions: {
@@ -59,11 +63,7 @@ export default {
       return AuthService.login_user(payload)
         .then(
           (response) => {
-            const user_details = {
-              id: response.data.user_id,
-              username: response.data.username,
-              avatar: response.data.avatar
-            }
+            const user_details = { ...response.data }
             User.value = JSON.stringify({ ...user_details })
             AuthToken.value = response.data.token
             axiosInstance.defaults.headers = {
@@ -93,12 +93,25 @@ export default {
       AuthToken.value = null
 
       commit('LOGIN_FAILURE')
+    },
+    toggle_is_oriented({ commit }, value = false) {
+      commit('TOGGLE_IS_ORIENTED', value)
+    },
+    completed_orientation({ commit, dispatch }) {
+      commit('LOADING')
+      return DashboardService.orientation_completed()
+        .then(
+          (response) => {
+            return Promise.resolve(response)
+          },
+          (error) => {
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          dispatch('toggle_is_oriented', true) // ensure that either ways, it is registered locally that onboarding has been completed
+          commit('DEFAULT_STATUS')
+        })
     }
-    // setNotifications({ commit }, payload) {
-    //   commit('auth/SET_NOTIFICATION', payload, { root: true })
-    //   setTimeout(() => {
-    //     commit('auth/CLEAR_NOTIFICATION', null, { root: true })
-    //   }, 5000)
-    // }
   }
 }

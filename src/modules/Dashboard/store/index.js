@@ -200,6 +200,23 @@ export default {
         .finally(() => {
           commit('STATUS_RESET')
         })
+    },
+    dashboard_fitness_profile({ commit }) {
+      commit('STATUS_LOADING')
+      return DashboardService.dashboard_fitness_profile()
+        .then(
+          (response) => {
+            commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', response.data)
+            return Promise.resolve(response.data)
+          },
+          (error) => {
+            commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', {})
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
     }
   },
   modules: {}

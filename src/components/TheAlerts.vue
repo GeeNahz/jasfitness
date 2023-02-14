@@ -1,31 +1,33 @@
 <template>
-  <div
-    v-if="alerts.length"
-    class="fixed bottom-1 right-1 sm:bottom-10 sm:right-10"
-  >
-    <TransitionGroup name="alerts">
-      <div
-        v-for="alert in alerts"
-        :key="alert.id"
-        class="fade show"
-        role="alert"
-        :class="`grid grid-cols-12 justify-start alert alert-${alert.style} min-w-[300px]`"
-      >
-        <p class="inline alert-dismissible col-span-11 text-xs sm:text-base">
-          {{ alert.message }}
-        </p>
-        <button
-          @click="closeAlert(alert.id)"
-          type="button"
-          class="close col-spal-1 place-self-center"
-          data-dismiss="alert"
-          aria-label="Close"
+  <Transition name="alerts-container">
+    <div
+      v-if="alerts.length"
+      class="fixed bottom-1 right-1 sm:bottom-10 sm:right-10 z-50"
+    >
+      <TransitionGroup name="alerts">
+        <div
+          v-for="alert in alerts"
+          :key="alert.id"
+          class="fade show"
+          role="alert"
+          :class="`grid grid-cols-12 justify-start alert alert-${alert.style} min-w-[300px]`"
         >
-          <span aria-hidden="true"><AppIconCloseAlert /></span>
-        </button>
-      </div>
-    </TransitionGroup>
-  </div>
+          <p class="inline alert-dismissible col-span-11 text-xs sm:text-sm">
+            {{ alert.message }}
+          </p>
+          <button
+            @click="closeAlert(alert.id)"
+            type="button"
+            class="close col-spal-1 place-self-center"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true"><AppIconCloseAlert /></span>
+          </button>
+        </div>
+      </TransitionGroup>
+    </div>
+  </Transition>
 </template>
 
 <script setup>
@@ -54,5 +56,15 @@ function closeAlert(id) {
 .alerts-leave-to {
   opacity: 0;
   transform: translateX(30px);
+}
+
+.alerts-container-enter-active,
+.alerts-container-leave-active {
+  transition: all 0.3s ease;
+}
+.alerts-container-enter-from,
+.alerts-container-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>

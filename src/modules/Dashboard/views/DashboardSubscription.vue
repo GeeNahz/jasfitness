@@ -30,6 +30,7 @@
         <br />
         <!-- subscription summary -->
         <div
+          id="subscription-summary"
           class="relative subscription-summary-container border border-gray-300 rounded-xl w-full pt-[1px] md:p-6"
         >
           <p
@@ -53,6 +54,7 @@
             name="Members Features"
           />
           <div
+            id="members-features"
             class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
@@ -137,6 +139,7 @@
             name="Explore plans suited for you"
           />
           <div
+            id="our-plans"
             class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
@@ -254,7 +257,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, inject } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
@@ -285,6 +288,7 @@ const dashboardSub = computed(() =>
     : {}
 )
 
+const { toggleIsReady } = inject('isComponentReady')
 onMounted(async () => {
   store.dispatch('dashboard/dashboard_fitness').then(
     () => {},
@@ -301,6 +305,7 @@ onMounted(async () => {
       'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
     store.dispatch('landingpage/error', { message, timeout: 3000 })
   }
+  toggleIsReady(true)
 })
 
 const plans = [
