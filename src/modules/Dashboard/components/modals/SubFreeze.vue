@@ -21,7 +21,7 @@
       </form>
     </template>
     <template #actions>
-      <div class="w-full flex gap-2 mt-1 lg:mt-3 justify-end btns">
+      <div class="w-full flex gap-2 mt-1 lg:mt-3 justify-end mb-2 btns">
         <button
           @click="closeModal(freezeSubscriptionModal.id)"
           class="duration-200 rounded-md hover:text-yellow-500 font-medium text-sm lg:text-base text-gray-700 py-1 px-3 lg:py-2 lg:px-4"

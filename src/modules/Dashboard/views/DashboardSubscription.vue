@@ -117,8 +117,8 @@
               </template>
               <template #description>
                 <p class="plans-des text-xs xl:text-sm font-light">
-                  Share your subscription with a family member, friend or gym
-                  buddy <span>4</span> days
+                  Share your subscription for as much as 4 days with a family
+                  member, friend or gym buddy
                 </p>
               </template>
               <template #button>
