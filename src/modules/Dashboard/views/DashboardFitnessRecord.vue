@@ -274,10 +274,13 @@ const preparedChartData = ref({
 })
 const prepareChartData = (values) => {
   for (let item of values) {
+    let timeInHours = timestampToMinutes(item.duration) / 60
+    let roundedTimeInHours =
+      Math.round((timeInHours + Number.EPSILON) * 100) / 100
     preparedChartData.value.timeIn.push(timestampToTime(item.time_in))
     preparedChartData.value.timeOut.push(timestampToTime(item.time_out))
     preparedChartData.value.date.push(timestampToFullDate(item.time_in))
-    preparedChartData.value.data.push(timestampToMinutes(item.duration))
+    preparedChartData.value.data.push(roundedTimeInHours)
     preparedChartData.value.labels.push(timestampToDate(item.time_in))
   }
 }

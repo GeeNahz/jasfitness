@@ -55,10 +55,11 @@ export default defineComponent({
       maintainAspectRatio: false,
       scales: {
         y: {
-          suggestedMax: 120,
+          suggestedMin: 0,
+          suggestedMax: 2,
           ticks: {
             callback: (value) => {
-              return value + ' mins'
+              return value + ' hr(s)'
             }
           }
         }
