@@ -5,16 +5,15 @@
       <template #content>
         <formKit
           type="form"
-          :submit-attrs="{ inputId: 'new-password-reset-form' }"
+          :submit-attrs="{ inputId: 'password-reset-form' }"
           submit-label="Change Password"
           :actions="false"
           @submit="handleSubmit"
-          v-model="newPassword"
         >
           <formKit
             type="password"
             name="password"
-            label="*New Password"
+            label="New Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter your new password"
@@ -26,7 +25,7 @@
           <formKit
             type="password"
             name="password_confirm"
-            label="*Confirm Password"
+            label="Confirm Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter password again"
@@ -78,6 +77,19 @@ const { toggleModal } = useModalOperations()
 const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
+
+function handleSubmit(credentials) {
+  try {
+    console.log(credentials)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+const handleIconClick = (node) => {
+  node.props.suffixIcon = node.props.suffixIcon === 'eye' ? 'eyeClosed' : 'eye'
+  node.props.type = node.props.type === 'password' ? 'text' : 'password'
+}
 // import { reset } from '@formkit/core'
-// reset('login-form')
+// reset('password-reset-form')
 </script>
