@@ -63,6 +63,17 @@ const items = [
       name: 'Re-orientation',
       action: triggerRunOrientation
     }
+  },
+  {
+    name: 'Reset Password',
+    description: '',
+    ids: [],
+    actionBtn: {
+      name: 'Reset password',
+      action: () => {
+        toggleModal('passwordReset')
+      }
+    }
   }
 ]
 
