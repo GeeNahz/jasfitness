@@ -66,7 +66,8 @@ const items = [
   },
   {
     name: 'Reset Password',
-    description: '',
+    description:
+      'To ensure your account remains secure, we advice that you periodically change your password.',
     ids: [],
     actionBtn: {
       name: 'Reset password',
