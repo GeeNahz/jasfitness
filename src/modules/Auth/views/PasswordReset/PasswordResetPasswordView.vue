@@ -87,23 +87,18 @@ const store = useStore()
 const handleSubmit = (credentials) => {
   try {
     newPassword.value = credentials
-    store.commit('auth/setNotification', {
-      message: 'Your password has been successfully updated',
-      route: 'LoginPage'
+    store.dispatch('landingpage/success', {
+      message: 'Your password has been successfully updated'
     })
     // on successful request route to success page
     router.push({ name: 'Success', query: { next: 'LoginPage' } })
   } catch (err) {
-    confirm.log(err)
     error.value = true
     setTimeout(() => {
       error.value = false
     }, 3000)
   } finally {
     reset('new-password-reset-form')
-    setTimeout(() => {
-      store.commit('auth/clearNotification')
-    }, 5000)
   }
 }
 
