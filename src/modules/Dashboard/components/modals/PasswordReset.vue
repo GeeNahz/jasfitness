@@ -2,13 +2,7 @@
   <DashboardModalLayout :uid="passwordResetModal.id" @close="toggleModal">
     <template #header>Password Reset</template>
     <template #content>
-      <formKit
-        type="form"
-        :submit-attrs="{ inputId: 'password-reset-form' }"
-        submit-label="Change Password"
-        :actions="false"
-        @submit="handleSubmit"
-      >
+      <form id="form" @submit="handleSubmit">
         <formKit
           type="password"
           name="password"
@@ -31,7 +25,7 @@
           placeholder="Enter password again"
           validation="password|confirm"
         />
-      </formKit>
+      </form>
     </template>
     <template #actions>
       <div class="w-[70%] mx-auto">
@@ -55,7 +49,6 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
-import { reset } from '@formkit/core'
 
 import { useModalOperations } from '@/composables/modalOperations.js'
 
@@ -76,7 +69,7 @@ function handleSubmit(credentials) {
   } catch (err) {
     console.log(err)
   } finally {
-    reset('password-reset-form')
+    document.querySelector('#form').reset()
   }
 }
 
