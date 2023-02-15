@@ -13,6 +13,7 @@
           type="password"
           name="password"
           label="New Password"
+          v-model="password"
           suffix-icon="eyeClosed"
           @suffix-icon-click="handleIconClick"
           placeholder="Enter your new password"
@@ -30,38 +31,29 @@
           placeholder="Enter password again"
           validation="password|confirm"
         />
-        <div class="w-[70%] mx-auto">
-          <FormKit
-            type="submit"
-            label="Change Password"
-            :classes="{
-              label: 'block mb-1 font-bold text-sm',
-              inner:
-                'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
-              input:
-                'h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
-              help: 'text-xs text-gray-500'
-            }"
-          />
-        </div>
-        <p class="text-xs mb-6">
-          Remembered your Password?
-          <router-link
-            :to="{ name: 'LoginPage' }"
-            class="ml-1 underline hover:text-yellow-500 transition-colors duration-150"
-            >Login</router-link
-          >
-        </p>
-        <p v-if="error" class="text-xs text-red-500">
-          An error occured. Please try again.
-        </p>
       </formKit>
+    </template>
+    <template #actions>
+      <div class="w-[70%] mx-auto">
+        <FormKit
+          type="submit"
+          label="Change Password"
+          :classes="{
+            label: 'block mb-1 font-bold text-sm',
+            inner:
+              'max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500',
+            input:
+              'h-10 px-3 border-none text-base text-gray-700 placeholder-gray-400',
+            help: 'text-xs text-gray-500'
+          }"
+        />
+      </div>
     </template>
   </DashboardModalLayout>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 
@@ -77,6 +69,7 @@ const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
 
+const password = ref('')
 function handleSubmit(credentials) {
   try {
     console.log(credentials)
