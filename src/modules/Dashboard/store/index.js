@@ -1,12 +1,4 @@
 import DashboardService from '@/services/DashboardServices/DashboardService'
-// import { useState } from '@/composables/useState'
-/**What i need
- *
- * user profile
- * attendance
- */
-
-// const { User } = useState()
 
 export default {
   namespaced: true,
