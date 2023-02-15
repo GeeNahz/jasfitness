@@ -4,11 +4,11 @@
     <template #content>
       <form id="form" @submit="handleSubmit">
         <FormKit type="form" :actions="false" @submit="handleSubmit">
-          <!-- <formKit
+          <formKit
             type="password"
             name="old_password"
             label="Old Password"
-            v-model="password"
+            v-model="oldPassword"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Your old password"
@@ -16,7 +16,7 @@
             :validation-messages="{
               matches: 'Please include at least one symbol'
             }"
-          /> -->
+          />
           <formKit
             type="password"
             name="password"
@@ -82,6 +82,7 @@ const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
 
+const oldPassword = ref('')
 const password = ref('')
 const password_confirm = ref('')
 const activeFields = computed(() =>
