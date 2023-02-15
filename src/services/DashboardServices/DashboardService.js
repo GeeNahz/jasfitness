@@ -31,7 +31,7 @@ export default {
   orientation_completed() {
     return axiosInstance.get('api/auth/orientation/')
   },
-  change_password(new_password) {
-    return axiosInstance.post('api/auth/change_password/', new_password)
+  change_password(data) {
+    return axiosInstance.post('api/auth/change_password/', data)
   }
 }
