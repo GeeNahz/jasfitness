@@ -13,7 +13,6 @@
             inputId: 'password-reset-form'
           }"
           :actions="false"
-          v-model="formData"
           submit-label="Send Request"
           @submit="handleSubmit"
         >
@@ -22,7 +21,7 @@
             label="Email"
             name="email"
             suffixIcon="email"
-            placeholder="example@email.com"
+            placeholder="ben_crusoe@email.com"
             validation="email|length:5"
           />
           <div class="w-[70%] mx-auto">
@@ -66,23 +65,22 @@ import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Password Reset Email' })
 
-const formData = ref('')
-
 const error = ref(false)
 
 const router = useRouter()
 const store = useStore()
 
-const handleSubmit = (credentials) => {
+async function handleSubmit(credentials) {
   // make async request
   try {
-    formData.value = credentials
-    store.commit('auth/setNotification', {
-      message: 'A password reset mail has been sent to your email',
-      route: 'PasswordResetEmailPage'
+    let data = { email: credentials.email }
+    await store.dispatch('auth/password_reset_request_email', data)
+    store.commit('landingpage/success', {
+      message:
+        'A password reset link has been sent to your email. Use the link to continue'
     })
     // on successful request route to success page
-    router.push({ name: 'Success' })
+    router.push({ name: 'Success', query: { next: 'LoginPage' } })
   } catch (err) {
     error.value = true
     setTimeout(() => {
@@ -91,9 +89,6 @@ const handleSubmit = (credentials) => {
   } finally {
     // clear input values
     reset('password-reset-form')
-    setTimeout(() => {
-      store.commit('auth/clearNotification')
-    }, 5000)
   }
 }
 </script>
