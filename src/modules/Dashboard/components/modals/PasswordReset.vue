@@ -21,7 +21,7 @@
             type="password"
             name="password"
             label="New Password"
-            v-model="password"
+            v-model="newPassword"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Your new password"
@@ -71,38 +71,54 @@ import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
 import { useModalOperations } from '@/composables/modalOperations.js'
+import { validation } from '@/composables/validation.js'
 
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
 const store = useStore()
 
-const { toggleModal } = useModalOperations()
-
 const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
 
+const { useValidateInputs, useIsPasswordConfirmed } = validation()
+
 const oldPassword = ref('')
-const password = ref('')
+const newPassword = ref('')
 const password_confirm = ref('')
-const activeFields = computed(() =>
-  isPasswordConfirmed(password.value, password_confirm.value)
+const activeFields = computed(
+  () =>
+    useValidateInputs([
+      oldPassword.value,
+      newPassword.value,
+      password_confirm.value
+    ]) && useIsPasswordConfirmed(newPassword.value, password_confirm.value)
 )
+
+const userId = computed(() => store.state.auth.user.user_id)
 async function handleSubmit() {
-  if (!isPasswordConfirmed(password.value, password_confirm.value)) return
+  if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
+  if (
+    !useValidateInputs([
+      oldPassword.value,
+      newPassword.value,
+      password_confirm.value
+    ])
+  )
+    return
   try {
-    let res = await store.dispatch('dashboard/change_password', {
-      password: password.value
-    })
-    console.log(password.value)
-    console.log('Response: ', res)
+    let data = {
+      old_password: oldPassword.value,
+      new_password: newPassword.value,
+      user_id: userId
+    }
+    await store.dispatch('dashboard/change_password', data)
 
     store.dispatch('landingpage/success', {
       message: 'Your password has been successfully change.'
     })
     closeModal(passwordResetModal.value.id)
-  } catch (err) {
-    console.log(err)
+  } catch {
     store.dispatch('landingpage/error', {
       message: 'Unable to complete your request. Please try again later.'
     })
@@ -113,20 +129,16 @@ async function handleSubmit() {
 
 function resetForm() {
   document.querySelector('#form').reset()
-  password.value = ''
+  oldPassword.value = ''
+  newPassword.value = ''
   password_confirm.value = ''
 }
+
+const { toggleModal } = useModalOperations()
 
 function closeModal(modalId) {
   toggleModal(modalId)
   resetForm()
-}
-
-function isPasswordConfirmed(pwd1, pwd2) {
-  if (pwd1 !== '') {
-    return pwd1.trim() === pwd2.trim()
-  }
-  return false
 }
 
 const handleIconClick = (node) => {
