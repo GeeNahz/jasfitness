@@ -92,7 +92,7 @@ const handleSubmit = (credentials) => {
       route: 'LoginPage'
     })
     // on successful request route to success page
-    router.push({ name: 'Success' })
+    router.push({ name: 'Success', query: { next: 'LoginPage' } })
   } catch (err) {
     confirm.log(err)
     error.value = true
