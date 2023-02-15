@@ -33,12 +33,12 @@ export default {
     clearNotification(state) {
       state.notification = []
     },
-    DEFAULT_STATUS(state) {
+    STATUS_RESET(state) {
       state.status.success = false
       state.status.error = false
       state.status.isLoading = false
     },
-    LOADING(state) {
+    STATUS_LOADING(state) {
       state.status.isLoading = true
     },
     LOGIN_SUCCESS(state, data) {
@@ -59,7 +59,7 @@ export default {
   },
   actions: {
     login({ commit }, payload) {
-      commit('LOADING')
+      commit('STATUS_LOADING')
       return AuthService.login_user(payload)
         .then(
           (response) => {
@@ -84,7 +84,7 @@ export default {
         .finally(() => {
           // reset auth status
           setTimeout(() => {
-            commit('DEFAULT_STATUS')
+            commit('STATUS_RESET')
           }, 5000)
         })
     },
@@ -94,11 +94,15 @@ export default {
 
       commit('LOGIN_FAILURE')
     },
+    // password_reset_request_email({ commit }, email) {
+    //   commit('STATUS_LOADING')
+    //   return AuthService.password_reset_request(email)
+    // },
     toggle_is_oriented({ commit }, value = false) {
       commit('TOGGLE_IS_ORIENTED', value)
     },
     completed_orientation({ commit, dispatch }) {
-      commit('LOADING')
+      commit('STATUS_LOADING')
       return DashboardService.orientation_completed()
         .then(
           (response) => {
@@ -110,7 +114,7 @@ export default {
         )
         .finally(() => {
           dispatch('toggle_is_oriented', true) // ensure that either ways, it is registered locally that onboarding has been completed
-          commit('DEFAULT_STATUS')
+          commit('STATUS_RESET')
         })
     }
   }
