@@ -65,6 +65,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import { reset } from '@formkit/core'
 
 import { useModalOperations } from '@/composables/modalOperations.js'
 
@@ -83,6 +84,8 @@ function handleSubmit(credentials) {
     console.log(credentials)
   } catch (err) {
     console.log(err)
+  } finally {
+    reset('password-reset-form')
   }
 }
 
@@ -90,6 +93,4 @@ const handleIconClick = (node) => {
   node.props.suffixIcon = node.props.suffixIcon === 'eye' ? 'eyeClosed' : 'eye'
   node.props.type = node.props.type === 'password' ? 'text' : 'password'
 }
-// import { reset } from '@formkit/core'
-// reset('password-reset-form')
 </script>
