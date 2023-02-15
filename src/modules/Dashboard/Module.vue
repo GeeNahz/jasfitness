@@ -8,7 +8,8 @@
         healthRecordModal ||
         assessmentRecordModal ||
         freezeSubscriptionModal ||
-        shareSubscriptionModal
+        shareSubscriptionModal ||
+        passwordResetModal
       "
       class="fixed z-50 h-full w-full"
     >
@@ -64,13 +65,17 @@ export default {
     const shareSubscriptionModal = computed(
       () => store.state.dashboard.modals.shareSub.open
     )
+    const passwordResetModal = computed(
+      () => store.state.dashboard.modals.passwordReset.open
+    )
 
     return {
       profileModal,
       healthRecordModal,
       assessmentRecordModal,
       freezeSubscriptionModal,
-      shareSubscriptionModal
+      shareSubscriptionModal,
+      passwordResetModal
     }
   }
 }
