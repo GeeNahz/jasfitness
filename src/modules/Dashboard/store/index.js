@@ -24,7 +24,8 @@ export default {
       accessmentRecord: { id: 'accessmentRecord', open: false },
       freezeSub: { id: 'freezeSub', open: false },
       shareSub: { id: 'shareSub', open: false },
-      feedback: { id: 'feedback', open: false }
+      feedback: { id: 'feedback', open: false },
+      passwordReset: { id: 'passwordReset', open: false }
     }
   },
   getters: {},
