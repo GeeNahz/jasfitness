@@ -43,7 +43,7 @@ const routes = [
             component: PasswordResetEmailView
           },
           {
-            path: 'new-password',
+            path: 'password',
             name: 'PasswordResetPasswordPage',
             component: PasswordResetPasswordView
           }
