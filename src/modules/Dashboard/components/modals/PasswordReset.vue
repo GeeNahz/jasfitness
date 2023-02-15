@@ -110,7 +110,7 @@ async function handleSubmit() {
     let data = {
       old_password: oldPassword.value,
       new_password: newPassword.value,
-      user_id: userId
+      user_id: userId.value
     }
     await store.dispatch('dashboard/change_password', data)
 
