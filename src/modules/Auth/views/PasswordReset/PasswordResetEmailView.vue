@@ -57,7 +57,7 @@
 
 <script setup>
 import { ref } from 'vue'
-// import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
@@ -67,22 +67,21 @@ useMeta({ title: 'Password Reset Email' })
 
 const error = ref(false)
 
-// const router = useRouter()
+const router = useRouter()
 const store = useStore()
 
 async function handleSubmit(credentials) {
   // make async request
   try {
     let data = { email: credentials.email }
-    console.log(data)
-    // await store.dispatch('auth/password_reset_request_email', data)
+    await store.dispatch('auth/password_reset_request_email', data)
 
     store.dispatch('landingpage/success', {
       message:
         'A password reset link has been sent to your email. Use the link to continue'
     })
     // on successful request route to success page
-    // router.push({ name: 'Success', query: { next: 'LoginPage' } })
+    router.push({ name: 'Success', query: { next: 'LoginPage' } })
   } catch (err) {
     error.value = true
     setTimeout(() => {
