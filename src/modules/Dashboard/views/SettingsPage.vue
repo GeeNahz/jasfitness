@@ -65,12 +65,12 @@ const items = [
     }
   },
   {
-    name: 'Reset Password',
+    name: 'Change Password',
     description:
       'To ensure your account remains secure, we advice that you periodically change your password.',
     ids: [],
     actionBtn: {
-      name: 'Reset password',
+      name: 'Change password',
       action: () => {
         toggleModal('passwordReset')
       }
