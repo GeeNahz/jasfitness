@@ -43,6 +43,9 @@
 <script setup>
 import { inject, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useModalOperations } from '@/composables/modalOperations.js'
+
+const { toggleModal } = useModalOperations()
 
 const { toggleRunOrientation } = inject('runOrientationManually')
 const router = useRouter()
