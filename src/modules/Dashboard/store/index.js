@@ -210,6 +210,21 @@ export default {
         .finally(() => {
           commit('STATUS_RESET')
         })
+    },
+    change_password({ commit }) {
+      commit('STATUS_LOADING')
+      return DashboardService.change_password()
+        .then(
+          (response) => {
+            return Promise.resolve(response)
+          },
+          (error) => {
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
     }
   },
   modules: {}
