@@ -87,11 +87,15 @@ const password_confirm = ref('')
 const activeFields = computed(() =>
   isPasswordConfirmed(password.value, password_confirm.value)
 )
-function handleSubmit() {
+async function handleSubmit() {
   if (!isPasswordConfirmed(password.value, password_confirm.value)) return
   try {
+    let res = await store.dispatch('dashboard/change_password', {
+      password: password.value
+    })
     console.log(password.value)
-    console.log(password_confirm.value)
+    console.log('Response: ', res)
+
     store.dispatch('landingpage/success', {
       message: 'Your password has been successfully change.'
     })
