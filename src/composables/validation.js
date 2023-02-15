@@ -1,7 +1,7 @@
 export function validation() {
   function useValidateInputs(values) {
     for (let value of values) {
-      if (value.trim() === '' || isNaN(value)) return false
+      if (value.trim() === '') return false
     }
     return true
   }
