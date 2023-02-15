@@ -18,8 +18,5 @@ export default {
   },
   async membership_setup(data) {
     return await apiClient.post('membership_setup/', data)
-  },
-  async orientation_complete() {
-    return await apiClient.get('orientation/')
   }
 }
