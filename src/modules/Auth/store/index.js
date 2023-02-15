@@ -94,10 +94,21 @@ export default {
 
       commit('LOGIN_FAILURE')
     },
-    // password_reset_request_email({ commit }, email) {
-    //   commit('STATUS_LOADING')
-    //   return AuthService.password_reset_request(email)
-    // },
+    password_reset_request_email({ commit }, email) {
+      commit('STATUS_LOADING')
+      return AuthService.password_reset_request(email)
+        .then(
+          (response) => {
+            return Promise.resolve(response)
+          },
+          (error) => {
+            return Promise.reject(error)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
+    },
     toggle_is_oriented({ commit }, value = false) {
       commit('TOGGLE_IS_ORIENTED', value)
     },
