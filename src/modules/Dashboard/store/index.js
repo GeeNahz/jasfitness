@@ -211,9 +211,9 @@ export default {
           commit('STATUS_RESET')
         })
     },
-    change_password({ commit }) {
+    change_password({ commit }, data) {
       commit('STATUS_LOADING')
-      return DashboardService.change_password()
+      return DashboardService.change_password(data)
         .then(
           (response) => {
             return Promise.resolve(response)
