@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { computed, provide, ref } from 'vue'
+import { provide, ref } from 'vue'
 import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
@@ -30,6 +30,19 @@ export default {
   },
   setup() {
     const store = useStore()
+
+    const isReady = ref(false)
+    function toggleIsReady(newState) {
+      setTimeout(() => {
+        isReady.value = newState
+      }, 0)
+    }
+    provide('isComponentReady', { isReady, toggleIsReady })
+    const isNavbarOpen = ref(false)
+    function toggleIsNavbarOpen(newState) {
+      isNavbarOpen.value = newState
+    }
+    provide('navbar', { isNavbarOpen, toggleIsNavbarOpen })
 
     const runOnrientation = ref(false)
     function toggleRunOrientation(newState) {
