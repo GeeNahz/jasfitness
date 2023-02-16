@@ -69,14 +69,18 @@ const currentMonth = computed(() => {
 const store = useStore()
 
 const dashboardHome = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+  store.state.dashboard.dashboardBase
+    ? store.state.dashboard.dashboardBase
+    : false
 )
 
-try {
-  await store.dispatch('dashboard/dashboard_home')
-} catch {
-  const message =
-    'Something went wrong while fetching your records. Refresh the browser to try fix it.'
-  store.dispatch('landingpage/error', { message, timeout: 3000 })
+if (!dashboardHome.value) {
+  try {
+    await store.dispatch('dashboard/dashboard_home')
+  } catch {
+    const message =
+      'Something went wrong while fetching your records. Refresh the browser to try fix it.'
+    store.dispatch('landingpage/error', { message, timeout: 3000 })
+  }
 }
 </script>
