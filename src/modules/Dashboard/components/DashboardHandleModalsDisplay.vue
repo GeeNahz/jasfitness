@@ -7,7 +7,7 @@
       shareSubscriptionModal.open ||
       passwordResetModal.open
     "
-    class="z-50 h-full w-full"
+    class="z-30 h-full w-full"
   >
     <div class="modals fixed w-full h-full z-30">
       <!-- profile -->
