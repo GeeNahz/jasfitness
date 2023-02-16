@@ -13,12 +13,12 @@ export function validation() {
     return true
   }
 
-  function validateHybridInputs(values) {
+  function useIsValidHybridInputs(values) {
     for (let value of values) {
-      if (typeof value === String) {
+      if (typeof value == 'string') {
         if (value.trim() === '') return false
       }
-      if (typeof value === Number) {
+      if (typeof value == 'number') {
         if (value == '' || isNaN(value)) return false
       }
       return true
@@ -34,6 +34,6 @@ export function validation() {
     useValidateTextInputs,
     useValidateNumericInputs,
     useIsPasswordConfirmed,
-    validateHybridInputs
+    useIsValidHybridInputs
   }
 }
