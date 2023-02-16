@@ -8,7 +8,7 @@ export function validation() {
 
   function useValidateNumericInputs(values) {
     for (let value of values) {
-      if (value.trim() === '' || isNaN(value)) return false
+      if (value === '' || isNaN(value)) return false
     }
     return true
   }
