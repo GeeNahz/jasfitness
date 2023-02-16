@@ -1,9 +1,32 @@
 export function validation() {
-  function useValidateInputs(values) {
+  function useIsValidTextInputs(values) {
     for (let value of values) {
       if (value.trim() === '') return false
     }
     return true
+  }
+
+  function useIsValidNumericInputs(values) {
+    for (let value of values) {
+      if (value === '' || isNaN(value)) return false
+    }
+    return true
+  }
+
+  function useIsValidHybridInputs(values) {
+    for (let value of values) {
+      if (typeof value == 'string') {
+        if (value.trim() === '') return false
+      }
+      if (typeof value == 'number') {
+        if (value == '' || isNaN(value)) return false
+      }
+      return true
+    }
+  }
+
+  function useIsWithinRange({ value, minRange = 0, maxRange = 10 }) {
+    return value >= minRange && value <= maxRange
   }
 
   function useIsPasswordConfirmed(password1, password2) {
@@ -11,5 +34,11 @@ export function validation() {
     return false
   }
 
-  return { useValidateInputs, useIsPasswordConfirmed }
+  return {
+    useIsValidTextInputs,
+    useIsValidNumericInputs,
+    useIsPasswordConfirmed,
+    useIsWithinRange,
+    useIsValidHybridInputs
+  }
 }

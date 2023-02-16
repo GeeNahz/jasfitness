@@ -56,10 +56,10 @@
         </button>
         <button
           @click="handleSubmit"
-          :class="{ 'disabled ': !activeFields }"
+          :class="{ 'disabled ': !activeFields || isLoading }"
           class="py-2 px-4 w-1/2 rounded-md font-inter font-medium bg-yellow-400 hover:bg-yellow-300 transition-all"
         >
-          Change password
+          {{ isLoading ? 'Please wait...' : 'Change password' }}
         </button>
       </div>
     </template>
@@ -81,25 +81,26 @@ const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
 
-const { useValidateInputs, useIsPasswordConfirmed } = validation()
+const { useIsValidTextInputs, useIsPasswordConfirmed } = validation()
 
 const oldPassword = ref('')
 const newPassword = ref('')
 const password_confirm = ref('')
 const activeFields = computed(
   () =>
-    useValidateInputs([
+    useIsValidTextInputs([
       oldPassword.value,
       newPassword.value,
       password_confirm.value
     ]) && useIsPasswordConfirmed(newPassword.value, password_confirm.value)
 )
 
+const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const userId = computed(() => store.state.auth.user.user_id)
 async function handleSubmit() {
   if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
   if (
-    !useValidateInputs([
+    !useIsValidTextInputs([
       oldPassword.value,
       newPassword.value,
       password_confirm.value
@@ -118,9 +119,17 @@ async function handleSubmit() {
       message: 'Your password has been successfully change.'
     })
     closeModal(passwordResetModal.value.id)
-  } catch {
+  } catch (err) {
+    console.log(err)
+    let message = ''
+    if (err.status == 400) {
+      message = 'Invalid password provided.'
+    } else {
+      message =
+        'Unable to complete your request. Please check your network connection.'
+    }
     store.dispatch('landingpage/error', {
-      message: 'Unable to complete your request. Please try again later.'
+      message
     })
   } finally {
     resetForm()

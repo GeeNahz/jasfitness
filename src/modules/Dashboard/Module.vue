@@ -2,19 +2,7 @@
   <div
     class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
   >
-    <div
-      v-if="
-        profileModal ||
-        healthRecordModal ||
-        assessmentRecordModal ||
-        freezeSubscriptionModal ||
-        shareSubscriptionModal ||
-        passwordResetModal
-      "
-      class="fixed z-50 h-full w-full"
-    >
-      <DashboardHandleModalsDisplay />
-    </div>
+    <DashboardHandleModalsDisplay />
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
       <div class="z-50">
@@ -26,8 +14,7 @@
 </template>
 
 <script>
-import { computed, provide, ref } from 'vue'
-import { useStore } from 'vuex'
+import { provide, ref } from 'vue'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
@@ -41,7 +28,18 @@ export default {
     Onboarding
   },
   setup() {
-    const store = useStore()
+    const isReady = ref(false)
+    function toggleIsReady(newState) {
+      setTimeout(() => {
+        isReady.value = newState
+      }, 0)
+    }
+    provide('isComponentReady', { isReady, toggleIsReady })
+    const isNavbarOpen = ref(false)
+    function toggleIsNavbarOpen(newState) {
+      isNavbarOpen.value = newState
+    }
+    provide('navbar', { isNavbarOpen, toggleIsNavbarOpen })
 
     const runOnrientation = ref(false)
     function toggleRunOrientation(newState) {
@@ -49,34 +47,7 @@ export default {
     }
     provide('runOrientationManually', { runOnrientation, toggleRunOrientation })
 
-    // modals toggle
-    const profileModal = computed(
-      () => store.state.dashboard.modals.profile.open
-    )
-    const healthRecordModal = computed(
-      () => store.state.dashboard.modals.healthRecord.open
-    )
-    const assessmentRecordModal = computed(
-      () => store.state.dashboard.modals.accessmentRecord.open
-    )
-    const freezeSubscriptionModal = computed(
-      () => store.state.dashboard.modals.freezeSub.open
-    )
-    const shareSubscriptionModal = computed(
-      () => store.state.dashboard.modals.shareSub.open
-    )
-    const passwordResetModal = computed(
-      () => store.state.dashboard.modals.passwordReset.open
-    )
-
-    return {
-      profileModal,
-      healthRecordModal,
-      assessmentRecordModal,
-      freezeSubscriptionModal,
-      shareSubscriptionModal,
-      passwordResetModal
-    }
+    return {}
   }
 }
 </script>

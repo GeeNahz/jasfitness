@@ -55,8 +55,9 @@
           />
           <div
             id="members-features"
-            class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
+            class="features-container w-fit sm:w-full mx-auto grid grid-cols-1 gap-4 sm:flex sm:flex-wrap justify-center mb-2 md:mb-4"
           >
+            <!-- freeze sub -->
             <DashboardSubscriptionCard
               :addMinWidth="true"
               class="flex-1"
@@ -81,14 +82,15 @@
               </template>
               <template #button>
                 <div
-                  v-if="dashboardSub"
+                  v-if="dashboardSub && dashboardHomeState"
                   class="flex flex-col md:flex-row items-center xl:space-x-2"
                 >
                   <button
                     @click="openModal('freezeSub')"
                     class="px-3 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold"
                     :class="[
-                      dashboardSub.freezeable
+                      dashboardSub.freezeable &&
+                      dashboardHomeState.freeze.value < 4
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
                         : 'bg-gray-500 disabled'
                     ]"
@@ -98,6 +100,7 @@
                 </div>
               </template>
             </DashboardSubscriptionCard>
+            <!-- share sub -->
             <DashboardSubscriptionCard
               :addMinWidth="true"
               class="flex-1"
@@ -125,7 +128,11 @@
                 <div class="flex flex-col md:flex-row items-center">
                   <button
                     @click="openModal('shareSub')"
-                    class="px-3 py-1 xl:px-4 xl:py-2 bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333] rounded text-yellow-400 text-sm xl:text-base font-semibold"
+                    class="px-3 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold"
+                    :class="[
+                      'bg-grey-500 disable',
+                      'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
+                    ]"
                   >
                     Share
                   </button>
@@ -140,7 +147,7 @@
           />
           <div
             id="our-plans"
-            class="features-container grid grid-cols-1 gap-4 md:flex md:flex-wrap md:justify-center mb-2 md:mb-4"
+            class="features-container gap-4 flex flex-wrap justify-center mb-2 md:mb-4"
           >
             <DashboardSubscriptionCard
               v-for="plan in plans"
@@ -285,25 +292,35 @@ const store = useStore()
 const dashboardSub = computed(() =>
   store.state.dashboard.dashboardSubscription
     ? store.state.dashboard.dashboardSubscription
-    : {}
+    : false
+)
+
+// const isLoggedIn = computed(() => store.state.auth.isLoggedIn)
+const dashboardHomeState = computed(() =>
+  store.state.dashboard.dashboardBase
+    ? store.state.dashboard.dashboardBase
+    : false
 )
 
 const { toggleIsReady } = inject('isComponentReady')
 onMounted(async () => {
-  store.dispatch('dashboard/dashboard_fitness').then(
-    () => {},
-    () => {
+  if (!dashboardSub.value) {
+    try {
+      await store.dispatch('dashboard/dashboard_subscription')
+    } catch {
       const message =
         'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
       store.dispatch('landingpage/error', { message, timeout: 3000 })
     }
-  )
-  try {
-    await store.dispatch('dashboard/dashboard_subscription')
-  } catch {
-    const message =
-      'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
-    store.dispatch('landingpage/error', { message, timeout: 3000 })
+  }
+  if (!dashboardHomeState.value) {
+    try {
+      store.dispatch('dashboard/dashboard_home')
+    } catch (err) {
+      store.dispatch('landingpage/error', {
+        message: 'Unable to fetch user data'
+      })
+    }
   }
   toggleIsReady(true)
 })

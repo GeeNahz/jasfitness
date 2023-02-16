@@ -227,34 +227,41 @@ const openModal = (modalId) => {
 const fitness_target = computed(() =>
   store.state.dashboard.dashboardFitness
     ? store.state.dashboard.dashboardFitness
-    : {}
+    : false
 )
 
 const userId = computed(() => store.state.auth.user.user_id)
 const gym_attendance = computed(() =>
   store.state.dashboard.dashboardGymnAttendance
     ? store.state.dashboard.dashboardGymnAttendance
-    : {}
+    : false
 )
 
 const { toggleIsReady } = inject('isComponentReady')
 onMounted(() => {
-  store.dispatch('dashboard/dashboard_fitness').then(
-    () => {},
-    () => {
-      const message =
-        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
-      store.dispatch('error', { message, timeout: 3000 })
-    }
-  )
-  store.dispatch('dashboard/dashboard_gym_attendance', userId.value).then(
-    () => {},
-    () => {
-      const message =
-        'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
-      store.dispatch('error', { message, timeout: 3000 })
-    }
-  )
+  if (!fitness_target.value) {
+    store.dispatch('dashboard/dashboard_fitness').then(
+      () => {},
+      () => {
+        const message =
+          'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+        store.dispatch('error', { message, timeout: 3000 })
+      }
+    )
+  }
+  if (!gym_attendance.value) {
+    store.dispatch('dashboard/dashboard_gym_attendance', userId.value).then(
+      () => {},
+      () => {
+        const message =
+          'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
+        store.dispatch('error', { message, timeout: 3000 })
+      }
+    )
+  }
+  if (gym_attendance.value) {
+    prepareData()
+  }
   toggleIsReady(true)
 })
 
@@ -297,14 +304,22 @@ const chartData = ref({
   ]
 })
 watch(gym_attendance, () => {
-  if (gym_attendance.value !== null) {
-    preparingChartData.value = true
-    prepareChartData(gym_attendance.value.results)
-    chartData.value.labels = preparedChartData.value.labels.reverse()
-    chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+  if (gym_attendance.value) {
+    prepareData()
   }
-  preparingChartData.value = false
+  togglePreparingChartData(false)
 })
+
+function prepareData() {
+  togglePreparingChartData(true)
+  prepareChartData(gym_attendance.value.results)
+  chartData.value.labels = preparedChartData.value.labels.reverse()
+  chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+  togglePreparingChartData(false)
+}
+function togglePreparingChartData(value) {
+  preparingChartData.value = value
+}
 </script>
 
 <style scoped>
