@@ -56,12 +56,14 @@ const closeModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 
-const { useIsValidNumericInputs } = validation()
+const { useIsValidNumericInputs, useIsWithinRange } = validation()
 
-const freezeDuration = ref('')
+const freezeDuration = ref(0)
 const isLoading = computed(() => store.state.dashboard.status.isLoading)
-const activeFields = computed(() =>
-  useIsValidNumericInputs([freezeDuration.value])
+const activeFields = computed(
+  () =>
+    useIsValidNumericInputs([freezeDuration.value]) &&
+    useIsWithinRange({ value: freezeDuration.value, minRange: 1, maxRange: 4 })
 )
 async function freezeYourSub() {
   try {
