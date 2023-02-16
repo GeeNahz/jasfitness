@@ -1,12 +1,4 @@
 import DashboardService from '@/services/DashboardServices/DashboardService'
-// import { useState } from '@/composables/useState'
-/**What i need
- *
- * user profile
- * attendance
- */
-
-// const { User } = useState()
 
 export default {
   namespaced: true,
@@ -24,7 +16,8 @@ export default {
       accessmentRecord: { id: 'accessmentRecord', open: false },
       freezeSub: { id: 'freezeSub', open: false },
       shareSub: { id: 'shareSub', open: false },
-      feedback: { id: 'feedback', open: false }
+      feedback: { id: 'feedback', open: false },
+      passwordReset: { id: 'passwordReset', open: false }
     }
   },
   getters: {},
@@ -211,6 +204,21 @@ export default {
           },
           (error) => {
             commit('SET_DASHBOARD_FITNESS_ASSESSMENT_STATE', {})
+            return Promise.reject(error.message)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
+    },
+    change_password({ commit }, data) {
+      commit('STATUS_LOADING')
+      return DashboardService.change_password(data)
+        .then(
+          (response) => {
+            return Promise.resolve(response)
+          },
+          (error) => {
             return Promise.reject(error.message)
           }
         )

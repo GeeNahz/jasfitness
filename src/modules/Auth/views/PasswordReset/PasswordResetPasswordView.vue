@@ -13,12 +13,11 @@
           submit-label="Change Password"
           :actions="false"
           @submit="handleSubmit"
-          v-model="newPassword"
         >
           <formKit
             type="password"
             name="password"
-            label="*New Password"
+            label="New Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter your new password"
@@ -30,7 +29,7 @@
           <formKit
             type="password"
             name="password_confirm"
-            label="*Confirm Password"
+            label="Confirm Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter password again"
@@ -69,7 +68,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
@@ -77,33 +76,38 @@ import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Reset Password' })
 
-const newPassword = ref({})
-
 const error = ref(false)
 
+const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
-const handleSubmit = (credentials) => {
+async function handleSubmit(credentials) {
   try {
-    newPassword.value = credentials
-    store.commit('auth/setNotification', {
-      message: 'Your password has been successfully updated',
-      route: 'LoginPage'
+    let data = { password: credentials.password, token: route.query.token }
+    await store.dispatch('auth/password_reset', data)
+
+    store.dispatch('landingpage/success', {
+      message: 'Your password has been successfully updated'
     })
     // on successful request route to success page
-    router.push({ name: 'Success' })
+    router.push({ name: 'Success', query: { next: 'LoginPage' } })
   } catch (err) {
-    confirm.log(err)
     error.value = true
     setTimeout(() => {
       error.value = false
     }, 3000)
+    let message = ''
+    if (err.status == 400) {
+      message = 'Bad request. Every field is required.'
+    } else if (err.status == 404) {
+      message = 'Expired token or user does not exist.'
+    } else {
+      message = 'Unable to complete your request. Please try again.'
+    }
+    store.dispatch('landingpage/error', { message })
   } finally {
     reset('new-password-reset-form')
-    setTimeout(() => {
-      store.commit('auth/clearNotification')
-    }, 5000)
   }
 }
 

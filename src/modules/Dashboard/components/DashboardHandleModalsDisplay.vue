@@ -9,6 +9,8 @@
       <SubFreeze v-if="freezeSubscriptionModal.open" />
       <!-- share subscription -->
       <SubShare v-if="shareSubscriptionModal.open" />
+      <!-- settings password reset -->
+      <PasswordReset v-if="passwordResetModal.open" />
     </div>
   </div>
 </template>
@@ -21,6 +23,7 @@ import ProfileUser from './modals/ProfileUser.vue'
 import SubFreeze from './modals/SubFreeze.vue'
 import ProfileFitness from './modals/ProfileFitness.vue'
 import SubShare from './modals/SubShare.vue'
+import PasswordReset from './modals/PasswordReset.vue'
 
 const store = useStore()
 
@@ -33,5 +36,8 @@ const accessmentRecordModal = computed(
 )
 const shareSubscriptionModal = computed(
   () => store.state.dashboard.modals.shareSub
+)
+const passwordResetModal = computed(
+  () => store.state.dashboard.modals.passwordReset
 )
 </script>

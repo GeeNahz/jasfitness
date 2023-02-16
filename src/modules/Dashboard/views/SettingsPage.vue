@@ -10,7 +10,7 @@
         <div
           v-for="(item, index) in items"
           :key="'item' + index + 1"
-          class="item border-y border-gray-200 py-2 lg:flex justify-between align-start"
+          class="item first:border-t border-b border-gray-200 py-2 lg:flex justify-between align-start"
           :id="item.ids.length && item.ids"
         >
           <div class="item__text text-start">
@@ -43,6 +43,9 @@
 <script setup>
 import { inject, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { useModalOperations } from '@/composables/modalOperations.js'
+
+const { toggleModal } = useModalOperations()
 
 const { toggleRunOrientation } = inject('runOrientationManually')
 const router = useRouter()
@@ -59,6 +62,18 @@ const items = [
     actionBtn: {
       name: 'Re-orientation',
       action: triggerRunOrientation
+    }
+  },
+  {
+    name: 'Change Password',
+    description:
+      'To ensure your account remains secure, we advice that you periodically change your password.',
+    ids: [],
+    actionBtn: {
+      name: 'Change password',
+      action: () => {
+        toggleModal('passwordReset')
+      }
     }
   }
 ]

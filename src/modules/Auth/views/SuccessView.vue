@@ -24,9 +24,6 @@
           />
         </svg>
       </div>
-      <div class="success__box__body">
-        <p>{{ toggleShowNotification[0].message }}</p>
-      </div>
     </div>
     <div
       class="md:hidden flex flex-col items-center my-4 absolute bottom-0 left-[50%] -translate-x-[50%] text-opacity-80 font-thin"
@@ -45,32 +42,24 @@
 </template>
 
 <script>
+import { useRoute, useRouter } from 'vue-router'
+
 import { useMeta } from 'vue-meta'
 
 export default {
   name: 'SuccessView',
-  data() {
-    return {}
-  },
-  computed: {
-    toggleShowNotification() {
-      return this.$store.state.auth.notification
-    },
-    isNotificationEmpty() {
-      return this.toggleShowNotification.length === 0
-    }
-  },
-  methods: {},
-  mounted() {
-    setTimeout(() => {
-      this.$router.push({ name: this.toggleShowNotification[0].route })
-    }, 4000)
-  },
 
   setup() {
     useMeta({
       title: 'Success'
     })
+
+    const route = useRoute()
+    const router = useRouter()
+
+    setTimeout(() => {
+      router.push({ name: route.query.next })
+    }, 5000)
   }
 }
 </script>
@@ -134,7 +123,7 @@ $font-sizes: (
   background-color: color(primary);
   padding: 60px 90px;
   border-radius: 10px;
-  box-shadow: 0 4px 4px;
+  box-shadow: 0 4px 10px -4px rgba(105, 105, 105, 0.3);
 
   @include medium-down {
     padding: 60px 40px;
