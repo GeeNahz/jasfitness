@@ -6,7 +6,7 @@ export function validation() {
     return true
   }
 
-  function useValidateNumericInputs(values) {
+  function useIsValidNumericInputs(values) {
     for (let value of values) {
       if (value === '' || isNaN(value)) return false
     }
@@ -32,7 +32,7 @@ export function validation() {
 
   return {
     useIsValidateTextInputs,
-    useValidateNumericInputs,
+    useIsValidNumericInputs,
     useIsPasswordConfirmed,
     useIsValidHybridInputs
   }
