@@ -97,7 +97,6 @@ async function handleSubmit(credentials) {
     setTimeout(() => {
       error.value = false
     }, 3000)
-    console.log(err)
     let message = ''
     if (err.status == 400) {
       message = 'Bad request. Every field is required.'
