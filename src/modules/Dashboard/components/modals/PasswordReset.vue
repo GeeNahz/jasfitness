@@ -81,14 +81,14 @@ const passwordResetModal = computed(
   () => store.state.dashboard.modals.passwordReset
 )
 
-const { useIsValidateTextInputs, useIsPasswordConfirmed } = validation()
+const { useIsValidTextInputs, useIsPasswordConfirmed } = validation()
 
 const oldPassword = ref('')
 const newPassword = ref('')
 const password_confirm = ref('')
 const activeFields = computed(
   () =>
-    useIsValidateTextInputs([
+    useIsValidTextInputs([
       oldPassword.value,
       newPassword.value,
       password_confirm.value
@@ -100,7 +100,7 @@ const userId = computed(() => store.state.auth.user.user_id)
 async function handleSubmit() {
   if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
   if (
-    !useIsValidateTextInputs([
+    !useIsValidTextInputs([
       oldPassword.value,
       newPassword.value,
       password_confirm.value
