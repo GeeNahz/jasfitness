@@ -60,7 +60,7 @@ import { validation } from '@/composables/validation.js'
 
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
-const { validateHybridInputs } = validation()
+const { useIsValidHybridInputs } = validation()
 const store = useStore()
 
 const closeModal = (modalId) => {
@@ -71,7 +71,7 @@ const username = ref('')
 const duration = ref(0)
 const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const activeFields = computed(() =>
-  validateHybridInputs([username.value, duration.value])
+  useIsValidHybridInputs([username.value, duration.value])
 )
 async function shareYourSub() {
   try {
