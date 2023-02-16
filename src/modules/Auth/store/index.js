@@ -117,7 +117,7 @@ export default {
             return Promise.resolve(response)
           },
           (error) => {
-            return Promise.reject(error)
+            return Promise.reject(error.response)
           }
         )
         .finally(() => {
