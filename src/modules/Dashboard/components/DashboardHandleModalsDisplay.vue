@@ -1,10 +1,19 @@
 <template>
-  <div>
+  <div
+    v-if="
+      profileModal.open ||
+      assessmentRecordModal.open ||
+      freezeSubscriptionModal.open ||
+      shareSubscriptionModal.open ||
+      passwordResetModal.open
+    "
+    class="z-50 h-full w-full"
+  >
     <div class="modals fixed w-full h-full z-30">
       <!-- profile -->
       <ProfileUser v-if="profileModal.open" />
       <!-- fitness profile (accessment record) -->
-      <ProfileFitness v-if="accessmentRecordModal.open" />
+      <ProfileFitness v-if="assessmentRecordModal.open" />
       <!-- freeze subscription -->
       <SubFreeze v-if="freezeSubscriptionModal.open" />
       <!-- share subscription -->
@@ -31,7 +40,7 @@ const profileModal = computed(() => store.state.dashboard.modals.profile)
 const freezeSubscriptionModal = computed(
   () => store.state.dashboard.modals.freezeSub
 )
-const accessmentRecordModal = computed(
+const assessmentRecordModal = computed(
   () => store.state.dashboard.modals.accessmentRecord
 )
 const shareSubscriptionModal = computed(
