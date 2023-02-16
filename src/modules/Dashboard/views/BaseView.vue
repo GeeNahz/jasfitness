@@ -217,18 +217,27 @@ const user = computed(() =>
   store.state.auth.user ? store.state.auth.user : {}
 )
 const creds = computed(() =>
-  store.state.dashboard.dashboardBase ? store.state.dashboard.dashboardBase : {}
+  store.state.dashboard.dashboardBase
+    ? store.state.dashboard.dashboardBase
+    : false
 )
 
 onMounted(() => {
-  store.dispatch('dashboard/dashboard_gym_attendance', user.value.user_id).then(
-    () => {},
-    () => {
-      const message =
-        'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
-      store.dispatch('landingpage/error', { message, timeout: 3000 })
-    }
-  )
+  if (!creds.value) {
+    store
+      .dispatch('dashboard/dashboard_gym_attendance', user.value.user_id)
+      .then(
+        () => {},
+        () => {
+          const message =
+            'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
+          store.dispatch('landingpage/error', { message, timeout: 3000 })
+        }
+      )
+  }
+  if (creds.value) {
+    prepareData()
+  }
 })
 
 const {
@@ -274,21 +283,21 @@ const chartData = ref({
 })
 watch(gym_attendance, () => {
   if (gym_attendance.value !== null) {
-    preparingChartData.value = true
-    prepareChartData(gym_attendance.value.results)
-    chartData.value.labels = preparedChartData.value.labels.reverse()
-    chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+    prepareData()
   }
-  preparingChartData.value = false
+  togglePreparingChartData(false)
 })
 
-// const resubscribeHandler = () => {
-//   try {
-//     console.log('Resubscribe')
-//   } catch (err) {
-//     console.log('error:', err)
-//   }
-// }
+function prepareData() {
+  togglePreparingChartData(true)
+  prepareChartData(gym_attendance.value.results)
+  chartData.value.labels = preparedChartData.value.labels.reverse()
+  chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+  togglePreparingChartData(false)
+}
+function togglePreparingChartData(value) {
+  preparingChartData.value = value
+}
 
 const openModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
