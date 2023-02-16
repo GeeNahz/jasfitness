@@ -46,14 +46,16 @@ const store = useStore()
 const dashboardSub = computed(() =>
   store.state.dashboard.dashboardSubscription
     ? store.state.dashboard.dashboardSubscription
-    : {}
+    : false
 )
 
-try {
-  await store.dispatch('dashboard/dashboard_subscription')
-} catch {
-  const message =
-    'Something went wrong while fetching subscription records. Refresh the browser to try fix it.'
-  store.dispatch('landingpage/error', { message, timeout: 3000 })
+if (!dashboardSub.value) {
+  try {
+    await store.dispatch('dashboard/dashboard_subscription')
+  } catch {
+    const message =
+      'Something went wrong while fetching subscription records. Refresh the browser to try fix it.'
+    store.dispatch('landingpage/error', { message, timeout: 3000 })
+  }
 }
 </script>
