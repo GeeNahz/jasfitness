@@ -15,7 +15,6 @@
 
 <script>
 import { provide, ref } from 'vue'
-import { useStore } from 'vuex'
 
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
@@ -29,8 +28,6 @@ export default {
     Onboarding
   },
   setup() {
-    const store = useStore()
-
     const isReady = ref(false)
     function toggleIsReady(newState) {
       setTimeout(() => {
