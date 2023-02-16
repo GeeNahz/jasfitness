@@ -55,12 +55,18 @@ import { useStore } from 'vuex'
 
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
+const store = useStore()
+
 const closeModal = (modalId) => {
   clearFormValues()
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 const username = ref('')
 const duration = ref('')
+const isLoading = computed(() => store.state.dashboard.status.isLoading)
+const activeFields = computed(() =>
+  useValidateNumericInputs([freezeDuration.value])
+)
 async function shareYourSub() {
   try {
     await store.dispatch('dashboard/dashboard_share_subscription', {
@@ -93,7 +99,6 @@ function clearFormValues() {
   duration.value = ''
 }
 
-const store = useStore()
 const shareSubscriptionModal = computed(
   () => store.state.dashboard.modals.shareSub
 )
