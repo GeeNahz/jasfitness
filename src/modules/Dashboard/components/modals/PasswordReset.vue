@@ -56,10 +56,10 @@
         </button>
         <button
           @click="handleSubmit"
-          :class="{ 'disabled ': !activeFields }"
+          :class="{ 'disabled ': !activeFields || isLoading }"
           class="py-2 px-4 w-1/2 rounded-md font-inter font-medium bg-yellow-400 hover:bg-yellow-300 transition-all"
         >
-          Change password
+          {{ isLoading ? 'Please wait...' : 'Change password' }}
         </button>
       </div>
     </template>
@@ -95,6 +95,7 @@ const activeFields = computed(
     ]) && useIsPasswordConfirmed(newPassword.value, password_confirm.value)
 )
 
+const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const userId = computed(() => store.state.auth.user.user_id)
 async function handleSubmit() {
   if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
