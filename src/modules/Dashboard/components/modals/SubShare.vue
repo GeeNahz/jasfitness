@@ -31,18 +31,21 @@
       </form>
     </template>
     <template #actions>
-      <div class="w-full flex gap-2 pt-2 lg:pt-3 justify-end mb-2 btns">
+      <div
+        class="w-full mb-2 mt-3 flex gap-2 text-[#303030] text-xs lg:text-sm"
+      >
         <button
           @click="closeModal(shareSubscriptionModal.id)"
-          class="duration-200 rounded-md hover:text-yellow-500 font-medium text-sm lg:text-base text-gray-700 py-1 px-3 lg:py-2 lg:px-4"
+          class="py-2 px-4 w-1/2 rounded-md font-inter font-medium border text-gray-500 bg-gray-100 hover:text-inherit transition-all"
         >
-          Close
+          Cancel
         </button>
         <button
           @click="shareYourSub"
-          class="duration-200 bg-yellow-500 rounded-sm hover:bg-yellow font-medium text-sm lg:text-base text-gray-50 py-1 px-3 lg:py-2 lg:px-4"
+          :class="{ 'disabled ': !activeFields || isLoading }"
+          class="py-2 px-4 w-1/2 rounded-md font-inter font-medium bg-yellow-400 hover:bg-yellow-300 transition-all"
         >
-          Send
+          {{ isLoading ? 'Please wait...' : 'Share sub' }}
         </button>
       </div>
     </template>
