@@ -56,6 +56,7 @@ import { useStore } from 'vuex'
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
 const closeModal = (modalId) => {
+  clearFormValues()
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 const shareSubUsername = ref('')
@@ -82,10 +83,14 @@ async function shareYourSub() {
       })
     }
   } finally {
-    document.querySelector('#shareSub').reset()
-    shareSubUsername.value = ''
-    shareSubDuration.value = ''
+    clearFormValues()
   }
+}
+
+function clearFormValues() {
+  document.querySelector('#shareSub').reset()
+  shareSubUsername.value = ''
+  shareSubDuration.value = ''
 }
 
 const store = useStore()
