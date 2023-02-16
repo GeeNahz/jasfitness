@@ -227,14 +227,14 @@ const openModal = (modalId) => {
 const fitness_target = computed(() =>
   store.state.dashboard.dashboardFitness
     ? store.state.dashboard.dashboardFitness
-    : {}
+    : false
 )
 
 const userId = computed(() => store.state.auth.user.user_id)
 const gym_attendance = computed(() =>
   store.state.dashboard.dashboardGymnAttendance
     ? store.state.dashboard.dashboardGymnAttendance
-    : {}
+    : false
 )
 
 const { toggleIsReady } = inject('isComponentReady')
