@@ -52,6 +52,7 @@ import DashboardModalLayout from '../DashboardModalLayout.vue'
 
 const store = useStore()
 const closeModal = (modalId) => {
+  clearFormValues()
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 
@@ -78,9 +79,13 @@ async function freezeYourSub() {
       message: 'Unable to process your request. Please try again'
     })
   } finally {
-    document.querySelector('#freeze-sub-form').reset()
-    freezeDuration.value = ''
+    clearFormValues()
   }
+}
+
+function clearFormValues() {
+  document.querySelector('#freeze-sub-form').reset()
+  freezeDuration.value = ''
 }
 
 const freezeSubscriptionModal = computed(
