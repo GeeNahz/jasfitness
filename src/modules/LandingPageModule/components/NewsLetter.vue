@@ -1,7 +1,7 @@
 <template>
   <div class="container font-inter">
     <div class="wrapper space-y-3">
-      <h1 class="wrapper__head__heading">Subscribe for our newsletter</h1>
+      <h1 class="wrapper__head__heading">Subscribe to our newsletter</h1>
       <p class="wrapper__head__subheading">
         Subscribe to our periodic newsletter and never miss out on any news,
         events, etc.
