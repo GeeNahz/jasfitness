@@ -17,7 +17,7 @@
           <formKit
             type="password"
             name="password"
-            label="*New Password"
+            label="New Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter your new password"
@@ -29,7 +29,7 @@
           <formKit
             type="password"
             name="password_confirm"
-            label="*Confirm Password"
+            label="Confirm Password"
             suffix-icon="eyeClosed"
             @suffix-icon-click="handleIconClick"
             placeholder="Enter password again"
