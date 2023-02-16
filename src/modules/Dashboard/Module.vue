@@ -2,19 +2,7 @@
   <div
     class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
   >
-    <div
-      v-if="
-        profileModal ||
-        healthRecordModal ||
-        assessmentRecordModal ||
-        freezeSubscriptionModal ||
-        shareSubscriptionModal ||
-        passwordResetModal
-      "
-      class="fixed z-50 h-full w-full"
-    >
-      <DashboardHandleModalsDisplay />
-    </div>
+    <DashboardHandleModalsDisplay />
     <TheSidebar class="sidebar" />
     <div class="main-container w-full">
       <div class="z-50">
@@ -49,34 +37,7 @@ export default {
     }
     provide('runOrientationManually', { runOnrientation, toggleRunOrientation })
 
-    // modals toggle
-    const profileModal = computed(
-      () => store.state.dashboard.modals.profile.open
-    )
-    const healthRecordModal = computed(
-      () => store.state.dashboard.modals.healthRecord.open
-    )
-    const assessmentRecordModal = computed(
-      () => store.state.dashboard.modals.accessmentRecord.open
-    )
-    const freezeSubscriptionModal = computed(
-      () => store.state.dashboard.modals.freezeSub.open
-    )
-    const shareSubscriptionModal = computed(
-      () => store.state.dashboard.modals.shareSub.open
-    )
-    const passwordResetModal = computed(
-      () => store.state.dashboard.modals.passwordReset.open
-    )
-
-    return {
-      profileModal,
-      healthRecordModal,
-      assessmentRecordModal,
-      freezeSubscriptionModal,
-      shareSubscriptionModal,
-      passwordResetModal
-    }
+    return {}
   }
 }
 </script>
