@@ -1,5 +1,5 @@
 export function validation() {
-  function useValidateInputs(values) {
+  function useValidateTextInputs(values) {
     for (let value of values) {
       if (value.trim() === '') return false
     }
@@ -11,5 +11,5 @@ export function validation() {
     return false
   }
 
-  return { useValidateInputs, useIsPasswordConfirmed }
+  return { useValidateTextInputs, useIsPasswordConfirmed }
 }
