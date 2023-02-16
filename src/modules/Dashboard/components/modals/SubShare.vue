@@ -68,7 +68,7 @@ const closeModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
 }
 const username = ref('')
-const duration = ref('')
+const duration = ref(0)
 const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const activeFields = computed(() =>
   validateHybridInputs([username.value, duration.value])
