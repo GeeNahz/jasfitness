@@ -219,7 +219,7 @@ export default {
             return Promise.resolve(response)
           },
           (error) => {
-            return Promise.reject(error.message)
+            return Promise.reject(error.response)
           }
         )
         .finally(() => {
