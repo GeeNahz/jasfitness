@@ -14,7 +14,7 @@
           id="share-sub-username"
           class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="text"
-          v-model="shareSubUsername"
+          v-model="username"
           required
         />
         <label for="share-sub-duration" class="font-semibold text-xs lg:text-sm"
@@ -26,7 +26,7 @@
           type="number"
           max="28"
           min="1"
-          v-model="shareSubDuration"
+          v-model="duration"
         />
       </form>
     </template>
@@ -59,17 +59,17 @@ const closeModal = (modalId) => {
   clearFormValues()
   store.dispatch('dashboard/toggle_modal', modalId)
 }
-const shareSubUsername = ref('')
-const shareSubDuration = ref('')
+const username = ref('')
+const duration = ref('')
 async function shareYourSub() {
   try {
     await store.dispatch('dashboard/dashboard_share_subscription', {
-      username: shareSubUsername.value,
-      duration: shareSubDuration.value
+      username: username.value,
+      duration: duration.value
     })
 
     store.dispatch('landingpage/success', {
-      message: `You have successfully shared your subscription with ${shareSubUsername.value}`
+      message: `You have successfully shared your subscription with ${username.value}`
     })
     closeModal(shareSubscriptionModal.value.id)
   } catch (error) {
@@ -89,8 +89,8 @@ async function shareYourSub() {
 
 function clearFormValues() {
   document.querySelector('#shareSub').reset()
-  shareSubUsername.value = ''
-  shareSubDuration.value = ''
+  username.value = ''
+  duration.value = ''
 }
 
 const store = useStore()
