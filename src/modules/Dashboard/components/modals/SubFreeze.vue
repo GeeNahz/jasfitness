@@ -46,13 +46,21 @@
 import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 
+import { validation } from '@/composables/validation.js'
+
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
 const store = useStore()
 const closeModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
 }
+
+const { useValidateNumericInputs } = validation()
+
 const freezeDuration = ref('')
+const activeFields = computed(() =>
+  useValidateNumericInputs([freezeDuration.value])
+)
 async function freezeYourSub() {
   try {
     await store.dispatch('dashboard/dashboard_freeze_subscription', {
