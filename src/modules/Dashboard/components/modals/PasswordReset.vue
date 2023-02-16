@@ -119,9 +119,17 @@ async function handleSubmit() {
       message: 'Your password has been successfully change.'
     })
     closeModal(passwordResetModal.value.id)
-  } catch {
+  } catch (err) {
+    console.log(err)
+    let message = ''
+    if (err.status == 400) {
+      message = 'Invalid password provided.'
+    } else {
+      message =
+        'Unable to complete your request. Please check your network connection.'
+    }
     store.dispatch('landingpage/error', {
-      message: 'Unable to complete your request. Please try again later.'
+      message
     })
   } finally {
     resetForm()
