@@ -13,7 +13,6 @@
           submit-label="Change Password"
           :actions="false"
           @submit="handleSubmit"
-          v-model="newPassword"
         >
           <formKit
             type="password"
@@ -69,7 +68,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import { reset } from '@formkit/core'
 import AuthLayout from '../../components/AuthLayout.vue'
@@ -77,16 +76,17 @@ import { useMeta } from 'vue-meta'
 
 useMeta({ title: 'Reset Password' })
 
-const newPassword = ref({})
-
 const error = ref(false)
 
+const route = useRoute()
 const router = useRouter()
 const store = useStore()
 
-const handleSubmit = (credentials) => {
+async function handleSubmit(credentials) {
   try {
-    newPassword.value = credentials
+    let data = { password: credentials.password, token: route.query.token }
+    await store.dispatch('auth/password_reset', data)
+
     store.dispatch('landingpage/success', {
       message: 'Your password has been successfully updated'
     })
@@ -97,6 +97,16 @@ const handleSubmit = (credentials) => {
     setTimeout(() => {
       error.value = false
     }, 3000)
+    console.log(err)
+    let message = ''
+    if (err.status == 400) {
+      message = 'Bad request. Every field is required.'
+    } else if (err.status == 404) {
+      message = 'Expired token or user does not exist.'
+    } else {
+      message = 'Unable to complete your request. Please try again.'
+    }
+    store.dispatch('landingpage/error', { message })
   } finally {
     reset('new-password-reset-form')
   }
