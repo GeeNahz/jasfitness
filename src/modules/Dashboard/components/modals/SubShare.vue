@@ -60,7 +60,7 @@ import { validation } from '@/composables/validation.js'
 
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
-const { useIsValidHybridInputs } = validation()
+const { useIsValidHybridInputs, useIsWithinRange } = validation()
 const store = useStore()
 
 const closeModal = (modalId) => {
@@ -70,8 +70,10 @@ const closeModal = (modalId) => {
 const username = ref('')
 const duration = ref(0)
 const isLoading = computed(() => store.state.dashboard.status.isLoading)
-const activeFields = computed(() =>
-  useIsValidHybridInputs([username.value, duration.value])
+const activeFields = computed(
+  () =>
+    useIsValidHybridInputs([username.value, duration.value]) &&
+    useIsWithinRange({ value: duration.value, minRange: 1, maxRange: 4 })
 )
 async function shareYourSub() {
   try {
