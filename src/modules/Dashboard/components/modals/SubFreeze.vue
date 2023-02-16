@@ -58,6 +58,7 @@ const closeModal = (modalId) => {
 const { useValidateNumericInputs } = validation()
 
 const freezeDuration = ref('')
+const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const activeFields = computed(() =>
   useValidateNumericInputs([freezeDuration.value])
 )
