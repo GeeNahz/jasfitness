@@ -259,6 +259,9 @@ onMounted(() => {
       }
     )
   }
+  if (gym_attendance.value) {
+    prepareData()
+  }
   toggleIsReady(true)
 })
 
@@ -301,14 +304,22 @@ const chartData = ref({
   ]
 })
 watch(gym_attendance, () => {
-  if (gym_attendance.value !== null) {
-    preparingChartData.value = true
-    prepareChartData(gym_attendance.value.results)
-    chartData.value.labels = preparedChartData.value.labels.reverse()
-    chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+  if (gym_attendance.value) {
+    prepareData()
   }
-  preparingChartData.value = false
+  togglePreparingChartData(false)
 })
+
+function prepareData() {
+  togglePreparingChartData(true)
+  prepareChartData(gym_attendance.value.results)
+  chartData.value.labels = preparedChartData.value.labels.reverse()
+  chartData.value.datasets[0].data = preparedChartData.value.data.reverse()
+  togglePreparingChartData(false)
+}
+function togglePreparingChartData(value) {
+  preparingChartData.value = value
+}
 </script>
 
 <style scoped>
