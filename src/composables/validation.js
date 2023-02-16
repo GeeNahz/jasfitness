@@ -15,8 +15,12 @@ export function validation() {
 
   function validateHybridInputs(values) {
     for (let value of values) {
-      if (typeof value == String && value.trim() === '') return false
-      if (typeof value === Number && (value == '' || isNaN(value))) return false
+      if (typeof value === String) {
+        if (value.trim() === '') return false
+      }
+      if (typeof value === Number) {
+        if (value == '' || isNaN(value)) return false
+      }
       return true
     }
   }
