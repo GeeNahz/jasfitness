@@ -92,3 +92,10 @@ const freezeSubscriptionModal = computed(
   () => store.state.dashboard.modals.freezeSub
 )
 </script>
+
+<style scope>
+.disabled {
+  pointer-events: none;
+  opacity: 70%;
+}
+</style>
