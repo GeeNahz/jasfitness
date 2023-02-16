@@ -106,3 +106,10 @@ const shareSubscriptionModal = computed(
   () => store.state.dashboard.modals.shareSub
 )
 </script>
+
+<style scope>
+.disabled {
+  pointer-events: none;
+  opacity: 70%;
+}
+</style>
