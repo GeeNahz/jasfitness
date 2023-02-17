@@ -15,7 +15,7 @@ const DashboardSubscription = () =>
   )
 const Settings = () =>
   import(
-    /* webpackChunkName: "DashboardSubscription" */ '../views/SettingsPage.vue'
+    /* webpackChunkName: "DashboardSettings" */ '../views/SettingsPage.vue'
   )
 
 const routes = [
