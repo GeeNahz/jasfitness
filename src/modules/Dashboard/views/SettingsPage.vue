@@ -55,6 +55,18 @@ function triggerRunOrientation() {
 }
 const items = [
   {
+    name: 'Change Password',
+    description:
+      'To ensure your account remains secure, we advice that you periodically change your password.',
+    ids: ['change-password'],
+    actionBtn: {
+      name: 'Change password',
+      action: () => {
+        toggleModal('passwordReset')
+      }
+    }
+  },
+  {
     name: 'Orientation',
     description:
       'You can go through the orientation again to familiarize with the application.',
@@ -62,18 +74,6 @@ const items = [
     actionBtn: {
       name: 'Re-orientation',
       action: triggerRunOrientation
-    }
-  },
-  {
-    name: 'Change Password',
-    description:
-      'To ensure your account remains secure, we advice that you periodically change your password.',
-    ids: [],
-    actionBtn: {
-      name: 'Change password',
-      action: () => {
-        toggleModal('passwordReset')
-      }
     }
   }
 ]
