@@ -16,6 +16,9 @@ const PlansView = () =>
 const CommunityView = () =>
   import(/* webpackChunkName: "communityView" */ '../views/CommunityView.vue')
 
+const HelpView = () =>
+  import(/* webpackChunkNmae: "helpPage" */ '../views/HelpView.vue')
+
 const routes = [
   {
     path: '/',
@@ -40,6 +43,11 @@ const routes = [
         path: 'community',
         name: 'CommunityPage',
         component: CommunityView
+      },
+      {
+        path: 'help',
+        name: 'HelpPage',
+        component: HelpView
       }
     ]
   }
