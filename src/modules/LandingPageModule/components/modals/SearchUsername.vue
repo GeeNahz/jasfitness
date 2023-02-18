@@ -3,7 +3,7 @@
     <div class="h-max w-96 bg-white rounded p-2 font-inter relative">
       <span
         @click="toggleLandingpageModal('usernameJF')"
-        class="absolute -top-10 -right-10 text-2xl z-50 rounded-full p-2 bg-gray-100 hover:bg-gray-50 transition-colors"
+        class="cursor-pointer absolute -top-10 -right-10 text-2xl z-50 rounded-full p-2 bg-gray-100 hover:bg-gray-50 transition-colors"
       >
         <AppIconClose />
       </span>
