@@ -103,7 +103,8 @@ const searchedItems = computed(() => {
   helpItems.forEach((item) => {
     if (
       searchValue.value !== '' &&
-      item.title.toLowerCase().includes(searchValue.value.toLowerCase())
+      (item.title.toLowerCase().includes(searchValue.value.toLowerCase()) ||
+        item.body.toLowerCase().includes(searchValue.value.toLowerCase()))
     ) {
       arr.push(item)
     } else if (searchValue.value === '') {
