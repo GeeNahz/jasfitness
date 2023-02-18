@@ -8,6 +8,7 @@
             <span class="search__form-icon"><AppIconSearch /></span>
             <span class="search__form-inner-wrapper">
               <input
+                @keyup="submitHandler"
                 type="search"
                 name="help-search"
                 placeholder="Start your search"
@@ -21,7 +22,25 @@
           </div>
         </form>
         <div v-if="searchValue.length" class="result__list">
-          <div class="result__list-item">
+          <div
+            v-if="!searchedItems.length"
+            class="font-regular text-gray-500 text-sm md:text-base text-center"
+          >
+            No match found
+          </div>
+          <div
+            v-else
+            v-for="(item, i) in searchedItems"
+            :key="i"
+            @click="item.action()"
+            class="result__list-item"
+          >
+            <div class="title">{{ item.title }}</div>
+            <div class="brief">
+              {{ item.body }}
+            </div>
+          </div>
+          <!-- <div class="result__list-item">
             <div class="title">Result title</div>
             <div class="brief">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure,
@@ -34,29 +53,24 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure,
               recusandae!
             </div>
-          </div>
-          <div class="result__list-item">
-            <div class="title">Result title</div>
-            <div class="brief">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure,
-              recusandae!
-            </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
     <div class="content">
       <div
-        @click="toggleLandingpageModal('usernameJF')"
+        v-for="(item, index) in helpItems"
+        :key="'item' + index + 1"
+        @click="item.action()"
         class="card-wrapper hover:bg-gray-50 transition-colors p-3 shadow-md w-96 grid grid-cols-3 place-items-center hover:cursor-pointer"
       >
         <div class="icon col-span-1 text-7xl">
-          <AppIconAccount />
+          <VIcon :icon="item.icon" />
         </div>
         <div class="text col-start-2 col-span-2">
-          <p class="mb-1 font-semibold">Find your username</p>
+          <p class="mb-1 font-semibold">{{ item.title }}</p>
           <p class="font-normal text-[#555] text-sm">
-            Find your username as long as you are a member of JasFitness gym
+            {{ item.body }}
           </p>
         </div>
       </div>
@@ -65,23 +79,44 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref, computed } from 'vue'
 
 import { useModalOperations } from '@/composables/modalOperations.js'
 
+import VIcon from '@/components/VIcon.vue'
 import AppIconSearch from '@/components/AppIconSearch.vue'
 import AppIconAccount from '@/components/AppIconAccount.vue'
+
+const helpItems = [
+  {
+    action: () => {
+      toggleLandingpageModal('usernameJF')
+    },
+    icon: AppIconAccount,
+    title: 'Find your username',
+    body: 'Find your username as long as you are a member of JasFitness gym'
+  }
+]
+
+const searchedItems = computed(() => {
+  let arr = []
+  helpItems.forEach((item) => {
+    if (
+      searchValue.value !== '' &&
+      item.title.toLowerCase().includes(searchValue.value.toLowerCase())
+    ) {
+      arr.push(item)
+    } else if (searchValue.value === '') {
+      arr = []
+    }
+  })
+  return arr
+})
 
 const { toggleLandingpageModal } = useModalOperations()
 const searchValue = ref('')
 
-function submitHandler() {
-  console.log(searchValue.value)
-}
-
-onMounted(() => {
-  console.log('Help page')
-})
+function submitHandler() {}
 </script>
 
 <style lang="scss" scoped>
@@ -214,6 +249,9 @@ onMounted(() => {
     & .result__list-item {
       padding: 0.3rem 0.5rem;
       border-bottom: 1px solid #ccc;
+      &:hover {
+        cursor: pointer;
+      }
       &:first-child {
         border-top: 1px solid #ccc;
       }
