@@ -133,7 +133,7 @@ function submitHandler() {}
   & .header {
     width: 100%;
     height: 40vh;
-    background: linear-gradient(0.35turn, #e9e9e9, #c5bfb0);
+    background: linear-gradient(0.35turn, #e7ddc1, #e7b128);
 
     display: flex;
     flex-direction: column;
@@ -159,8 +159,8 @@ function submitHandler() {}
 
   & .content {
     @include container() {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
     }
     width: 100%;
     height: max-content;
