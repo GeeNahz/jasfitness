@@ -134,7 +134,9 @@
                   class="link"
                   :class="{
                     'disabled ':
-                      !creds.freeze.is_active || creds.freeze.value === 4
+                      !creds.freeze.is_active ||
+                      creds.freeze.value > 3 ||
+                      creds.is_expired
                   }"
                 >
                   <div class="flex items-start gap-x-3 lg:gap-x-4">
@@ -153,7 +155,13 @@
                 </div>
               </li>
               <li>
-                <div @click="openModal('shareSub')" class="link">
+                <div
+                  @click="openModal('shareSub')"
+                  class="link"
+                  :class="{
+                    'disabled ': creds.is_expired
+                  }"
+                >
                   <div class="flex items-start gap-3 lg:gap-4">
                     <div class="icon">
                       <AppIconSend />
