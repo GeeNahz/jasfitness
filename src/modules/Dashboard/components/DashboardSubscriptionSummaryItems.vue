@@ -24,7 +24,11 @@
     <div class="item">
       <p class="text-xs md:text-base">start date</p>
       <p class="text-base md:text-lg xl:text-3xl font-semibold">
-        {{ startDateConverter(dashboardSub.start_date) }}
+        {{
+          dashboardSub.is_expired
+            ? 'Expired'
+            : startDateConverter(dashboardSub.start_date)
+        }}
         <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
       </p>
     </div>
