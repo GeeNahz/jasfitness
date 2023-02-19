@@ -23,7 +23,10 @@
     </div>
     <div class="item">
       <p class="text-xs md:text-base">start date</p>
-      <p class="text-base md:text-lg xl:text-3xl font-semibold">
+      <p
+        class="text-base md:text-lg xl:text-3xl font-semibold"
+        :class="{ 'text-red-400': dashboardSub.is_expired }"
+      >
         {{
           dashboardSub.is_expired
             ? 'Expired'
