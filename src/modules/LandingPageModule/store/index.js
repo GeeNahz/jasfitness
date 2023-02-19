@@ -22,7 +22,10 @@ const defaultOptions = {
 export default {
   namespaced: true,
   state: {
-    items: []
+    items: [],
+    modals: {
+      usernameSearch: { id: 'usernameJF', open: false }
+    }
   },
   getters: {},
   mutations: {
@@ -35,6 +38,13 @@ export default {
       const index = state.items.findIndex((item) => item.id === id)
       if (index > -1) {
         state.items.splice(index, 1)
+      }
+    },
+    TOGGLE_MODAL(state, id) {
+      for (let key in state.modals) {
+        if (state.modals[key].id === id) {
+          state.modals[key].open = !state.modals[key].open
+        }
       }
     }
   },
@@ -77,6 +87,10 @@ export default {
 
     remove({ commit }, id) {
       commit('REMOVE', id)
+    },
+
+    toggle_modal({ commit }, id) {
+      commit('TOGGLE_MODAL', id)
     }
   },
   modules: {}

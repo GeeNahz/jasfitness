@@ -22,6 +22,14 @@ export default {
   },
   getters: {},
   mutations: {
+    STORE_RESET(state) {
+      state.profile = null
+      state.dashboardBase = null
+      state.dashboardFitness = null
+      state.dashboardGymnAttendance = null
+      state.dashboardSubscription = null
+      state.dashboardFitnessAssessment = null
+    },
     TOGGLE_MODAL(state, modal_id) {
       for (let key in state.modals) {
         if (state.modals[key].id === modal_id) {
@@ -58,6 +66,9 @@ export default {
     }
   },
   actions: {
+    store_reset({ commit }) {
+      commit('STORE_RESET')
+    },
     toggle_modal({ commit }, modal_id) {
       // commit('CLOSE_ALL_MODALS')
       commit('TOGGLE_MODAL', modal_id)

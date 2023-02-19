@@ -218,6 +218,11 @@ export default defineComponent({
       title: 'Settings',
       description: 'Click on "Settings" to view the available settings.'
     }
+    const changePassword = {
+      title: 'Change password',
+      description:
+        'Easily change your password to improve the security of your account.'
+    }
     const settingsOrientation = {
       title: 'Orientation',
       description:
@@ -334,7 +339,17 @@ export default defineComponent({
             }
           }
         },
-        // 14 orientation
+        // 14 change password
+        {
+          attachTo: { element: '#change-password' },
+          content: changePassword,
+          options: {
+            hideButtons: {
+              next: false
+            }
+          }
+        },
+        // 15 orientation
         {
           attachTo: { element: '#orientation-setting' },
           content: { ...settingsOrientation },
@@ -501,7 +516,17 @@ export default defineComponent({
             }
           }
         },
-        // 17 orientation
+        // 17 change password
+        {
+          attachTo: { element: '#change-password' },
+          content: changePassword,
+          options: {
+            hideButtons: {
+              next: false
+            }
+          }
+        },
+        // 18 orientation
         {
           attachTo: { element: '#orientation-setting' },
           content: { ...settingsOrientation },

@@ -89,6 +89,7 @@
                     @click="openModal('freezeSub')"
                     class="px-3 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold"
                     :class="[
+                      !dashboardSub.is_expired &&
                       dashboardSub.freezeable &&
                       dashboardHomeState.freeze.value < 4
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
@@ -130,8 +131,9 @@
                     @click="openModal('shareSub')"
                     class="px-3 py-1 xl:px-4 xl:py-2 rounded text-yellow-400 text-sm xl:text-base font-semibold"
                     :class="[
-                      'bg-grey-500 disable',
-                      'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
+                      !dashboardSub.is_expired
+                        ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
+                        : 'bg-gray-500 disabled'
                     ]"
                   >
                     Share
