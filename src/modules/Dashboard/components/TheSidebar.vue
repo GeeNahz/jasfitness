@@ -310,6 +310,9 @@ function logout() {
   // make a call to the auth store logout mutation
   store.dispatch('auth/logout')
   router.push({ name: 'LoginPage' })
+  setTimeout(() => {
+    store.dispatch('dashboard/store_reset')
+  }, 3000)
 }
 
 const showSideBarNav = ref(false)
