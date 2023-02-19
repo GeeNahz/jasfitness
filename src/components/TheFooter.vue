@@ -33,11 +33,11 @@
               >sign up</router-link
             >
           </li>
-          <li>
+          <!-- <li>
             <router-link :to="{ name: 'HelpPage' }" class="w-full"
               >help</router-link
             >
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="flex flex-col items-center lg:block">
