@@ -269,7 +269,8 @@ const {
   timestampToDate,
   timestampToFullDate,
   timestampToTime,
-  timestampToMinutes
+  timestampToMinutes,
+  differenceBetweenTimestamps
 } = useTimeConverter()
 
 const preparedChartData = ref({
@@ -281,7 +282,37 @@ const preparedChartData = ref({
 })
 const prepareChartData = (values) => {
   for (let item of values) {
-    let timeInHours = timestampToMinutes(item.duration) / 60
+    let timeInHours
+    if (!item.duration) {
+      if (item.time_out) {
+        // time out is available
+        let timeIn = new Date(Date.parse(item.time_in))
+        let timeOut = new Date(Date.parse(item.time_out))
+
+        timeInHours = differenceBetweenTimestamps({
+          subtract: timeIn,
+          from: timeOut,
+          differenceOf: 'hours'
+        })
+      } else if (!item.time_out) {
+        // time out is not available
+
+        // a problem with this stage in the flow is that since it
+        // always uses the current time, the duration will keep
+        // increasing (or decreasing) because current time always changes
+        // therefore there's still need to resolve the issue of
+        // empty time_out
+        let currentTime = timestampToMinutes(new Date().toTimeString())
+        let timestampIn = timestampToMinutes(item.time_in)
+        timeInHours = differenceBetweenTimestamps({
+          subtract: timestampIn,
+          from: currentTime,
+          differenceOf: 'hours'
+        })
+      }
+    } else {
+      timeInHours = timestampToMinutes(item.duration) / 60
+    }
     let roundedTimeInHours =
       Math.round((timeInHours + Number.EPSILON) * 100) / 100
     preparedChartData.value.timeIn.push(timestampToTime(item.time_in))
