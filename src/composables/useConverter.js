@@ -55,10 +55,37 @@ export function useTimeConverter() {
     return totalMin
   }
 
+  function differenceBetweenTimestamps({
+    subtract,
+    from,
+    differenceOf = 'hours'
+  }) {
+    let difference = from - subtract
+    let output
+    switch (differenceOf) {
+      case 'hours':
+        output = Math.floor(difference / 1000 / 60 / 60)
+        break
+      case 'minutes':
+        output = Math.floor(difference / 1000 / 60)
+        break
+      case 'seconds':
+        output = Math.floor(difference / 1000)
+        break
+      default:
+        throw Error(
+          'Unexpected "differenceOf" argument. Accepted values are "hours", "minutes" and "seconds".'
+        )
+    }
+
+    return output
+  }
+
   return {
     timestampToDate,
     timestampToFullDate,
     timestampToTime,
-    timestampToMinutes
+    timestampToMinutes,
+    differenceBetweenTimestamps
   }
 }
