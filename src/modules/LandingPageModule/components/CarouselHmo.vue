@@ -34,7 +34,7 @@ export default defineComponent({
       {
         id: 1,
         name: 'Leadway',
-        imageUrl: 'leadway.png'
+        imageUrl: 'leadway.jpg'
       },
       {
         id: 2,
