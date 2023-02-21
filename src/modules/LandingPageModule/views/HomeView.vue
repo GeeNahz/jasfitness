@@ -223,7 +223,7 @@
       </section>
       <!-- events and news section -->
       <section
-        class="bg-gray-100 w-full h-max lg:h-[735px] px-8 lg:px-28 py-10 lg:py-16"
+        class="bg-gray-100 w-full h-max lg:h-min px-8 lg:px-28 py-10 lg:py-16"
       >
         <!-- latest events title -->
         <h4
@@ -233,12 +233,12 @@
         </h4>
         <!-- latest events cards destop -->
         <div
-          class="modules hidden md:flex md:flex-col lg:flex-row gap-3 justify-center items-center"
+          class="modules hidden sm:flex sm:flex-col lg:grid lg:grid-cols-2 xl:flex xl:flex-row xl:flex-wrap gap-3 justify-center items-center"
         >
           <div
             v-for="(event, i) in eventsAndNews"
             :key="i"
-            class="single-module relative w-[412px] h-[431px] bg-white"
+            class="single-module relative w-[412px] lg:w-full xl:w-[412px] min-w-[300px] h-[431px] bg-white"
           >
             <div
               class="module h-full bg-cover bg-center"
