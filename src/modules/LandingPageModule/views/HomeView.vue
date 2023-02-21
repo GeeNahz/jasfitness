@@ -321,7 +321,7 @@ const eventsAndNews = ref([
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/stay_fit_and_vote_Gt2abs_kx.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1676915237020',
     title: 'Promo! Promo!! Promo!!!',
     description:
-      'Stay fit and vote in the coming election with JasFitness Stay Fit & Vote election promo. Get started by calling the number below.',
+      'Be fit as you vote with JasFitness Stay Fit & Vote election promo! This 25% election promo discount starts from now till 5th March. Get started by calling the number below.',
     linkText: '07034644002',
     linkUrl: ''
   },
@@ -332,6 +332,15 @@ const eventsAndNews = ref([
     description: `Champions need the best pitch and that is what we have. With our Multi Pitch center you get to play your favourite sports right here at Jas Fitness.`,
     linkText: '07034644002',
     linkUrl: ''
+  },
+  {
+    imageName:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/Red_Bold_Car_Wash_Instagram_Post_1__7V-jOr2QO.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669189583665',
+    title: 'Jas Auto Wash',
+    description:
+      'Get your car washed while at the gym. Achieve 2 goals at once.',
+    linkText: 'Book Wash',
+    linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
   },
   {
     imageName:
