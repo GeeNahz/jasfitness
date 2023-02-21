@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <Carousel :autoplay="5000" :transition="1200" :wrap-around="true" dir="rtl">
+    <Carousel :autoplay="5000" :transition="1200" :wrap-around="true" dir="ltr">
       <Slide v-for="(slide, i) in items" :key="i">
         <div
           class="carousel__item relative bg-cover bg-no-repeat bg-center"
