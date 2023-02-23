@@ -111,8 +111,8 @@
       </router-link>
     </div>
     <svg
-      id="navbar-toggle"
       @click="toggleSideBar"
+      id="navbar-toggle"
       class="h-full"
       width="37"
       height="40"
@@ -331,6 +331,7 @@ div.link {
 }
 a,
 div.link {
+  border-radius: 8px;
   font-weight: 500;
   color: #2c3e50;
   transition: all 0.2s ease-in-out, border 0.1s ease-in-out;
@@ -365,5 +366,9 @@ a.router-link-exact-active .icon {
 .disabled {
   color: #b4b4b495;
   pointer-events: none;
+}
+
+.onboarding-active {
+  background-color: #ececec;
 }
 </style>

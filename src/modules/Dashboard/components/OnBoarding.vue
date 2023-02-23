@@ -263,10 +263,21 @@ export default defineComponent({
         },
         // 5 button fitness record
         {
-          attachTo: { element: '#fitnessrecord-link' },
+          attachTo: {
+            element: '#fitnessrecord-link'
+          },
           content: { ...sectionTwoStart },
           on: {
-            beforeStep: function () {},
+            beforeStep: function () {
+              document
+                .querySelector('#fitnessrecord-link')
+                .classList.toggle('onboarding-active')
+              setTimeout(() => {
+                document
+                  .querySelector('#fitnessrecord-link')
+                  .classList.toggle('onboarding-active')
+              }, 10000)
+            },
             afterStep: function () {}
           },
           options: {
@@ -294,6 +305,18 @@ export default defineComponent({
         {
           attachTo: { element: '#mysubscription-link' },
           content: { ...sectionThreeStart },
+          on: {
+            beforeStep: function () {
+              document
+                .querySelector('#mysubscription-link')
+                .classList.toggle('onboarding-active')
+              setTimeout(() => {
+                document
+                  .querySelector('#mysubscription-link')
+                  .classList.toggle('onboarding-active')
+              }, 10000)
+            }
+          },
           options: {
             hideButtons: {
               next: true
@@ -323,14 +346,26 @@ export default defineComponent({
         // 12 button classes
         {
           attachTo: { element: '#classes-link' },
-          content: { ...classButton }
+          content: { ...classButton },
+          on: {
+            beforeStep: function () {}
+          }
         },
         // 13 button settings
         {
           attachTo: { element: '#settings-link' },
           content: { ...sectionFourStart },
           on: {
-            beforeStep: function () {},
+            beforeStep: function () {
+              document
+                .querySelector('#settings-link')
+                .classList.toggle('onboarding-active')
+              setTimeout(() => {
+                document
+                  .querySelector('#settings-link')
+                  .classList.toggle('onboarding-active')
+              }, 10000)
+            },
             afterStep: function () {}
           },
           options: {
@@ -415,7 +450,11 @@ export default defineComponent({
           attachTo: { element: '#fitnessrecord-link-mobile' },
           content: { ...sectionTwoStart },
           on: {
-            beforeStep: function () {},
+            beforeStep: function () {
+              document
+                .querySelector('#fitnessrecord-link-mobile')
+                .classList.toggle('onboarding-active')
+            },
             afterStep: function () {}
           },
           options: {
@@ -458,7 +497,11 @@ export default defineComponent({
           attachTo: { element: '#mysubscription-link-mobile' },
           content: { ...sectionThreeStart },
           on: {
-            beforeStep: function () {},
+            beforeStep: function () {
+              document
+                .querySelector('#mysubscription-link-mobile')
+                .classList.toggle('onboarding-active')
+            },
             afterStep: function () {}
           },
           options: {
@@ -510,6 +553,13 @@ export default defineComponent({
         {
           attachTo: { element: '#settings-link-mobile' },
           content: { ...sectionFourStart },
+          on: {
+            beforeStep: function () {
+              document
+                .querySelector('#settings-link-mobile')
+                .classList.toggle('onboarding-active')
+            }
+          },
           options: {
             hideButtons: {
               next: true
