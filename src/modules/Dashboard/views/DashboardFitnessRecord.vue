@@ -50,14 +50,22 @@
             <h4>Fitness Report</h4>
           </div>
           <div class="chart-container h-96 w-full">
+            <div v-if="preparingChartData" class="h-full w-full">
+              <AppLoader />
+            </div>
             <div
-              v-if="!preparingChartData"
+              v-if="!preparingChartData && chartData.datasets[0].data.length"
               class="chart bg-gray-50 p-2 mt-4 rounded-xl"
             >
               <DashboardChartBar :chartData="chartData" />
             </div>
-            <div v-if="preparingChartData" class="h-full w-full">
-              <AppLoader />
+            <div
+              v-else
+              class="h-[400px] rounded-lg bg-gray-200 text-gray-400 flex justify-center items-center font-semibold text-sm lg:text-lg"
+            >
+              <p>
+                No gym session yet. Start a gym session to view your progress.
+              </p>
             </div>
           </div>
           <div
@@ -328,7 +336,7 @@ const chartData = ref({
   labels: [],
   datasets: [
     {
-      label: 'Time spent (minutes)',
+      label: 'Time spent (hours)',
       backgroundColor: '#ca9b42',
       data: []
     }
