@@ -340,7 +340,7 @@ const eventsAndNews = ref([
     description:
       'Get your car washed while at the gym. Achieve 2 goals at once.',
     linkText: 'Book Wash',
-    linkUrl: 'https://www.jasfitnessng.com/auto-wash/'
+    linkUrl: 'https://app.jasfitnessng.com/auto-wash/'
   },
   {
     imageName:
