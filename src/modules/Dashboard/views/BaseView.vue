@@ -54,8 +54,11 @@
             class="text-sm xl:text-base my-5 xl:my-4"
             name="My Fitness Record"
           />
+          <div v-if="preparingChartData" class="loader h-full">
+            <AppLoader />
+          </div>
           <div
-            v-if="!preparingChartData"
+            v-if="!preparingChartData && chartData.datasets[0].data.length"
             class="chart-container md:hover:scale-100 md:scale-95 transition-transform duration-300 overflow-clip"
           >
             <div class="hidden md:block chart bg-gray-50 p-2 mt-4 rounded">
@@ -67,8 +70,13 @@
               <DashboardChart :height="200" :chartData="chartData" />
             </div>
           </div>
-          <div v-if="preparingChartData" class="loader h-full">
-            <AppLoader />
+          <div
+            v-if="!preparingChartData && !chartData.datasets[0].data.length"
+            class="w-full h-[400px] bg-gray-200 flex justify-center items-center rounded-lg"
+          >
+            <p class="text-gray-500 font-semibold text-lg">
+              No gym session yet. Start a gym session to view your progress.
+            </p>
           </div>
         </div>
       </template>
@@ -314,7 +322,7 @@ const chartData = ref({
   labels: [],
   datasets: [
     {
-      label: 'Time spent (minutes)',
+      label: 'Time spent (hours)',
       backgroundColor: '#ffbb00',
       data: []
     }
