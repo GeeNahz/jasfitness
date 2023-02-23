@@ -3,7 +3,9 @@
     class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
   >
     <DashboardHandleModalsDisplay class="fixed" />
-    <TheSidebar class="sidebar" />
+    <div class="sidebar-panel">
+      <TheSidebar />
+    </div>
     <div class="main-container w-full">
       <div class="z-50">
         <Onboarding />
@@ -68,7 +70,7 @@ export default {
   }
 }
 
-.sidebar {
+.sidebar-panel {
   grid-area: 'side';
 
   @include responsive('tablet-width') {
