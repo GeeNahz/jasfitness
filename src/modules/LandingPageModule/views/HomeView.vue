@@ -137,7 +137,7 @@
         </div>
       </section>
       <!-- hmo partners -->
-      <section class="py-5 lg:py-8 px-4 lg:px-20">
+      <section class="px-8 lg:px-28 py-10 lg:py-16">
         <h4
           class="capitalize mb-3 lg:mb-10 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
         >
