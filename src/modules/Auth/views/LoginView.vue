@@ -3,13 +3,13 @@
     <template #motivation-section>
       <div class="hidden md:block">
         <p>When you</p>
-        <p>see results it</p>
+        <p>see result it</p>
         <p>
           becomes an <span class="text-yellow-600 font-bold">Addiction</span>
         </p>
       </div>
       <div class="md:hidden">
-        <p>When you see results it</p>
+        <p>When you see result it</p>
         <p>
           becomes an <span class="text-yellow-600 font-bold">Addiction</span>
         </p>
