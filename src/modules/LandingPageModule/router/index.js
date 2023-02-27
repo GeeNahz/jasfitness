@@ -19,6 +19,9 @@ const CommunityView = () =>
 const HelpView = () =>
   import(/* webpackChunkNmae: "helpPage" */ '../views/HelpView.vue')
 
+const SaleCopy = () =>
+  import(/* webpackChunkName: "salesCopyPage" */ '../views/SalesCopyPage.vue')
+
 const routes = [
   {
     path: '/',
@@ -43,6 +46,11 @@ const routes = [
         path: 'community',
         name: 'CommunityPage',
         component: CommunityView
+      },
+      {
+        path: 'sc',
+        name: 'SalesCopyPage',
+        component: SaleCopy
       },
       {
         path: 'help',

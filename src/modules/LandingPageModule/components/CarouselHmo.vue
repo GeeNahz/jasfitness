@@ -45,6 +45,11 @@ export default defineComponent({
         id: 3,
         name: 'Total Health Trust',
         imageUrl: 'tht.jpg'
+      },
+      {
+        id: 4,
+        name: 'Axa Mastard',
+        imageUrl: 'axa.png'
       }
     ]
     // corousel config
