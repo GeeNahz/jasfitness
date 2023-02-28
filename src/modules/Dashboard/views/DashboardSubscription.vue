@@ -337,6 +337,7 @@ const plans = [
     offers: [
       'No Price Discount',
       'Access Once Daily',
+      'Access to multi pitch and games',
       'Personal Dashboard For Tracking Fitness Records',
       'Fitness Instructor Available',
       '1 Guest Pass Per Month',
@@ -352,6 +353,7 @@ const plans = [
     offers: [
       'No Price Discount',
       'All Day Access',
+      'Access to multi pitch and games',
       'Personal Dashboard For Tracking Fitness Records',
       'Personal Fitness Instructor Available',
       '2 Guest Pass Per Month',
