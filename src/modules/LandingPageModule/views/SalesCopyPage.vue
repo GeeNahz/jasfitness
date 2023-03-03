@@ -195,7 +195,7 @@
             sessions to go with your busy schedule.
           </p>
           <p class="medium-text-20 col-12 text-center">
-            No more complaining about lack of time because at JasFitness you’re
+            No more complaining about lack of time because at JasFitness you're
             the one in charge, as our schedule was made to suit you and you
             alone.
           </p>
