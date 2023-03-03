@@ -25,7 +25,10 @@
       <p class="text-xs md:text-base">start date</p>
       <p
         class="text-base md:text-lg xl:text-3xl font-semibold"
-        :class="{ 'text-red-400': dashboardSub.is_expired }"
+        :class="{
+          'text-red-400': dashboardSub.is_expired,
+          'text-amber-500': dashboardSub.start_date === 'Pending'
+        }"
       >
         {{
           dashboardSub.is_expired
