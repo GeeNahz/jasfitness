@@ -30,6 +30,8 @@
         {{
           dashboardSub.is_expired
             ? 'Expired'
+            : dashboardSub.start_date === 'Pending'
+            ? 'Pending'
             : startDateConverter(dashboardSub.start_date)
         }}
         <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->

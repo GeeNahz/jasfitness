@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
-    <div class="wrapper grid font-inter">
+  <div class="wrapper">
+    <div class="container grid font-inter">
       <div class="hero grid col-12">
-        <div class="image">
+        <div class="image col-4">
           <img src="https://" alt="image" />
         </div>
         <div class="content">
@@ -14,7 +14,9 @@
             Quickly build your chest, abs, legs, shoulder, back and entire
             fitness health like a pro with the help of our coaches
           </p>
-          <button class="cta-btn">book yourself a free call today</button>
+          <button class="cta-btn cta-btn-primary">
+            book yourself a free call today
+          </button>
           <p class="subtitle-2">
             The experience is mesmerizing and if you love to be fit on purpose
             and not just pump and sweat in the gym... you'll love it at
@@ -24,8 +26,8 @@
       </div>
       <!-- why jasfitness -->
       <section class="jasfitness grid col-12">
-        <p class="section-title col-10-center">Why JasFitness?</p>
-        <div class="cards col-10-center">
+        <p class="section-title col-12">Why JasFitness?</p>
+        <div class="cards col-12">
           <div class="card card-1">
             <div class="card-body">
               <div class="img"></div>
@@ -72,21 +74,21 @@
       </section>
       <!-- equipment -->
       <section class="equipment col-12 grid py-28 bg-white">
-        <div class="section-title col-10-center">World Class Equipment</div>
-        <div class="equipments col-10-center">
-          <div class="equipment-item"></div>
-          <div class="equipment-item"></div>
-          <div class="equipment-item"></div>
+        <div class="section-title col-12">World Class Equipment</div>
+        <div class="modules col-12">
+          <div class="module"></div>
+          <div class="module"></div>
+          <div class="module"></div>
         </div>
-        <p class="regular-text-16 col-10-center text-center">
+        <p class="regular-text-16 col-12 text-center">
           We've built the best facility with the right equipment for a variety
           of fitness needs
         </p>
-        <button class="cta-btn cta-btn-equipment">
+        <button class="cta-btn cta-btn-primary col-12 cta-btn-equipment">
           Book Yourself a free call today
         </button>
         <div class="divider col-10-center">
-          <hr />
+          <hr class="border-gray-500" />
         </div>
         <div class="points col-10-center">
           <div class="point">
@@ -115,7 +117,7 @@
             </p>
           </div>
         </div>
-        <p class="medium-text-24 col-10-center text-center">
+        <p class="medium-text-24 col-12 text-center">
           JasFitness is the best place to achieve all that
         </p>
         <p class="regular-text-14 col-10-center text-center">
@@ -127,7 +129,7 @@
       </section>
       <!-- your trainers -->
       <section class="trainers col-12 grid py-28">
-        <p class="section-title col-10-center">Meet Your Trainers</p>
+        <p class="section-title col-12">Meet Your Trainers</p>
         <div class="cards col-10-center">
           <div class="trainer-card grid place-content-center">
             <div class="trainer-image col-4"></div>
@@ -146,6 +148,58 @@
       <!-- our community -->
       <section class="community col-12 grid bg-[#fff0d4] py-28">
         <p class="section-title col-12">We Care About Our Community</p>
+        <div class="modules col-12">
+          <div class="module"></div>
+          <div class="module"></div>
+          <div class="module"></div>
+        </div>
+        <div class="action col-12 flex justify-center">
+          <button class="cta-btn cta-btn-secondary">View more</button>
+        </div>
+        <p class="regular-text-16 col-12 text-center">
+          Everyone wants to keep fit but it gets hard to keep going alone.
+        </p>
+        <p class="regular-text-14 col-10-center text-center">
+          At JasFitness gym center, you'll be in a community of folks on the
+          same mission as you and you know how good that can be when you have
+          pals cheering you up at all times
+        </p>
+        <p class="medium-text-24 col-10-center text-center">
+          You'll never walk alone.
+        </p>
+      </section>
+      <!-- testimonial -->
+      <section class="testimonial col-12 grid py-28">
+        <p class="section-title col-12">
+          Hear From Happy Members Of Our Community
+        </p>
+        <div class="testimonials grid col-10-center my-5">
+          <div class="testimonial col-10-center">
+            <div class="testimonial-text regular-text-20">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Aspernatur, id suscipit a cumque debitis sapiente ipsa accusamus
+              illum beatae ex!
+            </div>
+            <div class="testimonial-details">
+              <div class="testimonial-img"></div>
+              <div class="testimonial-name regular-text-16">Jon Snow Doe</div>
+            </div>
+          </div>
+        </div>
+        <div class="divider col-10-center mb-5">
+          <hr class="border-gray-500" />
+        </div>
+        <div class="texts col-12 grid">
+          <p class="medium-text-20 col-12 text-center">
+            Let us help you redefine your health with our various matching gym
+            sessions to go with your busy schedule.
+          </p>
+          <p class="medium-text-20 col-12 text-center">
+            No more complaining about lack of time because at JasFitness you’re
+            the one in charge, as our schedule was made to suit you and you
+            alone.
+          </p>
+        </div>
       </section>
     </div>
   </div>
@@ -154,14 +208,14 @@
 <script setup></script>
 
 <style scoped>
-.container {
+.wrapper {
   padding-top: 6rem;
   padding-bottom: 6rem;
   background: #f5f5f5;
   color: #303030;
   min-height: 100vh;
 }
-.wrapper {
+.container {
   width: min(100% - 30px, 960px);
   margin-inline: auto;
 }
@@ -169,10 +223,11 @@
   padding-top: 6rem;
 }
 .image {
-  grid-column: 2 / span 3;
+  /* grid-column: 2 / span 4; */
 
   height: 340px;
-  width: 255px;
+  /* width: 255px; */
+  width: 100%;
   background: #aaa;
 }
 .image img {
@@ -181,7 +236,7 @@
   object-fit: cover;
 }
 .content {
-  grid-column: 6 / span 6;
+  grid-column: 6 / span 7;
 }
 .main-title {
   text-transform: uppercase;
@@ -198,11 +253,17 @@
 }
 .cta-btn {
   border-radius: 5px;
-  background: #ffb628;
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   font-weight: 500;
+}
+.cta-btn-primary {
+  background: #ffb628;
   text-transform: capitalize;
+}
+.cta-btn-secondary {
+  background: #303030;
+  color: #fff;
 }
 
 .section-title {
@@ -235,15 +296,16 @@
   font-size: 12px;
   color: #555555;
 }
-.equipments {
+.modules {
   display: flex;
   justify-content: space-between;
   gap: 30px;
 }
-.equipment-item {
+.module {
   width: 260px;
   height: 180px;
   background: #aaa;
+  border-radius: 8px;
 }
 .points {
   display: flex;
@@ -266,7 +328,8 @@
   background: #1f1f1f;
 }
 .cta-btn-equipment {
-  grid-column: 5 / span 4;
+  max-width: fit-content;
+  justify-self: center;
 }
 .trainer-card {
   width: 420px;
@@ -283,6 +346,19 @@
 .trainer-card-body {
   grid-column: 5 / span 7;
 }
+.testimonial-details {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.testimonial-img {
+  background: #d9d9d9;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+}
 
 .regular-text-12 {
   font-weight: 400;
@@ -296,9 +372,17 @@
   font-weight: 400;
   font-size: 16px;
 }
+.regular-text-20 {
+  font-weight: 400;
+  font-size: 20px;
+}
 .medium-text-18 {
   font-weight: 500;
   font-size: 18px;
+}
+.medium-text-20 {
+  font-weight: 500;
+  font-size: 20px;
 }
 .medium-text-24 {
   font-weight: 500;
