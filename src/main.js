@@ -14,6 +14,7 @@ import 'nprogress/nprogress.css'
 import LandingPageModule from './modules/LandingPageModule'
 import Dashboard from './modules/Dashboard'
 import Auth from './modules/Auth'
+import Membership from './modules/Membership'
 
 import { registerModules } from './register-modules'
 import './index.css'
@@ -21,7 +22,8 @@ import './index.css'
 registerModules({
   landingpage: LandingPageModule,
   dashboard: Dashboard,
-  auth: Auth
+  auth: Auth,
+  membership: Membership
 })
 
 createApp(App)
