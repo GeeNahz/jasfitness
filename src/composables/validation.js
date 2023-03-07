@@ -21,8 +21,8 @@ export function validation() {
       if (typeof value == 'number') {
         if (value == '' || isNaN(value)) return false
       }
-      return true
     }
+    return true
   }
 
   function useIsWithinRange({ value, minRange = 0, maxRange = 10 }) {
