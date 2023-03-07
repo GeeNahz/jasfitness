@@ -1,322 +1,331 @@
 <template>
-  <div class="wrapper">
-    <div class="font-inter">
-      <div class="contained-width hero grid col-12 mb-5">
-        <div class="image col-4">
-          <img src="https://" alt="image" />
-        </div>
-        <div class="content">
-          <p class="main-title">
-            hit your fitness goals in our state-of-the-art gym facility with
-            super amazing coaches
-          </p>
-          <p class="subtitle-1">
-            Quickly build your chest, abs, legs, shoulder, back and entire
-            fitness health like a pro with the help of our coaches
-          </p>
-          <button class="cta-btn cta-btn-primary">
-            book yourself a free call today
-          </button>
-          <p class="subtitle-2">
-            The experience is mesmerizing and if you love to be fit on purpose
-            and not just pump and sweat in the gym... you'll love it at
-            JasFitness gym center.
-          </p>
+  <div class="scwrapper font-inter">
+    <div class="contained-width hero grid col-12 mb-5">
+      <div class="image col-4">
+        <img src="https://" alt="image" />
+      </div>
+      <div class="content">
+        <p class="main-title">
+          hit your fitness goals in our state-of-the-art gym facility with super
+          amazing coaches
+        </p>
+        <p class="subtitle-1">
+          Quickly build your chest, abs, legs, shoulder, back and entire fitness
+          health like a pro with the help of our coaches
+        </p>
+        <button class="cta-btn cta-btn-primary">
+          book yourself a free call today
+        </button>
+        <p class="subtitle-2">
+          The experience is mesmerizing and if you love to be fit on purpose and
+          not just pump and sweat in the gym... you'll love it at JasFitness gym
+          center.
+        </p>
+      </div>
+    </div>
+    <!-- why jasfitness -->
+    <section class="jasfitness mb-5">
+      <div class="contained-width grid col-12">
+        <p class="section-title col-12">Why JasFitness?</p>
+        <div class="cards col-12">
+          <div v-for="item in whyJasfitness" :key="item.id" class="card card-1">
+            <div class="card-body flex flex-col items-center">
+              <div class="img justify-self-center"></div>
+              <p class="card-title">{{ item.title }}</p>
+              <p class="card-text">{{ item.content }}</p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- why jasfitness -->
-      <section class="jasfitness mb-5">
-        <div class="contained-width grid col-12">
-          <p class="section-title col-12">Why JasFitness?</p>
-          <div class="cards col-12">
-            <div
-              v-for="item in whyJasfitness"
-              :key="item.id"
-              class="card card-1"
-            >
-              <div class="card-body flex flex-col items-center">
-                <div class="img justify-self-center"></div>
-                <p class="card-title">{{ item.title }}</p>
-                <p class="card-text">{{ item.content }}</p>
-              </div>
-            </div>
-          </div>
+    </section>
+    <!-- equipment -->
+    <section class="equipment py-28 bg-white">
+      <div class="contained-width col-12 grid">
+        <div class="section-title col-12">World Class Equipment</div>
+        <div class="modules col-12">
+          <div class="module"></div>
+          <div class="module"></div>
+          <div class="module"></div>
         </div>
-      </section>
-      <!-- equipment -->
-      <section class="equipment py-28 bg-white">
-        <div class="contained-width col-12 grid">
-          <div class="section-title col-12">World Class Equipment</div>
-          <div class="modules col-12">
-            <div class="module"></div>
-            <div class="module"></div>
-            <div class="module"></div>
-          </div>
-          <p class="regular-text-16 col-12 text-center">
-            We've built the best facility with the right equipment for a variety
-            of fitness needs
-          </p>
-          <button class="cta-btn cta-btn-primary col-12 cta-btn-equipment">
-            Book Yourself a free call today
-          </button>
-          <div class="divider col-10-center">
-            <hr class="border-gray-500" />
-          </div>
-          <div class="points col-10-center">
-            <div class="point">
-              <div class="point-image"></div>
-              <p class="point-text regular-text-14">Want to keep fit?</p>
-            </div>
-            <div class="point">
-              <div class="point-image"></div>
-              <p class="point-text regular-text-14">Want to build muscle?</p>
-            </div>
-            <div class="point">
-              <div class="point-image"></div>
-              <p class="point-text regular-text-14">Want to shed fat?</p>
-            </div>
-            <div class="point">
-              <div class="point-image"></div>
-              <p class="point-text regular-text-14">
-                Want to stay fit and outlive the average lifespan?
-              </p>
-            </div>
-            <div class="point">
-              <div class="point-image"></div>
-              <p class="point-text regular-text-14">
-                Want to keep healthy with gym classes that keep you in shape
-                with a stronger body and supercharged energy?
-              </p>
-            </div>
-          </div>
-          <p class="medium-text-24 col-12 text-center">
-            JasFitness is the best place to achieve all that
-          </p>
-          <p class="regular-text-14 col-10-center text-center">
-            We don't just hit the gym and throw in the towel. We have tailored
-            sessions for each individual's need that's why we have a variety of
-            coaches that have a cumulative experience of fitness coaching of
-            about
-            <span class="stress text-amber-500 font-semibold">50</span> years
-          </p>
+        <p class="regular-text-16 col-12 text-center">
+          We've built the best facility with the right equipment for a variety
+          of fitness needs
+        </p>
+        <button class="cta-btn cta-btn-primary col-12 cta-btn-equipment">
+          Book Yourself a free call today
+        </button>
+        <div class="divider col-10-center">
+          <hr class="border-gray-500" />
         </div>
-      </section>
-      <!-- your trainers -->
-      <section class="trainers py-28">
-        <div class="contained-width col-12 grid">
-          <p class="section-title col-12">Meet Your Trainers</p>
-          <div class="col-10-center">
-            <CarouselInstructors />
+        <div class="points col-10-center">
+          <div class="point">
+            <div class="point-image"></div>
+            <p class="point-text regular-text-14">Want to keep fit?</p>
           </div>
-        </div>
-      </section>
-      <!-- our community -->
-      <section class="community bg-[#fff0d4] py-28">
-        <div class="contained-width col-12 grid">
-          <p class="section-title col-12">We Care About Our Community</p>
-          <div class="modules col-12">
-            <div class="module"></div>
-            <div class="module"></div>
-            <div class="module"></div>
+          <div class="point">
+            <div class="point-image"></div>
+            <p class="point-text regular-text-14">Want to build muscle?</p>
           </div>
-          <div class="action col-12 flex justify-center">
-            <button class="cta-btn cta-btn-secondary">View more</button>
+          <div class="point">
+            <div class="point-image"></div>
+            <p class="point-text regular-text-14">Want to shed fat?</p>
           </div>
-          <p class="regular-text-16 col-12 text-center">
-            Everyone wants to keep fit but it gets hard to keep going alone.
-          </p>
-          <p class="regular-text-14 col-10-center text-center">
-            At JasFitness gym center, you'll be in a community of folks on the
-            same mission as you and you know how good that can be when you have
-            pals cheering you up at all times
-          </p>
-          <p class="medium-text-24 col-10-center text-center">
-            You'll never walk alone.
-          </p>
-        </div>
-      </section>
-      <!-- testimonial -->
-      <section class="py-28">
-        <div class="testimonial contained-width col-12 grid">
-          <!-- testimonial section -->
-          <p class="section-title col-12">
-            Hear From Happy Members Of Our Community
-          </p>
-          <div class="testimonials grid col-10-center my-5">
-            <CarouselScTestimonial />
-          </div>
-          <div class="divider col-10-center mb-5">
-            <hr class="border-gray-500" />
-          </div>
-        </div>
-        <!-- plans section -->
-        <div class="contained-width col-12 grid">
-          <div class="texts col-10-center grid">
-            <p class="medium-text-20 col-12 text-center">
-              Let us help you redefine your health with our various matching gym
-              sessions to go with your busy schedule.
-            </p>
-            <p class="medium-text-20 col-12 text-center">
-              No more complaining about lack of time because at JasFitness
-              you're the one in charge, as our schedule was made to suit you and
-              you alone.
+          <div class="point">
+            <div class="point-image"></div>
+            <p class="point-text regular-text-14">
+              Want to stay fit and outlive the average lifespan?
             </p>
           </div>
-          <!-- plan cards -->
-          <div class="plans col-12 mb-5">
-            <div
-              v-for="(plan, index) in plans"
-              :key="'plan ' + index + 1"
-              class="plan"
-              :class="[isEven(index) ? 'light' : 'dark']"
-            >
-              <div class="plan-title-details">
-                <p class="plan-title capitalize medium-text-32">
-                  {{ plan.name }}
-                </p>
-                <p class="plan-setup-fee medium-text-14">
-                  membership setup fee - N{{ plan.setupFee }}
-                </p>
-              </div>
-              <div class="divider my-7"><hr class="divider-color" /></div>
-              <div class="plan-price-details">
-                <p class="plan-price medium-text-32">N{{ plan.price }}</p>
-                <p class="plan-price-biling regular-text-14">
-                  /{{ plan.billing }}
-                </p>
-              </div>
-              <div class="plan-offer-details">
-                <p class="plan-offer-title mt-4 mb-3 semibold-text-16">
-                  What's included
-                </p>
-                <ul>
-                  <li
-                    v-for="(offer, index) in plan.offers"
-                    :key="'offer ' + index + 1"
-                    class="plan-offer flex gap-2 items-center regular-text-14 mb-2 last:mb-0"
-                  >
-                    <span class="regular-text-16"><AppIconCheck /></span>
-                    {{ offer }}
-                  </li>
-                </ul>
-              </div>
+          <div class="point">
+            <div class="point-image"></div>
+            <p class="point-text regular-text-14">
+              Want to keep healthy with gym classes that keep you in shape with
+              a stronger body and supercharged energy?
+            </p>
+          </div>
+        </div>
+        <p class="medium-text-24 col-12 text-center">
+          JasFitness is the best place to achieve all that
+        </p>
+        <p class="regular-text-14 col-10-center text-center">
+          We don't just hit the gym and throw in the towel. We have tailored
+          sessions for each individual's need that's why we have a variety of
+          coaches that have a cumulative experience of fitness coaching of over
+          <span class="stress text-amber-500 font-semibold">50</span> years
+        </p>
+      </div>
+    </section>
+    <!-- your trainers -->
+    <section class="trainers py-28">
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-12">Meet Your Trainers</p>
+        <div class="col-10-center">
+          <CarouselInstructors />
+        </div>
+      </div>
+    </section>
+    <!-- our community -->
+    <section class="community bg-[#fff0d4] py-28">
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-12">We Care About Our Community</p>
+        <div class="modules col-12">
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966"
+              alt="image 1"
+            />
+          </div>
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238"
+              alt="image 2"
+            />
+          </div>
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118"
+              alt="image 3"
+            />
+          </div>
+        </div>
+        <div class="action col-12 flex justify-center">
+          <button class="cta-btn cta-btn-secondary">View more</button>
+        </div>
+        <p class="regular-text-16 col-12 text-center">
+          Everyone wants to keep fit but it gets hard to keep going alone.
+        </p>
+        <p class="regular-text-14 col-10-center text-center">
+          At JasFitness gym center, you'll be in a community of folks on the
+          same mission as you and you know how good that can be when you have
+          pals cheering you up at all times
+        </p>
+        <p class="medium-text-24 col-10-center text-center">
+          You'll never walk alone.
+        </p>
+      </div>
+    </section>
+    <!-- testimonial -->
+    <section class="py-28">
+      <div class="testimonial contained-width col-12 grid">
+        <!-- testimonial section -->
+        <p class="section-title col-12">
+          Hear From Happy Members Of Our Community
+        </p>
+        <div class="testimonials grid col-10-center my-5">
+          <CarouselScTestimonial />
+        </div>
+        <div class="divider col-10-center mb-5">
+          <hr class="border-gray-500" />
+        </div>
+      </div>
+      <!-- plans section -->
+      <div class="contained-width col-12 grid">
+        <div class="texts col-10-center grid">
+          <p class="medium-text-20 col-12 text-center">
+            Let us help you redefine your health with our various matching gym
+            sessions to go with your busy schedule.
+          </p>
+          <p class="medium-text-20 col-12 text-center">
+            No more complaining about lack of time because at JasFitness you're
+            the one in charge, as our schedule was made to suit you and you
+            alone.
+          </p>
+        </div>
+        <!-- plan cards -->
+        <div class="plans col-12 mb-5">
+          <div
+            v-for="(plan, index) in plans"
+            :key="'plan ' + index + 1"
+            class="plan"
+            :class="[isEven(index) ? 'light' : 'dark']"
+          >
+            <div class="plan-title-details">
+              <p class="plan-title capitalize medium-text-32">
+                {{ plan.name }}
+              </p>
+              <p class="plan-setup-fee medium-text-14">
+                membership setup fee - N{{ plan.setupFee }}
+              </p>
+            </div>
+            <div class="divider my-7"><hr class="divider-color" /></div>
+            <div class="plan-price-details">
+              <p class="plan-price medium-text-32">N{{ plan.price }}</p>
+              <p class="plan-price-biling regular-text-14">
+                /{{ plan.billing }}
+              </p>
+            </div>
+            <div class="plan-offer-details">
+              <p class="plan-offer-title mt-4 mb-3 semibold-text-16">
+                What's included
+              </p>
+              <ul>
+                <li
+                  v-for="(offer, index) in plan.offers"
+                  :key="'offer ' + index + 1"
+                  class="plan-offer flex gap-2 items-center regular-text-14 mb-2 last:mb-0"
+                >
+                  <span class="regular-text-16"><AppIconCheck /></span>
+                  {{ offer }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <!-- hmo section -->
-        <div class="contained-width col-12 grid">
-          <p class="section-title col-12">Our HMOs</p>
-          <div class="hmo-cards col-10-center">
-            <CarouselHmo />
-          </div>
+      </div>
+      <!-- hmo section -->
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-12">Our HMOs</p>
+        <div class="hmo-cards col-10-center">
+          <CarouselHmo />
         </div>
-      </section>
-      <!-- schedules -->
-      <section class="schedules bg-[#fff0d4] py-28">
-        <div class="contained-width col-12 grid">
-          <p class="section-title col-10-center">Our Time Schedule</p>
-          <div class="schedule-list grid col-10-center">
-            <table class="table-fixed col-10-center place-self-center">
-              <tbody class="medium-text-20">
-                <tr>
-                  <td>Monday - Saturday</td>
-                  <td>6.00am - 9.00pm</td>
-                </tr>
-                <tr>
-                  <td>Public Holiday</td>
-                  <td>6.00am - 8.00pm</td>
-                </tr>
-                <tr>
-                  <td>Cleaning</td>
-                  <td>1.00pm - 4.00pm</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      </div>
+    </section>
+    <!-- schedules -->
+    <section class="schedules bg-[#fff0d4] py-28">
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-10-center">Our Time Schedule</p>
+        <div class="schedule-list grid col-10-center">
+          <table class="table-fixed col-10-center place-self-center">
+            <tbody class="medium-text-20">
+              <tr>
+                <td>Monday - Saturday</td>
+                <td>6.00am - 9.00pm</td>
+              </tr>
+              <tr>
+                <td>Public Holiday</td>
+                <td>6.00am - 8.00pm</td>
+              </tr>
+              <tr>
+                <td>Cleaning</td>
+                <td>1.00pm - 4.00pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button
+          class="cta-btn cta-btn-secondary col-12 justify-self-center w-fit capitalize"
+        >
+          Book yourself a free call today
+        </button>
+      </div>
+    </section>
+    <!-- special class -->
+    <section class="classes py-28">
+      <!-- special class section -->
+      <div class="contained-width grid">
+        <p class="section-title col-12">Our Special Classes</p>
+        <p class="col-10-center medium-text-20">
+          Our coaches hold special classes to those who want to quicken their
+          goal achievement and desire special attendance in helping them achieve
+          what they want.
+        </p>
+        <p class="col-10-center medium-text-20">
+          Special Classes to those ready to go the extra mile in taking awesome
+          care of their health and stay fit
+        </p>
+        <p class="col-10-center medium-text-20">
+          Our Coaches got you covered on what you need. Let's make this journey
+          more easy, smooth, and take you through the right activity to achieve
+          that goal.
+        </p>
+        <p class="col-10-center light-text-12">
+          [List of coaches that offer special classes and their classes (if
+          possible with pictorial illustration)]
+        </p>
+        <button
+          class="cta-btn cta-btn-primary col-12 place-self-center w-fit capitalize"
+        >
+          book yourself a free call today
+        </button>
+      </div>
+      <!-- divider -->
+      <div class="divider contained-width my-5 grid">
+        <hr class="border-gray-500 col-10-center" />
+      </div>
+      <!-- newsletter -->
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-10-center">
+          Get Instant Updates Directly Into Your Inbox
+        </p>
+        <form class="newsletter-form col-10-center">
+          <label for="name" class="col-12">Full Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Jon Snow Doe"
+            class="col-12"
+          />
+          <label for="phone" class="col-12">Phone Number:</label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="080123456789"
+            class="col-12"
+          />
+          <label for="email" class="col-12">Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@email.com"
+            class="col-12"
+          />
           <button
-            class="cta-btn cta-btn-secondary col-12 justify-self-center w-fit capitalize"
+            type="submit"
+            class="uppercase cta-btn cta-btn-secondary col-12"
           >
-            Book yourself a free call today
+            Get Updates
           </button>
-        </div>
-      </section>
-      <!-- special class -->
-      <section class="classes py-28">
-        <!-- special class section -->
-        <div class="contained-width grid">
-          <p class="section-title col-12">Our Special Classes</p>
-          <p class="col-10-center medium-text-20">
-            Our coaches hold special classes to those who want to quicken their
-            goal achievement and desire special attendance in helping them
-            achieve what they want.
-          </p>
-          <p class="col-10-center medium-text-20">
-            Special Classes to those ready to go the extra mile in taking
-            awesome care of their health and stay fit
-          </p>
-          <p class="col-10-center medium-text-20">
-            Our Coaches got you covered on what you need. Let's make this
-            journey more easy, smooth, and take you through the right activity
-            to achieve that goal.
-          </p>
-          <p class="col-10-center light-text-12">
-            [List of coaches that offer special classes and their classes (if
-            possible with pictorial illustration)]
-          </p>
-          <button
-            class="cta-btn cta-btn-primary col-12 place-self-center w-fit capitalize"
-          >
-            book yourself a free call today
-          </button>
-        </div>
-        <!-- divider -->
-        <div class="divider contained-width my-5 grid">
-          <hr class="border-gray-500 col-10-center" />
-        </div>
-        <!-- newsletter -->
-        <div class="contained-width col-12 grid">
-          <p class="section-title col-10-center">
-            Get Instant Updates Directly Into Your Inbox
-          </p>
-          <form class="newsletter-form col-10-center">
-            <label for="name" class="col-12">Full Name:</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Jon Snow Doe"
-              class="col-12"
-            />
-            <label for="phone" class="col-12">Phone Number:</label>
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              placeholder="080123456789"
-              class="col-12"
-            />
-            <label for="email" class="col-12">Email:</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="example@email.com"
-              class="col-12"
-            />
-            <button
-              type="submit"
-              class="uppercase cta-btn cta-btn-secondary col-12"
-            >
-              Get Updates
-            </button>
-          </form>
-        </div>
-      </section>
-    </div>
+        </form>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup>
+import { v4 as uuid } from 'uuid'
 import AppIconCheck from '@/components/AppIconCheck.vue'
 
 import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
@@ -389,10 +398,11 @@ const whyJasfitness = [
 ]
 
 const isEven = (value) => value % 2 === 0
+console.log(uuid())
 </script>
 
 <style scoped>
-.wrapper {
+.scwrapper {
   padding-top: 6rem;
   padding-bottom: 6rem;
   background: #f5f5f5;
@@ -494,6 +504,12 @@ const isEven = (value) => value % 2 === 0
   height: 180px;
   background: #aaa;
   border-radius: 8px;
+  overflow: hidden;
+}
+.module img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .points {
   display: flex;
