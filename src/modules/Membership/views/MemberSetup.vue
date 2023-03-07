@@ -237,7 +237,6 @@ function clearInputs({ inputObject }) {
 
 const store = useStore()
 function submitHandler() {
-  console.log('Form submitted: ', inputFields)
   let userData = {
     username: inputFields.requiredFields.username,
     email: inputFields.requiredFields.email,
