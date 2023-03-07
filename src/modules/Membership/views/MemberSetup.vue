@@ -255,7 +255,13 @@ function submitHandler() {
     let res = store.dispatch('auth/membership_setup', userData)
     console.log(res)
   } catch (error) {
-    console.log(error)
+    if (error.response.status === 400) {
+      console.log('Validation: Some provided fields are invalid')
+    }
+    if (error.message == 'Network Error') {
+      console.log('Network: Kindly check your network connection and try again')
+    }
+    console.log('submit handler error:', error.message)
   }
   // on successful submission
   clearInputs({ inputObject: inputFields.requiredFields })
