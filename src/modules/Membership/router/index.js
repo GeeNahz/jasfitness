@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 const Module = () =>
   import(/* webpackChunkName "MembersSetupModule" */ '../Module.vue')
 
+const MemberSetup = () =>
+  import(/* webpackChunkName "MemberSetup" */ '../views/MemberSetup.vue')
+
 const routes = [
   {
     path: '/f7a709f2-68a5-424d-839e-0a784a970279/members',
@@ -10,8 +13,8 @@ const routes = [
     children: [
       {
         path: 'setup',
-        name: '',
-        component: ''
+        name: 'MemberSetup',
+        component: MemberSetup
       }
     ]
   }
