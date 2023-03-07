@@ -66,5 +66,6 @@ export default defineComponent({
 }
 .carousel__item {
   text-align: start;
+  padding: 3px;
 }
 </style>
