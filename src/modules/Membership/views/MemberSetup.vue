@@ -238,8 +238,21 @@ function clearInputs({ inputObject }) {
 const store = useStore()
 function submitHandler() {
   console.log('Form submitted: ', inputFields)
+  let userData = {
+    username: inputFields.requiredFields.username,
+    email: inputFields.requiredFields.email,
+    name: inputFields.requiredFields.fullName,
+    date_of_birth: inputFields.requiredFields.dob,
+    gender: inputFields.requiredFields.gender,
+    phone_number: inputFields.requiredFields.phoneNumber,
+    address: '',
+    emergency_person: inputFields.requiredFields.emergencyName,
+    emergency_contact: inputFields.requiredFields.emergencyNumber,
+    occupation: '',
+    referral: inputFields.notRequired.referral
+  }
   try {
-    let res = store.dispatch('auth/membership_setup')
+    let res = store.dispatch('auth/membership_setup', userData)
     console.log(res)
   } catch (error) {
     console.log(error)
