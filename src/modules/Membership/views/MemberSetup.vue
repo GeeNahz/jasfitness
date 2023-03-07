@@ -192,6 +192,7 @@
 
 <script setup>
 import { reactive, computed } from 'vue'
+import { useStore } from 'vuex'
 
 import { validation } from '@/composables/validation.js'
 
@@ -234,8 +235,15 @@ function clearInputs({ inputObject }) {
   }
 }
 
+const store = useStore()
 function submitHandler() {
   console.log('Form submitted: ', inputFields)
+  try {
+    let res = store.dispatch('auth/membership_setup')
+    console.log(res)
+  } catch (error) {
+    console.log(error)
+  }
   // on successful submission
   clearInputs({ inputObject: inputFields.requiredFields })
   clearInputs({ inputObject: inputFields.notRequired })
