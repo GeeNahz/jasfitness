@@ -236,7 +236,7 @@ function clearInputs({ inputObject }) {
 }
 
 const store = useStore()
-function submitHandler() {
+async function submitHandler() {
   let userData = {
     username: inputFields.requiredFields.username,
     email: inputFields.requiredFields.email,
@@ -251,7 +251,7 @@ function submitHandler() {
     referral: inputFields.notRequired.referral
   }
   try {
-    let res = store.dispatch('auth/membership_setup', userData)
+    let res = await store.dispatch('auth/membership_setup', userData)
     console.log(res)
   } catch (error) {
     if (error.response.status === 400) {
