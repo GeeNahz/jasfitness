@@ -323,8 +323,6 @@ async function submitHandler() {
         message: 'Kindly check your network connection and try again.'
       })
     }
-    // TODO 5: Remove this console log
-    console.log('submit handler error:', error.message)
   }
   // TODO 6: Move this into the try block to only run on successful response
   // on successful submission
