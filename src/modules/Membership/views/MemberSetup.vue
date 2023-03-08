@@ -309,7 +309,9 @@ async function submitHandler() {
   }
   try {
     await store.dispatch('auth/membership_setup', userData)
-    // TODO 1: Add success alert notification here
+    store.dispatch('landingpage/success', {
+      message: 'Your details have been successfully submitted.'
+    })
   } catch (error) {
     if (error.response.status === 400) {
       // TODO 3: Add error alert notification here
