@@ -2,7 +2,10 @@
   <div class="scwrapper font-inter">
     <div class="contained-width hero grid col-12 mb-5">
       <div class="image col-4">
-        <img src="https://" alt="image" />
+        <img
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540"
+          alt="image"
+        />
       </div>
       <div class="content">
         <p class="main-title">
@@ -426,6 +429,8 @@ console.log(uuid())
   height: 340px;
   /* width: 255px; */
   width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
   background: #aaa;
 }
 .image img {
