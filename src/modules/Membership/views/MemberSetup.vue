@@ -33,7 +33,7 @@
                   type="text"
                   name="firstName"
                   id="first-name"
-                  v-model="inputFields.requiredFields.fullName"
+                  v-model="inputFields.requiredFields.firstName"
                   placeholder="John"
                   required
                 />
@@ -49,7 +49,7 @@
                   type="text"
                   name="middleName"
                   id="middle-name"
-                  v-model="inputFields.requiredFields.fullName"
+                  v-model="inputFields.notRequired.middleName"
                   placeholder="Doe"
                 />
               </div>
@@ -64,7 +64,7 @@
                   type="text"
                   name="lastName"
                   id="last-name"
-                  v-model="inputFields.requiredFields.fullName"
+                  v-model="inputFields.requiredFields.lastName"
                   placeholder="Snow"
                   required
                 />
