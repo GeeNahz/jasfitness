@@ -40,7 +40,7 @@
               </div>
             </label>
             <label class="grid gap-10" for="middle-name">
-              <p class="col-12">Middle name*</p>
+              <p class="col-12">Middle name</p>
               <div class="form-input col-12">
                 <div class="logo">
                   <AppIconAccount />
