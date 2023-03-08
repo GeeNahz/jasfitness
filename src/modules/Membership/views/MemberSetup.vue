@@ -23,7 +23,7 @@
           <div
             class="triple-fields col-12 gap-20 flex flex-col sm:flex-row sm:justify-between"
           >
-            <label class="gap-10" for="first-name">
+            <label class="grid gap-10" for="first-name">
               <p class="col-12">First name*</p>
               <div class="form-input col-12">
                 <div class="logo">
@@ -39,7 +39,7 @@
                 />
               </div>
             </label>
-            <label class="gap-10" for="middle-name">
+            <label class="grid gap-10" for="middle-name">
               <p class="col-12">Middle name*</p>
               <div class="form-input col-12">
                 <div class="logo">
@@ -54,7 +54,7 @@
                 />
               </div>
             </label>
-            <label class="gap-10" for="last-name">
+            <label class="grid gap-10" for="last-name">
               <p class="col-12">Last name*</p>
               <div class="form-input col-12">
                 <div class="logo">
