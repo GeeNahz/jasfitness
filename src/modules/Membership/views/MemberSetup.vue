@@ -308,10 +308,8 @@ async function submitHandler() {
     referral: inputFields.notRequired.referral
   }
   try {
-    let res = await store.dispatch('auth/membership_setup', userData)
+    await store.dispatch('auth/membership_setup', userData)
     // TODO 1: Add success alert notification here
-    // TODO 2: Remove the log message
-    console.log(res)
   } catch (error) {
     if (error.response.status === 400) {
       // TODO 3: Add error alert notification here
