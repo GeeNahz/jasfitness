@@ -319,8 +319,9 @@ async function submitHandler() {
       })
     }
     if (error.message == 'Network Error') {
-      // TODO 4: Add error alert notification here
-      console.log('Network: Kindly check your network connection and try again')
+      store.dispatch('landingpage/error', {
+        message: 'Kindly check your network connection and try again.'
+      })
     }
     // TODO 5: Remove this console log
     console.log('submit handler error:', error.message)
