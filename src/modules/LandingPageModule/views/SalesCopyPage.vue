@@ -24,7 +24,7 @@
       </div>
     </div>
     <!-- why jasfitness -->
-    <section class="jasfitness mb-5">
+    <section class="jasfitness mb-5 py-28">
       <div class="contained-width grid col-12">
         <p class="section-title col-12">Why JasFitness?</p>
         <div class="cards col-12">
