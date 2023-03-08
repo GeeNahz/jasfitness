@@ -271,12 +271,27 @@ function clearInputs({ inputObject }) {
   }
 }
 
+function getFullName({ namesArray = [] }) {
+  function isString(value) {
+    return typeof value === 'string'
+  }
+  if (namesArray.length > 1) {
+    if (!namesArray.every(isString)) {
+      throw new Error("Elements of 'namesArray' should all be strings")
+    }
+    return namesArray.join(' ')
+  }
+  throw new Error(
+    `namesArray may not be empty or less than 1 element. Got ${namesArray} expected an array of string.`
+  )
+}
+
 const store = useStore()
 async function submitHandler() {
   let userData = {
     username: inputFields.requiredFields.username,
     email: inputFields.requiredFields.email,
-    name: inputFields.requiredFields.fullName,
+    name: '',
     date_of_birth: inputFields.requiredFields.dob,
     gender: inputFields.requiredFields.gender,
     phone_number: inputFields.requiredFields.phoneNumber,
@@ -288,20 +303,27 @@ async function submitHandler() {
   }
   try {
     let res = await store.dispatch('auth/membership_setup', userData)
+    // TODO 1: Add success alert notification here
+    // TODO 2: Remove the log message
     console.log(res)
   } catch (error) {
     if (error.response.status === 400) {
+      // TODO 3: Add error alert notification here
       console.log('Validation: Some provided fields are invalid')
     }
     if (error.message == 'Network Error') {
+      // TODO 4: Add error alert notification here
       console.log('Network: Kindly check your network connection and try again')
     }
+    // TODO 5: Remove this console log
     console.log('submit handler error:', error.message)
   }
+  // TODO 6: Move this into the try block to only run on successful response
   // on successful submission
   clearInputs({ inputObject: inputFields.requiredFields })
   clearInputs({ inputObject: inputFields.notRequired })
 }
+// TODO 7: Remove the meet staff, cummulative years of experience of staff, gym equipment and special classes sections of the sales copy
 </script>
 
 <style scoped>
