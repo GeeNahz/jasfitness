@@ -1,79 +1,49 @@
 <template>
-  <div class="wrapper">
-    <div class="container grid font-inter">
-      <div class="hero grid col-12">
-        <div class="image col-4">
-          <img src="https://" alt="image" />
-        </div>
-        <div class="content">
-          <p class="main-title">
-            hit your fitness goals in our state-of-the-art gym facility with
-            super amazing coaches
-          </p>
-          <p class="subtitle-1">
-            Quickly build your chest, abs, legs, shoulder, back and entire
-            fitness health like a pro with the help of our coaches
-          </p>
-          <button class="cta-btn cta-btn-primary">
-            book yourself a free call today
-          </button>
-          <p class="subtitle-2">
-            The experience is mesmerizing and if you love to be fit on purpose
-            and not just pump and sweat in the gym... you'll love it at
-            JasFitness gym center.
-          </p>
-        </div>
+  <div class="scwrapper font-inter">
+    <div class="contained-width hero grid col-12 mb-5">
+      <div class="image col-4">
+        <img
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540"
+          alt="image"
+        />
       </div>
-      <!-- why jasfitness -->
-      <section class="jasfitness grid col-12">
+      <div class="content">
+        <p class="main-title">
+          hit your fitness goals in our state-of-the-art gym facility with super
+          amazing coaches
+        </p>
+        <p class="subtitle-1">
+          Quickly build your chest, abs, legs, shoulder, back and entire fitness
+          health like a pro with the help of our coaches
+        </p>
+        <button class="cta-btn cta-btn-primary">
+          book yourself a free call today
+        </button>
+        <p class="subtitle-2">
+          The experience is mesmerizing and if you love to be fit on purpose and
+          not just pump and sweat in the gym... you'll love it at JasFitness gym
+          center.
+        </p>
+      </div>
+    </div>
+    <!-- why jasfitness -->
+    <section class="jasfitness mb-5 py-28">
+      <div class="contained-width grid col-12">
         <p class="section-title col-12">Why JasFitness?</p>
         <div class="cards col-12">
-          <div class="card card-1">
-            <div class="card-body">
-              <div class="img"></div>
-              <p class="card-title">Your're not Alone</p>
-              <p class="card-text">
-                Consistency over motivation. You don't have to face your fitness
-                goals alone. Let's do it TOGETHER as we've got you covered.
-              </p>
-            </div>
-          </div>
-          <div class="card card-2">
-            <div class="card-body">
-              <div class="img"></div>
-              <p class="card-title">Get Inspired</p>
-              <p class="card-text">
-                Network and grow with like minds. Meet FitFam with similar goals
-                who are committed to a life of healthy living and more.
-              </p>
-            </div>
-          </div>
-          <div class="card card-3">
-            <div class="card-body">
-              <div class="img"></div>
-              <p class="card-title">Result Oriented</p>
-              <p class="card-text">
-                Regardless of your fitness level, we’ve got the equipment and
-                professionals to get you the results you desire without breaking
-                your back
-              </p>
-            </div>
-          </div>
-          <div class="card card-4">
-            <div class="card-body">
-              <div class="img"></div>
-              <p class="card-title">Accessibility</p>
-              <p class="card-text">
-                Easy accessibility to all kinds of vehicles to ease your
-                movement and a wonderful parking space... Get your vehicle
-                cleaned up while you go hit those goals of yours inside the gym
-              </p>
+          <div v-for="item in whyJasfitness" :key="item.id" class="card card-1">
+            <div class="card-body flex flex-col items-center">
+              <div class="img justify-self-center"></div>
+              <p class="card-title">{{ item.title }}</p>
+              <p class="card-text">{{ item.content }}</p>
             </div>
           </div>
         </div>
-      </section>
-      <!-- equipment -->
-      <section class="equipment col-12 grid py-28 bg-white">
+      </div>
+    </section>
+    <!-- equipment -->
+    <!-- <section class="equipment py-28 bg-white">
+      <div class="contained-width col-12 grid">
         <div class="section-title col-12">World Class Equipment</div>
         <div class="modules col-12">
           <div class="module"></div>
@@ -123,35 +93,43 @@
         <p class="regular-text-14 col-10-center text-center">
           We don't just hit the gym and throw in the towel. We have tailored
           sessions for each individual's need that's why we have a variety of
-          coaches that have a cumulative experience of fitness coaching of about
+          coaches that have a cumulative experience of fitness coaching of over
           <span class="stress text-amber-500 font-semibold">50</span> years
         </p>
-      </section>
-      <!-- your trainers -->
-      <section class="trainers col-12 grid py-28">
+      </div>
+    </section> -->
+    <!-- your trainers -->
+    <!-- <section class="trainers py-28">
+      <div class="contained-width col-12 grid">
         <p class="section-title col-12">Meet Your Trainers</p>
-        <div class="cards col-10-center">
-          <div class="trainer-card grid place-content-center">
-            <div class="trainer-image col-4"></div>
-            <div class="card-body trainer-card-body p-2 w-full">
-              <p class="card-trainer-name pb-1 medium-text-18">
-                Trainer's name
-              </p>
-              <p class="card-trainer-details regular-text-12">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptate dicta eos, exercitationem veniam velit excepturi?
-              </p>
-            </div>
-          </div>
+        <div class="col-10-center">
+          <CarouselInstructors />
         </div>
-      </section>
-      <!-- our community -->
-      <section class="community col-12 grid bg-[#fff0d4] py-28">
+      </div>
+    </section> -->
+    <!-- our community -->
+    <section class="community bg-[#fff0d4] py-28">
+      <div class="contained-width col-12 grid">
         <p class="section-title col-12">We Care About Our Community</p>
         <div class="modules col-12">
-          <div class="module"></div>
-          <div class="module"></div>
-          <div class="module"></div>
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966"
+              alt="image 1"
+            />
+          </div>
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238"
+              alt="image 2"
+            />
+          </div>
+          <div class="module">
+            <img
+              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118"
+              alt="image 3"
+            />
+          </div>
         </div>
         <div class="action col-12 flex justify-center">
           <button class="cta-btn cta-btn-secondary">View more</button>
@@ -167,29 +145,25 @@
         <p class="medium-text-24 col-10-center text-center">
           You'll never walk alone.
         </p>
-      </section>
-      <!-- testimonial -->
-      <section class="testimonial col-12 grid py-28">
+      </div>
+    </section>
+    <!-- testimonial -->
+    <section class="py-28">
+      <div class="testimonial contained-width col-12 grid">
+        <!-- testimonial section -->
         <p class="section-title col-12">
           Hear From Happy Members Of Our Community
         </p>
         <div class="testimonials grid col-10-center my-5">
-          <div class="testimonial col-10-center">
-            <div class="testimonial-text regular-text-20">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur, id suscipit a cumque debitis sapiente ipsa accusamus
-              illum beatae ex!
-            </div>
-            <div class="testimonial-details">
-              <div class="testimonial-img"></div>
-              <div class="testimonial-name regular-text-16">Jon Snow Doe</div>
-            </div>
-          </div>
+          <CarouselScTestimonial />
         </div>
         <div class="divider col-10-center mb-5">
           <hr class="border-gray-500" />
         </div>
-        <div class="texts col-12 grid">
+      </div>
+      <!-- plans section -->
+      <div class="contained-width col-12 grid">
+        <div class="texts col-10-center grid">
           <p class="medium-text-20 col-12 text-center">
             Let us help you redefine your health with our various matching gym
             sessions to go with your busy schedule.
@@ -200,15 +174,238 @@
             alone.
           </p>
         </div>
-      </section>
-    </div>
+        <!-- plan cards -->
+        <div class="plans col-12 mb-5">
+          <div
+            v-for="(plan, index) in plans"
+            :key="'plan ' + index + 1"
+            class="plan"
+            :class="[isEven(index) ? 'light' : 'dark']"
+          >
+            <div class="plan-title-details">
+              <p class="plan-title capitalize medium-text-32">
+                {{ plan.name }}
+              </p>
+              <p class="plan-setup-fee medium-text-14">
+                membership setup fee - N{{ plan.setupFee }}
+              </p>
+            </div>
+            <div class="divider my-7"><hr class="divider-color" /></div>
+            <div class="plan-price-details">
+              <p class="plan-price medium-text-32">N{{ plan.price }}</p>
+              <p class="plan-price-biling regular-text-14">
+                /{{ plan.billing }}
+              </p>
+            </div>
+            <div class="plan-offer-details">
+              <p class="plan-offer-title mt-4 mb-3 semibold-text-16">
+                What's included
+              </p>
+              <ul>
+                <li
+                  v-for="(offer, index) in plan.offers"
+                  :key="'offer ' + index + 1"
+                  class="plan-offer flex gap-2 items-center regular-text-14 mb-2 last:mb-0"
+                >
+                  <span class="regular-text-16"><AppIconCheck /></span>
+                  {{ offer }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- hmo section -->
+      <div class="contained-width col-12 grid pt-20">
+        <p class="section-title col-12">Our HMOs</p>
+        <div class="hmo-cards col-10-center">
+          <CarouselHmo />
+        </div>
+      </div>
+    </section>
+    <!-- schedules -->
+    <section class="schedules bg-[#fff0d4] py-28">
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-10-center">Our Time Schedule</p>
+        <div class="schedule-list grid col-10-center">
+          <table class="table-fixed col-10-center place-self-center">
+            <tbody class="medium-text-20">
+              <tr>
+                <td>Monday - Saturday</td>
+                <td>6.00am - 9.00pm</td>
+              </tr>
+              <tr>
+                <td>Public Holiday</td>
+                <td>6.00am - 8.00pm</td>
+              </tr>
+              <tr>
+                <td>Cleaning</td>
+                <td>1.00pm - 4.00pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button
+          class="cta-btn cta-btn-secondary col-12 justify-self-center w-fit capitalize"
+        >
+          Book yourself a free call today
+        </button>
+      </div>
+    </section>
+    <!-- special class -->
+    <section class="classes py-28">
+      <!-- special class section -->
+      <div class="contained-width grid">
+        <p class="section-title col-12">Our Special Classes</p>
+        <p class="col-10-center medium-text-20">
+          Our coaches hold special classes to those who want to quicken their
+          goal achievement and desire special attendance in helping them achieve
+          what they want.
+        </p>
+        <p class="col-10-center medium-text-20">
+          Special Classes to those ready to go the extra mile in taking awesome
+          care of their health and stay fit
+        </p>
+        <p class="col-10-center medium-text-20">
+          Our Coaches got you covered on what you need. Let's make this journey
+          more easy, smooth, and take you through the right activity to achieve
+          that goal.
+        </p>
+        <p class="col-10-center light-text-12">
+          [List of coaches that offer special classes and their classes (if
+          possible with pictorial illustration)]
+        </p>
+        <button
+          class="cta-btn cta-btn-primary col-12 place-self-center w-fit capitalize"
+        >
+          book yourself a free call today
+        </button>
+      </div>
+      <!-- divider -->
+      <div class="divider contained-width my-5 grid">
+        <hr class="border-gray-500 col-10-center" />
+      </div>
+      <!-- newsletter -->
+      <div class="contained-width col-12 grid">
+        <p class="section-title col-10-center">
+          Get Instant Updates Directly Into Your Inbox
+        </p>
+        <form class="newsletter-form col-10-center">
+          <label for="name" class="col-12">Full Name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Jon Snow Doe"
+            class="col-12"
+          />
+          <label for="phone" class="col-12">Phone Number:</label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="080123456789"
+            class="col-12"
+          />
+          <label for="email" class="col-12">Email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="example@email.com"
+            class="col-12"
+          />
+          <button
+            type="submit"
+            class="uppercase cta-btn cta-btn-secondary col-12"
+          >
+            Get Updates
+          </button>
+        </form>
+      </div>
+    </section>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { v4 as uuid } from 'uuid'
+import AppIconCheck from '@/components/AppIconCheck.vue'
+
+// import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
+import CarouselScTestimonial from '../components/carousels/CarouselScTestimonial.vue'
+import CarouselHmo from '../components/CarouselHmo.vue'
+
+const plans = [
+  {
+    name: 'premium',
+    setupFee: '3000',
+    price: '20,000',
+    billing: 'monthly',
+    offers: [
+      'No price discount',
+      'Access once daily',
+      'Access to multi pitch and games',
+      'Personal dashboard for tracking fitness records',
+      'Fitness instructor available',
+      '1 guest pass per month',
+      'No subscription pause'
+    ]
+  },
+  {
+    name: 'V.I.P',
+    setupFee: '3000',
+    price: '40,000',
+    billing: 'monthly',
+    offers: [
+      'No price discount',
+      'All day access',
+      'Access to multi pitch and games',
+      'Personal dashboard for tracking fitness records',
+      'Personal fitness instructor available',
+      '2 guest pass per month',
+      '7 days subscription pause request',
+      '1 free car wash weekly (4 monthly)'
+    ]
+  }
+]
+
+const whyJasfitness = [
+  {
+    id: 1,
+    icon: '',
+    title: "Your're not Alone",
+    content:
+      "Consistency over motivation. You don't have to face your fitness goals alone. Let's do it TOGETHER as we've got you covered."
+  },
+  {
+    id: 2,
+    icon: '',
+    title: 'Get Inspired',
+    content:
+      'Network and grow with like minds. Meet FitFam with similar goals who are committed to a life of healthy living and more.'
+  },
+  {
+    id: 3,
+    icon: '',
+    title: 'Result Oriented',
+    content:
+      "Regardless of your fitness level, we've got the equipment and professionals to get you the results you desire without breaking your back"
+  },
+  {
+    id: 4,
+    icon: '',
+    title: 'Accessibility',
+    content:
+      'Easy accessibility to all kinds of vehicles to ease your movement and a wonderful parking space... Get your vehicle cleaned up while you go hit those goals of yours inside the gym'
+  }
+]
+
+const isEven = (value) => value % 2 === 0
+console.log(uuid())
+</script>
 
 <style scoped>
-.wrapper {
+.scwrapper {
   padding-top: 6rem;
   padding-bottom: 6rem;
   background: #f5f5f5;
@@ -216,6 +413,10 @@
   min-height: 100vh;
 }
 .container {
+  width: min(100% - 30px, 960px);
+  margin-inline: auto;
+}
+.contained-width {
   width: min(100% - 30px, 960px);
   margin-inline: auto;
 }
@@ -228,6 +429,8 @@
   height: 340px;
   /* width: 255px; */
   width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
   background: #aaa;
 }
 .image img {
@@ -306,6 +509,12 @@
   height: 180px;
   background: #aaa;
   border-radius: 8px;
+  overflow: hidden;
+}
+.module img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .points {
   display: flex;
@@ -355,11 +564,83 @@
 }
 .testimonial-img {
   background: #d9d9d9;
-  height: 45px;
-  width: 45px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
 }
+.plans {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.plan {
+  border-radius: 20px;
+  padding: 50px 40px;
+}
+.plan .plan-price-details {
+  display: flex;
+  align-items: baseline;
+}
+.plan.light {
+  background: #ffffff;
+  border: 1px solid #303030;
+}
+.plan.light .plan-title,
+.plan.light .plan-price {
+  color: #303030;
+}
+.plan.light .divider-color {
+  border: 1px solid #000000;
+}
+.plan.light .plan-setup-fee,
+.plan.light .plan-price-biling {
+  color: #aaaaaa;
+}
+.plan.light .plan-offer-title,
+.plan.light .plan-offer {
+  color: #303030;
+}
+.plan.dark {
+  background: #303030;
+}
+.plan.dark .plan-title,
+.plan.dark .plan-price {
+  color: #fefefe;
+}
+.plan.dark .divider-color {
+  border: 1px solid #aaaaaa;
+}
+.plan.dark .plan-setup-fee,
+.plan.dark .plan-price-biling {
+  color: #888888;
+}
+.plan.dark .plan-offer-title,
+.plan.dark .plan-offer {
+  color: #fefefe;
+}
+td {
+  padding: 1rem;
+}
+.newsletter-form input {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 30px;
+  row-gap: 10px;
 
+  height: 40px;
+  border: 1.5px solid #aaa;
+  border-radius: 5px;
+  padding: 0.8rem;
+  background: none;
+}
+.newsletter-form label {
+  margin-top: 1rem;
+}
+
+.light-text-12 {
+  font-weight: 300;
+  font-size: 12px;
+}
 .regular-text-12 {
   font-weight: 400;
   font-size: 12px;
@@ -376,6 +657,14 @@
   font-weight: 400;
   font-size: 20px;
 }
+.medium-text-14 {
+  font-weight: 500;
+  font-size: 14px;
+}
+.medium-text-16 {
+  font-weight: 500;
+  font-size: 16px;
+}
 .medium-text-18 {
   font-weight: 500;
   font-size: 18px;
@@ -387,6 +676,14 @@
 .medium-text-24 {
   font-weight: 500;
   font-size: 24px;
+}
+.medium-text-32 {
+  font-weight: 500;
+  font-size: 32px;
+}
+.semibold-text-16 {
+  font-weight: 600;
+  font-size: 16px;
 }
 /* grid system */
 .col-10-center {

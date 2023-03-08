@@ -142,6 +142,21 @@ export default {
           dispatch('toggle_is_oriented', true) // ensure that either ways, it is registered locally that onboarding has been completed
           commit('STATUS_RESET')
         })
+    },
+    membership_setup({ commit }, memberData) {
+      commit('STATUS_LOADING')
+      return AuthService.membership_setup(memberData)
+        .then(
+          (response) => {
+            return Promise.resolve(response)
+          },
+          (error) => {
+            return Promise.reject(error)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
     }
   }
 }
