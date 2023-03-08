@@ -314,8 +314,9 @@ async function submitHandler() {
     })
   } catch (error) {
     if (error.response.status === 400) {
-      // TODO 3: Add error alert notification here
-      console.log('Validation: Some provided fields are invalid')
+      store.dispatch('landingpage/error', {
+        message: 'Some provided fields are invalid.'
+      })
     }
     if (error.message == 'Network Error') {
       // TODO 4: Add error alert notification here
