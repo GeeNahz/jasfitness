@@ -291,7 +291,13 @@ async function submitHandler() {
   let userData = {
     username: inputFields.requiredFields.username,
     email: inputFields.requiredFields.email,
-    name: '',
+    name: getFullName({
+      namesArray: [
+        inputFields.requiredFields.firstName,
+        inputFields.notRequired.middleName,
+        inputFields.requiredFields.lastName
+      ]
+    }),
     date_of_birth: inputFields.requiredFields.dob,
     gender: inputFields.requiredFields.gender,
     phone_number: inputFields.requiredFields.phoneNumber,
