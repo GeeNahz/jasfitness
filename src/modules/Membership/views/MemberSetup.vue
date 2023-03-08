@@ -312,6 +312,9 @@ async function submitHandler() {
     store.dispatch('landingpage/success', {
       message: 'Your details have been successfully submitted.'
     })
+    // on successful submission
+    clearInputs({ inputObject: inputFields.requiredFields })
+    clearInputs({ inputObject: inputFields.notRequired })
   } catch (error) {
     if (error.response.status === 400) {
       store.dispatch('landingpage/error', {
@@ -324,10 +327,6 @@ async function submitHandler() {
       })
     }
   }
-  // TODO 6: Move this into the try block to only run on successful response
-  // on successful submission
-  clearInputs({ inputObject: inputFields.requiredFields })
-  clearInputs({ inputObject: inputFields.notRequired })
 }
 // TODO 7: Remove the meet staff, cummulative years of experience of staff, gym equipment and special classes sections of the sales copy
 </script>
