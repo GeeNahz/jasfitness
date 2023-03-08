@@ -20,22 +20,58 @@
       <form @submit.prevent="submitHandler">
         <div class="personal-details grid gap-20">
           <p class="section-title col-12">Let's get to know you</p>
-          <label class="col-12 grid gap-10" for="name">
-            <p class="col-12">Full name*</p>
-            <div class="form-input col-12">
-              <div class="logo">
-                <AppIconAccount />
+          <div
+            class="triple-fields col-12 gap-20 flex flex-col sm:flex-row sm:justify-between"
+          >
+            <label class="gap-10" for="first-name">
+              <p class="col-12">First name*</p>
+              <div class="form-input col-12">
+                <div class="logo">
+                  <AppIconAccount />
+                </div>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="first-name"
+                  v-model="inputFields.requiredFields.fullName"
+                  placeholder="John"
+                  required
+                />
               </div>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                v-model="inputFields.requiredFields.fullName"
-                placeholder="John Doe"
-                required
-              />
-            </div>
-          </label>
+            </label>
+            <label class="gap-10" for="middle-name">
+              <p class="col-12">Middle name*</p>
+              <div class="form-input col-12">
+                <div class="logo">
+                  <AppIconAccount />
+                </div>
+                <input
+                  type="text"
+                  name="middleName"
+                  id="middle-name"
+                  v-model="inputFields.requiredFields.fullName"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
+            </label>
+            <label class="gap-10" for="last-name">
+              <p class="col-12">Last name*</p>
+              <div class="form-input col-12">
+                <div class="logo">
+                  <AppIconAccount />
+                </div>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="last-name"
+                  v-model="inputFields.requiredFields.fullName"
+                  placeholder="Snow"
+                  required
+                />
+              </div>
+            </label>
+          </div>
           <div class="double-fields col-12 grid gap-20">
             <label class="col-6-1 grid gap-10" for="email">
               <p class="col-12">Email*</p>
