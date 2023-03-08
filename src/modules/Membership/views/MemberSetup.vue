@@ -51,7 +51,6 @@
                   id="middle-name"
                   v-model="inputFields.requiredFields.fullName"
                   placeholder="Doe"
-                  required
                 />
               </div>
             </label>
@@ -243,7 +242,8 @@ import AppIconAt from '@/components/AppIconAt.vue'
 
 const inputFields = reactive({
   requiredFields: {
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phoneNumber: '',
     gender: '',
@@ -252,7 +252,7 @@ const inputFields = reactive({
     emergencyNumber: '',
     username: ''
   },
-  notRequired: { referral: '' }
+  notRequired: { referral: '', middleName: '' }
 })
 const { useIsValidTextInputs } = validation()
 const isValidFields = computed(() => validateInputs())
