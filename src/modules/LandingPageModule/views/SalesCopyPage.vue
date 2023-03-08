@@ -39,7 +39,7 @@
       </div>
     </section>
     <!-- equipment -->
-    <section class="equipment py-28 bg-white">
+    <!-- <section class="equipment py-28 bg-white">
       <div class="contained-width col-12 grid">
         <div class="section-title col-12">World Class Equipment</div>
         <div class="modules col-12">
@@ -94,16 +94,16 @@
           <span class="stress text-amber-500 font-semibold">50</span> years
         </p>
       </div>
-    </section>
+    </section> -->
     <!-- your trainers -->
-    <section class="trainers py-28">
+    <!-- <section class="trainers py-28">
       <div class="contained-width col-12 grid">
         <p class="section-title col-12">Meet Your Trainers</p>
         <div class="col-10-center">
           <CarouselInstructors />
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- our community -->
     <section class="community bg-[#fff0d4] py-28">
       <div class="contained-width col-12 grid">
@@ -328,7 +328,7 @@
 import { v4 as uuid } from 'uuid'
 import AppIconCheck from '@/components/AppIconCheck.vue'
 
-import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
+// import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
 import CarouselScTestimonial from '../components/carousels/CarouselScTestimonial.vue'
 import CarouselHmo from '../components/CarouselHmo.vue'
 
