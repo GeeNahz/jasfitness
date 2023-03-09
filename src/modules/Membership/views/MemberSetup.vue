@@ -145,14 +145,14 @@
             <p class="col-12">Occupation*</p>
             <div class="form-input col-12">
               <div class="logo">
-                <AppIconAccountMultiplePlus />
+                <AppIconBriefcase />
               </div>
               <input
                 type="text"
                 name="occupation"
                 id="occupation"
                 v-model="inputFields.requiredFields.occupation"
-                placeholder="Address"
+                placeholder="Occupation"
               />
             </div>
           </label>
@@ -160,14 +160,14 @@
             <p class="col-12">Address*</p>
             <div class="form-input col-12">
               <div class="logo">
-                <AppIconAccountMultiplePlus />
+                <AppIconMapMarker />
               </div>
               <input
                 type="text"
                 name="address"
                 id="address"
                 v-model="inputFields.requiredFields.address"
-                placeholder="Address"
+                placeholder="987 inner ville estate, Abuja, Nigeria"
               />
             </div>
           </label>
@@ -266,6 +266,8 @@ import AppIconPlan from '@/components/AppIconPlan.vue'
 import AppIconAccountMultiplePlus from '@/components/AppIconAccountMultiplePlus.vue'
 import AppIconSettingOutline from '@/components/AppIconSettingOutline.vue'
 import AppIconAt from '@/components/AppIconAt.vue'
+import AppIconBriefcase from '@/components/AppIconBriefcase.vue'
+import AppIconMapMarker from '@/components/AppIconMapMarker.vue'
 
 const inputFields = reactive({
   requiredFields: {
