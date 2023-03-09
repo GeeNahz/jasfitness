@@ -330,10 +330,10 @@ async function submitHandler() {
     date_of_birth: inputFields.requiredFields.dob,
     gender: inputFields.requiredFields.gender,
     phone_number: inputFields.requiredFields.phoneNumber,
-    address: '',
+    address: inputFields.requiredFields.address,
     emergency_person: inputFields.requiredFields.emergencyName,
     emergency_contact: inputFields.requiredFields.emergencyNumber,
-    occupation: '',
+    occupation: inputFields.requiredFields.occupation,
     referral: inputFields.notRequired.referral
   }
   try {
