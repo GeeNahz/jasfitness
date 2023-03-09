@@ -193,7 +193,7 @@
         <div class="emergency grid gap-20">
           <p class="section-title col-12">Emergency contact detail</p>
           <label class="col-12 grid gap-10" for="contact-name">
-            <p class="col-12">Emergency contact name*</p>
+            <p class="col-12">Full name*</p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconSettingOutline />
@@ -209,7 +209,7 @@
             </div>
           </label>
           <label class="col-12 grid gap-10" for="contact-number">
-            <p class="col-12">Emergency contact number*</p>
+            <p class="col-12">Phone number*</p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconPhone />
