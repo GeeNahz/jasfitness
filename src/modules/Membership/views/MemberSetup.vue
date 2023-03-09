@@ -2,75 +2,75 @@
   <div class="member-setup-wrapper">
     <div class="page__heading">
       <div class="page__title">
-        <div class="page__title-logo">
-          <img
-            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
-            alt="logo"
-          />
-        </div>
         <div class="page__title-text">
           <p class="main-text">Membership Setup</p>
         </div>
       </div>
-      <div class="divider"><hr /></div>
-      <p class="sub-text">Please complete the form below to sign up</p>
+      <!-- <div class="divider"><hr /></div> -->
+      <p class="sub-text">
+        Complete the form below to sign up for our gym services. Please not that
+        all fields marked with an asterisk (*) are required.
+      </p>
     </div>
 
     <div class="form">
       <form @submit.prevent="submitHandler">
         <div class="personal-details grid gap-20">
           <p class="section-title col-12">Let's get to know you</p>
-          <div
-            class="triple-fields col-12 gap-20 flex flex-col sm:flex-row sm:justify-between"
-          >
-            <label class="grid gap-10" for="first-name">
-              <p class="col-12">First name*</p>
-              <div class="form-input col-12">
-                <div class="logo">
-                  <AppIconAccount />
+          <label class="col-12 grid gap-10">
+            <p class="form-group-title col-12">Name*</p>
+            <div
+              class="form-group col-12 gap-20 flex flex-col sm:flex-row sm:justify-between"
+            >
+              <label class="grid gap-10" for="first-name">
+                <div class="form-input col-12">
+                  <div class="logo">
+                    <AppIconAccount />
+                  </div>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="first-name"
+                    v-model="inputFields.requiredFields.firstName"
+                    placeholder="John"
+                    required
+                  />
                 </div>
-                <input
-                  type="text"
-                  name="firstName"
-                  id="first-name"
-                  v-model="inputFields.requiredFields.firstName"
-                  placeholder="John"
-                  required
-                />
-              </div>
-            </label>
-            <label class="grid gap-10" for="middle-name">
-              <p class="col-12">Middle name</p>
-              <div class="form-input col-12">
-                <div class="logo">
-                  <AppIconAccount />
+                <small class="col-12">First name*</small>
+              </label>
+              <label class="grid gap-10" for="middle-name">
+                <div class="form-input col-12">
+                  <div class="logo">
+                    <AppIconAccount />
+                  </div>
+                  <input
+                    type="text"
+                    name="middleName"
+                    id="middle-name"
+                    v-model="inputFields.notRequired.middleName"
+                    placeholder="Doe"
+                  />
                 </div>
-                <input
-                  type="text"
-                  name="middleName"
-                  id="middle-name"
-                  v-model="inputFields.notRequired.middleName"
-                  placeholder="Doe"
-                />
-              </div>
-            </label>
-            <label class="grid gap-10" for="last-name">
-              <p class="col-12">Last name*</p>
-              <div class="form-input col-12">
-                <div class="logo">
-                  <AppIconAccount />
+                <small class="col-12">Middle name</small>
+              </label>
+              <label class="grid gap-10" for="last-name">
+                <div class="form-input col-12">
+                  <div class="logo">
+                    <AppIconAccount />
+                  </div>
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="last-name"
+                    v-model="inputFields.requiredFields.lastName"
+                    placeholder="Snow"
+                    required
+                  />
                 </div>
-                <input
-                  type="text"
-                  name="lastName"
-                  id="last-name"
-                  v-model="inputFields.requiredFields.lastName"
-                  placeholder="Snow"
-                  required
-                />
-              </div>
-            </label>
-          </div>
+                <small class="col-12">Last name*</small>
+              </label>
+            </div>
+          </label>
           <div class="double-fields col-12 grid gap-20">
             <label class="col-6-1 grid gap-10" for="email">
               <p class="col-12">Email*</p>
@@ -95,11 +95,11 @@
                   <AppIconPhone />
                 </div>
                 <input
-                  type="text"
+                  type="tel"
                   name="number"
                   id="number"
                   v-model="inputFields.requiredFields.phoneNumber"
-                  placeholder="01234501234"
+                  placeholder="+234 123 4501 234"
                   required
                 />
               </div>
@@ -141,6 +141,36 @@
               </div>
             </label>
           </div>
+          <label class="col-12 grid gap-10" for="occupation">
+            <p class="col-12">Occupation*</p>
+            <div class="form-input col-12">
+              <div class="logo">
+                <AppIconAccountMultiplePlus />
+              </div>
+              <input
+                type="text"
+                name="occupation"
+                id="occupation"
+                v-model="inputFields.requiredFields.occupation"
+                placeholder="Address"
+              />
+            </div>
+          </label>
+          <label class="col-12 grid gap-10" for="address">
+            <p class="col-12">Address*</p>
+            <div class="form-input col-12">
+              <div class="logo">
+                <AppIconAccountMultiplePlus />
+              </div>
+              <input
+                type="text"
+                name="address"
+                id="address"
+                v-model="inputFields.requiredFields.address"
+                placeholder="Address"
+              />
+            </div>
+          </label>
         </div>
         <div class="referral grid gap-20">
           <p class="section-title col-12">Referral</p>
@@ -189,7 +219,7 @@
                 name="contact-number"
                 id="contact-number"
                 v-model="inputFields.requiredFields.emergencyNumber"
-                placeholder="54321043210"
+                placeholder="+234 432 1043 210"
                 required
               />
             </div>
@@ -218,9 +248,6 @@
           Submit
         </button>
       </form>
-      <div class="footer-note">
-        <p class="sub-text">*Payments made are NOT refundable</p>
-      </div>
     </div>
   </div>
 </template>
@@ -354,21 +381,6 @@ $lg: 1024px;
 
 // mobile devices
 .page__title {
-  display: flex;
-  flex-direction: column;
-  row-gap: 5px;
-  justify-content: center;
-  align-items: center;
-
-  #{&}-logo {
-    width: 6rem;
-
-    & img {
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-  }
   #{&}-text {
     white-space: nowrap;
 
@@ -376,13 +388,14 @@ $lg: 1024px;
       font-weight: 700;
       font-size: 1.25rem; // 20px
       line-height: 1.75rem; //28px
-      text-transform: uppercase;
+      text-transform: capitalize;
     }
   }
 }
 .page__heading {
-  margin-bottom: 0rem;
-  text-align: center;
+  padding-bottom: 1.5rem;
+  text-align: start;
+  border-bottom: 1px solid #aaa;
 
   & .divider {
     margin: 0.5rem 0;
@@ -392,18 +405,12 @@ $lg: 1024px;
     }
   }
 }
-.sub-text {
-  width: 100%;
-  font-weight: 300;
-  font-size: 0.75rem;
-  line-height: 1rem;
-}
 .section-title {
   font-size: 1.125rem; // 18px
   line-height: 1.75rem; // 28px
   font-weight: 600;
   text-transform: capitalize;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
 }
 
 form {
@@ -411,13 +418,16 @@ form {
     font-size: 0.75rem; // 12px
     line-height: 1rem; // 16px
   }
+  & label small {
+    color: #999;
+  }
 
   & .form-input {
     overflow: hidden;
     width: 100%;
     border: 1px solid #aaa;
     border-radius: 3px;
-    height: 2.5rem;
+    height: 2.5rem; // 40px
 
     display: flex;
     justify-content: center;
@@ -465,170 +475,52 @@ form {
   }
 }
 
-.footer-note {
-  padding: 0.5rem 0;
+.sub-text {
+  width: 100%;
+  font-weight: 300;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin: 0.25rem 0;
 }
 
 @media screen and (min-width: $sm) {
   .page__title {
-    display: flex;
-    flex-direction: row;
-    row-gap: 0px;
-    column-gap: 10px;
-    justify-content: center;
-    align-items: center;
-
-    #{&}-logo {
-      width: 8rem;
-
-      & img {
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
     #{&}-text {
-      white-space: nowrap;
-
       & .main-text {
-        font-weight: 700;
         font-size: 2.25rem;
         line-height: 2.5rem;
-        text-transform: uppercase;
       }
-    }
-  }
-  .page__heading {
-    margin-bottom: 2rem;
-
-    & .divider {
-      margin: 0.5rem 0;
-
-      & hr {
-        border: 0.8px solid #000;
-      }
-    }
-
-    & .sub-text {
-      width: 100%;
-      text-align: center;
-      font-weight: 300;
-      font-size: 0.75rem;
-      line-height: 1rem;
     }
   }
   .section-title {
     font-size: 1.5rem; // 24px
     line-height: 2rem; // 32px
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   form {
     & .form-input {
       border-radius: 5px;
-      height: 2.5rem;
     }
 
     & input,
     & select {
       font-size: 1rem; // 16px
       line-height: 1.5rem; // 24px
-      width: 100%;
     }
   }
 }
 @media screen and (min-width: $lg) {
-  .page__title {
-    display: flex;
-    flex-direction: row;
-    row-gap: 0px;
-    column-gap: 10px;
-    justify-content: center;
-    align-items: center;
-
-    #{&}-logo {
-      width: 8rem;
-
-      & img {
-        width: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
-    #{&}-text {
-      white-space: nowrap;
-
-      & .main-text {
-        font-weight: 700;
-        font-size: 2.25rem;
-        line-height: 2.5rem;
-        text-transform: uppercase;
-      }
-    }
-  }
-  .page__heading {
-    margin-bottom: 2rem;
-
-    & .divider {
-      margin: 0.5rem 0;
-
-      & hr {
-        border: 0.8px solid #000;
-      }
-    }
-
-    & .sub-text {
-      width: 100%;
-      text-align: center;
-      font-weight: 300;
-      font-size: 0.75rem;
-      line-height: 1rem;
-    }
-  }
-  .section-title {
-    font-size: 1.5rem; // 24px
-    line-height: 2rem; // 32px
-    font-weight: 600;
-    text-transform: capitalize;
-    margin-top: 3rem;
-  }
-
   form {
     & label p {
       font-size: 0.875rem; // 14px
       line-height: 1.25rem; // 20px
     }
 
-    & .form-input {
-      border-radius: 5px;
-    }
-
-    & input,
-    & select {
-      font-size: 1rem; // 16px
-      line-height: 1.5rem; // 24px
-      padding-right: 0.5rem;
-      width: 100%;
-    }
-
     & button {
       margin-top: 1rem;
-      width: 100%;
       border-radius: 5px;
-      background: gold;
-      font-weight: 600;
       font-size: 1rem;
-      line-height: 1.25rem;
-      text-transform: uppercase;
-      padding: 0.5rem 0;
-
-      transition: background 0.5s ease;
-
-      &:hover {
-        background: #eeca00;
-      }
     }
   }
 }
