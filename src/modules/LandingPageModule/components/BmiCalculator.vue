@@ -180,7 +180,7 @@ const handleEmailSend = () => {
       bmi: data.value.bmi,
       email: emailAddress.value
     }
-    EmailService.enquiry(postData)
+    EmailService.bmi_result(postData)
       .then((res) => {
         data.value.sentEmail = true
         handleShowResult()
