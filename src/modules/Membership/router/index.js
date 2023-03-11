@@ -6,15 +6,23 @@ const Module = () =>
 const MemberSetup = () =>
   import(/* webpackChunkName "MemberSetup" */ '../views/MemberSetup.vue')
 
+const EnquiriesPage = () =>
+  import(/* webpackChunkName "EnquiriesPage" */ '../views/EnquiriesPage.vue')
+
 const routes = [
   {
-    path: '/f7a709f2-68a5-424d-839e-0a784a970279/members',
+    path: '/form',
     component: Module,
     children: [
       {
-        path: 'setup',
+        path: 'f7a709f2-68a5-424d-839e-0a784a970279/members/setup',
         name: 'MemberSetup',
         component: MemberSetup
+      },
+      {
+        path: 'enquiry',
+        name: 'EnquiryPage',
+        component: EnquiriesPage
       }
     ]
   }
