@@ -97,10 +97,8 @@ const isValidInputs = computed(() => {
 
 const store = useStore()
 async function submitHandler() {
-  console.log('form submitted', formValues)
   try {
     let res = await EmailService.enquiry(formValues)
-    console.log(res)
     if (res.status === 201) {
       store.dispatch('landingpage/success', {
         message: 'Your details were successfully created.'
@@ -118,7 +116,6 @@ async function submitHandler() {
           'An error occured while trying to submit your data. Please try again.'
       })
     }
-    console.log(error)
   }
 }
 </script>
