@@ -10,7 +10,7 @@ export default {
   newsletter(data) {
     return axiosInstance.post('/api/v1/newsletter/', data)
   },
-  enquiry() {
-    return axiosInstance.post('/api/v1/enquiry')
+  enquiry(data) {
+    return axiosInstance.post('/api/v1/enquiry/', data)
   }
 }
