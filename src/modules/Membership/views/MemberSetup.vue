@@ -2,15 +2,21 @@
   <div class="member-setup-wrapper">
     <div class="page__heading">
       <div class="page__title">
+        <div class="logo">
+          <img
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+            alt="logo"
+          />
+        </div>
         <div class="page__title-text">
           <p class="main-text">Membership Setup</p>
         </div>
       </div>
       <!-- <div class="divider"><hr /></div> -->
-      <p class="sub-text">
+      <!-- <p class="sub-text">
         Complete the form below to sign up for our gym services. Please not that
         all fields marked with an asterisk (*) are required.
-      </p>
+      </p> -->
     </div>
 
     <div class="form">
@@ -18,11 +24,14 @@
         <div class="personal-details grid gap-20">
           <p class="section-title col-12">Let's get to know you</p>
           <label class="col-12 grid gap-10">
-            <p class="form-group-title col-12">Name*</p>
+            <!-- <p class="form-group-title col-12">Name*</p> -->
             <div
               class="form-group col-12 gap-20 flex flex-col sm:flex-row sm:justify-between"
             >
               <label class="grid gap-10" for="first-name">
+                <p class="col-12">
+                  First name<span class="required-indicator">*</span>
+                </p>
                 <div class="form-input col-12">
                   <div class="logo">
                     <AppIconAccount />
@@ -36,9 +45,10 @@
                     required
                   />
                 </div>
-                <small class="col-12">First name*</small>
+                <!-- <small class="col-12">First name*</small> -->
               </label>
               <label class="grid gap-10" for="middle-name">
+                <p class="col-12">Middle name</p>
                 <div class="form-input col-12">
                   <div class="logo">
                     <AppIconAccount />
@@ -51,9 +61,12 @@
                     placeholder="Doe"
                   />
                 </div>
-                <small class="col-12">Middle name</small>
+                <!-- <small class="col-12">Middle name</small> -->
               </label>
               <label class="grid gap-10" for="last-name">
+                <p class="col-12">
+                  Last name<span class="required-indicator">*</span>
+                </p>
                 <div class="form-input col-12">
                   <div class="logo">
                     <AppIconAccount />
@@ -67,13 +80,15 @@
                     required
                   />
                 </div>
-                <small class="col-12">Last name*</small>
+                <!-- <small class="col-12">Last name*</small> -->
               </label>
             </div>
           </label>
           <div class="double-fields col-12 grid gap-20">
             <label class="col-6-1 grid gap-10" for="email">
-              <p class="col-12">Email*</p>
+              <p class="col-12">
+                Email<span class="required-indicator">*</span>
+              </p>
               <div class="form-input col-12">
                 <div class="logo">
                   <AppIconEmail />
@@ -89,7 +104,9 @@
               </div>
             </label>
             <label class="col-6-2 grid gap-10" for="number">
-              <p class="col-12">Phone number*</p>
+              <p class="col-12">
+                Phone number<span class="required-indicator">*</span>
+              </p>
               <div class="form-input col-12">
                 <div class="logo">
                   <AppIconPhone />
@@ -107,7 +124,9 @@
           </div>
           <div class="double-fields col-12 grid gap-20">
             <label class="col-6-1 grid gap-10" for="gender">
-              <p class="col-12">Gender*</p>
+              <p class="col-12">
+                Gender<span class="required-indicator">*</span>
+              </p>
               <div class="form-input col-12">
                 <div class="logo">
                   <AppIconGender />
@@ -125,7 +144,9 @@
               </div>
             </label>
             <label class="col-6-2 grid gap-10" for="dob">
-              <p class="col-12">Date of birth*</p>
+              <p class="col-12">
+                Date of birth<span class="required-indicator">*</span>
+              </p>
               <div class="form-input col-12">
                 <div class="logo">
                   <AppIconPlan />
@@ -142,7 +163,9 @@
             </label>
           </div>
           <label class="col-12 grid gap-10" for="occupation">
-            <p class="col-12">Occupation*</p>
+            <p class="col-12">
+              Occupation<span class="required-indicator">*</span>
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconBriefcase />
@@ -157,7 +180,9 @@
             </div>
           </label>
           <label class="col-12 grid gap-10" for="address">
-            <p class="col-12">Address*</p>
+            <p class="col-12">
+              Address<span class="required-indicator">*</span>
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconMapMarker />
@@ -175,7 +200,9 @@
         <div class="referral grid gap-20">
           <p class="section-title col-12">Referral</p>
           <label class="col-12 grid gap-10" for="referral">
-            <p class="col-12">Who referred you?</p>
+            <p class="col-12">
+              Who referred you? (Leave empty if no one referred you)
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconAccountMultiplePlus />
@@ -193,7 +220,9 @@
         <div class="emergency grid gap-20">
           <p class="section-title col-12">Emergency contact detail</p>
           <label class="col-12 grid gap-10" for="contact-name">
-            <p class="col-12">Full name*</p>
+            <p class="col-12">
+              Full name<span class="required-indicator">*</span>
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconSettingOutline />
@@ -209,7 +238,9 @@
             </div>
           </label>
           <label class="col-12 grid gap-10" for="contact-number">
-            <p class="col-12">Phone number*</p>
+            <p class="col-12">
+              Phone number<span class="required-indicator">*</span>
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconPhone />
@@ -228,7 +259,9 @@
         <div class="signin grid gap-20">
           <p class="section-title col-12">Create sign in detail</p>
           <label class="col-12 grid gap-10" for="username">
-            <p class="col-12">Username*</p>
+            <p class="col-12">
+              Username<span class="required-indicator">*</span>
+            </p>
             <div class="form-input col-12">
               <div class="logo">
                 <AppIconAt />
@@ -238,7 +271,7 @@
                 name="username"
                 id="username"
                 v-model="inputFields.requiredFields.username"
-                placeholder="username"
+                placeholder="JohnSnow"
                 required
               />
             </div>
@@ -248,6 +281,7 @@
           Submit
         </button>
       </form>
+      <p class="sub-text">Payments made are not refundable.</p>
     </div>
   </div>
 </template>
@@ -347,7 +381,7 @@ async function submitHandler() {
   } catch (error) {
     if (error.response.status === 400) {
       store.dispatch('landingpage/error', {
-        message: 'Some provided fields are invalid.'
+        message: 'Some provided fields already exist.'
       })
     }
     if (error.message == 'Network Error') {
@@ -383,6 +417,18 @@ $lg: 1024px;
 
 // mobile devices
 .page__title {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  & .logo {
+    width: 4rem;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
   #{&}-text {
     white-space: nowrap;
 
@@ -395,9 +441,9 @@ $lg: 1024px;
   }
 }
 .page__heading {
-  padding-bottom: 1.5rem;
+  // padding-bottom: 1.5rem;
   text-align: start;
-  border-bottom: 1px solid #aaa;
+  // border-bottom: 1px solid #aaa;
 
   & .divider {
     margin: 0.5rem 0;
@@ -408,7 +454,7 @@ $lg: 1024px;
   }
 }
 .section-title {
-  font-size: 1.125rem; // 18px
+  font-size: 0.875rem; // 14px
   line-height: 1.75rem; // 28px
   font-weight: 600;
   text-transform: capitalize;
@@ -422,6 +468,9 @@ form {
   }
   & label small {
     color: #999;
+  }
+  & .required-indicator {
+    color: #ef4444;
   }
 
   & .form-input {
@@ -461,7 +510,7 @@ form {
   & button {
     margin-top: 2rem;
     width: 100%;
-    border-radius: 3px;
+    border-radius: 8px;
     background: gold;
     font-weight: 600;
     font-size: 0.875rem;
@@ -487,6 +536,15 @@ form {
 
 @media screen and (min-width: $sm) {
   .page__title {
+    & .logo {
+      width: 7rem;
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
     #{&}-text {
       & .main-text {
         font-size: 2.25rem;
@@ -502,7 +560,7 @@ form {
 
   form {
     & .form-input {
-      border-radius: 5px;
+      border-radius: 8px;
     }
 
     & input,
@@ -530,7 +588,6 @@ form {
 .disabled {
   opacity: 50%;
   pointer-events: none;
-  // cursor: not-allowed;
 }
 .grid {
   display: grid;
