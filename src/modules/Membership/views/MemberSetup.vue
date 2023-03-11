@@ -272,8 +272,11 @@
             </div>
           </label>
         </div>
-        <button :class="{ 'disabled ': !isValidFields }" type="submit">
-          Submit
+        <button
+          :class="{ 'disabled ': !isValidFields || status.isLoading }"
+          type="submit"
+        >
+          {{ status.isLoading ? 'Please wait...' : 'Submit' }}
         </button>
       </form>
       <p class="sub-text">Payments made are not refundable.</p>
@@ -298,6 +301,7 @@ import AppIconAt from '@/components/AppIconAt.vue'
 import AppIconBriefcase from '@/components/AppIconBriefcase.vue'
 import AppIconMapMarker from '@/components/AppIconMapMarker.vue'
 
+const status = reactive({ isLoading: false })
 const inputFields = reactive({
   requiredFields: {
     firstName: '',
@@ -313,7 +317,7 @@ const inputFields = reactive({
   notRequired: { referral: '', middleName: '' }
 })
 const { useIsValidTextInputs } = validation()
-const isValidFields = computed(() => validateInputs())
+const isValidFields = computed(() => validateInputs() && !status.isLoading)
 
 function validateInputs() {
   const inputsArr = []
@@ -346,6 +350,7 @@ function getFullName({ namesArray = [] }) {
 
 const store = useStore()
 async function submitHandler() {
+  status.isLoading = true
   let userData = {
     username: inputFields.requiredFields.username,
     email: inputFields.requiredFields.email,
@@ -384,6 +389,8 @@ async function submitHandler() {
         message: 'Kindly check your network connection and try again.'
       })
     }
+  } finally {
+    status.isLoading = false
   }
 }
 </script>
