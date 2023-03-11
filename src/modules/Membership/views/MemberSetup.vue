@@ -380,7 +380,7 @@ async function submitHandler() {
     clearInputs({ inputObject: inputFields.notRequired })
   } catch (error) {
     if (error.response.status === 400) {
-      store.dispatch('landingpage/error', {
+      store.dispatch('landingpage/warning', {
         message: 'Some provided fields already exist.'
       })
     }
