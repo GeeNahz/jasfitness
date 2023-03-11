@@ -69,6 +69,7 @@
 
 <script setup>
 import { computed, reactive } from 'vue'
+import { useStore } from 'vuex'
 
 import { validation } from '@/composables/validation.js'
 
@@ -94,18 +95,29 @@ const isValidInputs = computed(() => {
   )
 })
 
+const store = useStore()
 async function submitHandler() {
   console.log('form submitted', formValues)
   try {
     let res = await EmailService.enquiry(formValues)
     console.log(res)
     if (res.status === 201) {
-      console.log('Record created')
+      store.dispatch('landingpage/success', {
+        message: 'Your details were successfully created.'
+      })
     }
     if (res.status === 200) {
-      console.log('Record already exist')
+      store.dispatch('landingpage/warning', {
+        message: 'This record already exists.'
+      })
     }
   } catch (error) {
+    if (error.response?.status === 400) {
+      store.dispatch('landingpage/error', {
+        message:
+          'An error occured while trying to submit your data. Please try again.'
+      })
+    }
     console.log(error)
   }
 }

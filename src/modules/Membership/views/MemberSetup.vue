@@ -12,11 +12,6 @@
           <p class="main-text">Membership Setup</p>
         </div>
       </div>
-      <!-- <div class="divider"><hr /></div> -->
-      <!-- <p class="sub-text">
-        Complete the form below to sign up for our gym services. Please not that
-        all fields marked with an asterisk (*) are required.
-      </p> -->
     </div>
 
     <div class="form">
@@ -391,7 +386,6 @@ async function submitHandler() {
     }
   }
 }
-// TODO 7: Remove the meet staff, cummulative years of experience of staff, gym equipment and special classes sections of the sales copy
 </script>
 
 <style scoped>
