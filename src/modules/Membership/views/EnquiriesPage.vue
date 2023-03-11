@@ -95,6 +95,12 @@ const isValidInputs = computed(() => {
   )
 })
 
+function clearInputs({ inputObject }) {
+  for (let key in inputObject) {
+    inputObject[key] = ''
+  }
+}
+
 const store = useStore()
 async function submitHandler() {
   status.isLoading = true
@@ -110,6 +116,7 @@ async function submitHandler() {
         message: 'This record already exists.'
       })
     }
+    clearInputs({ inputObject: formValues })
   } catch (error) {
     if (error.response?.status === 400) {
       store.dispatch('landingpage/error', {
