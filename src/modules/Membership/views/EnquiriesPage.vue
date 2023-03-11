@@ -48,7 +48,7 @@
                 type="tel"
                 name="phone"
                 id="phone"
-                v-model="formValues.phone_number1"
+                v-model="formValues.phone_number"
                 placeholder="+234 705 6463 6300"
                 class="form__input-field"
                 required
@@ -78,7 +78,7 @@ import EmailService from '@/services/EmailServices/EmailService.js'
 const formValues = reactive({
   name: '',
   email: '',
-  phone_number1: ''
+  phone_number: ''
 })
 
 const status = reactive({
@@ -90,17 +90,22 @@ const { useIsValidTextInputs, useIsValidNumericInputs } = validation()
 const isValidInputs = computed(() => {
   return (
     useIsValidTextInputs([formValues.name, formValues.email]) &&
-    useIsValidNumericInputs([formValues.phone_number1]) &&
+    useIsValidNumericInputs([formValues.phone_number]) &&
     !status.isLoading
   )
 })
 
+function clearInputs({ inputObject }) {
+  for (let key in inputObject) {
+    inputObject[key] = ''
+  }
+}
+
 const store = useStore()
 async function submitHandler() {
-  console.log('form submitted', formValues)
+  status.isLoading = true
   try {
     let res = await EmailService.enquiry(formValues)
-    console.log(res)
     if (res.status === 201) {
       store.dispatch('landingpage/success', {
         message: 'Your details were successfully created.'
@@ -111,6 +116,7 @@ async function submitHandler() {
         message: 'This record already exists.'
       })
     }
+    clearInputs({ inputObject: formValues })
   } catch (error) {
     if (error.response?.status === 400) {
       store.dispatch('landingpage/error', {
@@ -118,7 +124,8 @@ async function submitHandler() {
           'An error occured while trying to submit your data. Please try again.'
       })
     }
-    console.log(error)
+  } finally {
+    status.isLoading = false
   }
 }
 </script>
