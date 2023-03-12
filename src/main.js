@@ -34,7 +34,7 @@ const app = createApp(App)
   .use(router)
   .use(VueCookieNext)
   .use(VueGtag, {
-    config: { id: 'G-H69MYFWJBT' },
+    config: { id: process.env.VUE_APP_GOOGLE_ANALYTICS_GTAG },
     router,
     enabled: false
   })
