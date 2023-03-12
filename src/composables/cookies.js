@@ -38,10 +38,3 @@ export default function useCookies({ gtag }) {
 
   return { allowCookies, showBanner, okClicked }
 }
-
-/** TODO
- * get => list of medical conditions
- * staff and medical (medical field should have list of medical conditions) fields
- * design for membership setup form with the above included.
- * complete google analytics integration
- */
