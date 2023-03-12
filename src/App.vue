@@ -1,8 +1,8 @@
 <template>
   <metainfo>
-    <template v-slot:title="{ content }">{{
-      content ? `${content} | Jas-Fitness` : `Jas-Fitness`
-    }}</template>
+    <template v-slot:title="{ content }">
+      {{ content ? `${content} | Jas-Fitness` : `Jas-Fitness` }}
+    </template>
   </metainfo>
   <div class="h-full">
     <router-view />
