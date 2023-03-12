@@ -80,8 +80,8 @@ body {
   width: max-content;
 
   bottom: 5px;
-  right: 50%;
-  transform: translate(50%, 0);
+  left: 50%;
+  transform: translate(-50%, 0);
   z-index: 20;
 }
 
@@ -92,6 +92,12 @@ body {
 .slide-enter-from,
 .slide-leave-to {
   opacity: 0;
-  transform: translate(50%, 20px);
+  transform: translate(-50%, 20px);
+}
+
+@media screen and (min-width: 640px) {
+  .banner-container {
+    width: 500px;
+  }
 }
 </style>
