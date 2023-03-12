@@ -49,7 +49,7 @@ export default {
     if (showBanner.value) {
       setTimeout(() => {
         displayBanner.value = true
-      }, 1000)
+      }, 10000)
     }
 
     return { displayBanner, okBannerClicked }
