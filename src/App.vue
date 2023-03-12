@@ -12,6 +12,10 @@
 
 <script>
 import { useMeta } from 'vue-meta'
+import { inject } from 'vue'
+
+import useCookies from './composables/cookies.js'
+
 import TheAlerts from './components/TheAlerts.vue'
 
 export default {
@@ -20,6 +24,12 @@ export default {
       title: '',
       htmlAttrs: { lang: 'en', amp: true }
     })
+
+    const gtag = inject('gtag')
+    const { showBanner, okClicked } = useCookies({ gtag: gtag })
+    const okBannerClicked = () => okClicked()
+
+    return { showBanner, okBannerClicked }
   },
   components: { TheAlerts }
 }
