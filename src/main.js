@@ -33,7 +33,11 @@ createApp(App)
   .use(store)
   .use(router)
   .use(VueCookieNext)
-  .use(VueGtag)
+  .use(VueGtag, {
+    config: { id: 'G-H69MYFWJBT' },
+    router,
+    enabled: false
+  })
   .use(createMetaManager())
   .use(
     plugin,
