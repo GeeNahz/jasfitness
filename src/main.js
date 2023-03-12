@@ -29,7 +29,7 @@ registerModules({
   membership: Membership
 })
 
-createApp(App)
+const app = createApp(App)
   .use(store)
   .use(router)
   .use(VueCookieNext)
@@ -48,4 +48,6 @@ createApp(App)
     })
   )
   .use(VueClipboard)
-  .mount('#app')
+
+app.provide('gtag', app.config.globalProperties.$gtag)
+app.mount('#app')
