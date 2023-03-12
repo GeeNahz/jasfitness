@@ -7,6 +7,8 @@ import { plugin, defaultConfig } from '@formkit/vue'
 import { generateClasses } from '@formkit/themes'
 import { createMetaManager } from 'vue-meta'
 import { VueClipboard } from '@soerenmartius/vue3-clipboard'
+import VueGtag from 'vue-gtag'
+
 import formkitTheme from '../formkitTheme'
 import 'nprogress/nprogress.css'
 // import ImageKit from 'imagekitio-vue'
@@ -29,6 +31,7 @@ registerModules({
 createApp(App)
   .use(store)
   .use(router)
+  .use(VueGtag)
   .use(createMetaManager())
   .use(
     plugin,
