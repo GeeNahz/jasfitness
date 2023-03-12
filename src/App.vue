@@ -4,6 +4,15 @@
       {{ content ? `${content} | Jas-Fitness` : `Jas-Fitness` }}
     </template>
   </metainfo>
+  <transition name="slide">
+    <div class="banner-container">
+      <p>
+        We use 🍪 for more details check our policy
+        <router-link to="cookiesPolicy">here</router-link>
+      </p>
+      <button @click="okBannerClicked">OK</button>
+    </div>
+  </transition>
   <div class="h-full">
     <router-view />
     <TheAlerts />
