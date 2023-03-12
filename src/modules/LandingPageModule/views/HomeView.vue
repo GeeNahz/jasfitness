@@ -555,7 +555,6 @@ function goToSection(selector) {
   &::after {
     content: '';
     position: absolute;
-    width: 100%;
     height: 0;
     left: 0;
     z-index: 0;
@@ -656,7 +655,7 @@ function goToSection(selector) {
       left: -4em;
       height: 0;
       border-top: 5em solid transparent;
-      border-right: 6em solid transparent;
+      border-right: 4.3em solid transparent;
       border-left: 22em solid transparent;
       border-bottom: 3em solid white;
     }
@@ -666,7 +665,7 @@ function goToSection(selector) {
       height: 0;
       border-bottom: 5em solid transparent;
       border-left: 6em solid transparent;
-      border-right: 22em solid transparent;
+      border-right: 18.4em solid transparent;
       border-top: 3em solid white;
     }
   }
