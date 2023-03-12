@@ -8,6 +8,7 @@ import { generateClasses } from '@formkit/themes'
 import { createMetaManager } from 'vue-meta'
 import { VueClipboard } from '@soerenmartius/vue3-clipboard'
 import VueGtag from 'vue-gtag'
+import { VueCookieNext } from 'vue-cookie-next'
 
 import formkitTheme from '../formkitTheme'
 import 'nprogress/nprogress.css'
@@ -31,6 +32,7 @@ registerModules({
 createApp(App)
   .use(store)
   .use(router)
+  .use(VueCookieNext)
   .use(VueGtag)
   .use(createMetaManager())
   .use(
