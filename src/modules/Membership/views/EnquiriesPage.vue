@@ -70,6 +70,7 @@
 <script setup>
 import { computed, reactive } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 import { validation } from '@/composables/validation.js'
 
@@ -102,6 +103,7 @@ function clearInputs({ inputObject }) {
 }
 
 const store = useStore()
+const router = useRouter()
 async function submitHandler() {
   status.isLoading = true
   try {
@@ -116,6 +118,10 @@ async function submitHandler() {
         message: 'This record already exists.'
       })
     }
+    router.push({
+      name: 'FormSuccess',
+      query: { message: 'Your details have been successfully subimtted.' }
+    })
     clearInputs({ inputObject: formValues })
   } catch (error) {
     if (error.response?.status === 400) {
