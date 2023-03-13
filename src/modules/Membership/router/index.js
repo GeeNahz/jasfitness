@@ -9,6 +9,9 @@ const MemberSetup = () =>
 const EnquiriesPage = () =>
   import(/* webpackChunkName "EnquiriesPage" */ '../views/EnquiriesPage.vue')
 
+const SuccessPage = () =>
+  import(/* webpackChunkName "SuccessPage" */ '../views/SuccessPage.vue')
+
 const routes = [
   {
     path: '/form',
@@ -23,6 +26,11 @@ const routes = [
         path: 'enquiry',
         name: 'EnquiryPage',
         component: EnquiriesPage
+      },
+      {
+        path: 'success',
+        name: 'FormSuccess',
+        component: SuccessPage
       }
     ]
   }
