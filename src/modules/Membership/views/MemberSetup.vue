@@ -313,7 +313,9 @@ const inputFields = reactive({
     dob: '',
     emergencyName: '',
     emergencyNumber: '',
-    username: ''
+    username: '',
+    medical_condition: [],
+    conscent: false
   },
   notRequired: { referral: '', middleName: '' }
 })
