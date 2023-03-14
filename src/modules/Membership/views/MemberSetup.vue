@@ -192,26 +192,6 @@
             </div>
           </label>
         </div>
-        <div class="referral grid gap-20">
-          <p class="section-title col-12">Referral</p>
-          <label class="col-12 grid gap-10" for="referral">
-            <p class="col-12">
-              Who referred you? (Leave empty if no one referred you)
-            </p>
-            <div class="form-input col-12">
-              <div class="logo">
-                <AppIconAccountMultiplePlus />
-              </div>
-              <input
-                type="text"
-                name="referral"
-                id="referral"
-                v-model="inputFields.notRequired.referral"
-                placeholder="My Referral"
-              />
-            </div>
-          </label>
-        </div>
         <div class="emergency grid gap-20">
           <p class="section-title col-12">Emergency contact detail</p>
           <label class="col-12 grid gap-10" for="contact-name">
@@ -247,6 +227,26 @@
                 v-model="inputFields.requiredFields.emergencyNumber"
                 placeholder="+234 432 1043 210"
                 required
+              />
+            </div>
+          </label>
+        </div>
+        <div class="referral grid gap-20">
+          <p class="section-title col-12">Referral</p>
+          <label class="col-12 grid gap-10" for="referral">
+            <p class="col-12">
+              Who referred you? (Leave empty if no one referred you)
+            </p>
+            <div class="form-input col-12">
+              <div class="logo">
+                <AppIconAccountMultiplePlus />
+              </div>
+              <input
+                type="text"
+                name="referral"
+                id="referral"
+                v-model="inputFields.notRequired.referral"
+                placeholder="My Referral"
               />
             </div>
           </label>
