@@ -48,7 +48,7 @@
                 type="tel"
                 name="phone"
                 id="phone"
-                v-model="formValues.mobile_number"
+                v-model="formValues.phone_number"
                 placeholder="+234 705 6463 6300"
                 class="form__input-field"
                 required
@@ -79,7 +79,7 @@ import EmailService from '@/services/EmailServices/EmailService.js'
 const formValues = reactive({
   name: '',
   email: '',
-  mobile_number: ''
+  phone_number: ''
 })
 
 const status = reactive({
@@ -91,7 +91,7 @@ const { useIsValidTextInputs, useIsValidNumericInputs } = validation()
 const isValidInputs = computed(() => {
   return (
     useIsValidTextInputs([formValues.name, formValues.email]) &&
-    useIsValidNumericInputs([formValues.mobile_number]) &&
+    useIsValidNumericInputs([formValues.phone_number]) &&
     !status.isLoading
   )
 })
