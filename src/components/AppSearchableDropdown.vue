@@ -25,16 +25,50 @@
           v-model="searchKey"
         />
       </div>
-      <ul v-if="!searchItems.length" class="items text-xs md:text-sm">
-        <li class="text-gray-400">Please wait...</li>
+      <ul v-if="!searchItems.length" class="items text-sm">
+        <li class="text-gray-400">No medical condition available</li>
+        <li class="flex items-center p-2">
+          <input
+            @keyup.enter.self="submitCustomMedicalCondition"
+            type="text"
+            name="custom"
+            id="custom"
+            v-model="customField"
+            :placeholder="customFieldPlaceholder"
+            class="w-full h-full outline-none bg-transparent my-2 px-1"
+          />
+          <div
+            @click="submitCustomMedicalCondition"
+            class="p-2 text-xl text-gray-50 bg-emerald-400 rounded-full"
+          >
+            <AppIconCheckOutline />
+          </div>
+        </li>
       </ul>
-      <ul v-else class="items text-xs md:text-sm">
+      <ul v-else class="items text-sm">
         <li
           v-for="content in searchItems"
           :key="content.id"
           @click="$emit('selectedItem', content)"
         >
           {{ content.content }}
+        </li>
+        <li class="flex items-center p-2">
+          <input
+            @keyup.enter.self="submitCustomMedicalCondition"
+            type="text"
+            name="custom"
+            id="custom"
+            v-model="customField"
+            :placeholder="customFieldPlaceholder"
+            class="w-full h-full outline-none bg-transparent my-2 px-1"
+          />
+          <div
+            @click="submitCustomMedicalCondition"
+            class="p-2 text-xl text-gray-50 bg-emerald-400 rounded-full"
+          >
+            <AppIconCheckOutline />
+          </div>
         </li>
       </ul>
     </div>
@@ -43,15 +77,18 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { v4 as uuid } from 'uuid'
 
 import AppIconSearch from './AppIconSearch.vue'
 import AppIconMenuUpOutline from './icons/AppIconMenuUpOutline.vue'
+import AppIconCheckOutline from './icons/AppIconCheckOutline.vue'
 
-defineEmits(['selectedItem'])
+const emit = defineEmits(['selectedItem'])
 const props = defineProps({
   contents: { type: Array, required: false, default: () => [] },
   title: { type: String, default: 'Dropdown' },
-  placeholder: { type: String, default: 'Search...' }
+  placeholder: { type: String, default: 'Search...' },
+  customFieldPlaceholder: { type: String, default: 'Custom item' }
 })
 
 const searchItems = computed(() => {
@@ -72,6 +109,16 @@ const searchKey = ref('')
 
 const showDropdown = ref(false)
 const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
+
+const customField = ref('')
+function submitCustomMedicalCondition() {
+  if (customField.value !== '') {
+    let id = uuid()
+    let content = customField.value
+    emit('selectedItem', { id, content })
+    customField.value = ''
+  }
+}
 </script>
 
 <style lang="scss" scoped>
