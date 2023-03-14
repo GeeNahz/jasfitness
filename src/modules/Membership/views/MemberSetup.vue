@@ -287,6 +287,7 @@
 <script setup>
 import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
 import { validation } from '@/composables/validation.js'
 
@@ -349,6 +350,7 @@ function getFullName({ namesArray = [] }) {
 }
 
 const store = useStore()
+const router = useRouter()
 async function submitHandler() {
   status.isLoading = true
   let userData = {
@@ -374,6 +376,10 @@ async function submitHandler() {
     await store.dispatch('auth/membership_setup', userData)
     store.dispatch('landingpage/success', {
       message: 'Your details have been successfully submitted.'
+    })
+    router.push({
+      name: 'FormSuccess',
+      query: { message: "Congratulations! We're glad to have you onboard!" }
     })
     // on successful submission
     clearInputs({ inputObject: inputFields.requiredFields })
