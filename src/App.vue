@@ -6,7 +6,7 @@
   </metainfo>
   <div class="h-full relative">
     <router-view />
-    <transition name="slide">
+    <!-- <transition name="slide">
       <div v-if="displayBanner" class="banner-container text-sm font-light">
         <p class="mb-3">
           We use 🍪. For more details check our policy
@@ -18,7 +18,7 @@
         </p>
         <button class="btn btn-warning" @click="okBannerClicked">OK</button>
       </div>
-    </transition>
+    </transition> -->
     <TheAlerts />
   </div>
 </template>
