@@ -12,5 +12,8 @@ export default {
   },
   enquiry(data) {
     return axiosInstance.post('/api/v1/enquiry/', data)
+  },
+  medical_conditions_list() {
+    return axiosInstance.get('/api/v1/medical_condition/')
   }
 }
