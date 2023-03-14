@@ -583,7 +583,7 @@ $lg: 1024px;
 .page__title {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   & .logo {
     width: 4rem;
     & img {
