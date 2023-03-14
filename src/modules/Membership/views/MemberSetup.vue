@@ -17,7 +17,7 @@
     <div class="form">
       <form @submit.prevent="submitHandler">
         <div class="personal-details grid gap-20">
-          <p class="section-title col-12">Let's get to know you</p>
+          <p class="section-title col-12">My Profile</p>
           <label class="col-12 grid gap-10">
             <!-- <p class="form-group-title col-12">Name*</p> -->
             <div
