@@ -170,6 +170,9 @@ function submitCustomMedicalCondition() {
         &:hover {
           background: #fefefe;
         }
+        @media screen and (max-width: 639px) {
+          margin-bottom: 0.5rem;
+        }
       }
     }
   }
