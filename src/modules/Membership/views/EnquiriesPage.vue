@@ -112,16 +112,16 @@ async function submitHandler() {
       store.dispatch('landingpage/success', {
         message: 'Your details were successfully created.'
       })
+      router.push({
+        name: 'FormSuccess',
+        query: { message: 'Your details have been successfully subimtted.' }
+      })
     }
     if (res.status === 200) {
       store.dispatch('landingpage/warning', {
         message: 'This record already exists.'
       })
     }
-    router.push({
-      name: 'FormSuccess',
-      query: { message: 'Your details have been successfully subimtted.' }
-    })
     clearInputs({ inputObject: formValues })
   } catch (error) {
     if (error.response?.status === 400) {
