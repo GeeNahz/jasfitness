@@ -302,7 +302,7 @@
                   <AppIconPhone />
                 </div>
                 <input
-                  type="text"
+                  type="tel"
                   name="contact-number"
                   id="contact-number"
                   v-model="inputFields.requiredFields.emergencyNumber"
