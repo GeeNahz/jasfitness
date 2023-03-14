@@ -527,7 +527,8 @@ async function submitHandler() {
     if (error.response.status === 400) {
       for (let err in error.response.data.errors) {
         store.dispatch('landingpage/warning', {
-          message: error.response.data.errors[err].detail
+          message: error.response.data.errors[err].detail,
+          timeout: 10000
         })
       }
     }
