@@ -78,7 +78,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { v4 as uuid } from 'uuid'
 
 import AppIconSearch from './AppIconSearch.vue'
