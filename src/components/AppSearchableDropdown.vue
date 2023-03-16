@@ -143,6 +143,11 @@ function submitCustomMedicalCondition() {
   }
 }
 /*set the enrollee-id field to show only when an HMO has been selected.*/
+watch(props.selectedItems, () => {
+  if (!isInSelectedItems({ value: 'none' })) {
+    disabledItems({ value: false })
+  }
+})
 </script>
 
 <style lang="scss" scoped>
