@@ -26,15 +26,15 @@
         />
       </div>
       <ul v-if="!searchItems.length" class="items text-sm">
-        <li class="text-gray-400">No medical condition available</li>
-        <li class="flex items-center p-2">
+        <li class="text-gray-400">No item available</li>
+        <li v-if="customItem.isActive" class="flex items-center p-2">
           <input
             @keyup.enter.self="submitCustomMedicalCondition"
             type="text"
             name="custom"
             id="custom"
-            v-model="customItem"
-            :placeholder="customItemPlaceholder"
+            v-model="customItemValue"
+            :placeholder="customItem.value"
             class="w-full h-full outline-none bg-transparent my-2 px-1"
           />
           <div
@@ -54,14 +54,14 @@
         >
           {{ content.content }}
         </li>
-        <li class="flex items-center p-2">
+        <li v-if="customItem.isActive" class="flex items-center p-2">
           <input
             @keyup.enter.self="submitCustomMedicalCondition"
             type="text"
             name="custom"
             id="custom"
-            v-model="customItem"
-            :placeholder="customItemPlaceholder"
+            v-model="customItemValue"
+            :placeholder="customItem.value"
             class="w-full h-full outline-none bg-transparent my-2 px-1"
             :class="{ 'disabled ': isDisabledItems }"
           />
@@ -90,18 +90,21 @@ const props = defineProps({
   contents: { type: Array, required: false, default: () => [] },
   title: { type: String, default: 'Dropdown' },
   placeholder: { type: String, default: 'Search...' },
-  customItemPlaceholder: { type: String, default: 'Custom item' },
-  selectedItems: { type: Array, default: () => [] }
+  customItem: { type: Object, default: () => {} },
+  selectedItems: { type: Array, default: () => [] },
+  masterItem: { type: String, default: 'none' },
+  onDisableFields: {
+    type: Function,
+    default: function () {
+      return false
+    }
+  } // use this to implement your custom fields disabler
 })
 
 const searchItems = computed(() => {
   const matchedItems = []
   for (let content of props.contents) {
-    if (
-      content.content
-        .toLocaleLowerCase()
-        .includes(searchKey.value.toLocaleLowerCase())
-    ) {
+    if (content.content.toLowerCase().includes(searchKey.value.toLowerCase())) {
       matchedItems.push(content)
     }
   }
@@ -133,19 +136,22 @@ function submitHandler(selectedItem) {
   setDisabledItems({ item: selectedItem.content })
   emit('selectedItem', selectedItem)
 }
-const customItem = ref('')
+const customItemValue = ref('')
 function submitCustomMedicalCondition() {
-  if (customItem.value !== '') {
+  if (customItemValue.value !== '') {
     let id = uuid()
-    let content = customItem.value
+    let content = customItemValue.value
     emit('selectedItem', { id, content })
-    customItem.value = ''
+    customItemValue.value = ''
   }
 }
 /*set the enrollee-id field to show only when an HMO has been selected.*/
 watch(props.selectedItems, () => {
-  if (!isInSelectedItems({ value: 'none' })) {
+  if (!isInSelectedItems({ value: props.masterItem })) {
     disabledItems({ value: false })
+  }
+  if (props.onDisableFields()) {
+    disabledItems({ value: true })
   }
 })
 </script>
