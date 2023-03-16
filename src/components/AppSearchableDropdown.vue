@@ -122,6 +122,13 @@ function setDisabledItems({ item = '' }) {
     disabledItems({ value: false })
   }
 }
+function isInSelectedItems({ value }) {
+  for (let item of props.selectedItems) {
+    if (item.content.toString().toLowerCase() === value.toLowerCase())
+      return true
+  }
+  return false
+}
 function submitHandler(selectedItem) {
   setDisabledItems({ item: selectedItem.content })
   emit('selectedItem', selectedItem)
