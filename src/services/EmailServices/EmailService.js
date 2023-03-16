@@ -15,5 +15,8 @@ export default {
   },
   medical_conditions_list() {
     return axiosInstance.get('/api/v1/medical_condition/')
+  },
+  hmos_list() {
+    return axiosInstance.get('/api/v1/hmos/')
   }
 }
