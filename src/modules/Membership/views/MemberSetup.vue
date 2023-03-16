@@ -405,8 +405,12 @@ const inputFields = reactive({
     medical_condition: '',
     goal: ''
   },
-  notRequired: { referral: '', middleName: '', consent: false }
+  notRequired: { referral: '', middleName: '', consent: false, hmo: '' }
 })
+
+/**what you need for the hmo
+ * foreign key -
+ */
 
 function appendIndexAsId({ array = [] }) {
   const newArray = []
@@ -426,6 +430,9 @@ function removeChip(chipId) {
 function AddItemToArray({ newItem, array = [] }) {
   for (let item of array) {
     if (item.id === newItem.id) return
+  }
+  if (newItem.content.toLowerCase() === 'none') {
+    array.splice(0)
   }
   array.push(newItem)
 }
