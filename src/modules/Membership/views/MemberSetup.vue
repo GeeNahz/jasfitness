@@ -7,17 +7,6 @@
           alt="membership setup"
           class="w-full h-full object-cover"
         />
-        <!-- <div class="page__title">
-          <div class="logo">
-            <img
-              src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
-              alt="logo"
-            />
-          </div>
-          <div class="page__title-text">
-            <p class="main-text">Membership Setup</p>
-          </div>
-        </div> -->
       </div>
 
       <div class="form pb-4 px-4">
@@ -218,7 +207,7 @@
                   :contents="appendIndexAsId({ array: medicalConditionsList })"
                   :selectedItems="chipItemsDisplay"
                   title="Select medical condition"
-                  customFieldPlaceholder="Other conditions"
+                  :customItem="{ isActive: true, value: 'Other conditions' }"
                   @selectedItem="AddItem"
                 />
               </div>
@@ -313,6 +302,107 @@
               </div>
             </label>
           </div>
+          <div class="hmos grid gap-20">
+            <p class="section-title col-12">Do you have a health insurance?</p>
+            <div class="triple-fields col-12">
+              <div class="flex flex-col gap-10">
+                <p class="col-12 text-xs md:text-sm">
+                  Choose Health Insurance Service
+                </p>
+                <input
+                  type="hidden"
+                  name="hmo"
+                  id="hmo"
+                  v-model="inputFields.notRequired.hmo"
+                  placeholder="HMO service"
+                />
+                <!-- :contents="appendIndexAsId({ array: medicalConditionsList })" -->
+                <AppSearchableDropdown
+                  :contents="hmosList"
+                  :selectedItems="hmoDisplay"
+                  title="--- Select HMO ---"
+                  :customItem="{ isActive: false, value: 'Remove this field' }"
+                  @selectedItem="AddHmoItem"
+                />
+              </div>
+              <div
+                v-if="isHmoSelected"
+                class="hmo-setup mt-3 flex flex-col gap-3"
+              >
+                <div class="items-display bg-gray-100 rounded-lg p-3 relative">
+                  <p class="text-sm md:text-base font-semibold mb-3">
+                    {{ hmoDisplay[0].content }} weekly schedule
+                  </p>
+                  <!-- <div class="hmo-name flex items-center gap-2">
+                    <label for="hmo-name" class="text-xs md:text-sm"
+                      >Name:</label
+                    >
+                    <input
+                      type="text"
+                      name="hmo-name"
+                      id="hmo-name"
+                      disabled
+                      v-model="hmoDisplay[0].content"
+                    />
+                  </div> -->
+                  <hr class="my-2 rounded-full" />
+                  <div class="hmo-schedule flex items-center gap-2">
+                    <label for="hmo-schedule" class="text-xs md:text-sm"
+                      >Schedule:</label
+                    >
+                    <input
+                      type="text"
+                      name="hmo-schedule"
+                      id="hmo-schedule"
+                      disabled
+                      v-model="hmoDisplay[0].schedule"
+                    />
+                  </div>
+                  <div
+                    class="clear-details absolute right-3 top-2 hover:cursor-pointer"
+                  >
+                    <p
+                      @click.prevent="clearHmoDetails"
+                      class="underline underline-offset-2 text-blue-600 text-sm"
+                    >
+                      Clear
+                    </p>
+                  </div>
+                </div>
+                <div class="enrollee-id w-full">
+                  <label for="enrollee-id" class="w-full">
+                    <p>Enrollee id<span class="required-indicator">*</span></p>
+                    <div class="form-input mt-1">
+                      <div class="logo">
+                        <AppIconAt />
+                      </div>
+                      <input
+                        type="text"
+                        name="enrollee-id"
+                        id="enrollee-id"
+                        placeholder="SusanJones"
+                        v-model="inputFields.notRequired.enrolleeId"
+                        required
+                      />
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- <label class="col-12 grid gap-10" for="hmo">
+              <p class="col-12">Choose Health Insurance Service</p>
+              <div class="form-input col-12">
+                <div class="logo"></div>
+                <input
+                  type="text"
+                  name="hmo"
+                  id="hmo"
+                  v-model="inputFields.notRequired.hmo"
+                  placeholder="HMO service"
+                />
+              </div>
+            </label> -->
+          </div>
           <!-- <div class="referral grid gap-20">
             <p class="section-title col-12">Referral</p>
             <label class="col-12 grid gap-10" for="referral">
@@ -391,6 +481,7 @@ import AppIconTargetAccount from '@/components/icons/AppIconTargetAccount.vue'
 
 // import AppIconMedicationOutline from '@/components/icons/AppIconMedicationOutline.vue'
 const medicalConditionsList = ref([])
+const hmosList = ref([])
 const status = reactive({ isLoading: false })
 const inputFields = reactive({
   requiredFields: {
@@ -406,18 +497,32 @@ const inputFields = reactive({
     medical_condition: '',
     goal: ''
   },
-  notRequired: { referral: '', middleName: '', consent: false, hmo: '' }
+  notRequired: {
+    referral: '',
+    middleName: '',
+    consent: false,
+    hmo: '',
+    enrolleeId: ''
+  }
 })
-
-/**what you need for the hmo
- * foreign key -
- */
 
 function appendIndexAsId({ array = [] }) {
   const newArray = []
   if (array.length < 1) return
   for (let element in array) {
     newArray.push({ id: element, content: array[element] })
+  }
+  return newArray
+}
+function appendIndexAsIdHmo({ array = [] }) {
+  const newArray = []
+  if (array.length < 1) return
+  for (let element in array) {
+    newArray.push({
+      id: element,
+      content: array[element].name,
+      schedule: array[element].schedule
+    })
   }
   return newArray
 }
@@ -442,6 +547,17 @@ function AddItem(newItem) {
     newItem,
     array: chipItemsDisplay.value
   })
+}
+function AddHmoItem(newItem) {
+  hmoDisplay.value.splice(0)
+  AddItemToArray({
+    newItem,
+    array: hmoDisplay.value
+  })
+}
+function clearHmoDetails() {
+  hmoDisplay.value.splice(0, 1)
+  inputFields.notRequired.enrolleeId = ''
 }
 
 const { useIsValidTextInputs } = validation()
@@ -485,6 +601,8 @@ function serialisedMedicalCondition() {
 }
 
 const chipItemsDisplay = ref([])
+const hmoDisplay = ref([])
+// watch medical condition array
 watch(
   chipItemsDisplay,
   () => {
@@ -492,6 +610,18 @@ watch(
   },
   { deep: true }
 )
+// watch hmo array
+watch(
+  hmoDisplay,
+  () => {
+    if (hmoDisplay.value.length) {
+      inputFields.notRequired.hmo = hmoDisplay.value[0].content
+    }
+  },
+  { deep: true }
+)
+/* ** this will show details about the hmo selected */
+const isHmoSelected = computed(() => (hmoDisplay.value.length ? true : false))
 
 const store = useStore()
 const router = useRouter()
@@ -517,7 +647,9 @@ async function submitHandler() {
     goal: inputFields.requiredFields.goal,
     medical_condition: inputFields.requiredFields.medical_condition,
     medical_consent: inputFields.notRequired.consent,
-    referral: inputFields.notRequired.referral
+    hmo: inputFields.notRequired.hmo,
+    enrollee_id: inputFields.notRequired.enrolleeId
+    // referral: inputFields.notRequired.referral
   }
   try {
     await store.dispatch('auth/membership_setup', userData)
@@ -558,12 +690,23 @@ onMounted(async () => {
     }
   } catch (error) {
     store.dispatch('landingpage/error', {
-      message: 'Something went wrong. Please refresh the page to try again.'
+      message: 'Something went wrong. Try refreshing the page to try again.'
+    })
+  }
+  try {
+    const res = await EmailService.hmos_list()
+    let tempArr = []
+    for (let hmo of res.data) {
+      tempArr.push(hmo)
+    }
+    hmosList.value = appendIndexAsIdHmo({ array: tempArr })
+  } catch {
+    store.dispatch('landingpage/error', {
+      message: 'Something went wrong. Try refreshing the page to try again.'
     })
   }
 
   now.value = new Date().getFullYear()
-  // console.log(now.getFullYear())
 })
 </script>
 
