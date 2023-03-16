@@ -216,6 +216,7 @@
                 />
                 <AppSearchableDropdown
                   :contents="appendIndexAsId({ array: medicalConditionsList })"
+                  :selectedItems="chipItemsDisplay"
                   title="Select medical condition"
                   customFieldPlaceholder="Other conditions"
                   @selectedItem="AddItem"
