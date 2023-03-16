@@ -88,7 +88,8 @@ const props = defineProps({
   contents: { type: Array, required: false, default: () => [] },
   title: { type: String, default: 'Dropdown' },
   placeholder: { type: String, default: 'Search...' },
-  customFieldPlaceholder: { type: String, default: 'Custom item' }
+  customFieldPlaceholder: { type: String, default: 'Custom item' },
+  selectedItems: { type: Array, default: () => [] }
 })
 
 const searchItems = computed(() => {
