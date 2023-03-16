@@ -33,8 +33,8 @@
             type="text"
             name="custom"
             id="custom"
-            v-model="customField"
-            :placeholder="customFieldPlaceholder"
+            v-model="customItem"
+            :placeholder="customItemPlaceholder"
             class="w-full h-full outline-none bg-transparent my-2 px-1"
           />
           <div
@@ -59,8 +59,8 @@
             type="text"
             name="custom"
             id="custom"
-            v-model="customField"
-            :placeholder="customFieldPlaceholder"
+            v-model="customItem"
+            :placeholder="customItemPlaceholder"
             class="w-full h-full outline-none bg-transparent my-2 px-1"
           />
           <div
@@ -88,7 +88,7 @@ const props = defineProps({
   contents: { type: Array, required: false, default: () => [] },
   title: { type: String, default: 'Dropdown' },
   placeholder: { type: String, default: 'Search...' },
-  customFieldPlaceholder: { type: String, default: 'Custom item' },
+  customItemPlaceholder: { type: String, default: 'Custom item' },
   selectedItems: { type: Array, default: () => [] }
 })
 
@@ -111,13 +111,13 @@ const searchKey = ref('')
 const showDropdown = ref(false)
 const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
 
-const customField = ref('')
+const customItem = ref('')
 function submitCustomMedicalCondition() {
-  if (customField.value !== '') {
+  if (customItem.value !== '') {
     let id = uuid()
-    let content = customField.value
+    let content = customItem.value
     emit('selectedItem', { id, content })
-    customField.value = ''
+    customItem.value = ''
   }
 }
 </script>
