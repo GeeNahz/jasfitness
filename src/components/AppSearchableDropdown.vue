@@ -49,7 +49,8 @@
         <li
           v-for="content in searchItems"
           :key="content.id"
-          @click="$emit('selectedItem', content)"
+          @click="submitHandler(content)"
+          :class="{ 'disabled ': isDisabledItems }"
         >
           {{ content.content }}
         </li>
@@ -62,6 +63,7 @@
             v-model="customItem"
             :placeholder="customItemPlaceholder"
             class="w-full h-full outline-none bg-transparent my-2 px-1"
+            :class="{ 'disabled ': isDisabledItems }"
           />
           <div
             @click="submitCustomMedicalCondition"
@@ -111,6 +113,19 @@ const searchKey = ref('')
 const showDropdown = ref(false)
 const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
 
+const isDisabledItems = ref(false)
+const disabledItems = ({ value = false }) => (isDisabledItems.value = value)
+function setDisabledItems({ item = '' }) {
+  if (item.toLowerCase() === ('none' || 'false')) {
+    disabledItems({ value: true })
+  } else {
+    disabledItems({ value: false })
+  }
+}
+function submitHandler(selectedItem) {
+  setDisabledItems({ item: selectedItem.content })
+  emit('selectedItem', selectedItem)
+}
 const customItem = ref('')
 function submitCustomMedicalCondition() {
   if (customItem.value !== '') {
@@ -120,6 +135,7 @@ function submitCustomMedicalCondition() {
     customItem.value = ''
   }
 }
+/*set the enrollee-id field to show only when an HMO has been selected.*/
 </script>
 
 <style lang="scss" scoped>
@@ -183,5 +199,10 @@ function submitCustomMedicalCondition() {
 }
 .hide {
   display: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>
