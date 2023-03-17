@@ -664,6 +664,7 @@ async function submitHandler() {
     clearInputs({ inputObject: inputFields.requiredFields })
     clearInputs({ inputObject: inputFields.notRequired })
   } catch (error) {
+    console.log(error)
     if (error.response.status === 400) {
       for (let err in error.response.data.errors) {
         store.dispatch('landingpage/warning', {
@@ -839,6 +840,7 @@ form {
     width: 100%;
     border-radius: 8px;
     background: gold;
+    color: #fff;
     font-weight: 600;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -916,7 +918,7 @@ form {
 }
 
 .disabled {
-  opacity: 50%;
+  opacity: 70%;
   pointer-events: none;
 }
 .grid {
