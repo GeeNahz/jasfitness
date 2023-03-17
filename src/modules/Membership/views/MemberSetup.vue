@@ -194,7 +194,7 @@
             <div class="triple-fields col-12 grid gap-20 items-start">
               <!-- medical conditions -->
               <div class="flex col-6-1 flex-col gap-10">
-                <p class="col-12 text-xs">
+                <p class="col-12 text-xs lg:text-sm">
                   Medical Condition<span class="required-indicator">*</span>
                 </p>
                 <input
@@ -213,7 +213,7 @@
               </div>
               <!-- consent field -->
               <div
-                class="col-6-2 gap-10 flex items-center justify-center md:mt-6"
+                class="col-6-2 gap-10 flex items-center justify-center md:mt-7"
                 for="consent"
               >
                 <input
@@ -307,7 +307,7 @@
             </p>
             <div class="triple-fields col-12">
               <div class="flex flex-col gap-10">
-                <p class="col-12 text-xs md:text-sm">
+                <p class="col-12 text-xs lg:text-sm">
                   Choose your health insurance service
                 </p>
                 <input
