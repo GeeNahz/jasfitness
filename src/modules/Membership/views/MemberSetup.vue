@@ -943,13 +943,13 @@ form {
   grid-column: span 6 / span 6;
 }
 .col-6-1 {
-  @media screen and (min-width: $sm) {
+  @media screen and (min-width: $lg) {
     grid-column: 1 / span 6;
   }
   grid-column: span 12 / span 12;
 }
 .col-6-2 {
-  @media screen and (min-width: $sm) {
+  @media screen and (min-width: $lg) {
     grid-column: 7 / span 6;
   }
   grid-column: span 12 / span 12;
