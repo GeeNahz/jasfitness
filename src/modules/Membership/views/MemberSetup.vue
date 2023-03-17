@@ -817,8 +817,8 @@ form {
   }
   & input,
   & select {
-    font-size: 0.875rem; // 14px
-    line-height: 1.25rem; // 20px
+    font-size: 1rem; // 16px
+    line-height: 1.5rem; // 24px
     font-weight: 500;
     padding-right: 0.5rem;
     height: 100%;
