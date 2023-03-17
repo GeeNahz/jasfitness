@@ -98,7 +98,8 @@ const props = defineProps({
     default: function () {
       return false
     }
-  } // use this to implement your custom fields disabler
+  }, // use this to implement your custom fields disabler
+  autoClose: { type: Boolean, default: false }
 })
 
 const searchItems = computed(() => {
@@ -135,6 +136,9 @@ function isInSelectedItems({ value }) {
 function submitHandler(selectedItem) {
   setDisabledItems({ item: selectedItem.content })
   emit('selectedItem', selectedItem)
+  if (props.autoClose) {
+    toggleDropdown()
+  }
 }
 const customItemValue = ref('')
 function submitCustomMedicalCondition() {
@@ -143,6 +147,9 @@ function submitCustomMedicalCondition() {
     let content = customItemValue.value
     emit('selectedItem', { id, content })
     customItemValue.value = ''
+  }
+  if (props.autoClose) {
+    toggleDropdown()
   }
 }
 /*set the enrollee-id field to show only when an HMO has been selected.*/
