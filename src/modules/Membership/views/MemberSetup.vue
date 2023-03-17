@@ -519,7 +519,7 @@ function appendIndexAsIdHmo({ array = [] }) {
   if (array.length < 1) return
   for (let element in array) {
     newArray.push({
-      id: element,
+      id: array[element].id,
       content: array[element].name,
       schedule: array[element].schedule
     })
@@ -615,7 +615,7 @@ watch(
   hmoDisplay,
   () => {
     if (hmoDisplay.value.length) {
-      inputFields.notRequired.hmo = hmoDisplay.value[0].content
+      inputFields.notRequired.hmo = hmoDisplay.value[0].id
     }
   },
   { deep: true }
