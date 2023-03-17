@@ -227,8 +227,7 @@
                   for="consent"
                   class="whitespace-wrap w-full ml-1 text-[10px] md:text-xs font-medium dark-gray dark:text-gray-300"
                 >
-                  I agree to allow my medical condition to be shared with an
-                  instructor
+                  I agree to share my medical condition with my instructor
                   <!-- <span class="text-red-400">*</span> -->
                 </label>
               </div>
@@ -303,11 +302,13 @@
             </label>
           </div>
           <div class="hmos grid gap-20">
-            <p class="section-title col-12">Do you have a health insurance?</p>
+            <p class="section-title col-12 normal-text">
+              Do you have a Health Insurance?
+            </p>
             <div class="triple-fields col-12">
               <div class="flex flex-col gap-10">
                 <p class="col-12 text-xs md:text-sm">
-                  Choose Health Insurance Service
+                  Choose your health insurance service
                 </p>
                 <input
                   type="hidden"
@@ -322,6 +323,7 @@
                   :selectedItems="hmoDisplay"
                   title="--- Select HMO ---"
                   :customItem="{ isActive: false, value: 'Remove this field' }"
+                  :autoClose="true"
                   @selectedItem="AddHmoItem"
                 />
               </div>
@@ -329,7 +331,7 @@
                 v-if="isHmoSelected"
                 class="hmo-setup mt-3 flex flex-col gap-3"
               >
-                <div class="items-display bg-gray-100 rounded-lg p-3 relative">
+                <div class="items-display bg-gray-100 rounded-lg p-3">
                   <p class="text-sm md:text-base font-semibold mb-3">
                     {{ hmoDisplay[0].content }} weekly schedule
                   </p>
@@ -358,14 +360,12 @@
                       v-model="hmoDisplay[0].schedule"
                     />
                   </div>
-                  <div
-                    class="clear-details absolute right-3 top-2 hover:cursor-pointer"
-                  >
+                  <div class="clear-details hover:cursor-pointer pt-2 text-end">
                     <p
                       @click.prevent="clearHmoDetails"
-                      class="underline underline-offset-2 text-blue-600 text-sm"
+                      class="underline underline-offset-2 text-blue-600 text-xs md:text-sm"
                     >
-                      Clear
+                      Remove
                     </p>
                   </div>
                 </div>
@@ -664,7 +664,6 @@ async function submitHandler() {
     clearInputs({ inputObject: inputFields.requiredFields })
     clearInputs({ inputObject: inputFields.notRequired })
   } catch (error) {
-    console.log(error)
     if (error.response.status === 400) {
       for (let err in error.response.data.errors) {
         store.dispatch('landingpage/warning', {
@@ -714,7 +713,7 @@ onMounted(async () => {
 <style scoped>
 /* mobile device */
 .member-setup-wrapper {
-  padding: 2rem;
+  padding: 1.5rem;
   width: 100%;
   margin-inline: auto;
 }
@@ -775,6 +774,9 @@ $lg: 1024px;
   font-weight: 600;
   text-transform: capitalize;
   margin-top: 1.5rem;
+  &.normal-text {
+    text-transform: none;
+  }
 }
 
 form {
