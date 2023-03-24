@@ -5,11 +5,12 @@
         <p class="mb-3">
           We use cookies🍪 to enhance your browsing experience and analyze our
           traffic. For more details check our policy
-          <router-link
+          <!-- <router-link
             class="link text-blue-600 visited:text-purple-600 underline underline-offset-4"
             to="/cookiesPolicy"
+            target="_blank"
             >here</router-link
-          >
+          > -->
         </p>
         <button class="btn btn-warning" @click="okBannerClicked">OK</button>
       </div>
@@ -33,13 +34,14 @@ export default defineComponent({
       okClicked()
     }
 
-    if (showBanner.value) {
-      setTimeout(() => {
-        displayBanner.value = true
-      }, 10000)
-    }
+    // un comment this to enable cookies consent banner display
+    // if (showBanner.value) {
+    //   setTimeout(() => {
+    //     displayBanner.value = true
+    //   }, 10000)
+    // }
 
-    return { displayBanner, okBannerClicked }
+    return { displayBanner, okBannerClicked, showBanner }
   }
 })
 </script>
