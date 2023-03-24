@@ -1,25 +1,31 @@
 <template>
   <div class="scwrapper font-inter">
-    <div class="contained-width hero grid col-12 mb-5">
-      <div class="image col-4">
+    <div class="contained-width hero grid col-span-12 mb-2 md:mb-5">
+      <div class="image col-span-12 md:col-span-4">
         <img
           src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540"
           alt="image"
         />
       </div>
-      <div class="content">
-        <p class="main-title">
+      <div
+        class="content grid col-span-12 md:col-span-7 md:col-start-6 text-center md:text-start"
+      >
+        <p
+          class="main-title col-span-12 sm:col-span-7 md:col-span-12 row-span-1 sm:row-span-3 md:row-span-1"
+        >
           hit your fitness goals in our state-of-the-art gym facility with super
           amazing coaches
         </p>
-        <p class="subtitle-1">
+        <p class="subtitle-1 col-span-12 sm:col-span-5 md:col-span-12">
           Quickly build your chest, abs, legs, shoulder, back and entire fitness
           health like a pro with the help of our coaches
         </p>
-        <button class="cta-btn cta-btn-primary">
+        <button
+          class="cta-btn cta-btn-primary w-max mx-auto md:mx-0 col-span-12 sm:col-span-5 md:col-span-12"
+        >
           book yourself a free call today
         </button>
-        <p class="subtitle-2">
+        <p class="subtitle-2 col-span-12 sm:col-span-5 md:col-span-12">
           The experience is mesmerizing and if you love to be fit on purpose and
           not just pump and sweat in the gym... you'll love it at JasFitness gym
           center.
@@ -27,13 +33,15 @@
       </div>
     </div>
     <!-- why jasfitness -->
-    <section class="jasfitness mb-5 py-28">
-      <div class="contained-width grid col-12">
-        <p class="section-title col-12">Why JasFitness?</p>
-        <div class="cards col-12">
-          <div v-for="item in whyJasfitness" :key="item.id" class="card card-1">
+    <section class="jasfitness mb-2 md:mb-5 py-20 md:py-28">
+      <div class="contained-width grid col-span-12">
+        <p class="section-title col-span-12">Why JasFitness?</p>
+        <div class="cards col-span-12">
+          <div v-for="item in whyJasfitness" :key="item.id" class="card">
             <div class="card-body flex flex-col items-center">
-              <div class="img justify-self-center"></div>
+              <div class="img text-4xl justify-self-center text-amber-500">
+                <VIcon :icon="item.icon" />
+              </div>
               <p class="card-title">{{ item.title }}</p>
               <p class="card-text">{{ item.content }}</p>
             </div>
@@ -98,6 +106,7 @@
         </p>
       </div>
     </section> -->
+
     <!-- your trainers -->
     <!-- <section class="trainers py-28">
       <div class="contained-width col-12 grid">
@@ -108,10 +117,10 @@
       </div>
     </section> -->
     <!-- our community -->
-    <section class="community bg-[#fff0d4] py-28">
-      <div class="contained-width col-12 grid">
-        <p class="section-title col-12">We Care About Our Community</p>
-        <div class="modules col-12">
+    <section class="community bg-[#fff0d4] mb-2 md:mb-5 py-20 md:py-28">
+      <div class="contained-width col-span-12 grid">
+        <p class="section-title col-span-12">We Care About Our Community</p>
+        <div class="modules col-span-12">
           <div class="module">
             <img
               src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966"
@@ -131,16 +140,16 @@
             />
           </div>
         </div>
-        <div class="action col-12 flex justify-center">
+        <div class="action col-span-12 flex justify-center">
           <button class="cta-btn cta-btn-secondary">View more</button>
         </div>
-        <p class="regular-text-16 col-12 text-center">
+        <p class="regular-text-16 col-span-12 text-center">
           Everyone wants to keep fit but it gets hard to keep going alone.
         </p>
         <p class="regular-text-14 col-10-center text-center">
-          At JasFitness gym center, you'll be in a community of folks on the
-          same mission as you and you know how good that can be when you have
-          pals cheering you up at all times
+          At JasFitness center, you'll be in a community of folks on the same
+          mission as you and you know how good that can be when you have pals
+          cheering you up at all times
         </p>
         <p class="medium-text-24 col-10-center text-center">
           You'll never walk alone.
@@ -148,13 +157,13 @@
       </div>
     </section>
     <!-- testimonial -->
-    <section class="py-28">
+    <section class="mb-2 md:mb-5 py-20 md:py-28">
       <div class="testimonial contained-width col-12 grid">
         <!-- testimonial section -->
         <p class="section-title col-12">
           Hear From Happy Members Of Our Community
         </p>
-        <div class="testimonials grid col-10-center my-5">
+        <div class="testimonials grid col-10-center md:my-5">
           <CarouselScTestimonial />
         </div>
         <div class="divider col-10-center mb-5">
@@ -175,11 +184,11 @@
           </p>
         </div>
         <!-- plan cards -->
-        <div class="plans col-12 mb-5">
+        <div class="plans col-span-12 mb-5">
           <div
             v-for="(plan, index) in plans"
             :key="'plan ' + index + 1"
-            class="plan"
+            class="plan max-w-sm"
             :class="[isEven(index) ? 'light' : 'dark']"
           >
             <div class="plan-title-details">
@@ -216,7 +225,7 @@
         </div>
       </div>
       <!-- hmo section -->
-      <div class="contained-width col-12 grid pt-20">
+      <div class="contained-width col-12 grid pt-8 md:pt-20">
         <p class="section-title col-12">Our HMOs</p>
         <div class="hmo-cards col-10-center">
           <CarouselHmo />
@@ -229,7 +238,7 @@
         <p class="section-title col-10-center">Our Time Schedule</p>
         <div class="schedule-list grid col-10-center">
           <table class="table-fixed col-10-center place-self-center">
-            <tbody class="medium-text-20">
+            <tbody class="text-sm font-medium md:text-xl">
               <tr>
                 <td>Monday - Saturday</td>
                 <td>6.00am - 9.00pm</td>
@@ -271,10 +280,10 @@
           more easy, smooth, and take you through the right activity to achieve
           that goal.
         </p>
-        <p class="col-10-center light-text-12">
+        <!-- <p class="col-10-center light-text-12">
           [List of coaches that offer special classes and their classes (if
           possible with pictorial illustration)]
-        </p>
+        </p> -->
         <button
           class="cta-btn cta-btn-primary col-12 place-self-center w-fit capitalize"
         >
@@ -290,21 +299,29 @@
         <p class="section-title col-10-center">
           Get Instant Updates Directly Into Your Inbox
         </p>
-        <form class="newsletter-form col-10-center">
+        <form
+          @submit.prevent="submitHandler"
+          class="newsletter-form col-10-center"
+          ref="form"
+        >
           <label for="name" class="col-12">Full Name:</label>
           <input
             type="text"
             name="name"
             id="name"
             placeholder="Jon Snow Doe"
+            required
+            title="Your full name"
             class="col-12"
           />
           <label for="phone" class="col-12">Phone Number:</label>
           <input
-            type="text"
-            name="phone"
+            type="tel"
+            name="phone_number"
             id="phone"
             placeholder="080123456789"
+            required
+            title="Your phone number"
             class="col-12"
           />
           <label for="email" class="col-12">Email:</label>
@@ -313,27 +330,37 @@
             name="email"
             id="email"
             placeholder="example@email.com"
+            required
+            title="Your email address"
             class="col-12"
           />
-          <button
-            type="submit"
-            class="uppercase cta-btn cta-btn-secondary col-12"
-          >
-            Get Updates
-          </button>
         </form>
+        <button
+          @click="submitHandler"
+          type="submit"
+          class="uppercase cta-btn cta-btn-secondary col-10-center"
+        >
+          Get Updates
+        </button>
       </div>
     </section>
   </div>
 </template>
 
 <script setup>
-import { v4 as uuid } from 'uuid'
+import { ref } from 'vue'
 import AppIconCheck from '@/components/AppIconCheck.vue'
 
+import { validation } from '@/composables/validation'
+
 // import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
+import VIcon from '@/components/VIcon.vue'
 import CarouselScTestimonial from '../components/carousels/CarouselScTestimonial.vue'
 import CarouselHmo from '../components/CarouselHmo.vue'
+import AppIconAccountGroup from '@/components/icons/AppIconAccountGroup.vue'
+import AppIconAccesssibilityVue from '@/components/icons/AppIconAccesssibility.vue'
+import AppIconHeadLightbulb from '@/components/icons/AppIconHeadLightbulb.vue'
+import AppIconFileChartCheckVue from '@/components/icons/AppIconFileChartCheck.vue'
 
 const plans = [
   {
@@ -372,28 +399,28 @@ const plans = [
 const whyJasfitness = [
   {
     id: 1,
-    icon: '',
+    icon: AppIconAccountGroup,
     title: "Your're not Alone",
     content:
       "Consistency over motivation. You don't have to face your fitness goals alone. Let's do it TOGETHER as we've got you covered."
   },
   {
     id: 2,
-    icon: '',
+    icon: AppIconHeadLightbulb,
     title: 'Get Inspired',
     content:
       'Network and grow with like minds. Meet FitFam with similar goals who are committed to a life of healthy living and more.'
   },
   {
     id: 3,
-    icon: '',
+    icon: AppIconFileChartCheckVue,
     title: 'Result Oriented',
     content:
       "Regardless of your fitness level, we've got the equipment and professionals to get you the results you desire without breaking your back"
   },
   {
     id: 4,
-    icon: '',
+    icon: AppIconAccesssibilityVue,
     title: 'Accessibility',
     content:
       'Easy accessibility to all kinds of vehicles to ease your movement and a wonderful parking space... Get your vehicle cleaned up while you go hit those goals of yours inside the gym'
@@ -401,17 +428,38 @@ const whyJasfitness = [
 ]
 
 const isEven = (value) => value % 2 === 0
-console.log(uuid())
+
+const { useIsValidHybridInputs } = validation()
+function validateInputs({ inputArr = [] }) {
+  if (inputArr.length) {
+    return useIsValidHybridInputs(inputArr)
+  }
+}
+const form = ref(null)
+function extractFormInputValuesForValidation() {
+  const values = []
+  for (let element of form.value) {
+    values.push(element.value)
+  }
+  return values
+}
+function extractFormInputData() {
+  const formData = []
+  for (let element of form.value) {
+    formData.push({ name: element.name, value: element.value })
+  }
+  return formData
+}
+function submitHandler() {
+  const inputValues = extractFormInputData()
+  console.log(inputValues)
+  console.log(
+    validateInputs({ inputArr: extractFormInputValuesForValidation() })
+  )
+}
 </script>
 
 <style scoped>
-.scwrapper {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  background: #f5f5f5;
-  color: #303030;
-  min-height: 100vh;
-}
 .container {
   width: min(100% - 30px, 960px);
   margin-inline: auto;
@@ -420,26 +468,41 @@ console.log(uuid())
   width: min(100% - 30px, 960px);
   margin-inline: auto;
 }
+</style>
+
+<style lang="scss" scoped>
+.scwrapper {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background: #f5f5f5;
+  color: #303030;
+  min-height: 100vh;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 1rem;
+  }
+}
 .hero {
   padding-top: 6rem;
 }
 .image {
   /* grid-column: 2 / span 4; */
 
-  height: 340px;
+  height: 400px;
   /* width: 255px; */
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
   background: #aaa;
+
+  @media screen and (max-width: 767px) {
+    height: 340px;
+  }
 }
 .image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-.content {
-  grid-column: 6 / span 7;
 }
 .main-title {
   text-transform: uppercase;
@@ -463,6 +526,7 @@ console.log(uuid())
 .cta-btn-primary {
   background: #ffb628;
   text-transform: capitalize;
+  color: #fefefe;
 }
 .cta-btn-secondary {
   background: #303030;
@@ -476,18 +540,20 @@ console.log(uuid())
 }
 .cards {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 .card {
   text-align: center;
-  /* width: 171px; */
-  width: 23%;
+  // width: 23%;
+  width: 230px;
   border: none;
 }
 .card-body .img {
-  height: 24px;
+  /* height: 24px;
   width: 24px;
-  background: #aaa;
+  background: #aaa; */
   margin-bottom: 1rem;
 }
 .card-title {
@@ -501,8 +567,9 @@ console.log(uuid())
 }
 .modules {
   display: flex;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 .module {
   width: 260px;
@@ -572,6 +639,7 @@ console.log(uuid())
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .plan {
   border-radius: 20px;
