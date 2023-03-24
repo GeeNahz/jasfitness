@@ -22,12 +22,14 @@ import Membership from './modules/Membership'
 import { registerModules } from './register-modules'
 import './index.css'
 
-registerModules({
+const modulesConfigFiles = {
   landingpage: LandingPageModule,
   dashboard: Dashboard,
   auth: Auth,
   membership: Membership
-})
+}
+
+registerModules(modulesConfigFiles)
 
 const app = createApp(App)
   .use(store)
