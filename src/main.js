@@ -43,7 +43,8 @@ const app = createApp(App)
   .use(VueGtag, {
     config: { id: process.env.VUE_APP_GOOGLE_ANALYTICS_GTAG },
     router,
-    enabled: false
+    enabled: false,
+    PageTrackerExcludedRoutes: pageTrackerExcludedRoutes.value
   })
   .use(createMetaManager())
   .use(
