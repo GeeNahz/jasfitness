@@ -2,7 +2,9 @@
   <div class="w-full">
     <RadialProgressBar
       :diameter="diameter"
-      :completed-steps="percentageBoundary(Number(completedSteps))"
+      :completed-steps="
+        halfOrFullCirlce(percentageBoundary(Number(completedSteps)))
+      "
       :total-steps="totalSteps"
       :strokeWidth="strokeWidth"
       :innerStrokeWidth="strokeWidth"
@@ -31,7 +33,7 @@ import { ref } from 'vue'
 import RadialProgressBar from 'vue3-radial-progress'
 import { useRadialBar } from '@/composables/useRadialbarSettings'
 
-defineProps({
+const props = defineProps({
   completedSteps: {
     type: Number,
     default: 0
@@ -56,6 +58,13 @@ defineProps({
 const totalSteps = ref(100)
 
 const { percentageBoundary } = useRadialBar()
+
+function halfOrFullCirlce(value) {
+  if (!props.fullCircle) {
+    return value / 2
+  }
+  return value
+}
 </script>
 
 <style scoped></style>
