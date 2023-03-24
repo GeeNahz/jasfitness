@@ -36,9 +36,6 @@ const { pageTrackerExcludedRoutes } = useExcludeRoutes({
   modules: modulesConfigFiles
 })
 
-console.log('excluded routes', pageTrackerExcludedRoutes.value)
-console.log('measurement id: ', process.env.VUE_APP_GOOGLE_ANALYTICS_GTAG)
-
 const app = createApp(App)
   .use(store)
   .use(router)
