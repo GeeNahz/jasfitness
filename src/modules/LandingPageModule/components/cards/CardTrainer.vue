@@ -27,10 +27,10 @@ defineProps({
 
 <style lang="scss" scoped>
 .trainer-card {
-  width: 350px;
+  width: 250px;
   max-height: 120px;
   border: 1px solid #555555;
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
 
   & .trainer-image {
@@ -44,15 +44,44 @@ defineProps({
     width: 100%;
     height: 100%;
   }
+  @media screen and (min-width: 640px) {
+    .trainer-card {
+      width: 350px;
+      max-height: 120px;
+      border: 1px solid #555555;
+      border-radius: 8px;
+      overflow: hidden;
+
+      & .trainer-image {
+        width: 100%;
+        height: 100%;
+        background: #aaa;
+      }
+      & .trainer-card-body {
+        grid-column: 5 / span 7;
+
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
 }
 
 .regular-text-12 {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 8px;
+  @media screen and (min-width: 640px) {
+    font-weight: 400;
+    font-size: 12px;
+  }
 }
 .medium-text-18 {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
+  @media screen and (min-width: 640px) {
+    font-weight: 500;
+    font-size: 18px;
+  }
 }
 .grid {
   display: grid;
