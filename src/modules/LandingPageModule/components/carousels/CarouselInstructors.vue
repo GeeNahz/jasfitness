@@ -4,6 +4,7 @@
     :items-to-scroll="1"
     :wrap-around="true"
     snap-align="center"
+    :breakpoints="breakpoints"
     :transition="1500"
     :autoplay="5000"
     :pause-autoplay-on-hover="true"
@@ -66,7 +67,11 @@ export default defineComponent({
           'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, quam mollitia voluptatem alias consectetur quia, tempora atque unde beatae repellat perspiciatis, omnis provident nemo iste.'
       }
     ]
-    return { trainers }
+    const breakpoints = {
+      300: { itemsToShow: 1 },
+      700: { itemsToShow: 2 }
+    }
+    return { trainers, breakpoints }
   }
 })
 </script>
