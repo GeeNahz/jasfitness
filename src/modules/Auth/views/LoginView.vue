@@ -93,13 +93,15 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted } from 'vue'
+import { computed, ref, onMounted, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { reset } from '@formkit/core'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
+import { event } from 'vue-gtag'
 
 import { useState } from '@/composables/useState.js'
+import useCookies from '@/composables/cookies.js'
 import AuthLayout from '../components/AuthLayout.vue'
 
 useMeta({ title: 'Login' })
@@ -132,12 +134,22 @@ const errorMessage = computed(() => {
     return 'Something went wrong. Please try again later'
   }
 })
+const gtag = inject('gtag')
+const { allowCookies } = useCookies({ gtag: gtag })
 const handleSubmit = (credentials) => {
   // perform authentication async-ly
   store
     .dispatch('auth/login', credentials)
     .then(
       () => {
+        if (allowCookies.value) {
+          event('login', {
+            method: 'username_and_password',
+            event_label: 'Login to dashboard',
+            event_category: 'client_authentication',
+            value: credentials.username
+          })
+        }
         router.push({ name: 'DashboardHome' })
       },
       (error) => {
