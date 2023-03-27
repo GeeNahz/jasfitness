@@ -108,14 +108,14 @@
     </section> -->
 
     <!-- your trainers -->
-    <!-- <section class="trainers py-28">
+    <section class="trainers py-28">
       <div class="contained-width col-12 grid">
         <p class="section-title col-12">Meet Your Trainers</p>
         <div class="col-10-center">
           <CarouselInstructors />
         </div>
       </div>
-    </section> -->
+    </section>
     <!-- our community -->
     <section class="community bg-[#fff0d4] mb-2 md:mb-5 py-20 md:py-28">
       <div class="contained-width col-span-12 grid">
