@@ -1,8 +1,6 @@
 <template>
   <div class="scwrapper font-inter">
-    <div
-      class="contained-width hero grid col-span-12 mb-2 md:mb-5 pb-20 md:pb-28"
-    >
+    <div class="contained-width hero grid col-span-12 mb-2 md:mb-5">
       <div class="image col-span-12 md:col-span-4">
         <img
           src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540"
@@ -109,10 +107,10 @@
       </div>
     </section> -->
 
-    <!-- your trainers -->
-    <section class="trainers py-20 md:py-28 bg-white">
+    <!-- your team -->
+    <section class="team py-20 md:py-28 bg-white">
       <div class="contained-width col-span-12 grid">
-        <p class="section-title col-span-12">Meet Your Trainers</p>
+        <p class="section-title col-span-12">Meet The Team</p>
         <div class="col-10-center">
           <CarouselInstructors />
         </div>
