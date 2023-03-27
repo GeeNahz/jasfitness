@@ -1,6 +1,8 @@
 <template>
   <div class="scwrapper font-inter">
-    <div class="contained-width hero grid col-span-12 mb-2 md:mb-5">
+    <div
+      class="contained-width hero grid col-span-12 mb-2 md:mb-5 pb-20 md:pb-28"
+    >
       <div class="image col-span-12 md:col-span-4">
         <img
           src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540"
@@ -108,9 +110,9 @@
     </section> -->
 
     <!-- your trainers -->
-    <section class="trainers py-28">
-      <div class="contained-width col-12 grid">
-        <p class="section-title col-12">Meet Your Trainers</p>
+    <section class="trainers py-20 md:py-28 bg-white">
+      <div class="contained-width col-span-12 grid">
+        <p class="section-title col-span-12">Meet Your Trainers</p>
         <div class="col-10-center">
           <CarouselInstructors />
         </div>
@@ -184,7 +186,16 @@
           </p>
         </div>
         <!-- plan cards -->
-        <div class="plans col-span-12 mb-5">
+        <div class="col-span-12 plans">
+          <router-link
+            :to="{ name: 'PlansPage' }"
+            class="cta-btn cta-btn-secondary w-max mx-auto"
+            target="_blank"
+          >
+            View our plans
+          </router-link>
+        </div>
+        <!-- <div class="plans col-span-12 mb-5">
           <div
             v-for="(plan, index) in plans"
             :key="'plan ' + index + 1"
@@ -222,11 +233,13 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
-      <!-- hmo section -->
-      <div class="contained-width col-12 grid pt-8 md:pt-20">
-        <p class="section-title col-12">Our HMOs</p>
+    </section>
+    <!-- hmo section -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="contained-width col-span-12 grid">
+        <p class="section-title col-span-12">Our HMOs</p>
         <div class="hmo-cards col-10-center">
           <CarouselHmo />
         </div>
@@ -349,11 +362,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import AppIconCheck from '@/components/AppIconCheck.vue'
-
 import { validation } from '@/composables/validation'
 
-// import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
+import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
 import VIcon from '@/components/VIcon.vue'
 import CarouselScTestimonial from '../components/carousels/CarouselScTestimonial.vue'
 import CarouselHmo from '../components/CarouselHmo.vue'
@@ -362,6 +373,8 @@ import AppIconAccesssibilityVue from '@/components/icons/AppIconAccesssibility.v
 import AppIconHeadLightbulb from '@/components/icons/AppIconHeadLightbulb.vue'
 import AppIconFileChartCheckVue from '@/components/icons/AppIconFileChartCheck.vue'
 
+/* Used for plan card
+import AppIconCheck from '@/components/AppIconCheck.vue'
 const plans = [
   {
     name: 'premium',
@@ -395,6 +408,8 @@ const plans = [
     ]
   }
 ]
+const isEven = (value) => value % 2 === 0
+*/
 
 const whyJasfitness = [
   {
@@ -426,8 +441,6 @@ const whyJasfitness = [
       'Easy accessibility to all kinds of vehicles to ease your movement and a wonderful parking space... Get your vehicle cleaned up while you go hit those goals of yours inside the gym'
   }
 ]
-
-const isEven = (value) => value % 2 === 0
 
 const { useIsValidHybridInputs } = validation()
 function validateInputs({ inputArr = [] }) {
