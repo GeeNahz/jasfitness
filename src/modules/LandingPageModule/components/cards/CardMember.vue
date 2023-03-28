@@ -1,9 +1,9 @@
 <template>
   <div class="card-member-container">
-    <div class="card-wrapper px-3 pb-3 mb-4 min-h-fit w-52 sm:w-96">
+    <div class="card-wrapper px-3 pb-3 mb-4 min-h-fit w-64 sm:w-96">
       <div
         :title="profile.name"
-        class="card-header h-52 max-w-44 mb-2 bg-gray-400 rounded overflow-hidden"
+        class="card-header h-52 w-full mb-2 bg-gray-400 rounded overflow-hidden"
       >
         <!-- https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg -->
         <!-- :src="profile.imageUrl" -->
