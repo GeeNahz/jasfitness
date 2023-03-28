@@ -7,9 +7,7 @@
           alt="image"
         />
       </div>
-      <div
-        class="content grid col-span-12 md:col-span-7 md:col-start-6 text-center md:text-start"
-      >
+      <div class="content grid col-span-12 md:col-span-7 md:col-start-6">
         <p
           class="main-title col-span-12 sm:col-span-7 md:col-span-12 row-span-1 sm:row-span-3 md:row-span-1"
         >
@@ -21,7 +19,7 @@
           health like a pro with the help of our coaches
         </p>
         <button
-          class="cta-btn cta-btn-primary w-max mx-auto md:mx-0 col-span-12 sm:col-span-5 md:col-span-12"
+          class="cta-btn cta-btn-primary hero-btn w-max col-span-12 sm:col-span-5 md:col-span-12"
         >
           book yourself a free call today
         </button>
@@ -111,9 +109,16 @@
     <section class="team py-20 md:py-28 bg-white">
       <div class="contained-width col-span-12 grid">
         <p class="section-title col-span-12">Meet The Team</p>
-        <div class="col-10-center">
-          <CarouselInstructors />
+        <div class="col-span-12 w-full flex flex-wrap justify-center">
+          <CardMember
+            v-for="(staff, index) in teamInfo"
+            :key="index"
+            :profile="staff"
+          />
         </div>
+        <!-- <div class="col-10-center">
+          <CarouselInstructors />
+        </div> -->
       </div>
     </section>
     <!-- our community -->
@@ -362,10 +367,11 @@
 import { ref } from 'vue'
 import { validation } from '@/composables/validation'
 
-import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
+// import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
 import VIcon from '@/components/VIcon.vue'
 import CarouselScTestimonial from '../components/carousels/CarouselScTestimonial.vue'
 import CarouselHmo from '../components/CarouselHmo.vue'
+import CardMember from '../components/cards/CardMember.vue'
 import AppIconAccountGroup from '@/components/icons/AppIconAccountGroup.vue'
 import AppIconAccesssibilityVue from '@/components/icons/AppIconAccesssibility.vue'
 import AppIconHeadLightbulb from '@/components/icons/AppIconHeadLightbulb.vue'
@@ -440,6 +446,112 @@ const whyJasfitness = [
   }
 ]
 
+// const teamInfo1 = [
+//   {
+//     name: 'James Aondokaa Abagi.',
+//     imageUrl: '',
+//     title:
+//       'The co-founder and co-CEO of the Jas Fitness center is James Aondokaa Abagi.',
+//     description: `A dynamic managing director with over 20 years of corporate experience, proven skills in managing people at all organizational levels, expertise in creating partnerships and overseeing staff, as well as tactical plans to achieve strategic objectives. Proven leader with extensive experience in client service management, B2B, strategic creation and implementation, training, and mentoring.
+//     James is the group head and CEO of Exhale Grand Resources Limited and Exhale Avenue Real Estate. He is a multi-skilled businessman with excellent relationship-building and customer-relations aptitude. James is also skilled at using independent judgment and sound decision-making to contribute to the success of the company.
+//     James has held managerial positions with numerous large, rapidly growing businesses, including Modern-Shelter Systems and Services, White Avenue Group of Companies, SOW Real Estate, HAUSBA Smart Houses, VIP Tourism Limited, and Airtel Nigeria.
+//     Along with other management and team leads, James oversees all aspects of the Jas Fitness Center.`
+//   },
+//   {
+//     name: 'Lucy James Abagi (Lulu-Global)',
+//     imageUrl: '',
+//     title:
+//       'Luluglobal is the cofounder and CO-CEO of Jas Fitness Center as well as the Director of Programs at Connected Development in Abuja, Nigeria.',
+//     description: `Visionary businesswoman, social activist, development program expert, and adept fund-raiser, Lucy James Abagi (Lulu-Global). Her ability to analyze ideas and identify those that may be funded is the driving force behind Lu-Lu Global's creative, business, and entrepreneurial thinking. She frequently receives requests to serve as a board adviser for numerous organizations around the world.
+//     Together with her team at Connected Development, she successfully raised $5 million for over 30 social impact programs funded by the Open Society Initiative for West Africa, the Conrad N. Hilton Foundation, the Skoll Foundation, OXFAM (VOICE) Nigeria, The John D. and Catherine T. MacArthur Foundation, OXFAM NOVIB, ActionAid Nigeria, the Heinrich Böll Foundation, UN Women, National Endowment for Democracy, the Center for International Private Enterprise, USAID-Creative Associate International Inc.,  and the UN Spotlight Initiative, which reached approximately 4,000,000 rural people in nine African nations (Liberia, Kenya, Cameroon, Zimbabwe, Malawi, The Gambia, Uganda, Cape Verde, and Nigeria).
+//     Luluglobal oversees the Finance and Investment division at Jas Fitness, guaranteeing efficient operations and successful collaborations for the company.`
+//   },
+//   {
+//     name: 'Bemshima Peter',
+//     imageUrl: '',
+//     title:
+//       'At Jas Fitness Center, Bemshima oversees the frontend and backend technology and human resource infrastructure as the senior developer and chief operating officer.',
+//     description: `An experienced software engineer who has worked with complex business logic and backend technologies for approximately 3 years.
+//     Over the years, he has worked with expert teams to construct highly scalable infrastructure that automates businesses and their core principles. To build these infrastructures, we used tools and languages like Python, Golang, Dart, AWS, Linux servers, and others.
+//     Among the organizations I've worked with are NotionAfrica, Jas Fitness, and Ehealth4Everyone. `
+//   },
+//   {
+//     name: 'Jasmine Eliana James',
+//     imageUrl: '',
+//     title:
+//       "The Jas Fitness brand's heirloom and official brand representative is Jasmine.",
+//     description:
+//       'We reckon that Jas Fitness is a long-term project, and the next generation is secure with Jasmine in charge of all managerial matters.'
+//   },
+//   {
+//     name: 'Solomon John Akpan',
+//     imageUrl: '',
+//     title:
+//       'Solomon John Akpan, a public administration graduate from the Federal University of Technology, Minna, is the administrative manager at Jas Fitness Centre.',
+//     description:
+//       'At Jas Fitness, Solomon is in charge of customer service and satisfaction as well as daily facility management.'
+//   },
+//   {
+//     name: 'Zion Edet Effiong',
+//     imageUrl: '',
+//     title:
+//       'With more than five years of experience working in the health and fitness industry, Zion Edet Effiong is the head coach at the Jas Fitness facility.',
+//     description: `Full-body instruction, cardio, aerobics, tabata, abdominals, and body-building are Coach Zion's areas of expertise.
+//     At the Jas Fitness facility, Coach Zion manages the daily training and exercise regimen while overseeing a group of over 10 instructors.`
+//   }
+// ]
+
+const teamInfo = [
+  {
+    name: 'James Aondokaa Abagi.',
+    imageUrl: '',
+    title: 'Co-founder and Co-CEO of Jas Fitness center.',
+    description: `James is a dynamic managing director with over 20 years of corporate experience, proven skills in managing people at all organizational levels, expertise in creating partnerships and overseeing staff, as well as tactical plans to achieve strategic objectives. Proven leader with extensive experience in client service management, B2B, strategic creation and implementation, training, and mentoring.
+    James is the group head and CEO of Exhale Grand Resources Limited and Exhale Avenue Real Estate. He is a multi-skilled businessman with excellent relationship-building and customer-relations aptitude. He is also skilled at using independent judgment and sound decision-making to contribute to the success of the company.
+    James has held managerial positions with numerous large, rapidly growing businesses, including Modern-Shelter Systems and Services, White Avenue Group of Companies, SOW Real Estate, HAUSBA Smart Houses, VIP Tourism Limited, and Airtel Nigeria.
+    Along with other management and team leads, James oversees all aspects of the Jas Fitness Center.`
+  },
+  {
+    name: 'Lucy James Abagi (Lulu-Global)',
+    imageUrl: '',
+    title: `Co-founder and Co-CEO of Jas Fitness Center.
+      Director of Programs at Connected Development in Abuja, Nigeria.`,
+    description: `Lucy James Abagi (Lulu-Global) is a visionary businesswoman, social activist, development program expert, and adept fund-raiser. Her ability to analyze ideas and identify those that may be funded is the driving force behind Lu-Lu Global's creative, business, and entrepreneurial thinking. She frequently receives requests to serve as a board adviser for numerous organizations around the world.
+    Together with her team at Connected Development, she successfully raised $5 million for over 30 social impact programs funded by the Open Society Initiative for West Africa, the Conrad N. Hilton Foundation, the Skoll Foundation, OXFAM (VOICE) Nigeria, The John D. and Catherine T. MacArthur Foundation, OXFAM NOVIB, ActionAid Nigeria, the Heinrich Böll Foundation, UN Women, National Endowment for Democracy, the Center for International Private Enterprise, USAID-Creative Associate International Inc., and the UN Spotlight Initiative, which reached approximately 4,000,000 rural people in nine African nations (Liberia, Kenya, Cameroon, Zimbabwe, Malawi, The Gambia, Uganda, Cape Verde, and Nigeria).
+    Luluglobal oversees the Finance and Investment division at Jas Fitness, guaranteeing efficient operations and successful collaborations for the company.`
+  },
+  {
+    name: 'Bemshima Peter',
+    imageUrl: '',
+    title: 'Senior developer and chief operating officer.',
+    description: `At Jas Fitness Center, Bemshima oversees the frontend and backend technology and human resource infrastructure. An experienced software engineer who has worked with complex business logic and backend technologies for approximately 3 years.
+    Over the years, he has worked with expert teams to construct highly scalable infrastructure that automates businesses and their core principles. To build these infrastructures, tools and languages like Python, Golang, Dart, AWS, Linux servers, and others were used.
+    Among the organizations he has worked with are NotionAfrica, Jas Fitness, and Ehealth4Everyone. `
+  },
+  {
+    name: 'Jasmine Eliana James',
+    imageUrl: '',
+    title:
+      "The Jas Fitness brand's heirloom and official brand representative.",
+    description:
+      'We reckon that Jas Fitness is a long-term project, and the next generation is secure with Jasmine in charge of all managerial matters.'
+  },
+  {
+    name: 'Solomon John Akpan',
+    imageUrl: '',
+    title: 'Administrative Manager.',
+    description:
+      'A public administration graduate from the Federal University of Technology, Minna, Solomon is the administrative manager at Jas Fitness Centre. He is in charge of customer service and satisfaction as well as daily facility management.'
+  },
+  {
+    name: 'Zion Edet Effiong',
+    imageUrl: '',
+    title: 'Head Coach.',
+    description: `With more than five years of experience working in the health and fitness industry, Zion Edet Effiong is the head coach at the Jas Fitness facility. Full-body instruction, cardio, aerobics, tabata, abdominals, and body-building are Coach Zion's areas of expertise.
+    At the Jas Fitness facility, Coach Zion manages the daily training and exercise regimen while overseeing a group of over 10 instructors.`
+  }
+]
+
 const { useIsValidHybridInputs } = validation()
 function validateInputs({ inputArr = [] }) {
   if (inputArr.length) {
@@ -495,6 +607,12 @@ function submitHandler() {
 }
 .hero {
   padding-top: 6rem;
+  & .content {
+    @apply text-center md:text-start;
+  }
+  & .hero-btn {
+    @apply mx-auto md:mx-0;
+  }
 }
 .image {
   /* grid-column: 2 / span 4; */
@@ -546,8 +664,7 @@ function submitHandler() {
 
 .section-title {
   text-align: center;
-  font-weight: 500;
-  font-size: 32px;
+  @apply text-5xl font-semibold;
 }
 .cards {
   display: flex;
