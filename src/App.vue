@@ -6,6 +6,7 @@
   </metainfo>
   <div class="h-full relative">
     <router-view />
+    <AppCookieBanner />
     <TheAlerts />
   </div>
 </template>
@@ -17,6 +18,7 @@ import { inject, ref } from 'vue'
 import useCookies from './composables/cookies.js'
 
 import TheAlerts from './components/TheAlerts.vue'
+import AppCookieBanner from './components/AppCookieBanner.vue'
 
 export default {
   setup() {
@@ -41,7 +43,7 @@ export default {
 
     return { displayBanner, okBannerClicked }
   },
-  components: { TheAlerts }
+  components: { TheAlerts, AppCookieBanner }
 }
 </script>
 
