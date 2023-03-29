@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div v-if="displayBanner" class="banner-container text-sm font-normal">
+    <div v-if="displayBanner" class="banner-container" style="width: 100%">
       <div class="banner-wrapper">
         <p class="mb-3">
           We use cookies🍪 to enhance your browsing experience and analyze our
@@ -48,7 +48,7 @@ export default defineComponent({
 <style scoped lang="scss">
 // cookies banner template
 .banner-container {
-  @apply fixed p-4 bg-[#fefefe] w-full rounded-none shadow bottom-0 right-0 left-0 z-20 border-t flex justify-center;
+  @apply fixed bottom-0 left-0 right-0 text-sm font-normal p-4 bg-[#fefefe] w-full shadow z-20 border-t flex justify-center;
 
   & .banner-wrapper {
     @apply flex items-start md:items-center gap-3;
