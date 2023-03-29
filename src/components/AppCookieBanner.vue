@@ -34,12 +34,11 @@ export default defineComponent({
       okClicked()
     }
 
-    // un comment this to enable cookies consent banner display
-    // if (showBanner.value) {
-    //   setTimeout(() => {
-    //     displayBanner.value = true
-    //   }, 10000)
-    // }
+    if (showBanner.value) {
+      setTimeout(() => {
+        displayBanner.value = true
+      }, 10000)
+    }
 
     return { displayBanner, okBannerClicked, showBanner }
   }
