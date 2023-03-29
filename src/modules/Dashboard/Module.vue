@@ -12,7 +12,6 @@
       </div>
       <router-view :key="$route.path" class="h-full w-full" />
     </div>
-    <AppCookieBanner />
   </div>
 </template>
 
@@ -22,15 +21,13 @@ import { provide, ref } from 'vue'
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
 import Onboarding from './components/OnBoarding.vue'
-import AppCookieBanner from '@/components/AppCookieBanner.vue'
 
 export default {
   name: 'DashboardView',
   components: {
     TheSidebar,
     DashboardHandleModalsDisplay,
-    Onboarding,
-    AppCookieBanner
+    Onboarding
   },
   setup() {
     const isReady = ref(false)
