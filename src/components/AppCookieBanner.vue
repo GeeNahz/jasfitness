@@ -4,12 +4,12 @@
       <div class="banner-wrapper">
         <p class="mb-3">
           We use cookies🍪 to enhance your browsing experience and analyze our
-          traffic. For more details check our policy
+          traffic.
           <!-- <router-link
             class="link text-blue-600 visited:text-purple-600 underline underline-offset-4"
             to="/cookiesPolicy"
             target="_blank"
-            >here</router-link
+            >For more details check our policy here</router-link
           > -->
         </p>
         <button class="btn btn-warning" @click="okBannerClicked">OK</button>
