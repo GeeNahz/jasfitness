@@ -6,19 +6,6 @@
   </metainfo>
   <div class="h-full relative">
     <router-view />
-    <!-- <transition name="slide">
-      <div v-if="displayBanner" class="banner-container text-sm font-light">
-        <p class="mb-3">
-          We use 🍪. For more details check our policy
-          <router-link
-            class="link text-blue-600 visited:text-purple-600 underline underline-offset-4"
-            to="/cookiesPolicy"
-            >here</router-link
-          >
-        </p>
-        <button class="btn btn-warning" @click="okBannerClicked">OK</button>
-      </div>
-    </transition> -->
     <TheAlerts />
   </div>
 </template>
