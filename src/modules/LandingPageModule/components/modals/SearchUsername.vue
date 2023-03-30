@@ -56,8 +56,8 @@ import { ref } from 'vue'
 
 import { useModalOperations } from '@/composables/modalOperations'
 
-import AppIconSearch from '@/components/AppIconSearch.vue'
-import AppIconClose from '@/components/AppIconClose.vue'
+import AppIconSearch from '@/components/icons/AppIconSearch.vue'
+import AppIconClose from '@/components/icons/AppIconClose.vue'
 
 const { toggleLandingpageModal } = useModalOperations()
 

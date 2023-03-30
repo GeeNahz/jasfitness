@@ -296,12 +296,12 @@ import { ref, inject } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
-import AppIconSetting from '@/components/AppIconSetting.vue'
-import AppIconClasses from '@/components/AppIconClasses.vue'
-import AppIconDashboard from '@/components/AppIconDashboard.vue'
-import AppIconSubscription from '@/components/AppIconSubscription.vue'
-import AppIconRecord from '@/components/AppIconRecord.vue'
-import AppIconLogout from '@/components/AppIconLogout.vue'
+import AppIconSetting from '@/components/icons/AppIconSetting.vue'
+import AppIconClasses from '@/components/icons/AppIconClasses.vue'
+import AppIconDashboard from '@/components/icons/AppIconDashboard.vue'
+import AppIconSubscription from '@/components/icons/AppIconSubscription.vue'
+import AppIconRecord from '@/components/icons/AppIconRecord.vue'
+import AppIconLogout from '@/components/icons/AppIconLogout.vue'
 
 const router = useRouter()
 const store = useStore()

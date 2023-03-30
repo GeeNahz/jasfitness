@@ -45,7 +45,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
-import AppIconInfo from '@/components/AppIconInfo.vue'
+import AppIconInfo from '@/components/icons/AppIconInfo.vue'
 
 const currentYear = computed(() => new Date().getFullYear())
 const currentMonth = computed(() => {

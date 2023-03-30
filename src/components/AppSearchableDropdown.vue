@@ -81,7 +81,7 @@
 import { ref, computed, watch } from 'vue'
 import { v4 as uuid } from 'uuid'
 
-import AppIconSearch from './AppIconSearch.vue'
+import AppIconSearch from './icons/AppIconSearch.vue'
 import AppIconMenuUpOutline from './icons/AppIconMenuUpOutline.vue'
 import AppIconCheckOutline from './icons/AppIconCheckOutline.vue'
 

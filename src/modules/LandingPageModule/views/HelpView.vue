@@ -84,8 +84,8 @@ import { ref, computed } from 'vue'
 import { useModalOperations } from '@/composables/modalOperations.js'
 
 import VIcon from '@/components/VIcon.vue'
-import AppIconSearch from '@/components/AppIconSearch.vue'
-import AppIconAccount from '@/components/AppIconAccount.vue'
+import AppIconSearch from '@/components/icons/AppIconSearch.vue'
+import AppIconAccount from '@/components/icons/AppIconAccount.vue'
 
 const helpItems = [
   {

@@ -34,7 +34,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
-import AppIconCloseAlert from './AppIconCloseAlert.vue'
+import AppIconCloseAlert from './icons/AppIconCloseAlert.vue'
 
 const store = useStore()
 

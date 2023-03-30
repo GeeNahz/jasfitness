@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import AppIconClose from './AppIconClose.vue'
+import AppIconClose from './icons/AppIconClose.vue'
 
 defineProps({
   chipElement: { type: Object, required: true }
