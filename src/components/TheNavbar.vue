@@ -187,11 +187,13 @@
             class="auth-btns flex flex-col items-start justify-center gap-2 font-semibold text-base"
           >
             <router-link
+              @click="toggleNavbar"
               class="capitalize flex items-center justify-center rounded-xl w-full px-4 py-2"
               :to="{ name: 'LoginPage' }"
               >login</router-link
             >
             <router-link
+              @click="toggleNavbar"
               class="capitalize bg-[#ffb628] flex items-center justify-center text-white rounded-xl w-full px-4 py-2"
               :to="{ name: 'PlansPage' }"
             >
@@ -231,10 +233,10 @@ watch(showNavbar, () => {
 const route = useRoute()
 const showWhiteBackground = ref(false)
 onMounted(() => {
-  showNavbar.value = false
-  if (route.path == '/') {
-    showNavbar.value = false
-  }
+  // showNavbar.value = false
+  // if (route.path == '/') {
+  //   showNavbar.value = false
+  // }
 
   if (route.path !== '/' || document.body.getBoundingClientRect().top < -150) {
     showWhiteBackground.value = true
