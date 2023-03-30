@@ -217,16 +217,14 @@ import { useRoute } from 'vue-router'
 
 const showNavbar = ref(false)
 
-const hideOverflow = () => {
-  document.querySelector('body').classList.toggle('overflow-y-hidden')
-}
 const toggleNavbar = () => {
   showNavbar.value = !showNavbar.value
-  hideOverflow()
 }
 watch(showNavbar, () => {
   if (showNavbar.value) {
-    hideOverflow()
+    document.querySelector('body').classList.add('overflow-y-hidden')
+  } else {
+    document.querySelector('body').classList.remove('overflow-y-hidden')
   }
 })
 
