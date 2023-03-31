@@ -221,7 +221,11 @@
                       <div
                         class="rotate-90 absolute right-3 uppercase flex flex-col items-center justify-center font-semibold"
                       >
-                        <p class="text-4xl">{{ dashboardSub.sub_wheel }}%</p>
+                        <p class="text-3xl">
+                          {{
+                            percentageBoundary(Number(dashboardSub.sub_wheel))
+                          }}%
+                        </p>
                         <p class="text-sm font-normal">Completed</p>
                       </div>
                     </DashboardRadialProgressBar>
@@ -239,7 +243,9 @@
                         class="rotate-90 absolute -right-0 uppercase flex flex-col items-center justify-center font-semibold"
                       >
                         <p class="text-xl leading-none">
-                          {{ dashboardSub.sub_wheel }}%
+                          {{
+                            percentageBoundary(Number(dashboardSub.sub_wheel))
+                          }}%
                         </p>
                         <p class="text-xs font-light leading-none">Completed</p>
                       </div>
@@ -292,7 +298,7 @@ import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkelet
 
 useMeta({ title: 'Subscription' })
 
-const { statusColorCodeHalf } = useRadialBar()
+const { statusColorCodeHalf, percentageBoundary } = useRadialBar()
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
 const store = useStore()
