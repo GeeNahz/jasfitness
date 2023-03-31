@@ -239,7 +239,7 @@ const creds = computed(() =>
 )
 
 onMounted(() => {
-  if (!creds.value) {
+  if (!gym_attendance.value) {
     store
       .dispatch('dashboard/dashboard_gym_attendance', user.value.user_id)
       .then(
@@ -251,7 +251,7 @@ onMounted(() => {
         }
       )
   }
-  if (creds.value) {
+  if (gym_attendance.value) {
     prepareData()
   }
 })
@@ -266,7 +266,7 @@ const {
 const gym_attendance = computed(() =>
   store.state.dashboard.dashboardGymnAttendance
     ? store.state.dashboard.dashboardGymnAttendance
-    : {}
+    : false
 )
 const preparedChartData = ref({
   timeIn: [],
