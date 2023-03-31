@@ -12,21 +12,32 @@
             >For more details check our policy here</router-link
           > -->
         </p>
-        <button class="btn btn-warning" @click="okBannerClicked">OK</button>
+        <button
+          class="btn btn-warning text-white px-12"
+          @click="okBannerClicked"
+        >
+          OK
+        </button>
+        <!-- <button
+          class="btn btn-outline-dark whitespace-nowrap px-1"
+          @click="toggleShowCookiesPreferences"
+        >
+          Cookie Settings
+        </button> -->
       </div>
     </div>
   </transition>
 </template>
 
 <script>
-import { ref, inject, defineComponent } from 'vue'
+import { ref, inject, defineComponent, watch } from 'vue'
 import useCookies from '@/composables/cookies.js'
 
 export default defineComponent({
   setup() {
     const gtag = inject('gtag')
 
-    const { showBanner, okClicked } = useCookies({ gtag: gtag })
+    const { showBanner, okClicked, allowCookies } = useCookies({ gtag: gtag })
 
     const displayBanner = ref(false)
     const okBannerClicked = () => {
@@ -37,10 +48,22 @@ export default defineComponent({
     if (showBanner.value) {
       setTimeout(() => {
         displayBanner.value = true
-      }, 10000)
+      }, 2000)
     }
 
-    return { displayBanner, okBannerClicked, showBanner }
+    const { toggleShowCookiesPreferences } = inject('cookiesPreferences')
+    watch(allowCookies, () => {
+      if (allowCookies.value) {
+        displayBanner.value = false
+      }
+    })
+
+    return {
+      displayBanner,
+      okBannerClicked,
+      showBanner,
+      toggleShowCookiesPreferences
+    }
   }
 })
 </script>
@@ -51,9 +74,9 @@ export default defineComponent({
   @apply fixed bottom-0 left-0 right-0 text-sm font-normal p-4 bg-[#fefefe] w-full shadow z-20 border-t flex justify-center;
 
   & .banner-wrapper {
-    @apply flex items-start md:items-center gap-3;
+    @apply flex flex-col sm:flex-row items-start md:items-center gap-3;
     & .btn {
-      @apply py-1 px-3 md:px-5 text-sm md:text-base font-inter font-medium rounded-sm text-white;
+      @apply py-1 text-sm md:text-base font-inter font-medium rounded-sm;
     }
   }
 }
