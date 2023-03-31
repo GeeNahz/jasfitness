@@ -7,18 +7,20 @@
   <div class="h-full relative">
     <router-view />
     <AppCookieBanner />
+    <AppPersonalizeCookies v-if="showCookiesPreferences" />
     <TheAlerts />
   </div>
 </template>
 
 <script>
 import { useMeta } from 'vue-meta'
-import { inject, ref } from 'vue'
+import { provide, inject, ref } from 'vue'
 
 import useCookies from './composables/cookies.js'
 
 import TheAlerts from './components/TheAlerts.vue'
 import AppCookieBanner from './components/AppCookieBanner.vue'
+import AppPersonalizeCookies from './components/AppPersonalizeCookies.vue'
 
 export default {
   setup() {
@@ -41,9 +43,15 @@ export default {
       }, 10000)
     }
 
-    return { displayBanner, okBannerClicked }
+    const showCookiesPreferences = ref(false)
+    function toggleShowCookiesPreferences() {
+      showCookiesPreferences.value = !showCookiesPreferences.value
+    }
+    provide('cookiesPreferences', { toggleShowCookiesPreferences })
+
+    return { displayBanner, okBannerClicked, showCookiesPreferences }
   },
-  components: { TheAlerts, AppCookieBanner }
+  components: { TheAlerts, AppCookieBanner, AppPersonalizeCookies }
 }
 </script>
 
