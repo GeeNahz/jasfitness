@@ -7,6 +7,7 @@
       <TheSidebar />
     </div>
     <div class="main-container w-full">
+      <!-- <SnowFlakes /> -->
       <div class="z-50">
         <Onboarding />
       </div>
@@ -21,6 +22,7 @@ import { provide, ref } from 'vue'
 import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
 import TheSidebar from './components/TheSidebar.vue'
 import Onboarding from './components/OnBoarding.vue'
+// import SnowFlakes from './components/SnowFlakesEffect.vue'
 
 export default {
   name: 'DashboardView',
@@ -28,6 +30,7 @@ export default {
     TheSidebar,
     DashboardHandleModalsDisplay,
     Onboarding
+    // SnowFlakes
   },
   setup() {
     const isReady = ref(false)
