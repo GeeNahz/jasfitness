@@ -96,7 +96,13 @@
                         : 'bg-gray-500 disabled'
                     ]"
                   >
-                    Freeze
+                    {{
+                      !dashboardSub.is_expired &&
+                      dashboardSub.freezeable &&
+                      dashboardHomeState.freeze.value < 4
+                        ? 'Freeze'
+                        : 'Not available'
+                    }}
                   </button>
                 </div>
               </template>
