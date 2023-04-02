@@ -6,9 +6,8 @@
         class="card-header h-52 w-full mb-2 bg-gray-400 rounded overflow-hidden"
       >
         <!-- https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg -->
-        <!-- :src="profile.imageUrl" -->
         <img
-          src="https://marketplace.canva.com/EAFEits4-uw/1/0/1600w/canva-boy-cartoon-gamer-animated-twitch-profile-photo-oEqs2yqaL8s.jpg"
+          :src="profile.imageUrl"
           :alt="profile.name"
           class="h-full w-full object-cover"
         />
