@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { useExcludeRoutes } from './composables/excludeRoutes'
+// import { useExcludeRoutes } from './composables/excludeRoutes'
 import { plugin, defaultConfig } from '@formkit/vue'
 import { generateClasses } from '@formkit/themes'
 import { createMetaManager } from 'vue-meta'
@@ -32,9 +32,9 @@ const modulesConfigFiles = {
 
 registerModules(modulesConfigFiles)
 
-const { pageTrackerExcludedRoutes } = useExcludeRoutes({
-  modules: modulesConfigFiles
-})
+// const { pageTrackerExcludedRoutes } = useExcludeRoutes({
+//   modules: modulesConfigFiles
+// })
 
 const app = createApp(App)
   .use(store)
@@ -43,8 +43,8 @@ const app = createApp(App)
   .use(VueGtag, {
     config: { id: process.env.VUE_APP_GOOGLE_ANALYTICS_GTAG },
     router,
-    enabled: false,
-    PageTrackerExcludedRoutes: pageTrackerExcludedRoutes.value
+    enabled: false
+    // PageTrackerExcludedRoutes: pageTrackerExcludedRoutes.value
   })
   .use(createMetaManager())
   .use(
