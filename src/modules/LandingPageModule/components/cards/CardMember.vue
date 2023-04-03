@@ -66,3 +66,14 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped lang="scss">
+.card-content-description {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease-in-out;
+}
+.toggle:checked + .card-content-description {
+  max-height: 1000px;
+}
+</style>
