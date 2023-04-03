@@ -664,7 +664,7 @@ function submitHandler() {
 
 .section-title {
   text-align: center;
-  @apply text-5xl font-semibold mb-12;
+  @apply text-3xl md:text-5xl font-semibold mb-12;
 }
 .cards {
   display: flex;
