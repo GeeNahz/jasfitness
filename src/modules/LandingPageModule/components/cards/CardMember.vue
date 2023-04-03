@@ -19,11 +19,28 @@
         <div class="card-content-title text-xs sm:text-sm text-slate-500">
           {{ profile.title }}
         </div>
-        <hr class="my-3 hidden md:block" />
-        <div
-          class="card-content-description bg-white text-gray-900 text-xs hidden md:block"
-        >
-          {{ profile.description }}
+        <hr class="my-2 md:my-3" />
+        <div class="relative transition text-slate-500 rounded-sm">
+          <div class="lbl-container flex gap-2 text-sm py-1">
+            <p v-if="!checkboxToggle">+</p>
+            <p v-else>-</p>
+            <label for="toggle" class="lbl-toggle">Read more</label>
+          </div>
+          <input
+            type="checkbox"
+            name="toggle"
+            v-model="checkboxToggle"
+            id="toggle"
+            @blur="toggleCheckbox({ value: false })"
+            class="toggle w-full opacity-0 absolute top-0 left-0 right-0 bottom-0"
+          />
+          <div
+            class="card-content-description bg-white text-gray-900 pt-2 text-xs"
+          >
+            <p class="desc-content">
+              {{ profile.description }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +48,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'CardMember',
   props: {
@@ -41,7 +58,11 @@ export default defineComponent({
     }
   },
   setup() {
-    return {}
+    const checkboxToggle = ref(false)
+    function toggleCheckbox({ value }) {
+      checkboxToggle.value = value
+    }
+    return { checkboxToggle, toggleCheckbox }
   }
 })
 </script>
