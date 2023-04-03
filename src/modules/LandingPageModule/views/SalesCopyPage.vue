@@ -316,7 +316,7 @@
           Get Instant Updates Directly Into Your Inbox
         </p>
         <form
-          @submit.prevent="submitHandler"
+          @keyup.enter="submitHandler"
           class="newsletter-form col-10-center"
           ref="form"
         >
@@ -327,7 +327,6 @@
             id="name"
             placeholder="Jon Snow Doe"
             required
-            title="Your full name"
             class="col-12"
           />
           <label for="phone" class="col-12">Phone Number:</label>
@@ -337,7 +336,6 @@
             id="phone"
             placeholder="080123456789"
             required
-            title="Your phone number"
             class="col-12"
           />
           <label for="email" class="col-12">Email:</label>
@@ -347,16 +345,20 @@
             id="email"
             placeholder="example@email.com"
             required
-            title="Your email address"
             class="col-12"
           />
+          <div v-if="showErrorMessage" class="error-message mt-2">
+            <p class="text-xs text-red-400">
+              Every field is required to submit the form
+            </p>
+          </div>
         </form>
         <button
           @click="submitHandler"
           type="submit"
           class="uppercase cta-btn cta-btn-secondary col-10-center"
         >
-          Get Updates
+          {{ isLoading ? 'Submitting' : 'Get Updates' }}
         </button>
       </div>
     </section>
@@ -365,6 +367,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+
 import { validation } from '@/composables/validation'
 
 // import CarouselInstructors from '../components/carousels/CarouselInstructors.vue'
@@ -376,6 +380,7 @@ import AppIconAccountGroup from '@/components/icons/AppIconAccountGroup.vue'
 import AppIconAccesssibilityVue from '@/components/icons/AppIconAccesssibility.vue'
 import AppIconHeadLightbulb from '@/components/icons/AppIconHeadLightbulb.vue'
 import AppIconFileChartCheckVue from '@/components/icons/AppIconFileChartCheck.vue'
+import EmailService from '@/services/EmailServices/EmailService'
 
 /* Used for plan card
 import AppIconCheck from '@/components/AppIconCheck.vue'
@@ -552,17 +557,17 @@ const teamInfo = [
   }
 ]
 
-const { useIsValidHybridInputs } = validation()
-function validateInputs({ inputArr = [] }) {
-  if (inputArr.length) {
-    return useIsValidHybridInputs(inputArr)
-  }
-}
+const isLoading = ref(false)
+
 const form = ref(null)
+const showErrorMessage = ref(false)
+const { useIsValidHybridInputs } = validation()
 function extractFormInputValuesForValidation() {
   const values = []
-  for (let element of form.value) {
-    values.push(element.value)
+  if (form.value !== null) {
+    for (let element of form.value) {
+      values.push(element.value)
+    }
   }
   return values
 }
@@ -573,12 +578,52 @@ function extractFormInputData() {
   }
   return formData
 }
-function submitHandler() {
-  const inputValues = extractFormInputData()
-  console.log(inputValues)
-  console.log(
-    validateInputs({ inputArr: extractFormInputValuesForValidation() })
-  )
+function validateInputs() {
+  const arr = extractFormInputValuesForValidation()
+  if (arr.length) {
+    return useIsValidHybridInputs(arr)
+  }
+}
+// const validatedFields = computed(() => {
+//   console.log('Computed: ', validateInputs())
+//   return validateInputs()
+// })
+const store = useStore()
+async function submitHandler() {
+  if (validateInputs()) {
+    isLoading.value = true
+    const inputValues = extractFormInputData()
+
+    try {
+      let res = await EmailService.enquiry(inputValues)
+      if (res.status == 200) {
+        store.dispatch('landingpage/success', {
+          message: 'Your details were successfully submitted.',
+          timeout: 7000
+        })
+      }
+      if (res.status === 200) {
+        store.dispatch('landingpage/warning', {
+          message: 'Your details have already been submitted.',
+          timeout: 7000
+        })
+      }
+    } catch (error) {
+      if (error.response?.status === 400) {
+        store.dispatch('landingpage/error', {
+          message:
+            'An error occured while trying to submit your data. Please try again.'
+        })
+      }
+    } finally {
+      isLoading.value = false
+    }
+  } else {
+    showErrorMessage.value = true
+    setTimeout(() => {
+      showErrorMessage.value = false
+    }, 5000)
+  }
 }
 </script>
 
