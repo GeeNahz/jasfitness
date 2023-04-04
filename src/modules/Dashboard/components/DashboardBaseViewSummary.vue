@@ -77,6 +77,7 @@ const dashboardHome = computed(() =>
 if (!dashboardHome.value) {
   try {
     await store.dispatch('dashboard/dashboard_home')
+    // TODO: check if dashboardBase has a freeze obj with an active flag. If it does, call the store action to update the freezeSubStatus state by changing it is_freezed state to true and adding the freezed date to the details obj within freezeSubStatus
   } catch {
     const message =
       'Something went wrong while fetching your records. Refresh the browser to try fix it.'
