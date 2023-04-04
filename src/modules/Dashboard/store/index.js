@@ -67,6 +67,9 @@ export default {
     },
     SET_DASHBOARD_FITNESS_ASSESSMENT_STATE(state, payload) {
       state.dashboardFitnessAssessment = payload
+    },
+    SET_FREEZED_SUB_STATE(state, payload) {
+      Object.assign(state.freezedSubStatus, payload)
     }
   },
   actions: {
@@ -240,6 +243,9 @@ export default {
         .finally(() => {
           commit('STATUS_RESET')
         })
+    },
+    freezed_sub_toggle({ commit }, data) {
+      commit('SET_FREEZED_SUB_STATE', data)
     }
   },
   modules: {}
