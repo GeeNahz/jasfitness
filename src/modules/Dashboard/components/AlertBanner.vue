@@ -36,5 +36,10 @@ const freezedSubDetail = computed(() => store.state.dashboard.freezedSubStatus)
 function unfreezeSubscripttion() {
   console.log('Subscription unfreezed')
   // call store action to unfreeze subscription here
+  // after successfull unfreeze, do the following
+  store.dispatch('dashboard/freezed_sub_toggle', {
+    is_freezed: false,
+    details: {}
+  })
 }
 </script>
