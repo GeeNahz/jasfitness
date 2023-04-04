@@ -10,7 +10,7 @@
     </div>
     <div class="content">
       <p class="text-sm text-blue-800 font-medium">
-        Your subscription was paused on 23rd July, 2023
+        {{ freezedSubDetail.details.message }}
       </p>
     </div>
     <div class="action">
