@@ -76,8 +76,16 @@ const dashboardHome = computed(() =>
 
 if (!dashboardHome.value) {
   try {
-    await store.dispatch('dashboard/dashboard_home')
-    // TODO: check if dashboardBase has a freeze obj with an active flag. If it does, call the store action to update the freezeSubStatus state by changing it is_freezed state to true and adding the freezed date to the details obj within freezeSubStatus
+    let res = await store.dispatch('dashboard/dashboard_home')
+    if (res.freeze.is_active) {
+      let freezedDate = new Date().toLocaleString()
+      store.dispatch('dashboard/freezed_sub_toggle', {
+        is_freezed: true,
+        details: {
+          message: `Your subscription was paused on the ${freezedDate}`
+        }
+      })
+    }
   } catch {
     const message =
       'Something went wrong while fetching your records. Refresh the browser to try fix it.'
