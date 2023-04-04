@@ -5,6 +5,7 @@
       <div
         class="main-body xl:max-h-screen xl:w-full xl:overflow-y-scroll pb-4 lg:pb-0 lg:pt-3 lg:pr-20"
       >
+        <AlertBanner />
         <slot name="welcome-section"></slot>
       </div>
       <!-- inner side bar -->
@@ -60,6 +61,7 @@
 <script setup>
 // import DashboardRightSidebar from '../components/DashboardRightSidebar.vue'
 // import AppIconFooterIcon from '@/components/AppIconFooterIcon.vue'
+import AlertBanner from './AlertBanner.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 
 defineProps({
