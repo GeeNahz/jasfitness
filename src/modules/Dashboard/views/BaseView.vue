@@ -81,18 +81,20 @@
         </div>
       </template>
       <template #display-image>
-        <div class="image hidden lg:block h-16 w-16 mx-auto mb-10">
+        <div
+          class="image rounded-full overflow-hidden hidden lg:block h-20 w-20 mx-auto mb-10"
+        >
           <img
             v-if="user.avatar"
             :src="user.avatar"
             :alt="'avatar-' + user.username"
-            class="rounded-full h-full w-full object-center"
+            class="h-full w-full object-center"
           />
           <img
             v-else
-            src="https://ams3.digitaloceanspaces.com/jasfitness-object-storage/media/avatar/default.png?AWSAccessKeyId=DO003ZB6CQJQTT4JTU63&Signature=qZcbkq4x%2BfTEyN0W0jybn%2BkW4S4%3D&Expires=1672852097"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/profile-pic-default_ECmpM6T-I.jpeg?updatedAt=1680537583502"
             alt="avatar-defualt"
-            class="rounded-full h-full w-full object-center"
+            class="h-full w-full object-center"
           />
         </div>
       </template>
