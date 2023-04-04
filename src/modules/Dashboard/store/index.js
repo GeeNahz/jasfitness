@@ -18,6 +18,10 @@ export default {
       shareSub: { id: 'shareSub', open: false },
       feedback: { id: 'feedback', open: false },
       passwordReset: { id: 'passwordReset', open: false }
+    },
+    freezedSubStatus: {
+      is_freezed: false,
+      details: {}
     }
   },
   getters: {},
