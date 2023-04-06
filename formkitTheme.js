@@ -17,7 +17,7 @@ const textClassification = {
     focus-within:border-blue-500
   `,
   input:
-    'w-full h-10 px-3 py-11 border-none text-sm md:text-base font-inter text-gray-700 placeholder-gray-400',
+    'w-full h-10 px-3 py-11 border-none text-base font-inter text-gray-700 placeholder-gray-400',
   suffixIcon: 'w-5 md:w-6 mx-2 md:mx-3 text-gray-400'
 }
 const boxClassification = {
@@ -57,13 +57,13 @@ export default {
   checkbox: boxClassification,
   email: textClassification,
   file: {
-    label: 'block mb-1 font-bold font-inter text-sm',
+    label: 'block mb-1 font-bold font-inter text-base',
     inner: 'max-w-md cursor-pointer',
     input:
-      'text-gray-600 text-sm font-inter mb-1 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-blue-500 file:text-white hover:file:bg-blue-600',
-    noFiles: 'block text-gray-800 text-sm mb-1',
-    fileItem: 'block flex text-gray-800 text-sm font-inter mb-1',
-    fileRemove: 'ml-auto text-blue-500 text-sm font-inter'
+      'text-gray-600 text-base font-inter mb-1 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-base file:bg-blue-500 file:text-white hover:file:bg-blue-600',
+    noFiles: 'block text-gray-800 text-base mb-1',
+    fileItem: 'block flex text-gray-800 text-base font-inter mb-1',
+    fileRemove: 'ml-auto text-blue-500 text-base font-inter'
   },
   month: textClassification,
   number: textClassification,
