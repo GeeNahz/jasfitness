@@ -244,6 +244,21 @@ export default {
           commit('STATUS_RESET')
         })
     },
+    unfreeze_subscription({ commit }) {
+      commit('STATUS_LOADING')
+      return DashboardService.unfreeze_subscription()
+        .then(
+          (res) => {
+            return Promise.resolve(res)
+          },
+          (error) => {
+            return Promise.reject(error)
+          }
+        )
+        .finally(() => {
+          commit('STATUS_RESET')
+        })
+    }, // for unfreeze sub request
     freezed_sub_toggle({ commit }, data) {
       commit('SET_FREEZED_SUB_STATE', data)
     }
