@@ -1,25 +1,58 @@
 <template>
-  <div
-    class="flex gap-1 xl:gap-0 w-full justify-between text-center px-3 py-2 xl:px-10 md:py-4"
-  >
-    <!-- class="flex gap-5 lg:justify-between w-full p-3" -->
-    <div class="item skeleton-loader">
-      <p class="text-xs md:text-base bg-gray-300 item-title"></p>
-      <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
-      <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+  <div class="wrapper px-3 py-2 xl:px-10 md:py-4">
+    <div
+      class="flex gap-1 xl:gap-0 w-full justify-between text-center px-3 py-2 xl:px-10 md:py-4"
+    >
+      <!-- class="flex gap-5 lg:justify-between w-full p-3" -->
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
     </div>
-    <div class="item skeleton-loader">
-      <p class="text-xs md:text-base bg-gray-300 item-title"></p>
-      <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
-      <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
-    </div>
-    <div class="item skeleton-loader">
-      <p class="text-xs md:text-base bg-gray-300 item-title"></p>
-      <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
-      <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+    <hr v-if="hasTwoRows" class="border-2 border-gray-400 my-2" />
+    <div
+      v-if="hasTwoRows"
+      class="flex gap-1 xl:gap-0 w-full justify-between text-center px-3 py-2 xl:px-10 md:py-4"
+    >
+      <!-- class="flex gap-5 lg:justify-between w-full p-3" -->
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
+      <div class="item skeleton-loader">
+        <p class="text-xs md:text-base bg-gray-300 item-title"></p>
+        <p class="text-xl md:text-3xl font-semibold bg-gray-300 item-body"></p>
+        <!-- <p class="text-xs md:text-base bg-gray-300 item-title"></p> -->
+      </div>
     </div>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  hasTwoRows: {
+    type: Boolean,
+    default: false
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
