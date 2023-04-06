@@ -145,7 +145,7 @@
                   :class="{
                     'disabled ':
                       !creds.freeze.is_active ||
-                      creds.freeze.value > 3 ||
+                      creds.freeze.value > Number(creds.freeze.total) - 1 ||
                       creds.is_expired
                   }"
                 >
@@ -158,7 +158,7 @@
                         Freeze Your Sub
                       </p>
                       <p class="text-xs sm:text-sm font-light">
-                        {{ creds.freeze.value }} of 4
+                        {{ creds.freeze.value }} of {{ creds.freeze.total }}
                       </p>
                     </div>
                   </div>
