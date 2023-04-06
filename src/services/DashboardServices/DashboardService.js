@@ -33,5 +33,8 @@ export default {
   },
   change_password(data) {
     return axiosInstance.post('api/auth/change_password/', data)
-  }
+  },
+  unfreeze_subscription() {
+    return axiosInstance.post('dashboard/unfreeze_sub/')
+  } // unfreeze subscription service template
 }
