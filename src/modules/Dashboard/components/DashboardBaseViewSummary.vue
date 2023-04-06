@@ -45,6 +45,8 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
+import { useTriggerFreezeAlert } from '@/composables/triggerFreezedAlert.js'
+
 import AppIconInfo from '@/components/icons/AppIconInfo.vue'
 
 const currentYear = computed(() => new Date().getFullYear())
@@ -77,15 +79,9 @@ const dashboardHome = computed(() =>
 if (!dashboardHome.value) {
   try {
     let res = await store.dispatch('dashboard/dashboard_home')
-    if (res.freeze.is_active) {
-      let freezedDate = new Date().toLocaleString()
-      store.dispatch('dashboard/freezed_sub_toggle', {
-        is_freezed: true,
-        details: {
-          message: `Your subscription was paused on the ${freezedDate}`
-        }
-      })
-    }
+    useTriggerFreezeAlert({
+      storeDashboardBaseValue: res
+    })
   } catch {
     const message =
       'Something went wrong while fetching your records. Refresh the browser to try fix it.'
