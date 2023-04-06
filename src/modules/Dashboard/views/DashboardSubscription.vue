@@ -11,7 +11,7 @@
               My <span>Subscription</span>,
             </p>
             <p class="w-52 md:w-fit text-xs md:text-sm text-gray-400">
-              Replace I wish by I WILL
+              Replace I wish by I WILL 💯
             </p>
           </div>
           <div>
