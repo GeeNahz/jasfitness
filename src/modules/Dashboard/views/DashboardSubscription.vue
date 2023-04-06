@@ -42,7 +42,7 @@
           <Suspense>
             <DashboardSubscriptionSummaryItems />
             <template #fallback>
-              <DashboardSummarySkeletonLoader />
+              <DashboardSummarySkeletonLoader :has-two-rows="true" />
             </template>
           </Suspense>
         </div>
