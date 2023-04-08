@@ -14,12 +14,12 @@
       </p>
     </div>
     <div class="action">
-      <button
+      <!-- <button
         @click="unfreezeSubscripttion"
         class="py-2 px-2 bg-blue-500 font-semibold text-xs text-white rounded"
       >
         Unfreeze
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
@@ -33,22 +33,22 @@ import AppIconSnowflake from '@/components/icons/AppIconSnowflake.vue'
 const store = useStore()
 const freezedSubDetail = computed(() => store.state.dashboard.freezedSubStatus)
 
-async function unfreezeSubscripttion() {
-  try {
-    await store.dispatch('dashboard/unfreeze_subscription')
-    store.dispatch('landingpage/success', {
-      message: 'You have successfully unfreezed your subscription.',
-      timeout: 7000
-    })
-    store.dispatch('dashboard/freezed_sub_toggle', {
-      is_freezed: false,
-      details: {}
-    })
-  } catch (error) {
-    store.dispatch('landingpage/error', {
-      message: 'Something went wrong. Please try again.',
-      timeout: 7000
-    })
-  }
-}
+// async function unfreezeSubscripttion() {
+//   try {
+//     await store.dispatch('dashboard/unfreeze_subscription')
+//     store.dispatch('landingpage/success', {
+//       message: 'You have successfully unfreezed your subscription.',
+//       timeout: 7000
+//     })
+//     store.dispatch('dashboard/freezed_sub_toggle', {
+//       is_freezed: false,
+//       details: {}
+//     })
+//   } catch (error) {
+//     store.dispatch('landingpage/error', {
+//       message: 'Something went wrong. Please try again.',
+//       timeout: 7000
+//     })
+//   }
+// }
 </script>
