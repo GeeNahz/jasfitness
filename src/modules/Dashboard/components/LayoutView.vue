@@ -44,14 +44,14 @@
       class="md:hidden h-max flex flex-col items-center my-8 text-opacity-80 font-thin text-xs"
     >
       <div class="flex items-center gap-3 mb-3 imgs">
-        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70" />
+        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70"></div>
         <!-- <AppIconFooterIcon /> -->
         <img
           src="@/assets/footer-logo-black.svg"
           alt="dumbbell"
           class="w-16 opacity-20"
         />
-        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70" />
+        <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70"></div>
       </div>
       <span>Powered by JAS FITNESS</span>
     </div>
