@@ -316,15 +316,15 @@ useMeta({
 })
 
 const eventsAndNews = ref([
-  {
-    imageName:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/stay_fit_and_vote_Gt2abs_kx.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1676915237020',
-    title: 'Promo! Promo!! Promo!!!',
-    description:
-      'Be fit as you vote with JasFitness Stay Fit & Vote election promo! This 25% election promo discount starts from now till 5th March. Get started by calling the number below.',
-    linkText: '07034644002',
-    linkUrl: ''
-  },
+  // {
+  //   imageName:
+  //     'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/stay_fit_and_vote_Gt2abs_kx.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1676915237020',
+  //   title: 'Promo! Promo!! Promo!!!',
+  //   description:
+  //     'Be fit as you vote with JasFitness Stay Fit & Vote election promo! This 25% election promo discount starts from now till 5th March. Get started by calling the number below.',
+  //   linkText: '07034644002',
+  //   linkUrl: ''
+  // },
   {
     imageName:
       'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/c2dcec0f-51bb-4c86-af09-0c2761d20af3_mGujDYX0p.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1675755171041',
