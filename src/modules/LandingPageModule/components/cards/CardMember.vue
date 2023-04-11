@@ -22,9 +22,10 @@
         <hr class="my-2 md:my-3" />
         <div class="relative transition text-slate-500 rounded-sm">
           <div class="lbl-container flex gap-2 text-sm py-1">
-            <p v-if="!checkboxToggle">+</p>
-            <p v-else>-</p>
-            <label for="toggle" class="lbl-toggle">Read more</label>
+            <label v-if="!checkboxToggle" for="toggle" class="lbl-toggle"
+              >+ See more</label
+            >
+            <label v-else for="toggle" class="lbl-toggle">- See less</label>
           </div>
           <input
             type="checkbox"
