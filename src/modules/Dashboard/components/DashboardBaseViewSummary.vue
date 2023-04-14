@@ -25,9 +25,6 @@
     <div class="item">
       <p class="text-xs md:text-base flex justify-center items-center gap-2">
         average <span class="hidden xl:inline">engagement</span> time
-        <AppIconInfo
-          class="hidden md:inline hover:cursor-pointer hover:bg-gray-300 duration-300 ease-in-out rounded-full"
-        />
       </p>
       <p class="text-base md:text-lg xl:text-3xl font-semibold">
         {{ dashboardHome.average }}
@@ -46,8 +43,6 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 import { useTriggerFreezeAlert } from '@/composables/triggerFreezedAlert.js'
-
-import AppIconInfo from '@/components/icons/AppIconInfo.vue'
 
 const currentYear = computed(() => new Date().getFullYear())
 const currentMonth = computed(() => {
