@@ -1,6 +1,10 @@
 <template>
   <section class="section">
     <div class="container">
+      <header class="text-center mb-5 font-inter">
+        <h3 class="text-2xl font-bold">We have a plan for everyone</h3>
+        <p>Pick a plan suitable for you 💪🏽</p>
+      </header>
       <div class="plans">
         <SubscriptionCard
           v-for="plan in plans"
