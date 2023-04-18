@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full font-inter" :key="$route.path">
+  <div class="min-h-[100vh] font-inter" :key="$route.path">
     <router-view :key="$route.path" />
   </div>
 </template>
