@@ -19,6 +19,7 @@ import LandingPageModule from './modules/LandingPageModule'
 import Dashboard from './modules/Dashboard'
 import Auth from './modules/Auth'
 import Membership from './modules/Membership'
+import Payment from './modules/Payment'
 
 import { registerModules } from './register-modules'
 import './index.css'
@@ -27,7 +28,8 @@ const modulesConfigFiles = {
   landingpage: LandingPageModule,
   dashboard: Dashboard,
   auth: Auth,
-  membership: Membership
+  membership: Membership,
+  payment: Payment
 }
 
 registerModules(modulesConfigFiles)
