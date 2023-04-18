@@ -187,7 +187,7 @@ onMounted(() => {
     & .plans {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 2.5rem;
       width: 100%;
 
@@ -207,7 +207,7 @@ onMounted(() => {
       & .plan {
         min-width: 10rem;
         width: 20rem;
-        height: 35rem;
+        height: 40rem;
 
         @include responsive(mobile-width) {
           min-width: 100%;
