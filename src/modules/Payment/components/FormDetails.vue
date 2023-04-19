@@ -85,8 +85,7 @@ const publicKey = ref('')
 onMounted(() => {
   // request for plans from endpoint
   data.value = props.wizard[0]
-  publicKey.value = process.env.VUE_PAYSTACK_PUBLIC_KEY
-  console.log(process.env.VUE_PAYSTACK_PUBLIC_KEY)
+  publicKey.value = process.env.VUE_APP_PAYSTACK_PUBLIC_KEY
 })
 
 // const emit = defineEmits(['update'])
