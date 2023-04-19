@@ -1,11 +1,11 @@
 import { useStore } from 'vuex'
 import { ref } from 'vue'
 
-export function useTriggerFreezeAlert({ storeDashboardBaseValue }) {
+export function useTriggerFreezeAlert({ freezeObject }) {
   const store = useStore()
   const isTriggered = ref(false)
 
-  if (storeDashboardBaseValue.freeze.value > 0) {
+  if (freezeObject.frozen) {
     let freezedDate = new Date().toLocaleString() // replace this with the actual date of freeze request
     store.dispatch('dashboard/freezed_sub_toggle', {
       is_freezed: true,
