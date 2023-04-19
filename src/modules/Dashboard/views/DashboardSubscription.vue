@@ -77,7 +77,13 @@
               </template>
               <template #description>
                 <p class="plans-des text-xs xl:text-sm font-light">
-                  You can freeze your sub for as long as <span>4</span> days
+                  You can freeze your sub for as long as
+                  <!-- <span>{{
+                    dashboardSub?.freeze?.total - dashboardSub?.freeze?.value ||
+                    0
+                  }}</span> -->
+                  <span>{{ dashboardSub?.freeze?.total }}</span>
+                  days
                 </p>
               </template>
               <template #button>
@@ -91,7 +97,8 @@
                     :class="[
                       !dashboardSub.is_expired &&
                       dashboardSub.freezeable &&
-                      dashboardHomeState.freeze.value < 4
+                      dashboardSub.freeze.value < dashboardSub.freeze.total &&
+                      !dashboardSub.frozen
                         ? 'bg-[#1f1f1f] active:bg-[#303030] hover:bg-[#333333]'
                         : 'bg-gray-500 disabled'
                     ]"
@@ -99,7 +106,8 @@
                     {{
                       !dashboardSub.is_expired &&
                       dashboardSub.freezeable &&
-                      dashboardHomeState.freeze.value < 4
+                      dashboardSub.freeze.value < dashboardSub.freeze.total &&
+                      !dashboardSub.frozen
                         ? 'Freeze'
                         : 'Not available'
                     }}
