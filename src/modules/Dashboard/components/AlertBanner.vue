@@ -36,6 +36,11 @@ const freezedSubDetail = computed(() => store.state.dashboard.freezedSubStatus)
 async function unfreezeSubscripttion() {
   try {
     await store.dispatch('dashboard/unfreeze_subscription')
+
+    // refresh current state to reflect changes
+    await store.dispatch('dashboard/dashboard_home')
+    await store.dispatch('dashboard/dashboard_subscription')
+
     store.dispatch('landingpage/success', {
       message: 'You have successfully unfreezed your subscription.',
       timeout: 7000
