@@ -36,8 +36,8 @@
           }"
         >
           {{
-            dashboardBase &&
-            dashboardBase.freeze.value + ' of ' + dashboardBase.freeze.total
+            dashboardSub &&
+            dashboardSub.freeze.value + ' of ' + dashboardSub.freeze.total
           }}
           <!-- <span class="text-xs text-gray-400 md:text-base">sept</span> -->
         </p>
@@ -103,12 +103,6 @@ const startDateConverter = (timestamp) => {
 }
 
 const store = useStore()
-const dashboardBase = computed(() =>
-  store.state.dashboard.dashboardBase
-    ? store.state.dashboard.dashboardBase
-    : false
-)
-
 const dashboardSub = computed(() =>
   store.state.dashboard.dashboardSubscription
     ? store.state.dashboard.dashboardSubscription
@@ -125,15 +119,6 @@ if (!dashboardSub.value) {
     const message =
       'Something went wrong while fetching subscription records. Refresh the browser to try fix it.'
     store.dispatch('landingpage/error', { message, timeout: 3000 })
-  }
-}
-if (!dashboardBase.value) {
-  try {
-    await store.dispatch('dashboard/dashboard_home')
-  } catch (err) {
-    store.dispatch('landingpage/error', {
-      message: 'Unable to fetch user data'
-    })
   }
 }
 </script>
