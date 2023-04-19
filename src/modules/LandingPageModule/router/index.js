@@ -48,7 +48,7 @@ const routes = [
         component: CommunityView
       },
       {
-        path: 'sc',
+        path: 'sales-page',
         name: 'SalesCopyPage',
         component: SaleCopy
       },
