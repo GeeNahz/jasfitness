@@ -38,7 +38,7 @@
         Continue to Payment
       </button> -->
       <paystack
-        v-if="data"
+        v-if="Object.keys(data).length > 0"
         buttonClass="'text-base font-semibold py-2 mt-3 w-full rounded-md text-gray-100 hover:text-gray-50 active:text-gray-50 btn btn-warning hover:'"
         buttonText="Continue to Payment"
         :amount="(data.amount || 0) * 100"
@@ -108,7 +108,7 @@ function onClose() {
 form {
   input[type='text'],
   input[type='email'] {
-    @apply w-full h-10 rounded-md px-3 mb-3 bg-gray-200 text-gray-700 focus:bg-gray-300 placeholder:text-gray-400 focus:outline-none;
+    @apply w-full h-10 rounded-md px-3 mb-3 bg-gray-100 text-gray-700 focus:bg-gray-200 placeholder:text-gray-400 focus:outline-none;
   }
 }
 .costs-outline {
