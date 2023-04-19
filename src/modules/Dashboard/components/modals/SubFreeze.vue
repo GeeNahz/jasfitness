@@ -3,7 +3,8 @@
   <DashboardModalLayout :uid="freezeSubscriptionModal.id" @close="closeModal">
     <template #header> Freeze your subscription </template>
     <template #header-description>
-      You can freeze your subscription for as long as 4 days
+      You can freeze your subscription for as long as
+      <span>{{ maxFreezeableSubscription }}</span> days
     </template>
     <template #content>
       <form id="freeze-sub-form" @submit.prevent="freezeYourSub">
@@ -14,7 +15,7 @@
           id="freeze-sub"
           class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="number"
-          max="4"
+          :max="maxFreezeableSubscription"
           min="1"
           v-model="freezeDuration"
         />
@@ -92,6 +93,9 @@ function clearFormValues() {
 
 const freezeSubscriptionModal = computed(
   () => store.state.dashboard.modals.freezeSub
+)
+const maxFreezeableSubscription = computed(
+  () => store.state.dashboard.dashboardBase.freeze.total
 )
 </script>
 
