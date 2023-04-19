@@ -65,7 +65,11 @@ const isLoading = computed(() => store.state.dashboard.status.isLoading)
 const activeFields = computed(
   () =>
     useIsValidNumericInputs([freezeDuration.value]) &&
-    useIsWithinRange({ value: freezeDuration.value, minRange: 1, maxRange: 4 })
+    useIsWithinRange({
+      value: freezeDuration.value,
+      minRange: 1,
+      maxRange: dashboardBase.value.freeze.total
+    })
 )
 async function freezeYourSub() {
   try {
