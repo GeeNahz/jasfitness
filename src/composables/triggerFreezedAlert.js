@@ -9,7 +9,7 @@ export function useTriggerFreezeAlert({ freezeObject }) {
     store.dispatch('dashboard/freezed_sub_toggle', {
       is_freezed: true,
       details: {
-        message: `Your subscription has is frozen`
+        message: `Your subscription is frozen`
       }
     })
     isTriggered.value = true
