@@ -4,7 +4,7 @@
     <template #header> Freeze your subscription </template>
     <template #header-description>
       You can freeze your subscription for as long as
-      <span>{{ maxFreezeableSubscription }}</span> days
+      <span>{{ dashboardBase.freeze.total }}</span> days
     </template>
     <template #content>
       <form id="freeze-sub-form" @submit.prevent="freezeYourSub">
@@ -15,7 +15,7 @@
           id="freeze-sub"
           class="w-full h-8 lg:h-10 rounded mb-2 lg:mb-3 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-yellow-500 border border-slate-500 px-2 text-xs lg:text-sm font-inter font-regular"
           type="number"
-          :max="maxFreezeableSubscription"
+          :max="dashboardBase.freeze.total"
           min="1"
           v-model="freezeDuration"
         />
@@ -44,10 +44,11 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useStore } from 'vuex'
 
 import { validation } from '@/composables/validation.js'
+import { useTriggerFreezeAlert } from '@/composables/triggerFreezedAlert.js'
 
 import DashboardModalLayout from '../DashboardModalLayout.vue'
 
@@ -72,7 +73,9 @@ async function freezeYourSub() {
       duration: Number(freezeDuration.value)
     })
 
-    store.dispatch('dashboard/dashboard_home')
+    await store.dispatch('dashboard/dashboard_home')
+    await store.dispatch('dashboard/dashboard_subscription')
+
     store.dispatch('landingpage/success', {
       message: `You have successfully frozen your sub for ${freezeDuration.value} days`
     })
@@ -94,9 +97,15 @@ function clearFormValues() {
 const freezeSubscriptionModal = computed(
   () => store.state.dashboard.modals.freezeSub
 )
-const maxFreezeableSubscription = computed(
-  () => store.state.dashboard.dashboardBase.freeze.total
-)
+const dashboardBase = computed(() => store.state.dashboard.dashboardBase)
+watch(dashboardBase, () => {
+  if (dashboardBase.value.frozen)
+    // if it is, then trigger the frozen sub modal then.
+    useTriggerFreezeAlert({
+      freezeObject: dashboardBase.value,
+      customStore: store
+    })
+})
 </script>
 
 <style scope>
