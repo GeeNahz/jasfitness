@@ -75,7 +75,7 @@ if (!dashboardHome.value) {
   try {
     let res = await store.dispatch('dashboard/dashboard_home')
     useTriggerFreezeAlert({
-      storeDashboardBaseValue: res
+      freezeObject: res
     })
   } catch {
     const message =
