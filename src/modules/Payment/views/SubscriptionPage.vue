@@ -1,6 +1,8 @@
 <template>
-  <div class="pt-20 min-h-[100vh] flex justify-center items-center">
-    <div class="h-[720px] w-[700px] rounded-xl shadow bg-[#efefef] py-16">
+  <div
+    class="pt-20 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]"
+  >
+    <div class="h-[720px] w-[700px] rounded-xl shadow bg-[#fefefe] py-16">
       <header class="text-center">
         <div
           class="logo font-semibold text-xl flex gap-2 justify-center items-center"
