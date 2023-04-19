@@ -6,11 +6,10 @@ export function useTriggerFreezeAlert({ freezeObject }) {
   const isTriggered = ref(false)
 
   if (freezeObject.frozen) {
-    let freezedDate = new Date().toLocaleString() // replace this with the actual date of freeze request
     store.dispatch('dashboard/freezed_sub_toggle', {
       is_freezed: true,
       details: {
-        message: `Your subscription was paused on the ${freezedDate}`
+        message: `Your subscription has is frozen`
       }
     })
     isTriggered.value = true
