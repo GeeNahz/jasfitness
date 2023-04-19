@@ -39,7 +39,7 @@
       </button> -->
       <paystack
         v-if="data"
-        buttonClass="'text-base font-semibold py-2 mt-3 w-full rounded-md text-gray-100 hover:text-gray-50 btn btn-warning hover:'"
+        buttonClass="'text-base font-semibold py-2 mt-3 w-full rounded-md text-gray-100 hover:text-gray-50 active:text-gray-50 btn btn-warning hover:'"
         buttonText="Continue to Payment"
         :amount="(data.amount || 0) * 100"
         :email="data.email || ''"
