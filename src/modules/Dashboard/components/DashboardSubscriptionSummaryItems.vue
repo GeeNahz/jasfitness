@@ -18,13 +18,9 @@
         </p>
         <p
           class="text-sm md:text-lg font-semibold"
-          :class="{ 'text-blue-600': dashboardBase.freeze.value > 0 }"
+          :class="{ 'text-blue-600': dashboardSub.frozen }"
         >
-          {{
-            dashboardBase && dashboardBase.freeze.value > 0
-              ? 'Frozen'
-              : 'Not Frozen'
-          }}
+          {{ dashboardSub && dashboardSub.frozen ? 'Frozen' : 'Not Frozen' }}
           <!-- <span class="text-xs xl:text-base text-gray-400 lowercase">
             month(s)
           </span> -->
@@ -87,7 +83,7 @@
           End Date
         </p>
         <p class="text-sm md:text-lg font-semibold">
-          {{ dashboardBase && dashboardBase.sub_status }}
+          {{ dashboardSub && dashboardSub.end_date }}
         </p>
       </div>
     </div>
@@ -121,7 +117,10 @@ const dashboardSub = computed(() =>
 
 if (!dashboardSub.value) {
   try {
-    await store.dispatch('dashboard/dashboard_subscription')
+    let res = await store.dispatch('dashboard/dashboard_subscription')
+    useTriggerFreezeAlert({
+      freezeObject: res
+    })
   } catch {
     const message =
       'Something went wrong while fetching subscription records. Refresh the browser to try fix it.'
@@ -130,10 +129,7 @@ if (!dashboardSub.value) {
 }
 if (!dashboardBase.value) {
   try {
-    let res = await store.dispatch('dashboard/dashboard_home')
-    useTriggerFreezeAlert({
-      freezeObject: res
-    })
+    await store.dispatch('dashboard/dashboard_home')
   } catch (err) {
     store.dispatch('landingpage/error', {
       message: 'Unable to fetch user data'
