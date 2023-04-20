@@ -1,13 +1,15 @@
 <template>
   <div
-    class="pt-20 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]"
+    class="pt-28 md:pt-36 pb-8 md:pb-20 px-3 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]"
   >
-    <div class="h-[720px] w-[700px] rounded-xl shadow bg-[#fefefe] py-16">
+    <div
+      class="h-fit min-h-max w-full sm:w-[500px] md:w-[700px] rounded-xl shadow bg-[#fefefe] py-16"
+    >
       <header class="text-center">
         <div
-          class="logo font-semibold text-xl flex gap-2 justify-center items-center"
+          class="logo font-semibold text-lg md:text-xl flex gap-2 justify-center items-center"
         >
-          <div class="logo-img h-16 w-14">
+          <div class="logo-img h-12 md:h-16 w-10 md:w-14">
             <img
               src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
               alt="jf logo"
@@ -17,21 +19,22 @@
           <h2>Jas<span class="text-amber-400">Fitness</span></h2>
         </div>
         <div class="header-text">
-          <h2 class="text-xl font-semibold">Subscription Portal</h2>
+          <h2 class="text-lg md:text-xl font-semibold">Subscription Portal</h2>
         </div>
       </header>
 
-      <div class="steps mx-auto w-max my-14">
+      <div class="steps mx-auto w-max my-8 md:my-14">
         <Steps :steps="steps" @switchPage="switchPage" />
       </div>
 
-      <div class="forms" style="height: fit-content">
+      <div class="forms">
         <transition name="slide" mode="out-in">
           <keep-alive>
             <Component
               :is="componentSteps[currentStep]"
               :wizard="steps"
               @update="updateFormDetails"
+              @completed="handleCompleted"
             />
           </keep-alive>
         </transition>
@@ -41,7 +44,17 @@
 </template>
 
 <script>
-import { ref, defineComponent, computed } from 'vue'
+/**What next?
+ *
+ * ** Send data to the server
+ *
+ * on the membership form, add query parameters to receive name (first and last), email and transaction reference (trxn-ref) of client from the url
+ * use these details to auto populate their respective fields
+ * send the trxn-ref along with other data when submitting the form
+ */
+
+import { ref, defineComponent } from 'vue'
+import { useRoute } from 'vue-router'
 
 import Steps from '../components/Steps.vue'
 import FormDetails from '../components/FormDetails.vue'
@@ -50,49 +63,89 @@ import FormSuccess from '../components/FormSuccess.vue'
 export default defineComponent({
   components: { Steps, FormDetails, FormSuccess },
   setup() {
-    const currentStep = ref(0)
-    const componentSteps = ['FormDetails', 'FormSuccess']
-    function switchPage(pageNumber) {
-      currentStep.value = pageNumber
-    }
-
     const steps = ref([
       {
         id: 1,
+        isValid: false,
         step: {
           name: 'Your details',
-          status: 'complete' // one of current | pending | complete
+          status: 'current' // one of current | pending | complete
         },
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
-        amount: 23
+        amount: 0,
+        duration: 0
       },
       {
         id: 2,
+        isValid: false,
         step: {
-          name: 'Payment',
-          status: 'current' // one of current | pending | complete
+          name: 'Complete',
+          status: 'pending' // one of current | pending | complete
         }
       }
     ])
+    const route = useRoute()
+    // these should be made available from when a clients tries to resubscribe only else they fall to the defaults
+    steps.value[0].planName = route.params.planName || 'premium'
+    steps.value[0].isNewClient = route.params.isNewClient || 'true'
+    steps.value[0].firstName = route.params.firstName || ''
+    steps.value[0].lastName = route.params.lastName || ''
+    const currentStep = ref(0)
+    const componentSteps = ['FormDetails', 'FormSuccess']
 
-    const selectedCurrency = ref('NGN')
-    const currencies = ref({
-      NGN: 100,
-      USD: 100,
-      GHC: 100
-    })
-    function conversionRate(selectedCurrency) {
-      return currencies.value[selectedCurrency]
+    function goToStep(step) {
+      currentStep.value = step
+    }
+    function switchPage(pageNumber) {
+      if (pageNumber > currentStep.value) {
+        next(pageNumber)
+      } else {
+        prev(pageNumber)
+      }
+      // newPage.value = currentStep.value
+      // formerPage.value = currentStep.value
+    }
+    function setStepStatus(index) {
+      for (let idx = 0; idx < steps.value.length; idx++) {
+        if (steps.value[idx].step.status === ('current' || 'pending')) {
+          steps.value[idx].step.status = 'pending'
+        }
+        if (idx === index && steps.value[idx].step.status !== 'complete') {
+          steps.value[idx].step.status = 'current'
+        }
+      }
+    }
+    function setStepCompleteStatus(index) {
+      steps.value[index].step.status = 'complete'
+    }
+    const isComplete = (idx) => steps.value[idx - 1]?.step.status === 'complete'
+    function prev(index) {
+      setStepStatus(index)
+      goToStep(index)
+      // switchPage(index)
+    }
+    function next(index) {
+      // perform some form of validation before going to next page
+      if (isComplete(index)) {
+        setStepStatus(index)
+        goToStep(index)
+      }
+      // raise warning or alert
+      // switchPage(index)
+    }
+    function handleCompleted(obj) {
+      let index = steps.value.findIndex((step) => step.id === obj.id)
+      setStepCompleteStatus(index)
+      next(index + 1)
+      // make api call to send data here
     }
 
-    const paystackAmount = computed(() => {
-      return steps.value[0].amount * conversionRate(selectedCurrency.value)
-    })
-
-    function updateFormDetails(updatedDetails) {
+    function updateFormDetails(updatedDetails, id) {
       // perform some verifications before making the update
-      Object.assign(steps.value[0], updatedDetails)
+      let idx = steps.value.findIndex((step) => step.id === id)
+      Object.assign(steps.value[idx], updatedDetails)
     }
 
     return {
@@ -100,10 +153,24 @@ export default defineComponent({
       componentSteps,
       steps,
       updateFormDetails,
-      paystackAmount,
-      switchPage
+      switchPage,
+      handleCompleted
+      // paystackAmount,
     }
   }
+  // const selectedCurrency = ref('NGN')
+  // const currencies = ref({
+  //   NGN: 100,
+  //   USD: 100,
+  //   GHC: 100
+  // })
+  // function conversionRate(selectedCurrency) {
+  //   return currencies.value[selectedCurrency]
+  // }
+
+  // const paystackAmount = computed(() => {
+  //   return steps.value[0].amount * conversionRate(selectedCurrency.value)
+  // })
 })
 </script>
 
