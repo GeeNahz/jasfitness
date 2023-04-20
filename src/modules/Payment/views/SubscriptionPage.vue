@@ -16,7 +16,7 @@
               class="h-full w-full object-cover"
             />
           </div>
-          <h2>Jas<span class="text-amber-400">Fitness</span></h2>
+          <h2>Jas <span class="text-amber-400">Fitness</span></h2>
         </div>
         <div class="header-text">
           <h2 class="text-lg md:text-xl font-semibold">Subscription Portal</h2>
