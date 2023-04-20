@@ -21,6 +21,11 @@
           </p>
         </div>
       </div>
+      <CustomButton
+        :button-class="'w-full md:w-max rounded-md bg-emerald-400 hover:bg-emerald-500 text-white py-2 px-4 transition'"
+        :button-text="'Explore our Homepage'"
+        :on-click="goToHomepage"
+      />
     </div>
     <!-- <h3>Success Form</h3> -->
   </div>
@@ -29,10 +34,17 @@
 <script setup>
 import AppIconCheck from '@/components/icons/AppIconCheck.vue'
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import CustomButton from './CustomButton.vue'
 
 const props = defineProps({
   wizard: { type: Array, required: true }
 })
+
+function goToHomepage() {
+  useRouter().push({ name: 'LandingPageHome' })
+}
+
 const emit = defineEmits(['update'])
 const data = ref()
 onMounted(() => {
