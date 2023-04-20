@@ -93,6 +93,7 @@ export default defineComponent({
       steps.value[0].isNewClient = route.query.isNewClient || 'true'
       steps.value[0].firstName = route.query.firstName || ''
       steps.value[0].lastName = route.query.lastName || ''
+      steps.value[0].email = route.query.email || ''
     }
     onMounted(() => {
       setDataFromParams()
