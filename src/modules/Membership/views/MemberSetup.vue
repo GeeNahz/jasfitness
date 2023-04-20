@@ -659,8 +659,8 @@ async function submitHandler() {
     medical_condition: inputFields.requiredFields.medical_condition,
     medical_consent: inputFields.notRequired.consent,
     hmo: inputFields.notRequired.hmo,
-    enrollee_id: inputFields.notRequired.enrolleeId
-    // referral: inputFields.notRequired.referral
+    enrollee_id: inputFields.notRequired.enrolleeId,
+    reference: inputFields.requiredFields.reference
   }
   try {
     await store.dispatch('auth/membership_setup', userData)
