@@ -41,8 +41,9 @@ const props = defineProps({
   wizard: { type: Array, required: true }
 })
 
+const router = useRouter()
 function goToHomepage() {
-  useRouter().push({ name: 'LandingPageHome' })
+  router.push('/')
 }
 
 const emit = defineEmits(['update'])
