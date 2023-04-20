@@ -460,7 +460,7 @@
 <script setup>
 import { reactive, computed, onMounted, ref, watch } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 import { validation } from '@/composables/validation.js'
 import EmailService from '@/services/GenericServices/GenericService'
@@ -504,6 +504,13 @@ const inputFields = reactive({
     enrolleeId: ''
   }
 })
+const route = useRoute()
+function setInputFieldsFromParams() {
+  inputFields.requiredFields.email = route.query.email || ''
+  inputFields.requiredFields.firstName = route.query.first_name || ''
+  inputFields.requiredFields.lastName = route.query.last_name || ''
+  inputFields.requiredFields.reference = route.query.reference || ''
+}
 
 function appendIndexAsId({ array = [] }) {
   const newArray = []
@@ -713,6 +720,7 @@ onMounted(async () => {
   }
 
   now.value = new Date().getFullYear()
+  setInputFieldsFromParams()
 })
 </script>
 
