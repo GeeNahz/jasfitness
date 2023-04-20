@@ -1,7 +1,7 @@
 import axiosInstance from '@/services/DashboardServices/axiosConfig'
 import AuthService from '@/services/AuthServices/AuthService.js'
 import DashboardService from '@/services/DashboardServices/DashboardService'
-import { validateToken } from '@/services/helpers/ValidateTokenHelper.js'
+import { validateToken } from '@/services/utils/ValidateTokenUtility.js'
 import { useState } from '@/composables/useState.js'
 
 const { User, AuthToken } = useState()

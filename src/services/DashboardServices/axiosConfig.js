@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useState } from '@/composables/useState.js'
-import { validateToken } from '@/services/helpers/ValidateTokenHelper'
+import { validateToken } from '@/services/utils/ValidateTokenUtility'
 // import { useAxios } from '@/composables/UseDashboardAxios'
 // const { axiosInstance: axiosconf } = useAxios()
 // console.log(axiosconf)

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
 
 import { useState } from '@/composables/useState.js'
-import { validateToken } from '@/services/helpers/ValidateTokenHelper'
+import { validateToken } from '@/services/utils/ValidateTokenUtility'
 
 const routes = [
   {
