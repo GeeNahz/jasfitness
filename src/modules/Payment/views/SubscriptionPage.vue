@@ -109,8 +109,6 @@ export default defineComponent({
       } else {
         prev(pageNumber)
       }
-      // newPage.value = currentStep.value
-      // formerPage.value = currentStep.value
     }
     function setStepStatus(index) {
       for (let idx = 0; idx < steps.value.length; idx++) {
