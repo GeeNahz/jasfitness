@@ -89,10 +89,10 @@ export default defineComponent({
     const route = useRoute()
     function setDataFromParams() {
       // these should be made available from when a clients tries to resubscribe only else they fall to the defaults
-      steps.value[0].planName = route.params.planName || 'premium'
-      steps.value[0].isNewClient = route.params.isNewClient || 'true'
-      steps.value[0].firstName = route.params.firstName || ''
-      steps.value[0].lastName = route.params.lastName || ''
+      steps.value[0].planName = route.query.planName || 'premium'
+      steps.value[0].isNewClient = route.query.isNewClient || 'true'
+      steps.value[0].firstName = route.query.firstName || ''
+      steps.value[0].lastName = route.query.lastName || ''
     }
     onMounted(() => {
       setDataFromParams()
