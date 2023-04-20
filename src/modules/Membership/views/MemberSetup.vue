@@ -480,8 +480,7 @@ import AppIconMapMarker from '@/components/icons/AppIconMapMarker.vue'
 import AppIconTargetAccount from '@/components/icons/AppIconTargetAccount.vue'
 
 // import AppIconMedicationOutline from '@/components/icons/AppIconMedicationOutline.vue'
-const medicalConditionsList = ref([])
-const hmosList = ref([])
+
 const status = reactive({ isLoading: false })
 const inputFields = reactive({
   requiredFields: {
@@ -514,18 +513,13 @@ function appendIndexAsId({ array = [] }) {
   }
   return newArray
 }
-function appendIndexAsIdHmo({ array = [] }) {
-  const newArray = []
-  if (array.length < 1) return
-  for (let element in array) {
-    newArray.push({
-      id: array[element].id,
-      content: array[element].name,
-      schedule: array[element].schedule
-    })
-  }
-  return newArray
+function AddItem(newItem) {
+  AddItemToArray({
+    newItem,
+    array: chipItemsDisplay.value
+  })
 }
+
 function removeChip(chipId) {
   for (let index = 0; index < chipItemsDisplay.value.length; index++) {
     if (chipItemsDisplay.value[index].id === chipId) {
@@ -547,11 +541,19 @@ function AddItemToArray({ newItem, array = [] }) {
   }
   array.push(newItem)
 }
-function AddItem(newItem) {
-  AddItemToArray({
-    newItem,
-    array: chipItemsDisplay.value
-  })
+
+const hmosList = ref([])
+function appendIndexAsIdHmo({ array = [] }) {
+  const newArray = []
+  if (array.length < 1) return
+  for (let element in array) {
+    newArray.push({
+      id: array[element].id,
+      content: array[element].name,
+      schedule: array[element].schedule
+    })
+  }
+  return newArray
 }
 function AddHmoItem(newItem) {
   hmoDisplay.value.splice(0)
@@ -564,39 +566,8 @@ function clearHmoDetails() {
   hmoDisplay.value.splice(0, 1)
   inputFields.notRequired.enrolleeId = ''
 }
-
-const { useIsValidTextInputs } = validation()
-const isValidFields = computed(() => validateInputs() && !status.isLoading)
-
-function validateInputs() {
-  const inputsArr = []
-  for (let key in inputFields.requiredFields) {
-    inputsArr.push(inputFields.requiredFields[key])
-  }
-  return useIsValidTextInputs(inputsArr)
-}
-
-function clearInputs({ inputObject }) {
-  for (let key in inputObject) {
-    inputObject[key] = ''
-  }
-}
-
-function getFullName({ namesArray = [] }) {
-  function isString(value) {
-    return typeof value === 'string'
-  }
-  if (namesArray.length > 1) {
-    if (!namesArray.every(isString)) {
-      throw new Error("Elements of 'namesArray' should all be strings")
-    }
-    return namesArray.join(' ')
-  }
-  throw new Error(
-    `namesArray may not be empty or less than 1 element. Got ${namesArray} expected an array of string.`
-  )
-}
-
+const chipItemsDisplay = ref([])
+const hmoDisplay = ref([])
 function serialisedMedicalCondition() {
   const arr = []
   for (let element of chipItemsDisplay.value) {
@@ -604,9 +575,6 @@ function serialisedMedicalCondition() {
   }
   return arr.join(';')
 }
-
-const chipItemsDisplay = ref([])
-const hmoDisplay = ref([])
 // watch medical condition array
 watch(
   chipItemsDisplay,
@@ -627,6 +595,37 @@ watch(
 )
 /* ** this will show details about the hmo selected */
 const isHmoSelected = computed(() => (hmoDisplay.value.length ? true : false))
+
+const { useIsValidTextInputs } = validation()
+const isValidFields = computed(() => validateInputs() && !status.isLoading)
+
+function validateInputs() {
+  const inputsArr = []
+  for (let key in inputFields.requiredFields) {
+    inputsArr.push(inputFields.requiredFields[key])
+  }
+  return useIsValidTextInputs(inputsArr)
+}
+function clearInputs({ inputObject }) {
+  for (let key in inputObject) {
+    inputObject[key] = ''
+  }
+}
+
+function getFullName({ namesArray = [] }) {
+  function isString(value) {
+    return typeof value === 'string'
+  }
+  if (namesArray.length > 1) {
+    if (!namesArray.every(isString)) {
+      throw new Error("Elements of 'namesArray' should all be strings")
+    }
+    return namesArray.join(' ')
+  }
+  throw new Error(
+    `namesArray may not be empty or less than 1 element. Got ${namesArray} expected an array of string.`
+  )
+}
 
 const store = useStore()
 const router = useRouter()
@@ -686,6 +685,8 @@ async function submitHandler() {
     status.isLoading = false
   }
 }
+
+const medicalConditionsList = ref([])
 const now = ref()
 onMounted(async () => {
   try {
