@@ -44,15 +44,6 @@
 </template>
 
 <script>
-/**What next?
- *
- * ** Send data to the server
- *
- * on the membership form, add query parameters to receive name (first and last), email and transaction reference (trxn-ref) of client from the url
- * use these details to auto populate their respective fields
- * send the trxn-ref along with other data when submitting the form
- */
-
 import { ref, defineComponent, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
