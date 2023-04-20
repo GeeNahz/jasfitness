@@ -6,7 +6,7 @@
       >
         <AppIconCheck />
       </div>
-      <div class="success__message">
+      <div class="success__message mb-3 md:mb-4">
         <div class="main">
           <p class="text-xl md:text-3xl text-slate-700 font-bold mb-3 md:mb-4">
             Your payment was successful!
