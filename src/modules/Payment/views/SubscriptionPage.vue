@@ -53,7 +53,7 @@
  * send the trxn-ref along with other data when submitting the form
  */
 
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 import Steps from '../components/Steps.vue'
@@ -87,11 +87,16 @@ export default defineComponent({
       }
     ])
     const route = useRoute()
-    // these should be made available from when a clients tries to resubscribe only else they fall to the defaults
-    steps.value[0].planName = route.params.planName || 'premium'
-    steps.value[0].isNewClient = route.params.isNewClient || 'true'
-    steps.value[0].firstName = route.params.firstName || ''
-    steps.value[0].lastName = route.params.lastName || ''
+    function setDataFromParams() {
+      // these should be made available from when a clients tries to resubscribe only else they fall to the defaults
+      steps.value[0].planName = route.params.planName || 'premium'
+      steps.value[0].isNewClient = route.params.isNewClient || 'true'
+      steps.value[0].firstName = route.params.firstName || ''
+      steps.value[0].lastName = route.params.lastName || ''
+    }
+    onMounted(() => {
+      setDataFromParams()
+    })
     const currentStep = ref(0)
     const componentSteps = ['FormDetails', 'FormSuccess']
 
