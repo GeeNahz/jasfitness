@@ -533,12 +533,17 @@ function removeChip(chipId) {
     }
   }
 }
+function clearArray({ array = [] }) {
+  if (array.length) {
+    array.splice(0)
+  }
+}
 function AddItemToArray({ newItem, array = [] }) {
   for (let item of array) {
     if (item.id === newItem.id) return
   }
   if (newItem.content.toLowerCase() === 'none') {
-    array.splice(0)
+    clearArray({ array: array })
   }
   array.push(newItem)
 }
