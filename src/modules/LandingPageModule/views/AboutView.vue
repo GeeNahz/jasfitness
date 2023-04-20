@@ -162,7 +162,7 @@ import { ref } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
-import EmailService from '@/services/EmailServices/EmailService.js'
+import EmailService from '@/services/GenericServices/GenericService.js'
 
 import TheFooter from '@/components/TheFooter.vue'
 import ReviewAboutPage from '../components/ReviewAboutPage.vue'

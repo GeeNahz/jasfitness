@@ -463,7 +463,7 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
 import { validation } from '@/composables/validation.js'
-import EmailService from '@/services/EmailServices/EmailService'
+import EmailService from '@/services/GenericServices/GenericService'
 
 import AppChip from '@/components/AppChip.vue'
 import AppSearchableDropdown from '@/components/AppSearchableDropdown.vue'

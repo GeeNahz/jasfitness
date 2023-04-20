@@ -135,7 +135,7 @@ export default {
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 
-import EmailService from '@/services/EmailServices/EmailService.js'
+import EmailService from '@/services/GenericServices/GenericService.js'
 
 const emit = defineEmits(['closeBmi'])
 const closeBmi = () => {

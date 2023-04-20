@@ -380,7 +380,7 @@ import AppIconAccountGroup from '@/components/icons/AppIconAccountGroup.vue'
 import AppIconAccesssibilityVue from '@/components/icons/AppIconAccesssibility.vue'
 import AppIconHeadLightbulb from '@/components/icons/AppIconHeadLightbulb.vue'
 import AppIconFileChartCheckVue from '@/components/icons/AppIconFileChartCheck.vue'
-import EmailService from '@/services/EmailServices/EmailService'
+import EmailService from '@/services/GenericServices/GenericService'
 
 /* Used for plan card
 import AppIconCheck from '@/components/AppIconCheck.vue'

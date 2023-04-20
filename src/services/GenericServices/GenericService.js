@@ -18,5 +18,8 @@ export default {
   },
   hmos_list() {
     return axiosInstance.get('/api/v1/hmos/')
+  },
+  fitness_plan() {
+    return axiosInstance.get('/fitness_plan/')
   }
 }

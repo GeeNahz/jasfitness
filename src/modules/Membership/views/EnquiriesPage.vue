@@ -74,7 +74,7 @@ import { useRouter } from 'vue-router'
 
 import { validation } from '@/composables/validation.js'
 
-import EmailService from '@/services/EmailServices/EmailService.js'
+import EmailService from '@/services/GenericServices/GenericService.js'
 
 const formValues = reactive({
   name: '',

@@ -38,7 +38,7 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 
-import EmailService from '@/services/EmailServices/EmailService'
+import EmailService from '@/services/GenericServices/GenericService'
 
 const store = useStore()
 
