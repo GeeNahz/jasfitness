@@ -1,10 +1,6 @@
 <template>
   <div>
-    <button
-      @click="() => onClick"
-      :class="buttonClass"
-      :disabled="buttonDisabled"
-    >
+    <button @click="onClick" :class="buttonClass" :disabled="buttonDisabled">
       {{ buttonText }}
     </button>
   </div>
