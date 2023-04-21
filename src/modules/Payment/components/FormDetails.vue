@@ -199,6 +199,7 @@ watch(data, () => {
     plan: data.value.planName,
     amount: data.value.amount,
     duration: data.value.duration,
+    new_sub: data.value.isNewClient === 'true',
     type: 'single',
     reason: `Gym payment for ${data.value.planName}`
   }
@@ -210,7 +211,7 @@ function onSuccess(e) {
     lastName: data.value.lastName,
     email: data.value.email,
     reference: e.reference,
-    is_new: data.value.isNewClient === 'true'
+    new_sub: data.value.isNewClient === 'true'
   }
 
   emit('completed', jsondata)
