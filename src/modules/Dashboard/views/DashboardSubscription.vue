@@ -15,16 +15,7 @@
             </p>
           </div>
           <div>
-            <a
-              href="https://app.jasfitnessng.com/new-members/re-subscription/"
-              target="_blank"
-              class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
-            >
-              <!-- @click="resubscribeHandler" -->
-              <p class="hidden md:block">Resubscribe</p>
-              <p class="text-[10px] md:hidden">Re-sub</p>
-              <AppIconRenew />
-            </a>
+            <ResubButton />
           </div>
         </div>
         <br />
@@ -290,7 +281,6 @@ import { computed, onMounted, inject } from 'vue'
 import { useMeta } from 'vue-meta'
 import { useStore } from 'vuex'
 
-import AppIconRenew from '@/components/icons/AppIconRenew.vue'
 import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
 import AppIconPlan from '@/components/icons/AppIconPlan.vue'
@@ -303,6 +293,7 @@ import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
 import DashboardSubscriptionSummaryItems from '../components/DashboardSubscriptionSummaryItems.vue'
 import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkeletonLoader.vue'
+import ResubButton from '../components/ResubButton.vue'
 
 useMeta({ title: 'Subscription' })
 
@@ -383,13 +374,6 @@ const plans = [
   }
 ]
 
-// const resubscribeHandler = () => {
-//   try {
-//     console.log('Resubscribe')
-//   } catch (err) {
-//     console.log('error:', err)
-//   }
-// }
 const openModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
 }

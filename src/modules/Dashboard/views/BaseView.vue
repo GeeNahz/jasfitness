@@ -17,16 +17,7 @@
             </p>
           </div>
           <div id="resubscription-btn">
-            <a
-              href="https://app.jasfitnessng.com/new-members/re-subscription/"
-              target="_blank"
-              class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
-            >
-              <!-- @click="resubscribeHandler" -->
-              <p class="hidden md:block">Resubscribe</p>
-              <p class="block md:hidden text-[10px]">Re-Sub</p>
-              <AppIconRenew />
-            </a>
+            <ResubButton />
           </div>
         </div>
         <br />
@@ -217,7 +208,6 @@ import AppIconPlan from '@/components/icons/AppIconPlan.vue'
 import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
-import AppIconRenew from '@/components/icons/AppIconRenew.vue'
 import { useTimeConverter } from '@/composables/useConverter.js'
 
 import LayoutView from '../components/LayoutView.vue'
@@ -225,6 +215,7 @@ import DashboardChart from '../components/DashboardChartLine.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSummarySkeletonLoader from '../components/DashboardSummarySkeletonLoader.vue'
 import DashboardBaseViewSummary from '../components/DashboardBaseViewSummary.vue'
+import ResubButton from '../components/ResubButton.vue'
 
 useMeta({ title: 'Dashboard' })
 

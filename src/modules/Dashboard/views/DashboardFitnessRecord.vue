@@ -13,16 +13,7 @@
             </p>
           </div>
           <div>
-            <a
-              href="https://app.jasfitnessng.com/new-members/re-subscription/"
-              target="_blank"
-              class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700"
-            >
-              <!-- @click="resubscribeHandler" -->
-              <p class="hidden md:block">Resubscribe</p>
-              <p class="block md:hidden text-[10px]">Re-Sub</p>
-              <AppIconRenew />
-            </a>
+            <ResubButton />
           </div>
         </div>
         <br />
@@ -210,7 +201,6 @@ import { useStore } from 'vuex'
 import { useMeta } from 'vue-meta'
 
 import AppLoader from '@/components/AppLoader.vue'
-import AppIconRenew from '@/components/icons/AppIconRenew.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
 import AppIconProfile from '@/components/icons/AppIconProfile.vue'
 import AppIconAccessment from '@/components/icons/AppIconAccessment.vue'
@@ -222,6 +212,7 @@ import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSubscriptionCard from '../components/DashboardSubscriptionCard.vue'
 import DashboardChartBar from '../components/DashboardChartBarMain.vue'
 import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
+import ResubButton from '../components/ResubButton.vue'
 
 useMeta({ title: 'Fitness Record' })
 
