@@ -13,6 +13,7 @@ export function useResubscribe({
   useDynamicRoute({
     routeName: 'SubscriptionPage',
     query: queryOptions,
-    router: router
+    router: router,
+    openInNewTap: true
   })
 }
