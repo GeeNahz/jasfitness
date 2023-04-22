@@ -21,11 +21,12 @@
           </p>
         </div>
       </div>
-      <CustomButton
+      <AppButton
         :button-class="'w-full md:w-max rounded-md bg-emerald-400 hover:bg-emerald-500 text-white py-2 px-4 transition'"
-        :button-text="'Explore our Homepage'"
         :on-click="goToHomepage"
-      />
+      >
+        Explore our Homepage
+      </AppButton>
     </div>
     <!-- <h3>Success Form</h3> -->
   </div>
@@ -35,7 +36,7 @@
 import AppIconCheck from '@/components/icons/AppIconCheck.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import CustomButton from './CustomButton.vue'
+import AppButton from '@/components/AppButton.vue'
 
 const props = defineProps({
   wizard: { type: Array, required: true }
