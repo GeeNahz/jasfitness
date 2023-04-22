@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const baseUrl = 'https://api.staging.jasfitnessng.com'
+
 const axiosInstance = axios.create({
-  baseURL: 'https://api.staging.jasfitnessng.com',
+  baseURL: baseUrl,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
