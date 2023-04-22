@@ -150,7 +150,7 @@ const plans = ref([
   // },
   {
     id: 1,
-    slug: 'PREMIUM',
+    slug: 'Premium',
     price: 'N20,000',
     setup: 'N3,000',
     billing: 'BILLED MONTHLY',
