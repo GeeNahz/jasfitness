@@ -99,6 +99,7 @@ useMeta({
   title: 'Plans'
 })
 
+// add query: { planName: <name of plan>, isNewClient: 'true' } on selected plan to the payment/subscribe route
 const plans = ref([
   // {
   //   id: 0,
@@ -133,7 +134,7 @@ const plans = ref([
   },
   {
     id: 2,
-    slug: 'V-I-P',
+    slug: 'VIP',
     price: 'N40,000',
     setup: 'N3,000',
     billing: 'BILLED MONTHLY',
@@ -148,7 +149,7 @@ const plans = ref([
       '1 Free Car Wash Weekly (4 Monthly)'
     ]
   }
-])
+]) // get plans from endpoint
 
 const evenNumber = (number) => number % 2 === 0
 

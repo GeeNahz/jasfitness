@@ -357,7 +357,7 @@ const plans = [
   },
   {
     id: 1,
-    slug: 'V-I-P',
+    slug: 'VIP',
     price: 'N40,000',
     setup: 'N3,000',
     billing: 'Billed Monthly',
@@ -372,7 +372,7 @@ const plans = [
       '1 Free Car Wash Weekly (4 Monthly)'
     ]
   }
-]
+] // get plans from endpoint
 
 const openModal = (modalId) => {
   store.dispatch('dashboard/toggle_modal', modalId)
