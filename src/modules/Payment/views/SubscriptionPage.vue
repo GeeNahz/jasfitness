@@ -67,6 +67,8 @@ export default defineComponent({
         email: '',
         amount: 0,
         duration: 0,
+        planId: 0,
+        charges: 0,
         properties: {
           duration: '',
           type: ''
