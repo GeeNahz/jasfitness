@@ -1,7 +1,7 @@
 <template>
   <div class="h-full w-full flex items-center justify-center">
     <div
-      class="h-max w-full mx-3 md:w-[40rem] rounded-md shadow-sm border-t-4 border-t-emerald-400 p-3 md:p-5"
+      class="h-max w-full mx-3 md:w-[40rem] rounded-md shadow-sm border-t-4 border-t-green-400 p-3 md:p-5"
     >
       <div
         class="icon text-5xl md:text-8xl text-teal-400 text-center flex justify-center"
@@ -23,7 +23,7 @@
       <div class="action flex flex-col justify-center items-center my-4 gap-3">
         <button
           @click="goToHomePage"
-          class="w-full md:w-max rounded-md bg-emerald-400 hover:bg-emerald-500 text-white py-2 px-4 transition"
+          class="w-full md:w-max rounded-md bg-green-400 hover:bg-green-500 text-white py-2 px-4 transition"
         >
           Explore our Homepage
         </button>

@@ -2,9 +2,9 @@
   <div>
     <div class="success text-center w-full px-3">
       <div
-        class="success__icon text-9xl md:text-[250px] text-emerald-500 grid place-items-center"
+        class="success__icon text-9xl md:text-[250px] text-green-500 grid place-items-center"
       >
-        <AppIconCheck />
+        <AppIconCheckOutline />
       </div>
       <div class="success__message mb-3 md:mb-4">
         <div class="main">
@@ -22,7 +22,7 @@
         </div>
       </div>
       <AppButton
-        :button-class="'w-full md:w-max rounded-md bg-emerald-400 hover:bg-emerald-500 text-white py-2 px-4 transition'"
+        :button-class="'w-full md:w-max rounded-md bg-green-400 hover:bg-green-500 text-white py-2 px-4 transition'"
         :on-click="goToHomepage"
       >
         Explore our Homepage
@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import AppIconCheck from '@/components/icons/AppIconCheck.vue'
+import AppIconCheckOutline from '@/components/icons/AppIconCheckOutline.vue'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import AppButton from '@/components/AppButton.vue'
