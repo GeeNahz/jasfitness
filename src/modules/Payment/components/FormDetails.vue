@@ -56,9 +56,24 @@
           <p class="item">Subscription includes VAT (7.5%)</p>
           <p class="price"></p>
         </div>
+        <div v-if="Object.keys(data).length > 0">
+          <div class="cost">
+            <p class="item">Charges</p>
+            <p class="price">
+              ₦
+              {{
+                data.isNewClient === 'true'
+                  ? data?.properties?.new_sub_charges
+                  : data?.properties?.resub_charges
+              }}
+            </p>
+          </div>
+        </div>
         <div class="cost">
           <p class="item font-medium">Total Billing</p>
-          <p class="price">₦ {{ computedAmount }}</p>
+          <p class="price" style="font-size: 1rem; line-height: 1.5rem">
+            ₦ {{ computedAmount }}
+          </p>
         </div>
       </div>
 
@@ -71,6 +86,7 @@
         :email="data.email || ''"
         :public-key="publicKey"
         :metadata="paystackMetadata"
+        :label="`${data.firstName} ${data.lastName}`"
         :on-success="onSuccess"
         :on-cancel="onClose"
       ></paystack>
@@ -94,28 +110,11 @@ const props = defineProps({
     required: true
   }
 })
-/** 
- * {
-    id: 1,
-    name: 'Premium',
-    billing: 'Monthly',
-    price: '20,000',
-    selected: false
-  },
-  {
-    id: 2,
-    name: 'V-I-P',
-    billing: 'Monthly',
-    price: '40,000',
-    selected: false
-  }
-*/
 
-function setDataAmount(priceValue) {
-  data.value.amount = priceValue
-}
-function setDataProperties(properties) {
-  data.value.properties = properties
+function updateData(plan) {
+  data.value.amount = plan.amount
+  data.value.planId = plan.id
+  data.value.properties = plan.properties
 }
 function getSelectedPlanByName(planName) {
   for (let plan of plans.value) {
@@ -130,8 +129,7 @@ function setSelectedPlan(selectedItem) {
     if (
       plans.value[index].name.toLowerCase() == selectedItem?.name.toLowerCase()
     ) {
-      setDataAmount(plans.value[index].amount)
-      setDataProperties(plans.value[index].properties)
+      updateData(plans.value[index])
       plans.value[index].selected = true
     }
   }
@@ -141,7 +139,7 @@ const plans = ref([]) // to be auto fetched from server
 function formatPlansObj(planData) {
   for (let idx = 0; idx < planData.length; idx++) {
     plans.value.push({
-      id: idx + 1,
+      id: planData[idx].id,
       name: planData[idx].title,
       duration: `${planData[idx].properties.duration}`,
       amount: planData[idx].amount,
@@ -195,7 +193,18 @@ function handleWizardUpdate() {
 const paystackMetadata = ref({})
 // const vat = computed(() => (7.5 * dataAmount.value) / 100)
 // + vat.value
-const computedAmount = computed(() => data.value.amount)
+const computedAmount = computed(
+  () =>
+    data.value.amount +
+      (data.value.isNewClient === 'true'
+        ? data.value?.properties?.new_sub_charges
+        : data.value?.properties?.resub_charges) || 0
+)
+const metadataReason = computed(() => {
+  if (data.value.isNewClient === 'true')
+    return `New gym subscription for ${data.value.planName}`
+  return `Gym re-subscription for ${data.value.planName}`
+})
 
 watch(
   data,
@@ -205,12 +214,12 @@ watch(
       first_name: data.value.firstName,
       last_name: data.value.lastName,
       email: data.value.email,
-      plan: data.value.planName,
+      plan_id: data.value.planId,
       amount: data.value.amount,
       duration: data.value.properties.duration,
       new_sub: data.value.isNewClient === 'true',
       type: data.value.properties.type,
-      reason: `Gym payment for ${data.value.planName}`
+      reason: metadataReason.value
     }
   },
   { deep: true }
@@ -247,7 +256,7 @@ form {
       @apply text-xs;
     }
     & .price {
-      @apply text-sm md:text-base font-semibold;
+      @apply text-xs md:text-sm font-semibold;
     }
   }
 }
