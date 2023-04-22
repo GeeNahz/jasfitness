@@ -1,4 +1,4 @@
-import { useDynamicRoute } from './dynamicRouteWrapper'
+import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
 
 export function useResubscribe({
   router,
