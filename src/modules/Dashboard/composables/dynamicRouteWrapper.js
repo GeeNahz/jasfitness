@@ -10,7 +10,7 @@ export async function useDynamicRoute({
   }
   if (routeName !== '' && typeof routeName === 'string') {
     try {
-      if (openInNewTap) {
+      if (!openInNewTap) {
         router.push({ name: routeName, query, param })
       } else {
         let route = router.resolve({ name: routeName, query, param })
