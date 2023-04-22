@@ -9,14 +9,14 @@
         <p class="text-sm md:text-base text-[#303030]">
           {{ item.name }}
           <span class="text-[10px] md:text-xs text-[#AAAAAA]">
-            ({{ item.billing }})
+            ({{ item.properties.duration }} month)
           </span>
         </p>
       </div>
       <FormDetailsCardIndicator :selected="item.selected" />
     </div>
     <div class="price">
-      <p class="text-base md:text-xl font-semibold">₦{{ item.price }}</p>
+      <p class="text-base md:text-xl font-semibold">₦{{ item.amount }}</p>
     </div>
   </div>
 </template>
