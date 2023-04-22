@@ -70,14 +70,33 @@
           </div>
           <template #bottom>
             <div class="button-wrapper">
-              <a
-                href="https://app.jasfitnessng.com/new-members/subscription/"
+              <!-- <AppButton
+                class="card-btn"
+                :button-class="'font-semibold uppercase card-btn'"
+                :on-click="
+                  () =>
+                    handleGetStarted({
+                      planName: plan.slug,
+                      isNewClient: 'true'
+                    })
+                "
+              >
+                Get started
+              </AppButton>
                 target="_blank"
+              href="https://app.jasfitnessng.com/new-members/subscription/" -->
+              <button
+                @click="
+                  handleGetStarted({
+                    planName: plan.slug,
+                    isNewClient: 'true'
+                  })
+                "
                 class="card-btn font-semibold uppercase"
                 :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
               >
                 Get started
-              </a>
+              </button>
             </div>
           </template>
         </SubscriptionCard>
@@ -94,12 +113,25 @@ import { useMeta } from 'vue-meta'
 
 import SubscriptionCard from '../components/SubsciptionCard.vue'
 import TheFooter from '@/components/TheFooter.vue'
+import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
+import { useRouter } from 'vue-router'
+// import AppButton from '@/components/AppButton.vue'
 
 useMeta({
   title: 'Plans'
 })
 
 // add query: { planName: <name of plan>, isNewClient: 'true' } on selected plan to the payment/subscribe route
+const router = useRouter()
+function handleGetStarted(queryParams) {
+  useDynamicRoute({
+    routeName: 'SubscriptionPage',
+    openInNewTap: true,
+    query: queryParams,
+    router: router
+  })
+}
+
 const plans = ref([
   // {
   //   id: 0,
@@ -281,7 +313,7 @@ onMounted(() => {
             transform: translateX(0);
           }
 
-          & a.card-btn {
+          & button.card-btn {
             box-shadow: 0 4px 15px 2px rgba(0, 0, 0, 0.1);
             width: max-content;
             height: 100%;

@@ -14,17 +14,17 @@
 <script setup>
 import AppButton from '@/components/AppButton.vue'
 import AppIconRenew from '@/components/icons/AppIconRenew.vue'
-// import { useStore } from 'vuex' // remove comment for new resub
-// import { computed } from 'vue' // remove comment for new resub
-// import { useRouter } from 'vue-router' // remove comment for new resub
-// import { useResubscribe } from '../composables/resubscribe.js' // remove comment for new resub
+import { useStore } from 'vuex' // remove comment for new resub
+import { computed } from 'vue' // remove comment for new resub
+import { useRouter } from 'vue-router' // remove comment for new resub
+import { useResubscribe } from '../composables/resubscribe.js' // remove comment for new resub
 
-// const store = useStore() // remove comment for new resub
-// const userId = computed(() => store.state.auth.user.user_id) // remove comment for new resub
-// const dashboardHomeState = computed(() => store.state.dashboard.dashboardBase) // remove comment for new resub
-// const router = useRouter() // remove comment for new resub
+const store = useStore() // remove comment for new resub
+const userId = computed(() => store.state.auth.user.user_id) // remove comment for new resub
+const dashboardHomeState = computed(() => store.state.dashboard.dashboardBase) // remove comment for new resub
+const router = useRouter() // remove comment for new resub
 const resubscribeHandler = async () => {
-  /* let profile = {} // remove comment for new resub
+  let profile = {} // remove comment for new resub
   try {
     profile = await store.dispatch('dashboard/dashboard_profile', userId.value)
   } catch (err) {
@@ -35,11 +35,10 @@ const resubscribeHandler = async () => {
     email: profile.email,
     planName: dashboardHomeState.value.plan_sub
   })
-  */
-  window.open(
-    'https://app.jasfitnessng.com/new-members/re-subscription/',
-    '_blank'
-  )
-  window.focus()
+  // window.open(
+  //   'https://app.jasfitnessng.com/new-members/re-subscription/',
+  //   '_blank'
+  // )
+  // window.focus()
 }
 </script>
