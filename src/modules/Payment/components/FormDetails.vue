@@ -42,7 +42,8 @@
             v-for="plan in plans"
             :key="plan.id"
             :item="plan"
-            @selected="planSelected"
+            @selected="setSelectedPlan"
+            class="hover:cursor-pointer"
           />
         </div>
       </div>
@@ -110,22 +111,30 @@ const props = defineProps({
   }
 */
 
-function setPrice(priceValue) {
+function setDataAmount(priceValue) {
   data.value.amount = priceValue
 }
-function setSelectedPlan(selectedItemName) {
-  for (let index = 0; index < plans.value.length; index++) {
-    plans.value[index].selected = false
-    if (
-      plans.value[index].name.toLowerCase() == selectedItemName.toLowerCase()
-    ) {
-      setPrice(plans.value[index].price)
-      plans.value[index].selected = true
+function setDataProperties(properties) {
+  data.value.properties = properties
+}
+function getSelectedPlanByName(planName) {
+  for (let plan of plans.value) {
+    if (plan.name.toLowerCase() === planName.toLowerCase()) {
+      return plan
     }
   }
 }
-function planSelected(selectedPlan) {
-  setSelectedPlan(selectedPlan.name)
+function setSelectedPlan(selectedItem) {
+  for (let index = 0; index < plans.value.length; index++) {
+    plans.value[index].selected = false
+    if (
+      plans.value[index].name.toLowerCase() == selectedItem?.name.toLowerCase()
+    ) {
+      setDataAmount(plans.value[index].amount)
+      setDataProperties(plans.value[index].properties)
+      plans.value[index].selected = true
+    }
+  }
 }
 
 const plans = ref([]) // to be auto fetched from server
@@ -133,30 +142,35 @@ function formatPlansObj(planData) {
   for (let idx = 0; idx < planData.length; idx++) {
     plans.value.push({
       id: idx + 1,
-      name: planData.title,
-      billing: 'Monthly',
-      price: planData.amount,
-      selected: false
+      name: planData[idx].title,
+      duration: `${planData[idx].properties.duration}`,
+      amount: planData[idx].amount,
+      selected: false,
+      properties: planData[idx].properties
     })
   }
 }
-const data = ref({})
-const publicKey = ref('')
 const store = useStore()
-onMounted(async () => {
+async function getFitnessPlans() {
   try {
     let fitnessPlans = await GenericService.fitness_plan()
-    formatPlansObj(fitnessPlans)
-  } catch (err) {
+    formatPlansObj(fitnessPlans.data.results.reverse())
+  } catch (error) {
     store.dispatch('landingpage/error', {
       message:
         'We were unable to fetch available plans. Refresh your browser to try again.'
     })
   }
-  // request for plans from endpoint
+  let selectedPlan = getSelectedPlanByName(data.value?.planName)
+  setSelectedPlan(selectedPlan)
+}
+getFitnessPlans()
+
+const data = ref({})
+const publicKey = ref('')
+onMounted(async () => {
   data.value = props.wizard[0]
   publicKey.value = process.env.VUE_APP_PAYSTACK_PUBLIC_KEY
-  setSelectedPlan(data.value?.planName)
 })
 
 const { useIsValidTextInputs } = validation()
@@ -179,31 +193,28 @@ function handleWizardUpdate() {
 
 // paystack options
 const paystackMetadata = ref({})
-const dataAmount = ref(0)
-const vat = computed(() => (7.5 * dataAmount.value) / 100)
-const computedAmount = computed(() => dataAmount.value + vat.value)
+// const vat = computed(() => (7.5 * dataAmount.value) / 100)
+// + vat.value
+const computedAmount = computed(() => data.value.amount)
 
-function stringToNumber(value) {
-  if (typeof value === 'number') return value
-  let arr = value.split(',')
-  let newArr = arr.join('')
-  return parseFloat(newArr)
-}
-watch(data, () => {
-  dataAmount.value = stringToNumber(data.value.amount)
-  handleWizardUpdate()
-  paystackMetadata.value = {
-    first_name: data.value.firstName,
-    last_name: data.value.lastName,
-    email: data.value.email,
-    plan: data.value.planName,
-    amount: data.value.amount,
-    duration: data.value.duration,
-    new_sub: data.value.isNewClient === 'true',
-    type: 'single',
-    reason: `Gym payment for ${data.value.planName}`
-  }
-})
+watch(
+  data,
+  () => {
+    handleWizardUpdate()
+    paystackMetadata.value = {
+      first_name: data.value.firstName,
+      last_name: data.value.lastName,
+      email: data.value.email,
+      plan: data.value.planName,
+      amount: data.value.amount,
+      duration: data.value.properties.duration,
+      new_sub: data.value.isNewClient === 'true',
+      type: data.value.properties.type,
+      reason: `Gym payment for ${data.value.planName}`
+    }
+  },
+  { deep: true }
+)
 function onSuccess(e) {
   let jsondata = {
     id: data.value.id,
