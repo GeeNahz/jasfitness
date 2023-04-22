@@ -66,7 +66,11 @@ export default defineComponent({
         lastName: '',
         email: '',
         amount: 0,
-        duration: 0
+        duration: 0,
+        properties: {
+          duration: '',
+          type: ''
+        }
       },
       {
         id: 2,
