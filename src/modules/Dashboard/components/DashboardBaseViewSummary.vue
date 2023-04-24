@@ -71,16 +71,14 @@ const dashboardHome = computed(() =>
     : false
 )
 
-if (!dashboardHome.value) {
-  try {
-    let res = await store.dispatch('dashboard/dashboard_home')
-    useTriggerFreezeAlert({
-      freezeObject: res
-    })
-  } catch {
-    const message =
-      'Something went wrong while fetching your records. Refresh the browser to try fix it.'
-    store.dispatch('landingpage/error', { message, timeout: 3000 })
-  }
+try {
+  let res = await store.dispatch('dashboard/dashboard_home')
+  useTriggerFreezeAlert({
+    freezeObject: res
+  })
+} catch {
+  const message =
+    'Something went wrong while fetching your records. Refresh the browser to try fix it.'
+  store.dispatch('landingpage/error', { message, timeout: 3000 })
 }
 </script>

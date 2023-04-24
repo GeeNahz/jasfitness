@@ -317,14 +317,12 @@ const dashboardHomeState = computed(() =>
 
 const { toggleIsReady } = inject('isComponentReady')
 onMounted(async () => {
-  if (!dashboardSub.value) {
-    try {
-      await store.dispatch('dashboard/dashboard_subscription')
-    } catch {
-      const message =
-        'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
-      store.dispatch('landingpage/error', { message, timeout: 3000 })
-    }
+  try {
+    await store.dispatch('dashboard/dashboard_subscription')
+  } catch {
+    const message =
+      'Something went wrong while fetching fitness records. Refresh the browser to try fix it.'
+    store.dispatch('landingpage/error', { message, timeout: 3000 })
   }
   if (!dashboardHomeState.value) {
     try {
