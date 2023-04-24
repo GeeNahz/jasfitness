@@ -194,7 +194,9 @@ function handleWizardUpdate() {
   emit('update', data.value, data.value.id)
 }
 
-const isNew = computed(() => data.value.isNewClient === 'true')
+const isNew = computed(
+  () => data.value.isNewClient === 'true' || '' || !data.value?.isNewClient
+)
 
 // paystack options
 const paystackMetadataNewUser = ref({})
