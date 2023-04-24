@@ -14,7 +14,7 @@
         </div>
         <div class="item">
           <h4 class="item__title">Email:</h4>
-          <p class="item__content">{{ profileState.email }}</p>
+          <p class="item__content email">{{ profileState.email }}</p>
         </div>
         <div class="item">
           <h4 class="item__title">Date of birth:</h4>
@@ -142,6 +142,10 @@ onMounted(() => {
       padding: 1rem 0.75rem;
       text-align: start;
       text-transform: capitalize;
+
+      &.email {
+        text-transform: lowercase;
+      }
     }
   }
 }
