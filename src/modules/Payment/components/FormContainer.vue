@@ -68,6 +68,7 @@ export default defineComponent({
         amount: 0,
         duration: 0,
         planId: 0,
+        planName: '',
         charges: 0,
         properties: {
           duration: '',
