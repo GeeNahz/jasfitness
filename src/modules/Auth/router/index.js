@@ -21,7 +21,7 @@ const TestView = () => import('../components/AuthLayout.vue')
 
 const routes = [
   {
-    path: '/auth',
+    path: '/',
     component: Module,
     children: [
       {
