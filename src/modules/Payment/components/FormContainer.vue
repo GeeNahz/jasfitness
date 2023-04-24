@@ -84,8 +84,24 @@ export default defineComponent({
       }
     ])
     const route = useRoute()
+    function setFirstLastNames({ firstName, lastName }) {
+      steps.value[0].firstName = firstName
+      steps.value[0].lastName = lastName
+    }
+    function splitNames({ name = [] }) {
+      if (name.length) {
+        let nameArr = name.split(' ')
+        setFirstLastNames({
+          firstName: nameArr[0],
+          lastName: nameArr[nameArr.length - 1]
+        })
+      }
+    }
     function setDataFromQuery() {
       Object.assign(steps.value[0], route.query)
+      if (steps.value[0]?.name !== '') {
+        splitNames({ name: steps.value[0]?.name })
+      }
     }
     onMounted(() => {
       setDataFromQuery()
