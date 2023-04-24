@@ -62,6 +62,8 @@ export default defineComponent({
         },
         firstName: '',
         lastName: '',
+        name: '',
+        userId: 0,
         email: '',
         amount: 0,
         duration: 0,
@@ -82,16 +84,11 @@ export default defineComponent({
       }
     ])
     const route = useRoute()
-    function setDataFromParams() {
-      // these should be made available from when a clients tries to resubscribe only else they fall to the defaults
-      steps.value[0].planName = route.query.planName || 'premium'
-      steps.value[0].isNewClient = route.query.isNewClient || 'true'
-      steps.value[0].firstName = route.query.firstName || ''
-      steps.value[0].lastName = route.query.lastName || ''
-      steps.value[0].email = route.query.email || ''
+    function setDataFromQuery() {
+      Object.assign(steps.value[0], route.query)
     }
     onMounted(() => {
-      setDataFromParams()
+      setDataFromQuery()
     })
     const currentStep = ref(0)
     const componentSteps = ['FormDetails', 'FormSuccess']
