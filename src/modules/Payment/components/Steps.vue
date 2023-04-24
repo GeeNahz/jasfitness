@@ -44,7 +44,7 @@ const statusColorScheme = computed(() => {
     } else if (status === 'pending') {
       return 'bg-slate-300 text-slate-400'
     } else if (status === 'complete') {
-      return 'bg-teal-400 text-gray-100'
+      return 'bg-green-500 text-gray-100'
     }
     // bg-[#BF9128] // JF gold
   }
