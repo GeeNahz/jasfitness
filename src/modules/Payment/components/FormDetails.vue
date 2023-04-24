@@ -114,6 +114,7 @@ const props = defineProps({
 })
 
 function updateData(plan) {
+  data.value.planName = plan.name
   data.value.amount = plan.amount
   data.value.planId = plan.id
   data.value.properties = plan.properties
@@ -213,8 +214,7 @@ const computedAmount = computed(() => {
   }
 })
 const metadataReason = computed(() => {
-  if (data.value.isNewClient === 'true')
-    return `New gym subscription for ${data.value.planName}`
+  if (isNew.value) return `New gym subscription for ${data.value.planName}`
   return `Gym re-subscription for ${data.value.planName}`
 })
 
@@ -229,7 +229,7 @@ watch(
       plan_id: data.value.planId,
       amount: data.value.amount,
       duration: data.value.properties.duration,
-      new_sub: data.value.isNewClient === 'true',
+      new_sub: isNew.value,
       type: data.value.properties.type,
       reason: metadataReason.value
     }
@@ -251,7 +251,7 @@ function onSuccess(e) {
     lastName: data.value.lastName,
     email: data.value.email,
     reference: e.reference,
-    new_sub: data.value.isNewClient === 'true'
+    new_sub: isNew.value
   }
 
   emit('completed', jsondata)
@@ -267,7 +267,10 @@ function onClose() {
 form {
   input[type='text'],
   input[type='email'] {
-    @apply w-full h-10 rounded-md px-3 mb-3 bg-gray-100 text-gray-700 focus:bg-gray-200 placeholder:text-gray-400 focus:outline-none;
+    @apply w-full h-10 rounded-md px-3 mb-3 bg-gray-100 text-gray-700 focus:bg-gray-200 placeholder:text-gray-400 focus:outline-none capitalize;
+  }
+  input[type='email'] {
+    @apply lowercase;
   }
 }
 .costs-outline {
