@@ -56,18 +56,20 @@
           <p class="item">Subscription includes VAT (7.5%)</p>
           <p class="price"></p>
         </div>
-        <div v-if="Object.keys(data).length > 0">
-          <div class="cost">
-            <p class="item">Charges</p>
-            <p class="price">
-              ₦
-              {{
-                data.isNewClient === 'true'
-                  ? data?.properties?.new_sub_charges
-                  : data?.properties?.resub_charges
-              }}
-            </p>
-          </div>
+        <div v-if="Object.keys(data).length > 0" class="cost">
+          <p class="item">Charges</p>
+          <p class="price">
+            ₦
+            {{
+              isNew
+                ? data?.properties?.new_sub_charges
+                : data?.properties?.resub_charges
+            }}
+          </p>
+        </div>
+        <div v-if="isNew" class="cost">
+          <p class="item">Membership setup</p>
+          <p class="price">₦ 3000</p>
         </div>
         <div class="cost">
           <p class="item font-medium">Total Billing</p>
@@ -85,7 +87,7 @@
         :amount="(computedAmount || 0) * 100"
         :email="data.email || ''"
         :public-key="publicKey"
-        :metadata="paystackMetadata"
+        :metadata="isNew ? paystackMetadataNewUser : paystackMetadataOldUser"
         :label="`${data.firstName} ${data.lastName}`"
         :on-success="onSuccess"
         :on-cancel="onClose"
@@ -117,6 +119,9 @@ function updateData(plan) {
   data.value.properties = plan.properties
 }
 function getSelectedPlanByName(planName) {
+  if (!planName || planName === '') {
+    return plans.value[0]
+  }
   for (let plan of plans.value) {
     if (plan.name.toLowerCase() === planName.toLowerCase()) {
       return plan
@@ -189,17 +194,22 @@ function handleWizardUpdate() {
   emit('update', data.value, data.value.id)
 }
 
+const isNew = computed(() => data.value.isNewClient === 'true')
+
 // paystack options
-const paystackMetadata = ref({})
+const paystackMetadataNewUser = ref({})
+const paystackMetadataOldUser = ref({})
 // const vat = computed(() => (7.5 * dataAmount.value) / 100)
 // + vat.value
-const computedAmount = computed(
-  () =>
-    data.value.amount +
-      (data.value.isNewClient === 'true'
-        ? data.value?.properties?.new_sub_charges
-        : data.value?.properties?.resub_charges) || 0
-)
+const computedAmount = computed(() => {
+  if (isNew.value) {
+    return (
+      data.value.amount + 3000 + data.value?.properties?.new_sub_charges || 0
+    )
+  } else {
+    return data.value.amount + data.value?.properties?.resub_charges || 0
+  }
+})
 const metadataReason = computed(() => {
   if (data.value.isNewClient === 'true')
     return `New gym subscription for ${data.value.planName}`
@@ -210,7 +220,7 @@ watch(
   data,
   () => {
     handleWizardUpdate()
-    paystackMetadata.value = {
+    const commonMetaData = {
       first_name: data.value.firstName,
       last_name: data.value.lastName,
       email: data.value.email,
@@ -220,6 +230,14 @@ watch(
       new_sub: data.value.isNewClient === 'true',
       type: data.value.properties.type,
       reason: metadataReason.value
+    }
+    paystackMetadataNewUser.value = {
+      ...commonMetaData
+    }
+    paystackMetadataOldUser.value = {
+      name: data.value.name,
+      user_id: data.value.userId,
+      ...commonMetaData
     }
   },
   { deep: true }
