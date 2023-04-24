@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="pt-28 md:pt-36 pb-8 md:pb-20 px-3 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]"
-  >
+  <div class="px-3 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]">
     <div
       class="h-fit min-h-max w-full sm:w-[500px] md:w-[700px] rounded-xl shadow bg-[#fefefe] py-16"
     >
