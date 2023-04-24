@@ -257,7 +257,9 @@ function onSuccess(e) {
   emit('completed', jsondata)
 }
 function onClose() {
-  console.log('Paystack closed')
+  store.dispatch('landingpage/warning', {
+    message: 'Your transaction has been canceled.'
+  })
 }
 </script>
 
