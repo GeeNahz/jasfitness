@@ -56,9 +56,8 @@ export default {
 </script>
 
 <style>
-html,
 body {
-  height: 100%;
+  min-height: 100%;
   font-size: 16px;
   margin: 0;
   padding: 0;
