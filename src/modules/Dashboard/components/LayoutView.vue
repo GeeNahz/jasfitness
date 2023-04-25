@@ -86,9 +86,9 @@ defineProps({
   gap: 1rem;
 
   @include responsive('tablet-width') {
-    grid-template-columns: minmax(256px, 1fr);
+    grid-template-columns: minmax(100%, 1fr);
     grid-template-areas: initial;
-    height: 100%;
+    // height: 100%;
   }
 }
 
