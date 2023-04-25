@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex gap-1 xl:gap-0 w-full justify-between capitalize text-center px-3 py-2 xl:px-10 md:py-4"
+    class="flex gap-1 xl:gap-0 w-full justify-between capitalize text-center px-3 py-3 xl:px-10 md:py-4"
   >
     <div class="item">
       <p class="text-xs md:text-base">
