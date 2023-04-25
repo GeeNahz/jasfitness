@@ -198,7 +198,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useStore } from 'vuex'
 import { useMeta } from 'vue-meta'
 
@@ -232,21 +232,23 @@ const creds = computed(() =>
 )
 
 onMounted(() => {
-  if (!gym_attendance.value) {
-    store
-      .dispatch('dashboard/dashboard_gym_attendance', user.value.user_id)
-      .then(
-        () => {},
-        () => {
-          const message =
-            'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
-          store.dispatch('landingpage/error', { message, timeout: 3000 })
-        }
-      )
-  }
-  if (gym_attendance.value) {
-    prepareData()
-  }
+  nextTick(() => {
+    if (!gym_attendance.value) {
+      store
+        .dispatch('dashboard/dashboard_gym_attendance', user.value.user_id)
+        .then(
+          () => {},
+          () => {
+            const message =
+              'Something went wrong while fetching gym attendance records. Refresh the browser to try fix it.'
+            store.dispatch('landingpage/error', { message, timeout: 3000 })
+          }
+        )
+    }
+    if (gym_attendance.value) {
+      prepareData()
+    }
+  })
 })
 
 const {
