@@ -59,7 +59,7 @@ export default {
 @import '../../assets/styles/base';
 
 .dashboard-container {
-  height: 100%;
+  // height: 100%;
   display: grid;
   grid-template-columns: minmax(100px, 280px) 1fr;
   grid-template-areas: 'side main';
@@ -82,7 +82,7 @@ export default {
 .main-container {
   grid-area: 'main';
 
-  height: 100vh;
+  min-height: 100vh;
   padding: 0;
   margin: 0;
 
