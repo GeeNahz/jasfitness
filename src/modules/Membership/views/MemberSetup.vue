@@ -509,7 +509,7 @@ function setInputFieldsFromParams() {
   inputFields.requiredFields.email = route.query.email || ''
   inputFields.requiredFields.firstName = route.query.first_name || ''
   inputFields.requiredFields.lastName = route.query.last_name || ''
-  inputFields.requiredFields.reference = route.query.reference || ''
+  inputFields.notRequired.reference = route.query.reference || ''
 }
 
 function appendIndexAsId({ array = [] }) {
@@ -660,7 +660,7 @@ async function submitHandler() {
     medical_consent: inputFields.notRequired.consent,
     hmo: inputFields.notRequired.hmo,
     enrollee_id: inputFields.notRequired.enrolleeId,
-    reference: inputFields.requiredFields.reference
+    reference: inputFields.notRequired.reference
   }
   try {
     await store.dispatch('auth/membership_setup', userData)
