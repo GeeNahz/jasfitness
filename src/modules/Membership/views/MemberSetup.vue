@@ -509,7 +509,7 @@ function setInputFieldsFromParams() {
   inputFields.requiredFields.email = route.query.email || ''
   inputFields.requiredFields.firstName = route.query.first_name || ''
   inputFields.requiredFields.lastName = route.query.last_name || ''
-  inputFields.notRequired.reference = route.query.reference || ''
+  inputFields.notRequired.reference = route.query.reference || 'none'
 }
 
 function appendIndexAsId({ array = [] }) {
