@@ -1,13 +1,52 @@
+<script setup lang="ts">
+import { defineComponent, provide, ref } from 'vue'
+
+import DashboardHandleModalsDisplay from "./components/modals/DashboardHandleModalsDisplay.vue"
+// import TheSidebar from './components/TheSidebar.vue'
+import Onboarding from './components/OnBoarding.vue'
+// import SnowFlakes from './components/SnowFlakesEffect.vue'
+
+defineComponent({
+  name: 'DashboardView',
+  components: {
+    // TheSidebar,
+    DashboardHandleModalsDisplay,
+    Onboarding
+    // SnowFlakes
+  }
+})
+const isReady = ref<boolean>(false);
+function toggleIsReady(newState: boolean) {
+  setTimeout(() => {
+    isReady.value = newState;
+  }, 0);
+}
+provide('isComponentReady', { isReady, toggleIsReady });
+
+const isNavbarOpen = ref<boolean>(false);
+function toggleIsNavbarOpen(newState: boolean) {
+  isNavbarOpen.value = newState;
+}
+provide('navbar', { isNavbarOpen, toggleIsNavbarOpen });
+
+const runOnrientation = ref<boolean>(false);
+function toggleRunOrientation(newState: boolean) {
+  runOnrientation.value = newState;
+}
+provide('runOrientationManually', { runOnrientation, toggleRunOrientation });
+</script>
+
 <template>
-  <div
+  <!-- <div
     class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
-  >
+  > -->
+  <div class="w-full mt-[200px] md:mt-0">
     <DashboardHandleModalsDisplay class="fixed" />
-    <div class="sidebar-panel">
+    <!-- <div class="sidebar-panel">
       <TheSidebar />
-    </div>
-    <div class="main-container w-full">
-      <!-- <SnowFlakes /> -->
+    </div> -->
+    <!-- <div class="main-container w-full"> -->
+    <div class="w-full">
       <div class="z-50">
         <Onboarding />
       </div>
@@ -15,45 +54,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import { provide, ref } from 'vue'
-
-import DashboardHandleModalsDisplay from './components/DashboardHandleModalsDisplay.vue'
-import TheSidebar from './components/TheSidebar.vue'
-import Onboarding from './components/OnBoarding.vue'
-// import SnowFlakes from './components/SnowFlakesEffect.vue'
-
-export default {
-  name: 'DashboardView',
-  components: {
-    TheSidebar,
-    DashboardHandleModalsDisplay,
-    Onboarding
-    // SnowFlakes
-  },
-  setup() {
-    const isReady = ref(false)
-    function toggleIsReady(newState) {
-      setTimeout(() => {
-        isReady.value = newState
-      }, 0)
-    }
-    provide('isComponentReady', { isReady, toggleIsReady })
-    const isNavbarOpen = ref(false)
-    function toggleIsNavbarOpen(newState) {
-      isNavbarOpen.value = newState
-    }
-    provide('navbar', { isNavbarOpen, toggleIsNavbarOpen })
-
-    const runOnrientation = ref(false)
-    function toggleRunOrientation(newState) {
-      runOnrientation.value = newState
-    }
-    provide('runOrientationManually', { runOnrientation, toggleRunOrientation })
-  }
-}
-</script>
 
 <style lang="scss" scoped>
 @import '../../assets/styles/base';

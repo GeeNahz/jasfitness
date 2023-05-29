@@ -1,3 +1,4 @@
+<script setup lang="ts"></script>
 <template>
   <div
     class="footer-container lg:pt-20 px-4 w-full h-[858px] lg:h-[551px] bg-[#171717]"
@@ -14,7 +15,7 @@
         </div>
         <ul class="lg:space-y-[14px] grid grid-cols-2 gap-4 lg:block">
           <li>
-            <router-link :to="{ name: 'AboutLand' }" class="w-full"
+            <router-link :to="{ name: 'AboutPage' }" class="w-full"
               >About us</router-link
             >
           </li>
@@ -105,9 +106,6 @@
     </div>
   </div>
 </template>
-
-<script setup></script>
-
 <style lang="scss" scoped>
 @import '../assets/styles/base';
 

@@ -1,3 +1,26 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+
+import AppIconCheckOutline from '@/components/icons/AppIconCheckOutline.vue'
+
+const router = useRouter()
+const route = useRoute()
+
+const message = ref<string>('')
+
+onMounted(() => {
+  message.value = route.query.message as string;
+})
+
+function goToHomePage() {
+  router.push({ name: 'LandingPageHome' })
+}
+function returnToForm() {
+  router.back()
+}
+</script>
+
 <template>
   <div class="min-h-[100vh] w-full flex items-center justify-center">
     <div
@@ -37,26 +60,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { onMounted, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-
-import AppIconCheckOutline from '@/components/icons/AppIconCheckOutline.vue'
-
-const router = useRouter()
-const route = useRoute()
-
-const message = ref('')
-
-onMounted(() => {
-  message.value = route.query.message
-})
-
-function goToHomePage() {
-  router.push({ name: 'LandingPageHome' })
-}
-function returnToForm() {
-  router.back()
-}
-</script>

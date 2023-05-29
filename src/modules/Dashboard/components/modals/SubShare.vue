@@ -1,3 +1,48 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+
+import { validation } from '@/composables/validation.js'
+import { useDashboardStore } from '../../stores/dashboard'
+
+import DashboardModalLayout from './DashboardModalLayout.vue'
+
+const { useIsValidHybridInputs, useIsWithinRange } = validation()
+
+const dashboardStore = useDashboardStore();
+const { isLoading, shareSubscriptionModal } = storeToRefs(dashboardStore);
+
+const closeModal = (modalId: string) => {
+  clearFormValues()
+  dashboardStore.toggleModal(modalId);
+}
+const username = ref('')
+const duration = ref(0)
+
+const activeFields = computed(
+  () =>
+    useIsValidHybridInputs([username.value, duration.value]) &&
+    useIsWithinRange({ value: duration.value, minRange: 1, maxRange: 4 })
+)
+async function shareYourSub() {
+  const data = {
+    username: username.value,
+    duration: duration.value
+  }
+  const { success } = await dashboardStore.dashboard_share_subscription(data);
+  if (success.value) {
+    closeModal(shareSubscriptionModal.value.id)
+    clearFormValues()
+  }
+}
+
+function clearFormValues() {
+  (document.querySelector('#shareSub') as HTMLFormElement).reset()
+  username.value = ''
+  duration.value = 0
+}
+</script>
+
 <template>
   <!-- share subscription -->
   <DashboardModalLayout :uid="shareSubscriptionModal.id" @close="closeModal">
@@ -51,66 +96,6 @@
     </template>
   </DashboardModalLayout>
 </template>
-
-<script setup>
-import { computed, ref } from 'vue'
-import { useStore } from 'vuex'
-
-import { validation } from '@/composables/validation.js'
-
-import DashboardModalLayout from '../DashboardModalLayout.vue'
-
-const { useIsValidHybridInputs, useIsWithinRange } = validation()
-const store = useStore()
-
-const closeModal = (modalId) => {
-  clearFormValues()
-  store.dispatch('dashboard/toggle_modal', modalId)
-}
-const username = ref('')
-const duration = ref(0)
-const isLoading = computed(() => store.state.dashboard.status.isLoading)
-const activeFields = computed(
-  () =>
-    useIsValidHybridInputs([username.value, duration.value]) &&
-    useIsWithinRange({ value: duration.value, minRange: 1, maxRange: 4 })
-)
-async function shareYourSub() {
-  try {
-    await store.dispatch('dashboard/dashboard_share_subscription', {
-      username: username.value,
-      duration: duration.value
-    })
-
-    store.dispatch('landingpage/success', {
-      message: `You have successfully shared your subscription with ${username.value}`
-    })
-    closeModal(shareSubscriptionModal.value.id)
-  } catch (error) {
-    if (error.includes('400')) {
-      store.dispatch('landingpage/error', {
-        message: 'Sorry, there is no user using this username.'
-      })
-    } else {
-      store.dispatch('landingpage/error', {
-        message: 'Could not complete the request. Please try again later.'
-      })
-    }
-  } finally {
-    clearFormValues()
-  }
-}
-
-function clearFormValues() {
-  document.querySelector('#shareSub').reset()
-  username.value = ''
-  duration.value = ''
-}
-
-const shareSubscriptionModal = computed(
-  () => store.state.dashboard.modals.shareSub
-)
-</script>
 
 <style scope>
 .disabled {

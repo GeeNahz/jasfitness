@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import AppIconClose from '@/components/icons/AppIconClose.vue'
+
+import { useAlertStore } from '@/stores/alerts'
+import type { ID } from "@/types"
+
+const store = useAlertStore()
+const alerts = store.alerts
+function closeAlert(id: ID) {
+  store.removeAlert(id)
+}
+</script>
 <template>
   <Transition name="alerts-container">
     <div
@@ -22,31 +34,13 @@
             data-dismiss="alert"
             aria-label="Close"
           >
-            <span aria-hidden="true"><AppIconCloseAlert /></span>
+            <span aria-hidden="true"><AppIconClose /></span>
           </button>
         </div>
       </TransitionGroup>
     </div>
   </Transition>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-
-import AppIconCloseAlert from './icons/AppIconCloseAlert.vue'
-
-const store = useStore()
-
-const alerts = computed(() =>
-  store.state.landingpage.items ? store.state.landingpage.items : []
-)
-
-function closeAlert(id) {
-  store.dispatch('landingpage/remove', id)
-}
-</script>
-
 <style scoped>
 .alerts-enter-active,
 .alerts-leave-active {
@@ -65,6 +59,6 @@ function closeAlert(id) {
 .alerts-container-enter-from,
 .alerts-container-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateX(30px);
 }
 </style>

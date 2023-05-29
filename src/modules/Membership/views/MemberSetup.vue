@@ -1,3 +1,268 @@
+<script setup lang="ts">
+import { reactive, computed, onMounted, ref, watch } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+
+import { validation } from '@/composables/validation'
+import EmailService from '@/services/GenericService/Service'
+
+import AppChip from '@/components/AppChip.vue'
+import AppSearchableDropdown from '@/components/AppSearchableDropdown.vue'
+import AppIconAccount from '@/components/icons/AppIconAccount.vue'
+import AppIconEmail from '@/components/icons/AppIconEmail.vue'
+import AppIconPhone from '@/components/icons/AppIconPhone.vue'
+import AppIconGender from '@/components/icons/AppIconGender.vue'
+import AppIconPlan from '@/components/icons/AppIconPlan.vue'
+// import AppIconAccountMultiplePlus from '@/components/AppIconAccountMultiplePlus.vue'
+import AppIconSettingOutline from '@/components/icons/AppIconSettingOutline.vue'
+import AppIconAt from '@/components/icons/AppIconAt.vue'
+import AppIconBriefcase from '@/components/icons/AppIconBriefcase.vue'
+import AppIconMapMarker from '@/components/icons/AppIconMapMarker.vue'
+import AppIconTargetAccount from '@/components/icons/AppIconTargetAccount.vue'
+import type { Content, HmoItem, HmoTempArray, MembershipSetup } from '../types'
+import { useAuthStore } from '@/modules/Authentication/stores/auth'
+import { useAlertStore } from '@/stores/alerts'
+
+// import AppIconMedicationOutline from '@/components/icons/AppIconMedicationOutline.vue'
+
+const status = reactive({ isLoading: false })
+const inputFields = reactive<MembershipSetup>({
+  requiredFields: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    gender: '',
+    dob: '',
+    emergencyName: '',
+    emergencyNumber: '',
+    username: '',
+    medical_condition: '',
+    goal: '',
+    address: "",
+    occupation: "",
+  },
+  notRequired: {
+    referral: '',
+    middleName: '',
+    consent: false,
+    hmo: '',
+    enrolleeId: '',
+    reference: "",
+  }
+})
+const route = useRoute()
+function setInputFieldsFromParams() {
+  inputFields.requiredFields.email = route.query.email as string || ''
+  inputFields.requiredFields.firstName = route.query.first_name as string || ''
+  inputFields.requiredFields.lastName = route.query.last_name as string || ''
+  inputFields.notRequired.reference = route.query.reference as string || 'none'
+}
+
+function appendIndexAsId({ array = [] }: { array: string[] }) {
+  const newArray = []
+  if (array.length < 1) return
+  for (let element in array) {
+    newArray.push({ id: element, content: array[element] })
+  }
+  return newArray
+}
+
+function clearArray({ array = [] }: { array: any[] }) {
+  if (array.length) {
+    array.splice(0)
+  }
+}
+function AddItemToArray({ newItem, array = [] }: { newItem: Content, array: any[] }) {
+  for (let item of array) {
+    if (item.id === newItem.id) return
+  }
+  if (newItem.content.toLowerCase() === 'none') {
+    clearArray({ array: array })
+  }
+  array.push(newItem)
+}
+
+const hmosList = ref<HmoItem[] | undefined>([])
+function appendIndexAsIdHmo({ array = [] }: { array: HmoTempArray[] }) {
+  const newArray = []
+  if (array.length < 1) return
+  for (let element in array) {
+    newArray.push({
+      id: array[element].id,
+      content: array[element].name,
+      schedule: array[element].schedule
+    })
+  }
+  return newArray as HmoItem[]
+}
+function AddHmoItem(newItem: Content) {
+  hmoDisplay.value.splice(0)
+  AddItemToArray({
+    newItem,
+    array: hmoDisplay.value
+  })
+}
+function clearHmoDetails() {
+  hmoDisplay.value.splice(0, 1)
+  inputFields.notRequired.enrolleeId = ''
+}
+const chipItemsDisplay = ref<HmoItem[]>([])
+
+function AddItem(newItem: Content) {
+  AddItemToArray({
+    newItem,
+    array: chipItemsDisplay.value
+  })
+}
+
+function removeChip(chipId: string) {
+  for (let index = 0; index < chipItemsDisplay.value.length; index++) {
+    if (chipItemsDisplay.value[index].id === chipId) {
+      chipItemsDisplay.value.splice(index, 1)
+    }
+  }
+}
+
+const hmoDisplay = ref<HmoItem[]>([])
+function serialisedMedicalCondition() {
+  const arr = []
+  for (let element of chipItemsDisplay.value) {
+    arr.push(element.content)
+  }
+  return arr.join(';')
+}
+// watch medical condition array
+watch(
+  chipItemsDisplay,
+  () => {
+    inputFields.requiredFields.medical_condition = serialisedMedicalCondition()
+  },
+  { deep: true }
+)
+// watch hmo array
+watch(
+  hmoDisplay,
+  () => {
+    if (hmoDisplay.value.length) {
+      inputFields.notRequired.hmo = hmoDisplay.value[0].id as string
+    }
+  },
+  { deep: true }
+)
+/* ** this will show details about the hmo selected */
+const isHmoSelected = computed(() => (hmoDisplay.value.length ? true : false))
+
+const { useIsValidTextInputs } = validation()
+const isValidFields = computed(() => validateInputs() && !status.isLoading)
+
+function validateInputs() {
+  const inputsArr = []
+  for (const key in inputFields.requiredFields) {
+    inputsArr.push(inputFields.requiredFields[key as keyof typeof inputFields.requiredFields])
+  }
+  return useIsValidTextInputs(inputsArr)
+}
+function clearInputs({ inputObject }: { inputObject: { [key: string]: any } }) {
+  for (let key in inputObject) {
+    inputObject[key] = ''
+  }
+}
+
+function getFullName({ namesArray = [] }: { namesArray: string[] }) {
+  function isString(value: string | number) {
+    return typeof value === 'string'
+  }
+  if (namesArray.length > 1) {
+    if (!namesArray.every(isString)) {
+      throw new Error("Elements of 'namesArray' should all be strings")
+    }
+    return namesArray.join(' ')
+  }
+  throw new Error(
+    `namesArray may not be empty or less than 1 element. Got ${namesArray} expected an array of string.`
+  )
+}
+
+const authStore = useAuthStore();
+const alertStore = useAlertStore();
+const router = useRouter()
+async function submitHandler() {
+  status.isLoading = true
+  let userData = {
+    username: inputFields.requiredFields.username,
+    email: inputFields.requiredFields.email,
+    name: getFullName({
+      namesArray: [
+        inputFields.requiredFields.firstName,
+        inputFields.notRequired.middleName,
+        inputFields.requiredFields.lastName
+      ]
+    }),
+    date_of_birth: inputFields.requiredFields.dob,
+    gender: inputFields.requiredFields.gender,
+    phone_number: inputFields.requiredFields.phoneNumber,
+    address: inputFields.requiredFields.address,
+    emergency_person: inputFields.requiredFields.emergencyName,
+    emergency_contact: inputFields.requiredFields.emergencyNumber,
+    occupation: inputFields.requiredFields.occupation,
+    goal: inputFields.requiredFields.goal,
+    medical_condition: inputFields.requiredFields.medical_condition,
+    medical_consent: inputFields.notRequired.consent,
+    hmo: inputFields.notRequired.hmo,
+    enrollee_id: inputFields.notRequired.enrolleeId,
+    reference: inputFields.notRequired.reference
+  }
+  try {
+    await authStore.membership_setup(userData)
+    alertStore.success("Your details have been successfully submitted.");
+    router.push({
+      name: 'FormSuccess',
+      query: { message: "Congratulations! We're glad to have you onboard!" }
+    })
+    // on successful submission
+    clearInputs({ inputObject: inputFields.requiredFields })
+    clearInputs({ inputObject: inputFields.notRequired })
+  } catch (error: any) {
+    if (error.response.status === 400) {
+      for (let err in error.response.data.errors) {
+        alertStore.warning(error.response?.data[err].detail, { timeout: 10000 });
+      }
+    }
+    if (error.message == 'Network Error') {
+      alertStore.error("Kindly check your network connection and try again.");
+    }
+  } finally {
+    status.isLoading = false
+  }
+}
+
+const medicalConditionsList = ref<string[]>([])
+const now = ref()
+onMounted(async () => {
+  try {
+    const res = await EmailService.medical_conditions_list()
+    for (let condition of res.data) {
+      medicalConditionsList.value.push(condition.name)
+    }
+  } catch (error) {
+    alertStore.error("Something went wrong. Try refreshing the page to try again.");
+  }
+  try {
+    const res = await EmailService.hmos_list()
+    let tempArr: HmoTempArray[] = []
+    for (let hmo of res.data) {
+      tempArr.push(hmo)
+    }
+    hmosList.value = appendIndexAsIdHmo({ array: tempArr });
+  } catch {
+    alertStore.error("Something went wrong. Try refreshing the page to try again.");
+  }
+
+  now.value = new Date().getFullYear()
+  setInputFieldsFromParams()
+})
+</script>
+
 <template>
   <div class="member-setup-wrapper">
     <div class="form-wrapper shadow rounded-md overflow-hidden">
@@ -456,273 +721,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { reactive, computed, onMounted, ref, watch } from 'vue'
-import { useStore } from 'vuex'
-import { useRouter, useRoute } from 'vue-router'
-
-import { validation } from '@/composables/validation.js'
-import EmailService from '@/services/GenericServices/GenericService'
-
-import AppChip from '@/components/AppChip.vue'
-import AppSearchableDropdown from '@/components/AppSearchableDropdown.vue'
-import AppIconAccount from '@/components/icons/AppIconAccount.vue'
-import AppIconEmail from '@/components/icons/AppIconEmail.vue'
-import AppIconPhone from '@/components/icons/AppIconPhone.vue'
-import AppIconGender from '@/components/icons/AppIconGender.vue'
-import AppIconPlan from '@/components/icons/AppIconPlan.vue'
-// import AppIconAccountMultiplePlus from '@/components/AppIconAccountMultiplePlus.vue'
-import AppIconSettingOutline from '@/components/icons/AppIconSettingOutline.vue'
-import AppIconAt from '@/components/icons/AppIconAt.vue'
-import AppIconBriefcase from '@/components/icons/AppIconBriefcase.vue'
-import AppIconMapMarker from '@/components/icons/AppIconMapMarker.vue'
-import AppIconTargetAccount from '@/components/icons/AppIconTargetAccount.vue'
-
-// import AppIconMedicationOutline from '@/components/icons/AppIconMedicationOutline.vue'
-
-const status = reactive({ isLoading: false })
-const inputFields = reactive({
-  requiredFields: {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    gender: '',
-    dob: '',
-    emergencyName: '',
-    emergencyNumber: '',
-    username: '',
-    medical_condition: '',
-    goal: ''
-  },
-  notRequired: {
-    referral: '',
-    middleName: '',
-    consent: false,
-    hmo: '',
-    enrolleeId: ''
-  }
-})
-const route = useRoute()
-function setInputFieldsFromParams() {
-  inputFields.requiredFields.email = route.query.email || ''
-  inputFields.requiredFields.firstName = route.query.first_name || ''
-  inputFields.requiredFields.lastName = route.query.last_name || ''
-  inputFields.notRequired.reference = route.query.reference || 'none'
-}
-
-function appendIndexAsId({ array = [] }) {
-  const newArray = []
-  if (array.length < 1) return
-  for (let element in array) {
-    newArray.push({ id: element, content: array[element] })
-  }
-  return newArray
-}
-function AddItem(newItem) {
-  AddItemToArray({
-    newItem,
-    array: chipItemsDisplay.value
-  })
-}
-
-function removeChip(chipId) {
-  for (let index = 0; index < chipItemsDisplay.value.length; index++) {
-    if (chipItemsDisplay.value[index].id === chipId) {
-      chipItemsDisplay.value.splice(index, 1)
-    }
-  }
-}
-function clearArray({ array = [] }) {
-  if (array.length) {
-    array.splice(0)
-  }
-}
-function AddItemToArray({ newItem, array = [] }) {
-  for (let item of array) {
-    if (item.id === newItem.id) return
-  }
-  if (newItem.content.toLowerCase() === 'none') {
-    clearArray({ array: array })
-  }
-  array.push(newItem)
-}
-
-const hmosList = ref([])
-function appendIndexAsIdHmo({ array = [] }) {
-  const newArray = []
-  if (array.length < 1) return
-  for (let element in array) {
-    newArray.push({
-      id: array[element].id,
-      content: array[element].name,
-      schedule: array[element].schedule
-    })
-  }
-  return newArray
-}
-function AddHmoItem(newItem) {
-  hmoDisplay.value.splice(0)
-  AddItemToArray({
-    newItem,
-    array: hmoDisplay.value
-  })
-}
-function clearHmoDetails() {
-  hmoDisplay.value.splice(0, 1)
-  inputFields.notRequired.enrolleeId = ''
-}
-const chipItemsDisplay = ref([])
-const hmoDisplay = ref([])
-function serialisedMedicalCondition() {
-  const arr = []
-  for (let element of chipItemsDisplay.value) {
-    arr.push(element.content)
-  }
-  return arr.join(';')
-}
-// watch medical condition array
-watch(
-  chipItemsDisplay,
-  () => {
-    inputFields.requiredFields.medical_condition = serialisedMedicalCondition()
-  },
-  { deep: true }
-)
-// watch hmo array
-watch(
-  hmoDisplay,
-  () => {
-    if (hmoDisplay.value.length) {
-      inputFields.notRequired.hmo = hmoDisplay.value[0].id
-    }
-  },
-  { deep: true }
-)
-/* ** this will show details about the hmo selected */
-const isHmoSelected = computed(() => (hmoDisplay.value.length ? true : false))
-
-const { useIsValidTextInputs } = validation()
-const isValidFields = computed(() => validateInputs() && !status.isLoading)
-
-function validateInputs() {
-  const inputsArr = []
-  for (let key in inputFields.requiredFields) {
-    inputsArr.push(inputFields.requiredFields[key])
-  }
-  return useIsValidTextInputs(inputsArr)
-}
-function clearInputs({ inputObject }) {
-  for (let key in inputObject) {
-    inputObject[key] = ''
-  }
-}
-
-function getFullName({ namesArray = [] }) {
-  function isString(value) {
-    return typeof value === 'string'
-  }
-  if (namesArray.length > 1) {
-    if (!namesArray.every(isString)) {
-      throw new Error("Elements of 'namesArray' should all be strings")
-    }
-    return namesArray.join(' ')
-  }
-  throw new Error(
-    `namesArray may not be empty or less than 1 element. Got ${namesArray} expected an array of string.`
-  )
-}
-
-const store = useStore()
-const router = useRouter()
-async function submitHandler() {
-  status.isLoading = true
-  let userData = {
-    username: inputFields.requiredFields.username,
-    email: inputFields.requiredFields.email,
-    name: getFullName({
-      namesArray: [
-        inputFields.requiredFields.firstName,
-        inputFields.notRequired.middleName,
-        inputFields.requiredFields.lastName
-      ]
-    }),
-    date_of_birth: inputFields.requiredFields.dob,
-    gender: inputFields.requiredFields.gender,
-    phone_number: inputFields.requiredFields.phoneNumber,
-    address: inputFields.requiredFields.address,
-    emergency_person: inputFields.requiredFields.emergencyName,
-    emergency_contact: inputFields.requiredFields.emergencyNumber,
-    occupation: inputFields.requiredFields.occupation,
-    goal: inputFields.requiredFields.goal,
-    medical_condition: inputFields.requiredFields.medical_condition,
-    medical_consent: inputFields.notRequired.consent,
-    hmo: inputFields.notRequired.hmo,
-    enrollee_id: inputFields.notRequired.enrolleeId,
-    reference: inputFields.notRequired.reference
-  }
-  try {
-    await store.dispatch('auth/membership_setup', userData)
-    store.dispatch('landingpage/success', {
-      message: 'Your details have been successfully submitted.'
-    })
-    router.push({
-      name: 'FormSuccess',
-      query: { message: "Congratulations! We're glad to have you onboard!" }
-    })
-    // on successful submission
-    clearInputs({ inputObject: inputFields.requiredFields })
-    clearInputs({ inputObject: inputFields.notRequired })
-  } catch (error) {
-    if (error.response.status === 400) {
-      for (let err in error.response.data.errors) {
-        store.dispatch('landingpage/warning', {
-          message: error.response.data.errors[err].detail,
-          timeout: 10000
-        })
-      }
-    }
-    if (error.message == 'Network Error') {
-      store.dispatch('landingpage/error', {
-        message: 'Kindly check your network connection and try again.'
-      })
-    }
-  } finally {
-    status.isLoading = false
-  }
-}
-
-const medicalConditionsList = ref([])
-const now = ref()
-onMounted(async () => {
-  try {
-    const res = await EmailService.medical_conditions_list()
-    for (let condition of res.data) {
-      medicalConditionsList.value.push(condition.name)
-    }
-  } catch (error) {
-    store.dispatch('landingpage/error', {
-      message: 'Something went wrong. Try refreshing the page to try again.'
-    })
-  }
-  try {
-    const res = await EmailService.hmos_list()
-    let tempArr = []
-    for (let hmo of res.data) {
-      tempArr.push(hmo)
-    }
-    hmosList.value = appendIndexAsIdHmo({ array: tempArr })
-  } catch {
-    store.dispatch('landingpage/error', {
-      message: 'Something went wrong. Try refreshing the page to try again.'
-    })
-  }
-
-  now.value = new Date().getFullYear()
-  setInputFieldsFromParams()
-})
-</script>
 
 <style scoped>
 /* mobile device */

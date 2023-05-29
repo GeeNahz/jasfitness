@@ -1,3 +1,65 @@
+<script setup lang="ts">
+import { computed, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
+import { validation } from '@/composables/validation.js'
+
+import EmailService from '@/services/GenericService/Service'
+import { useAlertStore } from '@/stores/alerts'
+
+const formValues = reactive({
+  name: '',
+  email: '',
+  phone_number: ''
+})
+
+const status = reactive({
+  isLoading: false
+})
+
+const { useIsValidTextInputs, useIsValidNumericInputs } = validation()
+
+const isValidInputs = computed(() => {
+  return (
+    useIsValidTextInputs([formValues.name, formValues.email]) &&
+    useIsValidNumericInputs([parseInt(formValues.phone_number)]) &&
+    !status.isLoading
+  )
+})
+
+function clearInputs({ inputObject }: { inputObject: { [key: string]: string; } }) {
+  for (let key in inputObject) {
+    inputObject[key] = ''
+  }
+}
+
+const alertStore = useAlertStore();
+const router = useRouter()
+async function submitHandler() {
+  status.isLoading = true
+  try {
+    let res = await EmailService.enquiry(formValues)
+    if (res.status === 201) {
+      alertStore.success("Your details were successfully created.");
+      router.push({
+        name: 'FormSuccess',
+        query: { message: 'Your details have been successfully subimtted.' }
+      })
+    }
+    if (res.status === 200) {
+      alertStore.warning("This record already exists.");
+    }
+    clearInputs({ inputObject: formValues })
+  } catch (error: any) {
+    if (error.response?.status === 400) {
+      alertStore.error("An error occured while trying to submit your data. Please try again.");
+    }
+  } finally {
+    status.isLoading = false
+  }
+}
+</script>
+
 <template>
   <div class="enquiry-wrapper text-[#303030]">
     <div class="enquiry">
@@ -66,75 +128,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { computed, reactive } from 'vue'
-import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
-
-import { validation } from '@/composables/validation.js'
-
-import EmailService from '@/services/GenericServices/GenericService.js'
-
-const formValues = reactive({
-  name: '',
-  email: '',
-  phone_number: ''
-})
-
-const status = reactive({
-  isLoading: false
-})
-
-const { useIsValidTextInputs, useIsValidNumericInputs } = validation()
-
-const isValidInputs = computed(() => {
-  return (
-    useIsValidTextInputs([formValues.name, formValues.email]) &&
-    useIsValidNumericInputs([formValues.phone_number]) &&
-    !status.isLoading
-  )
-})
-
-function clearInputs({ inputObject }) {
-  for (let key in inputObject) {
-    inputObject[key] = ''
-  }
-}
-
-const store = useStore()
-const router = useRouter()
-async function submitHandler() {
-  status.isLoading = true
-  try {
-    let res = await EmailService.enquiry(formValues)
-    if (res.status === 201) {
-      store.dispatch('landingpage/success', {
-        message: 'Your details were successfully created.'
-      })
-      router.push({
-        name: 'FormSuccess',
-        query: { message: 'Your details have been successfully subimtted.' }
-      })
-    }
-    if (res.status === 200) {
-      store.dispatch('landingpage/warning', {
-        message: 'This record already exists.'
-      })
-    }
-    clearInputs({ inputObject: formValues })
-  } catch (error) {
-    if (error.response?.status === 400) {
-      store.dispatch('landingpage/error', {
-        message:
-          'An error occured while trying to submit your data. Please try again.'
-      })
-    }
-  } finally {
-    status.isLoading = false
-  }
-}
-</script>
 
 <style scoped>
 .enquiry-wrapper {

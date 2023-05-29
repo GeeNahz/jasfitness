@@ -1,3 +1,33 @@
+<script setup lang="ts">
+import { ref, inject, defineComponent, watch } from 'vue'
+import useCookies from '@/composables/cookies.js'
+
+const gtag = inject('gtag')
+
+const { showBanner, okClicked, allowCookies } = useCookies({ gtag: gtag })
+
+const displayBanner = ref(false)
+const okBannerClicked = () => {
+  displayBanner.value = false
+  okClicked()
+}
+
+if (showBanner.value) {
+  setTimeout(() => {
+    displayBanner.value = true
+  }, 2000)
+}
+
+// const { toggleShowCookiesPreferences } = inject('cookiesPreferences')
+watch(allowCookies, () => {
+  if (allowCookies.value) {
+    displayBanner.value = false
+  }
+})
+
+defineComponent({ name: "AppCookieBanner" })
+</script>
+
 <template>
   <transition name="slide">
     <div v-if="displayBanner" class="banner-container" style="width: 100%">
@@ -28,45 +58,6 @@
     </div>
   </transition>
 </template>
-
-<script>
-import { ref, inject, defineComponent, watch } from 'vue'
-import useCookies from '@/composables/cookies.js'
-
-export default defineComponent({
-  setup() {
-    const gtag = inject('gtag')
-
-    const { showBanner, okClicked, allowCookies } = useCookies({ gtag: gtag })
-
-    const displayBanner = ref(false)
-    const okBannerClicked = () => {
-      displayBanner.value = false
-      okClicked()
-    }
-
-    if (showBanner.value) {
-      setTimeout(() => {
-        displayBanner.value = true
-      }, 2000)
-    }
-
-    const { toggleShowCookiesPreferences } = inject('cookiesPreferences')
-    watch(allowCookies, () => {
-      if (allowCookies.value) {
-        displayBanner.value = false
-      }
-    })
-
-    return {
-      displayBanner,
-      okBannerClicked,
-      showBanner,
-      toggleShowCookiesPreferences
-    }
-  }
-})
-</script>
 
 <style scoped lang="scss">
 // cookies banner template

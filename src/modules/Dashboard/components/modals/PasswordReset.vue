@@ -1,3 +1,76 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+
+import { validation } from '@/composables/validation'
+import { useModalActions } from '@/composables/modalOperations'
+import { useRevealPassword } from '@/composables/formKitAction'
+
+import DashboardModalLayout from './DashboardModalLayout.vue'
+import { useAuthStore } from '@/modules/Authentication/stores/auth'
+import { storeToRefs } from 'pinia'
+import { useDashboardStore } from '../../stores/dashboard'
+
+const authStore = useAuthStore();
+const dashboardStore = useDashboardStore();
+
+const { userId } = storeToRefs(authStore);
+const { passwordResetModal, isLoading } = storeToRefs(dashboardStore);
+
+const { useIsValidTextInputs, useIsPasswordConfirmed } = validation()
+
+const oldPassword = ref('')
+const newPassword = ref('')
+const password_confirm = ref('')
+const activeFields = computed(
+  () =>
+    useIsValidTextInputs([
+      oldPassword.value,
+      newPassword.value,
+      password_confirm.value
+    ]) && useIsPasswordConfirmed(newPassword.value, password_confirm.value)
+)
+
+async function handleSubmit() {
+  if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
+  if (
+    !useIsValidTextInputs([
+      oldPassword.value,
+      newPassword.value,
+      password_confirm.value
+    ])
+  ) return
+  
+  let data = {
+    old_password: oldPassword.value,
+    new_password: newPassword.value,
+    user_id: userId.value as number
+  }
+  const { success } = await dashboardStore.change_password(data);
+  if (success.value) {
+    closeModal(passwordResetModal.value.id)
+    resetForm()
+  }
+}
+
+function resetForm() {
+  (document.querySelector('#form') as HTMLFormElement).reset()
+  oldPassword.value = ''
+  newPassword.value = ''
+  password_confirm.value = ''
+}
+
+const { toggleDasboardModal } = useModalActions()
+
+function closeModal(modalId: string) {
+  toggleDasboardModal(modalId)
+  resetForm()
+}
+
+const handleIconClick = (node: any) => {
+  useRevealPassword(node)
+}
+</script>
+
 <template>
   <DashboardModalLayout :uid="passwordResetModal.id" @close="closeModal">
     <template #header>Change Password</template>
@@ -65,96 +138,6 @@
     </template>
   </DashboardModalLayout>
 </template>
-
-<script setup>
-import { computed, ref } from 'vue'
-import { useStore } from 'vuex'
-
-import { useModalOperations } from '@/composables/modalOperations.js'
-import { validation } from '@/composables/validation.js'
-
-import DashboardModalLayout from '../DashboardModalLayout.vue'
-
-const store = useStore()
-
-const passwordResetModal = computed(
-  () => store.state.dashboard.modals.passwordReset
-)
-
-const { useIsValidTextInputs, useIsPasswordConfirmed } = validation()
-
-const oldPassword = ref('')
-const newPassword = ref('')
-const password_confirm = ref('')
-const activeFields = computed(
-  () =>
-    useIsValidTextInputs([
-      oldPassword.value,
-      newPassword.value,
-      password_confirm.value
-    ]) && useIsPasswordConfirmed(newPassword.value, password_confirm.value)
-)
-
-const isLoading = computed(() => store.state.dashboard.status.isLoading)
-const userId = computed(() => store.state.auth.user.user_id)
-async function handleSubmit() {
-  if (!useIsPasswordConfirmed(newPassword.value, password_confirm.value)) return
-  if (
-    !useIsValidTextInputs([
-      oldPassword.value,
-      newPassword.value,
-      password_confirm.value
-    ])
-  )
-    return
-  try {
-    let data = {
-      old_password: oldPassword.value,
-      new_password: newPassword.value,
-      user_id: userId.value
-    }
-    await store.dispatch('dashboard/change_password', data)
-
-    store.dispatch('landingpage/success', {
-      message: 'Your password has been successfully change.'
-    })
-    closeModal(passwordResetModal.value.id)
-  } catch (err) {
-    console.log(err)
-    let message = ''
-    if (err.status == 400) {
-      message = 'Invalid password provided.'
-    } else {
-      message =
-        'Unable to complete your request. Please check your network connection.'
-    }
-    store.dispatch('landingpage/error', {
-      message
-    })
-  } finally {
-    resetForm()
-  }
-}
-
-function resetForm() {
-  document.querySelector('#form').reset()
-  oldPassword.value = ''
-  newPassword.value = ''
-  password_confirm.value = ''
-}
-
-const { toggleModal } = useModalOperations()
-
-function closeModal(modalId) {
-  toggleModal(modalId)
-  resetForm()
-}
-
-const handleIconClick = (node) => {
-  node.props.suffixIcon = node.props.suffixIcon === 'eye' ? 'eyeClosed' : 'eye'
-  node.props.type = node.props.type === 'password' ? 'text' : 'password'
-}
-</script>
 
 <style scoped>
 .disabled {

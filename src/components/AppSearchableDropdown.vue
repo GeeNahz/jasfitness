@@ -1,3 +1,97 @@
+<script setup lang="ts">
+import { ref, computed, watch } from 'vue'
+import { v4 as uuid } from 'uuid'
+
+import AppIconSearch from './icons/AppIconSearch.vue'
+import AppIconMenuUpOutline from './icons/AppIconMenuUpOutline.vue'
+import AppIconCheckOutline from './icons/AppIconCheckOutline.vue'
+import type { Content } from '@/modules/Membership/types'
+
+const emit = defineEmits(['selectedItem'])
+
+interface Props {
+  contents?: Content[];
+  title?: string;
+  placeholder?: string;
+  customItem?: { [key: string] : any }
+  selectedItems?: Content[];
+  masterItem?: string;
+  autoClose?: boolean;
+  onDisableFields?: () => any;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  contents: () => [],
+  title: "Dropdown",
+  placeholder: "Search...",
+  customItem: () => { return {} },
+  selectedItems: () => [],
+  masterItem: "none",
+  onDisableFields: () => { return false },
+  autoClose: false,
+})
+
+const searchItems = computed(() => {
+  const matchedItems = []
+  for (let content of props.contents) {
+    if (content.content.toLowerCase().includes(searchKey.value.toLowerCase())) {
+      matchedItems.push(content)
+    }
+  }
+  return matchedItems
+})
+
+const searchKey = ref('')
+
+const showDropdown = ref(false)
+const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
+
+const isDisabledItems = ref(false)
+const disabledItems = ({ value = false }) => (isDisabledItems.value = value)
+function setDisabledItems({ item = '' }) {
+  if (item.toLowerCase() === ('none' || 'false')) {
+    disabledItems({ value: true })
+  } else {
+    disabledItems({ value: false })
+  }
+}
+function isInSelectedItems({ value }: { value: string }) {
+  for (let item of props.selectedItems) {
+    if (item.content.toString().toLowerCase() === value.toLowerCase())
+      return true
+  }
+  return false
+}
+function submitHandler(selectedItem: Content) {
+  setDisabledItems({ item: selectedItem.content })
+  emit('selectedItem', selectedItem)
+  if (props.autoClose) {
+    toggleDropdown()
+  }
+}
+const customItemValue = ref('')
+function submitCustomMedicalCondition() {
+  if (customItemValue.value !== '') {
+    let id = uuid()
+    let content = customItemValue.value
+    emit('selectedItem', { id, content })
+    customItemValue.value = ''
+  }
+  if (props.autoClose) {
+    toggleDropdown()
+  }
+}
+/*set the enrollee-id field to show only when an HMO has been selected.*/
+watch(props.selectedItems, () => {
+  if (!isInSelectedItems({ value: props.masterItem })) {
+    disabledItems({ value: false })
+  }
+  if (props.onDisableFields()) {
+    disabledItems({ value: true })
+  }
+})
+</script>
+
 <template>
   <div class="dropdown">
     <div @click.prevent="toggleDropdown" class="dropdown__button">
@@ -76,92 +170,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, computed, watch } from 'vue'
-import { v4 as uuid } from 'uuid'
-
-import AppIconSearch from './icons/AppIconSearch.vue'
-import AppIconMenuUpOutline from './icons/AppIconMenuUpOutline.vue'
-import AppIconCheckOutline from './icons/AppIconCheckOutline.vue'
-
-const emit = defineEmits(['selectedItem'])
-const props = defineProps({
-  contents: { type: Array, required: false, default: () => [] },
-  title: { type: String, default: 'Dropdown' },
-  placeholder: { type: String, default: 'Search...' },
-  customItem: { type: Object, default: () => {} },
-  selectedItems: { type: Array, default: () => [] },
-  masterItem: { type: String, default: 'none' },
-  onDisableFields: {
-    type: Function,
-    default: function () {
-      return false
-    }
-  }, // use this to implement your custom fields disabler
-  autoClose: { type: Boolean, default: false }
-})
-
-const searchItems = computed(() => {
-  const matchedItems = []
-  for (let content of props.contents) {
-    if (content.content.toLowerCase().includes(searchKey.value.toLowerCase())) {
-      matchedItems.push(content)
-    }
-  }
-  return matchedItems
-})
-
-const searchKey = ref('')
-
-const showDropdown = ref(false)
-const toggleDropdown = () => (showDropdown.value = !showDropdown.value)
-
-const isDisabledItems = ref(false)
-const disabledItems = ({ value = false }) => (isDisabledItems.value = value)
-function setDisabledItems({ item = '' }) {
-  if (item.toLowerCase() === ('none' || 'false')) {
-    disabledItems({ value: true })
-  } else {
-    disabledItems({ value: false })
-  }
-}
-function isInSelectedItems({ value }) {
-  for (let item of props.selectedItems) {
-    if (item.content.toString().toLowerCase() === value.toLowerCase())
-      return true
-  }
-  return false
-}
-function submitHandler(selectedItem) {
-  setDisabledItems({ item: selectedItem.content })
-  emit('selectedItem', selectedItem)
-  if (props.autoClose) {
-    toggleDropdown()
-  }
-}
-const customItemValue = ref('')
-function submitCustomMedicalCondition() {
-  if (customItemValue.value !== '') {
-    let id = uuid()
-    let content = customItemValue.value
-    emit('selectedItem', { id, content })
-    customItemValue.value = ''
-  }
-  if (props.autoClose) {
-    toggleDropdown()
-  }
-}
-/*set the enrollee-id field to show only when an HMO has been selected.*/
-watch(props.selectedItems, () => {
-  if (!isInSelectedItems({ value: props.masterItem })) {
-    disabledItems({ value: false })
-  }
-  if (props.onDisableFields()) {
-    disabledItems({ value: true })
-  }
-})
-</script>
 
 <style lang="scss" scoped>
 .dropdown {

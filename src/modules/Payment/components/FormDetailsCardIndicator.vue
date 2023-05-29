@@ -1,3 +1,12 @@
+<script setup lang="ts">
+defineProps({
+  selected: {
+    type: Boolean,
+    defualt: false
+  }
+})
+</script>
+
 <template>
   <div
     class="h-5 md:h-6 w-5 md:w-6 rounded-full bg-amber-400 grid place-items-center"
@@ -8,12 +17,3 @@
     ></div>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  selected: {
-    type: Boolean,
-    defualt: false
-  }
-})
-</script>

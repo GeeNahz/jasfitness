@@ -1,3 +1,26 @@
+<script setup lang="ts">
+// TODO 1: find out how to setup collect data using cookies
+// TODO 2: apply the necessary cookie preferences when the save btn is clicked
+// TODO 3: make the checkboxes into toggles
+
+import { inject } from "vue";
+
+import useCookies from "@/composables/cookies.js";
+import { injectStrict } from "@/utils/injectUtil";
+const showCookies: any = injectStrict("cookiesPreferences")!
+
+const toggleShowCookiesPreferences = showCookies.toggleShowCookiesPreferences
+const gtag = inject("gtag");
+
+const { okClicked } = useCookies({ gtag: gtag })
+
+function saveSettings() {
+  // perform submission here
+  okClicked()
+  toggleShowCookiesPreferences()
+}
+</script>
+
 <template>
   <div class="cookies-backdrop">
     <div class="cookies-container">
@@ -87,28 +110,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-// TODO 1: find out how to setup collect data using cookies
-// TODO 2: apply the necessary cookie preferences when the save btn is clicked
-// TODO 3: make the checkboxes into toggles
-
-import { inject } from 'vue'
-
-import useCookies from '@/composables/cookies.js'
-
-const { toggleShowCookiesPreferences } = inject('cookiesPreferences')
-const gtag = inject('gtag')
-
-const { okClicked } = useCookies({ gtag: gtag })
-
-function saveSettings() {
-  // perform submission here
-
-  okClicked()
-  toggleShowCookiesPreferences()
-}
-</script>
 
 <style scoped lang="scss">
 .cookies-backdrop {

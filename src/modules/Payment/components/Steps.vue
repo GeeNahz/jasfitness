@@ -1,3 +1,50 @@
+<script setup lang="ts">
+import { defineComponent, computed } from 'vue'
+
+interface Step {
+  status: string;
+  name: string;
+}
+
+interface Props {
+  steps: { step: Step }[];
+}
+const props = defineProps<Props>();
+
+const showDivider = computed(() => {
+  return (index: number) => props.steps.length > 1 && index !== props.steps.length - 1
+})
+
+const statusColorScheme = computed(() => {
+  return (status: string) => {
+    if (status === 'current') {
+      return 'bg-slate-300 text-slate-700 shadow-sm'
+    } else if (status === 'pending') {
+      return 'bg-slate-300 text-slate-400'
+    } else if (status === 'complete') {
+      return 'bg-green-500 text-gray-100'
+    }
+    // bg-[#BF9128] // JF gold
+  }
+})
+
+const statusColorSchemeText = computed(() => {
+  return (status: string) => {
+    if (status === 'current') {
+      return 'text-slate-700'
+    } else if (status === 'pending') {
+      return 'text-gray-300'
+    } else if (status === 'complete') {
+      return 'text-slate-500'
+    }
+  }
+})
+
+defineComponent({
+  name: 'StepsComponent'
+})
+</script>
+
 <template>
   <div class="flex">
     <div v-for="(item, index) in steps" :key="index" class="flex items-center">
@@ -23,46 +70,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { defineComponent, computed } from 'vue'
-const props = defineProps({
-  steps: {
-    type: Array,
-    default: () => []
-  }
-})
-
-const showDivider = computed(() => {
-  return (index) => props.steps.length > 1 && index !== props.steps.length - 1
-})
-
-const statusColorScheme = computed(() => {
-  return (status) => {
-    if (status === 'current') {
-      return 'bg-slate-300 text-slate-700 shadow-sm'
-    } else if (status === 'pending') {
-      return 'bg-slate-300 text-slate-400'
-    } else if (status === 'complete') {
-      return 'bg-green-500 text-gray-100'
-    }
-    // bg-[#BF9128] // JF gold
-  }
-})
-
-const statusColorSchemeText = computed(() => {
-  return (status) => {
-    if (status === 'current') {
-      return 'text-slate-700'
-    } else if (status === 'pending') {
-      return 'text-gray-300'
-    } else if (status === 'complete') {
-      return 'text-slate-500'
-    }
-  }
-})
-
-defineComponent({
-  name: 'StepsComponent'
-})
-</script>

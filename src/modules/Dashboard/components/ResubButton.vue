@@ -1,69 +1,62 @@
-<template>
-  <div>
-    <RouterLink
-      :to="{ name: 'SubscriptionPage', query: queryOptions }"
-      target="_blank"
-      class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700 transition"
-    >
-      <!-- :on-click="resubscribeHandler" -->
-      <p class="hidden md:block">Resubscribe</p>
-      <p class="text-[10px] md:hidden">Re-sub</p>
-      <AppIconRenew />
-    </RouterLink>
-  </div>
-</template>
+<script setup lang="ts">
+import { storeToRefs } from 'pinia';
+import { ref, onMounted, nextTick } from "vue";
 
-<script setup>
-// import AppButton from '@/components/AppButton.vue'
-import AppIconRenew from '@/components/icons/AppIconRenew.vue'
-import { useStore } from 'vuex' // remove comment for new resub
-import { computed, ref, onMounted, nextTick } from 'vue' // remove comment for new resub
-// import { useRouter } from 'vue-router' // remove comment for new resub
-// import { useResubscribe } from '../composables/resubscribe.js' // remove comment for new resub
+import { useAuthStore } from "@/modules/Authentication/stores/auth";
+import { useDashboardStore } from "../stores/dashboard";
 
-const store = useStore() // remove comment for new resub
-const userId = computed(() => store.state.auth.user.user_id) // remove comment for new resub
-const dashboardHomeState = computed(() => store.state.dashboard.dashboardBase) // remove comment for new resub
-// const router = useRouter() // remove comment for new resub
-const profile = ref()
+import AppIconRenew from "@/components/icons/AppIconRenew.vue";
+import ResubModal from './ResubModal.vue';
+
+const authStore = useAuthStore();
+const { userId } = storeToRefs(authStore);
+
+const dashboardStore = useDashboardStore();
+const { dashboardBase: dashboardHomeState } = storeToRefs(dashboardStore);
+
 const queryOptions = ref()
-function setQueryOptions(profile) {
+function setQueryOptions(profile: any) {
   queryOptions.value = {
     email: profile?.email,
     name: profile?.name,
     userId: userId.value,
     planName: dashboardHomeState.value?.sub_plan,
-    isNewClient: false
-  }
+    isNewClient: false,
+  };
 }
 async function getClientProfile() {
-  try {
-    profile.value = await store.dispatch(
-      'dashboard/dashboard_profile',
-      userId.value
-    )
-    setQueryOptions(profile.value)
-  } catch (err) {
-    store.dispatch('landingpage/error', {
-      message: 'Unable to retrieve user profile'
-    })
+  const { success, data } = await dashboardStore.dashboard_profile(userId.value as number);
+  if (success.value) {
+    setQueryOptions(data.value);
   }
 }
 
 onMounted(async () => {
   nextTick(() => {
-    getClientProfile()
-  })
-})
+    getClientProfile();
+  });
+});
 
-// const resubscribeHandler = async () => {
-//   let profile = {} // remove comment for new resub
-//   useResubscribe({
-//     router: router,
-//     email: profile.email,
-//     name: profile.name,
-//     userId: userId.value,
-//     planName: dashboardHomeState.value.sub_plan
-//   })
-// }
+const showModal = ref<boolean>(false);
+function toggleModal() {
+  showModal.value ? showModal.value = false : showModal.value = true;
+}
 </script>
+
+<template>
+  <div>
+    <!-- :to="{ name: 'SubscriptionPage', query: queryOptions }"
+    target="_blank" -->
+    <button
+      class="bg-yellow-600 px-3 md:px-4 py-2 text-white font-semibold flex flex-col-reverse md:flex-row items-center justify-center md:space-x-2 rounded-xl hover:bg-yellow-500 active:bg-yellow-700 transition"
+    >
+      <p class="hidden md:block">Resubscribe</p>
+      <p class="text-[10px] md:hidden">Re-sub</p>
+      <AppIconRenew />
+    </button>
+
+    <div v-if="showModal">
+      <ResubModal @close="toggleModal" :query="queryOptions" />
+    </div>
+  </div>
+</template>

@@ -1,21 +1,10 @@
-<!-- eslint-disable vue/no-unused-vars -->
-<template>
-  <div v-if="!isOriented" class="z-50">
-    <VOnboardingWrapper
-      ref="wrapper"
-      :options="options"
-      :steps="smallScreen ? steps[1] : steps[0]"
-      @exit="orientationCompleted"
-    />
-  </div>
-</template>
-
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted, watch, inject, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
 import { VOnboardingWrapper, useVOnboarding } from 'v-onboarding'
 import 'v-onboarding/dist/style.css'
+import { useAuthStore } from '@/modules/Authentication/stores/auth'
+import { storeToRefs } from 'pinia'
 export default defineComponent({
   components: {
     VOnboardingWrapper
@@ -23,71 +12,57 @@ export default defineComponent({
   setup() {
     const wrapper = ref(null)
     const { start, goToStep, finish } = useVOnboarding(wrapper)
-    const store = useStore()
+    const authStore = useAuthStore();
 
+    const { isOriented, username } = storeToRefs(authStore);
+    
     function orientationStart() {
       if (!isOriented.value) {
         start()
       }
     }
+
     function orientationStartManually() {
-      store.dispatch('auth/toggle_is_oriented', false)
+      authStore.toggle_is_oriented(false);
+      // store.dispatch('auth/toggle_is_oriented', false)
       setTimeout(() => orientationStart(), 2000)
     }
-    function orientationCompleted() {
-      store.dispatch('auth/completed_orientation').then(
-        () => {
-          store.dispatch('landingpage/success', {
-            message:
-              "Congratulations! You've successfully completed the onboarding. Enjoy using your dashboard."
-          })
-        },
-        (error) => {
-          store.dispatch('landingpage/error', {
-            message: `${error}. Unable to register completion of onboarding`
-          })
-        }
-      )
+    async function orientationCompleted() {
+      await authStore.completed_orientation()
     }
-    const isOriented = computed(() =>
-      store.state.auth.isLoggedIn ? store.state.auth.user.is_oriented : true
-    )
-    const username = computed(() =>
-      store.state.auth.isLoggedIn ? store.state.auth.user.username : ''
-    )
 
-    const { isReady, toggleIsReady } = inject('isComponentReady')
-    const { toggleIsNavbarOpen, isNavbarOpen } = inject('navbar')
+    const isComponentReady: any = inject('isComponentReady');
+    const navbar: any = inject('navbar')
     const route = useRoute()
-    watch(isReady, function () {
-      if (isReady.value && !isOriented.value) {
+    watch(isComponentReady.isReady, function () {
+      if (isComponentReady.isReady.value && !isOriented.value) {
         if (route.path.includes('fitness-record')) {
-          goToStep((currentStep) => currentStep + 1)
+          goToStep((currentStep: number) => currentStep + 1)
         }
         if (route.path.includes('sub')) {
-          goToStep((currentStep) => currentStep + 1)
+          goToStep((currentStep: number) => currentStep + 1)
         }
         if (route.path.includes('settings')) {
-          goToStep((currentStep) => currentStep + 1)
+          goToStep((currentStep: number) => currentStep + 1)
         }
       }
-      toggleIsReady(false)
-      toggleIsNavbarOpen(false)
+      isComponentReady.toggleIsReady(false)
+      navbar.toggleIsNavbarOpen(false)
     })
-    watch(isNavbarOpen, function () {
-      if (isNavbarOpen.value && !isOriented.value) {
-        goToStep((currentStep) => currentStep + 1)
+    watch(navbar.isNavbarOpen, function () {
+      if (navbar.isNavbarOpen.value && !isOriented.value) {
+        goToStep((currentStep: number) => currentStep + 1)
       }
-      toggleIsNavbarOpen(false)
+      navbar.toggleIsNavbarOpen(false)
     })
 
-    const { runOnrientation, toggleRunOrientation } = inject(
+    const runOrientationManually: any = inject(
       'runOrientationManually'
     )
-    watch(runOnrientation, function () {
-      if (runOnrientation.value) {
+    watch(runOrientationManually.runOnrientation, function () {
+      if (runOrientationManually.runOnrientation.value) {
         orientationStartManually()
-        toggleRunOrientation(false)
+        runOrientationManually.toggleRunOrientation(false)
       }
     })
 
@@ -270,11 +245,11 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#fitnessrecord-link')
+                .querySelector('#fitnessrecord-link')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#fitnessrecord-link')
+                  .querySelector('#fitnessrecord-link')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             },
@@ -308,11 +283,11 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#mysubscription-link')
+                .querySelector('#mysubscription-link')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#mysubscription-link')
+                  .querySelector('#mysubscription-link')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             }
@@ -358,11 +333,11 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#settings-link')
+                .querySelector('#settings-link')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#settings-link')
+                  .querySelector('#settings-link')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             },
@@ -452,7 +427,7 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#fitnessrecord-link-mobile')
+                .querySelector('#fitnessrecord-link-mobile')!
                 .classList.toggle('onboarding-active')
             },
             afterStep: function () {}
@@ -499,7 +474,7 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#mysubscription-link-mobile')
+                .querySelector('#mysubscription-link-mobile')!
                 .classList.toggle('onboarding-active')
             },
             afterStep: function () {}
@@ -556,7 +531,7 @@ export default defineComponent({
           on: {
             beforeStep: function () {
               document
-                .querySelector('#settings-link-mobile')
+                .querySelector('#settings-link-mobile')!
                 .classList.toggle('onboarding-active')
             }
           },
@@ -614,6 +589,17 @@ export default defineComponent({
   }
 })
 </script>
+
+<template>
+  <div v-if="!isOriented" class="z-50">
+    <VOnboardingWrapper
+      ref="wrapper"
+      :options="options"
+      :steps="smallScreen ? steps[1] : steps[0]"
+      @exit="orientationCompleted"
+    />
+  </div>
+</template>
 
 <style>
 :root {

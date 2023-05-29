@@ -1,17 +1,64 @@
+<script lang="ts" setup>
+import { ref, onMounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const showNavbar = ref<boolean>(false)
+
+const toggleNavbar = () => {
+  showNavbar.value = !showNavbar.value
+}
+watch(showNavbar, () => {
+  if (showNavbar.value) {
+    document.querySelector('body')?.classList.add('overflow-y-hidden')
+  } else {
+    document.querySelector('body')?.classList.remove('overflow-y-hidden')
+  }
+})
+
+function changeNavbarColor() {
+  if (route.name !== 'LandingPageHome' || isWhiteBg()) {
+    showWhiteBackground.value = true
+  } else {
+    showWhiteBackground.value = false
+  }
+}
+const route = useRoute();
+watch(route, () => {
+  changeNavbarColor();
+}, { deep: true });
+
+const isWhiteBg = () => document.body.getBoundingClientRect().top < -150
+document.addEventListener('scroll', () => {
+  if (route.name === 'LandingPageHome') {
+    if (isWhiteBg()) {
+      showWhiteBackground.value = true
+    } else {
+      showWhiteBackground.value = false
+    }
+  }
+})
+
+const showWhiteBackground = ref(false)
+
+onMounted(() => {
+  changeNavbarColor();
+});
+</script>
+
 <template>
   <div>
     <nav
-      class="w-[100vw] h-20 md:h-24 py-7 pr-6 lg:px-16 fixed z-50 transition-all duration-300 font-quicksand"
+      class="w-[100vw] h-20 md:h-24 py-7 px-6 lg:px-16 fixed z-50 transition-all duration-300 font-quicksand"
       :class="{ 'bg-white shadow-md': showWhiteBackground }"
     >
       <div class="flex justify-between h-full items-center capitalize">
         <!-- logo -->
         <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
           <img
-            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
             alt="logo"
-            width="116"
-            height="144"
+            width="40"
+            height=""
           />
         </router-link>
         <!-- links -->
@@ -21,7 +68,7 @@
         >
           <ul class="flex space-x-8 font-semibold text-xl">
             <li class="nav-item">
-              <router-link class="nav-link" :to="{ name: 'AboutLand' }"
+              <router-link class="nav-link" :to="{ name: 'AboutPage' }"
                 >About us
                 <div class="underline"></div>
               </router-link>
@@ -151,10 +198,10 @@
           <div class="h-32 flex items-center justify-center">
             <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
               <img
-                src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+                src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
                 alt="logo"
-                width="146"
-                height="144"
+                width="50"
+                height=""
               />
             </router-link>
           </div>
@@ -164,7 +211,7 @@
               class="flex flex-col gap-10 items-center justify-center capitalize font-semibold text-xl"
             >
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'AboutLand' }"
+                <router-link class="nav-link" :to="{ name: 'AboutPage' }"
                   >About us
                   <div class="underline"></div>
                 </router-link>
@@ -213,51 +260,6 @@
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRoute } from 'vue-router'
-
-const showNavbar = ref(false)
-
-const toggleNavbar = () => {
-  showNavbar.value = !showNavbar.value
-}
-watch(showNavbar, () => {
-  if (showNavbar.value) {
-    document.querySelector('body').classList.add('overflow-y-hidden')
-  } else {
-    document.querySelector('body').classList.remove('overflow-y-hidden')
-  }
-})
-
-const route = useRoute()
-const showWhiteBackground = ref(false)
-onMounted(() => {
-  // showNavbar.value = false
-  // if (route.path == '/') {
-  //   showNavbar.value = false
-  // }
-
-  if (route.path !== '/' || document.body.getBoundingClientRect().top < -150) {
-    showWhiteBackground.value = true
-  } else {
-    showWhiteBackground.value = false
-  }
-})
-
-document.addEventListener('scroll', () => {
-  let pageScrollPosition = document.body.getBoundingClientRect().top
-
-  if (route.path === '/') {
-    if (pageScrollPosition < -150) {
-      showWhiteBackground.value = true
-    } else {
-      showWhiteBackground.value = false
-    }
-  }
-})
-</script>
-
 <style scoped>
 nav a {
   position: relative;
@@ -287,7 +289,7 @@ nav a:hover .underline {
   transition: opacity 0.3s ease;
 }
 .outer-navbar-leave-active {
-  transition: opacity 0.3s ease 0.3s;
+  transition: opacity 0.3s ease 0.1s;
 }
 
 .outer-navbar-enter-from,
@@ -297,7 +299,7 @@ nav a:hover .underline {
 
 .outer-navbar-enter-active .inner,
 .outer-navbar-leave-active .inner {
-  transition: transform 0.5s ease 0.1s;
+  transition: transform 0.3s ease-out;
 }
 .outer-navbar-enter-from .inner,
 .outer-navbar-leave-to .inner {

@@ -1,3 +1,30 @@
+<script setup lang="ts">
+import { defineComponent } from "vue";
+
+import AppIconSnowflake from '@/components/icons/AppIconSnowflake.vue'
+import { useDashboardStore } from '../stores/dashboard';
+import { storeToRefs } from 'pinia';
+
+defineComponent({ name: "AlertBanner" })
+
+const dashboardStore = useDashboardStore();
+const { freezedSubDetail } = storeToRefs(dashboardStore);
+
+async function unfreezeSubscripttion() {
+  const { success } = await dashboardStore.unfreeze_subscription();
+
+  if (success.value) {
+    await dashboardStore.dashboard_home();
+    await dashboardStore.dashboard_subscription();
+
+    dashboardStore.freezed_sub_toggle({
+      is_freezed: false,
+      details: { message: "" }
+    });
+  }
+}
+</script>
+
 <template>
   <div
     v-if="freezedSubDetail.is_freezed"
@@ -23,37 +50,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-
-import AppIconSnowflake from '@/components/icons/AppIconSnowflake.vue'
-
-const store = useStore()
-const freezedSubDetail = computed(() => store.state.dashboard.freezedSubStatus)
-
-async function unfreezeSubscripttion() {
-  try {
-    await store.dispatch('dashboard/unfreeze_subscription')
-
-    // refresh current state to reflect changes
-    await store.dispatch('dashboard/dashboard_home')
-    await store.dispatch('dashboard/dashboard_subscription')
-
-    store.dispatch('landingpage/success', {
-      message: 'You have successfully unfreezed your subscription.',
-      timeout: 7000
-    })
-    store.dispatch('dashboard/freezed_sub_toggle', {
-      is_freezed: false,
-      details: {}
-    })
-  } catch (error) {
-    store.dispatch('landingpage/error', {
-      message: 'Something went wrong. Please try again.',
-      timeout: 7000
-    })
-  }
-}
-</script>

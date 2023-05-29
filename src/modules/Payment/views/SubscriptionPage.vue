@@ -1,10 +1,10 @@
+<script setup lang="ts">
+import FormContainer from '../components/FormContainer.vue'
+</script>
+
 <template>
   <FormContainer />
 </template>
-
-<script setup>
-import FormContainer from '../components/FormContainer.vue'
-</script>
 
 <style scoped>
 .slide-enter-active,

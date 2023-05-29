@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import AppIconClose from './icons/AppIconClose.vue'
+
+defineProps({
+  chipElement: { type: Object, required: true }
+})
+defineEmits(['remove'])
+</script>
+
 <template>
   <div
     @click="$emit('remove', chipElement.id)"
@@ -32,12 +41,3 @@
     <AppIconClose />
   </div>
 </template>
-
-<script setup>
-import AppIconClose from './icons/AppIconClose.vue'
-
-defineProps({
-  chipElement: { type: Object, required: true }
-})
-defineEmits(['remove'])
-</script>

@@ -1,36 +1,52 @@
-# JasFitness
+# jasfitness
 
-## Description
-Jas Fitness in a gym that is driven by its clients' fitness goals and it is built around a strong fitness community known as the _FitFam_
+This template should help get you started developing with Vue 3 in Vite.
 
-This project contains various modules that power the [JasFitness site](https://jas-fitness-spa.onrender.com "JasFitness Home") which includes the landing page, authentication and login pages as well and the client dashboard.
+## Recommended IDE Setup
 
----
-### System setup
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-Before proceeding with the project, you have to have [NodeJs](https://nodejs.org/en/download/) version 16.0 or higher installed.
+## Type Support for `.vue` Imports in TS
 
----
+TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-### Project setup
-``` 
+If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+
+1. Disable the built-in TypeScript Extension
+    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
+    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
+2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
 npm install
 ```
 
-#### Compiles and hot-reloads for development
-```
-npm run serve
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
 ```
 
-#### Compiles and minifies for production
-```
+### Type-Check, Compile and Minify for Production
+
+```sh
 npm run build
 ```
 
-#### Lints and fixes files
-```
-npm run lint
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
 ```
 
-#### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```

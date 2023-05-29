@@ -1,6 +1,30 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
+import { useObjectValidator } from '@/composables/objectCheck'
+import { useDashboardStore } from '../../stores/dashboard'
+
+import DashboardModalLayout from './DashboardModalLayout.vue'
+import { storeToRefs } from 'pinia'
+
+const dashboardStore = useDashboardStore();
+const { assessmentRecordModal, assessmentState } = storeToRefs(dashboardStore);
+
+const closeModal = (modalId: string) => {
+  dashboardStore.toggleModal(modalId);
+}
+
+onMounted(async () => {
+  const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
+  if (!assessmentState.value || assessmentCheck.value) {
+    await dashboardStore.dashboard_fitness_profile();
+  }
+})
+</script>
+
 <template>
   <!-- fitness profile (accessment record) -->
-  <DashboardModalLayout :uid="accessmentRecordModal.id" @close="closeModal">
+  <DashboardModalLayout :uid="assessmentRecordModal.id" @close="closeModal">
     <template #header> Fitness Profile </template>
     <template #content>
       <div v-if="assessmentState">
@@ -69,50 +93,6 @@
     </template>
   </DashboardModalLayout>
 </template>
-
-<script setup>
-import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
-
-import { useObjectValidator } from '@/composables/useObjectCheck'
-
-import DashboardModalLayout from '../DashboardModalLayout.vue'
-
-const store = useStore()
-const closeModal = (modalId) => {
-  store.dispatch('dashboard/toggle_modal', modalId)
-}
-
-const accessmentRecordModal = computed(
-  () => store.state.dashboard.modals.accessmentRecord
-)
-const assessmentState = computed(() =>
-  store.state.dashboard.dashboardFitnessAssessment
-    ? store.state.dashboard.dashboardFitnessAssessment
-    : {}
-)
-
-onMounted(() => {
-  const { isEmpty: assessmentCheck } = useObjectValidator(assessmentState.value)
-  if (!assessmentState.value || assessmentCheck.value) {
-    store.dispatch('dashboard/dashboard_fitness_profile').then(
-      () => {},
-      (error) => {
-        let message = ''
-        if (error.includes('404')) {
-          message = 'No fitness profile was found.'
-        } else {
-          message = 'Unable to retrieve your fitness profile.'
-        }
-        store.dispatch('landingpage/error', {
-          message: message,
-          style: 'error'
-        })
-      }
-    )
-  }
-})
-</script>
 
 <style lang="scss" scoped>
 @import '../../../../assets/styles/base';

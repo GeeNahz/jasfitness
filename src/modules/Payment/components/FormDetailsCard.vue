@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import FormDetailsCardIndicator from './FormDetailsCardIndicator.vue'
+
+defineProps({
+  item: {
+    type: Object,
+    required: true
+  }
+})
+</script>
+
 <template>
   <div
     @click="(e) => $emit('selected', item)"
@@ -20,14 +31,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import FormDetailsCardIndicator from './FormDetailsCardIndicator.vue'
-
-defineProps({
-  item: {
-    type: Object,
-    required: true
-  }
-})
-</script>

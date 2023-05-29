@@ -1,3 +1,40 @@
+<script setup lang="ts">
+import AppIconSuccess from '@/components/icons/IconSuccess.vue';
+import { onMounted, ref, computed } from 'vue'
+import { useRouter } from "vue-router";
+import AppButton from "@/components/Button.vue"
+import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
+import type { PaymentFormData } from '../types'
+
+interface Props {
+  wizard: PaymentFormData[]
+}
+const props = defineProps<Props>();
+
+const router = useRouter()
+function goToHomepage() {
+  router.push('/')
+}
+function goToDashboard() {
+  useDynamicRoute({ router: router, routeName: 'DashboardSubscription' })
+}
+
+const emit = defineEmits(['update'])
+const data = ref()
+onMounted(() => {
+  data.value = props.wizard[1]
+  data.value.step.status = 'complete'
+  emit('update', data.value, data.value?.id)
+})
+
+const isNew = computed(
+  () =>
+    props.wizard[0].isNewClient === 'true' ||
+    '' ||
+    !props.wizard[0]?.isNewClient
+)
+</script>
+
 <template>
   <div>
     <div class="success text-center w-full px-3">
@@ -38,38 +75,3 @@
     <!-- <h3>Success Form</h3> -->
   </div>
 </template>
-
-<script setup>
-import AppIconSuccess from '@/components/icons/AppIconSuccess.vue'
-import { onMounted, ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import AppButton from '@/components/AppButton.vue'
-import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
-
-const props = defineProps({
-  wizard: { type: Array, required: true }
-})
-
-const router = useRouter()
-function goToHomepage() {
-  router.push('/')
-}
-function goToDashboard() {
-  useDynamicRoute({ router: router, routeName: 'DashboardSubscription' })
-}
-
-const emit = defineEmits(['update'])
-const data = ref()
-onMounted(() => {
-  data.value = props.wizard[1]
-  data.value.step.status = 'complete'
-  emit('update', data.value, data.value?.id)
-})
-
-const isNew = computed(
-  () =>
-    props.wizard[0].isNewClient === 'true' ||
-    '' ||
-    !props.wizard[0]?.isNewClient
-)
-</script>

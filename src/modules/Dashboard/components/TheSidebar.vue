@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import { ref, inject } from 'vue'
+import { useRouter } from 'vue-router'
+
+import AppIconSetting from '@/components/icons/AppIconSetting.vue'
+import AppIconClasses from '@/components/icons/AppIconClasses.vue'
+import AppIconDashboard from '@/components/icons/AppIconDashboard.vue'
+import AppIconSubscription from '@/components/icons/AppIconSubscription.vue'
+import AppIconRecord from '@/components/icons/AppIconRecord.vue'
+import AppIconLogout from '@/components/icons/AppIconLogout.vue'
+import { useAuthStore } from '@/modules/Authentication/stores/auth'
+
+const router = useRouter()
+const authStore = useAuthStore();
+
+function logout() {
+  // make a call to the auth store logout mutation
+  authStore.logout();
+  router.push({ name: 'LoginPage' })
+}
+
+const showSideBarNav = ref(false)
+
+const navbar: any = inject('navbar')
+const toggleSideBar = () => {
+  showSideBarNav.value = !showSideBarNav.value
+  navbar.toggleIsNavbarOpen(showSideBarNav.value)
+  document.querySelector('#app')!.classList.toggle('overflow-y-hidden')
+}
+</script>
+
 <template>
   <div
     class="hidden lg:flex flex-col items-center relative min-w-full h-full md:px-4 md:float-left md:border-r-2 border-gray-300 bg-white rounded-br-xl md:rounded-br-none"
@@ -6,9 +37,9 @@
     <div class="logo flex items-center space-x-4 px-3 my-8 font-semibold">
       <div class="navbar-brand">
         <img
-          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
           alt="logo"
-          width="166"
+          width="50"
           height=""
         />
       </div>
@@ -103,9 +134,9 @@
     <div class="logo flex items-center space-x-4 font-semibold">
       <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
         <img
-          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+          src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
           alt="logo"
-          width="98"
+          width="50"
           height=""
         />
       </router-link>
@@ -200,9 +231,9 @@
       >
         <div class="navbar-brand">
           <img
-            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenter_CsBC8awdj.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664984852958"
+            src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
             alt="logo"
-            width="150"
+            width="50"
             height=""
           />
         </div>
@@ -290,40 +321,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref, inject } from 'vue'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
-
-import AppIconSetting from '@/components/icons/AppIconSetting.vue'
-import AppIconClasses from '@/components/icons/AppIconClasses.vue'
-import AppIconDashboard from '@/components/icons/AppIconDashboard.vue'
-import AppIconSubscription from '@/components/icons/AppIconSubscription.vue'
-import AppIconRecord from '@/components/icons/AppIconRecord.vue'
-import AppIconLogout from '@/components/icons/AppIconLogout.vue'
-
-const router = useRouter()
-const store = useStore()
-
-function logout() {
-  // make a call to the auth store logout mutation
-  store.dispatch('auth/logout')
-  router.push({ name: 'LoginPage' })
-  setTimeout(() => {
-    store.dispatch('dashboard/store_reset')
-  }, 3000)
-}
-
-const showSideBarNav = ref(false)
-
-const { toggleIsNavbarOpen } = inject('navbar')
-const toggleSideBar = () => {
-  showSideBarNav.value = !showSideBarNav.value
-  toggleIsNavbarOpen(showSideBarNav.value)
-  document.querySelector('#app').classList.toggle('overflow-y-hidden')
-}
-</script>
 
 <style scoped>
 div.link {

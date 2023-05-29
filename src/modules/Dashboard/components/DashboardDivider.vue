@@ -1,3 +1,19 @@
+<script setup lang="ts">
+
+interface Props {
+  name?: string;
+  textColor?: string;
+  textBackColor?: string;
+  lineColor?: string;
+}
+withDefaults(defineProps<Props>(), {
+  name: "Divider",
+  textColor: "text-black",
+  textBackColor: "bg-white",
+  lineColor: "border-black",
+});
+</script>
+
 <template>
   <div class="relative border my-2 md:my-4 w-full" :class="[lineColor]">
     <p
@@ -8,26 +24,3 @@
     </p>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  name: {
-    type: String,
-    default: 'Divider'
-  },
-  textColor: {
-    type: String,
-    default: 'text-black'
-  },
-  textBackColor: {
-    type: String,
-    default: 'bg-white'
-  },
-  lineColor: {
-    type: String,
-    default: 'border-black'
-  }
-})
-</script>
-
-<style lang="scss" scoped></style>
