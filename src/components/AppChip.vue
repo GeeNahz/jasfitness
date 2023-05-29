@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppIconClose from './icons/AppIconClose.vue'
+import AppIconClose from './icons/IconClose.vue'
 
 defineProps({
   chipElement: { type: Object, required: true }

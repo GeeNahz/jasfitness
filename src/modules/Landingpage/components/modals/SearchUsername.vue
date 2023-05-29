@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import { useModalActions } from '@/composables/modalOperations'
 
 import AppIconSearch from '@/components/icons/AppIconSearch.vue'
-import AppIconClose from '@/components/icons/AppIconClose.vue'
+import AppIconClose from '@/components/icons/IconClose.vue'
 
 const { toggleHelpModal } = useModalActions()
 

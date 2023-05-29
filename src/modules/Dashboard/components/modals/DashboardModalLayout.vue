@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppIconClose from '@/components/icons/AppIconClose.vue'
+import AppIconClose from '@/components/icons/IconClose.vue'
 
 const emit = defineEmits(['close'])
 interface Props {
