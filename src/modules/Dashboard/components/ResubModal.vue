@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import IconClose from "@/components/icons/IconClose.vue";
 import FormContainer from "@/modules/Payment/components/FormContainer.vue";
+import { onBeforeUnmount } from "vue";
 
 interface ResubQuery {
   email: string;
@@ -17,12 +19,27 @@ defineProps<Props>();
 defineEmits<{
   (event: "close"): void;
 }>();
+
+const body = document.querySelector("body");
+
+function toggleScroll(value: "hidden" | "auto") {
+  if (body) {
+    body.style.overflowY = value;
+  }
+}
+
+toggleScroll("hidden");
+onBeforeUnmount(() => {
+  toggleScroll("auto");
+});
 </script>
 
 <template>
+  <teleport to='body'>
   <div class="backdrop">
-    <button @click="$emit('close')" class="btn btn-primay focus:">Close Modal</button>
-    <teleport to='body'>
+    <div @click="$emit('close')" class="close-toggle">
+      <IconClose />
+    </div>
       <FormContainer
         :is-prop-available="true"
         :email="query.email"
@@ -30,15 +47,48 @@ defineEmits<{
         :name="query.name"
         :plan-name="query.planName"
         :user-id="query.userId"
+        @close="$emit('close')"
       />
-    </teleport>
-  </div>
+    </div>
+  </teleport>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .backdrop {
+  position: fixed;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
   z-index: 999;
+  /* padding: 2rem; */
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2px);
+}
+
+.close-toggle {
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  background-color: rgba(#fff, 0.5);
+  border-radius: 50%;
+  padding: 0.2rem;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  transition: background-color 0.2s ease-out;
+
+  @media screen and (min-width: 768px) {
+    padding: 0.5rem;
+    top: 30px;
+    right: 40px;
+  }
+
+  &:hover {
+    background-color: rgba(#fff, 0.7);
+  }
 }
 </style>
