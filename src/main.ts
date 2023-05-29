@@ -11,6 +11,7 @@ import VueGtag from 'vue-gtag'
 import { VueCookieNext } from 'vue-cookie-next'
 
 import formkitTheme from './utils/formkit_theme'
+import 'nprogress/nprogress.css'
 
 import Landingpage from './modules/Landingpage'
 import Authentication from './modules/Authentication'
