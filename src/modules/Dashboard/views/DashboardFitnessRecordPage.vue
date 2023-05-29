@@ -116,7 +116,7 @@ onMounted( async () => {
           <div class="text-sm xl:text-base my-5 xl:my-4 font-semibold">
             <h4>Fitness Report</h4>
           </div>
-          <div class="chart-container h-96 w-full">
+          <div class="chart-container h-fit md:h-96 w-full">
             <div v-if="preparingChartData" class="h-full w-full">
               <AppLoader />
             </div>
@@ -124,12 +124,12 @@ onMounted( async () => {
               v-if="!preparingChartData && chartData.datasets[0].data.length"
               class="chart bg-gray-50 p-2 mt-4 rounded-xl"
             >
-              <DashboardChart type="bar" :chart-data="chartData" css-classes="h-full w-full" />
+              <DashboardChart type="bar" :chart-data="chartData" css-classes="w-full h-full" />
               <!-- <DashboardChartBar :chartData="chartData" /> -->
             </div>
             <div
               v-else
-              class="h-[400px] rounded-lg bg-gray-200 text-gray-400 flex justify-center items-center font-semibold text-sm lg:text-lg"
+              class="min-h-max p-5 rounded-lg bg-gray-200 text-gray-400 flex justify-center items-center font-semibold text-sm lg:text-lg"
             >
               <p>
                 No gym session yet. Start a gym session to view your progress.
