@@ -150,7 +150,7 @@ function updateFormDetails(updatedDetails: { [key: string]: any }, id: string | 
 </script>
 
 <template>
-  <div class="px-3 min-h-[100vh] flex justify-center items-center bg-[#f8f8f8]">
+  <div class="p-10 min-h-[100vh] flex justify-center items-center bg-inherit">
     <div
       class="h-fit min-h-max w-full sm:w-[500px] md:w-[700px] rounded-xl shadow bg-[#fefefe] py-16"
     >
