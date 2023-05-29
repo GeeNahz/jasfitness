@@ -101,12 +101,14 @@ onMounted( async () => {
           >
             Goals
           </p>
-          <p
-            v-if="fitness_target"
-            class="text-gray-500 font-light text-base xl:text-xl"
-          >
-            {{ fitness_target.goal }}
-          </p>
+          <div class="text-gray-500 font-light text-base xl:text-xl">
+            <p v-if="fitness_target">
+              {{ fitness_target.goal }}
+            </p>
+            <p v-else>
+              Goals keep us motivated. What's yours
+            </p>
+          </div>
         </div>
         <!-- fitness report & activities -->
         <div class="">
