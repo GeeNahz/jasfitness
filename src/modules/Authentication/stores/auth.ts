@@ -72,7 +72,7 @@ export const useAuthStore = defineStore("auth", () => {
       (axiosInstance.defaults.headers as any)["Authorization"] = `Bearer ${ response.data.token }`;
       
       loginSuccessful(userDetails)
-      alerts.success("You're logged in")
+      // alerts.success("You're logged in")
       return response.data
     } catch(error: any) {
       loginFailure()
