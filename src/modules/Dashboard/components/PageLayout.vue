@@ -27,6 +27,7 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
           >
             <AlertBanner />
             <slot name="welcome-section"></slot>
+            <slot name="default"></slot>
           </div>
           <!-- inner side bar -->
           <!-- main-sidebar -->
@@ -44,7 +45,6 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
                 />
               </div>
               <slot name="inner-side-bar"></slot>
-              <slot name="default"></slot>
             </div>
             <!-- footer -->
             <div
