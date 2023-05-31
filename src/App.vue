@@ -35,7 +35,6 @@ provide('cookiesPreferences', { toggleShowCookiesPreferences })
     <AppPersonalizeCookies v-if="showCookiesPreferences" />
     <TheAlerts />
   </div>
-
 </template>
 
 <style>
