@@ -54,6 +54,7 @@ const handleSubmit = async (credentials: any) => {
   // perform authentication async-ly
   try {
     await authStore.login(credentials)
+    router.push({ name: 'DashboardHome' });
     if (allowCookies.value) {
       event('login', {
         method: 'username_and_password',
@@ -61,7 +62,6 @@ const handleSubmit = async (credentials: any) => {
         event_category: 'client_authentication',
         value: credentials.username
       })
-      router.push({ name: 'DashboardHome' })
     }
   } catch (error: any) {
     err.value = error
