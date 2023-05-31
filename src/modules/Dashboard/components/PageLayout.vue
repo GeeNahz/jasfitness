@@ -23,7 +23,7 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
         <div class="main h-full w-full p-3">
           <!-- main-body -->
           <div
-            class="main-body xl:max-h-screen xl:w-full xl:overflow-y-scroll pb-4 lg:pb-0 lg:pt-3 lg:pr-20"
+            class="main-body lg:max-h-screen lg:w-full lg:overflow-y-scroll pb-4 lg:pb-0 lg:pt-3 lg:pr-20"
           >
             <AlertBanner />
             <slot name="welcome-section"></slot>
