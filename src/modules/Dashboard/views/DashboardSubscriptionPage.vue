@@ -274,8 +274,8 @@ function openModal (modalId: string) {
         <div class="flex flex-col items-center lg:block mb-4 px-1 w-full">
           <DashboardSubscriptionCard :addIcon="false" class="w-full">
             <template #title>
-              <div class="flex md:flex-col gap-2">
-                <div class="md:text-center">
+              <div class="flex flex-col gap-2">
+                <div class="text-center">
                   <p class="capitalize text-sm md:text-base">
                     Subscription wheel
                   </p>
@@ -287,7 +287,7 @@ function openModal (modalId: string) {
                 </div>
                 <div
                   v-if="dashboardSub"
-                  class="mt-2 md:mt-0 h-16 md:h-32 w-[30rem] md:w-full overflow-hidden"
+                  class="mt-2 md:mt-0 h-fit w-full overflow-hidden"
                 >
                   <div class="grid justify-center w-full">
                     <AppProgressbar :progress="dashboardSub.sub_wheel / 100" :is-full-circle="false" :width="200" :height="100" class="relative mt-3" />
