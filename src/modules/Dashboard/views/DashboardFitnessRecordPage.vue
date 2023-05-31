@@ -125,7 +125,6 @@ onMounted( async () => {
               class="chart bg-gray-50 p-2 mt-4 rounded-xl"
             >
               <DashboardChart type="bar" :chart-data="chartData" css-classes="w-full h-full md:max-h-96" />
-              <!-- <DashboardChartBar :chartData="chartData" /> -->
             </div>
             <div
               v-else
