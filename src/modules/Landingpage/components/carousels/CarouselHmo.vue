@@ -9,22 +9,22 @@ const carouselItems = [
   {
     id: 1,
     name: 'Leadway',
-    imageUrl: 'leadway.jpg'
+    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/leadway__5sN4BNkq.jpg?updatedAt=1685550214917'
   },
   {
     id: 2,
     name: 'Bastion Health',
-    imageUrl: 'bastion.png'
+    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/bastion_FiYFTBnIl.png?updatedAt=1685550214830'
   },
   {
     id: 3,
     name: 'Total Health Trust',
-    imageUrl: 'tht.jpg'
+    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/tht_IX-G48mTz.jpg?updatedAt=1685550214354'
   },
   {
     id: 4,
     name: 'Axa Mastard',
-    imageUrl: 'axa.png'
+    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/axa_uL9hjbEEX.png?updatedAt=1685550214172'
   }
 ]
 // corousel config
