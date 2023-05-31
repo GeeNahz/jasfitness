@@ -33,14 +33,14 @@ function scrollTo(selector: string) {
       </div>
     </div>
     <div
-      class="lg:flex justify-end items-center overflow-hidden font-inter rounded-b-xl h-[100vh] lg:h-full w-full lg:w-auto lg:mb-10"
+      class="lg:flex justify-end items-center font-inter h-[100vh] w-full lg:w-auto lg:pb-10"
     >
       <figure>
         <video
           autoplay
           muted
           loop
-          class="w-full h-full video mac iphone object-fill"
+          class="w-full h-full video mac iphone object-fill rounded-b-xl"
         >
           <source
             src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenterMain_VVwGnmuC8.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664997283633"
