@@ -29,15 +29,6 @@ provide('cookiesPreferences', { toggleShowCookiesPreferences })
         {{ content ? `${content} | Jas-Fitness` : `Jas-Fitness` }}
       </template>
     </metainfo>
-    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-    <!-- <header>
-      <div class="wrapper">  
-        <nav>
-          <RouterLink :to="{ name: 'home' }">Home</RouterLink>
-          <RouterLink :to="{ name: 'AboutPage' }">About</RouterLink>
-        </nav>
-      </div>
-    </header> -->
     <!-- main components -->
     <RouterView />
     <AppCookieBanner />
