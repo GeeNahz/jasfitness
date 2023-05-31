@@ -11,7 +11,7 @@ defineProps(['details'])
     <div class="content">
       <div class="content__image">
         <img
-          :src="'../../../src/assets/img/' + details.imageUrl"
+          :src="details.imageUrl"
           :alt="details.id"
         />
       </div>
