@@ -4,7 +4,7 @@ import AppGoBack from '@/components/AppGoBack.vue'
 
 <template>
   <div
-    class="relative bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')] bg-cover bg-origin-border lg:bg-none lg:flex h-full pt-24 lg:pt-72 pb-[276px] lg:py-48 items-center"
+    class="relative bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/auth-gym_su-qgIhMP.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665865172721')] bg-cover bg-origin-border lg:bg-none h-full pt-24 pb-[276px] lg:py-36 lg:flex lg:justify-center lg:items-center"
   >
     <!-- main section -->
     <div
