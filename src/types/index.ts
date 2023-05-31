@@ -37,3 +37,7 @@ export interface Plan {
   billing: string;
   offers: string[]
 }
+
+export interface GenericStoreState {
+  showSplashScreen: boolean;
+}
