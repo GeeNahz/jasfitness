@@ -16,7 +16,7 @@ import 'nprogress/nprogress.css'
 import Landingpage from './modules/Landingpage'
 import Authentication from './modules/Authentication'
 
-// import './assets/main.css'
+import './assets/main.css'
 import "./tailwind.css"
 
 import { registerModules } from "./utils/register_modules";
