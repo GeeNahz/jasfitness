@@ -111,7 +111,7 @@ $font-sizes: (
 .success {
   @include flexCenter(column);
   color: color(text);
-  height: 100%;
+  min-height: 100vh;
   padding: 0 2rem;
   position: relative;
 }
