@@ -43,13 +43,11 @@ a,
   --np-secondary: var(--c-black);
 }
 
-:root {
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --np-primary: var(--c-black);
-      --np-secondary: var(--c-white);
-    }   
-  }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --np-primary: var(--c-black);
+    --np-secondary: var(--c-white);
+  }   
 }
 
 .scene {
