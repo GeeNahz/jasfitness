@@ -33,8 +33,27 @@ a,
     padding: 0 2rem;
   }
 } */
+:root {
+  --c-white: #fefefeff;
+  --c-black: #303030ff;
+}
+
+:root {
+  --np-primary: var(--c-white);
+  --np-secondary: var(--c-black);
+}
+
+:root {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --np-primary: var(--c-black);
+      --np-secondary: var(--c-white);
+    }   
+  }
+}
 
 .scene {
+  background: var(--np-primary);
   position: fixed;
   z-index: 2;
   height: 100%;
@@ -66,7 +85,8 @@ a,
 .cube-face {
   position: absolute;
   inset: 0;
-  background: #110d31dd;
+  /* background: #110d31ff; */
+  background: var(--np-secondary);
   /* border: solid 1px #ff8484ff; */
   border: solid 1px #daa520aa;
 }
