@@ -38,6 +38,8 @@ export async function useFetchData(service: (args?: any) => Promise<AxiosRespons
 
     // console.log("Response from 'fetch.ts': ", res)
   } catch (err: any) {
+    alert(`useFetchData error: ${err}`);
+    console.log("useFetchData error: ", err);
     if (err.response) {
       errorData.value = err.response.data;
       statusCode.value = err.response.status;
