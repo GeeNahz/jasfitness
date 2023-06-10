@@ -181,7 +181,8 @@ export const useDashboardStore = defineStore("dashboard", () => {
     return { isFetching, data, success, error, errorData };
   }
   async function dashboard_freeze_subscription(duration: number) {
-    const { data, statusCode, success, isFetching, error, errorData } = await useFetchData(DashboardService.dashboard_freeze_subscription, duration);
+    const payload = { duration } 
+    const { data, statusCode, success, isFetching, error, errorData } = await useFetchData(DashboardService.dashboard_freeze_subscription, payload);
 
     isFetching.value ? statusLoading() : statusReset();
 
