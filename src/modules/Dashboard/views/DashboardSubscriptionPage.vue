@@ -4,7 +4,6 @@ import { useMeta } from 'vue-meta'
 
 import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
-import AppIconPlan from '@/components/icons/AppIconPlan.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
 // import { useRadialBar } from '@/composables/radialbarSettings.js'
 
@@ -37,42 +36,6 @@ onMounted(async () => {
   }
   isReady.toggleIsReady(true)
 })
-
-const plans = [
-  {
-    id: 0,
-    slug: 'PREMIUM',
-    price: 'N20,000',
-    setup: 'N3,000',
-    billing: 'Billed Monthly',
-    offers: [
-      'No Price Discount',
-      'Access Once Daily',
-      'Access to multi pitch and games',
-      'Personal Dashboard For Tracking Fitness Records',
-      'Fitness Instructor Available',
-      '1 Guest Pass Per Month',
-      'No Subscription Pause Request'
-    ]
-  },
-  {
-    id: 1,
-    slug: 'VIP',
-    price: 'N40,000',
-    setup: 'N3,000',
-    billing: 'Billed Monthly',
-    offers: [
-      'No Price Discount',
-      'All Day Access',
-      'Access to multi pitch and games',
-      'Personal Dashboard For Tracking Fitness Records',
-      'Personal Fitness Instructor Available',
-      '2 Guest Pass Per Month',
-      '7 Days Subscription Pause Request',
-      '1 Free Car Wash Weekly (4 Monthly)'
-    ]
-  }
-] // get plans from endpoint
 
 function openModal (modalId: string) {
   dashboardStore.toggleModal(modalId);
@@ -224,46 +187,6 @@ function openModal (modalId: string) {
                   >
                     Share
                   </button>
-                </div>
-              </template>
-            </DashboardSubscriptionCard>
-          </div>
-          <!-- divider -->
-          <DashboardDivider
-            class="text-sm text-center xlmd:text-base my-5 xl:my-4"
-            name="Explore plans suited for you"
-          />
-          <div
-            id="our-plans"
-            class="features-container gap-4 flex flex-wrap justify-center mb-2 md:mb-4"
-          >
-            <DashboardSubscriptionCard
-              v-for="plan in plans"
-              :key="plan.id"
-              :addMinWidth="true"
-            >
-              <template #icon>
-                <AppIconPlan class="text-4xl" />
-              </template>
-              <template #title>
-                <div
-                  class="flex flex-col md:flex-row items-center md:space-x-2"
-                >
-                  <p class="mt-0 capitalize text-sm xl:text-base font-semibold">
-                    {{ plan.slug }}
-                  </p>
-                  <p class="text-gray-500 text-xs xl:text-sm">
-                    {{ plan.billing }}
-                  </p>
-                </div>
-              </template>
-              <template #description>
-                <div class="plans-des">
-                  <ul class="list-disc pl-3 text-xs xl:text-sm">
-                    <li v-for="(offer, index) in plan.offers" :key="index">
-                      {{ offer }}
-                    </li>
-                  </ul>
                 </div>
               </template>
             </DashboardSubscriptionCard>
