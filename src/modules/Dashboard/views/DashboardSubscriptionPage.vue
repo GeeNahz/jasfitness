@@ -5,13 +5,11 @@ import { useMeta } from 'vue-meta'
 import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
-// import { useRadialBar } from '@/composables/radialbarSettings.js'
 
 import PageLayout from '../components/PageLayout.vue'
 import DashboardSubscriptionCard from '../components/DashboardCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import AppProgressbar from "@/components/custom/AppProgressbar.vue";
-// import DashboardRadialProgressBar from '../components/DashboardRadialProgressBar.vue'
 import DashboardSubscriptionSummaryItems from '../components/SubscriptionSummaryItems.vue'
 import DashboardSummarySkeletonLoader from '../components/SummarySkeletonLoader.vue'
 import ResubButton from '../components/ResubButton.vue'
@@ -20,13 +18,10 @@ import { storeToRefs } from 'pinia'
 
 useMeta({ title: 'Subscription' })
 
-// const { statusColorCodeHalf, percentageBoundary } = useRadialBar()
 const addIconSection = computed(() => (window.innerWidth > 400 ? true : false))
 
 const dashboardStore = useDashboardStore();
 const { dashboardSub, dashboardBase: dashboardHomeState } = storeToRefs(dashboardStore);
-
-// const isLoggedIn = computed(() => store.state.auth.isLoggedIn)
 
 const isReady = inject('isComponentReady') as any;
 onMounted(async () => {
