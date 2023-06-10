@@ -176,11 +176,11 @@ export default defineComponent({
       description:
         'Freeze and share your subscriptions based on your subscription plan.'
     }
-    const subOurPlans = {
-      title: 'Our plans',
-      description:
-        'Have a look at all the plans we offer without having to leave your dashboard.'
-    }
+    // const subOurPlans = {
+    //   title: 'Our plans',
+    //   description:
+    //     'Have a look at all the plans we offer without having to leave your dashboard.'
+    // }
     const completedSectionThree = {
       title: 'Great! 🥳🥳🥳',
       description: `You have completed the third section. Click on the menu button to continue.`
