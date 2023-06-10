@@ -314,10 +314,10 @@ export default defineComponent({
           content: { ...subMembersFeatures }
         },
         // 11 our plans -- NEW
-        {
-          attachTo: { element: '#our-plans' },
-          content: { ...subOurPlans }
-        },
+        // {
+        //   attachTo: { element: '#our-plans' },
+        //   content: { ...subOurPlans }
+        // },
         // 12 button classes
         {
           attachTo: { element: '#classes-link' },
@@ -496,10 +496,10 @@ export default defineComponent({
           content: { ...subMembersFeatures }
         },
         // 13 our plans
-        {
-          attachTo: { element: '#our-plans' },
-          content: { ...subOurPlans }
-        },
+        // {
+        //   attachTo: { element: '#our-plans' },
+        //   content: { ...subOurPlans }
+        // },
         // 14 navbar-toggle
         {
           attachTo: { element: '#navbar-toggle' },
