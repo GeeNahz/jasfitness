@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { inject, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import { useModalActions } from "@/composables/modalOperations";
+import { useDashboardStore } from "../stores/dashboard";
 
 import PageLayout from "../components/PageLayout.vue";
 
-const { toggleDasboardModal } = useModalActions()
+const dashboardStore = useDashboardStore();
 
 const { toggleRunOrientation } = inject('runOrientationManually') as any;
-const router = useRouter()
+const router = useRouter();
+
 function triggerRunOrientation() {
-  router.push({ name: 'DashboardHome' })
-  toggleRunOrientation(true)
+  router.push({ name: 'DashboardHome' });
+  toggleRunOrientation(true);
 }
+
+function dashboardModal() {
+  dashboardStore.toggleModal("passwordReset");
+}
+
 const items = [
   {
     name: 'Change Password',
@@ -21,9 +27,7 @@ const items = [
     ids: ['change-password'],
     actionBtn: {
       name: 'Change password',
-      action: () => {
-        toggleDasboardModal('passwordReset')
-      }
+      action: dashboardModal,
     }
   },
   {
