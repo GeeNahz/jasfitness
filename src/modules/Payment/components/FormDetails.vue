@@ -110,7 +110,7 @@ function handleWizardUpdate() {
 }
 
 const isNew = computed(
-  () => data.value!.isNewClient === 'true' || '' || !data.value?.isNewClient
+  () => data.value!.isNewClient
 );
 
 // paystack options
