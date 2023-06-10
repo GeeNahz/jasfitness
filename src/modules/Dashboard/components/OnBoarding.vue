@@ -169,7 +169,7 @@ export default defineComponent({
     }
     const subSummary = {
       title: 'Subscription summary',
-      description: `At a glance, you can see your subscription plan (Type), duration (Duration) and when you started (Start Date) here.`
+      description: `At a glance, you can see your subscription plan (Type), when it started (Start Date), when it will end (End Date), duration (Duration), subscription freeze status (Freeze Status) and the duration for your freeze subscription (Freeze Duration).`
     }
     const subMembersFeatures = {
       title: "Member's features",
