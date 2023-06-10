@@ -31,6 +31,7 @@ async function shareYourSub() {
   }
   const { success } = await dashboardStore.dashboard_share_subscription(data);
   if (success.value) {
+    await dashboardStore.dashboard_subscription()
     closeModal(shareSubscriptionModal.value.id)
     clearFormValues()
   }
