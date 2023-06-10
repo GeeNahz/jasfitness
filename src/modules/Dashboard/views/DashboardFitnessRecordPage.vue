@@ -230,14 +230,14 @@ onMounted( async () => {
           <div class="flex flex-col items-center w-full">
             <DashboardCard :addIcon="false">
               <template #title>
-                <div class="flex justify-between md:block">
-                  <div class="texts">
+                <div class="">
+                  <div class="texts text-center">
                     <h4
-                      class="font-semibold text-sm md:text-lg md:text-center block w-full"
+                      class="font-semibold text-sm md:text-lg block w-full"
                     >
                       Fitness Performance
                     </h4>
-                    <p class="md:text-center text-xs my-3 font-light">
+                    <p class="text-xs my-3 font-light">
                       Based on your goal, you should go to the gym at least 4
                       times weekly
                     </p>
