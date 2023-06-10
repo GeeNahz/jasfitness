@@ -189,7 +189,11 @@ export const useDashboardStore = defineStore("dashboard", () => {
     if (success.value) {
       alerts.success(`You have successfully frozen your sub for ${duration} days`);
     } else if (error.value) {
-      alerts.error("Unable to process your request. Please try again");
+      if (statusCode.value === 400) {
+        alerts.error("Invalid data provided");
+      } else {
+        alerts.error("Unable to process your request. Please try again");
+      }
     }
     return { data, success, error, errorData };
   }
