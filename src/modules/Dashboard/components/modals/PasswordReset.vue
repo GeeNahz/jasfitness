@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue'
 
 import { validation } from '@/composables/validation'
-import { useModalActions } from '@/composables/modalOperations'
 import { useRevealPassword } from '@/composables/formKitAction'
 
 import DashboardModalLayout from './DashboardModalLayout.vue'
@@ -59,10 +58,8 @@ function resetForm() {
   password_confirm.value = ''
 }
 
-const { toggleDasboardModal } = useModalActions()
-
 function closeModal(modalId: string) {
-  toggleDasboardModal(modalId)
+  dashboardStore.toggleModal(modalId)
   resetForm()
 }
 
