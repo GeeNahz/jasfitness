@@ -61,17 +61,18 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
         </div>
         <!-- footer for sm screen only -->
         <div
-          class="md:hidden h-max flex flex-col items-center my-8 text-opacity-80 font-thin text-xs"
+          class="md:hidden flex flex-col items-center my-8 text-opacity-80 font-thin text-xs px-3"
         >
-          <div class="flex items-center gap-3 mb-3 imgs">
-            <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70"></div>
+          <div class="flex justify-center w-full mb-3 imgs relative">
+            <div class="border border-[#d4d4d4] w-full rounded-full opacity-70 absolute top-[50%] -translate-y-[50%] z-0"></div>
             <!-- <AppIconFooterIcon /> -->
-            <img
-              src="@/assets/footer-logo-black.svg"
-              alt="dumbbell"
-              class="w-16 opacity-20"
-            />
-            <div class="border border-[#d4d4d4] w-44 rounded-full opacity-70"></div>
+            <div class="bg-white z-20 px-3">
+              <img
+                src="@/assets/footer-logo-black.svg"
+                alt="dumbbell"
+                class="w-16 opacity-20"
+              />
+            </div>
           </div>
           <span>Powered by JAS FITNESS</span>
         </div>
