@@ -46,8 +46,6 @@ const { toggleIsReady } = inject('isComponentReady') as any;
 onMounted(() => {
   toggleIsReady(true)
 })
-
-const returnString = (value: string) => value;
 </script>
 
 <template>
@@ -64,7 +62,7 @@ const returnString = (value: string) => value;
             v-for="(item, index) in items"
             :key="'item' + index + 1"
             class="item first:border-t border-b border-gray-200 py-2 lg:flex justify-between align-start"
-            :id="(item.ids.every(returnString) as unknown) as string"
+            :id="(item.ids.map(id => {return id})).join(' ')"
           >
             <div class="item__text text-start">
               <div
