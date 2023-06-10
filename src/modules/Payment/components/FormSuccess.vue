@@ -28,10 +28,7 @@ onMounted(() => {
 })
 
 const isNew = computed(
-  () =>
-    props.wizard[0].isNewClient === 'true' ||
-    '' ||
-    !props.wizard[0]?.isNewClient
+  () => props.wizard[0]?.isNewClient
 )
 </script>
 
@@ -49,11 +46,11 @@ const isNew = computed(
             Your payment was successful!
           </p>
         </div>
-        <div class="sub text-slate-500 text-sm md:text-base">
+        <div v-if="isNew" class="sub text-slate-500 text-sm md:text-base">
           <p class="mb-1 md:mb-2">
             A comfirmation e-mail has been sent to you.
           </p>
-          <p v-if="isNew">
+          <p>
             Use the link provided in the e-mail to complete your registration.
           </p>
         </div>
@@ -65,12 +62,6 @@ const isNew = computed(
       >
         Explore our Homepage
       </AppButton>
-      <!-- v-else -->
-      <AppButton
-        :button-class="'w-full md:w-max rounded-md bg-green-500 hover:bg-green-600 text-white py-2 px-4 transition'"
-        :on-click="goToDashboard"
-        >Go to Dashboard</AppButton
-      >
     </div>
     <!-- <h3>Success Form</h3> -->
   </div>
