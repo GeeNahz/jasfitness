@@ -28,6 +28,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
       passwordReset: { id: "passwordReset", open: false, },
       profile: { id: "profile", open: false, },
       shareSub: { id: "shareSub", open: false, },
+      onboarding: { id: "onboarding", open: false, },
     },
     freezedSubStatus: { details: { message: "" }, is_freezed: false },
   };
@@ -51,6 +52,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
   const assessmentRecordModal = computed(() => state.modals.accessmentRecord);
   const shareSubscriptionModal = computed(() => state.modals.shareSub);
   const passwordResetModal = computed(() => state.modals.passwordReset);
+  const onboardingModal = computed(() => state.modals.onboarding);
 
   // === helper functions ===  
   function storeReset() {
@@ -292,6 +294,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
     assessmentRecordModal,
     shareSubscriptionModal,
     passwordResetModal,
+    onboardingModal,
     storeReset,
     toggleModal,
     dashboard_home,
