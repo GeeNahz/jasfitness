@@ -68,6 +68,7 @@ export interface Modal {
   passwordReset: ModalItem;
   profile: ModalItem;
   shareSub: ModalItem;
+  onboarding: ModalItem;
 }
 export interface FreezeStatus { details: { message: string; }; is_freezed: boolean; }
 
