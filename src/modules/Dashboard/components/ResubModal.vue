@@ -36,19 +36,21 @@ onBeforeUnmount(() => {
 
 <template>
   <teleport to='body'>
-  <div class="backdrop">
-    <div @click="$emit('close')" class="close-toggle">
-      <IconClose />
-    </div>
-      <FormContainer
-        :is-prop-available="true"
-        :email="query.email"
-        :is-new-client="query.isNewClient"
-        :name="query.name"
-        :plan-name="query.planName"
-        :user-id="query.userId"
-        @close="$emit('close')"
-      />
+    <div class="backdrop">
+      <div class="wrapper">
+        <div @click="$emit('close')" class="close-toggle">
+          <IconClose />
+        </div>
+        <FormContainer
+          :is-prop-available="true"
+          :email="query.email"
+          :is-new-client="query.isNewClient"
+          :name="query.name"
+          :plan-name="query.planName"
+          :user-id="query.userId"
+          @close="$emit('close')"
+        />
+      </div>
     </div>
   </teleport>
 </template>
@@ -69,6 +71,11 @@ onBeforeUnmount(() => {
   backdrop-filter: blur(2px);
 }
 
+.wrapper {
+  position: relative;
+  height: fit-content;
+  margin: 0 auto;
+}
 .close-toggle {
   cursor: pointer;
   font-size: 24px;
@@ -76,15 +83,15 @@ onBeforeUnmount(() => {
   background-color: rgba(#fff, 0.5);
   border-radius: 50%;
   padding: 0.2rem;
-  top: 10px;
-  right: 10px;
-  z-index: 9999;
+  top: 2%;
+  right: 2%;
+  z-index: 999;
   transition: background-color 0.2s ease-out;
 
   @media screen and (min-width: 768px) {
     padding: 0.5rem;
-    top: 30px;
-    right: 40px;
+    top: 2%;
+    right: 1%;
   }
 
   &:hover {
