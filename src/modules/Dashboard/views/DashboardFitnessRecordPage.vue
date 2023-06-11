@@ -130,7 +130,7 @@ onMounted( async () => {
               v-else
               class="min-h-max p-5 rounded-lg bg-gray-200 text-gray-400 flex justify-center items-center font-semibold text-sm lg:text-lg"
             >
-              <p>
+              <p class="text-gray-500 font-semibold text-lg text-center">
                 No gym session yet. Start a gym session to view your progress.
               </p>
             </div>
