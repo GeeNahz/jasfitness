@@ -12,6 +12,7 @@ const router = useRouter();
 
 function triggerRunOrientation() {
   router.push({ name: 'DashboardHome' });
+  dashboardStore.toggleModal("onboarding");
   toggleRunOrientation(true);
 }
 

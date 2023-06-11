@@ -7,6 +7,7 @@ import { useCompileChartjsData } from "@/composables/compileChartData";
 import { useDashboardStore } from '../stores/dashboard'
 import { useAuthStore } from '@/modules/Authentication/stores/auth'
 
+import SpinningLoader from "@/components/SpinningLoader.vue";
 import AppLoader from '@/components/AppLoader.vue'
 import AppIconComplete from '@/components/icons/AppIconComplete.vue'
 import AppIconPlan from '@/components/icons/AppIconPlan.vue'
@@ -20,6 +21,7 @@ import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSummarySkeletonLoader from '../components/SummarySkeletonLoader.vue'
 import DashboardHomePageSummary from '../components/HomePageSummary.vue'
 import ResubButton from '../components/ResubButton.vue'
+import AppModal from '@/components/AppModal.vue';
 
 useMeta({ title: 'Dashboard' });
 
@@ -28,11 +30,18 @@ const viewType = ref('');
 const authStore = useAuthStore();
 const { user } = storeToRefs(authStore);
 const dashboardStore = useDashboardStore();
-const { dashboardBase: creds, gymAttendance: gym_attendance } = storeToRefs(dashboardStore);
+const { dashboardBase: creds, gymAttendance: gym_attendance, onboardingModal } = storeToRefs(dashboardStore);
+
+const isLoadingAttendance = ref<boolean>(false);
 
 async function fetchGymAttendance() {
   if (!gym_attendance.value) {
-    await dashboardStore.dashboard_gym_attendance(user.value?.user_id as number);
+    try {
+      isLoadingAttendance.value = false;
+      await dashboardStore.dashboard_gym_attendance(user.value?.user_id as number);
+    } finally {
+      isLoadingAttendance.value = false;
+    }
   }
   if (gym_attendance.value) {
     prepareData()
@@ -80,6 +89,15 @@ function openModal(modalId: string) {
 
 <template>
   <div class="h-full w-full">
+    <AppModal
+      v-if="onboardingModal.open"
+      :show-btn="false"
+      :show-title="false"
+    >
+      <div class="text-gray-50">
+        <SpinningLoader class="text-5xl" />
+      </div>
+    </AppModal>
     <LayoutView title="Members">
       <template #welcome-section>
         <!-- welcome text -->
@@ -130,8 +148,8 @@ function openModal(modalId: string) {
             </div> -->
           </div>
           <div v-if="!preparingChartData && !chartData.datasets[0].data.length"
-            class="w-full h-[400px] bg-gray-200 flex justify-center items-center rounded-lg">
-            <p class="text-gray-500 font-semibold text-lg">
+            class="w-full h-[400px] bg-gray-200 flex justify-center items-center rounded-lg px-3">
+            <p class="text-gray-500 font-semibold text-lg text-center">
               No gym session yet. Start a gym session to view your progress.
             </p>
           </div>
