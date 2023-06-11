@@ -5,6 +5,7 @@ import { VOnboardingWrapper, useVOnboarding } from 'v-onboarding'
 import 'v-onboarding/dist/style.css'
 import { useAuthStore } from '@/modules/Authentication/stores/auth'
 import { storeToRefs } from 'pinia'
+import { useDashboardStore } from '../stores/dashboard'
 export default defineComponent({
   components: {
     VOnboardingWrapper
@@ -16,7 +17,12 @@ export default defineComponent({
 
     const { isOriented, username } = storeToRefs(authStore);
     
+    const dashboardStore = useDashboardStore();
+    const { onboardingModal } = storeToRefs(dashboardStore);
     function orientationStart() {
+      if (onboardingModal.value.open){
+        dashboardStore.toggleModal("onboarding");
+      }
       if (!isOriented.value) {
         start()
       }
