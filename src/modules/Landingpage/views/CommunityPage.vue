@@ -1,108 +1,146 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import TheFooter from '@/components/TheFooter.vue'
-// import AppCarousel from '@/components/AppCarousel.vue'
+import { ref } from "vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 const communityImages = ref([
   {
     id: 1,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3903_2ICUBbG027.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833580505'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3903_2ICUBbG027.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833580505',
+    thumbnail: "https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3903_2ICUBbG027.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833580505",
   },
   {
     id: 2,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3792_qiloWYibr.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833579540',
   },
   {
     id: 3,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3844_PA6iZS8eA.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833578466'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3844_PA6iZS8eA.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833578466',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3844_PA6iZS8eA.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833578466',
   },
   {
     id: 4,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3795_ALwh18GQZ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833574418'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3795_ALwh18GQZ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833574418',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3795_ALwh18GQZ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833574418',
   },
   {
     id: 5,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3884_o-wdg8b1x.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669938307502'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3884_o-wdg8b1x.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669938307502',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3884_o-wdg8b1x.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669938307502'
   },
   {
     id: 6,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3765_A34kaEi6u.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572526'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3765_A34kaEi6u.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572526',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3765_A34kaEi6u.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833572526',
   },
   {
     id: 7,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3783_5ANPJiVwF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833565786'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3783_5ANPJiVwF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833565786',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3783_5ANPJiVwF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833565786'
   },
   {
     id: 8,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3754_Bo3-383Gy.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561865'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3754_Bo3-383Gy.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561865',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3754_Bo3-383Gy.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561865',
   },
   {
     id: 9,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3647_kJf7R6QQq.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561159'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3647_kJf7R6QQq.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561159',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3647_kJf7R6QQq.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833561159'
   },
   {
     id: 10,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3744_HmkvIJWk7.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833548022'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3744_HmkvIJWk7.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833548022',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3744_HmkvIJWk7.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833548022',
   },
   {
     id: 11,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3714_0K2fgne7B.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833541831'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3714_0K2fgne7B.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833541831',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3714_0K2fgne7B.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833541831',
   },
   {
     id: 12,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3658_ntkjMiv-W.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531966',
   },
   {
     id: 13,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3648_Ww_y8pBC8.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833542238',
   },
   {
     id: 14,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3690_WpW-V1KOF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531021'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3690_WpW-V1KOF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531021',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3690_WpW-V1KOF.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833531021',
   },
   {
     id: 15,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3669_E2o8wl0Ig.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524904'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3669_E2o8wl0Ig.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524904',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3669_E2o8wl0Ig.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524904',
   },
   {
     id: 16,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3708_A8aet1Lf6.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524221'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3708_A8aet1Lf6.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524221',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3708_A8aet1Lf6.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833524221',
   },
   {
     id: 17,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3662_9cmdjpkKU.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833522118',
   },
   {
     id: 18,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3688__F82GC0ah.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833517481'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3688__F82GC0ah.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833517481',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3688__F82GC0ah.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833517481',
   },
   {
     id: 19,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3697_HeT31w918.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833512200'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3697_HeT31w918.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833512200',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3697_HeT31w918.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833512200',
   },
   {
     id: 20,
     imageUrl:
-      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3711_9mek81lM4.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833533515'
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/_MG_3711_9mek81lM4.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833533515',
+    thumbnail:
+      'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/our_community/tr:n-ik_ml_thumbnail/_MG_3711_9mek81lM4.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1669833533515',
   }
 ])
 </script>
@@ -118,13 +156,25 @@ const communityImages = ref([
       <div class="main">
         <div class="gallery">
           <div v-for="image in communityImages" :key="image.id" class="img">
-            <img class="gallery__image" :src="image.imageUrl" />
+            <div class="blur-load" :style="`background-image: url(${image.thumbnail});`">
+              <img
+                class="gallery__image z-10"
+                :src="image.id === 1 ? '' : image.imageUrl"
+                :srcset="`${image.thumbnail} 100w,
+                        ${image.imageUrl} 300w,
+                        ${image.imageUrl} 600w`"
+                :alt="'community-image-' + image.id"
+                loading="lazy"
+              />
+            </div>
+
+
           </div>
         </div>
       </div>
       <!-- <AppCarousel class="hidden" :images="communityImages" /> -->
     </div>
-    <!-- <TheFooter /> -->
+    <TheFooter />
   </div>
 </template>
 <style lang="scss" scoped>
@@ -223,12 +273,21 @@ const communityImages = ref([
   }
 }
 
-.main .gallery .img img {
+.blur-load {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.5) grayscale(100);
+  transition: 0.4s ease-in-out;
+}
+
+.main .gallery .img .blur-load img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   transform: scale(1.01);
-  filter: brightness(0.5) grayscale(100);
+  filter: brightness(0.8) grayscale(100);
   transition: 0.4s ease-in-out;
 
   @include responsive('mobile-width') {
@@ -241,20 +300,28 @@ const communityImages = ref([
   filter: brightness(1) grayscale(0);
 }
 
+.main .gallery .img:hover .blur-load {
+  filter: brightness(1) grayscale(0);
+}
+
 .main .gallery .img:first-child {
   grid-column-start: span 2;
   grid-row-start: span 2;
 }
+
 .main .gallery .img:nth-child(2n + 3) {
   grid-row-start: span 2;
 }
+
 .main .gallery .img:nth-child(4n + 5) {
   grid-column-start: span 2;
   grid-row-start: span 2;
 }
+
 .main .gallery .img:nth-child(6n + 7) {
   grid-row-start: span 2;
 }
+
 .main .gallery .img:nth-child(8n + 9) {
   grid-column-start: span 1;
   grid-row-start: span 1;
