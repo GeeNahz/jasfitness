@@ -44,11 +44,14 @@ export async function useFetchData(service: (args?: any) => Promise<AxiosRespons
       errorData.value = err.response.data;
       statusCode.value = err.response.status;
       headers.value = err.response.headers;
+      statusText.value = err.response.data;
     } else if (err.request) {
       // request was made but no response was received.
+      statusCode.value = err.request.status;
       request.value = err.request;
+      statusText.value = err.request.responseText;
     } else {
-      statusCode.value = 404; // TODO: change the default error code
+      statusCode.value = 400; // TODO: change the default error code
     }
     statusText.value = err.message;
 
