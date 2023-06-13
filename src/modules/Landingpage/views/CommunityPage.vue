@@ -280,6 +280,10 @@ const communityImages = ref([
   background-position: center;
   filter: brightness(0.5) grayscale(100);
   transition: 0.4s ease-in-out;
+
+  @include responsive('mobile-width') {
+    filter: brightness(1) grayscale(0);
+  }
 }
 
 .main .gallery .img .blur-load img {
