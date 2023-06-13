@@ -32,7 +32,7 @@ defineProps(['details'])
   border-radius: 10px;
   overflow: hidden;
   text-align: left;
-  box-shadow: 0px 15px 30px -15px rgba(50, 50, 50, 0.2);
+  box-shadow: 0px 6px 16px -9px rgba(50, 50, 50, 0.2);
 
   @include responsive('md') {
     width: 95%;
