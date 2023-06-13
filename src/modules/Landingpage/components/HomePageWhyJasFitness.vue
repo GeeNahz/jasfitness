@@ -13,32 +13,34 @@ defineComponent({ name: "WhyJasFitness" });
       <h4 class="text-center lg:text-start text-3xl text-gray-400 font-medium font-inter capitalize mx-auto mb-8">
         Why jas fitness?
       </h4>
-      <CardItem
-        class="mx-auto w-[310px] h-[280px] lg:h-full card-item flex flex-col justify-between lg:justify-evenly px-12 py-8">
-        <template #top>
-          <h4 class="pb-3 xl:pb-7 text-2xl xl:text-3xl font-semibold">
-            You're not Alone
-          </h4>
-        </template>
-        <div class="relative mb-7">
-          <p class="text-sm xl:text-base">
-            Consistency over motivation. You don't have to face your fitness
-            goals alone. Let's do it TOGETHER.
-          </p>
-          <p
-            class="absolute -right-4 top-16 lg:-right-10 lg:top-32 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter">
-            01
-          </p>
-        </div>
-        <template #bottom>
-          <div>
-            <router-link :to="{ name: 'PlansPage' }"
-              class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] md:w-[193px] md:h-[54px] text-sm md:text-base transition-all">
-              Join Community
-            </router-link>
+      <div class="mx-auto w-[320px] lg:w-[349px]">
+        <CardItem
+          class="card-item card-set">
+          <template #top>
+            <h4 class="pb-3 xl:pb-7 text-2xl xl:text-3xl font-semibold">
+              You're not Alone
+            </h4>
+          </template>
+          <div class="relative mb-7">
+            <p class="text-sm xl:text-base">
+              Consistency over motivation. You don't have to face your fitness
+              goals alone. Let's do it TOGETHER.
+            </p>
+            <p
+              class="absolute -right-8 top-12 lg:-right-10 lg:top-20 -z-10 text-[100px] lg:text-9xl text-[#FEDF9A] text-opacity-40 font-bold font-inter">
+              01
+            </p>
           </div>
-        </template>
-      </CardItem>
+          <template #bottom>
+            <div>
+              <router-link :to="{ name: 'PlansPage' }"
+                class="btn-default bg-[#1f1f1f] hover:bg-white hover:border border-[#1f1f1f] w-[130px] h-[45px] md:w-[193px] md:h-[54px] text-sm md:text-base transition-all">
+                Join Community
+              </router-link>
+            </div>
+          </template>
+        </CardItem>
+      </div>
     </div>
     <!-- center image -->
     <div class="relative center-img bg-gray-200 w-full lg:w-[369px] h-[527px]">
@@ -115,6 +117,11 @@ defineComponent({ name: "WhyJasFitness" });
 .btn-default:hover {
   color: #1f1f1f;
 }
+
+.card-item {
+  border-radius: 10px;
+}
+
 .card-item.card-set {
   display: flex;
   flex-direction: column;
