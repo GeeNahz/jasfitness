@@ -8,6 +8,8 @@ interface Item {
   imageName: string;
   linkUrl: string;
   linkText: string;
+  title: string;
+  description: string;
 }
 interface Props {
   items: Item[]
@@ -34,13 +36,10 @@ defineComponent({
           :style="`background-image: url(${slide.imageName})`"
         >
           <div
-            class="carousel-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-3 h-[50%]"
+            class="carousel-pop-up text-[#171717] font-inter bg-white rounded-t-2xl p-3 h-fit"
           >
-            <h1 class="font-medium text-xl">Promo! Promo!! Promo!!!</h1>
-            <p class="text-sm font-light">
-              Subscibe to any of our fitness plans at 50% discount!!! Offer
-              lasts for a month
-            </p>
+            <h1 class="font-medium text-xl">{{ slide.title }}</h1>
+            <p class="text-sm font-light">{{ slide.description }}</p>
             <a
               :href="slide.linkUrl"
               class="flex items-center gap-1 ml-3 mt-2 py-2 text-sm font-quicksand font-semibold"
@@ -81,13 +80,13 @@ defineComponent({
 
 .carousel-pop-up {
   position: absolute;
-  bottom: -50%;
+  bottom: -90%;
   transition: all 0.5s ease-out 0.2s;
 }
-.carousel__item:hover .module-pop-up {
-  bottom: 0px;
+.carousel__item:hover .carousel-pop-up {
+  bottom: 0%;
 }
-.carousel__item:focus .module-pop-up {
-  bottom: 0px;
+.carousel__item:focus .carousel-pop-up {
+  bottom: 0%;
 }
 </style>
