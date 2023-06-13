@@ -4,7 +4,8 @@ import { useRoute } from 'vue-router'
 
 const showNavbar = ref<boolean>(false)
 
-const toggleNavbar = () => {
+function toggleNavbar() {
+  console.log("Toggle navbar");
   showNavbar.value = !showNavbar.value
 }
 watch(showNavbar, () => {
@@ -53,7 +54,10 @@ onMounted(() => {
     >
       <div class="flex justify-between h-full items-center capitalize">
         <!-- logo -->
-        <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
+        <router-link
+          class="navbar-brand"
+          :to="{ name: 'LandingPageHome' }"
+        >
           <img
             src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
             alt="logo"
@@ -196,7 +200,11 @@ onMounted(() => {
         <div class="inner bg-white h-full w-[75%] px-10 py-4">
           <!-- logo -->
           <div class="h-32 flex items-center justify-center">
-            <router-link class="navbar-brand" :to="{ name: 'LandingPageHome' }">
+            <router-link
+              @click="toggleNavbar"
+              class="navbar-brand"
+              :to="{ name: 'LandingPageHome' }"
+            >
               <img
                 src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessLogo_v2_POR6uaqVw?updatedAt=1683730306530"
                 alt="logo"
@@ -211,19 +219,31 @@ onMounted(() => {
               class="flex flex-col gap-10 items-center justify-center capitalize font-semibold text-xl"
             >
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'AboutPage' }"
-                  >About us
+                <router-link
+                  @click="toggleNavbar"
+                  class="nav-link"
+                  :to="{ name: 'AboutPage' }"
+                >
+                  About us
                   <div class="underline"></div>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'PlansPage' }"
-                  >plans
+                <router-link
+                  @click="toggleNavbar"
+                  class="nav-link"
+                  :to="{ name: 'PlansPage' }"
+                >
+                  plans
                   <div class="underline"></div>
                 </router-link>
               </li>
               <li class="nav-item">
-                <router-link class="nav-link" :to="{ name: 'CommunityPage' }">
+                <router-link
+                  @click="toggleNavbar"
+                  class="nav-link"
+                  :to="{ name: 'CommunityPage' }"
+                >
                   our community
                   <div class="underline"></div>
                 </router-link>
