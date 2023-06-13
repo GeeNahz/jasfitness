@@ -5,7 +5,6 @@ import { useRoute } from 'vue-router'
 const showNavbar = ref<boolean>(false)
 
 function toggleNavbar() {
-  console.log("Toggle navbar");
   showNavbar.value = !showNavbar.value
 }
 watch(showNavbar, () => {
