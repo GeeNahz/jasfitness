@@ -48,24 +48,23 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
             </div>
             <!-- footer -->
             <div
-              class="hidden md:flex flex-col items-center text-zinc-200 text-opacity-80 font-thin text-xs"
+              class="block md:flex flex-col items-center mx-auto md:mx-0 text-center text-zinc-200 text-opacity-80 font-thin text-xs"
             >
               <div class="flex items-center gap-3 mb-3 imgs opacity-20">
-                <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
+                <div class="border border-[#d4d4d4] w-20 md:w-28 rounded-full" />
                 <img src="@/assets/footer-logo.svg" alt="dumbbell" class="w-16" />
-                <div class="border border-[#d4d4d4] w-16 md:w-32 rounded-full" />
+                <div class="border border-[#d4d4d4] w-20 md:w-28 rounded-full" />
               </div>
               <span>Powered by JAS FITNESS</span>
             </div>
           </div>
         </div>
         <!-- footer for sm screen only -->
-        <div
+        <!-- <div
           class="md:hidden flex flex-col items-center my-8 text-opacity-80 font-thin text-xs px-3"
         >
           <div class="flex justify-center w-full mb-3 imgs relative">
             <div class="border border-[#d4d4d4] w-full rounded-full opacity-70 absolute top-[50%] -translate-y-[50%] z-0"></div>
-            <!-- <AppIconFooterIcon /> -->
             <div class="bg-white z-20 px-3">
               <img
                 src="@/assets/footer-logo-black.svg"
@@ -75,7 +74,7 @@ withDefaults(defineProps<Props>(), {showTitle: true, title: "Heading", isDashboa
             </div>
           </div>
           <span>Powered by JAS FITNESS</span>
-        </div>
+        </div> -->
       </div>
     </div>
     <div v-else class="main-container w-full">
@@ -157,11 +156,12 @@ div.main-body {
   flex-direction: column;
   justify-content: space-between;
   padding: 20px 0;
+  gap: 20px;
 
   @include responsive('tablet-width') {
     grid-area: initial !important;
 
-    padding: 10px 0;
+    padding: 20px 0;
   }
 }
 div.main-body::-webkit-scrollbar {
