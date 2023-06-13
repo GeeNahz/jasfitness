@@ -158,7 +158,6 @@ export const useDashboardStore = defineStore("dashboard", () => {
       // return data.value;
     } else if (error.value) {
       setDashboardItem("profile", null);
-      alert(`profile error: ${errorData.value}`);
       console.log("Profile error: ", errorData.value);
       alerts.error(`${errorData.value}. Unable to retrieve your profile.`);
       // return errorData.value;
