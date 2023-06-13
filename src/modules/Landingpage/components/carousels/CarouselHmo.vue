@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineComponent } from 'vue'
-import { Carousel, Navigation, Slide } from 'vue3-carousel'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import CardHmo from '../cards/CardHmo.vue'
 
 import 'vue3-carousel/dist/carousel.css'
@@ -58,7 +58,7 @@ defineComponent({
     </Slide>
 
     <template #addons>
-      <Navigation />
+      <Pagination />
     </template>
   </Carousel>
 </template>
