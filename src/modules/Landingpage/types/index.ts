@@ -1,8 +1,9 @@
 export interface Plan {
   id: number;
-  slug: string;
-  price: string;
-  setup: string;
+  amount: string;
   billing: string;
   offers: string[]
+  title: string;
+  setup: string;
+  vat: number;
 }
