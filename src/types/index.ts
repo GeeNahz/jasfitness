@@ -1,8 +1,8 @@
 import type { LocationQueryRaw, RouteParamsRaw, Router } from "vue-router";
 
-export interface Status { success: boolean; isLoading: boolean; error: boolean; } 
+export interface Status { success: boolean; isLoading: boolean; error: boolean; }
 export type ID = string
-export type styleType = "info" | "success" | "warning" | "danger" 
+export type styleType = "info" | "success" | "warning" | "danger"
 export interface AlertOptions {
   timeout?: number | false;
   style?: string;
@@ -27,15 +27,6 @@ export interface DynamicRoute {
   query?: LocationQueryRaw | undefined;
   params?: RouteParamsRaw | undefined;
   openInNewTab?: boolean;
-}
-
-export interface Plan {
-  id: number;
-  slug: string;
-  price: string;
-  setup: string;
-  billing: string;
-  offers: string[]
 }
 
 export interface GenericStoreState {
