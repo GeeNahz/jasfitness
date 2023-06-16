@@ -2,6 +2,9 @@
 import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 import { useMeta } from 'vue-meta'
+import { useAlertStore } from "@/stores/alerts";
+
+import Service from "@/services/GenericService/Service";
 
 import CardSubscription from "../components/cards/CardSubscription.vue";
 import TheFooter from "@/components/TheFooter.vue";
@@ -99,9 +102,22 @@ function animatePlanCards() {
     }
   )
 }
+
+const alertStore = useAlertStore();
+
+async function getPlans() {
+  try {
+    const res = await Service.fitness_plan();
+    plans.value = res.data;
+    animatePlanCards();
+  } catch (error) {
+    alertStore.error("Unable to get plans. Please refresh your brower to try again.");
+  }
+}
+
 onMounted(() => {
-  animatePlanCards()
-})
+  getPlans();
+});
 </script>
 
 <template>
