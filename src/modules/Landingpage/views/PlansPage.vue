@@ -44,10 +44,11 @@ const plans = ref<Plan[]>([
   // },
   {
     id: 1,
-    slug: 'Premium',
-    price: 'N20,000',
-    setup: 'N3,000',
+    amount: 'N20,000',
     billing: 'BILLED MONTHLY',
+    setup: 'N3,000',
+    title: 'Premium',
+    vat: 23,
     offers: [
       'No Price Discount',
       'Access Once Daily',
@@ -60,10 +61,11 @@ const plans = ref<Plan[]>([
   },
   {
     id: 2,
-    slug: 'VIP',
-    price: 'N40,000',
-    setup: 'N3,000',
+    amount: 'N40,000',
     billing: 'BILLED MONTHLY',
+    setup: 'N3,000',
+    title: 'VIP',
+    vat: 33,
     offers: [
       'No Price Discount',
       'All Day Access',
@@ -75,14 +77,7 @@ const plans = ref<Plan[]>([
       '1 Free Car Wash Weekly (4 Monthly)'
     ]
   }
-]) // get plans from endpoint
-
-slug = title
-price = amount
-vat = "add"
-setup = setup_fee
-billing = billing
-offers = offers
+]); // get plans from endpoint
 
 const evenNumber = (number: number) => number % 2 === 0
 
@@ -119,7 +114,7 @@ onMounted(() => {
       <div class="plans">
         <CardSubscription
           v-for="plan in plans"
-          :key="plan.slug"
+          :key="plan.title"
           :backgroundColor="
             evenNumber(plan.id) ? 'bg-[#ffdb58]' : 'bg-[#c0c0c0]'
           "
@@ -128,7 +123,7 @@ onMounted(() => {
           <template #top>
             <div class="card-title text-center">
               <h3 class="text-3xl uppercase font-bold">
-                {{ plan.slug }}
+                {{ plan.title }}
               </h3>
               <p class="text-sm font-medium">
                 Membership Setup Fee - {{ plan.setup }}
@@ -139,7 +134,7 @@ onMounted(() => {
             <div class="card-body-wrapper">
               <div class="card-pricing text-center">
                 <h3 class="text-3xl font-bold text-red-500">
-                  {{ plan.price }}
+                  {{ plan.amount }}
                 </h3>
                 <p class="text-sm font-semibold">{{ plan.billing }}</p>
               </div>
@@ -187,7 +182,7 @@ onMounted(() => {
                 :on-click="
                   () =>
                     handleGetStarted({
-                      planName: plan.slug,
+                      planName: plan.title,
                       isNewClient: 'true'
                     })
                 "
@@ -202,7 +197,7 @@ onMounted(() => {
                 :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
                 :link-class="'font-semibold uppercase'"
                 link-name="SubscriptionPage"
-                :plan-name="plan.slug"
+                :plan-name="plan.title"
                 is-new-client="true"
               >
                 Get started
