@@ -21,5 +21,8 @@ export default {
   },
   fitness_plan() {
     return axiosInstance.get('/fitness_plan/')
-  }
+  },
+  instructors() {
+    return axiosInstance.get("/api/v1/staff/profile/");
+  },
 }
