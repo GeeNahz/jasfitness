@@ -3,11 +3,11 @@ import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 import { useMeta } from 'vue-meta'
 
-import CardSubscription from '../components/cards/CardSubscription.vue'
-import TheFooter from '@/components/TheFooter.vue'
+import CardSubscription from "../components/cards/CardSubscription.vue";
+import TheFooter from "@/components/TheFooter.vue";
 // import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
 // import { useRouter } from 'vue-router'
-import PlanSubscribeBtn from '../components/PlanSubscribeBtn.vue'
+import PlanSubscribeBtn from "../components/PlanSubscribeBtn.vue";
 import type { Plan } from '@/types'
 
 // import AppButton from '@/components/AppButton.vue'
@@ -76,6 +76,13 @@ const plans = ref<Plan[]>([
     ]
   }
 ]) // get plans from endpoint
+
+slug = title
+price = amount
+vat = "add"
+setup = setup_fee
+billing = billing
+offers = offers
 
 const evenNumber = (number: number) => number % 2 === 0
 
