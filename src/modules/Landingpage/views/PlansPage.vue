@@ -8,7 +8,7 @@ import TheFooter from "@/components/TheFooter.vue";
 // import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
 // import { useRouter } from 'vue-router'
 import PlanSubscribeBtn from "../components/PlanSubscribeBtn.vue";
-import type { Plan } from '@/types'
+import type { Plan } from "../types";
 
 // import AppButton from '@/components/AppButton.vue'
 
