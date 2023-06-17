@@ -17,12 +17,12 @@ const showDivider = computed(() => {
 
 const statusColorScheme = computed(() => {
   return (status: string) => {
-    if (status === 'current') {
-      return 'bg-slate-300 text-slate-700 shadow-sm'
+    if (status === ('current' || 'complete')) {
+      return 'bg-green-500 text-gray-100'
     } else if (status === 'pending') {
       return 'bg-slate-300 text-slate-400'
-    } else if (status === 'complete') {
-      return 'bg-green-500 text-gray-100'
+    } else {
+      return 'bg-slate-300 text-slate-700 shadow-sm'
     }
     // bg-[#BF9128] // JF gold
   }
@@ -30,12 +30,12 @@ const statusColorScheme = computed(() => {
 
 const statusColorSchemeText = computed(() => {
   return (status: string) => {
-    if (status === 'current') {
-      return 'text-slate-700'
+    if (status === ('current' || 'complete')) {
+      return 'text-slate-500'
     } else if (status === 'pending') {
       return 'text-gray-300'
-    } else if (status === 'complete') {
-      return 'text-slate-500'
+    } else {
+      return 'text-slate-700'
     }
   }
 })
