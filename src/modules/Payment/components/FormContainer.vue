@@ -5,6 +5,9 @@ import { useRoute } from 'vue-router'
 import Steps from './Steps.vue'
 import FormDetails from './FormDetails.vue'
 import FormSuccess from './FormSuccess.vue'
+import type { Instructor } from '../types'
+import Service from '@/services/GenericService/Service'
+import { useAlertStore } from '@/stores/alerts'
 
 defineComponent({
   components: { Steps, FormDetails, FormSuccess },
@@ -69,6 +72,18 @@ function splitNames({ name }: { name: string }) {
       firstName: nameArr[0],
       lastName: nameArr[nameArr.length - 1]
     })
+  }
+}
+
+const alertStore = useAlertStore();
+const instructors = ref<Instructor[]>([]);
+async function fetchInstructors() {
+  try {
+    const res = await Service.instructors();
+    instructors.value = res.data.results;
+  } catch (error) {
+    console.log("Error while fetching instructors: ", error)
+    alertStore.error("Unable to get instructors. Please refresh your browser to try again.")
   }
 }
 
@@ -182,6 +197,7 @@ function updateFormDetails(updatedDetails: { [key: string]: any }, id: string | 
             <Component
               :is="componentSteps[currentStep]"
               :wizard="steps"
+              :instructors="instructors"
               @update="updateFormDetails"
               @completed="handleCompleted"
             />
