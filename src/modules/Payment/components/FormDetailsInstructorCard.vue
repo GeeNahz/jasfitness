@@ -8,17 +8,23 @@ defineComponent({
 
 interface Props {
   instructor: Instructor;
+  selected?: number | string;
 }
 
 defineProps<Props>();
 
 defineEmits<{
-  (event: "onSelect", payload: Instructor): void;
+  (event: "onSelect", id: number): void;
 }>();
 </script>
 
 <template>
-  <div @click="$emit('onSelect', instructor)" class="wrapper transition-shadow shadow-md hover:shadow-lg min-w-[140px] w-[140px] p-3 rounded focus:shadow-2xl" tabindex="0">
+  <div
+    class="cursor-pointer wrapper transition-shadow shadow-md hover:shadow-lg focus:shadow-2xl min-w-[140px] w-[140px] p-3 rounded"
+    :class="{ 'shadow-2xl': selected === instructor.id }"
+    @focus="$emit('onSelect', instructor.id)"
+    tabindex="0"
+  >
     <div class="profile-img rounded-full bg-neutral-400 w-20 h-20 mx-auto mb-3 overflow-hidden">
       <img :src="instructor.avatar" :alt="instructor.name" class="h-full w-full object-cover" />
     </div>
