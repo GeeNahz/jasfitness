@@ -14,8 +14,13 @@ interface Prop {
 
 defineProps<Prop>();
 
+const emit = defineEmits<{
+  (event: "instructorSelected", payload: Instructor): void;
+}>();
+
 function handleSelect(payload: any) {
   console.log(payload);
+  emit("instructorSelected", payload);
 }
 </script>
 
