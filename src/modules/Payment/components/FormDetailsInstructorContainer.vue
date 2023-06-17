@@ -10,17 +10,17 @@ defineComponent({
 
 interface Prop {
   instructors: Instructor[];
+  selectedInstructor?: number | string;
 }
 
 defineProps<Prop>();
 
 const emit = defineEmits<{
-  (event: "instructorSelected", payload: Instructor): void;
+  (event: "instructorSelected", payload: number): void;
 }>();
 
-function handleSelect(payload: any) {
-  console.log(payload);
-  emit("instructorSelected", payload);
+function handleSelect(id: number) {
+  emit("instructorSelected", id);
 }
 </script>
 
@@ -36,6 +36,7 @@ function handleSelect(payload: any) {
         v-for="instructor in instructors"
         :key="instructor.id"
         :instructor="instructor"
+        :selected="selectedInstructor"
       />
     </div>
   </div>
