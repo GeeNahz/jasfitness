@@ -12,6 +12,7 @@ import TheFooter from "@/components/TheFooter.vue";
 // import { useRouter } from 'vue-router'
 import PlanSubscribeBtn from "../components/PlanSubscribeBtn.vue";
 import type { Plan } from "../types";
+import PlanCard from '../components/cards/PlanCard.vue';
 
 // import AppButton from '@/components/AppButton.vue'
 
@@ -47,7 +48,7 @@ const plans = ref<Plan[]>([
   // },
   {
     id: 1,
-    amount: 'N20,000',
+    amount: '20000',
     billing: 'BILLED MONTHLY',
     setup: 'N3,000',
     title: 'Premium',
@@ -64,7 +65,7 @@ const plans = ref<Plan[]>([
   },
   {
     id: 2,
-    amount: 'N40,000',
+    amount: '40000',
     billing: 'BILLED MONTHLY',
     setup: 'N3,000',
     title: 'VIP',
@@ -108,8 +109,9 @@ const alertStore = useAlertStore();
 async function getPlans() {
   try {
     const res = await Service.fitness_plan();
-    plans.value = res.data;
-    animatePlanCards();
+    // plans.value = res.data.results;
+    console.log(res);
+    // animatePlanCards();
   } catch (error) {
     alertStore.error("Unable to get plans. Please refresh your brower to try again.");
   }
@@ -124,11 +126,12 @@ onMounted(() => {
   <section class="section">
     <div class="container">
       <header class="text-center mb-5 font-inter">
-        <h3 class="text-2xl font-bold">We have a plan for everyone</h3>
+        <h3 class="text-5xl font-bold">We have a plan for everyone</h3>
         <p>Pick a plan suitable for you 💪🏽</p>
       </header>
       <div class="plans">
-        <CardSubscription
+        <PlanCard v-for="plan in plans" :key="plan.id" :plan="plan" />
+        <!-- <CardSubscription
           v-for="plan in plans"
           :key="plan.title"
           :backgroundColor="
@@ -192,22 +195,6 @@ onMounted(() => {
           </div>
           <template #bottom>
             <div class="button-wrapper">
-              <!-- <AppButton
-                class="card-btn"
-                :button-class="'font-semibold uppercase card-btn'"
-                :on-click="
-                  () =>
-                    handleGetStarted({
-                      planName: plan.title,
-                      isNewClient: 'true'
-                    })
-                "
-              >
-                Get started
-              </AppButton>
-                target="_blank"
-              href="https://app.jasfitnessng.com/new-members/subscription/"
-             -->
               <PlanSubscribeBtn
                 class="card-btn"
                 :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
@@ -220,7 +207,7 @@ onMounted(() => {
               </PlanSubscribeBtn>
             </div>
           </template>
-        </CardSubscription>
+        </CardSubscription> -->
       </div>
     </div>
   </section>
@@ -241,8 +228,8 @@ onMounted(() => {
     & .plans {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      gap: 2.5rem;
+      // align-items: flex-start;
+      gap: 1.5rem;
       width: 100%;
 
       @include responsive(tablet-width) {
