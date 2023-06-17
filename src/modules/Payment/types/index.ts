@@ -29,3 +29,10 @@ export interface ServerPlan {
   amount: number;
   properties: any;
 }
+
+export interface Instructor {
+  id: number;
+  avatar: string;
+  name: string;
+  specialty: string;
+}
