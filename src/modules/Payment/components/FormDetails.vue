@@ -6,11 +6,13 @@ import GenericService from '@/services/GenericService/Service'
 
 import paystack from '@/components/custom/PayStack.vue'
 import FormDetailsCard from './FormDetailsCard.vue'
-import type { PaymentFormData, PaymentPlans, ServerPlan } from '../types'
+import type { Instructor, PaymentFormData, PaymentPlans, ServerPlan } from '../types'
 import { useAlertStore } from '@/stores/alerts'
+import FormDetailsInstructorContainer from "./FormDetailsInstructorContainer.vue";
 
 interface Props {
-  wizard: { [key: string]: any }
+  wizard: { [key: string]: any };
+  instructors?: Instructor[];
 }
 
 const props = defineProps<Props>();
@@ -223,6 +225,10 @@ function onClose() {
             class="hover:cursor-pointer"
           />
         </div>
+      </div>
+
+      <div class="my-4 md:my-9">
+        <FormDetailsInstructorContainer v-if="instructors?.length" :instructors="instructors" />
       </div>
 
       <hr class="border-2 border-gray-300 my-4 md:my-9" />
