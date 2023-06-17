@@ -32,3 +32,23 @@ export interface DynamicRoute {
 export interface GenericStoreState {
   showSplashScreen: boolean;
 }
+
+
+export interface PlanProperties {
+  billing: string;
+  duration: number;
+  new_sub_charges: number;
+  offers: string[];
+  resub_charges: number;
+  setup: string | number;
+  type: string;
+  vat: number;
+}
+export interface Plan {
+  id: number;
+  amount: number;
+  freeze_duration: number;
+  freezeable: boolean;
+  properties: PlanProperties;
+  title: string;
+}
