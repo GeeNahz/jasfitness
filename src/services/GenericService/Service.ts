@@ -23,6 +23,6 @@ export default {
     return axiosInstance.get('/fitness_plan/')
   },
   instructors() {
-    return axiosInstance.get("/api/v1/staff/profile/");
+    return axiosInstance.get("/api/v1/instructors/");
   },
 }
