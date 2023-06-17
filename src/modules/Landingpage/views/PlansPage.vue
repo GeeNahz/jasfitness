@@ -6,46 +6,16 @@ import { useAlertStore } from "@/stores/alerts";
 
 import Service from "@/services/GenericService/Service";
 
-import CardSubscription from "../components/cards/CardSubscription.vue";
 import TheFooter from "@/components/TheFooter.vue";
-// import { useDynamicRoute } from '@/composables/dynamicRouteWrapper'
-// import { useRouter } from 'vue-router'
-import PlanSubscribeBtn from "../components/PlanSubscribeBtn.vue";
+// import PlanSubscribeBtn from "../components/PlanSubscribeBtn.vue"; // delete this component
 import type { Plan } from "../types";
 import PlanCard from '../components/cards/PlanCard.vue';
 
-// import AppButton from '@/components/AppButton.vue'
-
 useMeta({
-  title: 'Plans'
-})
-
-// const router = useRouter()
-// function handleGetStarted(queryParams: any) {
-//   useDynamicRoute({
-//     routeName: 'SubscriptionPage',
-//     openInNewTap: true,
-//     query: queryParams,
-//     router: router
-//   })
-// }
+  title: "Plans",
+});
 
 const plans = ref<Plan[]>([
-  // {
-  //   id: 0,
-  //   slug: 'regular',
-  //   price: 'N12,000',
-  //   setup: 'N3,000',
-  //   billing: 'BILLED MONTHLY',
-  //   offers: [
-  //     'No Price Discount',
-  //     'Access Once Daily',
-  //     'Personal Dashboard for Tracking Fitness Records',
-  //     'No Fitness Instructor',
-  //     'No Guest Pass Per Month',
-  //     'No Subscription Pause Request'
-  //   ]
-  // },
   {
     id: 1,
     amount: '20000',
@@ -131,83 +101,6 @@ onMounted(() => {
       </header>
       <div class="plans">
         <PlanCard v-for="plan in plans" :key="plan.id" :plan="plan" />
-        <!-- <CardSubscription
-          v-for="plan in plans"
-          :key="plan.title"
-          :backgroundColor="
-            evenNumber(plan.id) ? 'bg-[#ffdb58]' : 'bg-[#c0c0c0]'
-          "
-          class="plan"
-        >
-          <template #top>
-            <div class="card-title text-center">
-              <h3 class="text-3xl uppercase font-bold">
-                {{ plan.title }}
-              </h3>
-              <p class="text-sm font-medium">
-                Membership Setup Fee - {{ plan.setup }}
-              </p>
-            </div>
-          </template>
-          <div class="default-content">
-            <div class="card-body-wrapper">
-              <div class="card-pricing text-center">
-                <h3 class="text-3xl font-bold text-red-500">
-                  {{ plan.amount }}
-                </h3>
-                <p class="text-sm font-semibold">{{ plan.billing }}</p>
-              </div>
-              <div class="card-offers-lists-wrapper">
-                <p
-                  v-for="(offer, index) in plan.offers"
-                  :key="index"
-                  class="card-offers-lists text-sm"
-                  :class="
-                    evenNumber(plan.id)
-                      ? evenNumber(index)
-                        ? 'bg-[#f4c777]'
-                        : 'bg-[#e9e9e9]'
-                      : evenNumber(index)
-                      ? 'bg-[#dcdcdc]'
-                      : 'bg-[#ecf0f1]'
-                  "
-                >
-                  <i>
-                    <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M7.5 14.625C11.435 14.625 14.625 11.435 14.625 7.5C14.625 6.12593 14.236 4.84271 13.5622 3.75443L8.06336 9.86426C7.37069 10.6339 6.20513 10.7476 5.37677 10.1263L2.94167 8.3C2.49984 7.96863 2.4103 7.34183 2.74167 6.9C3.07304 6.45817 3.69984 6.36863 4.14167 6.7L6.57677 8.52633L12.2667 2.20422C11.0042 1.0671 9.3329 0.375 7.5 0.375C3.56497 0.375 0.375 3.56497 0.375 7.5C0.375 11.435 3.56497 14.625 7.5 14.625Z"
-                        fill="white"
-                      />
-                    </svg>
-                  </i>
-                  {{ offer }}
-                </p>
-              </div>
-            </div>
-          </div>
-          <template #bottom>
-            <div class="button-wrapper">
-              <PlanSubscribeBtn
-                class="card-btn"
-                :class="evenNumber(plan.id) ? 'bg-[#fcedba]' : 'bg-[#e5e5e5]'"
-                :link-class="'font-semibold uppercase'"
-                link-name="SubscriptionPage"
-                :plan-name="plan.title"
-                is-new-client="true"
-              >
-                Get started
-              </PlanSubscribeBtn>
-            </div>
-          </template>
-        </CardSubscription> -->
       </div>
     </div>
   </section>
