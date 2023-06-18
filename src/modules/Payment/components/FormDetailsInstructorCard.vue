@@ -26,7 +26,7 @@ defineEmits<{
     tabindex="0"
   >
     <div class="profile-img rounded-full bg-neutral-400 w-20 h-20 mx-auto mb-3 overflow-hidden">
-      <img :src="instructor.avatar" :alt="instructor.name" class="h-full w-full object-cover" />
+      <img :src="instructor.others.avatar" :alt="instructor.name" class="h-full w-full object-cover" />
     </div>
 
     <div class="profile-details text-center">
@@ -35,7 +35,7 @@ defineEmits<{
       </div>
 
       <div class="specialty text-xs text-slate-400">
-        <p>{{ instructor.specialty }}</p>
+        <p>{{ instructor.others.specialty }}</p>
       </div>
     </div>
   </div>
