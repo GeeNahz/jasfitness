@@ -53,8 +53,6 @@ const plans = ref<Plan[]>([
   }
 ]); // get plans from endpoint
 
-const evenNumber = (number: number) => number % 2 === 0
-
 /**For stagger effect */
 function animatePlanCards() {
   gsap.fromTo(
