@@ -80,7 +80,7 @@ const instructors = ref<Instructor[]>([]);
 async function fetchInstructors() {
   try {
     const res = await Service.instructors();
-    instructors.value = res.data.results;
+    instructors.value = res.data;
   } catch (error) {
     console.log("Error while fetching instructors: ", error)
     alertStore.error("Unable to get instructors. Please refresh your browser to try again.")
