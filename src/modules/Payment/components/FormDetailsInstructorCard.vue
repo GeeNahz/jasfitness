@@ -20,7 +20,7 @@ defineEmits<{
 
 <template>
   <div
-    class="cursor-pointer wrapper transition-shadow shadow-md hover:shadow-lg focus:shadow-2xl min-w-[140px] w-[140px] p-3 rounded"
+    class="cursor-pointer wrapper transition-shadow shadow-md hover:shadow-lg focus:shadow-2xl sm:min-w-[140px] w-full sm:w-[140px] p-3 rounded"
     :class="{ 'shadow-2xl': selected === instructor.id }"
     @focus="$emit('onSelect', instructor.id)"
     tabindex="0"
