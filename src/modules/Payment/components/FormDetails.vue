@@ -256,10 +256,10 @@ function onClose() {
 
       <!-- outline of charges -->
       <div class="costs-outline">
-        <div class="cost">
+        <!-- <div class="cost">
           <p class="item">Subscription includes VAT (7.5%)</p>
           <p class="price"></p>
-        </div>
+        </div> -->
         <div v-if="Object.keys(data as PaymentFormData).length > 0" class="cost">
           <p class="item">Charges</p>
           <p class="price">
