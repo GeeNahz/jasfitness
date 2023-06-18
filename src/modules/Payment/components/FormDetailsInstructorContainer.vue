@@ -9,7 +9,7 @@ defineComponent({
 });
 
 interface Prop {
-  instructors: Instructor[];
+  instructors?: Instructor[];
   selectedInstructor?: number | string;
 }
 
