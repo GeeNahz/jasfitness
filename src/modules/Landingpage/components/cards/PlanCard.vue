@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Plan } from '../../types';
+import type { Plan } from '@/types';
 
 
 interface Prop {
@@ -12,21 +12,26 @@ function displayName(planName: string) {
 }
 </script>
 <template>
-  <div class="card-container text-[#1f1f1f] transition-all duration-200 hover:text-white hover:bg-[#1f1f1f] w-full sm:w-80 p-4 sm:p-5 rounded-xl font-inter outline outline-2 hover:outline-none">
+  <div class="card-container plan text-[#1f1f1f] transition-all duration-200 hover:text-white hover:bg-[#1f1f1f] w-full sm:w-80 p-4 sm:p-5 rounded-xl font-inter outline outline-2 hover:outline-none">
     <div class="card-wrapper">
-      <div class="card-body flex flex-col mb-4 min-h-[350px]">
+      <div class="card-body flex flex-col mb-4 min-h-[300px] sm:min-h-[330px]">
         <div class="title font-medium text-lg sm:text-xl mb-2">
-          <p>{{ displayName(plan.title) }}</p>
+          <p>
+              {{ displayName(plan.title) }}
+              <span class="text-[10px] md:text-xs text-[#AAAAAA]">
+              ({{ plan.properties.instructor ? 'With instructor' : 'Without instructor' }})
+            </span>
+          </p>
         </div>
         <div class="amount mb-2">
           <p class="font-medium text-4xl sm:text-5xl">N{{ plan.amount }}<span class="gray-text font-normal text-xs sm:text-sm text-[#555555]">/monthly</span></p>
         </div>
         <div class="desc mb-4 gray-text font-light text-xs text-[#555555]">
-          Membership setup fee - {{ plan.setup }}
+          Membership setup fee - {{ plan.properties.setup_fee }}
         </div>
         <div class="offers">
           <ul>
-            <li v-for="(offer, index) in plan.offers" :key="index + 1" class="flex items-baseline gap-3 mb-2">
+            <li v-for="(offer, index) in plan.properties.offers" :key="index + 1" class="flex items-baseline gap-3 mb-2">
               <div class="bullet p-1 rounded-full bg-[#555555]"></div>
               <p class="font-light text-xs gray-text text-[#555]">{{ offer }}</p>
             </li>
@@ -61,12 +66,12 @@ function displayName(planName: string) {
   }
 
   &:hover .action-link {
-    background-color: #fff;
+    background-color: #e2e2e2;
     color: #1f1f1f;
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      background-color: #f8f8f8;
+      background-color: #fff;
     }
     &:active {
       background-color: #cecece;
