@@ -2,32 +2,42 @@
 import FormDetailsCardIndicator from './FormDetailsCardIndicator.vue'
 
 defineProps({
-  item: {
+  plan: {
     type: Object,
     required: true
   }
 })
+
+function displayName(planName: string) {
+  const name = planName.split("-");
+  return name[0];
+}
 </script>
 
 <template>
   <div
-    @click="(e) => $emit('selected', item)"
+    @click="(e) => $emit('selected', plan)"
     class="wrapper p-3 rounded min-w-fit w-full sm:w-56 min-h-min max-h-max shadow-sm"
   >
     <!-- <div>{{ item }}</div> -->
-    <div class="flex gap-2 justify-between items-center mb-1 md:mb-2">
+    <div class="flex gap-2 justify-between items-center mb-2 md:mb-4">
       <div>
         <p class="text-sm md:text-base text-[#303030]">
-          {{ item.name }}
-          <span class="text-[10px] md:text-xs text-[#AAAAAA]">
-            ({{ item.properties.duration }} month)
+          {{ displayName(plan.name) }}
+          <span class="text-[10px] md:text-xs text-[#AAAAAA] block">
+            ({{ plan.properties.instructor ? 'With instructor' : 'Without instructor' }})
           </span>
         </p>
       </div>
-      <FormDetailsCardIndicator :selected="item.selected" />
+      <FormDetailsCardIndicator :selected="plan.selected" />
     </div>
     <div class="price">
-      <p class="text-base md:text-xl font-semibold">₦{{ item.amount }}</p>
+      <p class="text-base md:text-xl font-semibold">
+        ₦{{ plan.amount }}
+        <span class="text-[10px] md:text-xs text-[#AAAAAA] font-light">
+          ({{ plan.properties.duration }} month)
+        </span>
+      </p>
     </div>
   </div>
 </template>
