@@ -30,9 +30,14 @@ export interface ServerPlan {
   properties: any;
 }
 
+export interface InstructorOthers {
+  avatar: string;
+  specialty: string;
+}
 export interface Instructor {
   id: number;
-  avatar: string;
   name: string;
-  specialty: string;
+  gender: string;
+  username: string;
+  others: InstructorOthers;
 }
