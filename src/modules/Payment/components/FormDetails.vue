@@ -15,39 +15,6 @@ interface Props {
   instructors?: Instructor[];
 }
 
-// const instructors: Instructor[] = [
-//   {
-//     id: 1,
-//     avatar: "https://images.unsplash.com/photo-1598550880863-4e8aa3d0edb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//     name: "Penance Ian",
-//     specialty: "Dance",
-//   },
-//   {
-//     id: 2,
-//     avatar: "https://images.unsplash.com/photo-1613145997970-db84a7975fbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//     name: "Mike Trough",
-//     specialty: "Body building",
-//   },
-//   {
-//     id: 3,
-//     avatar: "https://images.unsplash.com/photo-1558898479-33c0057a5d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmlsZSUyMHBpY3R1cmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-//     name: "Cynthia Christopher",
-//     specialty: "Whole Fitness",
-//   },
-//   {
-//     id: 4,
-//     avatar: "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZSUyMHBpY3R1cmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-//     name: "Branden Fraesar",
-//     specialty: "Calisthenics",
-//   },
-//   {
-//     id: 5,
-//     avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMHBpY3R1cmVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-//     name: "Rebecca Moore",
-//     specialty: "Cardio",
-//   },
-// ]
-
 const props = defineProps<Props>();
   const emit = defineEmits<{
   (event: "completed", payload: { [key: string]: any }): void;
