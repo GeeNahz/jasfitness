@@ -7,13 +7,16 @@ interface Prop {
 }
 
 defineProps<Prop>();
+function displayName(planName: string) {
+  return planName.split("-")[0];
+}
 </script>
 <template>
   <div class="card-container text-[#1f1f1f] transition-all duration-200 hover:text-white hover:bg-[#1f1f1f] w-full sm:w-80 p-4 sm:p-5 rounded-xl font-inter outline outline-2 hover:outline-none">
     <div class="card-wrapper">
       <div class="card-body flex flex-col mb-4 min-h-[350px]">
         <div class="title font-medium text-lg sm:text-xl mb-2">
-          <p>{{ plan.title }}</p>
+          <p>{{ displayName(plan.title) }}</p>
         </div>
         <div class="amount mb-2">
           <p class="font-medium text-4xl sm:text-5xl">N{{ plan.amount }}<span class="gray-text font-normal text-xs sm:text-sm text-[#555555]">/monthly</span></p>
