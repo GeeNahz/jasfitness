@@ -105,7 +105,8 @@ function setDataFromQuery() {
   }
 }
 onMounted(() => {
-  setDataFromQuery()
+  fetchInstructors();
+  setDataFromQuery();
 })
 const currentStep = ref(0)
 const componentSteps = [FormDetails, FormSuccess]
