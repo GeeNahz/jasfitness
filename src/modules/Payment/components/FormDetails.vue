@@ -97,13 +97,16 @@ onMounted(() => {
   publicKey.value = (import.meta.env.VITE_APP_PAYSTACK_PUBLIC_KEY as string);
 })
 
-const { useIsValidTextInputs } = validation()
+const { useIsValidTextInputs } = validation();
+const isInstructorRequired = computed(() => {
+  return needInstructor.value && typeof instructor_id.value === "number";
+});
 const fieldsValidated = computed(() =>
   useIsValidTextInputs([
     data.value!.firstName,
     data.value!.lastName,
     data.value!.email
-  ])
+  ]) && isInstructorRequired.value
 )
 function handleWizardUpdate() {
   fieldsValidated.value ? data.value!.isValid = true : data.value!.isValid = false;
@@ -149,6 +152,8 @@ watch(
     if (!needInstructor.value) {
       setSelectedInstructor("none");
     }
+    console.log(needInstructor.value);
+    console.log(instructor_id.value);
 
     handleWizardUpdate()
     const commonMetaData = {
