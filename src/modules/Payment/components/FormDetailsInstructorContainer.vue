@@ -25,8 +25,8 @@ function handleSelect(id: number) {
 </script>
 
 <template>
-  <div class="">
-    <div class="heading text-center font-semibold text-lg my-3">
+  <div class="my-3">
+    <div class="heading text-center font-semibold text-lg mb-4">
       <p class="title text-center">Choose an Instructor</p>
     </div>
     
