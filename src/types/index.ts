@@ -37,13 +37,14 @@ export interface GenericStoreState {
 export interface PlanProperties {
   billing: string;
   duration: number;
+  instructor: boolean;
   new_sub_charges: number;
-  offers: string[];
   resub_charges: number;
-  setup: string | number;
+  setup_fee: number;
   type: string;
-  vat: number;
+  offers: string[]
 }
+
 export interface Plan {
   id: number;
   amount: number;
