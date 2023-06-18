@@ -54,23 +54,23 @@ const plans = ref<Plan[]>([
 ]); // get plans from endpoint
 
 /**For stagger effect */
-function animatePlanCards() {
-  gsap.fromTo(
-    '.plan',
-    {
-      opacity: 0,
-      y: -50
-    },
-    {
-      duration: 1.5,
-      opacity: 1,
-      y: 0,
-      delay: 0.5,
-      ease: 'power3.inOut',
-      stagger: 0.3
-    }
-  )
-}
+// function animatePlanCards() {
+//   gsap.fromTo(
+//     '.plan',
+//     {
+//       opacity: 0,
+//       y: -50
+//     },
+//     {
+//       duration: 1.5,
+//       opacity: 1,
+//       y: 0,
+//       delay: 0.5,
+//       ease: 'power3.inOut',
+//       stagger: 0.3
+//     }
+//   )
+// }
 
 const alertStore = useAlertStore();
 
