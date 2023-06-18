@@ -135,9 +135,8 @@ const metadataReason = computed(() => {
 })
 
 const needInstructor = computed(() => {
-  // TODO 2: adjust this conditional to run its check on the plan by checking for the instructors flag on the selected plan
-  if (props.instructors) return props.instructors.length > 0;
-  return false;
+  let selectedPlan = getSelectedPlanByName(data.value.planName);
+  return selectedPlan?.properties.instructor
 });
 const instructor_id = ref<number | string>("none");
 function setSelectedInstructor(id: number | string) {
@@ -231,11 +230,11 @@ function onClose() {
           Choose a plan
         </p>
         <!-- <div class="flex gap-2 md:gap-3"> -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-2 md:gap-3">
           <FormDetailsCard
             v-for="plan in plans"
             :key="plan.id"
-            :item="plan"
+            :plan="plan"
             @selected="setSelectedPlan"
             class="hover:cursor-pointer"
           />
@@ -243,12 +242,14 @@ function onClose() {
       </div>
 
       <div class="my-4 md:my-9">
-        <FormDetailsInstructorContainer
-          v-if="instructors?.length"
-          :instructors="instructors"
-          @instructor-selected="setSelectedInstructor"
-          :selected-instructor="instructor_id"
-        />
+        <transition name="slide">
+          <FormDetailsInstructorContainer
+            v-if="needInstructor"
+            :instructors="instructors"
+            @instructor-selected="setSelectedInstructor"
+            :selected-instructor="instructor_id"
+          />
+        </transition>
       </div>
 
       <hr class="border-2 border-gray-300 my-4 md:my-9" />
@@ -320,5 +321,15 @@ form {
       @apply text-xs md:text-sm font-semibold;
     }
   }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: 1s;
+}
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
