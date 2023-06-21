@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppChip from "@/components/AppChip.vue";
+import type { Career } from "../types";
 
 interface Props {
   career: Career;
@@ -25,8 +26,8 @@ defineProps<Props>();
     </div>
 
     <div class="info flex gap-px">
-      <AppChip :chip-element="{ id: career.id, content: career.location }" :show-close-btn="false" />
-      <AppChip :chip-element="{ id: career.id, content: career.type }" :show-close-btn="false" />
+      <AppChip :chip-element="{ id: career.id, content: career.details.location }" :show-close-btn="false" />
+      <AppChip :chip-element="{ id: career.id, content: career.details.type }" :show-close-btn="false" />
     </div>
   </div>
 </template>
