@@ -8,6 +8,7 @@ export interface Career {
   id: number;
   title: string;
   description: string;
-  location: string;
-  type: string;
+  details: {
+    [key: string]: string;
+  }
 }
