@@ -21,5 +21,5 @@ export interface CareerPayload {
   phone_number: string; // +234
   gender: Gender;
   address: string;
-  cv: string;
+  cv_link: string;
 }
