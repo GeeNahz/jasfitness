@@ -39,43 +39,55 @@ const jobAvailable = ref([
     id: 1,
     title: "Content creator",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Full time",
-  },
-  {
-    id: 1,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Full time",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Full time",
+    },
   },
   {
     id: 2,
     title: "Content creator",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Part time",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Full time",
+    },
   },
   {
     id: 3,
     title: "Content creator",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Full time",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Part time",
+    },
   },
   {
     id: 4,
     title: "Content creator",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Full time",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Full time",
+    },
   },
   {
     id: 5,
     title: "Content creator",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    location: "Abuja, Nigeria",
-    type: "Full time",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Full time",
+    },
+  },
+  {
+    id: 6,
+    title: "Content creator",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
+    details: {
+      location: "Abuja, Nigeria",
+      type: "Full time",
+    },
   },
 ]);
 </script>
