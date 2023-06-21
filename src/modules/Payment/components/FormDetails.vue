@@ -99,14 +99,14 @@ onMounted(() => {
 
 const { useIsValidTextInputs } = validation();
 const isInstructorRequired = computed(() => {
-  return needInstructor.value && typeof instructor_id.value === "number";
+  return typeof instructor_id.value === "number";
 });
 const fieldsValidated = computed(() =>
   useIsValidTextInputs([
     data.value!.firstName,
     data.value!.lastName,
     data.value!.email
-  ]) && isInstructorRequired.value
+  ]) && (needInstructor.value ? isInstructorRequired.value : true)
 )
 function handleWizardUpdate() {
   fieldsValidated.value ? data.value!.isValid = true : data.value!.isValid = false;
