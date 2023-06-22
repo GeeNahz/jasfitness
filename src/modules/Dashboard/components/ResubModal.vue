@@ -2,6 +2,7 @@
 import IconClose from "@/components/icons/IconClose.vue";
 import FormContainer from "@/modules/Payment/components/FormContainer.vue";
 import { onBeforeUnmount } from "vue";
+import { useDashboardStore } from "../stores/dashboard";
 
 interface ResubQuery {
   email: string;
@@ -16,7 +17,7 @@ interface Props {
 }
 defineProps<Props>();
 
-defineEmits<{
+const emit = defineEmits<{
   (event: "close"): void;
 }>();
 
@@ -32,13 +33,20 @@ toggleScroll("hidden");
 onBeforeUnmount(() => {
   toggleScroll("auto");
 });
+
+const dashboardStore = useDashboardStore();
+async function closeModal() {
+  await dashboardStore.dashboard_home();
+  await dashboardStore.dashboard_subscription();
+  emit("close");
+}
 </script>
 
 <template>
   <teleport to='body'>
     <div class="backdrop">
       <div class="wrapper">
-        <div @click="$emit('close')" class="close-toggle">
+        <div @click="closeModal" class="close-toggle">
           <IconClose />
         </div>
         <FormContainer
@@ -48,7 +56,7 @@ onBeforeUnmount(() => {
           :name="query.name"
           :plan-name="query.planName"
           :user-id="query.userId"
-          @close="$emit('close')"
+          @close="closeModal"
         />
       </div>
     </div>
