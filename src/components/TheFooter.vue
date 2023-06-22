@@ -25,6 +25,11 @@ const quickLinks: QuickLink[] = [
     routeName: "PlansPage",
     displayName: "Sign up",
   },
+  {
+    id: 5,
+    routeName: "Careers",
+    displayName: "careers",
+  },
 ];
 </script>
 <template>
