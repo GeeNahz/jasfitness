@@ -24,7 +24,7 @@ const routes = [
         component: CareerPage,
       },
       {
-        path: "apply",
+        path: "apply/:career_id/:career_title",
         name: "apply",
         component: CareerApplyPage,
       },
