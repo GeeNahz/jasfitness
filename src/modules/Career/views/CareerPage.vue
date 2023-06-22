@@ -29,9 +29,9 @@ function displayType(isFullTime: boolean) {
 
 <template>
   <div v-if="careerJob">
-    <div class="career-wrapper container mb-36">
+    <div class="career-wrapper container mb-36 font-quicksand">
       <header class="flex justify-between items-start mb-5">
-        <div class="title">
+        <div class="title font-inter">
           <p class="font-bold text-4xl mb-5">{{ careerJob!.title }}</p>
   
           <div class="info flex gap-4">
@@ -57,13 +57,13 @@ function displayType(isFullTime: boolean) {
         </div>
       </header>
   
-      <div class="desc text-sm mb-10">
+      <div class="desc text-sm md:text-base mb-10">
         <p>{{ careerJob!.description }}</p>
       </div>
   
       <div class="you-do">
         <div class="section-title">
-          <p>What you'll do:</p>
+          <p class="font-inter">What you'll do:</p>
           <ul>
             <li v-for="(duty, index) in careerJob.details.responsibility" :key="index" class="list-disc">
               {{ duty }}
@@ -74,7 +74,7 @@ function displayType(isFullTime: boolean) {
   
       <div class="looking-for">
         <div class="section-title">
-          <p>What we're looking for:</p>
+          <p class="font-inter">What we're looking for:</p>
           <ul>
             <li v-for="(qualification, index) in careerJob.details.qualifications" :key="index" class="list-disc">
               {{ qualification }}
@@ -85,7 +85,7 @@ function displayType(isFullTime: boolean) {
   
       <div class="haves">
         <div class="section-title">
-          <p>Nice to haves:</p>
+          <p class="font-inter">Nice to haves:</p>
           <ul>
             <li v-for="(have, index) in careerJob.details.preferred" :key="index" class="list-disc">
               {{ have }}
@@ -109,7 +109,7 @@ function displayType(isFullTime: boolean) {
     @apply ml-5;
 
     & li {
-      @apply text-xs mb-2;
+      @apply text-xs md:text-sm mb-2;
     }
   }
 }
