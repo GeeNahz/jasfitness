@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 
-import type { SearchFilter } from "../types";
+import type { Career, SearchFilter } from "../types";
+import Service from "@/services/GenericService/Service";
 
 import AppChip from "@/components/AppChip.vue";
 import CareerJobs from "../components/CareerJobs.vue";
-
+import SpinningLoader from "@/components/SpinningLoader.vue";
 
 const searchFilters = ref<SearchFilter[]>([
   { id: 1, content: "View all", isActive: true, },
@@ -34,62 +35,17 @@ function setActive(id: number) {
   if (search) search.isActive = true;
 }
 
-const jobAvailable = ref([
-  {
-    id: 1,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Full time",
-    },
-  },
-  {
-    id: 2,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Full time",
-    },
-  },
-  {
-    id: 3,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Part time",
-    },
-  },
-  {
-    id: 4,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Full time",
-    },
-  },
-  {
-    id: 5,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Full time",
-    },
-  },
-  {
-    id: 6,
-    title: "Content creator",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-    details: {
-      location: "Abuja, Nigeria",
-      type: "Full time",
-    },
-  },
-]);
+const jobAvailable = ref<Career[]>([]);
+
+onMounted(async () => {
+  try {
+    const res = await Service.careers();    
+    console.log(res.data);
+    jobAvailable.value = res.data;
+  } catch (error) {
+    console.log("Career error: ", error);
+  }
+});
 </script>
 
 <template>
@@ -113,7 +69,19 @@ const jobAvailable = ref([
     </div>
 
     <div class="jobs mb-44">
-      <CareerJobs v-for="(career) in jobAvailable" :key="career.id" :career="career" />
+      <div v-if="jobAvailable.length">
+        <CareerJobs
+          v-for="career in jobAvailable"
+          :key="career.id"
+          :career="career"
+        />
+      </div>
+      <div v-else>
+        <div class="flex flex-col items-center justify-center w-full h-96 bg-slate-100 text-slate-500">
+          <SpinningLoader class="text-4xl" />
+          <p class="text-sm">Please wait...</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
