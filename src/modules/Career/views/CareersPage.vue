@@ -62,7 +62,7 @@ onMounted(async () => {
     </header>
 
     <div class="search-filters mb-6">
-      <nav class="flex gap-1">
+      <nav class="flex gap-1 overflow-x-auto">
         <AppChip @click="setActive(searchFilter.id)" :show-close-btn="false" v-for="searchFilter in searchFilters" :key="searchFilter.id" :chip-element="searchFilter" />
       </nav>
     </div>
