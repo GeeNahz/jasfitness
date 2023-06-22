@@ -15,7 +15,7 @@ const route = useRoute();
 <template>
   <div class="career-wrapper h-full w-full">
     <TheNavbar />
-    <div class="content pt-44 font-inter">
+    <div class="content pt-36 sm:pt-44 font-inter">
       <router-view :key="route.path"></router-view>
     </div>
     <TheFooter />
