@@ -32,8 +32,8 @@ function displayType(isFullTime: boolean) {
   <div class="container px-8 mb-36 sm:mb-44">
     <div v-if="careerJob" class="career-wrapper font-quicksand">
       <header class="mb-5">
-        <div class="title flex justify-between items-start font-inter">
-          <p class="font-bold text-xl sm:text-4xl mb-5">{{ careerJob!.title }}</p>
+        <div class="title flex justify-between gap-2 items-start font-inter">
+          <p class="font-bold text-2xl sm:text-4xl mb-5">{{ careerJob!.title }}</p>
 
           <div class="link">
             <router-link
