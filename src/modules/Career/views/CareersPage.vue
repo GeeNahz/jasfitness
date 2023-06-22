@@ -48,7 +48,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container px-8">
     <header class="mb-8">
       <div class="pre-title-chip mb-8">
         <AppChip :chip-element="{ id: 'pre-title', content: `We're hiring!` }" :show-close-btn="false" />
@@ -67,7 +67,7 @@ onMounted(async () => {
       </nav>
     </div>
 
-    <div class="jobs mb-44">
+    <div class="jobs mb-36 sm:mb-44">
       <div v-if="jobAvailable.length">
         <CareerJobs
           v-for="career in jobAvailable"
