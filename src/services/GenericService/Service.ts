@@ -1,3 +1,4 @@
+import type { CareerPayload } from '@/modules/Career/types'
 import axiosInstance from './axiosConfig'
 
 export default {
@@ -24,5 +25,14 @@ export default {
   },
   instructors() {
     return axiosInstance.get("/api/v1/instructors/");
+  },
+  careers() {
+    return axiosInstance.get("/api/v1/careers/");
+  },
+  career(id: number) {
+    return axiosInstance.get(`/api/v1/careers/${id}/`);
+  },
+  career_application(data: CareerPayload) {
+    return axiosInstance.post("/api/v1/career-application/", data);
   },
 }
