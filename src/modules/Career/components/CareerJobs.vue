@@ -15,7 +15,7 @@ defineProps<Props>();
     <div class="title w-full flex justify-between mb-2">
       <div class="text-lg font-semibold flex gap-4 items-center">
         <p>{{ career.title }}</p>
-        <span class="badge badge-pill badge-success bg-opacity-80" :class="[career.active ? 'bg-green-400' : 'bg-red-400']">{{ career.active ? 'Active' : 'Inactive' }}</span>
+        <span class="badge badge-pill badge-success bg-opacity-80 grid place-content-center" :class="[career.active ? 'bg-green-400' : 'bg-red-400']">{{ career.active ? 'Active' : 'Inactive' }}</span>
       </div>
 
       <div class="details-link">
