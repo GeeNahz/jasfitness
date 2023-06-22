@@ -12,8 +12,8 @@ defineProps<Props>();
 
 <template>
   <div class="career-jobs-container mb-1 border-b-2 py-4 first:border-t-2">
-    <div class="title w-full flex justify-between mb-2">
-      <div class="text-lg font-semibold flex gap-4 items-center">
+    <div class="title w-full flex gap-1 justify-between mb-4 sm:mb-2">
+      <div class="text-lg font-semibold flex flex-col sm:flex-row gap-1 sm:gap-4 items-start sm:items-center">
         <p>{{ career.title }}</p>
         <span class="badge badge-pill badge-success bg-opacity-80 grid place-content-center" :class="[career.active ? 'bg-green-400' : 'bg-red-400']">{{ career.active ? 'Active' : 'Inactive' }}</span>
       </div>
@@ -27,7 +27,7 @@ defineProps<Props>();
     </div>
 
     <div class="description mb-3 max-w-3xl">
-      <p class="text-xs font-light">{{ career.description }}</p>
+      <p class="text-xs font-light">{{ career.description.substring(0, 150) }}...</p>
     </div>
 
     <div class="info flex gap-px">
