@@ -49,7 +49,7 @@ function clearFormValues() {
   <DashboardModalLayout :uid="shareSubscriptionModal.id" @close="closeModal">
     <template #header> Share your subscription </template>
     <template #header-description>
-      Share your current subscription with another member of the gym
+      Share your subscription with a family member, friend or gym buddy
     </template>
     <template #content>
       <form id="shareSub" @submit.prevent="shareYourSub">
