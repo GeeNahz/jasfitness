@@ -1,74 +1,97 @@
 <script setup lang="ts">
-const careerJob = {
-  id: 1,
-  title: "Content creator",
-  description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolor incidunt et magnam nam provident commodi vero deserunt officia cupiditate.",
-  location: "Abuja, Nigeria",
-  type: "Full time",
-};
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+
+import type { Career } from "../types";
+import Service from "@/services/GenericService/Service";
+
+import ArrowTopRight from "@/components/icons/ArrowTopRight.vue";
+import AppIconTimer from "@/components/icons/AppIconTimer.vue";
+import GoogleMaps from "@/components/icons/GoogleMaps.vue";
+
+const careerJob = ref<Career>();
+
+const route = useRoute();
+
+onMounted(async () => {
+  try {
+    const res = await Service.career(Number(route.params.id));
+    careerJob.value = res.data;
+  } catch (error) {
+    console.log("Career err: ", error);
+  }
+});
+
+function displayType(isFullTime: boolean) {
+  return isFullTime ? "Full time" : "Part time";
+}
 </script>
 
 <template>
-  <div class="career-wrapper container">
-    <header class="flex justify-between items-start mb-5">
-      <div class="title">
-        <p class="font-bold text-4xl mb-5">{{ careerJob.title }}</p>
-
-        <div class="info flex gap-4">
-          <div class="type text-sm font-medium text-gray-400">
-            <p>{{ careerJob.type }}</p>
-          </div>
-          <div class="location text-sm font-medium text-gray-400">
-            <p>{{ careerJob.location }}</p>
+  <div v-if="careerJob">
+    <div class="career-wrapper container mb-36">
+      <header class="flex justify-between items-start mb-5">
+        <div class="title">
+          <p class="font-bold text-4xl mb-5">{{ careerJob!.title }}</p>
+  
+          <div class="info flex gap-4">
+            <div class="type text-sm font-medium text-gray-400 flex items-center gap-1">
+              <AppIconTimer class="text-2xl" />
+              <p>{{ displayType((careerJob!.details.full_time as unknown) as boolean) }}</p>
+            </div>
+            <div class="location text-sm font-medium text-gray-400 flex items-center gap-1">
+              <GoogleMaps class="text-2xl" />
+              <p>{{ careerJob!.details.type }}</p>
+            </div>
           </div>
         </div>
+  
+        <div class="link">
+          <router-link
+            :to="{ name: 'apply', params: { career_id: careerJob!.id, career_title: careerJob!.title } }"
+            class="btn btn-warning text-white flex gap-1 items-center"
+          >
+            Apply now
+            <ArrowTopRight />
+          </router-link>
+        </div>
+      </header>
+  
+      <div class="desc text-sm mb-10">
+        <p>{{ careerJob!.description }}</p>
       </div>
-
-      <div class="link">
-        <router-link :to="{ name: 'apply', params: { id: careerJob.id } }">Apply now</router-link>
+  
+      <div class="you-do">
+        <div class="section-title">
+          <p>What you'll do:</p>
+          <ul>
+            <li v-for="(duty, index) in careerJob.details.responsibility" :key="index" class="list-disc">
+              {{ duty }}
+            </li>
+          </ul>
+        </div>
       </div>
-    </header>
-
-    <div class="desc text-xs mb-10">
-      <p>{{ careerJob.description }}</p>
-    </div>
-
-    <div class="you-do">
-      <div class="section-title">
-        <p>What you'll do:</p>
-        <ul>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores error quisquam dolores reiciendis dolorem delectus beatae veniam veritatis, ipsam odit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit, expedita.</li>
-          <li>Lorem ipsum dolor sit.</li>
-          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam!</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro reprehenderit earum aperiam!</li>
-        </ul>
+  
+      <div class="looking-for">
+        <div class="section-title">
+          <p>What we're looking for:</p>
+          <ul>
+            <li v-for="(qualification, index) in careerJob.details.qualifications" :key="index" class="list-disc">
+              {{ qualification }}
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-    <div class="looking-for">
-      <div class="section-title">
-        <p>What we're looking for:</p>
-        <ul>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores error quisquam dolores reiciendis dolorem delectus beatae veniam veritatis, ipsam odit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit, expedita.</li>
-          <li>Lorem ipsum dolor sit.</li>
-          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam!</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro reprehenderit earum aperiam!</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="haves">
-      <div class="section-title">
-        <p>Nice to haves:</p>
-        <ul>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores error quisquam dolores reiciendis dolorem delectus beatae veniam veritatis, ipsam odit.</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit, expedita.</li>
-          <li>Lorem ipsum dolor sit.</li>
-          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam!</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro reprehenderit earum aperiam!</li>
-        </ul>
+  
+      <div class="haves">
+        <div class="section-title">
+          <p>Nice to haves:</p>
+          <ul>
+            <li v-for="(have, index) in careerJob.details.preferred" :key="index" class="list-disc">
+              {{ have }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
