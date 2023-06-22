@@ -29,7 +29,7 @@ function displayType(isFullTime: boolean) {
 </script>
 
 <template>
-  <div class="container px-8 mb-36">
+  <div class="container px-8 mb-36 sm:mb-44">
     <div v-if="careerJob" class="career-wrapper font-quicksand">
       <header class="mb-5">
         <div class="title flex justify-between items-start font-inter">
