@@ -40,7 +40,6 @@ const jobAvailable = ref<Career[]>([]);
 onMounted(async () => {
   try {
     const res = await Service.careers();    
-    console.log(res.data);
     jobAvailable.value = res.data;
   } catch (error) {
     console.log("Career error: ", error);
