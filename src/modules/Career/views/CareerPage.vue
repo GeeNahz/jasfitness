@@ -31,31 +31,32 @@ function displayType(isFullTime: boolean) {
 <template>
   <div class="container px-8 mb-36">
     <div v-if="careerJob" class="career-wrapper font-quicksand">
-      <header class="flex justify-between items-start mb-5">
-        <div class="title font-inter">
-          <p class="font-bold text-lg sm:text-4xl mb-5">{{ careerJob!.title }}</p>
-  
-          <div class="info flex gap-4">
-            <div class="type text-sm font-medium text-gray-400 flex items-center gap-1">
-              <AppIconTimer class="text-2xl" />
-              <p>{{ displayType((careerJob!.details.full_time as unknown) as boolean) }}</p>
-            </div>
-            <div class="location text-sm font-medium text-gray-400 flex items-center gap-1">
-              <GoogleMaps class="text-2xl" />
-              <p>{{ careerJob!.details.type }}</p>
-            </div>
-            <span class="badge badge-pill badge-success bg-opacity-80 grid place-content-center" :class="[careerJob.active ? 'bg-green-400' : 'bg-red-400']">{{ careerJob.active ? 'Active' : 'Inactive' }}</span>
+      <header class="mb-5">
+        <div class="title flex justify-between items-start font-inter">
+          <p class="font-bold text-xl sm:text-4xl mb-5">{{ careerJob!.title }}</p>
+
+          <div class="link">
+            <router-link
+              :to="{ name: 'apply', params: { career_id: careerJob!.id, career_title: careerJob!.title } }"
+              class="whitespace-nowrap btn btn-warning text-white flex gap-1 items-center"
+            >
+              Apply now
+              <ArrowTopRight />
+            </router-link>
           </div>
         </div>
   
-        <div class="link">
-          <router-link
-            :to="{ name: 'apply', params: { career_id: careerJob!.id, career_title: careerJob!.title } }"
-            class="btn btn-warning text-white flex gap-1 items-center"
-          >
-            Apply now
-            <ArrowTopRight />
-          </router-link>
+
+        <div class="info flex gap-4 whitespace-nowrap">
+          <div class="type text-sm font-medium text-gray-400 flex items-center gap-1">
+            <AppIconTimer class="text-2xl" />
+            <p>{{ displayType((careerJob!.details.full_time as unknown) as boolean) }}</p>
+          </div>
+          <div class="location text-sm font-medium text-gray-400 flex items-center gap-1">
+            <GoogleMaps class="text-2xl" />
+            <p>{{ careerJob!.details.type }}</p>
+          </div>
+          <span class="badge badge-pill badge-success bg-opacity-80 grid place-content-center" :class="[careerJob.active ? 'bg-green-400' : 'bg-red-400']">{{ careerJob.active ? 'Active' : 'Inactive' }}</span>
         </div>
       </header>
   
