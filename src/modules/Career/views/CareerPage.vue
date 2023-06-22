@@ -29,11 +29,11 @@ function displayType(isFullTime: boolean) {
 </script>
 
 <template>
-  <div class="container mb-36">
+  <div class="container px-8 mb-36">
     <div v-if="careerJob" class="career-wrapper font-quicksand">
       <header class="flex justify-between items-start mb-5">
         <div class="title font-inter">
-          <p class="font-bold text-4xl mb-5">{{ careerJob!.title }}</p>
+          <p class="font-bold text-lg sm:text-4xl mb-5">{{ careerJob!.title }}</p>
   
           <div class="info flex gap-4">
             <div class="type text-sm font-medium text-gray-400 flex items-center gap-1">
@@ -110,7 +110,7 @@ function displayType(isFullTime: boolean) {
   @apply mb-10;
 
   & p {
-    @apply font-medium text-xl mb-2;
+    @apply font-medium text-base sm:text-xl mb-2;
   }
   
   & ul {
