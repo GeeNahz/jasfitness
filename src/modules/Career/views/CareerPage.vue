@@ -8,6 +8,7 @@ import Service from "@/services/GenericService/Service";
 import ArrowTopRight from "@/components/icons/ArrowTopRight.vue";
 import AppIconTimer from "@/components/icons/AppIconTimer.vue";
 import GoogleMaps from "@/components/icons/GoogleMaps.vue";
+import SpinningLoader from "@/components/SpinningLoader.vue";
 
 const careerJob = ref<Career>();
 
@@ -28,8 +29,8 @@ function displayType(isFullTime: boolean) {
 </script>
 
 <template>
-  <div v-if="careerJob">
-    <div class="career-wrapper container mb-36 font-quicksand">
+  <div class="container mb-36">
+    <div v-if="careerJob" class="career-wrapper font-quicksand">
       <header class="flex justify-between items-start mb-5">
         <div class="title font-inter">
           <p class="font-bold text-4xl mb-5">{{ careerJob!.title }}</p>
@@ -43,6 +44,7 @@ function displayType(isFullTime: boolean) {
               <GoogleMaps class="text-2xl" />
               <p>{{ careerJob!.details.type }}</p>
             </div>
+            <span class="badge badge-pill badge-success bg-opacity-80 grid place-content-center" :class="[careerJob.active ? 'bg-green-400' : 'bg-red-400']">{{ careerJob.active ? 'Active' : 'Inactive' }}</span>
           </div>
         </div>
   
@@ -92,6 +94,12 @@ function displayType(isFullTime: boolean) {
             </li>
           </ul>
         </div>
+      </div>
+    </div>
+    <div v-else>
+      <div class="flex flex-col items-center justify-center h-96 w-full bg-gray-100 text-gray-500">
+        <SpinningLoader class="text-4xl" />
+        <p class="text-sm">Please wait...</p>
       </div>
     </div>
   </div>
