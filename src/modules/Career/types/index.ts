@@ -6,6 +6,7 @@ export interface SearchFilter {
 
 export interface Career {
   id: number;
+  active: boolean;
   title: string;
   description: string;
   details: {
@@ -19,7 +20,7 @@ export interface CareerPayload {
   name: string;
   email: string;
   phone_number: string; // +234
-  gender: Gender;
+  gender: Gender | string;
   address: string;
   cv_link: string;
 }
