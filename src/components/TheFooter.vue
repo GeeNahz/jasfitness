@@ -1,4 +1,32 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface QuickLink {
+  id: number;
+  routeName: string;
+  displayName: string;
+}
+const quickLinks: QuickLink[] = [
+  {
+    id: 1,
+    routeName: "AboutPage",
+    displayName: "About Us",
+  },
+  {
+    id: 2,
+    routeName: "CommunityPage",
+    displayName: "Community",
+  },
+  {
+    id: 3,
+    routeName: "LoginPage",
+    displayName: "Log in",
+  },
+  {
+    id: 4,
+    routeName: "PlansPage",
+    displayName: "Sign up",
+  },
+];
+</script>
 <template>
   <div
     class="footer-container lg:pt-20 px-4 w-full h-[858px] lg:h-[551px] bg-[#171717]"
@@ -14,24 +42,13 @@
           ></div>
         </div>
         <ul class="lg:space-y-[14px] grid grid-cols-2 gap-4 lg:block">
-          <li>
-            <router-link :to="{ name: 'AboutPage' }" class="w-full"
-              >About us</router-link
+          <li v-for="quickLink in quickLinks" :key="quickLink.id">
+            <router-link
+              :to="{ name: quickLink.routeName }"
+              class="w-full"
             >
-          </li>
-          <li>
-            <router-link :to="{ name: 'CommunityPage' }" class="w-full"
-              >Community</router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'LoginPage' }" class="w-full"
-              >Log in</router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'PlansPage' }" class="w-full"
-              >sign up</router-link
+              {{ quickLink.displayName }}
+            </router-link
             >
           </li>
           <!-- <li>
