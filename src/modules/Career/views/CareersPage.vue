@@ -61,11 +61,11 @@ onMounted(async () => {
       </div>
     </header>
 
-    <div class="search-filters mb-6">
+    <!-- <div class="search-filters mb-6">
       <nav class="flex gap-1 overflow-x-auto">
         <AppChip @click="setActive(searchFilter.id)" :show-close-btn="false" v-for="searchFilter in searchFilters" :key="searchFilter.id" :chip-element="searchFilter" />
       </nav>
-    </div>
+    </div> -->
 
     <div class="jobs mb-36 sm:mb-44">
       <div v-if="jobAvailable.length">
