@@ -5,6 +5,8 @@ import { useRoute } from "vue-router";
 import type { CareerPayload } from "../types";
 import Service from "@/services/GenericService/Service";
 
+import ArrowReturn from "@/components/icons/ArrowReturn.vue";
+
 const route = useRoute();
 
 const defaultGender = "-- Select gender --";
@@ -50,7 +52,13 @@ async function submitHandler(e: Event) {
 </script>
 
 <template>
-  <div class="container max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
+  <div class="container px-6 max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl xl:max-w-5xl">
+    <div class="mb-3">
+      <router-link :to="{ name: 'detail', params: { id: route.params.career_id } }" class="h-fit w-fit text-[#B48B4D] text-sm font-bold transition-colors hover:text-[#e4b164] flex gap-1 items-center">
+        <ArrowReturn class="text-lg" />
+        <p>Return</p>
+      </router-link>
+    </div>
     <div
       class="apply-wrapper border rounded-lg p-4 md:p-10 mb-24">
       <div class="form-title text-3xl font-semibold mb-3">
