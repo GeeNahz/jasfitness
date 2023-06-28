@@ -53,3 +53,13 @@ export interface Plan {
   properties: PlanProperties;
   title: string;
 }
+
+export interface Review {
+  id?: number;
+  name: string;
+  reviewUrl: string;
+  imageUrl: string;
+  imageAlt: string;
+  review: string;
+  stars: number;
+}
