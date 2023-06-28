@@ -236,7 +236,7 @@ const handleContactusSubmit = () => {
 .about__container {
   width: 100%;
   height: 100%;
-  padding-top: 6rem;
+  padding-top: 5rem;
 
   @include responsive('mobile-landscape-width') {
     padding-top: 5rem;
