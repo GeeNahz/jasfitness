@@ -24,6 +24,7 @@ import Dashboard from "./modules/Dashboard";
 import Membership from "./modules/Membership";
 import Payment from "./modules/Payment";
 import Career from "./modules/Career";
+import Policies from "./modules/Policies";
 
 const moduleConfigs = {
   home: Landingpage,
@@ -32,6 +33,7 @@ const moduleConfigs = {
   membership: Membership,
   payment: Payment,
   careers: Career,
+  policies: Policies,
 };
 registerModules(moduleConfigs);
 
