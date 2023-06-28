@@ -39,8 +39,8 @@ defineProps({
 @import '../../../assets/styles/base';
 .review__container {
   background-color: #fff;
-  width: 430px;
-  height: 200px;
+  width: 450px;
+  height: minmax(200px, max-content);
   box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   display: grid;
