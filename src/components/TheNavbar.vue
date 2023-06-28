@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
   <div>
     <nav
-      class="w-[100vw] h-20 md:h-24 py-7 px-6 lg:px-16 fixed z-50 transition-all duration-300 font-quicksand"
+      class="w-[100vw] h-20 py-7 px-6 lg:px-16 z-50 transition-all duration-300 font-quicksand"
       :class="{ 'bg-white shadow-md': showWhiteBackground }"
     >
       <div class="flex justify-between h-full items-center capitalize">
