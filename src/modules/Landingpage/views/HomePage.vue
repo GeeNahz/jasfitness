@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 
 import { useMeta } from "vue-meta";
+import { useReviews } from "@/composables/reviews";
 
 import TheFooter from '@/components/TheFooter.vue'
 
@@ -155,7 +156,7 @@ function goToSection(selector: string) {
         <!-- section cards -->
         <div class="reviews gap-6 md:gap-14 flex flex-col">
           <ReviewCard
-            v-for="(review, index) in reviews"
+            v-for="(review, index) in useReviews().splice(-3)"
             :key="review.name"
             :review="review"
             :index="index"
