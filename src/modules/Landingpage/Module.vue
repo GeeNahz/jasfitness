@@ -8,7 +8,9 @@ defineComponent({
 </script>
 <template>
   <div class="font-quicksand">
-    <TheNavbar />
+    <div class="fixed z-50">
+      <TheNavbar />
+    </div>
     <div>
       <DisplayHandler />
       <router-view :key="$route.path" />
