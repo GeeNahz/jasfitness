@@ -24,7 +24,7 @@ const reviewPosition = (index: number) => index % 2 === 0;
       }">
     <div v-if="review.imageUrl"
       class="shadow img w-[80px] h-[80px] md:w-[104px] md:h-[104px] rounded-full overflow-hidden">
-      <img :src="review.imageUrl" :alt="review.name" />
+      <img :src="review.imageUrl" :alt="review.name" class="h-full w-full object-cover" />
     </div>
     <div v-else
       class="shadow img w-[80px] md:w-[104px] h-[80px] md:h-[104px] flex items-center justify-center rounded-full overflow-hidden"
@@ -39,14 +39,14 @@ const reviewPosition = (index: number) => index % 2 === 0;
     <CardItem class="item">
       <template #top>
         <div>
-          <p class="text-xs md:text-lg font-medium">
+          <p class="text-xs md:text-base font-medium">
             “{{ review.review }}”
           </p>
         </div>
       </template>
       <a class="flex gap-1 items-center md:gap-2 mt-2 mb-0 hover:cursor-pointer hover:text-yellow-500"
         :href="review.reviewUrl">
-        <p class="font-inter font-bold text-sm md:text-xl mb-2">
+        <p class="font-inter font-bold text-sm md:text-lg mb-2">
           {{ review.name }}
         </p>
         <img src="@/assets/icons/GooglereviewlinkIcon.svg" alt="google review" />
@@ -61,7 +61,7 @@ const reviewPosition = (index: number) => index % 2 === 0;
 <style lang="scss" scoped>
 .single-review {
   width: 583px;
-  height: 204px;
+  height: minmax(204px, fit-content);
   position: relative;
   border-radius: 15px;
   background-color: #f9f9f9;
