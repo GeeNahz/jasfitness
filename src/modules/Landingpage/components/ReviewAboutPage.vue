@@ -40,7 +40,7 @@ defineProps({
 .review__container {
   background-color: #fff;
   width: 450px;
-  height: minmax(200px, max-content);
+  height: minmax(max-content, fit-content);
   box-shadow: 0 4px 15px 4px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   display: grid;
@@ -52,7 +52,7 @@ defineProps({
 
   @include responsive('mobile-width') {
     width: 100%;
-    height: max-content;
+    height: minmax(max-content, fit-content);
     row-gap: 0.5rem;
     grid-template-rows: repeat(3, minmax(0.8rem, min-content));
   }
