@@ -3,16 +3,10 @@ import { defineComponent } from "vue";
 
 import CardItem from "./CardItem.vue";
 import ReviewCardRating from "../ReviewCardRating.vue";
+import type { Review } from "@/types";
 
 defineComponent({ name: "ReviewCard" });
-interface Review {
-  name: string;
-  reviewUrl: string;
-  imageUrl: string;
-  imageAlt: string;
-  review: string;
-  stars: number;
-}
+
 interface Props {
   review: Review;
   index: number;
