@@ -130,8 +130,8 @@ const quickLinks: QuickLink[] = [
     >
       <p>
         &copy; 2023 Jas Fitness Center &#124;
-        <a href="https://">Privacy Policy</a> &#124;
-        <a href="https://">Terms & Conditions</a> &#124; Powered by JAS FITNESS
+        <router-link :to="{ name: 'privacy-policy' }">Privacy Policy</router-link> &#124;
+        <router-link :to="{ name: 'terms-of-service' }">Terms & Conditions</router-link> &#124; Powered by JAS FITNESS
       </p>
     </div>
   </div>
