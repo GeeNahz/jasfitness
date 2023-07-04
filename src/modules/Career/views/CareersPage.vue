@@ -57,7 +57,7 @@ onMounted(async () => {
         <h1>Find the perfect career</h1>
       </div>
       <div class="sub-title text-xs max-w-md">
-        We’re looking for like-minded, passionate people to join our mission. We value clear communication, full ownership and responsibility.
+        We're looking for like-minded, passionate people to join our mission. We value clear communication, full ownership and responsibility.
       </div>
     </header>
 
