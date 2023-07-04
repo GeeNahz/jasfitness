@@ -1,34 +1,42 @@
 <script setup lang="ts">
+import AppBadge from './AppBadge.vue';
+
 interface QuickLink {
   id: number;
   routeName: string;
   displayName: string;
+  isNew?: boolean;
 }
 const quickLinks: QuickLink[] = [
   {
     id: 1,
     routeName: "AboutPage",
     displayName: "About Us",
+    isNew: false,
   },
   {
     id: 2,
     routeName: "CommunityPage",
     displayName: "Community",
+    isNew: false,
   },
   {
     id: 3,
     routeName: "LoginPage",
     displayName: "Log in",
+    isNew: false,
   },
   {
     id: 4,
     routeName: "PlansPage",
     displayName: "Sign up",
+    isNew: false,
   },
   {
     id: 5,
     routeName: "Careers",
     displayName: "careers",
+    isNew: true,
   },
 ];
 </script>
@@ -50,9 +58,9 @@ const quickLinks: QuickLink[] = [
           <li v-for="quickLink in quickLinks" :key="quickLink.id">
             <router-link
               :to="{ name: quickLink.routeName }"
-              class="w-full"
+              class="w-full flex gap-2"
             >
-              {{ quickLink.displayName }}
+              {{ quickLink.displayName }} <AppBadge v-if="quickLink.isNew" color="green">New🔥</AppBadge>
             </router-link
             >
           </li>
