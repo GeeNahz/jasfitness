@@ -5,7 +5,7 @@
       <h1 class="text-5xl font-bold mb-4">Terms and Conditions</h1>
       <p class="font-semibold">
         Last Updated: 
-        <span class="font-normal">June, 2023</span>
+        <span class="font-normal">July, 2023</span>
       </p>
     </div>
     
