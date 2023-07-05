@@ -7,7 +7,7 @@
         <router-link :to="{ name: 'privacy-policy' }">Privacy Policy</router-link>
       </li>
       <li>
-        <router-link :to="{ name: 'terms-of-service' }">Terms of Service</router-link>
+        <router-link :to="{ name: 'terms-of-service' }">Terms and Conditions</router-link>
       </li>
     </ul>
   </nav>
