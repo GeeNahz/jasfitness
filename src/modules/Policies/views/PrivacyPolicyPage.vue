@@ -20,3 +20,32 @@
     </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.body {
+  @apply w-full lg:w-[900px] mx-auto;
+
+  & .sub-section {
+    @apply mb-16;
+    
+    & .sub-section__title {
+      @apply font-bold text-xl uppercase mb-4 border-b pb-2;
+    }
+
+    & .sub-section__content {
+      @apply mb-5;
+      .sub-section__content__sub-title {
+        @apply font-medium text-base mb-1;
+      }
+
+      .sub-section__content__body {
+        @apply font-light;
+      }
+    }
+  }
+}
+
+.ref {
+  @apply text-amber-500 font-medium hover:underline;
+}
+</style>
