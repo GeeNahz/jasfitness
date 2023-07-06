@@ -1396,7 +1396,7 @@
               Jas Fitness is committed to treating all member complaints with strict confidentiality.Personal information provided during the complaint process will only be used for the purpose of investigating and resolving the complaint.
             </p>
             <p class="mb-2">
-              Jas Fitness is dedicated to resolving member complaints promptly and professionally. We value your feedback and strive to continuously improve our services. If you have any questions or need assistance with the complaint process, please contact our customer service desk or email us at <span class="ref">[email address (customer care email)]</span>.
+              Jas Fitness is dedicated to resolving member complaints promptly and professionally. We value your feedback and strive to continuously improve our services. If you have any questions or need assistance with the complaint process, please contact our customer service desk or email us at c.care@jasfitnessng.com.
             </p>
             <p>
               Note: This policy is subject to change at the discretion of Jas Fitness. Any updates or revisions will be communicated to members in a timely manner.
