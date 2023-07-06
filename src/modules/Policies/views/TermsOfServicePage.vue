@@ -10,7 +10,7 @@
     </div>
     
     <!-- body -->
-    <div class="body text-justify">
+    <div class="body">
       <section class="sub-section">
         <h3 class="sub-section__title">Jas Fitness Membership rules</h3>
         <div class="sub-section__content">
@@ -1410,13 +1410,13 @@
 
 <style scoped lang="scss">
 .body {
-  @apply w-full lg:w-[900px] mx-auto;
+  @apply w-full lg:w-[900px] mx-auto text-justify;
 
   & .sub-section {
     @apply mb-16;
     
     & .sub-section__title {
-      @apply font-bold text-xl uppercase mb-4 border-b pb-2;
+      @apply font-bold text-xl uppercase mb-4 border-b pb-2 text-start;
     }
 
     & .sub-section__content {
