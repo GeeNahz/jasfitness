@@ -856,7 +856,7 @@
           <h4 class="sub-section__content__sub-title">Lost and Found</h4>
           <div class="sub-section__content__body">
             <p>
-              We maintain a designated Lost and Found area where members can inquire about and retrieve their lost belongings. If you have misplaced an item, please promptly report it to our staff, who will assist you in locating it. Found items will be kept in the <span class="ref">Lost and Found area</span> for a specified period of 30 days, allowing owners the opportunity to claim them.
+              We maintain a designated Lost and Found area where members can inquire about and retrieve their lost belongings. If you have misplaced an item, please promptly report it to our staff, who will assist you in locating it. Found items will be kept in the Lost and Found area for a specified period of 30 days, allowing owners the opportunity to claim them.
             </p>
           </div>
         </div>
