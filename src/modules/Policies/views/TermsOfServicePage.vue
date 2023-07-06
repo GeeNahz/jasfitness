@@ -10,7 +10,7 @@
     </div>
     
     <!-- body -->
-    <div class="body">
+    <div class="body text-justify">
       <section class="sub-section">
         <h3 class="sub-section__title">Jas Fitness Membership rules</h3>
         <div class="sub-section__content">
