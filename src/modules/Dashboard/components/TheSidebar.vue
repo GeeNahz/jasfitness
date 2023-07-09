@@ -47,9 +47,9 @@ const toggleSideBar = () => {
     <!-- outer side bar -->
     <div
       id="sidebar"
-      class="burger-menu w-max flex flex-col pb-20 justify-between h-full"
+      class="burger-menu w-max flex-1 flex flex-col py-4 justify-between"
     >
-      <div>
+      <div class="flex-1 bg-emerald-300">
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
           <li id="home">
             <router-link
@@ -116,7 +116,7 @@ const toggleSideBar = () => {
       <!-- logout button -->
       <div
         @click="logout"
-        class="link flex items-center space-x-4 text-xl font-bold"
+        class="link flex items-center gap-3 font-bold"
       >
         <div class="icon">
           <AppIconLogout />
@@ -324,7 +324,7 @@ const toggleSideBar = () => {
 
 <style scoped>
 div.link {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
 }
 a,
 div.link {
@@ -345,9 +345,6 @@ div.link:hover {
 
   background: #ca9b4225;
   border-radius: 8px;
-}
-div.link:hover {
-  font-weight: 700;
 }
 
 a.router-link-exact-active {
