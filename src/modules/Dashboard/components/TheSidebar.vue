@@ -49,7 +49,7 @@ const toggleSideBar = () => {
       id="sidebar"
       class="burger-menu w-max flex-1 flex flex-col py-4 justify-between"
     >
-      <div class="flex-1 bg-emerald-300">
+      <div class="flex-1">
         <ul class="space-y-1 md:space-y-3 text-md md:text-base w-52">
           <li id="home">
             <router-link
