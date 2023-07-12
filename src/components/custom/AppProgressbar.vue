@@ -98,7 +98,7 @@ function createProgressBar() {
   const innerTextElement = `
     <div style="display: flex; flex-direction: column; align-items: center;">
       ${progressTextValue.value}
-      <p style="font-size: 0.7rem; text-transform: uppercase; color: #303030; font-weight: 500;">completed</p>
+      <p style="font-size: 0.7rem; text-transform: uppercase; color: #fff; font-weight: 500; mix-blend-mode: difference;">completed</p>
     </div>
   `;
   ctx.text.innerHTML = innerTextElement;
