@@ -2,14 +2,12 @@
 import { defineComponent, provide, ref } from 'vue'
 
 import DashboardHandleModalsDisplay from "./components/modals/DashboardHandleModalsDisplay.vue"
-// import TheSidebar from './components/TheSidebar.vue'
 import Onboarding from './components/OnBoarding.vue'
 // import SnowFlakes from './components/SnowFlakesEffect.vue'
 
 defineComponent({
   name: 'DashboardView',
   components: {
-    // TheSidebar,
     DashboardHandleModalsDisplay,
     Onboarding
     // SnowFlakes
@@ -37,15 +35,8 @@ provide('runOrientationManually', { runOnrientation, toggleRunOrientation });
 </script>
 
 <template>
-  <!-- <div
-    class="dashboard-container w-full mt-[200px] md:mt-0 font-quicksand disable-scroll"
-  > -->
   <div class="w-full mt-[200px] md:mt-0">
     <DashboardHandleModalsDisplay class="fixed" />
-    <!-- <div class="sidebar-panel">
-      <TheSidebar />
-    </div> -->
-    <!-- <div class="main-container w-full"> -->
     <div class="w-full">
       <div class="z-50">
         <Onboarding />
