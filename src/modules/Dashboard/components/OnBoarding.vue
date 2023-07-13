@@ -245,17 +245,17 @@ export default defineComponent({
         // 5 button fitness record
         {
           attachTo: {
-            element: '#fitnessrecord-link'
+            element: '#fitnessrecord-link-mobile'
           },
           content: { ...sectionTwoStart },
           on: {
             beforeStep: function () {
               document
-                .querySelector('#fitnessrecord-link')!
+                .querySelector('#fitnessrecord-link-mobile')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#fitnessrecord-link')!
+                  .querySelector('#fitnessrecord-link-mobile')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             },
@@ -284,16 +284,16 @@ export default defineComponent({
         },
         // 8 button my subscription
         {
-          attachTo: { element: '#mysubscription-link' },
+          attachTo: { element: '#mysubscription-link-mobile' },
           content: { ...sectionThreeStart },
           on: {
             beforeStep: function () {
               document
-                .querySelector('#mysubscription-link')!
+                .querySelector('#mysubscription-link-mobile')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#mysubscription-link')!
+                  .querySelector('#mysubscription-link-mobile')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             }
@@ -326,7 +326,7 @@ export default defineComponent({
         // },
         // 12 button classes
         {
-          attachTo: { element: '#classes-link' },
+          attachTo: { element: '#classes-link-mobile' },
           content: { ...classButton },
           on: {
             beforeStep: function () {}
@@ -334,16 +334,16 @@ export default defineComponent({
         },
         // 13 button settings
         {
-          attachTo: { element: '#settings-link' },
+          attachTo: { element: '#settings-link-mobile' },
           content: { ...sectionFourStart },
           on: {
             beforeStep: function () {
               document
-                .querySelector('#settings-link')!
+                .querySelector('#settings-link-mobile')!
                 .classList.toggle('onboarding-active')
               setTimeout(() => {
                 document
-                  .querySelector('#settings-link')!
+                  .querySelector('#settings-link-mobile')!
                   .classList.toggle('onboarding-active')
               }, 10000)
             },
@@ -441,7 +441,18 @@ export default defineComponent({
           options: {
             hideButtons: {
               next: true
-            }
+            },
+            popper: {
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [500, 10],
+                  },
+                },
+              ],
+            },
           }
         },
         // 7 goals
@@ -488,7 +499,18 @@ export default defineComponent({
           options: {
             hideButtons: {
               next: true
-            }
+            },
+            popper: {
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [500, 8],
+                  },
+                },
+              ],
+            },
           }
         },
         // 11 summary subscription
@@ -527,7 +549,18 @@ export default defineComponent({
           options: {
             hideButtons: {
               next: false
-            }
+            },
+            popper: {
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [500, 8],
+                  },
+                },
+              ],
+            },
           }
         },
         // 16 button settings
@@ -544,7 +577,18 @@ export default defineComponent({
           options: {
             hideButtons: {
               next: true
-            }
+            },
+            popper: {
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [500, 8],
+                  },
+                },
+              ],
+            },
           }
         },
         // 17 change password
