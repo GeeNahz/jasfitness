@@ -63,7 +63,7 @@ withDefaults(defineProps<Props>(), { hasTwoRows: false });
   border-radius: 0.2rem;
 }
 .item-title {
-  width: 10rem;
+  width: 8rem;
   height: 1.5rem;
   margin-bottom: 0.5rem;
 
@@ -74,7 +74,7 @@ withDefaults(defineProps<Props>(), { hasTwoRows: false });
   }
 }
 .item-body {
-  width: 5rem;
+  width: 3rem;
   height: 1.2rem;
   margin-bottom: 0.5rem;
 
