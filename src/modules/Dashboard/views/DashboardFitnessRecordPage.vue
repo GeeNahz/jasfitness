@@ -7,7 +7,7 @@ import AppIconMessage from '@/components/icons/AppIconMessage.vue'
 import AppIconProfile from '@/components/icons/AppIconProfile.vue'
 import AppIconAssessment from '@/components/icons/AppIconAssessment.vue'
 
-import PageLayout from '../components/PageLayout.vue'
+import Layout from "../components/Layout.vue";
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardCard from '../components/DashboardCard.vue'
 import DashboardChart from "../components/DashboardChart.vue";
@@ -74,8 +74,8 @@ onMounted( async () => {
 
 <template>
   <div class="h-full">
-    <PageLayout :showTitle="false">
-      <template #welcome-section>
+    <Layout :showTitle="false">
+      <div class="max-w-full">
         <!-- welcome text -->
         <div
           class="welcome-container container py-3 flex justify-between items-center"
@@ -167,7 +167,8 @@ onMounted( async () => {
             </tbody>
           </table>
         </div>
-      </template>
+      </div>
+      
       <template #inner-side-bar>
         <div class="w-full">
           <div
@@ -256,7 +257,7 @@ onMounted( async () => {
           </div>
         </div>
       </template>
-    </PageLayout>
+    </Layout>
   </div>
 </template>
 

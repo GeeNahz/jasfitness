@@ -6,7 +6,7 @@ import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
 
-import PageLayout from '../components/PageLayout.vue'
+import Layout from "../components/Layout.vue";
 import DashboardSubscriptionCard from '../components/DashboardCard.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import AppProgressbar from "@/components/custom/AppProgressbar.vue";
@@ -39,8 +39,8 @@ function openModal (modalId: string) {
 
 <template>
   <div class="h-full">
-    <PageLayout title="Summary">
-      <template #welcome-section>
+    <Layout title="Summary">
+      <div class="max-w-full">
         <!-- welcome text -->
         <div
           class="welcome-container container py-3 flex justify-between items-center"
@@ -68,7 +68,7 @@ function openModal (modalId: string) {
           >
             Summary
           </p>
-
+  
           <Suspense>
             <DashboardSubscriptionSummaryItems />
             <template #fallback>
@@ -187,7 +187,8 @@ function openModal (modalId: string) {
             </DashboardSubscriptionCard>
           </div>
         </div>
-      </template>
+      </div>
+
       <template #inner-side-bar>
         <div class="flex flex-col items-center lg:block mb-4 px-1 w-full">
           <DashboardSubscriptionCard :addIcon="false" class="w-full">
@@ -208,7 +209,7 @@ function openModal (modalId: string) {
                   class="mt-2 md:mt-0 h-fit w-full overflow-hidden"
                 >
                   <div class="grid justify-center w-full">
-                    <AppProgressbar :progress="dashboardSub.sub_wheel / 100" :is-full-circle="false" :width="200" :height="100" class="relative mt-3" />
+                    <AppProgressbar :progress="dashboardSub.sub_wheel / 100" :is-full-circle="false" :width="180" :height="90" class="relative mt-3" />
 
                     <!-- <DashboardRadialProgressBar
                       :strokeWidth="10"
@@ -254,7 +255,7 @@ function openModal (modalId: string) {
           </ul>
         </div>
       </template>
-    </PageLayout>
+    </Layout>
   </div>
 </template>
 

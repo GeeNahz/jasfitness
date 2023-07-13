@@ -3,7 +3,7 @@ import { inject, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useDashboardStore } from "../stores/dashboard";
 
-import PageLayout from "../components/PageLayout.vue";
+import Layout from "../components/Layout.vue";
 
 const dashboardStore = useDashboardStore();
 
@@ -50,9 +50,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <PageLayout :is-dashboard="false">
+  <Layout :is-dashboard="false">
     <div class="h-full w-full text-[#303030]">
-      <div class="settings-content h-fit w-full pt-10 lg:pt-0">
+      <div class="settings-content h-fit w-full">
         <!-- heading section -->
         <div class="border-b border-gray-200 p-3 min-h-fit">
           <h1 class="font-inter font-bold text-2xl text-start">Settings</h1>
@@ -90,17 +90,12 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </PageLayout>
+  </Layout>
 </template>
 
 <style lang="scss" scoped>
 @import '../../../assets/styles/base';
 
-.settings-content {
-  @include responsive('lg') {
-    padding-top: 2.5rem;
-  }
-}
 .items {
   padding: 0.75rem 2.5rem;
   @include responsive('lg') {

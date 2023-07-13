@@ -15,7 +15,7 @@ import AppIconTimer from '@/components/icons/AppIconTimer.vue'
 import AppIconSend from '@/components/icons/AppIconSend.vue'
 import AppIconMessage from '@/components/icons/AppIconMessage.vue'
 
-import LayoutView from '../components/PageLayout.vue'
+import Layout from "../components/Layout.vue";
 import DashboardChart from '../components/DashboardChart.vue'
 import DashboardDivider from '../components/DashboardDivider.vue'
 import DashboardSummarySkeletonLoader from '../components/SummarySkeletonLoader.vue'
@@ -98,8 +98,8 @@ function openModal(modalId: string) {
         <SpinningLoader class="text-5xl" />
       </div>
     </AppModal>
-    <LayoutView title="Members">
-      <template #welcome-section>
+    <Layout :show-title="false">
+      <div>
         <!-- welcome text -->
         <div class="welcome-container container py-3 flex justify-between items-center">
           <div id="user-welcome" class="welcome md:mt-10">
@@ -131,7 +131,6 @@ function openModal(modalId: string) {
         </div>
         <!-- fitness record -->
         <div class="md:h-96">
-          <!-- divider -->
           <DashboardDivider class="text-sm xl:text-base my-5 xl:my-4" name="My Fitness Record" />
           <div v-if="preparingChartData" class="loader h-full">
             <AppLoader />
@@ -140,12 +139,8 @@ function openModal(modalId: string) {
             class="chart-container md:hover:scale-100 md:scale-95 transition-transform duration-300 overflow-clip">
             <div class="chart bg-gray-50 p-2 mt-4 rounded">
               <p class="float-right">{{ viewType }}</p>
-              <!-- Insert toggle button here -->
               <DashboardChart :chartData="chartData" css-classes="h-full w-full" />
             </div>
-            <!-- <div class="md:hidden chart bg-gray-50 p-2 mt-4 rounded">
-              <DashboardChart css-classes="h-[200px]" :chartData="chartData" />
-            </div> -->
           </div>
           <div v-if="!preparingChartData && !chartData.datasets[0].data.length"
             class="w-full h-[400px] bg-gray-200 flex justify-center items-center rounded-lg px-3">
@@ -154,9 +149,10 @@ function openModal(modalId: string) {
             </p>
           </div>
         </div>
-      </template>
+      </div>
+
       <template #display-image>
-        <div class="image rounded-full overflow-hidden hidden lg:block h-20 w-20 mx-auto mb-10">
+        <div class="image rounded-full overflow-hidden hidden lg:block h-20 w-20 mx-auto mb-3">
           <img v-if="user?.avatar" :src="user?.avatar" :alt="'avatar-' + user?.username"
             class="h-full w-full object-center" />
           <img v-else
@@ -256,7 +252,7 @@ function openModal(modalId: string) {
           </div>
         </div>
       </template>
-    </LayoutView>
+    </Layout>
   </div>
 </template>
 
