@@ -5,28 +5,19 @@ import CardHmo from '../cards/CardHmo.vue'
 
 import 'vue3-carousel/dist/carousel.css'
 
-const carouselItems = [
-  {
-    id: 1,
-    name: 'Leadway',
-    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/leadway__5sN4BNkq.jpg?updatedAt=1685550214917'
-  },
-  {
-    id: 2,
-    name: 'Bastion Health',
-    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/bastion_FiYFTBnIl.png?updatedAt=1685550214830'
-  },
-  {
-    id: 3,
-    name: 'Total Health Trust',
-    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/tht_IX-G48mTz.jpg?updatedAt=1685550214354'
-  },
-  {
-    id: 4,
-    name: 'Axa Mastard',
-    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/axa_uL9hjbEEX.png?updatedAt=1685550214172'
-  }
-]
+interface CarouselItem {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
+
+interface Props {
+  carouselItems: CarouselItem[];
+  autoplay?: number | undefined;
+}
+
+withDefaults(defineProps<Props>(), { autoplay: undefined });
+
 // corousel config
 const settings = {
   itemsToShow: 1,
@@ -44,7 +35,7 @@ defineComponent({
 </script>
 <template>
   <Carousel
-    :autoplay="5000"
+    :autoplay="autoplay"
     :transition="1200"
     :pause-autoplay-on-hover="true"
     :items-to-scroll="1"
