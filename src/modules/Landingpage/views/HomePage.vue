@@ -121,12 +121,12 @@ const hmoCarouselItems = [
       >
         <HomePageWhyJasFitness />
       </section>
-      <!-- hmo partners -->
+      <!-- partners -->
       <section class="px-8 lg:px-28 py-10 lg:py-16">
         <h4
           class="capitalize mb-3 lg:mb-10 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
         >
-          Our HMO partners
+          Our partners
         </h4>
         <HmoCarousel :carousel-items="hmoCarouselItems" :autoplay="5000" />
       </section>
