@@ -43,6 +43,7 @@ defineProps(['details'])
   height: 100%;
   width: 100%;
   display: grid;
+  place-content: center;
   grid-template-columns: 1fr;
 
   #{&}__texts,
