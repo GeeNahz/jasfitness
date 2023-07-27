@@ -128,7 +128,7 @@ const hmoCarouselItems = [
         >
           Our partners
         </h4>
-        <HmoCarousel :carousel-items="hmoCarouselItems" :autoplay="5000" />
+        <HmoCarousel :carousel-items="hmoCarouselItems" :autoplay="hmoCarouselItems.length > 1 ? 5000 : undefined" />
       </section>
       <!-- reviews -->
       <section
