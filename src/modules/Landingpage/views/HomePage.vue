@@ -71,32 +71,29 @@ function goToSection(selector: string) {
 const hmoCarouselItems = [
   {
     id: 1,
+    name: "ASFA",
+    imageUrl: "https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/ASFA-Logo-Horizontal_PiDXqHmF0.webp?updatedAt=1690456220930",
+  },
+  {
+    id: 2,
     name: 'Leadway',
     imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/leadway__5sN4BNkq.jpg?updatedAt=1685550214917'
   },
   {
-    id: 2,
+    id: 3,
     name: 'Bastion Health',
     imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/bastion_FiYFTBnIl.png?updatedAt=1685550214830'
   },
   {
-    id: 3,
+    id: 4,
     name: 'Total Health Trust',
     imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/tht_IX-G48mTz.jpg?updatedAt=1685550214354'
   },
   {
-    id: 4,
+    id: 5,
     name: 'Axa Mastard',
     imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/axa_uL9hjbEEX.png?updatedAt=1685550214172'
   }
-]
-
-const partnersCarouselItems = [
-  {
-    id: 1,
-    name: 'Leadway',
-    imageUrl: 'https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hmo_pictures/leadway__5sN4BNkq.jpg?updatedAt=1685550214917'
-  },
 ]
 </script>
 
@@ -124,15 +121,6 @@ const partnersCarouselItems = [
       >
         <HomePageWhyJasFitness />
       </section>
-      <!-- our partners -->
-      <!-- <section class="px-8 lg:px-28 py-10 lg:py-16">
-        <h4
-          class="capitalize mb-3 lg:mb-10 w-max mx-auto md:w-full font-medium font-inter text-2xl lg:text-4xl text-[#171717]"
-        >
-          Our partners
-        </h4>
-        <HmoCarousel :carousel-items="partnersCarouselItems" :autoplay="partnersCarouselItems.length > 1 ? 5000 : undefined" />
-      </section> -->
       <!-- hmo partners -->
       <section class="px-8 lg:px-28 py-10 lg:py-16">
         <h4
