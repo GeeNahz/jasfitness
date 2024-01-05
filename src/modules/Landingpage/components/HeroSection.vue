@@ -14,13 +14,13 @@ function scrollTo(selector: string) {
     class="flex justify-between items-center gap-x-64 bg-none lg:bg-[url('https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/hero_YUAGwWov_.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665864648815')] lg:h-full w-full lg:pl-32"
   >
     <div class="hidden lg:block bg-none font-inter text-white md:w-[40%]">
-      <p class="text-3xl font-normal mb-8">
+      <p class="mb-8 text-3xl font-normal">
         No one else got your chest, shoulder, back, abs, and leg like we do
       </p>
-      <div class="btns flex space-x-7">
+      <div class="flex btns space-x-7">
         <a
           @click.prevent="scrollTo('#why-jasfitness')"
-          class="text-xl font-bold text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 hover:cursor-pointer transition w-52 h-14 btn-default"
+          class="text-xl font-bold transition text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 hover:cursor-pointer w-52 h-14 btn-default"
         >
           Get Started
         </a>
@@ -31,6 +31,9 @@ function scrollTo(selector: string) {
           What's Your BMI?
         </button>
       </div>
+      <div class="mt-3 text-sm enquiry">
+        <span class="text-gray-400">Which plan to choose? <router-link class="text-gray-100 transition-colors hover:text-amber-400 link" :to="{ name: 'EnquiryPage' }">Contact Us.</router-link></span>
+      </div>
     </div>
     <div
       class="lg:flex justify-end items-center font-inter h-[100vh] w-full lg:w-auto lg:pb-10"
@@ -40,7 +43,7 @@ function scrollTo(selector: string) {
           autoplay
           muted
           loop
-          class="w-full h-full video mac iphone object-fill rounded-b-xl"
+          class="object-fill w-full h-full video mac iphone rounded-b-xl"
         >
           <source
             src="https://ik.imagekit.io/m0adxj6it/Jas_Fitness_Content/JasFitnessCenterMain_VVwGnmuC8.mp4?ik-sdk-version=javascript-1.4.3&updatedAt=1664997283633"
@@ -55,12 +58,12 @@ function scrollTo(selector: string) {
         <div
           class="mac iphone lg:hidden absolute bottom-20 left-[50%] -translate-x-[50%] px-2 pb-4 text-white"
         >
-          <p class="text-xl text-center font-semibold mb-8">
+          <p class="mb-8 text-xl font-semibold text-center">
             No one else got your chest, shoulder, back, abs, and leg like we do
           </p>
-          <div class="btns flex space-x-7 justify-center">
+          <div class="flex justify-center btns space-x-7">
             <router-link
-              class="text-sm font-bold text-zinc-900 bg-white hover:text-zinc-900 px-4 py-2 whitespace-nowrap btn-default"
+              class="px-4 py-2 text-sm font-bold bg-white text-zinc-900 hover:text-zinc-900 whitespace-nowrap btn-default"
               :to="{ name: 'PlansPage' }"
               >Get Started</router-link
             >
