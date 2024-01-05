@@ -126,7 +126,7 @@ const paystackMetadataOldUser = ref({})
 const computedAmount = computed(() => {
   if (isNew.value) {
     return (
-      data.value!.amount + 3000 + data.value?.properties?.new_sub_charges || 0
+      data.value!.amount + 5000 + data.value?.properties?.new_sub_charges || 0
     )
   } else {
     return data.value!.amount + data.value?.properties?.resub_charges || 0
@@ -278,7 +278,7 @@ function onClose() {
         </div>
         <div v-if="isNew" class="cost">
           <p class="item">Membership setup</p>
-          <p class="price">₦ 3000</p>
+          <p class="price">₦ 5000</p>
         </div>
         <div class="cost">
           <p class="item font-medium">Total Billing</p>
