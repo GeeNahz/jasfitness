@@ -57,16 +57,23 @@ onMounted(() => {
 
 <template>
   <section class="section">
-    <div class="container mx-auto py-32 px-3 sm:px-5">
-      <header class="text-center mb-5 font-inter">
-        <h3 class="text-4xl md:text-5xl font-bold mb-2 md:mb-3">We have a plan for everyone</h3>
+    <div class="container px-3 py-32 mx-auto sm:px-5">
+      <header class="mb-5 text-center font-inter">
+        <h3 class="mb-2 text-4xl font-bold md:text-5xl md:mb-3">We have a plan for everyone</h3>
         <p>Pick a plan suitable for you 💪🏽</p>
+        <div class="mt-0 text-xs enquiry">
+          <span>
+            <router-link class="underline transition-colors text-amber-600 underline-offset-2 hover:text-amber-800 link" :to="{ name: 'EnquiryPage' }">
+              Best plan for me?
+            </router-link>
+          </span>
+        </div>
       </header>
       <div v-if="plans?.length" class="plans">
         <PlanCard v-for="plan in plans" :key="plan.id" :plan="plan" />
       </div>
-      <div v-else class="grid place-content-center bg-slate-100 h-56 sm:h-96">
-        <div class="text-gray-300 flex flex-col items-center gap-3">
+      <div v-else class="grid h-56 place-content-center bg-slate-100 sm:h-96">
+        <div class="flex flex-col items-center gap-3 text-gray-300">
           <SpinningLoader class="text-5xl" />
           <div class="text">
             <p class="font-semibold">Fetching plans. Please wait...</p>
@@ -83,9 +90,11 @@ onMounted(() => {
 
 .section {
   width: 100%;
+
   & .container {
     padding-top: 8rem;
     padding-bottom: 8rem;
+
     & .plans {
       display: flex;
       justify-content: center;
