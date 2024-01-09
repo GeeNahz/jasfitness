@@ -22,7 +22,7 @@ function scrollTo(selector: string) {
           @click.prevent="scrollTo('#why-jasfitness')"
           class="text-xl font-bold transition text-zinc-900 bg-slate-50 hover:text-zinc-900 hover:bg-slate-200 hover:cursor-pointer w-52 h-14 btn-default"
         >
-          Get Started
+          Get Started -
         </a>
         <button
           @click="openBmiCalculator"
@@ -61,18 +61,27 @@ function scrollTo(selector: string) {
           <p class="mb-8 text-xl font-semibold text-center">
             No one else got your chest, shoulder, back, abs, and leg like we do
           </p>
-          <div class="flex justify-center btns space-x-7">
-            <router-link
-              class="px-4 py-2 text-sm font-bold bg-white text-zinc-900 hover:text-zinc-900 whitespace-nowrap btn-default"
-              :to="{ name: 'PlansPage' }"
-              >Get Started</router-link
-            >
-            <button
-              @click="openBmiCalculator"
-              class="text-sm text-center font-bold text-white bg-[#FFB628] px-4 py-2 whitespace-nowrap btn-default"
-            >
-              What's Your BMI?
-            </button>
+          <div class="flex flex-col items-center">
+            <div class="flex justify-center btns space-x-7">
+              <router-link
+                class="px-4 py-2 text-sm font-bold bg-white text-zinc-900 hover:text-zinc-900 whitespace-nowrap btn-default"
+                :to="{ name: 'PlansPage' }"
+                >Get Started</router-link
+              >
+              <button
+                @click="openBmiCalculator"
+                class="text-sm text-center font-bold text-white bg-[#FFB628] px-4 py-2 whitespace-nowrap btn-default"
+              >
+                What's Your BMI?
+              </button>
+            </div>
+            <div class="mt-3 text-sm enquiry">
+              <span class="text-gray-50">
+                Which plan to choose? <router-link class="underline transition-colors text-amber-300 underline-offset-2 hover:text-amber-400 link" :to="{ name: 'EnquiryPage' }">
+                  Contact Us.
+                </router-link>
+              </span>
+            </div>
           </div>
         </div>
       </figure>
